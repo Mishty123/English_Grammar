@@ -1,0 +1,946 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Tense Style Options</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Lexend:wght@400;500;600&family=Atkinson+Hyperlegible:wght@400;700&family=STIX+Two+Text:ital,wght@0,500;0,600;1,500&display=swap">
+<style>
+/* Layout: a switcher on top picks one of three study styles over the same 12 tenses.
+   A = tap tiles in a time grid, B = cover-up study sheet, C = build the pattern game. */
+:root {
+  --bg: #F3F1FA;
+  --surface: #FFFFFF;
+  --ink: #1D1B3A;
+  --muted: #5B5880;
+  --line: #DAD6EE;
+  --line-strong: #A39FCB;
+  --grid: #5E5990;
+  --grid: #5E5990;
+  --good: #1F7A3A; --good-soft: #DDF3E3;
+  --bad: #B3261E;  --bad-soft: #FBE3E1;
+  --present: #0F7C74; --present-soft: #DDF3F0; --present-on: #FFFFFF;
+  --past: #6A45B8;    --past-soft: #ECE6F8;    --past-on: #FFFFFF;
+  --future: #B25E00;  --future-soft: #FBEBD3;  --future-on: #FFFFFF;
+  --font-display: 'Fredoka', 'Trebuchet MS', system-ui, sans-serif;
+  --font-body: 'Lexend', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-formula: 'STIX Two Text', 'Cambria Math', Cambria, Georgia, serif;
+  --font-pattern: 'Atkinson Hyperlegible', 'Lexend', system-ui, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #14132B; --surface: #1E1D40; --ink: #ECEBFA; --muted: #AAA8CF;
+    --line: #302F5C; --line-strong: #5C5A92; --grid: #9A96CF;
+    --good: #6FD58B; --good-soft: #173A24;
+    --bad: #FF8A80;  --bad-soft: #4A1F1C;
+    --present: #4FD1C5; --present-soft: #17383A; --present-on: #0B2B28;
+    --past: #B79CF2;    --past-soft: #2C2450;    --past-on: #20123F;
+    --future: #F2A94E;  --future-soft: #43321A;  --future-on: #3A2100;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #14132B; --surface: #1E1D40; --ink: #ECEBFA; --muted: #AAA8CF;
+  --line: #302F5C; --line-strong: #5C5A92; --grid: #9A96CF;
+  --good: #6FD58B; --good-soft: #173A24;
+  --bad: #FF8A80;  --bad-soft: #4A1F1C;
+  --present: #4FD1C5; --present-soft: #17383A; --present-on: #0B2B28;
+  --past: #B79CF2;    --past-soft: #2C2450;    --past-on: #20123F;
+  --future: #F2A94E;  --future-soft: #43321A;  --future-on: #3A2100;
+  color-scheme: dark;
+}
+
+body {
+  background: var(--bg); color: var(--ink);
+  font-family: var(--font-body); font-size: 16px; line-height: 1.5;
+  padding-block: 22px 56px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.wrap { max-width: 1000px; margin: 0 auto; display: flex; flex-direction: column; gap: 20px; }
+.tense-present { --t: var(--present); --t-soft: var(--present-soft); --t-on: var(--present-on); }
+.tense-past    { --t: var(--past);    --t-soft: var(--past-soft);    --t-on: var(--past-on); }
+.tense-future  { --t: var(--future);  --t-soft: var(--future-soft);  --t-on: var(--future-on); }
+
+h1 { font-family: var(--font-display); font-weight: 600; font-size: clamp(2rem, 6vw, 3rem); line-height: 1.05; margin: 0; }
+.lead { margin: 6px 0 0; color: var(--muted); }
+.label { font-size: .75rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin: 0; }
+button { font-family: inherit; color: inherit; }
+button:focus-visible, select:focus-visible { outline: 3px solid var(--t, var(--ink)); outline-offset: 2px; }
+
+/* style switcher */
+.switch { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr)); gap: 10px; }
+.pick { text-align: left; padding: 12px 16px; border-radius: 14px; border: 2px solid var(--line-strong); background: var(--surface); cursor: pointer; display: flex; flex-direction: column; gap: 2px; }
+.pick b { font-family: var(--font-display); font-weight: 600; font-size: 1.15rem; }
+.pick span { font-size: .85rem; color: var(--muted); }
+.pick[aria-selected="true"] { background: var(--ink); border-color: var(--ink); }
+.pick[aria-selected="true"] b { color: var(--bg); }
+.pick[aria-selected="true"] span { color: var(--bg); opacity: .8; }
+
+/* chips */
+.chips { display: flex; flex-wrap: wrap; gap: 6px; min-width: 0; }
+.chip { display: inline-block; padding: 4px 11px; border-radius: 10px; font-weight: 500; font-size: .95rem; line-height: 1.3; border: 2px solid transparent; }
+.c-s { background: var(--surface); border-color: var(--line-strong); color: var(--ink); }
+.c-h { background: var(--t); color: var(--t-on); }
+.c-v { background: var(--t-soft); border-color: var(--t); color: var(--ink); }
+.eh { color: var(--t); font-weight: 600; }
+.ev { font-weight: 600; box-shadow: inset 0 -0.4em 0 var(--t-soft); }
+
+.legend { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; }
+.legend .chips { gap: 6px; }
+
+.view[hidden] { display: none; }
+.toolbar { display: flex; flex-wrap: wrap; gap: 8px; justify-content: flex-end; margin-bottom: 12px; }
+.tool { font: 500 .9rem var(--font-body); padding: 8px 14px; border-radius: 10px; border: 2px solid var(--line); background: transparent; cursor: pointer; }
+.tool:hover { border-color: var(--line-strong); }
+
+/* ---------- A: tap grid ---------- */
+.cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 290px), 1fr)); gap: 16px; align-items: start; }
+.col { display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+.col h2 { margin: 0; font-family: var(--font-display); font-weight: 600; font-size: 1.5rem; padding: 8px 14px; border-radius: 12px; background: var(--t); color: var(--t-on); }
+.tile { text-align: left; border: 2px solid var(--t); background: var(--t-soft); border-radius: 16px; padding: 12px 14px; cursor: pointer; display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.tile .nm { font-family: var(--font-display); font-weight: 600; font-size: 1.2rem; line-height: 1.15; }
+.tile .hint { font-size: .88rem; color: var(--muted); }
+.tile .more { display: flex; flex-direction: column; gap: 8px; margin-top: 4px; }
+.tile .more[hidden] { display: none; }
+.tile[aria-expanded="true"] { background: var(--surface); }
+.tile .sfs { display: flex; flex-direction: column; gap: 3px; padding-top: 8px; border-top: 1px dashed var(--line-strong); }
+.tile .sfr { font-size: .95rem; line-height: 1.4; }
+.tile .ex { font-size: 1.02rem; }
+.tl { display: block; width: 190px; max-width: 100%; height: auto; margin-top: 4px; }
+.tl-line { stroke: var(--line-strong); stroke-width: 2; }
+.tl-now { stroke: var(--muted); stroke-width: 1.5; }
+.tl text { font: 500 8px var(--font-body); fill: var(--muted); }
+.tl .dot, .tl .bar { fill: var(--t); }
+.tl .ring { fill: var(--surface); stroke: var(--t); stroke-width: 2.5; }
+.tl .arrow { fill: none; stroke: var(--t); stroke-width: 1.6; stroke-dasharray: 3 3; }
+
+
+.c-x { border: 2px dashed var(--line-strong); color: var(--muted); background: transparent; }
+.build { background: var(--surface); border: 2px solid var(--line); border-radius: 16px; padding: 14px 16px; display: flex; flex-direction: column; gap: 14px; margin-bottom: 14px; }
+.fields { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 190px), 1fr)); gap: 12px; }
+.field { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.field .sel { width: 100%; }
+.rule { margin: 0; font-size: .95rem; color: var(--muted); }
+.person { margin: 0; font-size: .95rem; }
+.forms-line { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; }
+.seg-wrap { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; }
+.seg { display: flex; gap: 6px; }
+.segb { font: 600 .95rem var(--font-display); padding: 7px 18px; border-radius: 999px; border: 2px solid var(--line-strong); background: transparent; cursor: pointer; }
+.segb[aria-pressed="true"] { background: var(--ink); border-color: var(--ink); color: var(--bg); }
+.pat { align-self: center; min-width: 0; }
+
+/* ---------- B: cover-up sheet ---------- */
+.sheet { background: var(--surface); border: 2px solid var(--line); border-radius: 16px; overflow: hidden; }
+.band { padding: 8px 16px; background: var(--t); color: var(--t-on); font-family: var(--font-display); font-weight: 600; font-size: 1.2rem; }
+.srow { display: grid; grid-template-columns: 1.1fr 1.5fr 1.5fr; gap: 10px; padding: 10px 16px; border-top: 1px solid var(--line); align-items: stretch; }
+.band + .srow { border-top: 0; }
+.sname { font-weight: 600; align-self: center; }
+.sname small { display: block; font-weight: 400; font-size: .82rem; color: var(--muted); }
+.cell { position: relative; text-align: left; border-radius: 10px; border: 2px dashed var(--line-strong); background: transparent; padding: 8px 10px; cursor: pointer; min-height: 48px; display: flex; align-items: center; min-width: 0; }
+.cell .cov { color: var(--t-on); }
+.cell .shown { display: none; }
+.cell[aria-pressed="false"] { background: var(--t); border: 2px solid var(--t); }
+.cell[aria-pressed="false"] .cov { display: inline; font-weight: 500; font-size: .9rem; }
+.cell[aria-pressed="true"] .cov { display: none; }
+.cell[aria-pressed="true"] .shown { display: block; overflow-wrap: anywhere; }
+.sheet-head { display: grid; grid-template-columns: 1.1fr 1.5fr 1.5fr; gap: 10px; padding: 10px 16px; background: var(--bg); }
+@media (max-width: 640px) {
+  .sheet-head { display: none; }
+  .srow { grid-template-columns: 1fr; gap: 6px; }
+  .sname { align-self: start; }
+}
+
+/* ---------- C: build it ---------- */
+.game { background: var(--surface); border: 2px solid var(--line); border-radius: 20px; padding: 18px; display: flex; flex-direction: column; gap: 16px; }
+.gtop { display: flex; flex-wrap: wrap; gap: 10px 16px; justify-content: space-between; align-items: center; }
+.sel { font: 500 1rem var(--font-body); padding: 9px 12px; border-radius: 10px; border: 2px solid var(--line-strong); background: var(--bg); color: var(--ink); max-width: 100%; }
+.score { font-weight: 600; color: var(--muted); font-size: .95rem; }
+.gname { margin: 0; font-family: var(--font-display); font-weight: 600; font-size: clamp(1.6rem, 5vw, 2.2rem); line-height: 1.1; }
+.guse { margin: 4px 0 0; color: var(--muted); }
+.slots { display: flex; flex-wrap: wrap; gap: 8px; min-height: 52px; }
+.slot { min-width: 70px; min-height: 46px; border: 2px dashed var(--line-strong); border-radius: 12px; display: flex; align-items: center; justify-content: center; padding: 2px; }
+.slot button.chip { cursor: pointer; font-size: 1rem; padding: 7px 12px; }
+.pool button.chip { cursor: pointer; font-size: 1rem; padding: 8px 14px; }
+.pool button.chip:disabled { opacity: .3; cursor: default; }
+.msg { margin: 0; min-height: 1.6em; font-weight: 500; }
+.msg.ok { color: var(--good); }
+.msg.no { color: var(--bad); }
+.gbtns { display: flex; flex-wrap: wrap; gap: 8px; }
+.gb { font: 600 .95rem var(--font-display); padding: 9px 16px; border-radius: 12px; border: 2px solid var(--t); background: transparent; cursor: pointer; }
+.gb.main { background: var(--t); color: var(--t-on); }
+.exbox { margin: 0; padding: 10px 12px; border-radius: 10px; background: var(--bg); font-size: 1.05rem; }
+.exbox[hidden] { display: none; }
+.slot.right { border-style: solid; border-color: var(--good); background: var(--good-soft); }
+.slot.wrong { border-style: solid; border-color: var(--bad); background: var(--bad-soft); }
+
+
+/* ---------- D: all 12 tenses table ---------- */
+.swipe { display: none; margin: 0 0 8px; font-size: .85rem; color: var(--muted); }
+.tbl-wrap { overflow-x: auto; background: var(--surface); border: 2px solid var(--line); border-radius: 16px; }
+.tt { border-collapse: collapse; width: 100%; min-width: 1040px; }
+.tt thead th { text-align: left; font-size: .75rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); padding: 10px 12px; background: var(--bg); }
+.tt td, .tt th.tn { padding: 8px 12px; vertical-align: middle; border-top: 1px solid var(--line); }
+.tt tr.first td, .tt tr.first th.tn { border-top: 2px solid var(--line-strong); }
+.tt .band-row th { text-align: left; padding: 8px 12px; background: var(--t); color: var(--t-on); font-family: var(--font-display); font-weight: 600; font-size: 1.15rem; letter-spacing: 0; text-transform: none; }
+.tt .band-row + tr td, .tt .band-row + tr th.tn { border-top: 0; }
+.tt th.tn { text-align: left; background: var(--t-soft); width: 240px; border-right: 1px solid var(--line); }
+.tt th.tn > span { display: block; font-family: var(--font-display); font-weight: 600; font-size: 1.1rem; line-height: 1.15; color: var(--ink); }
+.tt th.tn .tpat { margin: 10px 0 0; font-size: 1rem; }
+.tt th.tn .pt, .tt th.tn .sfr { font-weight: 400; color: var(--ink); }
+
+.tt th.tn .fm { margin: 8px 0 0; font-family: var(--font-formula); font-size: .92rem; font-weight: 500; line-height: 1.7; color: var(--ink); }
+.fm .f-s { font-style: italic; }
+.fm .f-h { font-weight: 600; color: var(--t); }
+.fm .f-v { font-weight: 600; border-bottom: 1.5px solid var(--t); }
+.fm .f-plus { color: var(--muted); margin: 0 .4em; font-weight: 500; }
+.fm sub { font-size: .7em; line-height: 0; }
+.pt-s { color: var(--ink); }
+.pt-h { color: var(--t); font-weight: 600; }
+.pt-v { font-weight: 600; border-bottom: 2px solid var(--t); }
+.pt-x { color: var(--muted); }
+.pt-plus { color: var(--muted); }
+.tt th.tn small { display: block; margin-top: 4px; font-size: .78rem; font-weight: 400; line-height: 1.35; color: var(--muted); }
+.tt .tu { width: 150px; font-size: .92rem; }
+.tt .ts { width: 130px; }
+.tt .ts .tl { width: 120px; margin: 0; }
+.tt .tl text { font-size: 10px; }
+.tt .tx { width: 270px; font-size: .95rem; }
+.tt .tx p { margin: 0; }
+.tt .tx p + p { margin-top: 4px; }
+.tt .tp { width: 260px; border-left: 1px solid var(--line); }
+.tt .tk { width: 250px; border-left: 1px solid var(--line); }
+.cap { margin: 0 0 8px; font-size: .88rem; color: var(--muted); }
+.tt .chip { font-size: .85rem; padding: 2px 8px; border-radius: 8px; }
+.tt .keys .chip { font-size: .85rem; padding: 2px 9px; }
+.tt .sfs { display: flex; flex-direction: column; gap: 3px; margin-top: 8px; padding-top: 8px; border-top: 1px dashed var(--line-strong); }
+.tt .sfr { margin: 0; font-size: .92rem; line-height: 1.4; }
+.sf-l { font-size: .85rem; color: var(--muted); margin-right: 4px; }
+.sf-l::after { content: ':'; }
+.tl .xm { fill: none; stroke: var(--t); stroke-width: 2.4; stroke-linecap: round; }
+.tl .bar.soft { fill-opacity: .35; }
+@media (max-width: 1060px) { .swipe { display: block; } }
+
+/* ---------- E: key words ---------- */
+.ebar { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 10px 12px; margin-bottom: 8px; }
+.ebar .field { min-width: min(100%, 260px); }
+.ebar .tool[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.esec { margin-top: 22px; }
+.eband { margin: 0 0 4px; padding: 8px 14px; border-radius: 12px; background: var(--t); color: var(--t-on); font-family: var(--font-display); font-weight: 600; font-size: 1.4rem; }
+.esec.multi .eband { background: var(--ink); color: var(--bg); }
+.grp { padding: 14px 2px 12px; border-bottom: 1px solid var(--line); }
+.gh { display: flex; flex-wrap: wrap; align-items: flex-start; justify-content: space-between; gap: 8px 16px; margin-bottom: 10px; }
+.gh > div:first-child { min-width: 0; flex: 1 1 260px; }
+.gh h3 { margin: 0; font-family: var(--font-display); font-weight: 600; font-size: 1.2rem; }
+.gh p { margin: 2px 0 0; color: var(--muted); font-size: .92rem; max-width: 56ch; }
+.pts { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 6px; }
+.pts .lab { font-size: .72rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin-right: 4px; }
+.tg { font-size: .75rem; font-weight: 500; line-height: 1.4; padding: 1px 9px; border-radius: 999px; background: var(--t-soft); border: 1.5px solid var(--t); color: var(--ink); }
+.tg-any { background: var(--bg); border-color: var(--line-strong); }
+.reveal2 { display: none; font: 500 .9rem var(--font-body); padding: 6px 14px; border-radius: 10px; border: 2px dashed var(--line-strong); background: transparent; cursor: pointer; }
+.egrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 170px), 1fr)); gap: 8px; }
+.wk { background: var(--surface); border: 2px solid var(--line); border-radius: 10px; padding: 7px 11px; min-width: 0; }
+.wk .wd { font-weight: 600; font-size: 1rem; overflow-wrap: anywhere; }
+.wk .gt { display: none; margin-top: 2px; font-size: .75rem; color: var(--muted); }
+.types .wk .gt { display: block; }
+.practice .pts { cursor: pointer; }
+.practice .grp[data-open="0"] .pts { display: none; }
+.practice .grp[data-open="0"] .reveal2 { display: inline-block; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .tile .more:not([hidden]), .exbox:not([hidden]) { animation: pop .2s ease-out; }
+  @keyframes pop { from { opacity: 0; transform: translateY(-3px); } to { opacity: 1; transform: none; } }
+}
+
+/* ---- E: scale view ---- */
+.vseg { margin-bottom: 4px; }
+.scales { display: flex; flex-direction: column; gap: 22px; }
+.sc { background: var(--surface); border: 2px solid var(--line); border-radius: 18px; padding: 16px 18px; display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+.sc h2 { font: 600 1.25rem var(--font-display); margin: 0; }
+.sc p { margin: 0; color: var(--muted); }
+.fq { display: flex; flex-direction: column; gap: 8px; }
+.fr { display: grid; grid-template-columns: minmax(110px, 170px) 1fr 3.2rem; gap: 12px; align-items: center; }
+.fr .fw { font-weight: 600; }
+.fr .trk { height: 18px; border-radius: 999px; background: var(--t-soft); overflow: hidden; border: 1px solid var(--line); }
+.fr .fill { height: 100%; border-radius: 999px; background: var(--t); }
+.fr .pc { font-size: .85rem; color: var(--muted); text-align: right; font-variant-numeric: tabular-nums; }
+.fends { display: flex; justify-content: space-between; font-size: .8rem; color: var(--muted); margin-left: calc(min(170px, 30%) + 12px); margin-right: calc(3.2rem + 12px); }
+.fixed { display: flex; flex-wrap: wrap; gap: 6px 8px; align-items: center; }
+.rail-scroll { overflow-x: auto; padding-bottom: 6px; }
+.rail-line { list-style: none; margin: 0; padding: 0; display: flex; min-width: min-content; }
+.rail-line li { flex: 1 0 82px; position: relative; padding-top: 20px; text-align: center; font-weight: 500; font-size: .88rem; padding-inline: 3px; }
+.rail-line li::before { content: ""; position: absolute; left: 0; right: 0; top: 7px; border-top: 3px solid var(--t); }
+.rail-line li::after { content: ""; position: absolute; left: 50%; top: 1px; width: 14px; height: 14px; margin-left: -7px; border-radius: 50%; background: var(--t-soft); border: 3px solid var(--t); }
+.rail-line li:first-child::before { left: 50%; }
+.rail-line li:last-child::before { right: 50%; }
+.rends { display: flex; justify-content: space-between; font-size: .8rem; color: var(--muted); min-width: min-content; }
+.scales .tg { align-self: flex-start; }
+.ebar.hide-ctl .field, .ebar.hide-ctl .tool { display: none; }
+
+.fqx { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; }
+.fqx > div { border: 2px solid var(--line); border-radius: 14px; padding: 10px 14px; background: var(--t-soft); }
+.exs { margin: 4px 0 0; color: var(--ink); font-size: 1.05rem; }
+.exs b { box-shadow: inset 0 -0.4em 0 var(--t-soft); background: var(--surface); padding: 0 .2em; border-radius: 4px; }
+.kinds { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; }
+.kind { border: 2px solid var(--line); border-radius: 14px; padding: 12px 14px; display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+.kind h3 { margin: 0; font: 600 1.05rem var(--font-display); }
+.kind p { margin: 0; font-size: .9rem; }
+.kind .chip { font-size: .9rem; padding: 3px 10px; }
+.notes { margin: 0; padding-left: 1.1em; display: flex; flex-direction: column; gap: 8px; color: var(--ink); }
+[hidden] { display: none !important; }
+</style>
+
+<div class="wrap">
+  <header>
+    <h1>Tense Style Options</h1>
+    <p class="lead">Same 12 tenses, three ways to study them. Try each one, then tell me which to keep.</p>
+  </header>
+
+  <div class="switch" role="tablist" aria-label="Choose a style" id="switch"></div>
+
+  <div class="legend tense-present" id="legend">
+    <span class="label">Colours</span>
+    <span class="chips"><span class="chip c-s">Subject</span><span class="chip c-h">Helper word</span><span class="chip c-v">Action word</span></span>
+    <span class="label">Subject = the person or thing doing the action</span><span class="label">V1 eat, V2 ate, V3 eaten, V4 eating, V5 eats</span>
+  </div>
+
+  <section class="view" id="v-a" role="tabpanel"></section>
+  <section class="view" id="v-b" role="tabpanel" hidden></section>
+  <section class="view" id="v-c" role="tabpanel" hidden></section>
+  <section class="view" id="v-d" role="tabpanel" hidden></section>
+  <section class="view" id="v-e" role="tabpanel" hidden></section>
+</div>
+
+<script>
+(function () {
+  var ASPECTS = ['Simple', 'Continuous', 'Perfect', 'Perfect Continuous'];
+  var TIMES = ['present', 'past', 'future'];
+  var CAP = { present: 'Present', past: 'Past', future: 'Future' };
+
+  // f = the yes-pattern. ~helper~ and ^action^ mark words in the example.
+  var T = [
+    { time: 'present', a: 0, use: 'Habits and facts', f: ['s:Subject', 'v:V1 / V5'], ex: 'She ^plays^ chess.', note: 'he, she, it add -s' },
+    { time: 'present', a: 1, use: 'Happening right now', f: ['s:Subject', 'h:am / is / are', 'v:V4'], ex: 'He ~is~ ^drawing^.', note: '' },
+    { time: 'present', a: 2, use: 'Done, and it matters now', f: ['s:Subject', 'h:have / has', 'v:V3'], ex: 'I ~have~ ^eaten^ lunch.', note: '' },
+    { time: 'present', a: 3, use: 'Started before, still going', f: ['s:Subject', 'h:have / has', 'h:been', 'v:V4'], ex: 'They ~have been~ ^playing^ since noon.', note: '' },
+    { time: 'past', a: 0, use: 'Done and finished', f: ['s:Subject', 'v:V2'], ex: 'I ^watched^ a movie.', note: '' },
+    { time: 'past', a: 1, use: 'In progress back then', f: ['s:Subject', 'h:was / were', 'v:V4'], ex: 'She ~was~ ^singing^.', note: '' },
+    { time: 'past', a: 2, use: 'Happened first', f: ['s:Subject', 'h:had', 'v:V3'], ex: 'The movie ~had~ ^started^ before we came.', note: '' },
+    { time: 'past', a: 3, use: 'Went on for a while, then stopped', f: ['s:Subject', 'h:had', 'h:been', 'v:V4'], ex: 'I ~had been~ ^waiting^ for an hour.', note: '' },
+    { time: 'future', a: 0, use: 'Plans and promises', f: ['s:Subject', 'h:will', 'v:V1'], ex: 'I ~will~ ^call^ you.', note: '' },
+    { time: 'future', a: 1, use: 'In progress later', f: ['s:Subject', 'h:will', 'h:be', 'v:V4'], ex: 'I ~will be~ ^sleeping^ at 10 pm.', note: '' },
+    { time: 'future', a: 2, use: 'Finished by then', f: ['s:Subject', 'h:will', 'h:have', 'v:V3'], ex: 'I ~will have~ ^finished^ by five.', note: '' },
+    { time: 'future', a: 3, use: 'Going on for a while, by then', f: ['s:Subject', 'h:will', 'h:have', 'h:been', 'v:V4'], ex: 'By May, she ~will have been~ ^swimming^ for a year.', note: '' }
+  ];
+  T.forEach(function (t) { t.name = CAP[t.time] + ' ' + ASPECTS[t.a]; });
+
+  function split(code) { var i = code.indexOf(':'); return [code.slice(0, i), code.slice(i + 1)]; }
+  function chip(code) { var p = split(code); return '<span class="chip c-' + p[0] + '">' + p[1] + '</span>'; }
+  function chips(f) { return '<span class="chips">' + f.map(chip).join('') + '</span>'; }
+  function sentence(s) {
+    return s.replace(/~(.+?)~/g, '<span class="eh">$1</span>').replace(/\^(.+?)\^/g, '<span class="ev">$1</span>');
+  }
+  var legend = document.getElementById('legend');
+  function tint(t) { legend.className = 'legend tense-' + t; }
+
+  /* ---------- switcher ---------- */
+  var VIEWS = [
+    { id: 'v-a', name: 'A  Tap Grid', sub: 'Easiest. Tap a tile to see its pattern.' },
+    { id: 'v-c', name: 'B  Build It', sub: 'Challenge. Put the pattern together yourself.' },
+    { id: 'v-b', name: 'C  Cover-up Sheet', sub: 'Medium. Pick your own subject, verb and object, then check every tense.' },
+    { id: 'v-d', name: 'D  All 12 Tenses', sub: 'Table. Uses, time scales, key words and examples at a glance.' },
+    { id: 'v-e', name: 'E  Key Words', sub: 'Clues sorted by type, with the tense each one points to.' }
+  ];
+  var sw = document.getElementById('switch');
+  VIEWS.forEach(function (v, i) {
+    var b = document.createElement('button');
+    b.type = 'button'; b.className = 'pick'; b.setAttribute('role', 'tab');
+    b.setAttribute('aria-selected', i === 0 ? 'true' : 'false'); b.dataset.view = v.id;
+    b.innerHTML = '<b>' + v.name + '</b><span>' + v.sub + '</span>';
+    b.addEventListener('click', function () {
+      VIEWS.forEach(function (w) { document.getElementById(w.id).hidden = (w.id !== v.id); });
+      Array.prototype.forEach.call(sw.children, function (c) { c.setAttribute('aria-selected', c === b ? 'true' : 'false'); });
+      if (v.id !== 'v-c') tint('present'); else tint(T[game.i].time);
+      legend.hidden = (v.id === 'v-d' || v.id === 'v-e');
+    });
+    sw.appendChild(b);
+  });
+
+    /* ---------- B: cover-up sheet with your own sentence ---------- */
+  var SUBJ = [
+    { t: 'I', p: 'I', g: 'p', note: '1st person singular' },
+    { t: 'you', p: 'pl', g: 'p', note: '2nd person' },
+    { t: 'he', p: 's3', g: 'p', note: '3rd person singular' },
+    { t: 'she', p: 's3', g: 'p', note: '3rd person singular' },
+    { t: 'it', p: 's3', g: 'p', note: '3rd person singular' },
+    { t: 'we', p: 'pl', g: 'p', note: '1st person plural' },
+    { t: 'they', p: 'pl', g: 'p', note: '3rd person plural' },
+    { t: 'the dog', p: 's3', g: 'n', note: 'a noun, one thing, so it works like he / she / it (3rd person singular)' },
+    { t: 'my sister', p: 's3', g: 'n', note: 'a noun, one person, so it works like he / she / it (3rd person singular)' },
+    { t: 'my friends', p: 'pl', g: 'n', note: 'a noun, more than one, so it works like they (3rd person plural)' },
+    { t: 'the children', p: 'pl', g: 'n', note: 'a noun, more than one, so it works like they (3rd person plural)' }
+  ];
+  var VERBS = [
+    { v1: 'eat', v2: 'ate', v3: 'eaten', ing: 'eating', s: 'eats', o: ['an apple', 'a sandwich', 'some rice'] },
+    { v1: 'read', v2: 'read', v3: 'read', ing: 'reading', s: 'reads', o: ['a book', 'a comic', 'a story'] },
+    { v1: 'draw', v2: 'drew', v3: 'drawn', ing: 'drawing', s: 'draws', o: ['a picture', 'a cat', 'a house'] },
+    { v1: 'write', v2: 'wrote', v3: 'written', ing: 'writing', s: 'writes', o: ['a letter', 'a story', 'a poem'] },
+    { v1: 'make', v2: 'made', v3: 'made', ing: 'making', s: 'makes', o: ['a cake', 'a card', 'a sandwich'] },
+    { v1: 'buy', v2: 'bought', v3: 'bought', ing: 'buying', s: 'buys', o: ['a toy', 'a book', 'some milk'] },
+    { v1: 'watch', v2: 'watched', v3: 'watched', ing: 'watching', s: 'watches', o: ['a movie', 'a show', 'the birds'] },
+    { v1: 'play', v2: 'played', v3: 'played', ing: 'playing', s: 'plays', o: ['chess', 'soccer', 'the piano'] },
+    { v1: 'sleep', v2: 'slept', v3: 'slept', ing: 'sleeping', s: 'sleeps', o: null },
+    { v1: 'run', v2: 'ran', v3: 'run', ing: 'running', s: 'runs', o: null },
+    { v1: 'swim', v2: 'swam', v3: 'swum', ing: 'swimming', s: 'swims', o: null },
+    { v1: 'sing', v2: 'sang', v3: 'sung', ing: 'singing', s: 'sings', o: null },
+    { v1: 'dance', v2: 'danced', v3: 'danced', ing: 'dancing', s: 'dances', o: null }
+  ];
+  var BE = function (p) { return p === 'I' ? 'am' : (p === 's3' ? 'is' : 'are'); };
+  var WAS = function (p) { return p === 'pl' ? 'were' : 'was'; };
+  var HAVE = function (p) { return p === 's3' ? 'has' : 'have'; };
+  var DO = function (p) { return p === 's3' ? 'does' : 'do'; };
+
+  // one entry per tense, in the same order as T
+  var TM = [
+    { simple: 'ps' },
+    { aux: function (p) { return [BE(p)]; }, d: ['am / is / are'], main: 'ing', dm: 'V4' },
+    { aux: function (p) { return [HAVE(p)]; }, d: ['have / has'], main: 'v3', dm: 'V3' },
+    { aux: function (p) { return [HAVE(p), 'been']; }, d: ['have / has', 'been'], main: 'ing', dm: 'V4' },
+    { simple: 'pa' },
+    { aux: function (p) { return [WAS(p)]; }, d: ['was / were'], main: 'ing', dm: 'V4' },
+    { aux: function () { return ['had']; }, d: ['had'], main: 'v3', dm: 'V3' },
+    { aux: function () { return ['had', 'been']; }, d: ['had', 'been'], main: 'ing', dm: 'V4' },
+    { aux: function () { return ['will']; }, d: ['will'], main: 'v1', dm: 'V1' },
+    { aux: function () { return ['will', 'be']; }, d: ['will', 'be'], main: 'ing', dm: 'V4' },
+    { aux: function () { return ['will', 'have']; }, d: ['will', 'have'], main: 'v3', dm: 'V3' },
+    { aux: function () { return ['will', 'have', 'been']; }, d: ['will', 'have', 'been'], main: 'ing', dm: 'V4' }
+  ];
+
+  function cap(s) { return s.charAt(0).toUpperCase() + s.slice(1); }
+  function pattern(m, kind) {
+    var aux, main, h = function (x) { return 'h:' + x; };
+    if (m.simple) {
+      if (kind === 'yes') {
+        return ['s:Subject', 'v:' + (m.simple === 'ps' ? 'V1 / V5' : 'V2')];
+      }
+      aux = [m.simple === 'ps' ? 'do / does' : 'did']; main = 'V1';
+    } else { aux = m.d; main = m.dm; }
+    if (kind === 'yes') return ['s:Subject'].concat(aux.map(h), ['v:' + main]);
+    if (kind === 'no') return ['s:Subject', h(aux[0]), 'x:not'].concat(aux.slice(1).map(h), ['v:' + main]);
+    return [h(cap(aux[0])), 's:Subject'].concat(aux.slice(1).map(h), ['v:' + main, 'x:?']);
+  }
+  function build(m, kind, S, V, O) {
+    var p = S.p, aux, main;
+    if (m.simple) {
+      if (kind === 'yes') { aux = []; main = m.simple === 'ps' ? (p === 's3' ? V.s : V.v1) : V.v2; }
+      else { aux = [m.simple === 'ps' ? DO(p) : 'did']; main = V.v1; }
+    } else { aux = m.aux(p); main = V[m.main]; }
+    var subj = { w: S.t, k: 's' }, mv = { w: main, k: 'v' };
+    var ah = aux.map(function (w) { return { w: w, k: 'h' }; });
+    var toks;
+    if (kind === 'yes') toks = [subj].concat(ah, [mv]);
+    else if (kind === 'no') toks = [subj, ah[0], { w: 'not', k: 'h' }].concat(ah.slice(1), [mv]);
+    else toks = [ah[0], subj].concat(ah.slice(1), [mv]);
+    if (O) toks.push({ w: O, k: 'o' });
+    return toks;
+  }
+  function sent(toks, kind) {
+    return toks.map(function (tk, i) {
+      var w = i === 0 ? cap(tk.w) : tk.w;
+      return tk.k === 'h' ? '<span class="eh">' + w + '</span>' : (tk.k === 'v' ? '<span class="ev">' + w + '</span>' : w);
+    }).join(' ') + (kind === 'ask' ? '?' : '.');
+  }
+
+  var B = document.getElementById('v-b');
+  var bs = { s: 3, v: 0, o: 0, kind: 'yes', pressed: [] };
+  var KINDS = [['yes', 'Yes'], ['no', 'No'], ['ask', 'Ask']];
+
+  B.innerHTML =
+    '<div class="build">' +
+      '<p class="label">Make your own sentence. It is used for all 12 tenses.</p>' +
+      '<div class="fields">' +
+        '<div class="field"><label class="label" for="b-subj">Subject</label><select class="sel" id="b-subj">' +
+          ['p', 'n'].map(function (g) {
+            return '<optgroup label="' + (g === 'p' ? 'Pronouns' : 'Nouns') + '">' + SUBJ.map(function (s, i) { return s.g === g ? '<option value="' + i + '"' + (i === bs.s ? ' selected' : '') + '>' + cap(s.t) + '</option>' : ''; }).join('') + '</optgroup>';
+          }).join('') + '</select></div>' +
+        '<div class="field"><label class="label" for="b-verb">Verb</label><select class="sel" id="b-verb">' +
+          '<optgroup label="Transitive: takes an object">' + VERBS.map(function (v, i) { return v.o ? '<option value="' + i + '">' + v.v1 + ' (transitive)</option>' : ''; }).join('') + '</optgroup>' +
+          '<optgroup label="Intransitive: no object">' + VERBS.map(function (v, i) { return v.o ? '' : '<option value="' + i + '">' + v.v1 + ' (intransitive)</option>'; }).join('') + '</optgroup></select></div>' +
+        '<div class="field" id="b-ofield"><label class="label" for="b-obj">Object</label><select class="sel" id="b-obj"></select></div>' +
+      '</div>' +
+      '<p class="rule">Only pronouns change the verb. Any noun counts as he / she / it (one) or they (more than one).</p>' +
+      '<p class="person" id="b-person"></p>' +
+      '<div class="forms-line" id="b-forms"></div>' +
+      '<div class="seg-wrap"><span class="label">Sentence type</span><div class="seg" role="group" aria-label="Sentence type">' +
+        KINDS.map(function (k) { return '<button type="button" class="segb" data-kind="' + k[0] + '" aria-pressed="' + (k[0] === 'yes') + '">' + k[1] + '</button>'; }).join('') + '</div></div>' +
+    '</div>' +
+    '<div class="toolbar"><button class="tool" id="b-show" type="button">Uncover all</button><button class="tool" id="b-hide" type="button">Cover all</button></div>' +
+    '<div class="sheet"><div class="sheet-head"><span class="label">Tense</span><span class="label">Pattern (your clue)</span><span class="label">Your sentence</span></div><div id="b-rows"></div></div>';
+
+  var elS = document.getElementById('b-subj'), elV = document.getElementById('b-verb'), elO = document.getElementById('b-obj');
+  elV.value = '0';
+
+  function fillObjects() {
+    var V = VERBS[bs.v];
+    document.getElementById('b-ofield').hidden = !V.o;
+    elO.innerHTML = V.o ? V.o.map(function (o, i) { return '<option value="' + i + '">' + o + '</option>'; }).join('') : '';
+    bs.o = 0;
+  }
+  function renderRows() {
+    var S = SUBJ[bs.s], V = VERBS[bs.v], O = V.o ? V.o[bs.o] : null;
+    document.getElementById('b-person').innerHTML = '<b>' + cap(S.t) + '</b>: ' + S.note + '.';
+    document.getElementById('b-forms').innerHTML =
+      '<span class="label">Forms of this verb</span><span class="chips">' +
+      '<span class="chip c-v">V1 ' + V.v1 + '</span><span class="chip c-v">V2 ' + V.v2 + '</span><span class="chip c-v">V3 ' + V.v3 + '</span><span class="chip c-v">V4 ' + V.ing + '</span><span class="chip c-v">V5 ' + V.s + '</span></span>';
+    var html = '';
+    TIMES.forEach(function (time) {
+      html += '<div class="tense-' + time + '"><div class="band">' + CAP[time] + '</div>';
+      T.forEach(function (t, i) {
+        if (t.time !== time) return;
+        var open = !!bs.pressed[i];
+        html += '<div class="srow"><div class="sname">' + t.name + '<small>' + t.use + '</small></div>' +
+          '<div class="pat">' + chips(pattern(TM[i], bs.kind)) + '</div>' +
+          '<button class="cell" type="button" data-i="' + i + '" aria-pressed="' + open + '"><span class="cov">Say it, then tap to check</span><span class="shown">' + sent(build(TM[i], bs.kind, S, V, O), bs.kind) + '</span></button></div>';
+      });
+      html += '</div>';
+    });
+    document.getElementById('b-rows').innerHTML = html;
+  }
+
+  elS.addEventListener('change', function () { bs.s = +elS.value; renderRows(); });
+  elV.addEventListener('change', function () { bs.v = +elV.value; fillObjects(); renderRows(); });
+  elO.addEventListener('change', function () { bs.o = +elO.value; renderRows(); });
+  B.addEventListener('click', function (e) {
+    var seg = e.target.closest('.segb');
+    if (seg) {
+      bs.kind = seg.dataset.kind;
+      Array.prototype.forEach.call(B.querySelectorAll('.segb'), function (b) { b.setAttribute('aria-pressed', b === seg ? 'true' : 'false'); });
+      renderRows(); return;
+    }
+    var c = e.target.closest('.cell');
+    if (c) {
+      var on = c.getAttribute('aria-pressed') !== 'true';
+      bs.pressed[+c.dataset.i] = on;
+      c.setAttribute('aria-pressed', on ? 'true' : 'false');
+    }
+  });
+  document.getElementById('b-show').onclick = function () { for (var i = 0; i < T.length; i++) bs.pressed[i] = true; renderRows(); };
+  document.getElementById('b-hide').onclick = function () { bs.pressed = []; renderRows(); };
+
+  fillObjects(); renderRows();
+
+/* ---------- C: build it ---------- */
+  var C = document.getElementById('v-c');
+  var DISTRACT = ['V1', 'V2', 'V3', 'V4', 'V5', 'will', 'had', 'been', 'have / has', 'am / is / are', 'did'];
+  var game = { i: 0, placed: [], pool: [], state: '', solved: {}, showEx: false };
+
+  function typeOf(txt) { return txt === 'Subject' ? 's' : (/^V/.test(txt) ? 'v' : 'h'); }
+  function shuffle(a) { for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)); var x = a[i]; a[i] = a[j]; a[j] = x; } return a; }
+  function answer() { return T[game.i].f.map(function (c) { return split(c)[1]; }); }
+
+  function deal() {
+    var ans = answer();
+    var extra = shuffle(DISTRACT.filter(function (d) { return ans.indexOf(d) === -1; })).slice(0, 2);
+    game.pool = shuffle(ans.concat(extra));
+    game.placed = []; game.state = ''; game.showEx = false;
+  }
+
+  function renderC() {
+    var t = T[game.i], n = answer().length;
+    tint(t.time);
+    var solvedCount = Object.keys(game.solved).length;
+    var opts = T.map(function (x, k) { return '<option value="' + k + '"' + (k === game.i ? ' selected' : '') + '>' + x.name + (game.solved[k] ? ' (done)' : '') + '</option>'; }).join('');
+    var slots = '';
+    for (var s = 0; s < n; s++) {
+      var p = game.placed[s];
+      var cls = 'slot' + (game.state === 'ok' ? ' right' : (game.state === 'no' && p != null ? ' wrong' : ''));
+      slots += '<div class="' + cls + '">' + (p != null ? '<button class="chip c-' + typeOf(game.pool[p]) + '" type="button" data-un="' + s + '">' + game.pool[p] + '</button>' : '') + '</div>';
+    }
+    var pool = game.pool.map(function (txt, k) {
+      return '<button class="chip c-' + typeOf(txt) + '" type="button" data-pick="' + k + '"' + (game.placed.indexOf(k) !== -1 || game.state === 'ok' ? ' disabled' : '') + '>' + txt + '</button>';
+    }).join('');
+    var msg = game.state === 'ok' ? '<p class="msg ok">Yes! That is the pattern.</p>'
+      : game.state === 'no' ? '<p class="msg no">Not quite. Tap a chip in the boxes to take it out, then try again.</p>'
+      : '<p class="msg">Tap the chips in the right order. ' + (n) + ' boxes, and some chips are extras.</p>';
+    C.innerHTML = '<div class="game tense-' + t.time + '">' +
+      '<div class="gtop"><select class="sel" id="c-sel" aria-label="Pick a tense">' + opts + '</select><span class="score">Built ' + solvedCount + ' of 12</span></div>' +
+      '<div><p class="label">Build the pattern for</p><h2 class="gname">' + t.name + '</h2><p class="guse">' + t.use + '</p></div>' +
+      '<div class="slots" aria-label="Your pattern">' + slots + '</div>' +
+      '<div class="chips pool" aria-label="Chips to choose from">' + pool + '</div>' +
+      '<div aria-live="polite">' + msg + '</div>' +
+      '<div class="gbtns"><button class="gb" type="button" id="c-clear">Clear</button><button class="gb" type="button" id="c-ans">Show the answer</button><button class="gb main" type="button" id="c-next">Next tense</button></div>' +
+      '</div>';
+  }
+
+  function checkFull() {
+    var ans = answer();
+    if (game.placed.length !== ans.length) { game.state = ''; return; }
+    var ok = game.placed.every(function (k, s) { return game.pool[k] === ans[s]; });
+    game.state = ok ? 'ok' : 'no';
+    if (ok) game.solved[game.i] = true;
+  }
+
+  C.addEventListener('click', function (e) {
+    var pick = e.target.closest('[data-pick]'), un = e.target.closest('[data-un]');
+    if (pick && game.state !== 'ok') {
+      var k = +pick.dataset.pick;
+      if (game.placed.indexOf(k) === -1 && game.placed.length < answer().length) { game.placed.push(k); checkFull(); renderC(); }
+    } else if (un && game.state !== 'ok') {
+      game.placed.splice(+un.dataset.un, 1); game.state = ''; renderC();
+    } else if (e.target.id === 'c-clear') { game.placed = []; game.state = ''; renderC(); }
+    else if (e.target.id === 'c-ans') {
+      var ans = answer(), used = [];
+      game.placed = ans.map(function (txt) { for (var k = 0; k < game.pool.length; k++) { if (game.pool[k] === txt && used.indexOf(k) === -1) { used.push(k); return k; } } });
+      game.state = 'ok'; renderC();
+    } else if (e.target.id === 'c-next') { game.i = (game.i + 1) % T.length; deal(); renderC(); }
+  });
+  C.addEventListener('change', function (e) {
+    if (e.target.id === 'c-sel') { game.i = +e.target.value; deal(); renderC(); }
+  });
+
+    /* ---------- D: all 12 tenses table ---------- */
+  var LINE = [
+    'Again and again, or always true', 'In progress right now', 'A past action that links to now', 'Started before, still going now',
+    'Finished at a time in the past', 'In progress at a past moment', 'Finished before another past moment', 'Went on for a while before a past moment',
+    'Will happen later', 'Will be in progress at a future moment', 'Will be finished by a future moment', 'Will have gone on for a while by then'
+  ];
+  // each use: [text, picture]. Pictures: xs, line, x, dot, dots, bar, barx, two, arc, dur, arcx, durx
+  var USES = [
+    [['Habits and repeated actions', 'xs:16,32,48,64,80,96,112,128,144', ['I ^brush^ my teeth every day.', 'She ^walks^ to school on Mondays.']],
+     ['Facts and things that are always true', 'line', ['Water ^boils^ at 100 degrees.', 'The sun ^rises^ in the east.']],
+     ['Timetables and schedules', 'x:116', ['The train ^leaves^ at six.', 'School ^starts^ at eight tomorrow.']]],
+    [['Happening right now', 'bar:62-98', ['He ~is~ ^drawing^ a picture now.', 'The kids ~are~ ^playing^ outside.']],
+     ['A temporary situation', 'bar:48-112', ['I ~am~ ^staying^ with my aunt this week.', 'She ~is~ ^learning^ to swim these days.']],
+     ['A plan for the near future', 'dot:116', ['We ~are~ ^visiting^ Grandma on Saturday.', 'I ~am~ ^meeting^ my friend tomorrow.']]],
+    [['Done at an unspecified time before now', 'arc:44:80', ['I ~have~ ^visited^ Paris.', 'They ~have~ ^seen^ that movie.']],
+     ['Life experience', 'arc:28:80', ['She ~has~ ^ridden^ a horse.', '~Have~ you ever ^eaten^ sushi?']],
+     ['A finished action with a result now', 'arc:62:80', ['I ~have~ ^lost^ my key.', 'He ~has~ ^broken^ his pencil.']]],
+    [['How long, from the past until now', 'dur:26:80', ['I ~have been~ ^waiting^ for an hour.', 'She ~has been~ ^reading^ since noon.']],
+     ['Something recent that explains now', 'dur:54:80', ['The grass is wet. It ~has been~ ^raining^.', 'You look tired. ~Have~ you ~been~ ^running^?']],
+     ['Lately and recently', 'dur:62:80', ['I ~have been~ ^feeling^ better lately.', 'They ~have been~ ^practicing^ a lot recently.']]],
+    [['A finished action at a known past time', 'dot:40', ['I ^watched^ a movie yesterday.', 'She ^visited^ Grandma last week.']],
+     ['A list of past actions, one after another', 'dots:18,34,50', ['I ^woke^ up, ^ate^ breakfast and ^went^ to school.', 'He ^opened^ the door, ^looked^ outside and ^smiled^.']],
+     ['A past habit', 'xs:14,28,42,56', ['We ^played^ outside every day.', 'He ^walked^ to school when he was young.']]],
+    [['An action that was interrupted', 'barx:14-56:44', ['I ~was~ ^sleeping^ when the phone rang.', 'She ~was~ ^cooking^ when the lights went out.']],
+     ['Two actions at the same time', 'two:16-58', ['I ~was~ ^reading^ while he ~was~ ^cooking^.', 'The kids ~were~ ^playing^ while Mom ~was~ ^working^.']],
+     ['Setting the scene in a story', 'bar:16-58', ['The sun ~was~ ^shining^ and the birds ~were~ ^singing^.', 'It ~was~ ^raining^ and people ~were~ ^running^ home.']]],
+    [['Finished before another past action', 'arcx:22:56', ['The movie ~had~ ^started^ before we arrived.', 'I ~had~ ^finished^ my homework before dinner.']],
+     ['The reason for something in the past', 'arcx:34:62', ['She was tired because she ~had~ ^run^ a race.', 'He was happy. He ~had~ ^won^ the game.']]],
+    [['How long before a past moment', 'durx:14:58', ['I ~had been~ ^waiting^ for an hour when the bus came.', 'They ~had been~ ^playing^ all day before it rained.']],
+     ['The cause of something in the past', 'durx:34:62', ['His eyes were red. He ~had been~ ^crying^.', 'The grass was wet because it ~had been~ ^raining^.']]],
+    [['Promises and quick decisions', 'dot:112', ['I ~will~ ^help^ you.', 'I ~will~ ^call^ you tonight.']],
+     ['Predictions', 'dot:136', ['It ~will~ ^rain^ tomorrow.', 'She ~will~ ^win^, I think.']],
+     ['Things that will be true later', 'bar:104-148', ['I ~will~ ^be^ ten next year.', 'Tomorrow ~will~ ^be^ Tuesday.']]],
+    [['In progress at a future moment', 'bar:106-146', ['This time tomorrow, I ~will be~ ^flying^ to Boston.', 'At eight tonight, we ~will be~ ^eating^ dinner.']],
+     ['Polite questions about plans', 'bar:100-136', ['~Will~ you ~be~ ^using^ the car tonight?', '~Will~ she ~be~ ^coming^ to the party?']]],
+    [['Finished before a future moment', 'arcx:102:138', ['I ~will have~ ^finished^ my homework by five.', 'She ~will have~ ^left^ by then.']],
+     ['A deadline', 'arcx:112:142', ['By Friday, we ~will have~ ^sent^ the invitations.', 'The shop ~will have~ ^closed^ by nine.']]],
+    [['How long, by a future moment', 'durx:96:138', ['By June, I ~will have been~ ^learning^ piano for two years.', 'By noon, he ~will have been~ ^driving^ for five hours.']]]
+  ];
+  var KEYS = [
+    ['every day', 'every morning', 'every week', 'every year', 'always', 'usually', 'normally', 'often', 'sometimes', 'rarely', 'seldom', 'hardly ever', 'never', 'on Mondays', 'on weekends'],
+    ['now', 'right now', 'at the moment', 'at present', 'today', 'currently', 'nowadays', 'these days', 'this week', 'this year', 'still', 'Look!', 'Listen!', 'Be quiet!'],
+    ['already', 'just', 'ever', 'never', 'yet', 'so far', 'up to now', 'recently', 'lately', 'before', 'how many times', 'this week'],
+    ['for', 'since', 'how long', 'all day', 'all morning', 'all week', 'for hours', 'for years', 'since morning', 'ever since', 'lately', 'recently', 'so far'],
+    ['yesterday', 'last night', 'last week', 'last month', 'last year', 'a week ago', 'ago', 'in 2020', 'on Monday', 'in May', 'then', 'one day', 'the other day', 'when I was young'],
+    ['while', 'when', 'as', 'just as', 'at that time', 'at 5 o’clock yesterday', 'this time yesterday', 'at this time last year', 'all day yesterday', 'all morning', 'the whole evening'],
+    ['before', 'after', 'already', 'just', 'never', 'by the time', 'by then', 'when', 'until', 'until then', 'as soon as', 'earlier', 'the day before', 'the week before'],
+    ['for', 'since', 'how long', 'all day', 'all morning', 'for hours', 'for years', 'before', 'until', 'when', 'by the time', 'until that day'],
+    ['tomorrow', 'tonight', 'the day after tomorrow', 'next week', 'next month', 'next year', 'soon', 'later', 'in a week', 'in two days', 'someday', 'in 2030', 'in the future', 'probably', 'perhaps', 'maybe', 'I think', 'I hope', 'I promise'],
+    ['this time tomorrow', 'at 8 o’clock tonight', 'tomorrow at noon', 'all day tomorrow', 'all evening tomorrow', 'next week', 'at this time next week', 'this time next year', 'when you arrive', 'when you come', 'in two hours'],
+    ['by tomorrow', 'by five o’clock', 'by Friday', 'by next week', 'by the end of the week', 'by the end of the month', 'by next year', 'by 2030', 'by then', 'by the time', 'before'],
+    ['by next June', 'by next week', 'by the end of the year', 'by this time next year', 'by 2030', 'by then', 'by the time', 'for two years', 'for ten years', 'for a long time']
+  ];
+  function subjForms(i) {
+    var m = TM[i];
+    function f(p) {
+      if (m.simple === 'ps') return ['v:' + (p === 's3' ? 'V5' : 'V1')];
+      if (m.simple === 'pa') return ['v:V2'];
+      return m.aux(p).map(function (w) { return 'h:' + w; }).concat(['v:' + m.dm]);
+    }
+    var groups = [['I', 'I'], ['he / she / it / one noun', 's3'], ['you / we / they / many nouns', 'pl']];
+    var out = groups.map(function (g) { return { lab: g[0], c: f(g[1]) }; });
+    var same = out.every(function (o) { return o.c.join('|') === out[0].c.join('|'); });
+    return same ? [] : out;
+  }
+  function plain(codes) {
+    return codes.map(function (c) {
+      var p = split(c);
+      return '<span class="pt-' + p[0] + '">' + p[1] + '</span>';
+    }).join('<span class="pt-plus"> + </span>');
+  }
+  function formula(codes) {
+    return codes.map(function (c) {
+      var p = split(c), w = p[1];
+      if (p[0] === 's') return '<i class="f-s">' + w + '</i>';
+      if (p[0] === 'h') return '<span class="f-h">' + w + '</span>';
+      return '<span class="f-v">' + w.replace(/V(\d)/g, 'V<sub>$1</sub>') + '</span>';
+    }).join('<span class="f-plus">+</span>');
+  }
+  function diagram(spec, label) {
+    var p = spec.split(':'), k = p[0], a = p[1], b = p[2];
+    var X = function (x) { return '<path class="xm" d="M' + (x - 4.5) + ',21.5 L' + (x + 4.5) + ',30.5 M' + (x + 4.5) + ',21.5 L' + (x - 4.5) + ',30.5"/>'; };
+    var dot = function (x) { return '<circle class="dot" cx="' + x + '" cy="26" r="4.5"/>'; };
+    var ring = function (x) { return '<circle class="ring" cx="' + x + '" cy="26" r="5.5"/>'; };
+    var bar = function (x1, x2, y, h, soft) { return '<rect class="bar' + (soft ? ' soft' : '') + '" x="' + x1 + '" y="' + y + '" width="' + (x2 - x1) + '" height="' + h + '" rx="' + (h / 2) + '"/>'; };
+    var arc = function (x1, x2) { return '<path class="arrow" d="M' + x1 + ',19 Q' + ((x1 + x2) / 2) + ',3 ' + x2 + ',19"/>'; };
+    var s = '<svg class="tl" viewBox="0 0 160 46" role="img" aria-label="Time scale: ' + label + '">' +
+      '<line class="tl-line" x1="6" y1="26" x2="154" y2="26"/><line class="tl-now" x1="80" y1="17" x2="80" y2="35"/>' +
+      '<text x="6" y="43">before</text><text x="80" y="43" text-anchor="middle">now</text><text x="154" y="43" text-anchor="end">later</text>';
+    var r;
+    if (k === 'xs') a.split(',').forEach(function (x) { s += X(+x); });
+    else if (k === 'line') s += bar(8, 152, 24, 4);
+    else if (k === 'x') s += X(+a);
+    else if (k === 'dot') s += dot(+a);
+    else if (k === 'dots') a.split(',').forEach(function (x) { s += dot(+x); });
+    else if (k === 'bar') { r = a.split('-'); s += bar(+r[0], +r[1], 21.5, 9); }
+    else if (k === 'barx') { r = a.split('-'); s += bar(+r[0], +r[1], 21.5, 9, true) + X(+b); }
+    else if (k === 'two') { r = a.split('-'); s += bar(+r[0], +r[1], 15, 6) + bar(+r[0], +r[1], 29, 6); }
+    else if (k === 'arc') s += arc(+a, +b) + dot(+a) + ring(+b);
+    else if (k === 'dur') s += bar(+a, +b, 22, 8) + ring(+b);
+    else if (k === 'arcx') s += arc(+a, +b) + dot(+a) + X(+b);
+    else if (k === 'durx') s += bar(+a, +b - 7, 22, 8) + X(+b);
+    return s + '</svg>';
+  }
+
+  var D = document.getElementById('v-d');
+  var html = '<p class="swipe">Swipe sideways to see every column.</p><p class="cap">Only pronouns change the verb. Any noun counts as he / she / it (one) or they (more than one). Counting words like once, twice and three times (twice a week, once a month) go with any tense, so they are not listed here.</p><div class="tbl-wrap"><table class="tt"><thead><tr>' +
+    '<th>Tense</th><th>Use it for</th><th>Time scale</th><th>Two examples</th><th>Key words</th></tr></thead>';
+  TIMES.forEach(function (time) {
+    html += '<tbody class="tense-' + time + '"><tr class="band-row"><th colspan="5">' + CAP[time] + '</th></tr>';
+    T.forEach(function (t, i) {
+      if (t.time !== time) return;
+      var n = USES[i].length;
+      USES[i].forEach(function (u, k) {
+        html += '<tr' + (k === 0 ? ' class="first"' : '') + '>';
+        if (k === 0) html += '<th scope="row" class="tn" rowspan="' + n + '"><span>' + t.name + '</span><small>' + LINE[i] + '</small><p class="tpat fm">' + formula(t.f) + '</p></th>';
+        html += '<td class="tu">' + u[0] + '</td><td class="ts">' + diagram(u[1], t.name + ', ' + u[0]) + '</td>' +
+          '<td class="tx">' + u[2].map(function (e) { return '<p>' + sentence(e) + '</p>'; }).join('') + '</td>';
+        if (k === 0) {
+          html += '<td class="tk" rowspan="' + n + '"><div class="chips keys">' + KEYS[i].map(function (w) { return '<span class="chip c-x">' + w + '</span>'; }).join('') + '</div></td>';
+        }
+        html += '</tr>';
+      });
+    });
+    html += '</tbody>';
+  });
+  D.innerHTML = html + '</table></div>';
+
+  /* ---------- A: tap grid ---------- */
+  function aForms(i) { return subjForms(i); }
+  var KINDS_TL = ['simple', 'continuous', 'perfect', 'perfectcont'];
+  function timeline(a, time, name) {
+    var kind = KINDS_TL[a];
+    var X = { past: 36, present: 80, future: 124 };
+    var P = { past: [20, 56], present: [40, 80], future: [104, 140] };
+    var BR = { past: [12, 56], present: [24, 80], future: [100, 140] };
+    var s = '<svg class="tl" viewBox="0 0 160 46" role="img" aria-label="Time scale for ' + name + '">' +
+      '<line class="tl-line" x1="6" y1="26" x2="154" y2="26"/>' +
+      '<line class="tl-now" x1="80" y1="18" x2="80" y2="34"/>' +
+      '<text x="6" y="42">before</text><text x="80" y="42" text-anchor="middle">now</text><text x="154" y="42" text-anchor="end">later</text>';
+    if (kind === 'simple') {
+      s += '<circle class="dot" cx="' + X[time] + '" cy="26" r="5.5"/>';
+    } else if (kind === 'continuous') {
+      s += '<rect class="bar" x="' + (X[time] - 20) + '" y="21.5" width="40" height="9" rx="4.5"/>';
+    } else if (kind === 'perfect') {
+      var a1 = P[time][0], r = P[time][1];
+      s += '<path class="arrow" d="M' + a1 + ',19 Q' + ((a1 + r) / 2) + ',3 ' + r + ',19"/>' +
+           '<circle class="dot" cx="' + a1 + '" cy="26" r="4.5"/><circle class="ring" cx="' + r + '" cy="26" r="5.5"/>';
+    } else {
+      var b = BR[time][0], e = BR[time][1];
+      s += '<rect class="bar" x="' + b + '" y="22" width="' + (e - b) + '" height="8" rx="4"/><circle class="ring" cx="' + e + '" cy="26" r="5.5"/>';
+    }
+    return s + '</svg>';
+  }
+
+  var A = document.getElementById('v-a');
+  A.innerHTML = '<div class="toolbar"><button class="tool" id="a-show" type="button">Show all</button><button class="tool" id="a-hide" type="button">Hide all</button></div><div class="cols">' +
+    TIMES.map(function (time) {
+      return '<div class="col tense-' + time + '"><h2>' + CAP[time] + '</h2>' +
+        T.map(function (t, i) {
+          if (t.time !== time) return '';
+          return '<button class="tile" type="button" aria-expanded="false">' +
+            '<span class="nm">' + ASPECTS[t.a] + '</span><span class="hint">' + t.use + '</span>' + timeline(t.a, t.time, t.name) +
+            '<span class="more" hidden>' + chips(t.f) +
+            (aForms(i).length ? '<span class="sfs">' + aForms(i).map(function (r) { return '<span class="sfr"><span class="sf-l">' + r.lab + '</span> ' + plain(r.c) + '</span>'; }).join('') + '</span>' : '') +
+            '</span></button>';
+        }).join('') + '</div>';
+    }).join('') + '</div>';
+  function tileSet(btn, open) {
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    btn.querySelector('.more').hidden = !open;
+  }
+  A.addEventListener('click', function (e) {
+    var b = e.target.closest('.tile');
+    if (b) tileSet(b, b.getAttribute('aria-expanded') !== 'true');
+  });
+  document.getElementById('a-show').onclick = function () { Array.prototype.forEach.call(A.querySelectorAll('.tile'), function (b) { tileSet(b, true); }); };
+  document.getElementById('a-hide').onclick = function () { Array.prototype.forEach.call(A.querySelectorAll('.tile'), function (b) { tileSet(b, false); }); };
+
+
+  /* ---------- E: key words, grouped by meaning ---------- */
+  var TYPES = {};
+  function tp(label, list) { list.forEach(function (w) { TYPES[w] = label; }); }
+  tp('adverb', ['always', 'usually', 'normally', 'often', 'sometimes', 'rarely', 'seldom', 'hardly ever', 'never', 'ever', 'now', 'right now', 'today', 'currently', 'nowadays', 'still', 'already', 'just', 'yet', 'so far', 'recently', 'lately', 'then', 'ago', 'earlier', 'yesterday', 'tonight', 'tomorrow', 'soon', 'later', 'someday', 'probably', 'perhaps', 'maybe', 'once', 'twice']);
+  tp('noun phrase', ['every day', 'every morning', 'every week', 'every year', 'these days', 'this week', 'this year', 'all day', 'all morning', 'all week', 'last night', 'last week', 'last month', 'last year', 'a week ago', 'one day', 'the other day', 'this time yesterday', 'all day yesterday', 'the whole evening', 'the day before', 'the week before', 'the day after tomorrow', 'next week', 'next month', 'next year', 'this time tomorrow', 'this time next year', 'all day tomorrow', 'all evening tomorrow', 'three times', 'several times', 'once a week', 'twice a week', 'twice a day', 'once a month', 'twice a month', 'once a year', 'twice a year']);
+  tp('prepositional phrase', ['for hours', 'for years', 'for two years', 'for ten years', 'for a long time', 'since morning', 'ever since', 'up to now', 'at the moment', 'at present', 'at that time', 'at 5 o’clock yesterday', 'at this time last year', 'at 8 o’clock tonight', 'at this time next week', 'tomorrow at noon', 'on Mondays', 'on weekends', 'on Monday', 'in May', 'in 2020', 'in 2030', 'in a week', 'in two days', 'in two hours', 'in the future', 'until then', 'until that day', 'by then', 'by tomorrow', 'by five o’clock', 'by Friday', 'by next week', 'by the end of the week', 'by the end of the month', 'by next year', 'by 2030', 'by next June', 'by the end of the year', 'by this time next year']);
+  tp('preposition', ['for', 'since']);
+  tp('conjunction', ['when', 'while', 'as', 'just as', 'before', 'after', 'until', 'as soon as', 'by the time']);
+  tp('clause', ['when I was young', 'when you arrive', 'when you come']);
+  tp('question words', ['how long', 'how many times']);
+  tp('command', ['Look!', 'Listen!', 'Be quiet!']);
+  tp('short clause', ['I think', 'I hope', 'I promise']);
+
+  var GROUPS = [
+    { time: 'present', name: 'How often', hint: 'Habits and routines. Things we do again and again.', t: [0],
+      w: ['every day / morning / week / year', 'always', 'usually', 'normally', 'often', 'sometimes', 'rarely', 'seldom', 'hardly ever', 'never', 'on Mondays / weekends'] },
+    { time: 'present', name: 'Right now', hint: 'It is happening at this moment.', t: [1],
+      w: ['now / right now', 'at the moment / at present', 'today', 'currently', 'nowadays', 'these days', 'this week / year', 'still', 'Look! / Listen! / Be quiet!'] },
+    { time: 'present', name: 'Up to now', hint: 'It is done, and it matters now.', t: [2], o: { before: 'adverb' },
+      w: ['already', 'just', 'ever', 'never', 'yet', 'so far', 'up to now', 'recently / lately', 'before', 'how many times'] },
+    { time: 'present', name: 'How long', hint: 'It started before and it is still going on.', t: [3],
+      w: ['for / since', 'how long', 'for hours / years', 'since morning', 'ever since', 'all day / morning / week'] },
+    { time: 'past', name: 'A finished time in the past', hint: 'It started and finished at a known time.', t: [4],
+      w: ['yesterday', 'last night / week / month / year', 'a week ago', 'ago', 'in 2020 / in May / on Monday', 'then', 'one day / the other day', 'when I was young'] },
+    { time: 'past', name: 'A moment when it was in progress', hint: 'It was going on at that moment in the past.', t: [5],
+      w: ['at that time', 'at 5 o’clock yesterday', 'this time yesterday', 'at this time last year', 'all day yesterday', 'the whole evening'] },
+    { time: 'past', name: 'Before another past event', hint: 'One past event happened before another one.', t: [6, 7],
+      w: ['already', 'just', 'never', 'by then', 'until then / until that day', 'earlier', 'the day / week before'] },
+    { time: 'future', name: 'Later', hint: 'It will happen at a time after now.', t: [8],
+      w: ['tomorrow', 'tonight', 'the day after tomorrow', 'next week / month / year', 'soon', 'later', 'in a week / two days', 'someday', 'in 2030 / in the future'] },
+    { time: 'future', name: 'A guess, hope or promise', hint: 'We say what we think, hope or promise about the future.', t: [8],
+      w: ['probably / perhaps / maybe', 'I think / I hope / I promise'] },
+    { time: 'future', name: 'A future moment, in progress', hint: 'It will be going on at that moment.', t: [9],
+      w: ['this time tomorrow / next year', 'at 8 o’clock tonight', 'tomorrow at noon', 'all day / evening tomorrow', 'at this time next week', 'in two hours'] },
+    { time: 'future', name: 'A deadline', hint: 'It will be finished by then.', t: [10],
+      w: ['by tomorrow / Friday / next week', 'by five o’clock', 'by the end of the week / month / year', 'by next year / 2030', 'by then'] },
+    { time: 'future', name: 'How long, by then', hint: 'It will have been going on for a while by that time.', t: [11],
+      w: ['by next June', 'by this time next year', 'for two / ten years', 'for a long time'] },
+    { time: 'multi', name: 'Joining words', hint: 'They start a time clause, like “when the phone rang”.', t: [5, 6, 9, 10],
+      w: ['when / while / as / just as', 'before / after / until / as soon as', 'by the time', 'when I was young / when you arrive / when you come'] },
+    { time: 'multi', name: 'Counting words', hint: 'They say how many times. Put a counting word in front of a day, a week, a month or a year: twice a week, three times a month. They go with any tense: I go twice a week. I went twice last year.', any: true, t: [], o: { '+ a day / a week / a month / a year': 'noun phrase' },
+      w: ['once / twice', 'three times / several times', '+ a day / a week / a month / a year'] }
+  ];
+  function typeFor(chip, g) {
+    if (g.o && g.o[chip]) return g.o[chip];
+    if (TYPES[chip]) return TYPES[chip];
+    var first = chip.split(' / ')[0];
+    if (g.o && g.o[first]) return g.o[first];
+    if (TYPES[first]) return TYPES[first];
+    if (/^(by|in|on|for|at|until|since|up|ever)\b/.test(first)) return 'prepositional phrase';
+    if (/^(when|while|as|before|after)\b/.test(first)) return 'conjunction';
+    if (/^(every|last|next|this|these|all|the|a|once|twice|three|several|one)\b/.test(first)) return 'noun phrase';
+    return '';
+  }
+  var SECTIONS = [['present', 'Present'], ['past', 'Past'], ['future', 'Future'], ['multi', 'Words that work with more than one tense']];
+  var es = { f: -1, practice: false, types: false, open: {} };
+  var E = document.getElementById('v-e');
+  E.innerHTML =
+    '<div class="ebar"><div class="field"><label class="label" for="e-f">Show words for</label><select class="sel" id="e-f"><option value="-1">All 12 tenses</option>' +
+      TIMES.map(function (time) { return '<optgroup label="' + CAP[time] + '">' + T.map(function (t, i) { return t.time === time ? '<option value="' + i + '">' + t.name + '</option>' : ''; }).join('') + '</optgroup>'; }).join('') +
+    '</select></div><button class="tool" id="e-t" type="button" aria-pressed="false">Show grammar type</button>' +
+    '<button class="tool" id="e-p" type="button" aria-pressed="false">Practice: hide the tenses</button></div>' +
+    '<div class="seg vseg" role="group" aria-label="How to show the key words"><button class="segb" type="button" data-ev="groups" aria-pressed="true">Groups</button><button class="segb" type="button" data-ev="scales" aria-pressed="false">On a scale</button><button class="segb" type="button" data-ev="freq" aria-pressed="false">Frequency words</button></div>' +
+    '<p class="cap" id="e-cap"></p><div id="e-body"></div><div id="e-scales" class="scales" hidden></div><div id="e-freq" class="scales tense-present" hidden></div>';
+  var FREQ = [['never', 0], ['hardly ever', 10], ['rarely / seldom', 22], ['sometimes', 45], ['often', 65], ['usually / normally', 85], ['always', 100]];
+  var RAILS = [
+    { time: 'past', name: 'Far past', tag: 'Past tenses', from: 'long ago', to: 'last month',
+      w: ['when I was young', 'long ago', 'years ago / in 2020', 'two years ago', 'last year', 'last month'] },
+    { time: 'past', name: 'Near past', tag: 'Past tenses', from: 'two weeks ago', to: 'just now',
+      w: ['two weeks ago', 'last week', 'a week ago', 'a few days ago', 'the other day', 'yesterday', 'last night', 'this morning', 'a moment ago / just now'] },
+    { time: 'present', name: 'Present', tag: 'Present tenses', from: 'this moment', to: 'a longer time',
+      w: ['now / right now', 'at the moment / at present', 'today', 'this week / this year', 'these days / nowadays'] },
+    { time: 'future', name: 'Near future', tag: 'Future tenses', from: 'in a moment', to: 'next week',
+      w: ['in a moment', 'later today', 'tonight', 'tomorrow', 'tomorrow morning', 'the day after tomorrow', 'in a few days', 'this weekend', 'next week'] },
+    { time: 'future', name: 'Far future', tag: 'Future tenses', from: 'in two weeks', to: 'someday',
+      w: ['in two weeks', 'next month', 'in a few months', 'next year', 'in two years', 'in 2030', 'in ten years', 'in the future', 'someday'] }
+  ];
+  function renderScales() {
+    var h = '<section class="sc tense-present"><div><h2>How often</h2><p>Habits and routines. Each word is a rough share of the time.</p></div><span class="tg tense-present">Simple Present</span><div class="fq">' +
+      FREQ.map(function (f) { return '<div class="fr"><span class="fw">' + f[0] + '</span><div class="trk"><div class="fill" style="width:' + (f[1] === 0 ? 0 : f[1]) + '%"></div></div><span class="pc">' + f[1] + '%</span></div>'; }).join('') +
+      '</div><div class="fends"><span>none of the time</span><span>all of the time</span></div>' +
+      '<div class="fixed"><span class="lab">Or give the exact time</span><span class="chip c-x">every day / week / year</span><span class="chip c-x">on Mondays</span><span class="chip c-x">on weekends</span></div></section>';
+    RAILS.forEach(function (rl) {
+      h += '<section class="sc tense-' + rl.time + '"><div><h2>' + rl.name + ' time words</h2><p>From ' + rl.from + ' to ' + rl.to + '.</p></div><span class="tg tense-' + rl.time + '">' + rl.tag + '</span>' +
+        '<div class="rail-scroll" tabindex="0" role="region" aria-label="' + rl.name + ' time words in order"><ol class="rail-line">' + rl.w.map(function (w) { return '<li>' + w + '</li>'; }).join('') + '</ol>' +
+        '<div class="rends"><span>' + rl.from + '</span><span>' + rl.to + '</span></div></div></section>';
+    });
+    document.getElementById('e-scales').innerHTML = h;
+  }
+  function chipsOf(list, cls) { return list.map(function (w) { return '<span class="chip ' + cls + '">' + w + '</span>'; }).join(''); }
+  function renderFreq() {
+    var h =
+      '<section class="sc"><div><h2>Does Present Simple always need a frequency word?</h2><p>No. Present Simple expresses habits, routines and general facts. It is often used with frequency words or time markers (always, every day, on Mondays), but it does not need them.</p></div>' +
+      '<div class="fqx"><div><span class="lab">General fact</span><p class="exs">Water <b>boils</b> at 100&deg;C.</p></div>' +
+      '<div><span class="lab">Routine, with no marker</span><p class="exs">She <b>works</b> in a bank.</p></div>' +
+      '<div><span class="lab">Schedule</span><p class="exs">The train <b>leaves</b> at 6.</p></div></div></section>' +
+      '<section class="sc"><div><h2>Are all frequency words adverbs?</h2><p>No. Frequency expressions come in three kinds.</p></div>' +
+      '<div class="kinds">' +
+      '<div class="kind"><h3>Frequency adverbs</h3><p>Single words</p><div class="fixed">' + chipsOf(['always', 'usually', 'often', 'sometimes', 'rarely', 'seldom', 'never', 'frequently', 'occasionally', 'once', 'twice', 'daily', 'weekly'], 'c-v') + '</div></div>' +
+      '<div class="kind"><h3>Adverbial phrases</h3><p>Several words that work like an adverb</p><div class="fixed">' + chipsOf(['every day', 'once a week', 'twice a month', 'on Mondays', 'in the morning', 'from time to time', 'now and then', 'hardly ever', 'most of the time'], 'c-v') + '</div></div>' +
+      '<div class="kind"><h3>Adjectives</h3><p>When they come before a noun</p><div class="fixed">' + chipsOf(['a daily routine', 'a weekly meeting', 'a monthly bill'], 'c-v') + '</div></div>' +
+      '</div></section>' +
+      '<section class="sc"><h2>Good to know</h2><ul class="notes">' +
+      '<li><b>Every day</b> is not a single adverb. It is a phrase (every + day) that does the job of an adverb. <b>On Mondays</b> is a prepositional phrase.</li>' +
+      '<li><b>Daily, weekly, monthly, yearly</b> can be either. She exercises <b>daily</b> (adverb). A <b>daily</b> routine (adjective).</li>' +
+      '<li><b>Never, always</b> and similar single words are adverbs. They usually come before the main verb (She <b>never</b> eats meat) but after <b>be</b> (She is <b>always</b> late).</li>' +
+      '<li>The best name for the whole group is <b>frequency expressions</b> (or time markers). The single-word ones are frequency adverbs.</li></ul></section>';
+    document.getElementById('e-freq').innerHTML = h;
+  }
+  function setView(v) {
+    Array.prototype.forEach.call(E.querySelectorAll('[data-ev]'), function (b) { b.setAttribute('aria-pressed', b.dataset.ev === v ? 'true' : 'false'); });
+    document.getElementById('e-scales').hidden = v !== 'scales';
+    document.getElementById('e-freq').hidden = v !== 'freq';
+    document.getElementById('e-body').hidden = v !== 'groups';
+    document.getElementById('e-cap').hidden = v !== 'groups';
+    E.querySelector('.ebar').classList.toggle('hide-ctl', v !== 'groups');
+  }
+  E.addEventListener('click', function (e) { var b = e.target.closest('[data-ev]'); if (b) setView(b.dataset.ev); });
+
+  function renderE() {
+    var html = '', nG = 0, nW = 0;
+    SECTIONS.forEach(function (sec) {
+      var any = false, part = '';
+      GROUPS.forEach(function (g, gi) {
+        if (g.time !== sec[0]) return;
+        if (es.f >= 0 && !g.any && g.t.indexOf(es.f) === -1) return;
+        any = true; nG++; nW += g.w.length;
+        var open = !es.practice || es.open[gi];
+        var tags = g.any ? '<span class="tg tg-any">Any tense</span>' : g.t.map(function (i) { return '<span class="tg tense-' + T[i].time + '">' + T[i].name + '</span>'; }).join('');
+        part += '<div class="grp" data-g="' + gi + '" data-open="' + (open ? '1' : '0') + '"><div class="gh"><div><h3>' + g.name + '</h3><p>' + g.hint + '</p></div>' +
+          '<div class="pts"><span class="lab">Points to</span>' + tags + '</div><button class="reveal2" type="button">Tap to see the tense</button></div><div class="egrid">' +
+          g.w.map(function (w) {
+            return '<div class="wk" data-w="' + w + '"><span class="wd">' + w + '</span><span class="gt">' + typeFor(w, g) + '</span></div>';
+          }).join('') + '</div></div>';
+      });
+      if (any) html += '<section class="esec tense-' + (sec[0] === 'multi' ? 'present' : sec[0]) + (sec[0] === 'multi' ? ' multi' : '') + '"><h2 class="eband">' + sec[1] + '</h2>' + part + '</section>';
+    });
+    document.getElementById('e-body').innerHTML = html;
+    document.getElementById('e-cap').textContent = nG + ' groups, ' + nW + ' key words' + (es.f >= 0 ? ' for ' + T[es.f].name : '') + '. A word can appear in more than one group.';
+    E.className = 'view' + (es.practice ? ' practice' : '') + (es.types ? ' types' : '');
+  }
+  document.getElementById('e-f').addEventListener('change', function (e) { es.f = +e.target.value; renderE(); });
+  document.getElementById('e-t').addEventListener('click', function (e) {
+    es.types = !es.types;
+    e.currentTarget.setAttribute('aria-pressed', es.types ? 'true' : 'false');
+    e.currentTarget.textContent = es.types ? 'Grammar type: shown' : 'Show grammar type';
+    E.className = 'view' + (es.practice ? ' practice' : '') + (es.types ? ' types' : '');
+  });
+  document.getElementById('e-p').addEventListener('click', function (e) {
+    es.practice = !es.practice; es.open = {};
+    e.currentTarget.setAttribute('aria-pressed', es.practice ? 'true' : 'false');
+    e.currentTarget.textContent = es.practice ? 'Practice: on (tap Points to)' : 'Practice: hide the tenses';
+    renderE();
+  });
+  E.addEventListener('click', function (e) {
+    if (!es.practice) return;
+    var hit = e.target.closest('.reveal2') || e.target.closest('.pts');
+    if (!hit) return;
+    var grp = hit.closest('.grp'), gi = +grp.dataset.g;
+    es.open[gi] = !es.open[gi];
+    grp.dataset.open = es.open[gi] ? '1' : '0';
+  });
+  renderE(); renderScales(); renderFreq();
+
+  deal(); renderC(); tint('present');
+})();
+</script>
+
+</body></html>

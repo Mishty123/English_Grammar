@@ -1,0 +1,532 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Be Verb Study Page</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Lexend:wght@400;500;600&family=STIX+Two+Text:ital,wght@0,500;1,500&display=swap">
+<style>
+/* Layout: one calm column. Big "be" header, forms strip, then numbered-by-topic cards.
+   Colour: blue-teal for present, amber for past, violet for future; the be-word is always highlighted. */
+:root {
+  --bg: #f5f8f9;
+  --card: #ffffff;
+  --fg: #1d2a33;
+  --muted: #5a6b76;
+  --line: #cfdbe1;
+  --be: #c2255c;
+  --be-soft: #fbe6ee;
+  --pres: #0b7285; --pres-soft: #e0f3f6;
+  --past: #b25e09; --past-soft: #fdeed9;
+  --fut: #6741d9; --fut-soft: #ece6fb;
+  --font-display: "Fredoka", "Trebuchet MS", sans-serif;
+  --font-body: "Lexend", "Segoe UI", system-ui, sans-serif;
+  --font-formula: "STIX Two Text", Georgia, serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #11181d; --card: #1a242b; --fg: #e6eef2; --muted: #9fb1bb; --line: #33444e;
+    --be: #ff8fb4; --be-soft: #3d2030;
+    --pres: #6fd3e3; --pres-soft: #163840;
+    --past: #ffbf6b; --past-soft: #40301a;
+    --fut: #b9a4ff; --fut-soft: #2c2650;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #11181d; --card: #1a242b; --fg: #e6eef2; --muted: #9fb1bb; --line: #33444e;
+  --be: #ff8fb4; --be-soft: #3d2030;
+  --pres: #6fd3e3; --pres-soft: #163840;
+  --past: #ffbf6b; --past-soft: #40301a;
+  --fut: #b9a4ff; --fut-soft: #2c2650;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body {
+  background: var(--bg); color: var(--fg); font-family: var(--font-body); font-size: 16px; line-height: 1.55;
+  padding-block: 24px 56px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+main { max-width: 860px; margin: 0 auto; display: flex; flex-direction: column; gap: 22px; }
+h1, h2, h3 { font-family: var(--font-display); font-weight: 600; margin: 0; text-wrap: balance; line-height: 1.2; }
+h1 { font-size: clamp(2rem, 7vw, 3rem); }
+h2 { font-size: 1.45rem; }
+h3 { font-size: 1.1rem; }
+p { margin: 0; }
+.lead { color: var(--muted); max-width: 60ch; }
+.be { font-weight: 600; color: var(--be); background: var(--be-soft); border-radius: 4px; padding: 0 .22em; }
+.cover .be { color: transparent; background: none; border-bottom: 2px solid var(--be); border-radius: 0; user-select: none; }
+.sec { display: flex; flex-direction: column; gap: 12px; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 16px 18px; min-width: 0; }
+.label { font-size: .72rem; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); font-weight: 500; }
+
+.top { display: flex; flex-wrap: wrap; gap: 14px; align-items: end; justify-content: space-between; }
+.toggle { font: inherit; font-size: .9rem; font-weight: 500; color: var(--fg); background: var(--card); border: 2px solid var(--line); border-radius: 999px; padding: 8px 16px; cursor: pointer; }
+.toggle[aria-pressed="true"] { background: var(--be-soft); border-color: var(--be); color: var(--be); }
+.toggle:focus-visible, .scroll:focus-visible { outline: 3px solid var(--pres); outline-offset: 2px; }
+
+.forms { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 10px; }
+.form { border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; display: flex; flex-direction: column; gap: 2px; background: var(--card); }
+.form b { font-family: var(--font-display); font-size: 1.25rem; color: var(--be); font-weight: 600; }
+.form small { color: var(--muted); font-size: .8rem; }
+
+.scroll { overflow-x: auto; border: 1px solid var(--line); border-radius: 12px; background: var(--card); }
+table { border-collapse: collapse; width: 100%; min-width: 560px; }
+th, td { padding: 10px 14px; text-align: left; border-bottom: 1px solid var(--line); border-right: 1px solid var(--line); vertical-align: top; }
+th:last-child, td:last-child { border-right: 0; }
+tr:last-child td { border-bottom: 0; }
+thead th { font-family: var(--font-display); font-weight: 600; font-size: 1.05rem; }
+.h-pres { background: var(--pres-soft); color: var(--pres); }
+.h-past { background: var(--past-soft); color: var(--past); }
+.h-fut { background: var(--fut-soft); color: var(--fut); }
+tbody th { font-weight: 500; white-space: nowrap; }
+
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 12px; }
+.mean { display: flex; flex-direction: column; gap: 8px; }
+.mean .tag { font-family: var(--font-display); font-size: .95rem; color: var(--pres); }
+.mean p.what { color: var(--muted); font-size: .92rem; }
+ul.ex { margin: 0; padding-left: 1.1em; display: flex; flex-direction: column; gap: 4px; }
+.formula { font-family: var(--font-formula); font-style: italic; font-size: 1.1rem; color: var(--fg); }
+.formula .be { font-style: normal; }
+.pair { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; }
+.note { font-size: .92rem; color: var(--muted); border-left: 4px solid var(--line); padding-left: 12px; }
+.t-pres { color: var(--pres); } .t-past { color: var(--past); } .t-fut { color: var(--fut); }
+.step { font-size: .75rem; letter-spacing: .08em; text-transform: uppercase; color: var(--pres); font-weight: 600; }
+.narrow table { min-width: 440px; }
+th small { font-weight: 400; color: var(--muted); }
+.t12 { min-width: 940px; }
+.t12 th, .t12 td { padding: 11px 16px; vertical-align: middle; }
+.t12 thead th { white-space: nowrap; font-size: .95rem; line-height: 1.3; border-bottom: 2px solid var(--line); }
+.t12 tbody th { white-space: nowrap; font-size: .95rem; }
+.t12 .be { white-space: nowrap; }
+.t12 td:nth-child(5) { min-width: 240px; }
+.t12 tbody tr:nth-child(4n+1):not(:first-child) > * { border-top: 3px solid var(--muted); }
+.use { font-size: .78rem; font-weight: 500; border-radius: 999px; padding: 2px 10px; white-space: nowrap; }
+.u-c { background: var(--pres-soft); color: var(--pres); }
+.u-b { background: var(--past-soft); color: var(--past); }
+.u-r { background: var(--line); color: var(--muted); }
+.none { color: var(--muted); }
+
+.tabs { display: flex; flex-wrap: wrap; gap: 8px; }
+.tab { font: inherit; font-size: .92rem; font-weight: 500; white-space: nowrap; color: var(--fg); background: var(--card); border: 2px solid var(--line); border-radius: 999px; padding: 8px 16px; cursor: pointer; display: flex; gap: 8px; align-items: center; }
+.tab .n { font-family: var(--font-display); font-size: .85rem; width: 1.5rem; height: 1.5rem; border-radius: 50%; display: grid; place-items: center; background: var(--line); color: var(--fg); }
+.tab[aria-selected="true"] { border-color: var(--pres); background: var(--pres-soft); color: var(--pres); }
+.tab[aria-selected="true"] .n { background: var(--pres); color: var(--card); }
+.tab:focus-visible, .btn:focus-visible { outline: 3px solid var(--pres); outline-offset: 2px; }
+.panel { display: flex; flex-direction: column; gap: 16px; }
+:root { --ok: #2b8a3e; --ok-soft: #e1f3e5; --navy: #0f3566; --green: #1e7b3c; --purple: #5a36b0; --green-soft: #e4f3e8; --purple-soft: #ece6fa; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --ok: #8ce99a; --ok-soft: #1c3a26; --navy: #1f4a85; --green: #2a8a4b; --purple: #6f4fd0; --green-soft: #1a3324; --purple-soft: #2a2450; } }
+:root[data-theme="dark"] { --ok: #8ce99a; --ok-soft: #1c3a26; --navy: #1f4a85; --green: #2a8a4b; --purple: #6f4fd0; --green-soft: #1a3324; --purple-soft: #2a2450; }
+.scene { width: 100%; height: auto; border-radius: 12px; display: block; }
+.bg-pres { background: var(--pres-soft); } .bg-past { background: var(--past-soft); } .bg-fut { background: var(--fut-soft); } .bg-be { background: var(--be-soft); } .bg-ok { background: var(--ok-soft); }
+.scene .o { fill: var(--card); stroke: var(--fg); stroke-width: 2.500; stroke-linejoin: round; }
+.scene .box { stroke-width: 3; }
+.scene .ln { fill: none; stroke: var(--fg); stroke-width: 2.500; stroke-linecap: round; }
+.scene .hl { fill: none; stroke: #fff; stroke-width: 3; stroke-linecap: round; opacity: .7; }
+.scene .fg { fill: var(--fg); } .scene .fcard { fill: var(--card); } .scene .fbe { fill: var(--be); } .scene .fp { fill: var(--pres); } .scene .fpa { fill: var(--past); } .scene .ffu { fill: var(--fut); }
+.scene .st { stroke: var(--fg); stroke-width: 2.500; stroke-linejoin: round; }
+.scene .txt { fill: var(--fg); font-family: var(--font-body); font-weight: 500; }
+.scene .dog { fill: #2b3640; stroke: var(--line); stroke-width: 1.500; }
+.scene .tail { fill: none; stroke: #2b3640; stroke-width: 7; stroke-linecap: round; }
+.mean .scene { margin-bottom: 4px; }
+.form .fico { color: var(--be); margin-bottom: 4px; }
+.ch { display: flex; align-items: center; gap: 12px; }
+.ico { width: 58px; height: 58px; border-radius: 16px; display: grid; place-items: center; flex: none; }
+.i1 { background: var(--pres-soft); color: var(--pres); } .i2 { background: var(--past-soft); color: var(--past); } .i3 { background: var(--fut-soft); color: var(--fut); }
+.i4 { background: var(--be-soft); color: var(--be); } .i5 { background: var(--ok-soft); color: var(--ok); }
+.tn { white-space: nowrap; }
+.num { display: inline-grid; place-items: center; width: 1.7rem; height: 1.7rem; border-radius: 50%; background: var(--navy); color: #fff; font-size: .85rem; margin-right: 10px; }
+.cw { min-width: 760px; }
+.cw .st { font-family: var(--font-formula); font-size: 1.08rem; white-space: nowrap; }
+.pv { min-width: 760px; }
+.pv thead th { color: #fff; border-color: rgba(255,255,255,.25); font-family: var(--font-display); font-size: .95rem; letter-spacing: .03em; white-space: nowrap; }
+.pv .hd-t, .pv .hd-e { background: var(--navy); } .pv .hd-a { background: var(--green); } .pv .hd-p { background: var(--purple); }
+.pv td, .pv th { vertical-align: middle; padding: 10px 12px; }
+.pv td.ac { background: var(--green-soft); text-align: center; font-family: var(--font-formula); font-size: 1rem; }
+.pv td.ps { background: var(--purple-soft); text-align: center; font-family: var(--font-formula); font-size: 1rem; }
+.pv td.none { color: var(--muted); font-style: normal; font-family: var(--font-body); font-size: .9rem; white-space: normal; }
+.pv td.exc { min-width: 230px; font-size: .92rem; }
+.pv td.exc div + div { margin-top: 6px; padding-top: 6px; border-top: 1px dashed var(--line); }
+.lab { font-size: .7rem; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); font-weight: 600; margin-right: 6px; }
+.pv .be { white-space: nowrap; }
+.formula-banner { background: var(--card); border: 2px solid var(--line); border-radius: 12px; padding: 10px 16px; text-align: center; font-family: var(--font-formula); font-size: 1.1rem; }
+.formula-banner b.lead-in { font-family: var(--font-body); font-size: .8rem; letter-spacing: .06em; text-transform: uppercase; color: var(--be); margin-right: 8px; font-style: normal; }
+.quick { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 10px; }
+.quick div { border-radius: 12px; padding: 10px 14px; text-align: center; font-weight: 500; font-size: .95rem; }
+.quick small { display: block; color: var(--muted); font-weight: 400; }
+.q1 { background: var(--ok-soft); } .q2 { background: var(--purple-soft); } .q3 { background: var(--be-soft); } .q4 { background: var(--pres-soft); }
+.vline { font-size: .9rem; color: var(--muted); }
+.btns { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+.btn { font: inherit; font-weight: 500; font-size: .95rem; padding: 9px 20px; border-radius: 999px; border: 2px solid var(--pres); background: var(--pres); color: var(--card); cursor: pointer; }
+.btn.alt { background: var(--card); color: var(--pres); }
+.btn:disabled { opacity: .45; cursor: default; }
+.ladder { display: flex; flex-direction: column; gap: 10px; }
+.rung { display: grid; grid-template-columns: 2.2rem 1fr; gap: 14px; background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; }
+.rung .num { margin: 0; }
+.rung .t { font-family: var(--font-display); font-size: 1.05rem; }
+.rung .fm { font-family: var(--font-formula); font-style: italic; color: var(--muted); font-size: 1.05rem; }
+.rung .sn { font-size: 1.1rem; margin-top: 4px; }
+.new { background: var(--ok-soft); color: var(--ok); border-radius: 4px; padding: 0 .22em; font-weight: 600; }
+.rung.cur { border-color: var(--ok); }
+.cover .new { background: none; }
+[hidden] { display: none !important; }
+.nw { white-space: nowrap; }
+
+/* compact tables */
+.t12 { min-width: 700px; font-size: .86rem; }
+.t12 th, .t12 td { padding: 6px 10px; }
+.t12 thead th { font-size: .85rem; }
+.t12 tbody th { font-size: .86rem; }
+.t12 td:nth-child(5) { min-width: 180px; }
+.t12 .use { font-size: .7rem; padding: 1px 8px; }
+.pv { min-width: 640px; font-size: .86rem; }
+.pv td, .pv th { padding: 5px 9px; }
+.pv thead th { font-size: .85rem; }
+.pv td.ac, .pv td.ps { font-size: .92rem; }
+.pv td.exc { min-width: 200px; font-size: .84rem; }
+.pv td.exc div + div { margin-top: 3px; padding-top: 3px; }
+.pv .num, .cw .num, .t12 .num { width: 1.4rem; height: 1.4rem; font-size: .75rem; margin-right: 7px; }
+.cw { min-width: 620px; font-size: .88rem; }
+.cw th, .cw td { padding: 6px 10px; }
+.cw .st { font-size: .95rem; }
+.t12 tbody th { white-space: nowrap; }
+.t12 .tname { display: block; margin-bottom: 3px; }
+.t12 tbody th .use { font-weight: 500; }
+.dot { display: inline-block; width: .7rem; height: .7rem; border-radius: 50%; margin-right: 8px; vertical-align: -1px; }
+.d-c { background: var(--pres); } .d-b { background: var(--past); } .d-r { background: var(--muted); }
+.legend .dot { margin-left: 14px; margin-right: 6px; } .legend .dot:first-child { margin-left: 0; }
+.t12 { font-size: .8rem; } .t12 tbody th, .t12 thead th { font-size: .8rem; } .t12 th, .t12 td { padding: 6px 8px; } .t12 td:nth-child(5) { min-width: 150px; }
+.t12 .be { padding: 0 .15em; }
+.t12 tr.rare > * { background: var(--bg); color: var(--muted); }
+.t12 tr.rare th { font-weight: 400; }
+.t12 tr.rare .be { background: var(--line); color: var(--muted); font-weight: 500; }
+.t12 tr.common .be { background: var(--pres-soft); color: var(--pres); }
+.t12 tr.beh .be { background: var(--past-soft); color: var(--past); }
+
+:root { --rare: #d3dbe0; --rare-be: #b7c2c9; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --rare: #2c383f; --rare-be: #3d4c55; } }
+:root[data-theme="dark"] { --rare: #2c383f; --rare-be: #3d4c55; }
+.t12 tr.rare > * { background: var(--rare); }
+.t12 tr.rare .be { background: var(--rare-be); }
+
+:root { --bad: #c92a2a; --bad-soft: #fde8e8; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --bad: #ff8787; --bad-soft: #3d2326; } }
+:root[data-theme="dark"] { --bad: #ff8787; --bad-soft: #3d2326; }
+.game { background: var(--card); border: 2px solid var(--line); border-radius: 20px; padding: 18px; display: flex; flex-direction: column; gap: 16px; min-width: 0; }
+.gtop { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; justify-content: space-between; }
+.sel { font: inherit; font-size: .95rem; color: var(--fg); background: var(--bg); border: 2px solid var(--line); border-radius: 10px; padding: 8px 12px; max-width: 100%; }
+.score { font-size: .85rem; color: var(--muted); font-weight: 500; }
+.gname { font-size: 1.5rem; }
+.slots { display: flex; flex-wrap: wrap; gap: 8px; min-height: 52px; }
+.slot { min-width: 76px; min-height: 48px; border: 2px dashed var(--muted); border-radius: 12px; display: flex; align-items: center; justify-content: center; padding: 2px; }
+.slot.right { border-style: solid; border-color: var(--ok); background: var(--ok-soft); }
+.slot.wrong { border-style: solid; border-color: var(--bad); background: var(--bad-soft); }
+.gchips { display: flex; flex-wrap: wrap; gap: 8px; }
+.game .chip { font: inherit; font-weight: 500; font-size: 1rem; padding: 8px 14px; border-radius: 10px; border: 2px solid transparent; cursor: pointer; line-height: 1.3; }
+.game .chip:disabled { opacity: .3; cursor: default; }
+.game .chip:focus-visible, .gb:focus-visible, .sel:focus-visible { outline: 3px solid var(--pres); outline-offset: 2px; }
+.game .c-s { background: var(--card); border-color: var(--muted); color: var(--fg); }
+.game .c-h { background: var(--be); color: var(--card); }
+.game .c-v { background: var(--pres-soft); border-color: var(--pres); color: var(--fg); }
+.game .c-x { background: transparent; border: 2px dashed var(--muted); color: var(--muted); }
+.msg { margin: 0; min-height: 1.6em; font-weight: 500; }
+.msg.ok { color: var(--ok); } .msg.no { color: var(--bad); }
+.gbtns { display: flex; flex-wrap: wrap; gap: 8px; }
+.gb { font: inherit; font-weight: 500; font-size: .92rem; padding: 9px 16px; border-radius: 10px; border: 2px solid var(--line); background: transparent; color: var(--fg); cursor: pointer; }
+.gb.main { background: var(--pres); border-color: var(--pres); color: var(--card); margin-left: auto; }
+.scene .fok { fill: var(--ok); opacity: .4; }
+.scene .road { fill: none; stroke: var(--muted); stroke-width: 12; opacity: .35; stroke-linecap: round; }
+.scene .dash { stroke-width: 2; stroke-dasharray: 6 6; opacity: 1; stroke: var(--fg); }
+.form .alt { margin-top: 6px; padding-top: 6px; border-top: 1px dashed var(--line); color: var(--fg); }
+#p-ways .step { margin-top: 6px; }
+</style>
+
+<main id="page">
+  <header class="sec">
+    <div class="top">
+      <div class="sec">
+        <span class="label">Be Verb Study Page</span>
+        <h1>The verb &ldquo;to be&rdquo;</h1>
+      </div>
+      <button class="toggle" id="cover" type="button" aria-pressed="false">Practise: cover the be-words</button>
+    </div>
+    <nav class="tabs" role="tablist" aria-label="Study tabs">
+      <button class="tab" role="tab" id="t-forms" aria-controls="p-forms" data-tab="forms"><span class="n">1</span>Forms and meanings</button>
+      <button class="tab" role="tab" id="t-main" aria-controls="p-main" data-tab="main"><span class="n">2</span>Main verb, 12 tenses</button>
+      <button class="tab" role="tab" id="t-continuous" aria-controls="p-continuous" data-tab="continuous"><span class="n">3</span>Helping verb 1</button>
+      <button class="tab" role="tab" id="t-passive" aria-controls="p-passive" data-tab="passive"><span class="n">4</span>Helping verb 2</button>
+      <button class="tab" role="tab" id="t-special" aria-controls="p-special" data-tab="special"><span class="n">5</span>Special structures</button>
+      <button class="tab" role="tab" id="t-build" aria-controls="p-build" data-tab="build"><span class="n">6</span>Structure build-up</button>
+      <button class="tab" role="tab" id="t-ways" aria-controls="p-ways" data-tab="ways"><span class="n">7</span>Ways &ldquo;be&rdquo; is used</button>
+    </nav>
+  </header>
+
+  <section class="panel" role="tabpanel" id="p-forms" aria-labelledby="t-forms" hidden>
+    <h2>The forms of &ldquo;be&rdquo;</h2>
+    <p class="lead">&ldquo;Be&rdquo; is an irregular verb. Its form changes with the tense and with the subject.</p>
+    <div class="forms"><div class="form"><small>V1</small><b>be</b><small>base form</small><small class="alt">I &rarr; <strong>am</strong><br>you / we / they &rarr; <strong>are</strong></small></div><div class="form"><small>V2</small><b>was / were</b><small>past</small></div><div class="form"><small>V3</small><b>been</b><small>past participle</small></div><div class="form"><small>V4</small><b>being</b><small>present participle</small></div><div class="form"><small>V5</small><b>is</b><small>present with he / she / it</small></div></div>
+    <h2>What &ldquo;be&rdquo; means as a main verb</h2>
+    <p class="lead">As a main verb, &ldquo;be&rdquo; is a <strong>linking verb</strong>. It links the subject to information about it.</p>
+    <p class="lead">There are five kinds of information: <strong>exists</strong>, <strong>happens</strong>, <strong>located</strong>, <strong>identity</strong> and <strong>description</strong>.</p>
+    <div class="grid"><div class="card mean"><svg class="scene bg-pres" viewBox="0 0 240 120" role="img" aria-label="A rabbit sitting in the grass"><path d="M0 100Q60 90 120 99T240 97V120H0z" class="fok"/><circle cx="150" cy="94" r="7" class="o"/><ellipse cx="118" cy="88" rx="28" ry="22" class="o"/><ellipse cx="102" cy="108" rx="11" ry="5" class="o"/><ellipse cx="104" cy="30" rx="7" ry="20" class="o"/><ellipse cx="124" cy="26" rx="7" ry="20" class="o"/><ellipse cx="114" cy="56" rx="20" ry="17" class="o"/><circle cx="107" cy="54" r="2.5" class="fg"/><circle cx="121" cy="54" r="2.5" class="fg"/><circle cx="114" cy="61" r="2.3" class="fbe"/><text x="24" y="62" font-size="14" class="txt">there is</text><path d="M80 58h18M92 52l6 6-6 6" class="ln"/></svg><h3>A. Exists</h3><p class="what">Says that someone or something is there. Use &ldquo;there is&rdquo; for one and &ldquo;there are&rdquo; for more than one.</p><ul class="ex"><li>There <b class="be">is</b> a rabbit inside.</li><li>There <b class="be">is</b> nothing in the fridge.</li><li>There <b class="be">are</b> two cats here.</li></ul></div><div class="card mean"><svg class="scene bg-past" viewBox="0 0 240 120" role="img" aria-label="A calendar and a clock for a party tonight"><rect x="36" y="20" width="84" height="80" rx="8" class="o"/><rect x="36" y="20" width="84" height="22" rx="8" class="fpa"/><path d="M56 14v12M100 14v12" class="ln"/><circle cx="48" cy="56" r="2" class="fg"/><circle cx="63" cy="56" r="2" class="fg"/><circle cx="78" cy="56" r="2" class="fg"/><circle cx="93" cy="56" r="2" class="fg"/><circle cx="108" cy="56" r="2" class="fg"/><circle cx="48" cy="70" r="2" class="fg"/><circle cx="63" cy="70" r="2" class="fg"/><circle cx="78" cy="70" r="8" class="fbe"/><circle cx="93" cy="70" r="2" class="fg"/><circle cx="108" cy="70" r="2" class="fg"/><circle cx="48" cy="84" r="2" class="fg"/><circle cx="63" cy="84" r="2" class="fg"/><circle cx="78" cy="84" r="2" class="fg"/><circle cx="93" cy="84" r="2" class="fg"/><circle cx="176" cy="60" r="32" class="o"/><path d="M176 32v5M204 60h-5M176 88v-5M148 60h5" class="ln"/><path d="M176 60l-13.900 8M176 60V38" class="ln"/><circle cx="176" cy="60" r="2.5" class="fg"/><text x="176" y="108" text-anchor="middle" font-size="12" class="txt">tonight</text></svg><h3>B. Happens</h3><p class="what">Says when an event takes place.</p><ul class="ex"><li>The party <b class="be">is</b> tonight.</li><li>The meeting <b class="be">is</b> at five o&rsquo;clock.</li><li>The test <b class="be">was</b> yesterday.</li></ul></div><div class="card mean"><svg class="scene bg-fut" viewBox="0 0 240 120" role="img" aria-label="A map with a pin on the school"><rect x="20" y="12" width="200" height="96" rx="10" class="o"/><path d="M88 84Q130 62 170 82T216 68" class="road"/><path d="M88 84Q130 62 170 82T216 68" class="ln dash"/><circle cx="190" cy="42" r="10" class="fok"/><path d="M190 52v10" class="ln"/><rect x="44" y="62" width="40" height="30" class="o"/><path d="M38 62L64 46l26 16z" class="fpa st"/><rect x="58" y="74" width="12" height="18" class="fg"/><path d="M64 44s-11-12-11-22a11 11 0 0 1 22 0c0 10-11 22-11 22z" class="fbe"/><circle cx="64" cy="22" r="4" class="fcard"/></svg><h3>C. Located</h3><p class="what">Says where a person or thing is.</p><ul class="ex"><li>She <b class="be">is</b> at school.</li><li>She <b class="be">is</b> home.</li><li>The food <b class="be">is</b> on the table.</li><li>The meeting <b class="be">is</b> down the hall.</li></ul></div><div class="card mean"><svg class="scene bg-be" viewBox="0 0 240 120" role="img" aria-label="An ID card with a name and a globe for where someone is from"><rect x="26" y="18" width="136" height="84" rx="10" class="o"/><rect x="38" y="30" width="38" height="46" rx="6" class="fp"/><circle cx="57" cy="46" r="8" class="fcard"/><path d="M43 76a14 14 0 0 1 28 0z" class="fcard"/><text x="86" y="46" font-size="15" class="txt">Lara</text><path d="M86 56h60M86 66h42" class="ln"/><rect x="26" y="86" width="136" height="16" rx="8" class="fbe"/><circle cx="196" cy="52" r="26" class="o"/><ellipse cx="196" cy="52" rx="11" ry="26" class="ln"/><path d="M170 52h52M176 38h40M176 66h40" class="ln"/><path d="M208 44s-6-6-6-11a6 6 0 0 1 12 0c0 5-6 11-6 11z" class="fbe"/><text x="196" y="96" text-anchor="middle" font-size="11" class="txt">from</text></svg><h3>D. Identity</h3><p class="what">Gives a name, a job, a role, or where someone is from (origin).</p><ul class="ex"><li>She <b class="be">is</b> Lara and this <b class="be">is</b> Bob.</li><li>He <b class="be">is</b> a singer.</li><li>He <b class="be">is</b> <em>not</em> a singer.</li><li>Alex <b class="be">is</b> from Ireland.</li><li>Sonia <b class="be">is</b> Spanish.</li></ul></div><div class="card mean"><svg class="scene bg-ok" viewBox="0 0 240 120" role="img" aria-label="Weather, feeling, colour and price"><circle cx="48" cy="54" r="10" class="fpa"/><path d="M48 36v5M48 67v5M30 54h5M61 54h5M35 41l4 4M57 63l4 4M61 41l-4 4M39 63l-4 4" class="ln"/><circle cx="96" cy="54" r="17" class="o"/><circle cx="90" cy="49" r="2" class="fg"/><circle cx="102" cy="49" r="2" class="fg"/><path d="M88 58q8 9 16 0" class="ln"/><path d="M144 34C144 34 128 52 128 62a16 16 0 0 0 32 0C160 52 144 34 144 34z" class="fbe"/><path d="M137 62a7 7 0 0 0 5 6" class="hl"/><g transform="rotate(-12 192 54)"><rect x="174" y="42" width="36" height="24" rx="5" class="o"/><circle cx="180" cy="54" r="2.500" class="fg"/><text x="197" y="59" text-anchor="middle" font-size="13" class="txt">$5</text></g><text x="48" y="102" text-anchor="middle" font-size="10" class="txt">weather</text><text x="96" y="102" text-anchor="middle" font-size="10" class="txt">feeling</text><text x="144" y="102" text-anchor="middle" font-size="10" class="txt">colour</text><text x="192" y="102" text-anchor="middle" font-size="10" class="txt">price</text></svg><h3>E. Description</h3><p class="what">Tells what someone or something is like: colour, age, feelings, weather, price.</p><ul class="ex"><li>Our dog <b class="be">is</b> black.</li><li>I <b class="be">am</b> tired.</li><li>My father <b class="be">is</b> 50.</li><li>It <b class="be">is</b> sunny today.</li></ul></div></div>
+  </section>
+
+  <section class="panel" role="tabpanel" id="p-main" aria-labelledby="t-main" hidden>
+    <h2>&ldquo;Be&rdquo; as a main verb in all 12 tenses</h2>
+    <p class="lead">Active voice. All 12 forms exist, but only a few are used often. The dot before each tense shows which.</p>
+    <p class="vline legend"><span class="dot d-c"></span>common <span class="dot d-b"></span>only for behaviour <span class="dot d-r"></span>rare</p>
+    <div class="scroll" tabindex="0" role="region" aria-label="Forms of be in all 12 tenses">
+      <table class="t12">
+        <thead><tr><th>Tense</th><th>I</th><th>he / she / it<br><small>noun (s)</small></th><th>you / we / they<br><small>noun (p)</small></th><th>Example</th></tr></thead>
+        <tbody>
+          <tr class="common"><th class="h-pres"><span class="dot d-c" title="common"></span>Present Simple</th><td><b class="be">am</b></td><td><b class="be">is</b></td><td><b class="be">are</b></td><td>She <b class="be">is</b> here.</td></tr>
+          <tr class="beh"><th class="h-pres"><span class="dot d-b" title="only for behaviour"></span>Present Continuous</th><td><b class="be">am being</b></td><td><b class="be">is being</b></td><td><b class="be">are being</b></td><td>He <b class="be">is being</b> rude.</td></tr>
+          <tr class="common"><th class="h-pres"><span class="dot d-c" title="common"></span>Present Perfect</th><td><b class="be">have been</b></td><td><b class="be">has been</b></td><td><b class="be">have been</b></td><td>It <b class="be">has been</b> fun.</td></tr>
+          <tr class="rare"><th class="h-pres"><span class="dot d-r" title="rare"></span>Present Perfect Continuous</th><td><b class="be">have been being</b></td><td><b class="be">has been being</b></td><td><b class="be">have been being</b></td><td>He <b class="be">has been being</b> rude all day.</td></tr>
+          <tr class="common"><th class="h-past"><span class="dot d-c" title="common"></span>Past Simple</th><td><b class="be">was</b></td><td><b class="be">was</b></td><td><b class="be">were</b></td><td>She <b class="be">was</b> here.</td></tr>
+          <tr class="beh"><th class="h-past"><span class="dot d-b" title="only for behaviour"></span>Past Continuous</th><td><b class="be">was being</b></td><td><b class="be">was being</b></td><td><b class="be">were being</b></td><td>She <b class="be">was being</b> rude.</td></tr>
+          <tr class="common"><th class="h-past"><span class="dot d-c" title="common"></span>Past Perfect</th><td><b class="be">had been</b></td><td><b class="be">had been</b></td><td><b class="be">had been</b></td><td>She <b class="be">had been</b> here before.</td></tr>
+          <tr class="rare"><th class="h-past"><span class="dot d-r" title="rare"></span>Past Perfect Continuous</th><td><b class="be">had been being</b></td><td><b class="be">had been being</b></td><td><b class="be">had been being</b></td><td>He <b class="be">had been being</b> rude all day.</td></tr>
+          <tr class="common"><th class="h-fut"><span class="dot d-c" title="common"></span>Future Simple</th><td><b class="be">will be</b></td><td><b class="be">will be</b></td><td><b class="be">will be</b></td><td>She <b class="be">will be</b> here.</td></tr>
+          <tr class="rare"><th class="h-fut"><span class="dot d-r" title="rare"></span>Future Continuous</th><td><b class="be">will be being</b></td><td><b class="be">will be being</b></td><td><b class="be">will be being</b></td><td>He <b class="be">will be being</b> polite.</td></tr>
+          <tr class="common"><th class="h-fut"><span class="dot d-c" title="common"></span>Future Perfect</th><td><b class="be">will have been</b></td><td><b class="be">will have been</b></td><td><b class="be">will have been</b></td><td>She <b class="be">will have been</b> here by noon.</td></tr>
+          <tr class="rare"><th class="h-fut"><span class="dot d-r" title="rare"></span>Future Perfect Continuous</th><td><b class="be">will have been being</b></td><td><b class="be">will have been being</b></td><td><b class="be">will have been being</b></td><td>He <b class="be">will have been being</b> rude for an hour.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">Only pronouns change the verb. Any noun counts as he / she / it (one) or they (more than one). After &ldquo;will&rdquo;, the verb is always &ldquo;be&rdquo;, for every subject.</p>
+    <p class="note"><strong>Being</strong> (V4) shows behaviour and is used only with words like rude or polite. You cannot say &ldquo;I am being here&rdquo;. <strong>Been</strong> (V3) comes after have / has / had and joins the past to now. It does not mean &ldquo;finished&rdquo;.</p>
+
+  </section>
+
+  <section class="panel" role="tabpanel" id="p-continuous" aria-labelledby="t-continuous" hidden>
+    <h2>&ldquo;Be&rdquo; as a helping verb: the 6 continuous tenses</h2>
+    <p class="lead">Sometimes &ldquo;be&rdquo; is not the main verb. It comes before another verb and helps it. To tell the difference, look at the word after &ldquo;be&rdquo;.</p>
+    <div class="scroll" tabindex="0" role="region" aria-label="Main verb or helping verb">
+      <table style="min-width:480px">
+        <thead><tr><th>Word after &ldquo;be&rdquo;</th><th>Job of &ldquo;be&rdquo;</th><th>Example</th></tr></thead>
+        <tbody>
+          <tr><td>a noun, an adjective or a place</td><td>main verb</td><td>Anna <b class="be">is</b> happy.</td></tr>
+          <tr><td>a V4 verb (-ing)</td><td>helping verb, action in progress</td><td>Anna <b class="be">is</b> eating.</td></tr>
+          <tr><td>a V3 verb</td><td>helping verb, passive</td><td>The apple <b class="be">is</b> eaten.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="formula-banner"><b class="lead-in">Formula</b>Subject + <span class="be">be form</span> + V4</p>
+    <div class="scroll" tabindex="0" role="region" aria-label="Be as a helping verb in the 6 continuous tenses">
+      <table class="cw pv2">
+        <thead><tr><th>Tense</th><th>Structure</th><th>Example</th></tr></thead>
+        <tbody>
+<tr><th class="tn h-pres"><span class="num">1</span>Present Continuous</th><td class="st">S + <b class="be">am / is / are</b> + V4 + O</td><td>She <b class="be">is</b> writing a letter.</td></tr>
+<tr><th class="tn h-pres"><span class="num">2</span>Present Perfect Continuous</th><td class="st">S + <b class="be">have / has been</b> + V4 + O</td><td>She <b class="be">has been</b> writing a letter.</td></tr>
+<tr><th class="tn h-past"><span class="num">3</span>Past Continuous</th><td class="st">S + <b class="be">was / were</b> + V4 + O</td><td>She <b class="be">was</b> writing a letter.</td></tr>
+<tr><th class="tn h-past"><span class="num">4</span>Past Perfect Continuous</th><td class="st">S + <b class="be">had been</b> + V4 + O</td><td>She <b class="be">had been</b> writing a letter.</td></tr>
+<tr><th class="tn h-fut"><span class="num">5</span>Future Continuous</th><td class="st">S + <b class="be">will be</b> + V4 + O</td><td>She <b class="be">will be</b> writing a letter.</td></tr>
+<tr><th class="tn h-fut"><span class="num">6</span>Future Perfect Continuous</th><td class="st">S + <b class="be">will have been</b> + V4 + O</td><td>She <b class="be">will have been</b> writing a letter.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">V4 is the &ldquo;-ing&rdquo; form of the main verb (writing, eating). In every tense, only the be form changes.</p>
+  </section>
+
+  <section class="panel" role="tabpanel" id="p-passive" aria-labelledby="t-passive" hidden>
+    <h2>Active to passive voice: tense-wise changes</h2>
+    <p class="formula-banner"><b class="lead-in">Formula</b>Object + appropriate <span class="be">be form</span> + V3 + by + Subject</p>
+    <div class="scroll" tabindex="0" role="region" aria-label="Active to passive voice in 9 tenses">
+      <table class="pv">
+        <thead><tr><th class="hd-t">Tense</th><th class="hd-a">Active structure</th><th class="hd-p">Passive structure</th><th class="hd-e">Examples (Active &rarr; Passive)</th></tr></thead>
+        <tbody>
+<tr><th class="tn h-pres"><span class="num">1</span>Simple Present</th><td class="ac">S <span class="nw">+ V1 / V5 + O</span></td><td class="ps">O + <b class="be">am / is / are</b> <span class="nw">+ V3 + by + S</span></td><td class="exc"><div><span class="lab">Active</span> She writes a letter.</div><div><span class="lab">Passive</span> A letter <b class="be">is</b> written by her.</div></td></tr>
+<tr><th class="tn h-pres"><span class="num">2</span>Present Continuous</th><td class="ac">S + <b class="be">am / is / are</b> <span class="nw">+ V4 + O</span></td><td class="ps">O + <b class="be">am / is / are</b> + <b class="be">being</b> <span class="nw">+ V3 + by + S</span></td><td class="exc"><div><span class="lab">Active</span> She <b class="be">is</b> writing a letter.</div><div><span class="lab">Passive</span> A letter <b class="be">is being</b> written by her.</div></td></tr>
+<tr><th class="tn h-pres"><span class="num">3</span>Present Perfect</th><td class="ac">S + have / has <span class="nw">+ V3 + O</span></td><td class="ps">O + <b class="be">have / has been</b> <span class="nw">+ V3 + by + S</span></td><td class="exc"><div><span class="lab">Active</span> She has written a letter.</div><div><span class="lab">Passive</span> A letter <b class="be">has been</b> written by her.</div></td></tr>
+<tr><th class="tn h-past"><span class="num">4</span>Simple Past</th><td class="ac">S <span class="nw">+ V2 + O</span></td><td class="ps">O + <b class="be">was / were</b> <span class="nw">+ V3 + by + S</span></td><td class="exc"><div><span class="lab">Active</span> She wrote a letter.</div><div><span class="lab">Passive</span> A letter <b class="be">was</b> written by her.</div></td></tr>
+<tr><th class="tn h-past"><span class="num">5</span>Past Continuous</th><td class="ac">S + <b class="be">was / were</b> <span class="nw">+ V4 + O</span></td><td class="ps">O + <b class="be">was / were</b> + <b class="be">being</b> <span class="nw">+ V3 + by + S</span></td><td class="exc"><div><span class="lab">Active</span> She <b class="be">was</b> writing a letter.</div><div><span class="lab">Passive</span> A letter <b class="be">was being</b> written by her.</div></td></tr>
+<tr><th class="tn h-past"><span class="num">6</span>Past Perfect</th><td class="ac">S + had <span class="nw">+ V3 + O</span></td><td class="ps">O + <b class="be">had been</b> <span class="nw">+ V3 + by + S</span></td><td class="exc"><div><span class="lab">Active</span> She had written a letter.</div><div><span class="lab">Passive</span> A letter <b class="be">had been</b> written by her.</div></td></tr>
+<tr><th class="tn h-fut"><span class="num">7</span>Simple Future</th><td class="ac">S + will <span class="nw">+ V1 + O</span></td><td class="ps">O + <b class="be">will be</b> <span class="nw">+ V3 + by + S</span></td><td class="exc"><div><span class="lab">Active</span> She will write a letter.</div><div><span class="lab">Passive</span> A letter <b class="be">will be</b> written by her.</div></td></tr>
+<tr><th class="tn h-fut"><span class="num">8</span>Future Continuous</th><td class="ac">S + <b class="be">will be</b> <span class="nw">+ V4 + O</span></td><td class="ps none">no passive form<br><small>(generally not used)</small></td><td class="exc"><div><span class="lab">Active</span> She <b class="be">will be</b> writing a letter.</div><div><span class="lab">Passive</span> <span class="none">&mdash; no passive form</span></div></td></tr>
+<tr><th class="tn h-fut"><span class="num">9</span>Future Perfect</th><td class="ac">S + will have <span class="nw">+ V3 + O</span></td><td class="ps">O + <b class="be">will have been</b> <span class="nw">+ V3 + by + S</span></td><td class="exc"><div><span class="lab">Active</span> She will have written a letter.</div><div><span class="lab">Passive</span> A letter <b class="be">will have been</b> written by her.</div></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">S = Subject, O = Object. There are 9 tenses here and 8 passive forms: Future Continuous has no passive form. The perfect continuous tenses are left out because their passive (&ldquo;has been being written&rdquo;) is almost never used.</p>
+    <span class="label">Quick pattern to remember</span>
+    <div class="quick">
+      <div class="q1">Simple<small>&rarr; BE + V3</small></div>
+      <div class="q2">Continuous<small>&rarr; BE + BEING + V3</small></div>
+      <div class="q3">Perfect<small>&rarr; HAVE + BEEN + V3</small></div>
+      <div class="q4">Future<small>&rarr; WILL + BE + V3</small></div>
+    </div>
+    <p class="vline">V1 = write &nbsp;&middot;&nbsp; V2 = wrote &nbsp;&middot;&nbsp; V3 = written</p>
+  </section>
+
+  <section class="panel" role="tabpanel" id="p-special" aria-labelledby="t-special" hidden>
+    <h2>Special structures</h2>
+    <div class="pair">
+      <div class="card mean">
+        <h3>A. Imaginary situations: &ldquo;were&rdquo;</h3>
+        <p class="what">For wishes and things that are not real, use &ldquo;were&rdquo; with every subject, even I, he, she and it.</p>
+        <ul class="ex">
+          <li>If I <b class="be">were</b> you, I would take that deal.</li>
+          <li>He acts as if he <b class="be">were</b> the boss.</li>
+        </ul>
+        <p class="note">In everyday talk, &ldquo;If I was&hellip;&rdquo; is common. In careful writing, use &ldquo;were&rdquo;.</p>
+      </div>
+      <div class="card mean">
+        <h3>B. Plans and orders: be + to + verb</h3>
+        <p class="what">Be + &ldquo;to&rdquo; + V1 shows a fixed plan or an order.</p>
+        <p class="formula">Subject + <span class="be">am / is / are</span> + to + V1</p>
+        <ul class="ex">
+          <li><strong>Plan:</strong> The Prime Minister <b class="be">is</b> to visit France tomorrow.</li>
+          <li><strong>Order:</strong> You <b class="be">are</b> to finish your homework before watching TV.</li>
+        </ul>
+      </div>
+    </div>
+
+  </section>
+
+  <section class="panel" role="tabpanel" id="p-build" aria-labelledby="t-build" hidden>
+    <h2>Structure build-up</h2>
+    <p class="lead">Put the pattern together yourself. Pick a structure, then tap the chips in the right order.</p>
+    <div class="game" id="game"></div>
+  </section>
+  <section class="panel" role="tabpanel" id="p-ways" aria-labelledby="t-ways" hidden>
+    <h2>Ways &ldquo;be&rdquo; is used</h2>
+    <p class="lead">From simple to advanced. Each way shows the pattern first, then examples.</p>
+
+    <span class="step">Level 1 &middot; Basic</span>
+    <h3>Be after a modal verb</h3>
+    <div class="pair"><div class="card mean"><h3>After will, can, might, must, should</h3><p class="what">After a modal verb, the verb is always &ldquo;be&rdquo;. It never changes.</p><p class="formula">Subject + modal + <span class="be">be</span> + &hellip;</p><ul class="ex"><li>Dinner will <b class="be">be</b> ready soon.</li><li>The kids might <b class="be">be</b> at the park.</li><li>You must <b class="be">be</b> careful.</li></ul></div></div>
+    <h3>Be as a link verb</h3>
+    <p class="lead">A link verb joins the subject to information about it. This is the main-verb use from Tab 1.</p>
+    <div class="scroll narrow" tabindex="0" role="region" aria-label="Be as a link verb">
+      <table>
+        <thead><tr><th>After &ldquo;be&rdquo;</th><th>What it tells</th><th>Example</th></tr></thead>
+        <tbody>
+          <tr><td>a noun phrase</td><td>identity</td><td>My aunt <b class="be">is</b> a nurse.</td></tr>
+          <tr><td>an adjective</td><td>description</td><td>The soup <b class="be">is</b> very hot.</td></tr>
+          <tr><td>a place phrase</td><td>located</td><td>The keys <b class="be">are</b> on the table.</td></tr>
+          <tr><td>from + a place</td><td>origin (identity)</td><td>They <b class="be">are</b> from Spain.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <span class="step">Level 2 &middot; Intermediate</span>
+    <h3>Be as a helping verb</h3>
+    <div class="pair"><div class="card mean"><h3>Be + V4: continuous</h3><p class="what">Shows an action in progress. See Helping verb 1.</p><p class="formula">Subject + <span class="be">be form</span> + V4</p><ul class="ex"><li>We <b class="be">were</b> walking home.</li><li>It <b class="be">has been</b> raining all day.</li></ul></div><div class="card mean"><h3>Be + V3: passive</h3><p class="what">The subject receives the action. See Helping verb 2.</p><p class="formula">Subject + <span class="be">be form</span> + V3</p><ul class="ex"><li>The window <b class="be">was</b> broken.</li><li>These toys <b class="be">are</b> made of wood.</li></ul></div></div>
+
+    <span class="step">Level 3 &middot; Advanced</span>
+    <h3>Be after a noun, or after &ldquo;it&rdquo;</h3>
+    <div class="grid"><div class="card mean"><h3>Noun + be + that-clause</h3><p class="what">Names a problem, an idea or a fact, then explains it with a clause.</p><p class="formula">Noun + <span class="be">be form</span> + that + clause</p><ul class="ex"><li>The problem <b class="be">is</b> that I lost my pencil.</li><li>The good thing <b class="be">is</b> that nobody was hurt.</li></ul><p class="what">Common nouns: problem, idea, fact, hope, reason, rule, truth, trouble.</p></div><div class="card mean"><h3>Noun + be + to + V1</h3><p class="what">Names a plan or a wish, then says what it is.</p><p class="formula">Noun + <span class="be">be form</span> + to + V1</p><ul class="ex"><li>My plan <b class="be">is</b> to read every night.</li><li>Her wish <b class="be">was</b> to see the sea.</li></ul><p class="what">Common nouns: plan, aim, wish, hope, idea, job, promise, decision.</p></div><div class="card mean"><h3>It + be + adjective + clause</h3><p class="what">Comments on something that happened or is true. The clause starts with that or a question word (what, who, how).</p><p class="formula">It + <span class="be">be form</span> + adjective + that / wh- clause</p><ul class="ex"><li>It <b class="be">is</b> lucky that we found the bag.</li><li>It <b class="be">is</b> not clear who won.</li><li>It <b class="be">was</b> amazing how fast she ran.</li></ul><p class="what">Common adjectives: clear, true, lucky, strange, sad, odd, possible, obvious.</p></div></div>
+  </section>
+</main>
+
+<script>
+(function () {
+  var page = document.getElementById('page');
+  var cov = document.getElementById('cover');
+  cov.addEventListener('click', function () {
+    var on = cov.getAttribute('aria-pressed') !== 'true';
+    cov.setAttribute('aria-pressed', on ? 'true' : 'false');
+    page.classList.toggle('cover', on);
+    cov.textContent = on ? 'Show the be-words' : 'Practise: cover the be-words';
+  });
+
+  var tabs = Array.prototype.slice.call(document.querySelectorAll('.tab'));
+  var names = tabs.map(function (t) { return t.dataset.tab; });
+  function show(name) {
+    if (names.indexOf(name) < 0) name = names[0];
+    tabs.forEach(function (t) {
+      var on = t.dataset.tab === name;
+      t.setAttribute('aria-selected', on ? 'true' : 'false');
+      t.tabIndex = on ? 0 : -1;
+      document.getElementById('p-' + t.dataset.tab).hidden = !on;
+    });
+  }
+  tabs.forEach(function (t, i) {
+    t.addEventListener('click', function () { show(t.dataset.tab); try { history.replaceState(null, '', '#' + t.dataset.tab); } catch (e) {} });
+    t.addEventListener('keydown', function (e) {
+      var j = e.key === 'ArrowRight' ? i + 1 : (e.key === 'ArrowLeft' ? i - 1 : -1);
+      if (j < 0) return;
+      j = (j + tabs.length) % tabs.length; tabs[j].focus(); tabs[j].click();
+    });
+  });
+  window.addEventListener('hashchange', function () { show(location.hash.slice(1)); });
+  show(location.hash.slice(1));
+
+  /* ---------- Build It ---------- */
+  var G = document.getElementById('game');
+  var CH = [
+    ['Main verb, present', 'Be is the main verb. It does not help another verb.', ['Subject', 'am / is / are', 'describing word']],
+    ['Main verb, past', 'Be is the main verb. It does not help another verb.', ['Subject', 'was / were', 'describing word']],
+    ['Main verb, future', 'Be is the main verb. It does not help another verb.', ['Subject', 'will be', 'describing word']],
+    ['Main verb, perfect', 'Be is the main verb. It does not help another verb.', ['Subject', 'have / has been', 'describing word']],
+    ['Continuous, present', 'Be helps a V4 (-ing) verb.', ['Subject', 'am / is / are', 'V4']],
+    ['Continuous, past', 'Be helps a V4 (-ing) verb.', ['Subject', 'was / were', 'V4']],
+    ['Continuous, future', 'Be helps a V4 (-ing) verb.', ['Subject', 'will be', 'V4']],
+    ['Perfect continuous', 'Be helps a V4 (-ing) verb.', ['Subject', 'have / has been', 'V4']],
+    ['Passive, present', 'Be helps a V3 verb. The subject receives the action.', ['Subject', 'am / is / are', 'V3']],
+    ['Passive, in progress', 'Be helps a V3 verb. The subject receives the action.', ['Subject', 'am / is / are', 'being', 'V3']],
+    ['Passive, perfect', 'Be helps a V3 verb. The subject receives the action.', ['Subject', 'have / has been', 'V3']],
+    ['Passive, future', 'Be helps a V3 verb. The subject receives the action.', ['Subject', 'will be', 'V3']],
+    ['Passive with the doer', 'Say who did the action with by.', ['Object', 'am / is / are', 'V3', 'by', 'Subject']]
+  ];
+  var DIS = ['V1', 'V3', 'V4', 'will be', 'been', 'being', 'was / were', 'am / is / are', 'have / has been', 'by', 'describing word'];
+  var gm = { i: 0, placed: [], pool: [], state: '', solved: {} };
+  function typ(t) { return (t === 'Subject' || t === 'Object' || t === 'describing word') ? 's' : (/^V\d$/.test(t) ? 'v' : (t === 'by' ? 'x' : 'h')); }
+  function shuf(a) { for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)); var x = a[i]; a[i] = a[j]; a[j] = x; } return a; }
+  function ans() { return CH[gm.i][2]; }
+  function deal() {
+    var a = ans();
+    var extra = shuf(DIS.filter(function (d) { return a.indexOf(d) === -1; })).slice(0, 2);
+    gm.pool = shuf(a.concat(extra)); gm.placed = []; gm.state = '';
+  }
+  function draw() {
+    var c = CH[gm.i], n = ans().length, done = Object.keys(gm.solved).length;
+    var opts = CH.map(function (x, k) { return '<option value="' + k + '"' + (k === gm.i ? ' selected' : '') + '>' + x[0] + (gm.solved[k] ? ' (done)' : '') + '</option>'; }).join('');
+    var slots = '';
+    for (var s = 0; s < n; s++) {
+      var p = gm.placed[s];
+      var cls = 'slot' + (gm.state === 'ok' ? ' right' : (gm.state === 'no' && p != null ? ' wrong' : ''));
+      slots += '<div class="' + cls + '">' + (p != null ? '<button class="chip c-' + typ(gm.pool[p]) + '" type="button" data-un="' + s + '">' + gm.pool[p] + '</button>' : '') + '</div>';
+    }
+    var pool = gm.pool.map(function (t, k) {
+      return '<button class="chip c-' + typ(t) + '" type="button" data-pick="' + k + '"' + (gm.placed.indexOf(k) !== -1 || gm.state === 'ok' ? ' disabled' : '') + '>' + t + '</button>';
+    }).join('');
+    var msg = gm.state === 'ok' ? '<p class="msg ok">Yes! That is the pattern.</p>'
+      : gm.state === 'no' ? '<p class="msg no">Not quite. Tap a chip in the boxes to take it out, then try again.</p>'
+      : '<p class="msg">Tap the chips in the right order. ' + n + ' boxes, and some chips are extras.</p>';
+    G.innerHTML =
+      '<div class="gtop"><select class="sel" id="g-sel" aria-label="Pick a structure">' + opts + '</select><span class="score">Built ' + done + ' of ' + CH.length + '</span></div>' +
+      '<div><p class="label">Build the pattern for</p><h3 class="gname">' + c[0] + '</h3><p class="what">' + c[1] + '</p></div>' +
+      '<div class="slots" aria-label="Your pattern">' + slots + '</div>' +
+      '<div class="gchips" aria-label="Chips to choose from">' + pool + '</div>' +
+      '<div aria-live="polite">' + msg + '</div>' +
+      '<div class="gbtns"><button class="gb" type="button" id="g-clear">Clear</button><button class="gb" type="button" id="g-ans">Show the answer</button><button class="gb main" type="button" id="g-next">Next structure</button></div>';
+  }
+  function check() {
+    var a = ans();
+    if (gm.placed.length !== a.length) { gm.state = ''; return; }
+    var ok = gm.placed.every(function (k, s) { return gm.pool[k] === a[s]; });
+    gm.state = ok ? 'ok' : 'no';
+    if (ok) gm.solved[gm.i] = true;
+  }
+  G.addEventListener('click', function (e) {
+    var pick = e.target.closest('[data-pick]'), un = e.target.closest('[data-un]');
+    if (pick && gm.state !== 'ok') {
+      var k = +pick.dataset.pick;
+      if (gm.placed.indexOf(k) === -1 && gm.placed.length < ans().length) { gm.placed.push(k); check(); draw(); }
+    } else if (un && gm.state !== 'ok') {
+      gm.placed.splice(+un.dataset.un, 1); gm.state = ''; draw();
+    } else if (e.target.id === 'g-clear') { gm.placed = []; gm.state = ''; draw(); }
+    else if (e.target.id === 'g-ans') {
+      var a = ans(), used = [];
+      gm.placed = a.map(function (t) { for (var k = 0; k < gm.pool.length; k++) { if (gm.pool[k] === t && used.indexOf(k) === -1) { used.push(k); return k; } } });
+      gm.state = 'ok'; draw();
+    } else if (e.target.id === 'g-next') { gm.i = (gm.i + 1) % CH.length; deal(); draw(); }
+  });
+  G.addEventListener('change', function (e) { if (e.target.id === 'g-sel') { gm.i = +e.target.value; deal(); draw(); } });
+  deal(); draw();
+})();
+</script>
+
+</body></html>

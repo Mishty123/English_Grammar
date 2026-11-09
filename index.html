@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>English Grammar</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Lexend:wght@400;500&display=swap">
+  <style>
+    :root {
+      --bg: #f3f1fa;
+      --card: #ffffff;
+      --ink: #1d1b3a;
+      --muted: #5b5880;
+      --line: #dad6ee;
+      --accent: #6a45b8;
+      --accent-soft: #ece6f8;
+      --accent2: #0f7c74;
+      --accent2-soft: #ddf3f0;
+      --font-display: "Fredoka", "Trebuchet MS", system-ui, sans-serif;
+      --font-body: "Lexend", system-ui, -apple-system, "Segoe UI", sans-serif;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #14132b;
+        --card: #1e1d40;
+        --ink: #ecebfa;
+        --muted: #aaa8cf;
+        --line: #302f5c;
+        --accent: #b79cf2;
+        --accent-soft: #2c2450;
+        --accent2: #4fd1c5;
+        --accent2-soft: #17383a;
+      }
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.55;
+      padding: 56px 20px 72px;
+    }
+    main { max-width: 760px; margin: 0 auto; }
+    header { margin-bottom: 36px; }
+    .eyebrow {
+      font-size: .75rem;
+      font-weight: 500;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    h1 {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: clamp(2.2rem, 8vw, 3.4rem);
+      line-height: 1.05;
+      margin: 8px 0 10px;
+    }
+    .lead { margin: 0; color: var(--muted); max-width: 52ch; }
+    .cards { display: grid; gap: 16px; }
+    .card {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      padding: 20px 22px;
+      background: var(--card);
+      border: 2px solid var(--line);
+      border-radius: 18px;
+      color: inherit;
+      text-decoration: none;
+      transition: transform .15s ease, border-color .15s ease;
+    }
+    .card:hover { transform: translateY(-2px); border-color: var(--accent); }
+    .card:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+    .icon {
+      flex: none;
+      width: 56px;
+      height: 56px;
+      border-radius: 16px;
+      display: grid;
+      place-items: center;
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 1.4rem;
+      background: var(--accent-soft);
+      color: var(--accent);
+    }
+    .card.alt .icon { background: var(--accent2-soft); color: var(--accent2); }
+    .card.alt:hover { border-color: var(--accent2); }
+    .text { min-width: 0; flex: 1; }
+    .text h2 {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 1.3rem;
+      margin: 0 0 2px;
+    }
+    .text p { margin: 0; color: var(--muted); font-size: .95rem; }
+    .arrow { flex: none; font-size: 1.4rem; color: var(--muted); }
+    footer { margin-top: 40px; color: var(--muted); font-size: .85rem; }
+    @media (prefers-reduced-motion: reduce) { .card { transition: none; } }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="eyebrow">Study pages</span>
+      <h1>English Grammar</h1>
+      <p class="lead">Pick a page to start studying. Every page opens from here.</p>
+    </header>
+
+    <nav class="cards" aria-label="Grammar pages">
+      <a class="card" href="tense_style_options.html">
+        <span class="icon" aria-hidden="true">12</span>
+        <span class="text">
+          <h2>Tense Style Options</h2>
+          <p>All 12 tenses, with five ways to study them: tap grid, build it, cover-up sheet, full table and key words.</p>
+        </span>
+        <span class="arrow" aria-hidden="true">&rarr;</span>
+      </a>
+
+      <a class="card alt" href="be_verb_study_page.html">
+        <span class="icon" aria-hidden="true">be</span>
+        <span class="text">
+          <h2>Be Verb Study Page</h2>
+          <p>Forms, meanings, the 12 tenses, helping-verb uses, passive voice and special structures of &ldquo;be&rdquo;.</p>
+        </span>
+        <span class="arrow" aria-hidden="true">&rarr;</span>
+      </a>
+    </nav>
+
+    <footer>More pages will appear here as they are added.</footer>
+  </main>
+</body>
+</html>

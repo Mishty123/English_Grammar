@@ -3,7 +3,7 @@
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Lexend:wght@400;500;600&family=STIX+Two+Text:ital,wght@0,500;1,500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Nunito+Sans:opsz,wght@6..12,400;6..12,500;6..12,600;6..12,700;6..12,900&family=STIX+Two+Text:ital,wght@0,500;1,500&display=swap">
 <style>
 /* Layout: one calm column. Big "be" header, forms strip, then numbered-by-topic cards.
    Colour: blue-teal for present, amber for past, violet for future; the be-word is always highlighted. */
@@ -238,7 +238,131 @@ th small { font-weight: 400; color: var(--muted); }
 .scene .road { fill: none; stroke: var(--muted); stroke-width: 12; opacity: .35; stroke-linecap: round; }
 .scene .dash { stroke-width: 2; stroke-dasharray: 6 6; opacity: 1; stroke: var(--fg); }
 .form .alt { margin-top: 6px; padding-top: 6px; border-top: 1px dashed var(--line); color: var(--fg); }
-#p-ways .step { margin-top: 6px; }
+#p-ways .step, #p-main .step { margin-top: 6px; }
+/* 12-tense table: calmer layout */
+#p-main .t12 { min-width: 660px; font-size: .92rem; border-collapse: separate; border-spacing: 0; }
+#p-main .t12 th, #p-main .t12 td { padding: 11px 16px; border: 0; border-bottom: 1px solid color-mix(in srgb, var(--line) 60%, transparent); vertical-align: middle; }
+#p-main .t12 tbody tr > * { border-top: 0; }
+#p-main .t12 thead th { background: transparent; color: var(--muted); font-family: var(--font-body); font-size: .72rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; border-bottom: 2px solid var(--line); }
+#p-main .t12 thead th small { text-transform: none; letter-spacing: 0; font-size: .75rem; }
+#p-main .t12 tbody th { background: transparent; color: var(--fg); font-weight: 500; font-size: .92rem; border-left: 4px solid transparent; }
+#p-main .t12 tbody th.h-pres { border-left-color: var(--pres); }
+#p-main .t12 tbody th.h-past { border-left-color: var(--past); }
+#p-main .t12 tbody th.h-fut { border-left-color: var(--fut); }
+#p-main .t12 tr.grp th { border: 0; padding: 20px 16px 6px; font-family: var(--font-display); font-size: .8rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; }
+#p-main .t12 tr.grp:first-child th, #p-main .t12 tbody tr.grp:first-child th { padding-top: 10px; }
+#p-main .t12 tr.grp th.g-pres { color: var(--pres); } #p-main .t12 tr.grp th.g-past { color: var(--past); } #p-main .t12 tr.grp th.g-fut { color: var(--fut); }
+#p-main .t12 .be { background: none; padding: 0; font-weight: 600; }
+#p-main .t12 tr.common .be { color: var(--pres); }
+#p-main .t12 tr.beh .be { color: var(--past); }
+#p-main .t12 tr.rare > * { background: color-mix(in srgb, var(--rare) 65%, transparent); color: var(--muted); }
+#p-main .t12 tr.rare .be { background: none; color: var(--muted); font-weight: 500; }
+#p-main .t12 .dot { width: .6rem; height: .6rem; margin-right: 10px; }
+#p-main .t12 td:nth-child(2), #p-main .t12 td:nth-child(3), #p-main .t12 td:nth-child(4) { white-space: nowrap; }
+
+#p-main .t12.tt { min-width: 720px; }
+#p-main .t12.tt td { white-space: normal; }
+#p-main .t12.tt tbody th { border-left: 0; font-weight: 600; white-space: nowrap; }
+#p-main .t12.tt thead th.h-pres { color: var(--pres); } #p-main .t12.tt thead th.h-past { color: var(--past); } #p-main .t12.tt thead th.h-fut { color: var(--fut); }
+#p-main .t12.tt tr td.cr .be { color: var(--muted); font-weight: 500; }
+#p-main .t12.tt td small { display: block; margin-top: 4px; }
+#p-main .t12.tt tr.common .be { color: var(--pres); } #p-main .t12.tt tr.beh .be { color: var(--past); }
+#p-main .t12.tt td.cr { background: color-mix(in srgb, var(--rare) 65%, transparent); color: var(--muted); }
+#p-main .t12 .be, #p-main .t12 tr.rare .be, #p-main .t12.tt tr td.cr .be { font-weight: 700; }
+:root { --be: #2f6286; --be-soft: #e1ebf2; --cover: #5f6a22; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --be: #9cc3dd; --be-soft: #1f3442; --cover: #c3cf79; } }
+:root[data-theme="dark"] { --be: #9cc3dd; --be-soft: #1f3442; --cover: #c3cf79; }
+.cover .be, .cover .new, .cover #p-main .t12 .be, .cover #p-main .t12 tr .be { border-bottom-color: var(--cover) !important; }
+:root { --bem: #563c44; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --bem: #e0b4c6; } }
+:root[data-theme="dark"] { --bem: #e0b4c6; }
+#p-main .t12 .be, #p-main .t12 tr.common .be, #p-main .t12 tr.beh .be, #p-main .t12 tr.rare .be, #p-main .t12.tt tr.common .be, #p-main .t12.tt tr.beh .be, #p-main .t12.tt tr td.cr .be { color: var(--bem); }
+.cover #p-main .t12 .be, .cover #p-main .t12 tr .be { color: transparent !important; background: none !important; border-bottom: 2px solid var(--be); border-radius: 0; user-select: none; }
+
+#p-intro .rung .t { color: var(--pres); font-weight: 600; font-size: 1.1rem; }
+#p-intro .rung { border-left: 5px solid var(--pres); }
+#p-intro .rung .sn { color: var(--muted); font-size: 1rem; margin-top: 6px; }
+
+/* Palette: deep teal, plum, terracotta, olive, ochre, sage, soft blush and lilac */
+:root { --bg:#faf6f1;--card:#ffffff;--fg:#1d3338;--muted:#5a6667;--line:#e0d6cb;
+  --be:#a8452f;--be-soft:#f9e4db;--pres:#2c4c53;--pres-soft:#e3edf3;--past:#7d600d;--past-soft:#f7edc9;--fut:#583d46;--fut-soft:#f0e7ea;
+  --ok:#5f6a22;--ok-soft:#eef0d6;--navy:#2c4c53;--green:#66701f;--purple:#583d46;--green-soft:#eef0d6;--purple-soft:#f0e7ea;--rare:#ebe8e1;--rare-be:#d3cec2; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --bg:#172023;--card:#202c30;--fg:#f3ece4;--muted:#b7b2a8;--line:#3a4a4e;
+  --be:#f0937c;--be-soft:#432a25;--pres:#8fc3d1;--pres-soft:#1d3840;--past:#e8cc78;--past-soft:#3d3418;--fut:#d8aec0;--fut-soft:#3a2a33;
+  --ok:#c3cf79;--ok-soft:#343a1c;--navy:#3f6a75;--green:#5d6a22;--purple:#7a566a;--green-soft:#2a2f18;--purple-soft:#3a2a33;--rare:#2c3a3e;--rare-be:#44565a;color-scheme:dark; } }
+:root[data-theme="dark"] { --bg:#172023;--card:#202c30;--fg:#f3ece4;--muted:#b7b2a8;--line:#3a4a4e;
+  --be:#f0937c;--be-soft:#432a25;--pres:#8fc3d1;--pres-soft:#1d3840;--past:#e8cc78;--past-soft:#3d3418;--fut:#d8aec0;--fut-soft:#3a2a33;
+  --ok:#c3cf79;--ok-soft:#343a1c;--navy:#3f6a75;--green:#5d6a22;--purple:#7a566a;--green-soft:#2a2f18;--purple-soft:#3a2a33;--rare:#2c3a3e;--rare-be:#44565a;color-scheme:dark; }
+
+/* Be-word chip: deep teal fill, white text; cover line olive */
+:root { --be: #2c4c53; --be-soft: #e3ebec; --chip-bg: #2c4c53; --chip-fg: #ffffff; --cover: #5f6a22; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --be: #a9cbd2; --be-soft: #243a40; --chip-bg: #3d6670; --chip-fg: #ffffff; --cover: #c3cf79; } }
+:root[data-theme="dark"] { --be: #a9cbd2; --be-soft: #243a40; --chip-bg: #3d6670; --chip-fg: #ffffff; --cover: #c3cf79; }
+.be { color: var(--chip-fg); background: var(--chip-bg); padding: 1px .4em; border-radius: 5px; }
+.cover .be { color: transparent; background: none; border-radius: 0; }
+/* Active/passive table: one header colour, neutral cells */
+.pv .hd-a, .pv .hd-p, .pv .hd-t, .pv .hd-e { background: var(--navy); }
+.pv th.h-pres, .pv th.h-past, .pv th.h-fut { background: transparent; color: var(--fg); }
+.pv td.ac { background: #e3edf3; } .pv td.ps { background: #fbe9de; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .pv td.ac { background: #1f3442; } :root:not([data-theme="light"]) .pv td.ps { background: #3b2d28; } }
+:root[data-theme="dark"] .pv td.ac { background: #1f3442; } :root[data-theme="dark"] .pv td.ps { background: #3b2d28; }
+.pv .lab { font-weight: 900; -webkit-text-stroke: .35px currentColor; color: var(--fg); }
+.pv th.tg { text-align: center; vertical-align: middle; font-family: var(--font-display); font-weight: 700; font-size: 1.05rem; background: var(--bg); color: var(--fg); border-right: 1px solid var(--line); border-bottom: 2px solid var(--line); }
+/* Active/passive table: calm, airy layout */
+.pv th, .pv td { border-left: 0 !important; border-right: 0 !important; }
+.pv tbody td, .pv tbody th { border-top: 1px solid var(--line); border-bottom: 0; padding-top: 12px; padding-bottom: 12px; }
+.pv thead th { border: 0 !important; }
+.pv .hd-a { box-shadow: inset 0 -4px 0 #8fb4cc; } .pv .hd-p { box-shadow: inset 0 -4px 0 #eab99a; }
+.pv td.ac { background: color-mix(in srgb, #8fb4cc 14%, var(--card)) !important; }
+.pv td.ps { background: color-mix(in srgb, #eab99a 12%, var(--card)) !important; }
+.pv th.tg { background: transparent !important; text-align: left; padding-left: 16px; border-top: 2px solid var(--fg) !important; border-bottom: 0 !important; font-size: 1.1rem; letter-spacing: .01em; }
+.pv tbody tr:has(th.tg) > * { border-top: 2px solid var(--fg); }
+.pv tbody th.tn { font-weight: 500; }
+.pv tbody .num { background: transparent; color: var(--fg); border: 1.5px solid var(--muted); font-weight: 700; }
+.pv td.exc div + div { border-top-color: var(--line); }
+.pv th.tg { writing-mode: vertical-rl; transform: rotate(180deg); text-align: center !important; padding: 12px 8px !important; width: 2.6rem; letter-spacing: .08em; }
+/* Lighter header with thick top borders */
+.pv thead th { background: #e3ebec !important; color: var(--navy) !important; box-shadow: inset 0 6px 0 var(--navy) !important; padding-top: 14px; }
+.pv thead th.hd-a { box-shadow: inset 0 6px 0 #8fb4cc !important; }
+.pv thead th.hd-p { box-shadow: inset 0 6px 0 #eab99a !important; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .pv thead th { background: #243a40 !important; color: var(--fg) !important; } }
+:root[data-theme="dark"] .pv thead th { background: #243a40 !important; color: var(--fg) !important; }
+/* All tables: same calm style (light header, thick top border, horizontal lines only) */
+table th, table td { border-left: 0 !important; border-right: 0 !important; }
+table thead th { background: #e3ebec !important; color: var(--navy) !important; box-shadow: inset 0 6px 0 var(--navy) !important; padding-top: 14px; border-bottom: 1px solid var(--line) !important; font-family: var(--font-display); text-transform: none; letter-spacing: .01em; }
+#p-main .t12.tt thead th.h-pres { box-shadow: inset 0 6px 0 var(--pres) !important; }
+#p-main .t12.tt thead th.h-past { box-shadow: inset 0 6px 0 var(--past) !important; }
+#p-main .t12.tt thead th.h-fut { box-shadow: inset 0 6px 0 var(--fut) !important; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) table thead th { background: #243a40 !important; color: var(--fg) !important; } }
+:root[data-theme="dark"] table thead th { background: #243a40 !important; color: var(--fg) !important; }
+table .num { background: transparent; color: var(--fg); border: 1.5px solid var(--muted); font-weight: 700; }
+/* Passive table: slimmer Tense and Aspect columns */
+.pv thead th:nth-child(1), .pv thead th:nth-child(2) { padding-left: 8px; padding-right: 8px; }
+.pv thead th:nth-child(1) { width: 2.4rem; }
+.pv thead th:nth-child(2) { width: 5.6rem; }
+.pv th.tg { width: 2.4rem; padding: 8px 4px !important; font-size: .98rem; letter-spacing: .04em; }
+.pv tbody th.tn { width: 5.6rem; padding-left: 8px; padding-right: 6px; white-space: nowrap; font-size: .92rem; }
+.pv tbody th.tn .num { margin-right: 5px; transform: scale(.9); }
+/* Practice tab */
+.pq-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin: 0 0 8px; }
+.pq-score { font-family: var(--font-display); font-weight: 600; font-size: 1.1rem; }
+.pq-reset { font: inherit; font-weight: 600; padding: 8px 16px; border-radius: 999px; border: 1.5px solid var(--line); background: var(--card); color: var(--fg); cursor: pointer; }
+.pq-reset:focus-visible, .pq-opt:focus-visible { outline: 3px solid var(--pres); outline-offset: 2px; }
+.pq { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; margin: 0 0 10px; }
+.pq-t { margin: 0 0 10px; font-size: 1.05rem; }
+.pq-n { color: var(--muted); font-weight: 700; margin-right: 6px; }
+.pq-os { display: flex; flex-wrap: wrap; gap: 8px; }
+.pq-opt { font: inherit; padding: 8px 14px; border-radius: 10px; border: 1.5px solid var(--line); background: var(--bg); color: var(--fg); cursor: pointer; text-align: left; line-height: 1.35; }
+.pq-opt:hover:not(:disabled) { border-color: var(--muted); }
+.pq-opt:disabled { cursor: default; }
+.pq-opt.ok { background: var(--ok-soft); border-color: var(--ok); color: var(--fg); font-weight: 700; }
+.pq-opt.bad { background: var(--fut-soft); border-color: var(--fut); color: var(--fg); text-decoration: line-through; }
+.pq-fb { margin: 10px 0 0; font-size: .95rem; color: var(--muted); }
+.pq-fb b { color: var(--fg); }
+/* Fonts: warm serif headings, friendly sans text */
+:root { --font-display: "Fraunces", Georgia, serif; --font-body: "Nunito Sans", "Segoe UI", system-ui, sans-serif; }
+h1, h2, h3 { letter-spacing: -.005em; }
+body { font-size: 16.5px; }
 </style>
 
 <main id="page">
@@ -251,15 +375,22 @@ th small { font-weight: 400; color: var(--muted); }
       <button class="toggle" id="cover" type="button" aria-pressed="false">Practise: cover the be-words</button>
     </div>
     <nav class="tabs" role="tablist" aria-label="Study tabs">
+      <button class="tab" role="tab" id="t-intro" aria-controls="p-intro" data-tab="intro"><span class="n">i</span>Intro</button>
       <button class="tab" role="tab" id="t-forms" aria-controls="p-forms" data-tab="forms"><span class="n">1</span>Forms and meanings</button>
-      <button class="tab" role="tab" id="t-main" aria-controls="p-main" data-tab="main"><span class="n">2</span>Main verb, 12 tenses</button>
-      <button class="tab" role="tab" id="t-continuous" aria-controls="p-continuous" data-tab="continuous"><span class="n">3</span>Helping verb 1</button>
-      <button class="tab" role="tab" id="t-passive" aria-controls="p-passive" data-tab="passive"><span class="n">4</span>Helping verb 2</button>
-      <button class="tab" role="tab" id="t-special" aria-controls="p-special" data-tab="special"><span class="n">5</span>Special structures</button>
-      <button class="tab" role="tab" id="t-build" aria-controls="p-build" data-tab="build"><span class="n">6</span>Structure build-up</button>
-      <button class="tab" role="tab" id="t-ways" aria-controls="p-ways" data-tab="ways"><span class="n">7</span>Ways &ldquo;be&rdquo; is used</button>
+      <button class="tab" role="tab" id="t-main" aria-controls="p-main" data-tab="main"><span class="n">2</span>Be in tenses</button>
+      <button class="tab" role="tab" id="t-passive" aria-controls="p-passive" data-tab="passive"><span class="n">3</span>Be in the passive</button>
+      <button class="tab" role="tab" id="t-build" aria-controls="p-build" data-tab="build"><span class="n">4</span>Structure build-up</button>
+      <button class="tab" role="tab" id="t-ways" aria-controls="p-ways" data-tab="ways"><span class="n">5</span>Ways &ldquo;be&rdquo; is used</button>
+      <button class="tab" role="tab" id="t-practice" aria-controls="p-practice" data-tab="practice"><span class="n">6</span>Practice</button>
     </nav>
   </header>
+
+  <section class="panel" role="tabpanel" id="p-intro" aria-labelledby="t-intro" hidden>
+    <h2>Intro: what is &ldquo;be&rdquo;?</h2>
+    <p class="lead">Go one step at a time. Each step builds on the one before.</p>
+    <div class="ladder"><div class="rung"><span class="num">1</span><div><div class="t">Verbs show an action or a state</div><div class="sn">Action: run, eat, write. State: know, like, own, seem. A state verb tells how something is. It is not something you do.</div></div></div><div class="rung"><span class="num">2</span><div><div class="t">&ldquo;Be&rdquo; is the most basic state verb</div><div class="sn">It tells how someone or something is: She <b class="be">is</b> a doctor. He <b class="be">is</b> kind. They <b class="be">are</b> at home. There <b class="be">is</b> a problem.</div></div></div><div class="rung"><span class="num">3</span><div><div class="t">&ldquo;Be&rdquo; is irregular</div><div class="sn">Its forms change a lot: be, am / is / are, was / were, been, being. The next tab shows each form.</div></div></div><div class="rung"><span class="num">4</span><div><div class="t">&ldquo;Be&rdquo; has two jobs</div><div class="sn"><strong>Main verb:</strong> it describes a state. She <b class="be">is</b> happy. <strong>Helping verb:</strong> it helps another verb. She <b class="be">is</b> eating. The apple <b class="be">is</b> eaten. To tell them apart, look at the word after &ldquo;be&rdquo;.</div></div></div><div class="rung"><span class="num">5</span><div><div class="t">A state verb does not usually take V4 (-ing)</div><div class="sn">&#10007; I am being here. &rarr; &#10003; I <b class="be">am</b> here. The exception is behaviour: He <b class="be">is being</b> silly means he is acting silly now.</div></div></div></div>
+    <div class="btns"><button class="btn" type="button" data-go="forms">Next: Forms and meanings &rarr;</button></div>
+  </section>
 
   <section class="panel" role="tabpanel" id="p-forms" aria-labelledby="t-forms" hidden>
     <h2>The forms of &ldquo;be&rdquo;</h2>
@@ -272,46 +403,30 @@ th small { font-weight: 400; color: var(--muted); }
   </section>
 
   <section class="panel" role="tabpanel" id="p-main" aria-labelledby="t-main" hidden>
-    <h2>&ldquo;Be&rdquo; as a main verb in all 12 tenses</h2>
-    <p class="lead">Active voice. All 12 forms exist, but only a few are used often. The dot before each tense shows which.</p>
-    <p class="vline legend"><span class="dot d-c"></span>common <span class="dot d-b"></span>only for behaviour <span class="dot d-r"></span>rare</p>
-    <div class="scroll" tabindex="0" role="region" aria-label="Forms of be in all 12 tenses">
-      <table class="t12">
-        <thead><tr><th>Tense</th><th>I</th><th>he / she / it<br><small>noun (s)</small></th><th>you / we / they<br><small>noun (p)</small></th><th>Example</th></tr></thead>
+    <h2>Be in tenses</h2>
+    <p class="lead">&ldquo;Be&rdquo; shows up in tenses in two ways: as the main verb, and as a helping verb in the continuous tenses. The passive has its own tab.</p>
+    <span class="step">Part 1 &middot; Main verb</span>
+    <h3>&ldquo;Be&rdquo; as a main verb in all 12 tenses</h3>
+    <p class="lead">Active voice. All 12 forms exist, but only a few are used often. The last column shows which. Forms are listed in this order: I / he, she, it / you, we, they.</p>
+        <div class="scroll" tabindex="0" role="region" aria-label="Forms of be in all 12 tenses">
+      <table class="t12 tt">
+        <thead><tr><th>Aspect</th><th class="h-pres">Present</th><th class="h-past">Past</th><th class="h-fut">Future</th><th>How common?</th></tr></thead>
         <tbody>
-          <tr class="common"><th class="h-pres"><span class="dot d-c" title="common"></span>Present Simple</th><td><b class="be">am</b></td><td><b class="be">is</b></td><td><b class="be">are</b></td><td>She <b class="be">is</b> here.</td></tr>
-          <tr class="beh"><th class="h-pres"><span class="dot d-b" title="only for behaviour"></span>Present Continuous</th><td><b class="be">am being</b></td><td><b class="be">is being</b></td><td><b class="be">are being</b></td><td>He <b class="be">is being</b> rude.</td></tr>
-          <tr class="common"><th class="h-pres"><span class="dot d-c" title="common"></span>Present Perfect</th><td><b class="be">have been</b></td><td><b class="be">has been</b></td><td><b class="be">have been</b></td><td>It <b class="be">has been</b> fun.</td></tr>
-          <tr class="rare"><th class="h-pres"><span class="dot d-r" title="rare"></span>Present Perfect Continuous</th><td><b class="be">have been being</b></td><td><b class="be">has been being</b></td><td><b class="be">have been being</b></td><td>He <b class="be">has been being</b> rude all day.</td></tr>
-          <tr class="common"><th class="h-past"><span class="dot d-c" title="common"></span>Past Simple</th><td><b class="be">was</b></td><td><b class="be">was</b></td><td><b class="be">were</b></td><td>She <b class="be">was</b> here.</td></tr>
-          <tr class="beh"><th class="h-past"><span class="dot d-b" title="only for behaviour"></span>Past Continuous</th><td><b class="be">was being</b></td><td><b class="be">was being</b></td><td><b class="be">were being</b></td><td>She <b class="be">was being</b> rude.</td></tr>
-          <tr class="common"><th class="h-past"><span class="dot d-c" title="common"></span>Past Perfect</th><td><b class="be">had been</b></td><td><b class="be">had been</b></td><td><b class="be">had been</b></td><td>She <b class="be">had been</b> here before.</td></tr>
-          <tr class="rare"><th class="h-past"><span class="dot d-r" title="rare"></span>Past Perfect Continuous</th><td><b class="be">had been being</b></td><td><b class="be">had been being</b></td><td><b class="be">had been being</b></td><td>He <b class="be">had been being</b> rude all day.</td></tr>
-          <tr class="common"><th class="h-fut"><span class="dot d-c" title="common"></span>Future Simple</th><td><b class="be">will be</b></td><td><b class="be">will be</b></td><td><b class="be">will be</b></td><td>She <b class="be">will be</b> here.</td></tr>
-          <tr class="rare"><th class="h-fut"><span class="dot d-r" title="rare"></span>Future Continuous</th><td><b class="be">will be being</b></td><td><b class="be">will be being</b></td><td><b class="be">will be being</b></td><td>He <b class="be">will be being</b> polite.</td></tr>
-          <tr class="common"><th class="h-fut"><span class="dot d-c" title="common"></span>Future Perfect</th><td><b class="be">will have been</b></td><td><b class="be">will have been</b></td><td><b class="be">will have been</b></td><td>She <b class="be">will have been</b> here by noon.</td></tr>
-          <tr class="rare"><th class="h-fut"><span class="dot d-r" title="rare"></span>Future Perfect Continuous</th><td><b class="be">will have been being</b></td><td><b class="be">will have been being</b></td><td><b class="be">will have been being</b></td><td>He <b class="be">will have been being</b> rude for an hour.</td></tr>
+          <tr class="common"><th>Simple</th><td><b class="be">am</b> / <b class="be">is</b> / <b class="be">are</b></td><td><b class="be">was</b> / <b class="be">was</b> / <b class="be">were</b></td><td>will <b class="be">be</b></td><td><span class="use u-c">Common</span></td></tr>
+          <tr class="beh"><th>Continuous</th><td>am / is / are <b class="be">being</b></td><td>was / was / were <b class="be">being</b></td><td class="cr">will be <b class="be">being</b><div style="margin-top:6px"><span class="use u-r">Rare</span></div></td><td><span class="use u-b">Only for behaviour</span> <small>He is being rude. Rare in the future.</small></td></tr>
+          <tr class="common"><th>Perfect</th><td>have / has / have <b class="be">been</b></td><td>had <b class="be">been</b></td><td>will have <b class="be">been</b></td><td><span class="use u-c">Common</span></td></tr>
+          <tr class="rare"><th>Perfect Continuous</th><td>have / has / have been <b class="be">being</b></td><td>had been <b class="be">being</b></td><td>will have been <b class="be">being</b></td><td><span class="use u-r">Rare</span></td></tr>
         </tbody>
       </table>
     </div>
-    <p class="note">Only pronouns change the verb. Any noun counts as he / she / it (one) or they (more than one). After &ldquo;will&rdquo;, the verb is always &ldquo;be&rdquo;, for every subject.</p>
+    <p class="note">Pronouns cover all three persons: 1st (I, we), 2nd (you), 3rd (he, she, it, they). Every noun is 3rd person: one noun = he / she / it, more than one noun = they. After &ldquo;will&rdquo;, the verb is always &ldquo;be&rdquo;, for every subject.</p>
     <p class="note"><strong>Being</strong> (V4) shows behaviour and is used only with words like rude or polite. You cannot say &ldquo;I am being here&rdquo;. <strong>Been</strong> (V3) comes after have / has / had and joins the past to now. It does not mean &ldquo;finished&rdquo;.</p>
 
-  </section>
 
-  <section class="panel" role="tabpanel" id="p-continuous" aria-labelledby="t-continuous" hidden>
-    <h2>&ldquo;Be&rdquo; as a helping verb: the 6 continuous tenses</h2>
-    <p class="lead">Sometimes &ldquo;be&rdquo; is not the main verb. It comes before another verb and helps it. To tell the difference, look at the word after &ldquo;be&rdquo;.</p>
-    <div class="scroll" tabindex="0" role="region" aria-label="Main verb or helping verb">
-      <table style="min-width:480px">
-        <thead><tr><th>Word after &ldquo;be&rdquo;</th><th>Job of &ldquo;be&rdquo;</th><th>Example</th></tr></thead>
-        <tbody>
-          <tr><td>a noun, an adjective or a place</td><td>main verb</td><td>Anna <b class="be">is</b> happy.</td></tr>
-          <tr><td>a V4 verb (-ing)</td><td>helping verb, action in progress</td><td>Anna <b class="be">is</b> eating.</td></tr>
-          <tr><td>a V3 verb</td><td>helping verb, passive</td><td>The apple <b class="be">is</b> eaten.</td></tr>
-        </tbody>
-      </table>
-    </div>
+
+    <span class="step">Part 2 &middot; Helping verb</span>
+    <h3>&ldquo;Be&rdquo; as a helping verb: the 6 continuous tenses</h3>
+    <p class="lead">Sometimes &ldquo;be&rdquo; is not the main verb. It comes before a V4 verb and helps it show an action in progress.</p>
     <p class="formula-banner"><b class="lead-in">Formula</b>Subject + <span class="be">be form</span> + V4</p>
     <div class="scroll" tabindex="0" role="region" aria-label="Be as a helping verb in the 6 continuous tenses">
       <table class="cw pv2">
@@ -327,6 +442,21 @@ th small { font-weight: 400; color: var(--muted); }
       </table>
     </div>
     <p class="note">V4 is the &ldquo;-ing&rdquo; form of the main verb (writing, eating). In every tense, only the be form changes.</p>
+
+
+    <span class="step">Summary</span>
+    <h3>Main verb or helping verb?</h3>
+    <p class="lead">Look at the word after &ldquo;be&rdquo;.</p>
+    <div class="scroll" tabindex="0" role="region" aria-label="Main verb or helping verb">
+      <table style="min-width:480px">
+        <thead><tr><th>Word after &ldquo;be&rdquo;</th><th>Job of &ldquo;be&rdquo;</th><th>Example</th></tr></thead>
+        <tbody>
+          <tr><td>a noun, an adjective or a place</td><td>main verb</td><td>Anna <b class="be">is</b> happy.</td></tr>
+          <tr><td>a V4 verb (-ing)</td><td>helping verb, action in progress</td><td>Anna <b class="be">is</b> eating.</td></tr>
+          <tr><td>a V3 verb</td><td>helping verb, passive</td><td>The apple <b class="be">is</b> eaten.</td></tr>
+        </tbody>
+      </table>
+    </div>
   </section>
 
   <section class="panel" role="tabpanel" id="p-passive" aria-labelledby="t-passive" hidden>
@@ -334,17 +464,17 @@ th small { font-weight: 400; color: var(--muted); }
     <p class="formula-banner"><b class="lead-in">Formula</b>Object + appropriate <span class="be">be form</span> + V3 + by + Subject</p>
     <div class="scroll" tabindex="0" role="region" aria-label="Active to passive voice in 9 tenses">
       <table class="pv">
-        <thead><tr><th class="hd-t">Tense</th><th class="hd-a">Active structure</th><th class="hd-p">Passive structure</th><th class="hd-e">Examples (Active &rarr; Passive)</th></tr></thead>
+        <thead><tr><th class="hd-t">Tense</th><th class="hd-t">Aspect</th><th class="hd-a">Active structure</th><th class="hd-p">Passive structure</th><th class="hd-e">Examples (Active &rarr; Passive)</th></tr></thead>
         <tbody>
-<tr><th class="tn h-pres"><span class="num">1</span>Simple Present</th><td class="ac">S <span class="nw">+ V1 / V5 + O</span></td><td class="ps">O + <b class="be">am / is / are</b> <span class="nw">+ V3 + by + S</span></td><td class="exc"><div><span class="lab">Active</span> She writes a letter.</div><div><span class="lab">Passive</span> A letter <b class="be">is</b> written by her.</div></td></tr>
-<tr><th class="tn h-pres"><span class="num">2</span>Present Continuous</th><td class="ac">S + <b class="be">am / is / are</b> <span class="nw">+ V4 + O</span></td><td class="ps">O + <b class="be">am / is / are</b> + <b class="be">being</b> <span class="nw">+ V3 + by + S</span></td><td class="exc"><div><span class="lab">Active</span> She <b class="be">is</b> writing a letter.</div><div><span class="lab">Passive</span> A letter <b class="be">is being</b> written by her.</div></td></tr>
-<tr><th class="tn h-pres"><span class="num">3</span>Present Perfect</th><td class="ac">S + have / has <span class="nw">+ V3 + O</span></td><td class="ps">O + <b class="be">have / has been</b> <span class="nw">+ V3 + by + S</span></td><td class="exc"><div><span class="lab">Active</span> She has written a letter.</div><div><span class="lab">Passive</span> A letter <b class="be">has been</b> written by her.</div></td></tr>
-<tr><th class="tn h-past"><span class="num">4</span>Simple Past</th><td class="ac">S <span class="nw">+ V2 + O</span></td><td class="ps">O + <b class="be">was / were</b> <span class="nw">+ V3 + by + S</span></td><td class="exc"><div><span class="lab">Active</span> She wrote a letter.</div><div><span class="lab">Passive</span> A letter <b class="be">was</b> written by her.</div></td></tr>
-<tr><th class="tn h-past"><span class="num">5</span>Past Continuous</th><td class="ac">S + <b class="be">was / were</b> <span class="nw">+ V4 + O</span></td><td class="ps">O + <b class="be">was / were</b> + <b class="be">being</b> <span class="nw">+ V3 + by + S</span></td><td class="exc"><div><span class="lab">Active</span> She <b class="be">was</b> writing a letter.</div><div><span class="lab">Passive</span> A letter <b class="be">was being</b> written by her.</div></td></tr>
-<tr><th class="tn h-past"><span class="num">6</span>Past Perfect</th><td class="ac">S + had <span class="nw">+ V3 + O</span></td><td class="ps">O + <b class="be">had been</b> <span class="nw">+ V3 + by + S</span></td><td class="exc"><div><span class="lab">Active</span> She had written a letter.</div><div><span class="lab">Passive</span> A letter <b class="be">had been</b> written by her.</div></td></tr>
-<tr><th class="tn h-fut"><span class="num">7</span>Simple Future</th><td class="ac">S + will <span class="nw">+ V1 + O</span></td><td class="ps">O + <b class="be">will be</b> <span class="nw">+ V3 + by + S</span></td><td class="exc"><div><span class="lab">Active</span> She will write a letter.</div><div><span class="lab">Passive</span> A letter <b class="be">will be</b> written by her.</div></td></tr>
-<tr><th class="tn h-fut"><span class="num">8</span>Future Continuous</th><td class="ac">S + <b class="be">will be</b> <span class="nw">+ V4 + O</span></td><td class="ps none">no passive form<br><small>(generally not used)</small></td><td class="exc"><div><span class="lab">Active</span> She <b class="be">will be</b> writing a letter.</div><div><span class="lab">Passive</span> <span class="none">&mdash; no passive form</span></div></td></tr>
-<tr><th class="tn h-fut"><span class="num">9</span>Future Perfect</th><td class="ac">S + will have <span class="nw">+ V3 + O</span></td><td class="ps">O + <b class="be">will have been</b> <span class="nw">+ V3 + by + S</span></td><td class="exc"><div><span class="lab">Active</span> She will have written a letter.</div><div><span class="lab">Passive</span> A letter <b class="be">will have been</b> written by her.</div></td></tr>
+<tr><th class="tg" rowspan="3">Present</th><th class="tn">Simple</th><td class="ac">S <span class="nw">+ V1 / V5 + O</span></td><td class="ps">O + <b class="be">am / is / are</b> <span class="nw">+ V3 + by + S</span></td><td class="exc"><div><span class="lab">Active</span> She writes a letter.</div><div><span class="lab">Passive</span> A letter <b class="be">is</b> written by her.</div></td></tr>
+<tr><th class="tn">Continuous</th><td class="ac">S + <b class="be">am / is / are</b> <span class="nw">+ V4 + O</span></td><td class="ps">O + <b class="be">am / is / are</b> + <b class="be">being</b> <span class="nw">+ V3 + by + S</span></td><td class="exc"><div><span class="lab">Active</span> She <b class="be">is</b> writing a letter.</div><div><span class="lab">Passive</span> A letter <b class="be">is being</b> written by her.</div></td></tr>
+<tr><th class="tn">Perfect</th><td class="ac">S + have / has <span class="nw">+ V3 + O</span></td><td class="ps">O + <b class="be">have / has been</b> <span class="nw">+ V3 + by + S</span></td><td class="exc"><div><span class="lab">Active</span> She has written a letter.</div><div><span class="lab">Passive</span> A letter <b class="be">has been</b> written by her.</div></td></tr>
+<tr><th class="tg" rowspan="3">Past</th><th class="tn">Simple</th><td class="ac">S <span class="nw">+ V2 + O</span></td><td class="ps">O + <b class="be">was / were</b> <span class="nw">+ V3 + by + S</span></td><td class="exc"><div><span class="lab">Active</span> She wrote a letter.</div><div><span class="lab">Passive</span> A letter <b class="be">was</b> written by her.</div></td></tr>
+<tr><th class="tn">Continuous</th><td class="ac">S + <b class="be">was / were</b> <span class="nw">+ V4 + O</span></td><td class="ps">O + <b class="be">was / were</b> + <b class="be">being</b> <span class="nw">+ V3 + by + S</span></td><td class="exc"><div><span class="lab">Active</span> She <b class="be">was</b> writing a letter.</div><div><span class="lab">Passive</span> A letter <b class="be">was being</b> written by her.</div></td></tr>
+<tr><th class="tn">Perfect</th><td class="ac">S + had <span class="nw">+ V3 + O</span></td><td class="ps">O + <b class="be">had been</b> <span class="nw">+ V3 + by + S</span></td><td class="exc"><div><span class="lab">Active</span> She had written a letter.</div><div><span class="lab">Passive</span> A letter <b class="be">had been</b> written by her.</div></td></tr>
+<tr><th class="tg" rowspan="3">Future</th><th class="tn">Simple</th><td class="ac">S + will <span class="nw">+ V1 + O</span></td><td class="ps">O + <b class="be">will be</b> <span class="nw">+ V3 + by + S</span></td><td class="exc"><div><span class="lab">Active</span> She will write a letter.</div><div><span class="lab">Passive</span> A letter <b class="be">will be</b> written by her.</div></td></tr>
+<tr><th class="tn">Continuous</th><td class="ac">S + <b class="be">will be</b> <span class="nw">+ V4 + O</span></td><td class="ps none">no passive form<br><small>(generally not used)</small></td><td class="exc"><div><span class="lab">Active</span> She <b class="be">will be</b> writing a letter.</div><div><span class="lab">Passive</span> <span class="none">&mdash; no passive form</span></div></td></tr>
+<tr><th class="tn">Perfect</th><td class="ac">S + will have <span class="nw">+ V3 + O</span></td><td class="ps">O + <b class="be">will have been</b> <span class="nw">+ V3 + by + S</span></td><td class="exc"><div><span class="lab">Active</span> She will have written a letter.</div><div><span class="lab">Passive</span> A letter <b class="be">will have been</b> written by her.</div></td></tr>
         </tbody>
       </table>
     </div>
@@ -357,31 +487,6 @@ th small { font-weight: 400; color: var(--muted); }
       <div class="q4">Future<small>&rarr; WILL + BE + V3</small></div>
     </div>
     <p class="vline">V1 = write &nbsp;&middot;&nbsp; V2 = wrote &nbsp;&middot;&nbsp; V3 = written</p>
-  </section>
-
-  <section class="panel" role="tabpanel" id="p-special" aria-labelledby="t-special" hidden>
-    <h2>Special structures</h2>
-    <div class="pair">
-      <div class="card mean">
-        <h3>A. Imaginary situations: &ldquo;were&rdquo;</h3>
-        <p class="what">For wishes and things that are not real, use &ldquo;were&rdquo; with every subject, even I, he, she and it.</p>
-        <ul class="ex">
-          <li>If I <b class="be">were</b> you, I would take that deal.</li>
-          <li>He acts as if he <b class="be">were</b> the boss.</li>
-        </ul>
-        <p class="note">In everyday talk, &ldquo;If I was&hellip;&rdquo; is common. In careful writing, use &ldquo;were&rdquo;.</p>
-      </div>
-      <div class="card mean">
-        <h3>B. Plans and orders: be + to + verb</h3>
-        <p class="what">Be + &ldquo;to&rdquo; + V1 shows a fixed plan or an order.</p>
-        <p class="formula">Subject + <span class="be">am / is / are</span> + to + V1</p>
-        <ul class="ex">
-          <li><strong>Plan:</strong> The Prime Minister <b class="be">is</b> to visit France tomorrow.</li>
-          <li><strong>Order:</strong> You <b class="be">are</b> to finish your homework before watching TV.</li>
-        </ul>
-      </div>
-    </div>
-
   </section>
 
   <section class="panel" role="tabpanel" id="p-build" aria-labelledby="t-build" hidden>
@@ -397,7 +502,7 @@ th small { font-weight: 400; color: var(--muted); }
     <h3>Be after a modal verb</h3>
     <div class="pair"><div class="card mean"><h3>After will, can, might, must, should</h3><p class="what">After a modal verb, the verb is always &ldquo;be&rdquo;. It never changes.</p><p class="formula">Subject + modal + <span class="be">be</span> + &hellip;</p><ul class="ex"><li>Dinner will <b class="be">be</b> ready soon.</li><li>The kids might <b class="be">be</b> at the park.</li><li>You must <b class="be">be</b> careful.</li></ul></div></div>
     <h3>Be as a link verb</h3>
-    <p class="lead">A link verb joins the subject to information about it. This is the main-verb use from Tab 1.</p>
+    <p class="lead">A link verb joins the subject to information about it. This is the main-verb use from Tab 1. It is also a state verb: it describes how something is.</p>
     <div class="scroll narrow" tabindex="0" role="region" aria-label="Be as a link verb">
       <table>
         <thead><tr><th>After &ldquo;be&rdquo;</th><th>What it tells</th><th>Example</th></tr></thead>
@@ -410,13 +515,55 @@ th small { font-weight: 400; color: var(--muted); }
       </table>
     </div>
 
+    <h3>More basic uses</h3>
+    <div class="grid">
+      <div class="card mean"><h3>There is / there are</h3><p class="what">Says that something exists or is in a place. &ldquo;There&rdquo; is only a placeholder subject. The real subject comes after &ldquo;be&rdquo;, and &ldquo;be&rdquo; matches it.</p><p class="formula">There + <span class="be">is / are</span> + subject + place</p><ul class="ex"><li>There <b class="be">is</b> a cat on the sofa.</li><li>There <b class="be">are</b> two apples in the bowl.</li></ul><p class="note">&ldquo;The cat is there&rdquo; is different: here &ldquo;there&rdquo; means &ldquo;in that place&rdquo;.</p></div>
+      <div class="card mean"><h3>Be in commands</h3><p class="what">When you tell someone what to do, the verb is plain &ldquo;be&rdquo;. There is no subject.</p><p class="formula"><span class="be">Be</span> + adjective &nbsp;/&nbsp; Don&rsquo;t <span class="be">be</span> + adjective</p><ul class="ex"><li><b class="be">Be</b> quiet.</li><li>Don&rsquo;t <b class="be">be</b> late.</li></ul></div>
+      <div class="card mean"><h3>Be in questions and negatives</h3><p class="what">&ldquo;Be&rdquo; does not need &ldquo;do&rdquo;. In a question it moves in front of the subject. In a negative, &ldquo;not&rdquo; goes after it.</p><ul class="ex"><li>Statement: She <b class="be">is</b> at home.</li><li>Question: <b class="be">Is</b> she at home?</li><li>Negative: She <b class="be">is</b> not (isn&rsquo;t) at home.</li><li>Short answer: Yes, she <b class="be">is</b>.</li></ul></div>
+    </div>
+
     <span class="step">Level 2 &middot; Intermediate</span>
     <h3>Be as a helping verb</h3>
-    <div class="pair"><div class="card mean"><h3>Be + V4: continuous</h3><p class="what">Shows an action in progress. See Helping verb 1.</p><p class="formula">Subject + <span class="be">be form</span> + V4</p><ul class="ex"><li>We <b class="be">were</b> walking home.</li><li>It <b class="be">has been</b> raining all day.</li></ul></div><div class="card mean"><h3>Be + V3: passive</h3><p class="what">The subject receives the action. See Helping verb 2.</p><p class="formula">Subject + <span class="be">be form</span> + V3</p><ul class="ex"><li>The window <b class="be">was</b> broken.</li><li>These toys <b class="be">are</b> made of wood.</li></ul></div></div>
+    <div class="pair"><div class="card mean"><h3>Be + V4: continuous</h3><p class="what">Shows an action in progress. See Be in tenses.</p><p class="formula">Subject + <span class="be">be form</span> + V4</p><ul class="ex"><li>We <b class="be">were</b> walking home.</li><li>It <b class="be">has been</b> raining all day.</li></ul></div><div class="card mean"><h3>Be + V3: passive</h3><p class="what">The subject receives the action. See Be in the passive.</p><p class="formula">Subject + <span class="be">be form</span> + V3</p><ul class="ex"><li>The window <b class="be">was</b> broken.</li><li>These toys <b class="be">are</b> made of wood.</li></ul></div></div>
+
+    <h3>Be with &ldquo;to&rdquo;: plans and near future</h3>
+    <div class="grid">
+      <div class="card mean"><h3>Be going to</h3><p class="what">A plan you already decided, or something you can see coming. &ldquo;Be&rdquo; is the helping verb and V1 follows &ldquo;to&rdquo;.</p><p class="formula">Subject + <span class="be">am / is / are</span> + going to + V1</p><ul class="ex"><li>I <b class="be">am</b> going to cook tonight.</li><li>Look at those clouds! It <b class="be">is</b> going to rain.</li></ul></div>
+      <div class="card mean"><h3>Be about to</h3><p class="what">Something will happen in the next moment.</p><p class="formula">Subject + <span class="be">am / is / are</span> + about to + V1</p><ul class="ex"><li>The bus <b class="be">is</b> about to leave.</li><li>We <b class="be">are</b> about to start.</li></ul></div>
+      <div class="card mean"><h3>Be able to, used to, supposed to</h3><p class="what">&ldquo;Be&rdquo; comes before an adjective-like word, then &ldquo;to&rdquo;. Each one has its own meaning.</p><ul class="ex"><li>She <b class="be">is</b> able to swim. (can)</li><li>He <b class="be">is</b> used to waking up early. (it is normal for him; V4 follows)</li><li>You <b class="be">are</b> supposed to knock. (the rule says so)</li></ul><p class="note">&ldquo;Be used to&rdquo; is different from &ldquo;used to&rdquo; for a past habit.</p></div>
+    </div>
 
     <span class="step">Level 3 &middot; Advanced</span>
     <h3>Be after a noun, or after &ldquo;it&rdquo;</h3>
     <div class="grid"><div class="card mean"><h3>Noun + be + that-clause</h3><p class="what">Names a problem, an idea or a fact, then explains it with a clause.</p><p class="formula">Noun + <span class="be">be form</span> + that + clause</p><ul class="ex"><li>The problem <b class="be">is</b> that I lost my pencil.</li><li>The good thing <b class="be">is</b> that nobody was hurt.</li></ul><p class="what">Common nouns: problem, idea, fact, hope, reason, rule, truth, trouble.</p></div><div class="card mean"><h3>Noun + be + to + V1</h3><p class="what">Names a plan or a wish, then says what it is.</p><p class="formula">Noun + <span class="be">be form</span> + to + V1</p><ul class="ex"><li>My plan <b class="be">is</b> to read every night.</li><li>Her wish <b class="be">was</b> to see the sea.</li></ul><p class="what">Common nouns: plan, aim, wish, hope, idea, job, promise, decision.</p></div><div class="card mean"><h3>It + be + adjective + clause</h3><p class="what">Comments on something that happened or is true. The clause starts with that or a question word (what, who, how).</p><p class="formula">It + <span class="be">be form</span> + adjective + that / wh- clause</p><ul class="ex"><li>It <b class="be">is</b> lucky that we found the bag.</li><li>It <b class="be">is</b> not clear who won.</li><li>It <b class="be">was</b> amazing how fast she ran.</li></ul><p class="what">Common adjectives: clear, true, lucky, strange, sad, odd, possible, obvious.</p></div></div>
+
+    <span class="step">Special structures</span>
+    <div class="pair">
+      <div class="card mean">
+        <h3>Imaginary situations: &ldquo;were&rdquo;</h3>
+        <p class="what">For wishes and things that are not real, use &ldquo;were&rdquo; with every subject, even I, he, she and it.</p>
+        <ul class="ex">
+          <li>If I <b class="be">were</b> you, I would take that deal.</li>
+          <li>He acts as if he <b class="be">were</b> the boss.</li>
+        </ul>
+        <p class="note">In everyday talk, &ldquo;If I was&hellip;&rdquo; is common. In careful writing, use &ldquo;were&rdquo;.</p>
+      </div>
+      <div class="card mean">
+        <h3>Formal &ldquo;be&rdquo; after &ldquo;that&rdquo;</h3>
+        <p class="what">After words like important, essential or suggest, formal writing uses plain &ldquo;be&rdquo; for every subject.</p>
+        <ul class="ex">
+          <li>It is important that he <b class="be">be</b> on time.</li>
+          <li>The teacher suggests that she <b class="be">be</b> early.</li>
+        </ul>
+        <p class="note">This is rare in everyday talk. People say &ldquo;he should be&rdquo; or &ldquo;he is&rdquo; instead.</p>
+      </div>
+    </div>
+  </section>
+  <section class="panel" role="tabpanel" id="p-practice" aria-labelledby="t-practice" hidden>
+    <h2>Practice</h2>
+    <p class="lead">Tap an answer. You will see right away if it is correct and why.</p>
+    <div class="pq-top"><span class="pq-score" aria-live="polite" id="pq-score">Score: 0 / 0</span><button class="pq-reset" id="pq-reset" type="button">Start again</button></div>
+    <div id="pq-body"></div>
   </section>
 </main>
 
@@ -450,6 +597,7 @@ th small { font-weight: 400; color: var(--muted); }
       j = (j + tabs.length) % tabs.length; tabs[j].focus(); tabs[j].click();
     });
   });
+  document.addEventListener('click', function (e) { var b = e.target.closest('[data-go]'); if (b) { show(b.dataset.go); try { history.replaceState(null, '', '#' + b.dataset.go); } catch (x) {} window.scrollTo(0, 0); } });
   window.addEventListener('hashchange', function () { show(location.hash.slice(1)); });
   show(location.hash.slice(1));
 
@@ -526,6 +674,83 @@ th small { font-weight: 400; color: var(--muted); }
   });
   G.addEventListener('change', function (e) { if (e.target.id === 'g-sel') { gm.i = +e.target.value; deal(); draw(); } });
   deal(); draw();
+})();
+</script>
+<script>
+(function () {
+  var DATA = [
+    { h: 'Part 1 · Main verb or helping verb?', q: [
+      ['Anna is happy.', ['Main verb','Helping verb'], 0, 'The word after “be” is an adjective, so “be” is the main verb.'],
+      ['Anna is eating.', ['Main verb','Helping verb'], 1, 'Eating is a V4 verb, so “is” helps it show an action in progress.'],
+      ['The apple is eaten.', ['Main verb','Helping verb'], 1, 'Eaten is V3. “Be” + V3 is the passive, so “is” is a helping verb.'],
+      ['The keys are on the table.', ['Main verb','Helping verb'], 0, 'A place phrase follows, so “are” is the main verb. It tells where the keys are.'],
+      ['They were playing outside.', ['Main verb','Helping verb'], 1, 'Playing is V4, so “were” is a helping verb in the past continuous.']
+    ]},
+    { h: 'Part 2 · Choose the right form of “be”', q: [
+      ['I ___ ready.', ['am','is','are'], 0, 'With “I” the present form is always “am”.'],
+      ['The kids ___ at the park yesterday.', ['was','were','are'], 1, 'Yesterday is past, and “the kids” is more than one, so “were”.'],
+      ['Dinner will ___ ready soon.', ['be','is','being'], 0, 'After “will” the verb is always “be”.'],
+      ['It ___ raining now.', ['is','are','was'], 0, '“It” is one thing, and “now” is present, so “is”.'],
+      ['There ___ two apples in the bowl.', ['is','are','be'], 1, 'The real subject is “two apples” (more than one), so “are”.'],
+      ['If I ___ you, I would take that deal.', ['was','were','am'], 1, 'For imaginary situations, use “were” with every subject.']
+    ]},
+    { h: 'Part 3 · Active to passive', q: [
+      ['She writes a letter. Which is the passive?', ['A letter writes by her.','A letter is written by her.','A letter was written by her.'], 1, 'Simple present: object + am/is/are + V3 + by + subject.'],
+      ['She was writing a letter. Which is the passive?', ['A letter was written by her.','A letter is being written by her.','A letter was being written by her.'], 2, 'Past continuous: was/were + being + V3.'],
+      ['She has written a letter. Which is the passive?', ['A letter has been written by her.','A letter has written by her.','A letter had been written by her.'], 0, 'Present perfect: has/have + been + V3.'],
+      ['She will write a letter. Which is the passive?', ['A letter will written by her.','A letter will be written by her.','A letter will been written by her.'], 1, 'Simple future: will + be + V3.']
+    ]},
+    { h: 'Part 4 · What is the sentence doing?', q: [
+      ['Be quiet!', ['A command','A question','A plan'], 0, 'A command uses plain “be”, with no subject.'],
+      ['Is she at home?', ['A command','A question','A plan'], 1, 'In a question, “be” moves in front of the subject.'],
+      ['I am going to cook tonight.', ['A command','A question','A plan'], 2, 'Be + going to + V1 shows a plan you already decided.'],
+      ['The bus is about to leave.', ['A habit','Very soon','In the past'], 1, 'Be + about to + V1 means it will happen in the next moment.'],
+      ['There is a cat on the sofa.', ['Something exists','A command','A plan'], 0, 'There + be + subject says that something exists. “There” is only a placeholder.']
+    ]},
+    { h: 'Part 5 · Find the correct sentence', q: [
+      ['Which one is correct?', ['They is from Spain.','They are from Spain.','They am from Spain.'], 1, '“They” goes with “are”.'],
+      ['Which one is correct?', ['Do she is at home?','She is at home?','Is she at home?'], 2, '“Be” does not need “do”. It moves in front of the subject.'],
+      ['Which sentence is wrong?', ['He is being rude.','I am being here.','She is being silly.'], 1, '“Being” is only used for behaviour (rude, silly, polite). You cannot say “I am being here”.']
+    ]}
+  ];
+  var body = document.getElementById('pq-body'), scoreEl = document.getElementById('pq-score');
+  var total = 0, right = 0, answered = 0;
+  function shuffle(a) { for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)); var t = a[i]; a[i] = a[j]; a[j] = t; } return a; }
+  function upd() { scoreEl.textContent = 'Score: ' + right + ' / ' + answered + (answered === total ? ' – all done' : ' (of ' + total + ')'); }
+  function build() {
+    body.textContent = ''; total = 0; right = 0; answered = 0;
+    var n = 0;
+    DATA.forEach(function (sec) {
+      var h = document.createElement('h3'); h.textContent = sec.h; h.style.margin = '18px 0 8px'; body.appendChild(h);
+      sec.q.forEach(function (item) {
+        n++; total++;
+        var box = document.createElement('div'); box.className = 'pq';
+        var t = document.createElement('p'); t.className = 'pq-t';
+        var num = document.createElement('span'); num.className = 'pq-n'; num.textContent = n + '.';
+        t.appendChild(num); t.appendChild(document.createTextNode(item[0])); box.appendChild(t);
+        var os = document.createElement('div'); os.className = 'pq-os';
+        var fb = document.createElement('p'); fb.className = 'pq-fb'; fb.setAttribute('aria-live', 'polite');
+        var opts = shuffle(item[1].map(function (txt, idx) { return { txt: txt, ok: idx === item[2] }; }));
+        var btns = [];
+        opts.forEach(function (o) {
+          var b = document.createElement('button'); b.type = 'button'; b.className = 'pq-opt'; b.textContent = o.txt;
+          b.addEventListener('click', function () {
+            answered++;
+            btns.forEach(function (x) { x.b.disabled = true; if (x.o.ok) x.b.classList.add('ok'); });
+            var lead = document.createElement('b');
+            if (o.ok) { right++; lead.textContent = 'Correct. '; } else { b.classList.add('bad'); lead.textContent = 'Not quite. '; }
+            fb.textContent = ''; fb.appendChild(lead); fb.appendChild(document.createTextNode(item[3]));
+            upd();
+          });
+          btns.push({ b: b, o: o }); os.appendChild(b);
+        });
+        box.appendChild(os); box.appendChild(fb); body.appendChild(box);
+      });
+    });
+    upd();
+  }
+  document.getElementById('pq-reset').addEventListener('click', build);
+  build();
 })();
 </script>
 

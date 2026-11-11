@@ -1,0 +1,342 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Some and Any Study Page</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Lexend:wght@400;500;600&display=swap">
+<style>
+/* Layout: a switcher picks Tap Cards (the rule, then the exceptions) or Pick It (a quiz).
+   Colour = the word: some is teal, any is purple, a / an or no word is orange. */
+:root {
+  --bg: #F3F1FA;
+  --surface: #FFFFFF;
+  --ink: #1D1B3A;
+  --muted: #5B5880;
+  --line: #DAD6EE;
+  --line-strong: #A39FCB;
+  --good: #1F7A3A; --good-soft: #DDF3E3;
+  --bad: #B3261E;  --bad-soft: #FBE3E1;
+  --some: #0F7C74; --some-soft: #DDF3F0; --some-on: #FFFFFF;
+  --any: #6A45B8;  --any-soft: #ECE6F8;  --any-on: #FFFFFF;
+  --a: #B25E00;    --a-soft: #FBEBD3;    --a-on: #FFFFFF;
+  --font-display: 'Fredoka', 'Trebuchet MS', system-ui, sans-serif;
+  --font-body: 'Lexend', system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #14132B; --surface: #1E1D40; --ink: #ECEBFA; --muted: #AAA8CF;
+    --line: #302F5C; --line-strong: #5C5A92;
+    --good: #6FD58B; --good-soft: #173A24;
+    --bad: #FF8A80;  --bad-soft: #4A1F1C;
+    --some: #4FD1C5; --some-soft: #17383A; --some-on: #0B2B28;
+    --any: #B79CF2;  --any-soft: #2C2450;  --any-on: #20123F;
+    --a: #F2A94E;    --a-soft: #43321A;    --a-on: #3A2100;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #14132B; --surface: #1E1D40; --ink: #ECEBFA; --muted: #AAA8CF;
+  --line: #302F5C; --line-strong: #5C5A92;
+  --good: #6FD58B; --good-soft: #173A24;
+  --bad: #FF8A80;  --bad-soft: #4A1F1C;
+  --some: #4FD1C5; --some-soft: #17383A; --some-on: #0B2B28;
+  --any: #B79CF2;  --any-soft: #2C2450;  --any-on: #20123F;
+  --a: #F2A94E;    --a-soft: #43321A;    --a-on: #3A2100;
+  color-scheme: dark;
+}
+
+body {
+  background: var(--bg); color: var(--ink);
+  font-family: var(--font-body); font-size: 16px; line-height: 1.5;
+  padding-block: 22px 56px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.wrap { max-width: 960px; margin: 0 auto; display: flex; flex-direction: column; gap: 20px; }
+.k-some { --t: var(--some); --t-soft: var(--some-soft); --t-on: var(--some-on); }
+.k-any  { --t: var(--any);  --t-soft: var(--any-soft);  --t-on: var(--any-on); }
+.k-a    { --t: var(--a);    --t-soft: var(--a-soft);    --t-on: var(--a-on); }
+
+h1 { font-family: var(--font-display); font-weight: 600; font-size: clamp(2rem, 6vw, 3rem); line-height: 1.05; margin: 0; }
+h2 { font-family: var(--font-display); font-weight: 600; font-size: 1.4rem; line-height: 1.15; margin: 0; }
+.lead { margin: 6px 0 0; color: var(--muted); }
+.label { font-size: .75rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin: 0; }
+button { font-family: inherit; color: inherit; }
+button:focus-visible { outline: 3px solid var(--t, var(--ink)); outline-offset: 2px; }
+
+/* switcher */
+.switch { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); gap: 10px; }
+.pick { text-align: left; padding: 12px 16px; border-radius: 14px; border: 2px solid var(--line-strong); background: var(--surface); cursor: pointer; display: flex; flex-direction: column; gap: 2px; }
+.pick b { font-family: var(--font-display); font-weight: 600; font-size: 1.15rem; }
+.pick span { font-size: .85rem; color: var(--muted); }
+.pick[aria-selected="true"] { background: var(--ink); border-color: var(--ink); }
+.pick[aria-selected="true"] b { color: var(--bg); }
+.pick[aria-selected="true"] span { color: var(--bg); opacity: .8; }
+
+/* legend + chips */
+.legend { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; }
+.chip { display: inline-block; padding: 4px 12px; border-radius: 10px; font-weight: 600; font-size: .95rem; line-height: 1.3; background: var(--t); color: var(--t-on); }
+.hl { font-weight: 600; box-shadow: inset 0 -0.45em 0 var(--t-soft); }
+.no { color: var(--muted); text-decoration-thickness: 2px; }
+
+.view[hidden] { display: none; }
+.toolbar { display: flex; flex-wrap: wrap; gap: 8px; justify-content: flex-end; }
+.tool { font: 500 .9rem var(--font-body); padding: 8px 14px; border-radius: 10px; border: 2px solid var(--line); background: transparent; cursor: pointer; }
+.tool:hover { border-color: var(--line-strong); }
+
+/* nouns */
+.nouns { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 12px; }
+.noun { background: var(--surface); border: 2px solid var(--line); border-radius: 14px; padding: 12px 16px; display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.noun h3 { margin: 0; font: 600 1.1rem var(--font-display); }
+.noun p { margin: 0; font-size: .95rem; }
+.noun .eg { color: var(--muted); }
+
+/* tap cards */
+.sec { display: flex; flex-direction: column; gap: 12px; }
+.sec-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 4px 16px; }
+.sec-head p { margin: 0; color: var(--muted); font-size: .95rem; }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 290px), 1fr)); gap: 14px; align-items: start; }
+.tile { text-align: left; border: 2px solid var(--t); background: var(--t-soft); border-radius: 16px; padding: 12px 14px; cursor: pointer; display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.tile .tag { align-self: flex-start; font: 600 .85rem var(--font-display); padding: 1px 10px; border-radius: 8px; background: var(--t); color: var(--t-on); }
+.tile .nm { font-family: var(--font-display); font-weight: 600; font-size: 1.2rem; line-height: 1.15; }
+.tile .hint { font-size: .9rem; color: var(--muted); }
+.tile .more { display: flex; flex-direction: column; gap: 8px; margin-top: 4px; padding-top: 10px; border-top: 1px dashed var(--line-strong); }
+.tile .more[hidden] { display: none; }
+.tile[aria-expanded="true"] { background: var(--surface); }
+.tile .ex { font-size: 1.05rem; }
+.tile .why { font-size: .92rem; color: var(--muted); }
+
+/* quiz */
+.game { background: var(--surface); border: 2px solid var(--line); border-radius: 20px; padding: 18px; display: flex; flex-direction: column; gap: 16px; }
+.gtop { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 16px; }
+.score { font-weight: 600; color: var(--muted); font-size: .95rem; }
+.ctx { margin: 0; color: var(--muted); font-size: .95rem; }
+.q { margin: 0; font-family: var(--font-display); font-weight: 500; font-size: clamp(1.4rem, 4.6vw, 2rem); line-height: 1.35; }
+.blank { display: inline-block; min-width: 3.2em; padding: 0 .35em; border-bottom: 3px solid var(--ink); text-align: center; line-height: 1.2; }
+.blank.on { border-bottom-color: var(--t); color: var(--t); font-weight: 600; background: var(--t-soft); border-radius: 6px 6px 0 0; }
+.opts { display: flex; flex-wrap: wrap; gap: 10px; }
+.opt { font: 600 1.15rem var(--font-display); padding: 10px 26px; border-radius: 14px; border: 2px solid var(--t); background: var(--t-soft); cursor: pointer; }
+.opt:disabled { cursor: default; }
+.opt.right { background: var(--good-soft); border-color: var(--good); }
+.opt.wrong { background: var(--bad-soft); border-color: var(--bad); }
+.opt.dim { opacity: .45; }
+.msg { margin: 0; font-weight: 600; }
+.msg.ok { color: var(--good); }
+.msg.no2 { color: var(--bad); }
+.because { margin: 0; padding: 10px 12px; border-radius: 10px; background: var(--bg); font-size: .98rem; }
+.gbtns { display: flex; flex-wrap: wrap; gap: 8px; }
+.gb { font: 600 .95rem var(--font-display); padding: 9px 18px; border-radius: 12px; border: 2px solid var(--ink); background: var(--ink); color: var(--bg); cursor: pointer; }
+.gb.alt { background: transparent; color: var(--ink); }
+.result { display: flex; flex-direction: column; gap: 12px; }
+.result h2 { font-size: clamp(1.6rem, 5vw, 2.2rem); }
+.miss { display: flex; flex-direction: column; gap: 10px; margin: 0; padding: 0; list-style: none; }
+.miss li { padding: 10px 12px; border-radius: 10px; background: var(--bg); display: flex; flex-direction: column; gap: 2px; }
+.miss .why { font-size: .92rem; color: var(--muted); }
+[hidden] { display: none !important; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .tile .more:not([hidden]), .because { animation: pop .2s ease-out; }
+  @keyframes pop { from { opacity: 0; transform: translateY(-3px); } to { opacity: 1; transform: none; } }
+}
+</style>
+
+<div class="wrap">
+  <style>.gh-home{align-self:flex-start;display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:999px;background:#fff;color:#1d1b3a;border:2px solid #dad6ee;font:600 .9rem system-ui,-apple-system,"Segoe UI",sans-serif;text-decoration:none}.gh-home:hover{border-color:#6a45b8}.gh-home:focus-visible{outline:3px solid #6a45b8;outline-offset:2px}@media (prefers-color-scheme:dark){.gh-home{background:#1e1d40;color:#ecebfa;border-color:#302f5c}.gh-home:hover{border-color:#b79cf2}.gh-home:focus-visible{outline-color:#b79cf2}}</style>
+  <a class="gh-home" href="index.html" aria-label="Back to the home page">&larr; Home</a>
+  <header>
+    <h1>Some and Any</h1>
+    <p class="lead">Which word to pick depends on two things: the kind of sentence (positive, negative or question) and the kind of noun.</p>
+  </header>
+
+  <div class="switch" role="tablist" aria-label="Choose a style">
+    <button class="pick" type="button" role="tab" aria-selected="true" data-view="v-cards"><b>A  Tap Cards</b><span>The rule first, then the exceptions. Tap a card to see examples.</span></button>
+    <button class="pick" type="button" role="tab" aria-selected="false" data-view="v-quiz"><b>B  Pick It</b><span>Choose some, any or a / an for each sentence.</span></button>
+  </div>
+
+  <div class="legend">
+    <span class="label">Colours</span>
+    <span class="chip k-some">some</span><span class="chip k-any">any</span><span class="chip k-a">a / an or no word</span>
+  </div>
+
+  <section class="view" id="v-cards" role="tabpanel">
+    <div class="sec">
+      <h2>Two kinds of noun</h2>
+      <div class="nouns">
+        <div class="noun"><h3>Countable</h3><p>You can count them. They have a singular and a plural form.</p><p class="eg">dog, dogs &nbsp;&middot;&nbsp; book, books</p></div>
+        <div class="noun"><h3>Uncountable</h3><p>You cannot count them. They have one form only and take a singular verb.</p><p class="eg">water &nbsp;&middot;&nbsp; time &nbsp;&middot;&nbsp; information (The information was helpful.)</p></div>
+      </div>
+    </div>
+
+    <div class="sec" style="margin-top:22px">
+      <div class="sec-head"><h2>The core rule</h2><p>Plural and uncountable nouns</p></div>
+      <div class="toolbar"><button class="tool" id="show" type="button">Show all</button><button class="tool" id="hide" type="button">Hide all</button></div>
+      <div class="grid" id="g-core"></div>
+    </div>
+
+    <div class="sec" style="margin-top:22px">
+      <div class="sec-head"><h2>Watch out: exceptions</h2><p>The rule bends here</p></div>
+      <div class="grid" id="g-exc"></div>
+    </div>
+  </section>
+
+  <section class="view" id="v-quiz" role="tabpanel" hidden>
+    <div class="game" id="quiz"></div>
+  </section>
+</div>
+
+<script>
+(function () {
+  function ex(s) {
+    return s.replace(/\*(.+?)\*/g, '<b class="hl">$1</b>').replace(/~(.+?)~/g, '<s class="no">$1</s>');
+  }
+  function cap(s) { return s.charAt(0).toUpperCase() + s.slice(1); }
+
+  /* ---------- A: tap cards ---------- */
+  var CORE = [
+    { k: 'some', tag: 'some', name: 'Positive sentences', hint: 'A limited amount, not an exact one.',
+      ex: ['I have *some* time before my meeting.', 'I think your plant needs *some* water.'],
+      why: 'Use some with plural or uncountable nouns in a positive sentence. It means a small, unspecific amount.' },
+    { k: 'any', tag: 'any', name: 'Negative sentences', hint: 'Zero. None at all.',
+      ex: ['I don\'t have *any* time before my meeting.', 'Mushrooms don\'t need *any* light to grow.'],
+      why: 'In a negative sentence, any means zero.' },
+    { k: 'any', tag: 'any', name: 'Questions', hint: 'Is there even a little?',
+      ex: ['Do you have *any* time before your meeting?'],
+      why: 'In a plain question, any asks if there is even a little. (An offer uses some. See the exceptions.)' },
+    { k: 'any', tag: 'any', name: 'The noun is left out', hint: 'Everyone knows the noun already.',
+      ex: ['We didn\'t see *any* butterflies.', 'We didn\'t see *any*.'],
+      why: 'When the noun is clear, you can drop it. Some and any stay the same.' },
+    { k: 'a', tag: 'no word', name: 'General facts', hint: 'Talking about all of them.',
+      ex: ['Plants need water and light to grow.'],
+      why: 'A general fact needs neither word. Some water means a limited amount. Any light means zero light.' }
+  ];
+  var EXC = [
+    { k: 'any', tag: 'any', name: 'A hidden negative', hint: 'No “not”, but the meaning is negative.',
+      ex: ['I gave my speech without *any* notes.', 'You hardly ate *any* dinner.'],
+      why: 'Words like without, hardly and barely make the meaning negative, so we use any. Without any means zero. Hardly any means almost zero.' },
+    { k: 'some', tag: 'some', name: 'Some starts a negative sentence', hint: 'It sits in the Subject, before the “not”.',
+      ex: ['*Some* passengers didn\'t buy a ticket.'],
+      why: 'It means a few passengers did not buy a ticket, but others did.' },
+    { k: 'some', tag: 'some', name: 'An offer, or you expect “yes”', hint: 'A question that is really an offer.',
+      ex: ['Would you like *some* coffee?', 'Do you need *some* help?'],
+      why: 'When you offer something, or you expect the answer to be yes, use some in the question.' },
+    { k: 'any', tag: 'any + one thing', name: 'Any: it doesn\'t matter which', hint: 'A positive sentence with a singular noun.',
+      ex: ['Pick *any* card.', 'I think *any* color would be okay.'],
+      why: 'Any + a singular noun in a positive sentence means it does not matter which one.' },
+    { k: 'any', tag: 'any + one thing', name: 'Any: it does matter which', hint: 'A negative sentence with a singular noun.',
+      ex: ['You can\'t buy *any* cable. It has to be a specific one.'],
+      why: 'In a negative sentence, any + a singular noun means it does matter which one.' },
+    { k: 'some', tag: 'some + one thing', name: 'Some: a person or thing we don\'t know', hint: 'Often sounds annoyed or unsure.',
+      ex: ['*Some* lady with bright red hair stepped on my foot!', 'I must find *some* way to fix this bike.'],
+      why: 'Some + a singular noun points to someone or something unknown.' },
+    { k: 'a', tag: 'a / an', name: 'Don\'t use some for a / an', hint: 'One ordinary thing.',
+      ex: ['I bought *a* new t-shirt.', '~I bought some new t-shirt.~'],
+      why: 'In an ordinary sentence with one thing, use a or an. Some goes with plural and uncountable nouns.' }
+  ];
+  function tile(c) {
+    return '<button class="tile k-' + c.k + '" type="button" aria-expanded="false">' +
+      '<span class="tag">' + c.tag + '</span><span class="nm">' + c.name + '</span><span class="hint">' + c.hint + '</span>' +
+      '<span class="more" hidden>' + c.ex.map(function (e) { return '<span class="ex">' + ex(e) + '</span>'; }).join('') +
+      '<span class="why">' + c.why + '</span></span></button>';
+  }
+  document.getElementById('g-core').innerHTML = CORE.map(tile).join('');
+  document.getElementById('g-exc').innerHTML = EXC.map(tile).join('');
+  function setTile(b, open) {
+    b.setAttribute('aria-expanded', open ? 'true' : 'false');
+    b.querySelector('.more').hidden = !open;
+  }
+  var cards = document.getElementById('v-cards');
+  cards.addEventListener('click', function (e) {
+    var b = e.target.closest('.tile');
+    if (b) setTile(b, b.getAttribute('aria-expanded') !== 'true');
+  });
+  function all(open) { Array.prototype.forEach.call(cards.querySelectorAll('.tile'), function (b) { setTile(b, open); }); }
+  document.getElementById('show').onclick = function () { all(true); };
+  document.getElementById('hide').onclick = function () { all(false); };
+
+  /* ---------- switcher ---------- */
+  var picks = document.querySelectorAll('.pick');
+  Array.prototype.forEach.call(picks, function (b) {
+    b.addEventListener('click', function () {
+      Array.prototype.forEach.call(picks, function (p) {
+        p.setAttribute('aria-selected', p === b ? 'true' : 'false');
+        document.getElementById(p.dataset.view).hidden = (p !== b);
+      });
+    });
+  });
+
+  /* ---------- B: pick it ---------- */
+  var LAB = { some: 'some', any: 'any', a: 'a / an' };
+  var Q = [
+    { t: 'I have ___ time before my meeting.', a: 'some', why: 'A positive sentence with an uncountable noun, so some.' },
+    { t: 'I don\'t have ___ time before my meeting.', a: 'any', why: 'A negative sentence. Any means zero time.' },
+    { t: 'Do you have ___ time before your meeting?', a: 'any', why: 'A plain question, so any.' },
+    { c: 'You are offering a drink.', t: 'Would you like ___ coffee?', a: 'some', why: 'An offer, so some.' },
+    { t: 'I gave my speech without ___ notes.', a: 'any', why: 'Without makes the meaning negative, so any. It means zero notes.' },
+    { t: 'You hardly ate ___ dinner.', a: 'any', why: 'Hardly makes the meaning negative, so any. It means almost zero.' },
+    { t: '___ passengers didn\'t buy a ticket.', a: 'some', why: 'Some can start a negative sentence. It means a few passengers did not buy one.' },
+    { t: 'We didn\'t see ___ butterflies.', a: 'any', why: 'A negative sentence with a plural noun, so any.' },
+    { c: 'It does not matter which card.', t: 'Pick ___ card.', a: 'any', why: 'Any + a singular noun in a positive sentence means it does not matter which one.' },
+    { t: '___ lady with bright red hair stepped on my foot!', a: 'some', why: 'Some + a singular noun means someone we don\'t know, often with an annoyed feeling.' },
+    { t: 'I think your plant needs ___ water.', a: 'some', why: 'A positive sentence with an uncountable noun, so some.' },
+    { c: 'You want to offer help.', t: 'Do you need ___ help?', a: 'some', why: 'Some makes the question an offer. You expect the answer to be yes. (Any would make it a plain question.)' },
+    { t: 'I bought ___ new t-shirt.', a: 'a', o: ['some', 'any', 'a'], why: 'One ordinary thing, so a. Some is for plural and uncountable nouns.' },
+    { c: 'It has to be one specific cable.', t: 'You can\'t buy ___ cable.', a: 'any', why: 'In a negative sentence, any + a singular noun means it does matter which one.' },
+    { c: 'You don\'t know yet which way.', t: 'I must find ___ way to fix this bike.', a: 'some', why: 'Some + a singular noun points to something unknown.' },
+    { t: 'Mushrooms don\'t need ___ light to grow.', a: 'any', why: 'A negative sentence. Any means zero light.' }
+  ];
+  var el = document.getElementById('quiz');
+  var st;
+  function shuffle(a) { for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)); var x = a[i]; a[i] = a[j]; a[j] = x; } return a; }
+  function newGame(mix) {
+    st = { order: Q.map(function (_, i) { return i; }), pos: 0, score: 0, picked: null, missed: [] };
+    if (mix) shuffle(st.order);
+    renderQ();
+  }
+  function sentence(q, filled) {
+    var p = q.t.split('___');
+    var w = filled ? (p[0] === '' ? cap(LAB[filled].split(' ')[0]) : LAB[filled].split(' ')[0]) : '&nbsp;';
+    return p[0] + '<span class="blank' + (filled ? ' on k-' + filled : '') + '">' + w + '</span>' + p[1];
+  }
+  function renderQ() {
+    if (st.pos >= Q.length) { renderDone(); return; }
+    var q = Q[st.order[st.pos]], done = st.picked !== null;
+    var opts = (q.o || ['some', 'any']).map(function (o) {
+      var cls = 'opt k-' + o;
+      if (done) { if (o === q.a) cls += ' right'; else if (o === st.picked) cls += ' wrong'; else cls += ' dim'; }
+      return '<button class="' + cls + '" type="button" data-opt="' + o + '"' + (done ? ' disabled' : '') + '>' + LAB[o] + '</button>';
+    }).join('');
+    var fb = '';
+    if (done) {
+      var ok = st.picked === q.a;
+      fb = '<p class="msg ' + (ok ? 'ok' : 'no2') + '">' + (ok ? 'Yes!' : 'Not quite. The answer is ' + LAB[q.a] + '.') + '</p><p class="because">' + q.why + '</p>' +
+        '<div class="gbtns"><button class="gb" type="button" id="next">' + (st.pos === Q.length - 1 ? 'See my score' : 'Next question') + '</button></div>';
+    }
+    el.innerHTML =
+      '<div class="gtop"><span class="label">Question ' + (st.pos + 1) + ' of ' + Q.length + '</span><span class="score">Score ' + st.score + '</span></div>' +
+      (q.c ? '<p class="ctx">' + q.c + '</p>' : '') +
+      '<p class="q">' + sentence(q, done ? q.a : null) + '</p>' +
+      '<div class="opts" role="group" aria-label="Choose a word">' + opts + '</div>' +
+      '<div aria-live="polite">' + fb + '</div>';
+  }
+  function renderDone() {
+    var n = Q.length, s = st.score;
+    var line = s === n ? 'Perfect score!' : (s >= n * 0.75 ? 'Very good.' : 'Keep going. Check the cards, then try again.');
+    var miss = st.missed.length ? '<p class="label">Review these</p><ul class="miss">' + st.missed.map(function (i) {
+      return '<li><span>' + sentence(Q[i], Q[i].a) + '</span><span class="why">' + Q[i].why + '</span></li>';
+    }).join('') + '</ul>' : '';
+    el.innerHTML = '<div class="result"><p class="label">All done</p><h2>You got ' + s + ' of ' + n + '</h2><p class="msg">' + line + '</p>' + miss +
+      '<div class="gbtns"><button class="gb" type="button" id="again">Play again, mixed up</button></div></div>';
+  }
+  el.addEventListener('click', function (e) {
+    var o = e.target.closest('[data-opt]');
+    if (o && st.picked === null) {
+      var qi = st.order[st.pos], q = Q[qi];
+      st.picked = o.dataset.opt;
+      if (st.picked === q.a) st.score++; else st.missed.push(qi);
+      renderQ();
+    } else if (e.target.id === 'next') { st.pos++; st.picked = null; renderQ(); }
+    else if (e.target.id === 'again') { newGame(true); }
+  });
+  newGame(false);
+})();
+</script>
+
+</body></html>

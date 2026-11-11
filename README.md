@@ -2,9 +2,7 @@ All about English Grammar
 
 ## Pages
 
-- [Home (navigation page)](index.html)
-- [Tense Style Options](tense_style_options.html)
-- [Be Verb Study Page](be_verb_study_page.html)
-- [Some and Any Study Page](some_any_study_page.html)
-
-> On GitHub these links show the page code. To view them as web pages, open `index.html` from a downloaded copy or from a hosted site (for example Netlify or GitHub Pages).
+- [Home (navigation page)](https://mishty123.github.io/English_Grammar/)
+- [Tense Style Options](https://mishty123.github.io/English_Grammar/tense_style_options.html)
+- [Be Verb Study Page](https://mishty123.github.io/English_Grammar/be_verb_study_page.html)
+- [Some and Any Study Page](https://mishty123.github.io/English_Grammar/some_any_study_page.html)

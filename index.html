@@ -6,42 +6,35 @@
   <title>English Grammar</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&family=Patrick+Hand&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Poppins:wght@600;700&display=swap">
   <style>
     :root {
-      --bg: #e8f3ec;
-      --card: #fffdf8;
-      --ink: #17322a;
-      --muted: #52675b;
-      --line: #c5dccd;
-      --verbs: #a63c25; --verbs-soft: #fde1d6;
-      --pron: #6b4a7a; --pron-soft: #eadff0;
-      --small: #7a5606; --small-soft: #fbedc0;
-      --ok: #1f6b57; --ok-soft: #d3eadf;
-      --font-display: "Patrick Hand", "Comic Sans MS", "Segoe Print", system-ui, sans-serif;
-      --font-body: "Nunito", system-ui, -apple-system, "Segoe UI", sans-serif;
+      --bg: #eef3ef;
+      --card: #ffffff;
+      --ink: #14281f;
+      --muted: #4f6257;
+      --line: #d3dfd7;
+      --dot: #c9d8ce;
+      --verbs: #a8472a; --small: #7d5a06; --pron: #66447a; --ok: #1f6b57; --ok-soft: #d8ebe2;
+      --font-display: "Poppins", "Segoe UI", system-ui, sans-serif;
+      --font-body: "DM Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
     }
     @media (prefers-color-scheme: dark) {
       :root {
-        --bg: #12241d;
-        --card: #1b332a;
-        --ink: #eaf4ee;
-        --muted: #a9c2b5;
-        --line: #2f4d40;
-        --verbs: #ffa58b; --verbs-soft: #4a2218;
-        --pron: #cfa8e8; --pron-soft: #3a2447;
-        --small: #f0c35a; --small-soft: #46350a;
-        --ok: #7fd0b4; --ok-soft: #12382b;
+        --bg: #101e18; --card: #18302a; --ink: #eaf4ee; --muted: #a9c2b5; --line: #2c4a3d; --dot: #1d3329;
+        --verbs: #e2704f; --small: #c18f17; --pron: #9a74b4; --ok: #7fd0b4; --ok-soft: #12382b;
       }
     }
     * { box-sizing: border-box; }
     [hidden] { display: none !important; }
     body {
       margin: 0;
-      background: var(--bg);
+      background-color: var(--bg);
+      background-image: radial-gradient(var(--dot) 1.2px, transparent 1.2px);
+      background-size: 24px 24px;
       color: var(--ink);
       font-family: var(--font-body);
-      font-size: 17px;
+      font-size: 16px;
       line-height: 1.55;
       padding: 48px 20px 72px;
       position: relative;
@@ -51,7 +44,7 @@
     .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 
     /* doodles: fine line art */
-    .dd { position: absolute; pointer-events: none; z-index: 0; fill: none; stroke: var(--ink); stroke-width: 1.3; stroke-linecap: round; stroke-linejoin: round; opacity: .42; }
+    .dd { position: absolute; pointer-events: none; z-index: 0; fill: none; stroke: var(--ink); stroke-width: 1.3; stroke-linecap: round; stroke-linejoin: round; opacity: .35; }
     .dd .glyph { fill: none; stroke: var(--ink); stroke-width: 1.1; font-family: Georgia, "Times New Roman", serif; font-size: 78px; }
     .d-quill { width: 76px; right: max(18px, calc(50% - 440px)); top: 34px; transform: rotate(10deg); }
     .d-spark1 { width: 22px; right: max(120px, calc(50% - 330px)); top: 128px; }
@@ -65,78 +58,56 @@
     @media (max-width: 1060px) { .d-book, .d-ink, .d-olive, .d-nib, .d-amp, .d-pilcrow { display: none; } }
     @media (max-width: 640px) { .d-quill { width: 54px; right: 14px; top: 20px; } .d-spark1, .d-spark2 { display: none; } }
 
-    header { margin-bottom: 28px; }
-    .eyebrow { font-family: var(--font-display); font-size: 1.15rem; letter-spacing: .06em; color: var(--muted); }
-    h1 {
-      font-family: var(--font-display);
-      font-weight: 400;
-      font-size: clamp(2.6rem, 9vw, 4rem);
-      line-height: 1;
-      margin: 6px 0 6px;
-    }
-    .squig { display: block; width: 150px; height: 14px; margin: 0 0 12px; fill: none; stroke: var(--verbs); stroke-width: 3; stroke-linecap: round; }
-    .lead { margin: 0; color: var(--muted); max-width: 52ch; }
+    header { margin-bottom: 26px; }
+    .eyebrow { font-size: .78rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--verbs); }
+    h1 { font-family: var(--font-display); font-weight: 700; font-size: clamp(2.2rem, 7.5vw, 3.2rem); line-height: 1.08; letter-spacing: -.02em; margin: 8px 0 12px; }
+    .bar { display: block; width: 56px; height: 5px; border-radius: 3px; background: var(--verbs); margin: 0 0 14px; }
+    .lead { margin: 0; color: var(--muted); max-width: 54ch; }
 
-    /* search and filters */
-    .tools { display: flex; flex-direction: column; gap: 14px; margin-bottom: 22px; }
+    .tools { display: flex; flex-direction: column; gap: 12px; margin-bottom: 20px; }
     .search { position: relative; }
-    .search svg.mag { position: absolute; left: 16px; top: 50%; transform: translateY(-50%); width: 22px; height: 22px; fill: none; stroke: var(--muted); stroke-width: 2.4; stroke-linecap: round; pointer-events: none; }
+    .search svg.mag { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); width: 20px; height: 20px; fill: none; stroke: var(--muted); stroke-width: 2.2; stroke-linecap: round; pointer-events: none; }
     .search input {
-      width: 100%; font: inherit; font-size: 1.05rem; color: var(--ink); background: var(--card);
-      border: 2px solid var(--line); border-radius: 26px 22px 28px 22px / 22px 26px 22px 28px;
-      padding: 10px 46px; appearance: none;
+      width: 100%; font: inherit; font-size: 1rem; color: var(--ink); background: var(--card);
+      border: 1.5px solid var(--line); border-radius: 12px; padding: 12px 44px; appearance: none;
+      box-shadow: 0 1px 0 rgba(20, 40, 31, .04);
     }
     .search input::placeholder { color: var(--muted); }
     .search input:focus-visible { outline: 3px solid var(--ok); outline-offset: 2px; border-color: var(--ok); }
     .search input::-webkit-search-cancel-button { display: none; }
-    .clear { position: absolute; right: 10px; top: 50%; transform: translateY(-50%); width: 32px; height: 32px; border-radius: 50%; border: 0; background: var(--ok-soft); color: var(--ok); font: 700 1.1rem var(--font-body); cursor: pointer; line-height: 1; }
+    .clear { position: absolute; right: 8px; top: 50%; transform: translateY(-50%); width: 30px; height: 30px; border-radius: 8px; border: 0; background: var(--ok-soft); color: var(--ok); font: 700 1.1rem var(--font-body); cursor: pointer; line-height: 1; }
     .clear:focus-visible { outline: 3px solid var(--ok); outline-offset: 2px; }
     .chips { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
-    .chip {
-      font-family: var(--font-display); font-size: 1.02rem; color: var(--ink); background: var(--card);
-      border: 2px solid var(--line); border-radius: 999px; padding: 1px 13px; cursor: pointer;
-    }
+    .chip { font: 500 .88rem var(--font-body); color: var(--ink); background: var(--card); border: 1.5px solid var(--line); border-radius: 10px; padding: 6px 14px; cursor: pointer; }
     .chip:hover { border-color: var(--muted); }
     .chip:focus-visible { outline: 3px solid var(--ok); outline-offset: 2px; }
-    .chip[aria-pressed="true"] { background: var(--ok-soft); border-color: var(--ok); color: var(--ok); }
-    .chip[data-cat="verbs"][aria-pressed="true"] { background: var(--verbs-soft); border-color: var(--verbs); color: var(--verbs); }
-    .chip[data-cat="pronouns"][aria-pressed="true"] { background: var(--pron-soft); border-color: var(--pron); color: var(--pron); }
-    .chip[data-cat="small"][aria-pressed="true"] { background: var(--small-soft); border-color: var(--small); color: var(--small); }
-    .count { margin-left: auto; color: var(--muted); font-size: .92rem; }
+    .chip[aria-pressed="true"] { background: var(--ink); border-color: var(--ink); color: var(--bg); }
+    .count { margin-left: auto; color: var(--muted); font-size: .85rem; }
 
-    /* cards */
     .cards { display: grid; gap: 10px; }
     .card {
-      --c: var(--ok); --c-soft: var(--ok-soft);
-      display: flex; align-items: center; gap: 14px; padding: 12px 16px;
-      background: var(--card); border: 2px solid var(--line);
-      border-radius: 24px 20px 26px 20px / 20px 26px 20px 24px;
-      color: inherit; text-decoration: none;
-      transition: transform .15s ease, border-color .15s ease;
+      --c: var(--ok);
+      position: relative; display: flex; align-items: center; gap: 14px; padding: 14px 18px 14px 20px;
+      background: var(--card); border: 1.5px solid var(--line); border-radius: 14px; overflow: hidden;
+      color: inherit; text-decoration: none; transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease;
     }
-    .card.verbs { --c: var(--verbs); --c-soft: var(--verbs-soft); }
-    .card.pronouns { --c: var(--pron); --c-soft: var(--pron-soft); }
-    .card.small { --c: var(--small); --c-soft: var(--small-soft); }
-    .card:hover { transform: translateY(-2px) rotate(-.4deg); border-color: var(--c); }
+    .card::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 5px; background: var(--c); }
+    .card.verbs { --c: var(--verbs); } .card.pronouns { --c: var(--pron); } .card.small { --c: var(--small); }
+    .card:hover { transform: translateY(-2px); border-color: var(--c); box-shadow: 0 6px 16px rgba(20, 40, 31, .10); }
     .card:focus-visible { outline: 3px solid var(--c); outline-offset: 3px; }
-    .icon {
-      flex: none; width: 58px; height: 44px; padding: 0; border-radius: 18px 14px 20px 14px / 14px 20px 14px 18px;
-      display: grid; place-items: center; transform: rotate(-4deg);
-      font-family: var(--font-display); font-size: 1.15rem; background: var(--c-soft); color: var(--c); white-space: nowrap;
-      border: 2px dashed var(--c);
-    }
+    .icon { flex: none; width: 52px; height: 44px; border-radius: 10px; display: grid; place-items: center; font-family: var(--font-display); font-weight: 600; font-size: .95rem; background: var(--c); color: #fff; }
     .text { min-width: 0; flex: 1; }
-    .text h2 { font-family: var(--font-display); font-weight: 400; font-size: 1.28rem; line-height: 1.15; margin: 0 0 1px; }
+    .text h2 { font-family: var(--font-display); font-weight: 600; font-size: 1.05rem; line-height: 1.25; margin: 0 0 2px; }
     .text p { margin: 0; color: var(--muted); font-size: .88rem; line-height: 1.45; }
-    .tag { display: inline-block; margin-top: 4px; font-family: var(--font-display); font-size: .92rem; line-height: 1.35; background: var(--c-soft); color: var(--c); border-radius: 999px; padding: 0 12px; }
+    .tag { display: inline-block; margin-top: 6px; font-size: .68rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--c); }
     .arrow { flex: none; font-size: 1.2rem; color: var(--muted); }
 
-    .empty { text-align: center; padding: 28px 16px; border: 2px dashed var(--line); border-radius: 24px; color: var(--muted); }
-    .empty svg { width: 64px; height: 64px; fill: none; stroke: var(--muted); stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+    .empty { text-align: center; padding: 26px 16px; border: 1.5px dashed var(--line); border-radius: 14px; color: var(--muted); background: var(--card); }
+    .empty svg { width: 56px; height: 56px; fill: none; stroke: var(--muted); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
     .empty p { margin: 6px 0 0; }
-    footer { margin-top: 40px; color: var(--muted); font-size: .9rem; }
+    footer { margin-top: 36px; color: var(--muted); font-size: .85rem; }
     @media (prefers-reduced-motion: reduce) { .card { transition: none; } .card:hover { transform: none; } }
-    @media (max-width: 520px) { .card { padding: 12px; gap: 12px; } .arrow { display: none; } .count { margin-left: 0; width: 100%; } }
+    @media (max-width: 520px) { .card { padding: 12px 14px 12px 18px; gap: 12px; } .arrow { display: none; } .count { margin-left: 0; width: 100%; } }
   </style>
 </head>
 <body>
@@ -154,7 +125,7 @@
     <header>
       <span class="eyebrow">Study pages</span>
       <h1>English Grammar</h1>
-      <svg class="squig" viewBox="0 0 150 14" aria-hidden="true"><path d="M3 8 Q15 0 27 8 T51 8 T75 8 T99 8 T123 8 T147 8"/></svg>
+      <span class="bar" aria-hidden="true"></span>
       <p class="lead">Pick a page to start studying, or search for a topic. Every page opens from here.</p>
     </header>
 

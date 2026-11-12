@@ -171,7 +171,10 @@ th.right { background: var(--right-bg); color: var(--right); }
 .use .ex { font-size: 1.05rem; background: var(--soft); border-left: 4px solid var(--c); border-radius: 0 8px 8px 0; padding: 7px 12px; }
 .use .ex + .ex { margin-top: 4px; }
 .use > div > .ex:first-child::before { content: "Example"; display: block; font-family: var(--body); font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--c); margin-bottom: 1px; }
-.use > div > .ex:first-child:has(+ .ex)::before { content: "Examples"; }
+.use > div > .ex:first-child:has(+ .ex:not(.phr))::before { content: "Examples"; }
+.use > div > .ex.many:first-child::before { content: "Examples"; }
+.use .ex.phr { background: none; border-left: 0; border-radius: 0; padding: 0; }
+.use > div > .ex.phr::before { content: none !important; }
 .use .tip { color: var(--muted); font-size: 0.96rem; margin-top: 4px; }
 .use > div { min-width: 0; }
 .how { margin: 6px 0 0; padding-left: 1.35em; color: var(--muted); font-size: 0.96rem; }
@@ -321,10 +324,10 @@ details p b { color: var(--right); }
   <div class="uses">
     <div class="use"><h3>Subject of a verb</h3><div>
       <p class="ex"><span class="s">She</span> sings. <span class="s">They</span> play.</p>
-      <p class="ex">Who sings? <span class="s">She</span>. Who plays? <span class="s">They</span>.</p>
       <ol class="how">
         <li>Find the verb.</li>
-        <li>Ask &ldquo;who or what does it?&rdquo;</li>
+        <li>Ask &ldquo;who or what does it?&rdquo;
+          <p>Who sings? <span class="s">She</span>. Who plays? <span class="s">They</span>.</p></li>
         <li>The answer is the subject, so use the subject form.</li>
       </ol></div></div>
     <div class="use"><h3>Compound subject</h3><div>
@@ -337,9 +340,9 @@ details p b { color: var(--right); }
     <div class="use"><h3>Subject in a question</h3><div>
       <p class="ex">Is <span class="s">she</span> here? Can <span class="s">we</span> go?</p>
       <ol class="how">
-        <li>In a question, the first verb (is, can, do) comes before the subject.</li>
-        <li>The subject comes right after that verb.</li>
-        <li>The pronoun is still the subject, so it stays in the subject form.</li>
+        <li>In a question, the verb (auxiliary) comes first.</li>
+        <li>The subject comes right after it.</li>
+        <li>The pronoun stays in the subject form.</li>
       </ol></div></div>
     <div class="use"><h3>After than or as</h3><div>
       <p class="ex">My sister is older than <span class="s">I</span> (am).</p>
@@ -349,12 +352,9 @@ details p b { color: var(--right); }
         <li>Ask whether that verb has an object.
           <ul>
             <li><b>No object</b> (is, did, can): you are comparing two subjects, and there is only one meaning. Use the subject form.
-              <p class="ex">You are taller than <span class="s">he</span> (is).</p>
-              <p class="ex">We worked as hard as <span class="s">they</span> (did).</p>
-              <p class="ex">I can run faster than <span class="s">she</span> (can).</p></li>
+              <p class="ex many">You are taller than <span class="s">he</span> (is).<br>We worked as hard as <span class="s">they</span> (did).<br>I can run faster than <span class="s">she</span> (can).</p></li>
             <li><b>Has an object</b> (like, help, trust): there are two possible meanings.
-              <p class="ex">The pronoun <b>does</b> the action, so use the subject form: She likes him more than <span class="s">I</span> (like him).</p>
-              <p class="ex">The pronoun <b>receives</b> the action, so use the object form: She likes him more than <span class="o">me</span> (than she likes me).</p></li>
+              <p class="ex many">The pronoun <b>does</b> the action, so use the subject form: She likes him more than <span class="s">I</span> (like him).<br>The pronoun <b>receives</b> the action, so use the object form: She likes him more than <span class="o">me</span> (than she likes me).</p></li>
           </ul></li>
         <li>Pick the form that matches the meaning you want, because the two forms give different meanings.</li>
         <li>Casual speech: &ldquo;older than me&rdquo; is common and accepted. Use the subject form for exams and formal writing.</li>
@@ -396,12 +396,12 @@ details p b { color: var(--right); }
       <p class="ex">She called <span class="o">me</span>. He saw <span class="o">them</span>.</p>
       <ol class="how">
         <li>Find the verb.</li>
-        <li>Ask &ldquo;whom?&rdquo; or &ldquo;what?&rdquo; after the verb.</li>
+        <li>Ask &ldquo;whom?&rdquo; or &ldquo;what?&rdquo; after the verb.
+          <p>She called whom? <span class="o">Me</span>. He saw whom? <span class="o">Them</span>.</p></li>
         <li>The answer receives the action, so use the object form.</li>
       </ol></div></div>
     <div class="use"><h3>Indirect object</h3><div>
-      <p class="ex">Dad gave <span class="o">her</span> a toy.</p>
-      <p class="ex">= Dad gave a toy to <span class="o">her</span>.</p>
+      <p class="ex many">Dad gave <span class="o">her</span> a toy.<br>= Dad gave a toy to <span class="o">her</span>.</p>
       <ol class="how">
         <li>Look for a verb of giving or telling (give, send, show, tell, buy).</li>
         <li>Ask &ldquo;to whom?&rdquo; or &ldquo;for whom?&rdquo;</li>
@@ -409,7 +409,7 @@ details p b { color: var(--right); }
         <li>It works with or without <i>to</i>. The form stays the same.</li>
       </ol></div></div>
     <div class="use"><h3>After a preposition</h3><div>
-      <p class="ex">with <span class="o">him</span>, for <span class="o">us</span>, to <span class="o">them</span>, about <span class="o">it</span></p>
+      <p class="ex phr">with <span class="o">him</span>, for <span class="o">us</span>, to <span class="o">them</span>, about <span class="o">it</span></p>
       <p class="ex">Everyone came except <span class="o">him</span>. Between you and <span class="o">me</span>, I agree.</p>
       <ol class="how">
         <li>Spot the preposition (with, for, to, about, from, at, between&hellip;).</li>
@@ -418,8 +418,7 @@ details p b { color: var(--right); }
         <li>This includes <i>except</i>, <i>but</i> (meaning except), <i>like</i> and <i>between</i>.</li>
       </ol></div></div>
     <div class="use"><h3>Compound object</h3><div>
-      <p class="ex">He invited Sara and <span class="o">me</span>.</p>
-      <p class="ex">Give it to her and <span class="o">me</span>.</p>
+      <p class="ex many">He invited Sara and <span class="o">me</span>.<br>Give it to her and <span class="o">me</span>.</p>
       <ol class="how">
         <li>Remove the other person: &ldquo;He invited <s>Sara and</s> me.&rdquo;</li>
         <li>Read the sentence. &ldquo;He invited me&rdquo; sounds right, and &ldquo;He invited I&rdquo; does not.</li>
@@ -469,14 +468,13 @@ details p b { color: var(--right); }
   </header>
   <div class="uses">
     <div class="use"><h3>Always before a noun</h3><div>
-      <p class="ex"><span class="pa">my</span> pen, <span class="pa">your</span> bag, <span class="pa">our</span> house</p>
+      <p class="ex phr"><span class="pa">my</span> pen, <span class="pa">your</span> bag, <span class="pa">our</span> house</p>
       <p class="tip">A possessive adjective is always followed by a noun.</p></div></div>
     <div class="use"><h3>Match the owner</h3><div>
-      <p class="ex">Sara loves <span class="pa">her</span> brother.</p>
-      <p class="ex">Tom loves <span class="pa">his</span> sister.</p>
+      <p class="ex many">Sara loves <span class="pa">her</span> brother.<br>Tom loves <span class="pa">his</span> sister.</p>
       <p class="tip">Choose <i>his</i> or <i>her</i> by the owner (Tom, Sara), not by the thing owned (sister, brother).</p></div></div>
     <div class="use"><h3>No change for plural nouns</h3><div>
-      <p class="ex"><span class="pa">my</span> book, <span class="pa">my</span> books</p>
+      <p class="ex phr"><span class="pa">my</span> book, <span class="pa">my</span> books</p>
       <p class="tip">Only the owner changes the word.</p></div></div>
     <div class="use"><h3>Body parts and clothes</h3><div>
       <p class="ex">He washed <span class="pa">his</span> hands. She put on <span class="pa">her</span> coat.</p>
@@ -489,7 +487,7 @@ details p b { color: var(--right); }
       <p class="tip">Formal style uses the possessive adjective. Everyday speech often says &ldquo;you waiting.&rdquo;</p></div></div>
     <div class="use"><h3>Look-alike words</h3><div>
       <p class="ex">The dog wagged <span class="pa">its</span> tail. <b>It&rsquo;s</b> raining.</p>
-      <p class="ex"><span class="pa">their</span> house, over <b>there</b>, <b>they&rsquo;re</b> late</p>
+      <p class="ex phr"><span class="pa">their</span> house, over <b>there</b>, <b>they&rsquo;re</b> late</p>
       <p class="tip"><i>its</i> belongs to it. <i>it&rsquo;s</i> is <i>it is</i> or <i>it has</i>. <i>their</i> belongs to them. <i>there</i> is a place. <i>they&rsquo;re</i> is <i>they are</i>.</p></div></div>
   </div>
 </section>
@@ -520,10 +518,10 @@ details p b { color: var(--right); }
     <div class="use"><h3>After <i>than</i> or <i>as</i></h3><div>
       <p class="ex">Their house is bigger than <span class="pp">ours</span>.</p></div></div>
     <div class="use"><h3>Double possessive</h3><div>
-      <p class="ex">a friend of <span class="pp">mine</span>, a cousin of <span class="pp">hers</span></p>
+      <p class="ex phr">a friend of <span class="pp">mine</span>, a cousin of <span class="pp">hers</span></p>
       <p class="tip">Not &ldquo;a friend of me.&rdquo;</p></div></div>
     <div class="use"><h3>No apostrophe</h3><div>
-      <p class="ex"><span class="pp">yours, hers, ours, theirs</span></p>
+      <p class="ex phr"><span class="pp">yours, hers, ours, theirs</span></p>
       <p class="tip">Never your&rsquo;s, her&rsquo;s, our&rsquo;s or their&rsquo;s. <i>his</i> stays <i>his</i>.</p></div></div>
   </div>
 </section>
@@ -545,8 +543,7 @@ details p b { color: var(--right); }
       <p class="ex">She bought <span class="r">herself</span> a coat.</p>
       <p class="tip">&ldquo;She bought <span class="o">her</span> a coat&rdquo; means a different woman.</p></div></div>
     <div class="use"><h3>After a preposition</h3><div>
-      <p class="ex">He talked to <span class="r">himself</span>. I am proud of <span class="r">myself</span>.</p>
-      <p class="ex">She did it by <span class="r">herself</span>.</p>
+      <p class="ex many">He talked to <span class="r">himself</span>. I am proud of <span class="r">myself</span>.<br>She did it by <span class="r">herself</span>.</p>
       <p class="tip"><i>by</i> + reflexive means alone, or without help.</p></div></div>
     <div class="use"><h3>Fixed phrases</h3><div>
       <p class="ex">Enjoy <span class="r">yourself</span>. Help <span class="r">yourselves</span>. Behave <span class="r">yourself</span>.</p></div></div>
@@ -557,8 +554,7 @@ details p b { color: var(--right); }
   <h3>Intensive: adds emphasis</h3>
   <div class="uses">
     <div class="use"><h3>After a noun or pronoun</h3><div>
-      <p class="ex">The president <span class="r">himself</span> opened the door.</p>
-      <p class="ex">I <span class="r">myself</span> checked the report.</p></div></div>
+      <p class="ex many">The president <span class="r">himself</span> opened the door.<br>I <span class="r">myself</span> checked the report.</p></div></div>
     <div class="use"><h3>At the end</h3><div>
       <p class="ex">I did it <span class="r">myself</span>.</p></div></div>
   </div>
@@ -592,8 +588,7 @@ details p b { color: var(--right); }
       <p class="ex"><span class="s">It</span> is raining. <span class="s">It</span> is 5 o&rsquo;clock. <span class="s">It</span> is far from here.</p>
       <p class="tip">Here <i>it</i> has no meaning of its own. The sentence needs a subject, so <i>it</i> fills the place. Used for weather, time and distance.</p></div></div>
     <div class="use"><h3>it holding the place of a later subject</h3><div>
-      <p class="ex"><span class="s">It</span> is important to study.</p>
-      <p class="ex"><span class="s">It</span> was Sara who called.</p>
+      <p class="ex many"><span class="s">It</span> is important to study.<br><span class="s">It</span> was Sara who called.</p>
       <p class="tip">The real subject (<i>to study</i>) comes later. In the second sentence, <i>It was ... who</i> puts the focus on Sara.</p></div></div>
     <div class="use"><h3>he and she for animals</h3><div>
       <p class="ex">My dog is old. <span class="s">She</span> sleeps all day.</p>
@@ -617,20 +612,16 @@ details p b { color: var(--right); }
   </header>
   <div class="uses">
     <div class="use"><h3>Never drop the subject</h3><div>
-      <p class="ex"><b>Wrong:</b> Is raining. Am very tired.</p>
-      <p class="ex"><b>Right:</b> <span class="s">It</span> is raining. <span class="s">I</span> am very tired.</p>
+      <p class="ex many"><b>Wrong:</b> Is raining. Am very tired.<br><b>Right:</b> <span class="s">It</span> is raining. <span class="s">I</span> am very tired.</p>
       <p class="tip">English needs a subject before every verb. The only exception is a command, where <i>you</i> is understood: &ldquo;Close the door.&rdquo;</p></div></div>
     <div class="use"><h3>Do not double the subject</h3><div>
-      <p class="ex"><b>Wrong:</b> My brother he is tall.</p>
-      <p class="ex"><b>Right:</b> My brother is tall.</p>
-      <p class="ex"><b>Wrong:</b> The book that I bought it was new. <b>Right:</b> The book that I bought was new.</p>
+      <p class="ex many"><b>Wrong:</b> My brother he is tall.<br><b>Right:</b> My brother is tall.<br><b>Wrong:</b> The book that I bought it was new. <b>Right:</b> The book that I bought was new.</p>
       <p class="tip">The noun is already the subject. A pronoun after it repeats the subject. In the second pair, <i>that</i> already stands for the book, so <i>it</i> repeats the object.</p></div></div>
     <div class="use"><h3>Pronoun + noun</h3><div>
-      <p class="ex"><span class="s">We</span> students need help.</p>
-      <p class="ex">She told <span class="o">us</span> students to wait.</p>
+      <p class="ex many"><span class="s">We</span> students need help.<br>She told <span class="o">us</span> students to wait.</p>
       <p class="tip">The pronoun takes the form of its job. Test: delete the noun. &ldquo;We need help.&rdquo; &ldquo;She told us to wait.&rdquo;</p></div></div>
     <div class="use"><h3>both, all, each + of</h3><div>
-      <p class="ex">both of <span class="o">us</span> &middot; all of <span class="o">them</span> &middot; each of <span class="o">you</span></p>
+      <p class="ex phr">both of <span class="o">us</span> &middot; all of <span class="o">them</span> &middot; each of <span class="o">you</span></p>
       <p class="tip">After <i>of</i>, use the object form. &ldquo;Both of we&rdquo; is wrong.</p></div></div>
     <div class="use"><h3>we both, they all</h3><div>
       <p class="ex"><span class="s">We</span> both like tea. <span class="s">They</span> all came.</p>
@@ -639,7 +630,7 @@ details p b { color: var(--right); }
       <p class="ex">Tom and <span class="s">I</span> went. Can <span class="s">I</span> come?</p>
       <p class="tip"><i>I</i> is always a capital letter, in any position. Every other pronoun is lowercase unless it starts a sentence.</p></div></div>
     <div class="use"><h3>own</h3><div>
-      <p class="ex">my <b>own</b> room &middot; a room of my <b>own</b></p>
+      <p class="ex phr">my <b>own</b> room &middot; a room of my <b>own</b></p>
       <p class="tip"><i>own</i> follows a possessive adjective and adds emphasis: the room belongs to me alone. Wrong: &ldquo;an own room.&rdquo;</p></div></div>
   </div>
 </section>
@@ -658,15 +649,13 @@ details p b { color: var(--right); }
     <div class="use"><h3>Number, gender, person</h3><div>
       <p class="ex">The boy lost <span class="pa">his</span> bag. The boys lost <span class="pa">their</span> bags.</p></div></div>
     <div class="use"><h3>One pronoun, one noun</h3><div>
-      <p class="ex"><b>Unclear:</b> Maria told Anna that <span class="s">she</span> was late.</p>
-      <p class="ex"><b>Clear:</b> Maria told Anna, &ldquo;You are late.&rdquo;</p>
+      <p class="ex many"><b>Unclear:</b> Maria told Anna that <span class="s">she</span> was late.<br><b>Clear:</b> Maria told Anna, &ldquo;You are late.&rdquo;</p>
       <p class="tip">If a pronoun could mean two nouns, repeat the noun or rewrite the sentence.</p></div></div>
     <div class="use"><h3>everyone, someone, each, nobody</h3><div>
       <p class="ex">Everyone should bring <span class="pa">their</span> book.</p>
       <p class="tip">These words are singular and take a singular verb (<i>everyone is</i>). Modern English uses <i>their</i> after them. Older exam style writes <i>his or her</i>.</p></div></div>
     <div class="use"><h3>team, family, class, committee</h3><div>
-      <p class="ex">The team lost <span class="pa">its</span> game. (one unit)</p>
-      <p class="ex">The team put on <span class="pa">their</span> coats. (members, each acting)</p>
+      <p class="ex many">The team lost <span class="pa">its</span> game. (one unit)<br>The team put on <span class="pa">their</span> coats. (members, each acting)</p>
       <p class="tip">A group acting as one unit takes <i>it / its</i>. Members acting separately take <i>they / their</i>. British English often treats the group as plural: &ldquo;The team have lost their game.&rdquo;</p></div></div>
   </div>
   <h3>Two subjects joined together: the verb and the pronoun</h3>

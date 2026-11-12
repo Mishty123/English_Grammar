@@ -1,0 +1,813 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Personal Pronouns</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Nunito:wght@600;800&display=swap">
+<style>
+/* Layout: one reading column. Terracotta base with warm biscuit background; job colors are deep teal, terracotta, olive, ochre and plum. Job colors (subject, object, possessive adjective, possessive pronoun, reflexive) mark words in examples. The main table colors rows by person instead. */
+:root {
+  --hero: #8f3a27; --hero-fg: #fffaf5; --hero-accent: #ffd9a8;
+  --bg: #fbf1ec; --surface: #fffaf7; --soft: #f5e4db; --fg: #3a2a22; --muted: #6e5a50; --line: #e9d4c9;
+  --band-fg: #fffdf8; --subj-band: #2c4c53; --obj-band: #a03d28; --padj-band: #66701f; --ppro-band: #7d600d; --refl-band: #68407a;
+  --subj-pill: #bcd9d9; --obj-pill: #f3b9a4; --padj-pill: #d3de9f; --ppro-pill: #f0cf79; --refl-pill: #d3bce0; --pill-fg: #33241d;
+  --subj: #1f5a63; --subj-bg: #d8ecec;
+  --obj: #a03d28; --obj-bg: #fbe0d3;
+  --padj: #4d5e1a; --padj-bg: #e9efcd;
+  --ppro: #7a5206; --ppro-bg: #f8ebc2;
+  --refl: #68407a; --refl-bg: #eadff0;
+  --wrong: #8c3b26; --wrong-bg: #f7e6dd;
+  --right: #3f6a0c; --right-bg: #e9f8c4;
+  --p1-fg: #33241d; --p2-fg: #33241d; --p3-fg: #fffaf5; --p4-fg: #fffaf5;
+  --p1: #e3b783; --p1-a: #fbefdc; --p1-b: #fdf6ea;
+  --p2: #d98a5f; --p2-a: #fadfcd; --p2-b: #fdeee3;
+  --p3: #b0502f; --p3-a: #f6d9cd; --p3-b: #fbebe4;
+  --p4: #5a2e22; --p4-a: #ecdcd6; --p4-b: #f3e9e5;
+  --head: "Nunito", system-ui, sans-serif;
+  --body: "Nunito Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --hero: #5c2519; --hero-fg: #fff4ee; --hero-accent: #ffd9a8;
+    --bg: #1f1512; --surface: #2a1c18; --soft: #38261f; --fg: #f6ece6; --muted: #c9b4a9; --line: #503830;
+    --band-fg: #fffdf8; --subj-band: #254247; --obj-band: #7e3326; --padj-band: #55601a; --ppro-band: #6b520a; --refl-band: #55346a;
+    --subj-pill: #bcd9d9; --obj-pill: #f3b9a4; --padj-pill: #d3de9f; --ppro-pill: #f0cf79; --refl-pill: #d3bce0; --pill-fg: #33241d;
+    --subj: #7fd0d2; --subj-bg: #12383b;
+    --obj: #ffa98e; --obj-bg: #4a2218;
+    --padj: #c9dd7c; --padj-bg: #2f3a12;
+    --ppro: #f0c35a; --ppro-bg: #46350a;
+    --refl: #cfa8e8; --refl-bg: #3a2447;
+    --wrong: #f0a58c; --wrong-bg: #46261a;
+    --right: #c9dd7c; --right-bg: #2f3a12;
+    --p1-fg: #1f1608; --p2-fg: #2a1410; --p3-fg: #fffaf5; --p4-fg: #fffaf5;
+    --p1: #c9a063; --p1-a: #3b2f1a; --p1-b: #46382a;
+    --p2: #c9774f; --p2-a: #3f2418; --p2-b: #4b2c1e;
+    --p3: #a24a2b; --p3-a: #3d231a; --p3-b: #482a20;
+    --p4: #7a4636; --p4-a: #2e211d; --p4-b: #372822;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --hero: #5c2519; --hero-fg: #fff4ee; --hero-accent: #ffd9a8;
+  --bg: #1f1512; --surface: #2a1c18; --soft: #38261f; --fg: #f6ece6; --muted: #c9b4a9; --line: #503830;
+  --band-fg: #fffdf8; --subj-band: #254247; --obj-band: #7e3326; --padj-band: #55601a; --ppro-band: #6b520a; --refl-band: #55346a;
+  --subj-pill: #bcd9d9; --obj-pill: #f3b9a4; --padj-pill: #d3de9f; --ppro-pill: #f0cf79; --refl-pill: #d3bce0; --pill-fg: #33241d;
+  --subj: #7fd0d2; --subj-bg: #12383b;
+  --obj: #ffa98e; --obj-bg: #4a2218;
+  --padj: #c9dd7c; --padj-bg: #2f3a12;
+  --ppro: #f0c35a; --ppro-bg: #46350a;
+  --refl: #cfa8e8; --refl-bg: #3a2447;
+  --wrong: #f0a58c; --wrong-bg: #46261a;
+  --right: #c9dd7c; --right-bg: #2f3a12;
+  --p1-fg: #1f1608; --p2-fg: #2a1410; --p3-fg: #fffaf5; --p4-fg: #fffaf5;
+  --p1: #c9a063; --p1-a: #3b2f1a; --p1-b: #46382a;
+  --p2: #c9774f; --p2-a: #3f2418; --p2-b: #4b2c1e;
+  --p3: #a24a2b; --p3-a: #3d231a; --p3-b: #482a20;
+  --p4: #7a4636; --p4-a: #2e211d; --p4-b: #372822;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body {
+  background: var(--bg); color: var(--fg); font-family: var(--body); font-size: 18px; line-height: 1.65;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 28px 64px;
+}
+.page { max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; gap: 44px; }
+h1, h2, h3 { font-family: var(--head); line-height: 1.2; text-wrap: balance; margin: 0; }
+h1 { font-size: clamp(2rem, 6vw, 2.8rem); font-weight: 800; letter-spacing: -0.01em; }
+h2 { font-size: 1.5rem; font-weight: 800; }
+h3 { font-size: 1.08rem; font-weight: 800; }
+p { margin: 0; }
+p + p { margin-top: 10px; }
+.label { font-family: var(--head); font-size: 0.78rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+.lede { font-size: 1.12rem; max-width: 62ch; margin-top: 12px; }
+.muted { color: var(--muted); }
+
+/* jump links */
+.jump { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; padding: 0; list-style: none; }
+.jump a { display: inline-block; padding: 5px 12px; border: 1px solid var(--line); border-radius: 999px; color: var(--fg); text-decoration: none; font-size: 0.92rem; background: var(--surface); }
+.jump a:hover, .jump a:focus-visible { border-color: var(--fg); outline: none; }
+
+/* sections */
+section { display: flex; flex-direction: column; gap: 16px; min-width: 0; scroll-margin-top: 16px; }
+section > header { display: flex; flex-direction: column; gap: 8px; padding: 16px 20px; border-radius: 14px; background: var(--band, var(--hero)); color: var(--band-fg); }
+section > header h2 { color: var(--band-fg); }
+section > header p { max-width: none; }
+.forms { display: inline-block; vertical-align: middle; font-family: var(--body); font-weight: 700; font-size: 0.9rem; line-height: 1.5; margin-left: 8px; padding: 3px 14px; border-radius: 14px; background: var(--pill, transparent); color: var(--pill-fg); letter-spacing: 0.01em; }
+.c-subj, .c-denim { --c: var(--subj); --c-bg: var(--subj-bg); --band: var(--subj-band); --pill: var(--subj-pill); }
+.c-obj, .c-peach { --c: var(--obj); --c-bg: var(--obj-bg); --band: var(--obj-band); --pill: var(--obj-pill); }
+.c-padj, .c-aloe { --c: var(--padj); --c-bg: var(--padj-bg); --band: var(--padj-band); --pill: var(--padj-pill); }
+.c-ppro, .c-pine { --c: var(--ppro); --c-bg: var(--ppro-bg); --band: var(--ppro-band); --pill: var(--ppro-pill); }
+.c-refl { --c: var(--refl); --c-bg: var(--refl-bg); --band: var(--refl-band); --pill: var(--refl-pill); }
+
+/* hero */
+.hero { position: relative; overflow: hidden; background: var(--hero); color: var(--hero-fg); border-radius: 18px; padding: 30px 28px 26px; }
+.hero > * { position: relative; z-index: 1; }
+.hero .orb { position: absolute; border-radius: 50%; z-index: 0; pointer-events: none; }
+.hero .orb1 { width: 150px; height: 150px; right: 34px; top: -44px; background: var(--hero-accent); opacity: 1; }
+.hero .orb2 { width: 104px; height: 104px; right: 140px; top: 30px; background: #e9a074; opacity: 0.95; mix-blend-mode: normal; }
+.hero .label { color: var(--hero-accent); }
+.hero .lede { color: var(--hero-fg); opacity: 0.92; }
+.hero .jump a { background: rgba(255, 255, 255, 0.10); border-color: rgba(255, 255, 255, 0.30); color: var(--hero-fg); }
+.hero .jump a:hover, .hero .jump a:focus-visible { background: var(--hero-accent); border-color: var(--hero-accent); color: #3a2a22; }
+.hero .jump a[aria-selected="true"] { background: var(--hero-accent); border-color: var(--hero-accent); color: #3a2a22; }
+.tabpanel { display: flex; flex-direction: column; gap: 44px; }
+.tabpanel[hidden] { display: none; }
+@media (max-width: 640px) { .hero .orb { display: none; } .hero { padding: 24px 20px 20px; } }
+
+.legend .s, .legend .o, .legend .pa, .legend .pp, .legend .r { border-bottom: 0; padding: 3px 12px; border-radius: 999px; font-size: 0.92rem; }
+.legend .s { background: var(--subj-bg); } .legend .o { background: var(--obj-bg); } .legend .pa { background: var(--padj-bg); } .legend .pp { background: var(--ppro-bg); } .legend .r { background: var(--refl-bg); }
+
+/* colored words inside examples */
+.s, .o, .pa, .pp, .r { font-weight: 700; border-bottom: 2px solid currentColor; }
+.s { color: var(--subj); } .o { color: var(--obj); } .pa { color: var(--padj); } .pp { color: var(--ppro); } .r { color: var(--refl); }
+.legend { display: flex; flex-wrap: wrap; gap: 8px 18px; font-size: 0.95rem; }
+
+/* tables */
+.scroll { overflow-x: auto; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); }
+table { border-collapse: collapse; width: 100%; min-width: 600px; font-size: 0.98rem; }
+th, td { padding: 9px 12px; text-align: left; border-bottom: 1px solid var(--line); vertical-align: top; }
+tr:last-child td { border-bottom: 0; }
+thead th { font-family: var(--head); font-weight: 500; font-size: 0.85rem; background: var(--soft); }
+th.s { background: var(--subj-bg); color: var(--subj); border-bottom: 0; }
+th.o { background: var(--obj-bg); color: var(--obj); border-bottom: 0; }
+th.pa { background: var(--padj-bg); color: var(--padj); border-bottom: 0; }
+th.pp { background: var(--ppro-bg); color: var(--ppro); border-bottom: 0; }
+th.r { background: var(--refl-bg); color: var(--refl); border-bottom: 0; }
+td.s { color: var(--subj); } td.o { color: var(--obj); } td.pa { color: var(--padj); } td.pp { color: var(--ppro); } td.r { color: var(--refl); }
+td.s, td.o, td.pa, td.pp, td.r { font-weight: 700; border-bottom: 1px solid var(--line); }
+tr:last-child td.s, tr:last-child td.o, tr:last-child td.pa, tr:last-child td.pp, tr:last-child td.r { border-bottom: 0; }
+td.who { color: var(--muted); font-size: 0.92rem; }
+.none { color: var(--muted); font-weight: 400 !important; }
+td.wrong { color: var(--wrong); text-decoration: line-through; text-decoration-thickness: 1.5px; }
+td.right { color: var(--right); font-weight: 700; }
+th.wrong { background: var(--wrong-bg); color: var(--wrong); }
+th.right { background: var(--right-bg); color: var(--right); }
+
+/* person table */
+.persons { min-width: 700px; text-align: center; font-size: 1rem; }
+.persons th, .persons td { text-align: center; vertical-align: middle; padding: 10px 10px; border: 1px solid var(--line); }
+.persons thead th { background: transparent; border: 0; border-bottom: 2px solid var(--line); font-family: var(--head); font-weight: 800; font-size: 0.95rem; color: var(--fg); vertical-align: bottom; }
+.persons thead th small { display: block; font-weight: 400; color: var(--muted); font-size: 0.85rem; font-family: var(--body); }
+.persons td { font-weight: 700; }
+.persons td:nth-child(1) { font-weight: 400; color: var(--muted); }
+.persons td.none { font-weight: 400; color: var(--muted); }
+.persons th.plabel { font-family: var(--head); font-weight: 800; font-size: 1.05rem; border-color: transparent; }
+.persons tbody.gap td { border: 0; padding: 0; height: 14px; background: transparent; }
+.persons tbody.p1 th.plabel { background: var(--p1); color: var(--p1-fg); } .persons tbody.p1 tr:nth-child(odd) td { background: var(--p1-a); } .persons tbody.p1 tr:nth-child(even) td { background: var(--p1-b); }
+.persons tbody.p2 th.plabel { background: var(--p2); color: var(--p2-fg); } .persons tbody.p2 tr:nth-child(odd) td { background: var(--p2-a); } .persons tbody.p2 tr:nth-child(even) td { background: var(--p2-b); }
+.persons tbody.p3 th.plabel { background: var(--p3); color: var(--p3-fg); } .persons tbody.p3 tr:nth-child(odd) td { background: var(--p3-a); } .persons tbody.p3 tr:nth-child(even) td { background: var(--p3-b); }
+.persons tbody.p4 th.plabel { background: var(--p4); color: var(--p4-fg); } .persons tbody.p4 td { background: var(--p4-a); }
+.persons small { font-weight: 400; color: var(--muted); }
+
+/* notes list */
+.points { margin: 0; padding-left: 1.2em; display: flex; flex-direction: column; gap: 6px; }
+.points li::marker { color: var(--muted); }
+
+/* use cases */
+.uses { display: flex; flex-direction: column; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); overflow: hidden; }
+.use { display: grid; grid-template-columns: minmax(0, 13rem) minmax(0, 1fr); gap: 4px 20px; padding: 14px 16px; border-bottom: 1px solid var(--line); }
+.use:last-child { border-bottom: 0; }
+.use h3 { color: var(--c); }
+.use .ex { font-size: 1.05rem; }
+.use .ex + .ex { margin-top: 2px; }
+.use .tip { color: var(--muted); font-size: 0.96rem; margin-top: 4px; }
+.use > div { min-width: 0; }
+@media (max-width: 620px) { .use { grid-template-columns: minmax(0, 1fr); } }
+
+/* four ideas */
+.four { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 16px; }
+.four > div { border-top: 2px solid var(--line); padding-top: 10px; min-width: 0; }
+.four h3 { margin-bottom: 4px; }
+.four p { font-size: 0.96rem; }
+
+/* sequence */
+.steps { margin: 0; padding: 0; list-style: none; counter-reset: step; display: flex; flex-direction: column; gap: 10px; }
+.steps li { counter-increment: step; display: grid; grid-template-columns: 2.2rem minmax(0, 1fr); gap: 10px; align-items: start; }
+.steps li::before { content: counter(step); font-family: var(--head); font-weight: 800; width: 2.2rem; height: 2.2rem; display: grid; place-items: center; border-radius: 50%; background: var(--soft); }
+.steps li:nth-child(1)::before { background: var(--refl-bg); color: var(--refl); }
+.steps li:nth-child(2)::before { background: var(--padj-bg); color: var(--padj); }
+.steps li:nth-child(3)::before { background: var(--subj-bg); color: var(--subj); }
+.steps li:nth-child(4)::before { background: var(--obj-bg); color: var(--obj); }
+
+/* callout */
+.rule { background: var(--obj-bg); border-radius: 10px; padding: 12px 16px; }
+
+/* practice */
+.btn { font: inherit; font-family: var(--head); font-weight: 800; font-size: 0.95rem; padding: 9px 18px; border-radius: 999px; border: 1px solid var(--subj-band); background: var(--subj-band); color: #fffdf8; cursor: pointer; align-self: flex-start; }
+.btn:focus-visible, summary:focus-visible { outline: 3px solid var(--subj); outline-offset: 2px; }
+.qs { margin: 0; padding: 0; list-style: none; counter-reset: q; display: flex; flex-direction: column; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); overflow: hidden; }
+.qs > li { counter-increment: q; padding: 12px 16px; border-bottom: 1px solid var(--line); display: grid; grid-template-columns: 1.8rem minmax(0, 1fr); gap: 2px 8px; }
+.qs > li:last-child { border-bottom: 0; }
+.qs > li::before { content: counter(q) "."; color: var(--muted); font-weight: 700; }
+.qs > li > * { grid-column: 2; }
+.qs .opt { color: var(--muted); white-space: nowrap; }
+.blank { display: inline-block; min-width: 3.4em; height: 1.3em; vertical-align: middle; border-radius: 8px; background: var(--soft); box-shadow: inset 0 -2px 0 var(--obj); margin: 0 2px; }
+details { margin-top: 4px; }
+summary { cursor: pointer; width: fit-content; color: var(--subj); font-size: 0.95rem; font-weight: 700; }
+details[open] > summary { color: var(--muted); }
+details p { margin-top: 6px; padding: 8px 12px; background: var(--right-bg); border-radius: 6px; font-size: 0.97rem; }
+details p b { color: var(--right); }
+.part-head { display: flex; flex-direction: column; gap: 4px; }
+.part-head h3 { font-size: 1.12rem; }
+.part-head h3 span { padding: 2px 12px; border-radius: 999px; margin-right: 6px; }
+.part-head .s { background: var(--subj-bg); border-bottom: 0; } .part-head .o { background: var(--obj-bg); border-bottom: 0; } .part-head .pa { background: var(--padj-bg); border-bottom: 0; } .part-head .r { background: var(--refl-bg); border-bottom: 0; }
+.part-head .pp { background: var(--ppro-bg); border-bottom: 0; } .part-head .n { background: var(--soft); color: var(--fg); }
+.part { display: flex; flex-direction: column; gap: 12px; }
+@media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; transition: none !important; } }
+</style>
+
+<div class="page">
+
+<header class="hero">
+  <span class="orb orb1"></span><span class="orb orb2"></span>
+  <div class="label">Type 1 of 9 pronouns</div>
+  <h1>Personal Pronouns</h1>
+  <p class="lede">A personal pronoun takes the place of a noun that names a person or thing. Its form changes with person, number, gender and its job in the sentence.</p>
+  <ul class="jump" role="tablist" aria-label="Pronoun topics">
+    <li><a href="#overview" role="tab" data-tab="overview">Overview</a></li>
+    <li><a href="#subject-object" role="tab" data-tab="subject-object">Subject and object</a></li>
+    <li><a href="#possessives" role="tab" data-tab="possessives">Possessives</a></li>
+    <li><a href="#reflexive-tab" role="tab" data-tab="reflexive-tab">Reflexive</a></li>
+    <li><a href="#uses-rules" role="tab" data-tab="uses-rules">Special uses and rules</a></li>
+    <li><a href="#agreement-tab" role="tab" data-tab="agreement-tab">Agreement</a></li>
+    <li><a href="#choosing" role="tab" data-tab="choosing">Choosing and errors</a></li>
+    <li><a href="#practice-tab" role="tab" data-tab="practice-tab">Practice</a></li>
+  </ul>
+</header>
+
+<div class="tabpanel" id="overview" role="tabpanel" hidden>
+
+<section id="big" class="c-pine">
+  <header>
+    <h2>The four things a pronoun shows</h2>
+  </header>
+  <div class="four">
+    <div><h3>Person</h3><p>1st person is the speaker (I, we). 2nd person is the listener (you). 3rd person is anyone or anything else (he, she, it, they).</p></div>
+    <div><h3>Number</h3><p>Singular means one. Plural means more than one.</p></div>
+    <div><h3>Gender</h3><p>Only 3rd person singular shows gender: he (male), she (female), it (thing, animal, or a situation).</p></div>
+    <div><h3>Job (case)</h3><p>The job decides the form: subject, object, or ownership. The rest of this page is about jobs.</p></div>
+  </div>
+</section>
+
+<section id="table" class="c-denim">
+  <div class="scroll">
+    <table class="persons">
+      <thead>
+        <tr>
+          <th>Person</th>
+          <th>Number <small>(&amp; gender)</small></th>
+          <th>Subject</th>
+          <th>Object</th>
+          <th>Possessive adjective <small>(determiner)</small></th>
+          <th>Possessive pronoun</th>
+          <th>Reflexive</th>
+        </tr>
+      </thead>
+      <tbody class="p1">
+        <tr><th class="plabel" scope="rowgroup" rowspan="2">1st</th><td>Singular</td><td>I</td><td>me</td><td>my</td><td>mine</td><td>myself</td></tr>
+        <tr><td>Plural</td><td>we</td><td>us</td><td>our</td><td>ours</td><td>ourselves</td></tr>
+      </tbody>
+      <tbody class="gap"><tr><td colspan="7"></td></tr></tbody>
+      <tbody class="p2">
+        <tr><th class="plabel" scope="rowgroup" rowspan="2">2nd</th><td>Singular</td><td colspan="2" rowspan="2">you</td><td rowspan="2">your</td><td rowspan="2">yours</td><td>yourself</td></tr>
+        <tr><td>Plural</td><td>yourselves</td></tr>
+      </tbody>
+      <tbody class="gap"><tr><td colspan="7"></td></tr></tbody>
+      <tbody class="p3">
+        <tr><th class="plabel" scope="rowgroup" rowspan="5">3rd</th><td>Masculine singular</td><td>he</td><td>him</td><td colspan="2">his</td><td>himself</td></tr>
+        <tr><td>Feminine singular</td><td>she</td><td>her</td><td>her</td><td>hers</td><td>herself</td></tr>
+        <tr><td>Inanimate singular</td><td colspan="2">it</td><td>its</td><td class="none">(none)</td><td>itself</td></tr>
+        <tr><td>Gender-neutral singular <small>(one person)</small></td><td rowspan="2">they</td><td rowspan="2">them</td><td rowspan="2">their</td><td rowspan="2">theirs</td><td>themself</td></tr>
+        <tr><td>Plural</td><td>themselves</td></tr>
+      </tbody>
+      <tbody class="gap"><tr><td colspan="7"></td></tr></tbody>
+      <tbody class="p4">
+        <tr><th class="plabel" scope="rowgroup">Impersonal</th><td>&mdash;</td><td colspan="2">one</td><td>one&rsquo;s</td><td class="none">(none)</td><td>oneself</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <ul class="points">
+    <li><b>you</b> has the same subject and object form, and the same form for one person or many. Only the reflexive changes: yourself, yourselves.</li>
+    <li><b>it</b> has no possessive pronoun. <i>its</i> is only a possessive adjective.</li>
+    <li><b>her</b> is both an object pronoun and a possessive adjective. <b>his</b> is both a possessive adjective and a possessive pronoun. The sentence tells you which job it has.</li>
+    <li><b>themself</b> is the newer reflexive for one person who uses <i>they</i>. Modern usage accepts it, but older exam style may not. For two or more people, always use <i>themselves</i>.</li>
+    <li><b>one</b> is a formal pronoun for people in general. Example: One should do one&rsquo;s best.</li>
+  </ul>
+</section>
+
+</div>
+
+<div class="tabpanel" id="subject-object" role="tabpanel" hidden>
+
+<section id="subject" class="c-subj">
+  <header>
+    <h2>Subject pronouns <span class="forms">I, you, he, she, it, we, they</span></h2>
+    <p>Use a subject pronoun when it does the action of the verb, or takes the place of the subject.</p>
+  </header>
+  <div class="uses">
+    <div class="use"><h3>Subject of a verb</h3><div>
+      <p class="ex"><span class="s">She</span> sings. <span class="s">They</span> play.</p>
+      <p class="tip">Find the verb. Ask who or what does it.</p></div></div>
+    <div class="use"><h3>Compound subject</h3><div>
+      <p class="ex">My brother and <span class="s">I</span> went home.</p>
+      <p class="tip">Test: remove the other person. You say &ldquo;I went home,&rdquo; so use <i>I</i>.</p></div></div>
+    <div class="use"><h3>Subject in a question</h3><div>
+      <p class="ex">Is <span class="s">she</span> here? Can <span class="s">we</span> go?</p>
+      <p class="tip">In a question the subject comes after the helping verb. The form stays the subject form.</p></div></div>
+    <div class="use"><h3>After than or as</h3><div>
+      <p class="ex">My sister is older than <span class="s">I</span> (am).</p>
+      <p class="ex">She likes him more than <span class="s">I</span> (like him).</p>
+      <p class="ex">She likes him more than <span class="o">me</span> (than she likes me).</p>
+      <p class="tip">Add the missing verb. If the pronoun would be the subject of that verb, use the subject form. If it would be the object, use the object form. The two forms give different meanings.</p></div></div>
+    <div class="use"><h3>After the verb <i>be</i></h3><div>
+      <p class="ex">&ldquo;Who is it?&rdquo; &ldquo;It is <span class="s">I</span>.&rdquo;</p>
+      <p class="tip">Formal grammar and exams use the subject form. In everyday speech, &ldquo;It&rsquo;s me&rdquo; is normal and accepted.</p></div></div>
+  </div>
+</section>
+
+<section id="object" class="c-obj">
+  <header>
+    <h2>Object pronouns <span class="forms">me, you, him, her, it, us, them</span></h2>
+    <p>Use an object pronoun for the receiver of the action, or after a preposition.</p>
+  </header>
+  <div class="uses">
+    <div class="use"><h3>Direct object</h3><div>
+      <p class="ex">She called <span class="o">me</span>. He saw <span class="o">them</span>.</p>
+      <p class="tip">The verb is transitive. Ask &ldquo;whom?&rdquo; or &ldquo;what?&rdquo; after the verb.</p></div></div>
+    <div class="use"><h3>Indirect object</h3><div>
+      <p class="ex">Dad gave <span class="o">her</span> a toy.</p>
+      <p class="ex">= Dad gave a toy to <span class="o">her</span>.</p>
+      <p class="tip">The person who receives the thing that is given.</p></div></div>
+    <div class="use"><h3>After a preposition</h3><div>
+      <p class="ex">with <span class="o">him</span>, for <span class="o">us</span>, to <span class="o">them</span>, about <span class="o">it</span></p>
+      <p class="ex">Everyone came except <span class="o">him</span>. Between you and <span class="o">me</span>, I agree.</p>
+      <p class="tip">Every preposition takes the object form, including <i>except</i>, <i>but</i> (meaning except), <i>like</i> and <i>between</i>.</p></div></div>
+    <div class="use"><h3>Compound object</h3><div>
+      <p class="ex">He invited Sara and <span class="o">me</span>.</p>
+      <p class="tip">Test: remove the other person. You say &ldquo;He invited me.&rdquo;</p></div></div>
+    <div class="use"><h3>Before a base verb or <i>to</i> + verb</h3><div>
+      <p class="ex">Let <span class="o">me</span> help. Make <span class="o">them</span> stop. She told <span class="o">us</span> to wait.</p>
+      <p class="tip">After <i>let, make, help</i> and verbs like <i>tell, ask, want</i>, the pronoun is an object. <i>Let&rsquo;s</i> means <i>let us</i>, so do not write &ldquo;Let&rsquo;s us go.&rdquo;</p></div></div>
+    <div class="use"><h3>Short answers (informal)</h3><div>
+      <p class="ex">&ldquo;Who wants tea?&rdquo; &ldquo;<span class="o">Me</span>!&rdquo;</p>
+      <p class="tip">Spoken English uses the object form alone. A full formal answer is &ldquo;I do.&rdquo;</p></div></div>
+  </div>
+</section>
+
+</div>
+
+<div class="tabpanel" id="possessives" role="tabpanel" hidden>
+
+<section id="padj" class="c-padj">
+  <header>
+    <h2>Possessive adjectives <span class="forms">my, your, his, her, its, our, their</span></h2>
+    <p>They show who owns the noun that comes next, so they never stand alone.</p>
+  </header>
+  <div class="uses">
+    <div class="use"><h3>Always before a noun</h3><div>
+      <p class="ex"><span class="pa">my</span> pen, <span class="pa">your</span> bag, <span class="pa">our</span> house</p>
+      <p class="tip">A possessive adjective is always followed by a noun.</p></div></div>
+    <div class="use"><h3>Match the owner</h3><div>
+      <p class="ex">Sara loves <span class="pa">her</span> brother.</p>
+      <p class="ex">Tom loves <span class="pa">his</span> sister.</p>
+      <p class="tip">Choose <i>his</i> or <i>her</i> by the owner (Tom, Sara), not by the thing owned (sister, brother).</p></div></div>
+    <div class="use"><h3>No change for plural nouns</h3><div>
+      <p class="ex"><span class="pa">my</span> book, <span class="pa">my</span> books</p>
+      <p class="tip">Only the owner changes the word.</p></div></div>
+    <div class="use"><h3>Body parts and clothes</h3><div>
+      <p class="ex">He washed <span class="pa">his</span> hands. She put on <span class="pa">her</span> coat.</p>
+      <p class="tip">English uses a possessive here, not <i>the</i>.</p></div></div>
+    <div class="use"><h3>No second determiner</h3><div>
+      <p class="ex"><span class="pa">my</span> book. Not &ldquo;the my book&rdquo; or &ldquo;a my book.&rdquo;</p>
+      <p class="tip">To say &ldquo;a&rdquo; with a possessive, use a possessive pronoun: a friend of <span class="pp">mine</span>.</p></div></div>
+    <div class="use"><h3>Before an -ing word</h3><div>
+      <p class="ex">I don&rsquo;t mind <span class="pa">your</span> waiting.</p>
+      <p class="tip">Formal style uses the possessive adjective. Everyday speech often says &ldquo;you waiting.&rdquo;</p></div></div>
+    <div class="use"><h3>Look-alike words</h3><div>
+      <p class="ex">The dog wagged <span class="pa">its</span> tail. <b>It&rsquo;s</b> raining.</p>
+      <p class="ex"><span class="pa">their</span> house, over <b>there</b>, <b>they&rsquo;re</b> late</p>
+      <p class="tip"><i>its</i> belongs to it. <i>it&rsquo;s</i> is <i>it is</i> or <i>it has</i>. <i>their</i> belongs to them. <i>there</i> is a place. <i>they&rsquo;re</i> is <i>they are</i>.</p></div></div>
+  </div>
+</section>
+
+<section id="ppro" class="c-ppro">
+  <header>
+    <h2>Possessive pronouns <span class="forms">mine, yours, his, hers, ours, theirs</span></h2>
+    <p>They stand alone in place of a possessive adjective and its noun. <i>it</i> has no possessive pronoun.</p>
+  </header>
+  <div class="scroll">
+    <table style="min-width: 420px">
+      <thead><tr><th class="pa">Possessive adjective + noun</th><th class="pp">Possessive pronoun</th></tr></thead>
+      <tbody>
+        <tr><td>This is <span class="pa">my</span> pen.</td><td>This pen is <span class="pp">mine</span>.</td></tr>
+        <tr><td>Is that <span class="pa">your</span> bag?</td><td>Is that bag <span class="pp">yours</span>?</td></tr>
+        <tr><td>It is <span class="pa">her</span> coat.</td><td>The coat is <span class="pp">hers</span>.</td></tr>
+        <tr><td><span class="pa">Their</span> house is big.</td><td>Theirs is big.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="uses">
+    <div class="use"><h3>As the subject</h3><div>
+      <p class="ex"><span class="pp">Mine</span> is red. <span class="pp">Yours</span> is on the table.</p></div></div>
+    <div class="use"><h3>After <i>be</i></h3><div>
+      <p class="ex">That bag is <span class="pp">hers</span>.</p></div></div>
+    <div class="use"><h3>As an object</h3><div>
+      <p class="ex">I like <span class="pp">yours</span>. He took <span class="pp">ours</span>.</p></div></div>
+    <div class="use"><h3>After <i>than</i> or <i>as</i></h3><div>
+      <p class="ex">Their house is bigger than <span class="pp">ours</span>.</p></div></div>
+    <div class="use"><h3>Double possessive</h3><div>
+      <p class="ex">a friend of <span class="pp">mine</span>, a cousin of <span class="pp">hers</span></p>
+      <p class="tip">Not &ldquo;a friend of me.&rdquo;</p></div></div>
+    <div class="use"><h3>No apostrophe</h3><div>
+      <p class="ex"><span class="pp">yours, hers, ours, theirs</span></p>
+      <p class="tip">Never your&rsquo;s, her&rsquo;s, our&rsquo;s or their&rsquo;s. <i>his</i> stays <i>his</i>.</p></div></div>
+  </div>
+</section>
+
+</div>
+
+<div class="tabpanel" id="reflexive-tab" role="tabpanel" hidden>
+
+<section id="reflexive" class="c-refl">
+  <header>
+    <h2>Reflexive and intensive pronouns <span class="forms">myself, yourself, himself, herself, itself, oneself, ourselves, yourselves, themself, themselves</span></h2>
+    <p>They end in <i>-self</i> or <i>-selves</i>. The same words do two jobs.</p>
+  </header>
+  <h3>Reflexive: the doer and the receiver are the same person</h3>
+  <div class="uses">
+    <div class="use"><h3>Direct object</h3><div>
+      <p class="ex">I cut <span class="r">myself</span>. She looked at <span class="r">herself</span>.</p></div></div>
+    <div class="use"><h3>Indirect object</h3><div>
+      <p class="ex">She bought <span class="r">herself</span> a coat.</p>
+      <p class="tip">&ldquo;She bought <span class="o">her</span> a coat&rdquo; means a different woman.</p></div></div>
+    <div class="use"><h3>After a preposition</h3><div>
+      <p class="ex">He talked to <span class="r">himself</span>. I am proud of <span class="r">myself</span>.</p>
+      <p class="ex">She did it by <span class="r">herself</span>.</p>
+      <p class="tip"><i>by</i> + reflexive means alone, or without help.</p></div></div>
+    <div class="use"><h3>Fixed phrases</h3><div>
+      <p class="ex">Enjoy <span class="r">yourself</span>. Help <span class="r">yourselves</span>. Behave <span class="r">yourself</span>.</p></div></div>
+    <div class="use"><h3>Verbs that often drop it</h3><div>
+      <p class="ex">He washed and dressed. She shaved.</p>
+      <p class="tip">With <i>wash, dress, shave, relax</i> and similar verbs, English leaves out the reflexive when the meaning is clear. Keep it for emphasis: The child can dress <span class="r">herself</span>.</p></div></div>
+  </div>
+  <h3>Intensive: adds emphasis</h3>
+  <div class="uses">
+    <div class="use"><h3>After a noun or pronoun</h3><div>
+      <p class="ex">The president <span class="r">himself</span> opened the door.</p>
+      <p class="ex">I <span class="r">myself</span> checked the report.</p></div></div>
+    <div class="use"><h3>At the end</h3><div>
+      <p class="ex">I did it <span class="r">myself</span>.</p></div></div>
+  </div>
+  <div class="rule">
+    <p><b>Test.</b> Delete the <i>-self</i> word. If the sentence still works with the same meaning, it is intensive. If the sentence breaks or changes meaning, it is reflexive.</p>
+  </div>
+  <ul class="points">
+    <li>A reflexive pronoun is never a subject. Write &ldquo;My wife and <span class="s">I</span> went,&rdquo; not &ldquo;My wife and myself went.&rdquo;</li>
+    <li>Use it only when it is the same person as the subject. Write &ldquo;Please contact <span class="o">me</span>,&rdquo; not &ldquo;Please contact myself.&rdquo;</li>
+    <li>Say <i>himself</i> and <i>themselves</i>. &ldquo;Hisself&rdquo; and &ldquo;theirselves&rdquo; are not standard.</li>
+  </ul>
+</section>
+
+</div>
+
+<div class="tabpanel" id="uses-rules" role="tabpanel" hidden>
+
+<section id="special" class="c-aloe">
+  <header>
+    <h2>You, it, they and others</h2>
+    <p>A few pronouns have uses that surprise learners.</p>
+  </header>
+  <div class="uses">
+    <div class="use"><h3>you</h3><div>
+      <p class="ex">You <b>are</b> late. (one person or many)</p>
+      <p class="tip">It is singular and plural, but the verb is always the plural form: you are, you were, you have, you go. Never &ldquo;you is.&rdquo;</p></div></div>
+    <div class="use"><h3>it for things</h3><div>
+      <p class="ex">I have a book. <span class="s">It</span> is new.</p>
+      <p class="tip">Use <i>it</i> for things, for animals, and for a baby when the sex is not known or not important.</p></div></div>
+    <div class="use"><h3>it as an empty subject</h3><div>
+      <p class="ex"><span class="s">It</span> is raining. <span class="s">It</span> is 5 o&rsquo;clock. <span class="s">It</span> is far from here.</p>
+      <p class="tip">Here <i>it</i> has no meaning of its own. The sentence needs a subject, so <i>it</i> fills the place. Used for weather, time and distance.</p></div></div>
+    <div class="use"><h3>it holding the place of a later subject</h3><div>
+      <p class="ex"><span class="s">It</span> is important to study.</p>
+      <p class="ex"><span class="s">It</span> was Sara who called.</p>
+      <p class="tip">The real subject (<i>to study</i>) comes later. In the second sentence, <i>It was ... who</i> puts the focus on Sara.</p></div></div>
+    <div class="use"><h3>he and she for animals</h3><div>
+      <p class="ex">My dog is old. <span class="s">She</span> sleeps all day.</p>
+      <p class="tip">People use <i>he</i> or <i>she</i> for a pet or animal they know well. Use <i>it</i> when the animal is just an animal.</p></div></div>
+    <div class="use"><h3>they for one person</h3><div>
+      <p class="ex">Someone called. <span class="s">They</span> left a message.</p>
+      <p class="tip">Modern English uses <i>they</i> for one person whose gender is unknown, not stated, or who uses <i>they</i>. The verb stays plural: they are, they were. Older exam style writes &ldquo;he or she.&rdquo;</p></div></div>
+    <div class="use"><h3>you for people in general</h3><div>
+      <p class="ex"><span class="s">You</span> never know what will happen.</p>
+      <p class="tip">Here <i>you</i> does not mean the listener. It means anyone, people in general. It is informal. Formal writing uses <i>one</i>: &ldquo;One never knows.&rdquo;</p></div></div>
+    <div class="use"><h3>they with no noun before it</h3><div>
+      <p class="ex"><span class="s">They</span> say it will snow tomorrow. <span class="s">They</span> closed the road.</p>
+      <p class="tip">No noun is named. <i>they</i> means an unnamed group of people, often the authorities. The verb is plural.</p></div></div>
+  </div>
+</section>
+
+<section id="rules" class="c-pine">
+  <header>
+    <h2>Sentence rules</h2>
+    <p>Rules about where a pronoun goes and which small words go with it.</p>
+  </header>
+  <div class="uses">
+    <div class="use"><h3>Never drop the subject</h3><div>
+      <p class="ex"><b>Wrong:</b> Is raining. Am very tired.</p>
+      <p class="ex"><b>Right:</b> <span class="s">It</span> is raining. <span class="s">I</span> am very tired.</p>
+      <p class="tip">English needs a subject before every verb. The only exception is a command, where <i>you</i> is understood: &ldquo;Close the door.&rdquo;</p></div></div>
+    <div class="use"><h3>Do not double the subject</h3><div>
+      <p class="ex"><b>Wrong:</b> My brother he is tall.</p>
+      <p class="ex"><b>Right:</b> My brother is tall.</p>
+      <p class="ex"><b>Wrong:</b> The book that I bought it was new. <b>Right:</b> The book that I bought was new.</p>
+      <p class="tip">The noun is already the subject. A pronoun after it repeats the subject. In the second pair, <i>that</i> already stands for the book, so <i>it</i> repeats the object.</p></div></div>
+    <div class="use"><h3>Pronoun + noun</h3><div>
+      <p class="ex"><span class="s">We</span> students need help.</p>
+      <p class="ex">She told <span class="o">us</span> students to wait.</p>
+      <p class="tip">The pronoun takes the form of its job. Test: delete the noun. &ldquo;We need help.&rdquo; &ldquo;She told us to wait.&rdquo;</p></div></div>
+    <div class="use"><h3>both, all, each + of</h3><div>
+      <p class="ex">both of <span class="o">us</span> &middot; all of <span class="o">them</span> &middot; each of <span class="o">you</span></p>
+      <p class="tip">After <i>of</i>, use the object form. &ldquo;Both of we&rdquo; is wrong.</p></div></div>
+    <div class="use"><h3>we both, they all</h3><div>
+      <p class="ex"><span class="s">We</span> both like tea. <span class="s">They</span> all came.</p>
+      <p class="tip">When <i>both</i> or <i>all</i> comes right after the subject pronoun, the subject form stays. <i>We both</i> means <i>both of us</i>.</p></div></div>
+    <div class="use"><h3>Capital I</h3><div>
+      <p class="ex">Tom and <span class="s">I</span> went. Can <span class="s">I</span> come?</p>
+      <p class="tip"><i>I</i> is always a capital letter, in any position. Every other pronoun is lowercase unless it starts a sentence.</p></div></div>
+    <div class="use"><h3>own</h3><div>
+      <p class="ex">my <b>own</b> room &middot; a room of my <b>own</b></p>
+      <p class="tip"><i>own</i> follows a possessive adjective and adds emphasis: the room belongs to me alone. Wrong: &ldquo;an own room.&rdquo;</p></div></div>
+  </div>
+</section>
+
+</div>
+
+<div class="tabpanel" id="agreement-tab" role="tabpanel" hidden>
+
+<section id="agreement" class="c-denim">
+  <header>
+    <h2>Agreement</h2>
+    <p>A pronoun must match the noun it replaces, which is called its antecedent. The verb must match the pronoun.</p>
+  </header>
+  <h3>Pronoun and antecedent</h3>
+  <div class="uses">
+    <div class="use"><h3>Number, gender, person</h3><div>
+      <p class="ex">The boy lost <span class="pa">his</span> bag. The boys lost <span class="pa">their</span> bags.</p></div></div>
+    <div class="use"><h3>One pronoun, one noun</h3><div>
+      <p class="ex"><b>Unclear:</b> Maria told Anna that <span class="s">she</span> was late.</p>
+      <p class="ex"><b>Clear:</b> Maria told Anna, &ldquo;You are late.&rdquo;</p>
+      <p class="tip">If a pronoun could mean two nouns, repeat the noun or rewrite the sentence.</p></div></div>
+    <div class="use"><h3>everyone, someone, each, nobody</h3><div>
+      <p class="ex">Everyone should bring <span class="pa">their</span> book.</p>
+      <p class="tip">These words are singular and take a singular verb (<i>everyone is</i>). Modern English uses <i>their</i> after them. Older exam style writes <i>his or her</i>.</p></div></div>
+    <div class="use"><h3>team, family, class, committee</h3><div>
+      <p class="ex">The team lost <span class="pa">its</span> game. (one unit)</p>
+      <p class="ex">The team put on <span class="pa">their</span> coats. (members, each acting)</p>
+      <p class="tip">A group acting as one unit takes <i>it / its</i>. Members acting separately take <i>they / their</i>. British English often treats the group as plural: &ldquo;The team have lost their game.&rdquo;</p></div></div>
+  </div>
+  <h3>Two subjects joined together: the verb and the pronoun</h3>
+  <p>V1 is the base verb (go, have). V5 is V1 + s/es (goes, has). <i>be</i> forms: I <b>am</b>, you / we / they <b>are</b>, he / she / it <b>is</b>. Past: was / were.</p>
+  <div class="scroll">
+    <table>
+      <thead><tr><th>Joined by</th><th>The verb matches</th><th>Verb example</th><th>Pronoun example</th></tr></thead>
+      <tbody>
+        <tr><td><i>and</i></td><td>Both together, so plural: V1, <b>are / were / have</b>. Even when both are singular.</td><td>He and I <b>go</b>. You and I <b>are</b> friends. She and he <b>were</b> late.</td><td>Tom and Mary lost <span class="pa">their</span> keys.</td></tr>
+        <tr><td><i>or, nor, either&hellip;or, neither&hellip;nor</i></td><td>The <b>nearer</b> subject only.</td><td>Either he or they <b>go</b>. Either they or he <b>goes</b>. Neither she nor I <b>am</b> late.</td><td>Neither the boys nor Mary finished <span class="pa">her</span> work.</td></tr>
+        <tr><td><i>with, along with, as well as</i></td><td>The <b>first</b> subject only. These words do not make the subject plural.</td><td>He, along with me, <b>goes</b>. I, as well as you, <b>am</b> ready.</td><td>He, along with me, lost <span class="pa">his</span> key.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="muted">The same rules work for nouns: <i>Tom and Mary</i> take V1. <i>Tom or Mary</i> takes V5.</p>
+
+  <h3>Order in a compound</h3>
+  <div class="rule">
+    <p>Put yourself last. Say &ldquo;Tom and <span class="s">I</span> went,&rdquo; &ldquo;He gave it to Mary and <span class="o">me</span>,&rdquo; and &ldquo;you and <span class="s">I</span>.&rdquo;</p>
+  </div>
+</section>
+
+</div>
+
+<div class="tabpanel" id="choosing" role="tabpanel" hidden>
+
+<section id="which" class="c-peach">
+  <header>
+    <h2>Which form? Four questions</h2>
+    <p>Ask them in order. Stop at the first yes.</p>
+  </header>
+  <ol class="steps">
+    <li><div>Is it the <b>same person as the subject</b>, and the receiver of the action? Use the <span class="r">reflexive</span> form. (I cut <span class="r">myself</span>.)</div></li>
+    <li><div>Does it <b>own a noun</b> that follows? Use the <span class="pa">possessive adjective</span>. If nothing follows, use the <span class="pp">possessive pronoun</span>. (my pen / mine)</div></li>
+    <li><div>Is it the <b>doer</b> of a verb, including a verb you can add after than or as? Use the <span class="s">subject</span> form.</div></li>
+    <li><div>Is it the <b>receiver</b> of a verb, or <b>after a preposition</b>? Use the <span class="o">object</span> form.</div></li>
+  </ol>
+</section>
+
+<section id="errors" class="c-pine">
+  <header>
+    <h2>Common errors</h2>
+  </header>
+  <div class="scroll">
+    <table>
+      <thead><tr><th class="wrong">Wrong</th><th class="right">Right</th><th>Why</th></tr></thead>
+      <tbody>
+        <tr><td class="wrong">Me and him went.</td><td class="right">He and I went.</td><td>Subjects need the subject form.</td></tr>
+        <tr><td class="wrong">Give it to she and I.</td><td class="right">Give it to her and me.</td><td>After <i>to</i>, use the object form.</td></tr>
+        <tr><td class="wrong">Between you and I</td><td class="right">Between you and me</td><td><i>between</i> is a preposition.</td></tr>
+        <tr><td class="wrong">Myself and Tom made it.</td><td class="right">Tom and I made it.</td><td>A reflexive is never a subject. Put yourself last.</td></tr>
+        <tr><td class="wrong">Please contact myself.</td><td class="right">Please contact me.</td><td>Reflexive only for the same person as the subject.</td></tr>
+        <tr><td class="wrong">He hurt hisself.</td><td class="right">He hurt himself.</td><td>&ldquo;Hisself&rdquo; is not standard.</td></tr>
+        <tr><td class="wrong">Let&rsquo;s us go.</td><td class="right">Let&rsquo;s go. / Let us go.</td><td><i>Let&rsquo;s</i> already means <i>let us</i>.</td></tr>
+        <tr><td class="wrong">That book is your&rsquo;s.</td><td class="right">That book is yours.</td><td>No apostrophe in possessive pronouns.</td></tr>
+        <tr><td class="wrong">Mine pen / The my pen</td><td class="right">My pen</td><td>Before a noun, use the possessive adjective, with no other determiner.</td></tr>
+        <tr><td class="wrong">Its raining.</td><td class="right">It&rsquo;s raining.</td><td><i>it&rsquo;s</i> = it is.</td></tr>
+        <tr><td class="wrong">Tom loves her sister.</td><td class="right">Tom loves his sister.</td><td>Match the owner, Tom.</td></tr>
+        <tr><td class="wrong">You is late.</td><td class="right">You are late.</td><td><i>you</i> always takes <i>are / were</i>.</td></tr>
+        <tr><td class="wrong">He and I is late.</td><td class="right">He and I are late.</td><td><i>and</i> makes the subject plural.</td></tr>
+        <tr><td class="wrong">Either he or they goes.</td><td class="right">Either he or they go.</td><td>With <i>or</i>, the verb matches the nearer subject, <i>they</i>.</td></tr>
+        <tr><td class="wrong">Is raining.</td><td class="right">It is raining.</td><td>Every verb needs a subject.</td></tr>
+        <tr><td class="wrong">My brother he is tall.</td><td class="right">My brother is tall.</td><td>Do not double the subject.</td></tr>
+        <tr><td class="wrong">Us students need help.</td><td class="right">We students need help.</td><td>Drop the noun to test: &ldquo;We need help.&rdquo;</td></tr>
+        <tr><td class="wrong">Both of we went.</td><td class="right">Both of us went.</td><td>After <i>of</i>, use the object form.</td></tr>
+        <tr><td class="wrong">She is taller than me. (exam)</td><td class="right">She is taller than I (am).</td><td>Add the missing verb. Spoken English accepts <i>me</i>.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+</div>
+
+<div class="tabpanel" id="practice-tab" role="tabpanel" hidden>
+
+<section id="practice" class="practice c-aloe">
+  <header>
+    <h2>Practice</h2>
+    <p>Answers are hidden. Try each question first, then tap <b>Answer</b>. Every use case above appears at least once.</p>
+  </header>
+  <button class="btn" id="toggle-all" type="button" data-open="0">Show all answers</button>
+
+  <div class="part">
+    <div class="part-head"><h3><span class="s">Part A</span> Subject pronouns</h3></div>
+    <ol class="qs">
+      <li><span>(She / Her) and (I / me) are best friends.</span><details><summary>Answer</summary><p><b>She and I.</b> Compound subject. Test: &ldquo;She is a friend&rdquo; and &ldquo;I am a friend.&rdquo;</p></details></li>
+      <li><span>My sister is older than <span class="blank"></span>. (I / me)</span><details><summary>Answer</summary><p><b>I.</b> Add the missing verb: older than I am. Spoken English accepts <i>me</i>, but use <i>I</i> in exams.</p></details></li>
+      <li><span>Meaning: Sara likes Tom more than I like Tom. Complete: Sara likes Tom more than <span class="blank"></span>. (I / me)</span><details><summary>Answer</summary><p><b>I.</b> The missing verb is <i>like him</i>, and <i>I</i> is its subject. Writing <i>me</i> would mean &ldquo;more than she likes me.&rdquo;</p></details></li>
+      <li><span><span class="blank"></span> is raining today. (It / He)</span><details><summary>Answer</summary><p><b>It.</b> Empty subject for weather.</p></details></li>
+      <li><span>Are <span class="blank"></span> ready? (they / them)</span><details><summary>Answer</summary><p><b>they.</b> In a question the subject comes after the helping verb. The form stays the subject form.</p></details></li>
+      <li><span>&ldquo;Who is it?&rdquo; &ldquo;It is <span class="blank"></span>.&rdquo; Choose the formal answer. (I / me)</span><details><summary>Answer</summary><p><b>I.</b> After <i>be</i>, formal grammar uses the subject form. In everyday speech, &ldquo;It&rsquo;s me&rdquo; is accepted.</p></details></li>
+      <li><span>You <span class="blank"></span> late. (is / are)</span><details><summary>Answer</summary><p><b>are.</b> <i>you</i> always takes <i>are</i>, for one person or many.</p></details></li>
+    </ol>
+  </div>
+
+  <div class="part">
+    <div class="part-head"><h3><span class="o">Part B</span> Object pronouns</h3></div>
+    <ol class="qs">
+      <li><span>The teacher called <span class="blank"></span>. (I / me)</span><details><summary>Answer</summary><p><b>me.</b> Direct object of the transitive verb <i>called</i>.</p></details></li>
+      <li><span>Dad gave <span class="blank"></span> a toy. (she / her)</span><details><summary>Answer</summary><p><b>her.</b> Indirect object. It equals &ldquo;gave a toy to her.&rdquo;</p></details></li>
+      <li><span>This gift is for <span class="blank"></span>. (we / us)</span><details><summary>Answer</summary><p><b>us.</b> Object of the preposition <i>for</i>.</p></details></li>
+      <li><span>Everyone came except <span class="blank"></span>. (he / him)</span><details><summary>Answer</summary><p><b>him.</b> <i>except</i> is a preposition.</p></details></li>
+      <li><span>The teacher invited Sam and <span class="blank"></span>. (I / me)</span><details><summary>Answer</summary><p><b>me.</b> Compound object. Test: &ldquo;The teacher invited me.&rdquo;</p></details></li>
+      <li><span>Between you and <span class="blank"></span>, I don&rsquo;t like it. (I / me)</span><details><summary>Answer</summary><p><b>me.</b> <i>between</i> is a preposition.</p></details></li>
+      <li><span>Let <span class="blank"></span> help you. (I / me)</span><details><summary>Answer</summary><p><b>me.</b> After <i>let</i>, the pronoun is an object.</p></details></li>
+      <li><span>She told <span class="blank"></span> to wait. (we / us)</span><details><summary>Answer</summary><p><b>us.</b> Object before <i>to</i> + verb.</p></details></li>
+      <li><span>&ldquo;Who wants tea?&rdquo; &ldquo;<span class="blank"></span>!&rdquo; Choose the informal short answer. (I / Me)</span><details><summary>Answer</summary><p><b>Me.</b> Spoken short answers use the object form. A full formal answer is &ldquo;I do.&rdquo;</p></details></li>
+    </ol>
+  </div>
+
+  <div class="part">
+    <div class="part-head"><h3><span class="pa">Part C</span> Possessive adjectives and possessive pronouns</h3></div>
+    <ol class="qs">
+      <li><span>This is <span class="blank"></span> pen. (my / mine)</span><details><summary>Answer</summary><p><b>my.</b> A noun follows, so use the possessive adjective.</p></details></li>
+      <li><span>This pen is <span class="blank"></span>. (my / mine)</span><details><summary>Answer</summary><p><b>mine.</b> Nothing follows, so use the possessive pronoun.</p></details></li>
+      <li><span>Sara loves <span class="blank"></span> brother. (his / her)</span><details><summary>Answer</summary><p><b>her.</b> The owner is Sara.</p></details></li>
+      <li><span>Tom loves <span class="blank"></span> sister. (his / her)</span><details><summary>Answer</summary><p><b>his.</b> Match the owner, Tom, not the sister.</p></details></li>
+      <li><span>The dog wagged <span class="blank"></span> tail. (it&rsquo;s / its)</span><details><summary>Answer</summary><p><b>its.</b> It shows ownership. <i>it&rsquo;s</i> means <i>it is</i>.</p></details></li>
+      <li><span><span class="blank"></span> a sunny day. (It&rsquo;s / Its)</span><details><summary>Answer</summary><p><b>It&rsquo;s.</b> It is a sunny day.</p></details></li>
+      <li><span>He brushed <span class="blank"></span> teeth. (him / his)</span><details><summary>Answer</summary><p><b>his.</b> English uses a possessive with body parts.</p></details></li>
+      <li><span>A friend of <span class="blank"></span> called me. (me / mine)</span><details><summary>Answer</summary><p><b>mine.</b> Double possessive: <i>of</i> + possessive pronoun.</p></details></li>
+      <li><span>Is this book <span class="blank"></span>? (your&rsquo;s / yours)</span><details><summary>Answer</summary><p><b>yours.</b> No apostrophe.</p></details></li>
+      <li><span>Which bag is <span class="blank"></span>? (their / theirs)</span><details><summary>Answer</summary><p><b>theirs.</b> It stands alone.</p></details></li>
+      <li><span>Their house is bigger than <span class="blank"></span>. (our / ours)</span><details><summary>Answer</summary><p><b>ours.</b> After <i>than</i>, with no noun following.</p></details></li>
+    </ol>
+  </div>
+
+  <div class="part">
+    <div class="part-head"><h3><span class="r">Part D</span> Reflexive and intensive pronouns</h3></div>
+    <ol class="qs">
+      <li><span>I cut <span class="blank"></span> while cooking. (me / myself)</span><details><summary>Answer</summary><p><b>myself.</b> The doer and the receiver are the same person.</p></details></li>
+      <li><span>She looked at <span class="blank"></span> in the mirror. (her / herself)</span><details><summary>Answer</summary><p><b>herself.</b> Reflexive, after a preposition.</p></details></li>
+      <li><span>He bought <span class="blank"></span> a watch. He bought it for his own self. (him / himself)</span><details><summary>Answer</summary><p><b>himself.</b> Reflexive indirect object. &ldquo;He bought him a watch&rdquo; means a different man.</p></details></li>
+      <li><span>We enjoyed <span class="blank"></span> at the party. (us / ourselves)</span><details><summary>Answer</summary><p><b>ourselves.</b> <i>enjoy</i> + reflexive.</p></details></li>
+      <li><span>She did it by <span class="blank"></span>. (her / herself)</span><details><summary>Answer</summary><p><b>herself.</b> <i>by herself</i> means alone, or without help.</p></details></li>
+      <li><span>Please send it to <span class="blank"></span>. (me / myself)</span><details><summary>Answer</summary><p><b>me.</b> The subject is <i>you</i>, a different person, so the reflexive is wrong.</p></details></li>
+      <li><span>My wife and <span class="blank"></span> went. (I / myself)</span><details><summary>Answer</summary><p><b>I.</b> A reflexive is never a subject.</p></details></li>
+      <li><span>They built the house <span class="blank"></span>. (theirselves / themselves)</span><details><summary>Answer</summary><p><b>themselves.</b> Intensive. &ldquo;Theirselves&rdquo; is not standard.</p></details></li>
+      <li><span>Reflexive or intensive? &ldquo;She herself fixed the car.&rdquo;</span><details><summary>Answer</summary><p><b>Intensive.</b> Delete <i>herself</i> and the sentence still works: &ldquo;She fixed the car.&rdquo;</p></details></li>
+      <li><span>The president <span class="blank"></span> opened the door. (himself / him)</span><details><summary>Answer</summary><p><b>himself.</b> Intensive, for emphasis.</p></details></li>
+    </ol>
+  </div>
+
+  <div class="part">
+    <div class="part-head"><h3><span class="pp">Part E</span> Agreement</h3></div>
+    <ol class="qs">
+      <li><span>Tom and Mary lost <span class="blank"></span> keys. (his / her / their)</span><details><summary>Answer</summary><p><b>their.</b> Two people joined by <i>and</i> are plural.</p></details></li>
+      <li><span>The girls forgot <span class="blank"></span> lunches. (her / their)</span><details><summary>Answer</summary><p><b>their.</b> <i>girls</i> is plural.</p></details></li>
+      <li><span>Neither the boys nor Mary finished <span class="blank"></span> work. (her / their)</span><details><summary>Answer</summary><p><b>her.</b> With <i>nor</i>, match the nearer noun, Mary.</p></details></li>
+      <li><span>Which sentence is clear? (a) Maria told Anna that she was late. (b) Maria told Anna, &ldquo;You are late.&rdquo;</span><details><summary>Answer</summary><p><b>(b).</b> In (a), <i>she</i> could mean Maria or Anna.</p></details></li>
+      <li><span>She and he <span class="blank"></span> here. (is / are)</span><details><summary>Answer</summary><p><b>are.</b> <i>and</i> makes the subject plural, even when both pronouns are singular.</p></details></li>
+      <li><span>Tom and I <span class="blank"></span> a car. (has / have)</span><details><summary>Answer</summary><p><b>have.</b> Plural subject, V1.</p></details></li>
+      <li><span>Either he or they <span class="blank"></span> to school. (go / goes)</span><details><summary>Answer</summary><p><b>go.</b> The nearer subject is <i>they</i>, so V1.</p></details></li>
+      <li><span>Either they or he <span class="blank"></span> to school. (go / goes)</span><details><summary>Answer</summary><p><b>goes.</b> The nearer subject is <i>he</i>, so V5.</p></details></li>
+      <li><span>Neither she nor I <span class="blank"></span> late. (is / am)</span><details><summary>Answer</summary><p><b>am.</b> The nearer subject is <i>I</i>.</p></details></li>
+      <li><span>He, along with me, <span class="blank"></span> to school. (go / goes)</span><details><summary>Answer</summary><p><b>goes.</b> <i>along with</i> does not join the subjects. The verb matches the first subject, <i>he</i>.</p></details></li>
+      <li><span>(Tom and I / I and Tom) went to the park.</span><details><summary>Answer</summary><p><b>Tom and I.</b> Put yourself last.</p></details></li>
+      <li><span>Someone called. (He / They) left a message. Choose the modern form for a person whose gender is not known.</span><details><summary>Answer</summary><p><b>They.</b> Modern English uses <i>they</i> for one unknown person. The verb stays plural.</p></details></li>
+      <li><span>Everyone should bring <span class="blank"></span> book. Choose the modern form. (his or her / their)</span><details><summary>Answer</summary><p><b>their.</b> <i>everyone</i> is singular, but modern English uses <i>their</i> after it. <i>his or her</i> is older exam style.</p></details></li>
+      <li><span>The team lost <span class="blank"></span> game. The team acted as one unit. (its / their)</span><details><summary>Answer</summary><p><b>its.</b> A group acting as one unit takes <i>it / its</i>.</p></details></li>
+      <li><span>The team put on <span class="blank"></span> coats. Each member put on a coat. (its / their)</span><details><summary>Answer</summary><p><b>their.</b> The members act separately, so use <i>they / their</i>.</p></details></li>
+    </ol>
+  </div>
+
+  <div class="part">
+    <div class="part-head"><h3><span class="n">Part F</span> Fix the sentence</h3></div>
+    <ol class="qs">
+      <li><span>Me and him went to the market.</span><details><summary>Answer</summary><p><b>He and I went to the market.</b> Compound subject, subject forms, yourself last.</p></details></li>
+      <li><span>Give it to she and I.</span><details><summary>Answer</summary><p><b>Give it to her and me.</b> Object forms after <i>to</i>.</p></details></li>
+      <li><span>Myself and Tom made the cake.</span><details><summary>Answer</summary><p><b>Tom and I made the cake.</b></p></details></li>
+      <li><span>That book is your&rsquo;s.</span><details><summary>Answer</summary><p><b>That book is yours.</b></p></details></li>
+      <li><span>Let&rsquo;s us go.</span><details><summary>Answer</summary><p><b>Let&rsquo;s go.</b> or <b>Let us go.</b></p></details></li>
+      <li><span>He hurt hisself.</span><details><summary>Answer</summary><p><b>He hurt himself.</b></p></details></li>
+      <li><span>Its raining heavily.</span><details><summary>Answer</summary><p><b>It&rsquo;s raining heavily.</b></p></details></li>
+      <li><span>Please contact myself.</span><details><summary>Answer</summary><p><b>Please contact me.</b></p></details></li>
+    </ol>
+  </div>
+
+  <div class="part">
+    <div class="part-head"><h3><span class="pa">Part G</span> Special uses and sentence rules</h3></div>
+    <ol class="qs">
+      <li><span>In &ldquo;You never know,&rdquo; does <i>you</i> mean the listener or people in general?</span><details><summary>Answer</summary><p><b>People in general.</b> This is the generic <i>you</i>. Formal writing uses <i>one</i>.</p></details></li>
+      <li><span>&ldquo;They say it will snow.&rdquo; Who is <i>they</i>?</span><details><summary>Answer</summary><p><b>An unnamed group.</b> No noun comes before it. The verb is plural.</p></details></li>
+      <li><span>Fix: Is raining.</span><details><summary>Answer</summary><p><b>It is raining.</b> Every verb needs a subject.</p></details></li>
+      <li><span>Fix: Am very tired.</span><details><summary>Answer</summary><p><b>I am very tired.</b></p></details></li>
+      <li><span>Fix: My brother he is tall.</span><details><summary>Answer</summary><p><b>My brother is tall.</b> The noun is already the subject.</p></details></li>
+      <li><span>Fix: The book that I bought it was new.</span><details><summary>Answer</summary><p><b>The book that I bought was new.</b> <i>that</i> already stands for the book.</p></details></li>
+      <li><span><span class="blank"></span> students need help. (We / Us)</span><details><summary>Answer</summary><p><b>We.</b> Delete the noun: &ldquo;We need help.&rdquo;</p></details></li>
+      <li><span>The teacher told <span class="blank"></span> students to wait. (we / us)</span><details><summary>Answer</summary><p><b>us.</b> Delete the noun: &ldquo;The teacher told us to wait.&rdquo;</p></details></li>
+      <li><span>Both of <span class="blank"></span> like tea. (we / us)</span><details><summary>Answer</summary><p><b>us.</b> After <i>of</i>, use the object form.</p></details></li>
+      <li><span>All of <span class="blank"></span> came. (they / them)</span><details><summary>Answer</summary><p><b>them.</b> Object form after <i>of</i>.</p></details></li>
+      <li><span>(We both / Both we) like tea.</span><details><summary>Answer</summary><p><b>We both.</b> It means <i>both of us</i>.</p></details></li>
+      <li><span>Fix: Tom and i went home.</span><details><summary>Answer</summary><p><b>Tom and I went home.</b> <i>I</i> is always a capital letter.</p></details></li>
+      <li><span>Fix: I want an own room.</span><details><summary>Answer</summary><p><b>I want my own room.</b> or <b>I want a room of my own.</b></p></details></li>
+    </ol>
+  </div>
+</section>
+
+</div>
+
+</div>
+
+<script>
+(function () {
+  var tabs = Array.prototype.slice.call(document.querySelectorAll('.jump a[data-tab]'));
+  var panels = Array.prototype.slice.call(document.querySelectorAll('.tabpanel'));
+  var names = tabs.map(function (a) { return a.dataset.tab; });
+  function show(name, scroll) {
+    if (names.indexOf(name) < 0) name = names[0];
+    tabs.forEach(function (a) {
+      var on = a.dataset.tab === name;
+      a.setAttribute('aria-selected', on ? 'true' : 'false');
+      a.tabIndex = on ? 0 : -1;
+    });
+    panels.forEach(function (p) { p.hidden = p.id !== name; });
+    if (scroll) { var h = document.querySelector('.hero'); if (h) h.scrollIntoView({ block: 'start' }); }
+  }
+  tabs.forEach(function (a, i) {
+    a.addEventListener('click', function (e) {
+      e.preventDefault(); show(a.dataset.tab, false);
+      try { history.replaceState(null, '', '#' + a.dataset.tab); } catch (x) {}
+    });
+    a.addEventListener('keydown', function (e) {
+      var j = e.key === 'ArrowRight' ? i + 1 : (e.key === 'ArrowLeft' ? i - 1 : -1);
+      if (j < 0) return;
+      e.preventDefault(); j = (j + tabs.length) % tabs.length; tabs[j].focus(); tabs[j].click();
+    });
+  });
+  window.addEventListener('hashchange', function () { show(location.hash.slice(1), false); });
+  show(location.hash.slice(1), false);
+})();
+</script>
+
+<script>
+(function () {
+  var btn = document.getElementById('toggle-all');
+  if (!btn) return;
+  btn.addEventListener('click', function () {
+    var open = btn.getAttribute('data-open') !== '1';
+    var items = document.querySelectorAll('#practice details');
+    for (var i = 0; i < items.length; i++) items[i].open = open;
+    btn.setAttribute('data-open', open ? '1' : '0');
+    btn.textContent = open ? 'Hide all answers' : 'Show all answers';
+  });
+})();
+</script>
+
+</body></html>

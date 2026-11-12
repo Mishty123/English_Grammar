@@ -6,149 +6,258 @@
   <title>English Grammar</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Lexend:wght@400;500&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&family=Patrick+Hand&display=swap">
   <style>
     :root {
-      --bg: #f3f1fa;
-      --card: #ffffff;
-      --ink: #1d1b3a;
-      --muted: #5b5880;
-      --line: #dad6ee;
-      --accent: #6a45b8;
-      --accent-soft: #ece6f8;
-      --accent2: #0f7c74;
-      --accent2-soft: #ddf3f0;
-      --font-display: "Fredoka", "Trebuchet MS", system-ui, sans-serif;
-      --font-body: "Lexend", system-ui, -apple-system, "Segoe UI", sans-serif;
+      --bg: #e8f3ec;
+      --card: #fffdf8;
+      --ink: #17322a;
+      --muted: #52675b;
+      --line: #c5dccd;
+      --verbs: #a63c25; --verbs-soft: #fde1d6;
+      --pron: #6b4a7a; --pron-soft: #eadff0;
+      --small: #7a5606; --small-soft: #fbedc0;
+      --ok: #1f6b57; --ok-soft: #d3eadf;
+      --font-display: "Patrick Hand", "Comic Sans MS", "Segoe Print", system-ui, sans-serif;
+      --font-body: "Nunito", system-ui, -apple-system, "Segoe UI", sans-serif;
     }
     @media (prefers-color-scheme: dark) {
       :root {
-        --bg: #14132b;
-        --card: #1e1d40;
-        --ink: #ecebfa;
-        --muted: #aaa8cf;
-        --line: #302f5c;
-        --accent: #b79cf2;
-        --accent-soft: #2c2450;
-        --accent2: #4fd1c5;
-        --accent2-soft: #17383a;
+        --bg: #12241d;
+        --card: #1b332a;
+        --ink: #eaf4ee;
+        --muted: #a9c2b5;
+        --line: #2f4d40;
+        --verbs: #ffa58b; --verbs-soft: #4a2218;
+        --pron: #cfa8e8; --pron-soft: #3a2447;
+        --small: #f0c35a; --small-soft: #46350a;
+        --ok: #7fd0b4; --ok-soft: #12382b;
       }
     }
     * { box-sizing: border-box; }
+    [hidden] { display: none !important; }
     body {
       margin: 0;
       background: var(--bg);
       color: var(--ink);
       font-family: var(--font-body);
-      font-size: 16px;
+      font-size: 17px;
       line-height: 1.55;
-      padding: 56px 20px 72px;
+      padding: 48px 20px 72px;
+      position: relative;
+      overflow-x: hidden;
     }
-    main { max-width: 760px; margin: 0 auto; }
-    header { margin-bottom: 36px; }
-    .eyebrow {
-      font-size: .75rem;
-      font-weight: 500;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-      color: var(--muted);
-    }
+    main { max-width: 760px; margin: 0 auto; position: relative; z-index: 1; }
+    .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+    /* doodles */
+    .dd { position: absolute; pointer-events: none; z-index: 0; fill: none; stroke: var(--ink); stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; opacity: .55; }
+    .dd .f1 { fill: var(--verbs-soft); } .dd .f2 { fill: var(--small-soft); } .dd .f3 { fill: var(--pron-soft); } .dd .f4 { fill: var(--ok-soft); } .dd .f0 { fill: var(--card); }
+    .dd text { fill: var(--ink); stroke: none; font-family: var(--font-display); font-size: 26px; }
+    .d-pencil { width: 92px; right: max(18px, calc(50% - 440px)); top: 38px; transform: rotate(8deg); }
+    .d-star1 { width: 34px; right: max(120px, calc(50% - 330px)); top: 128px; }
+    .d-star2 { width: 22px; right: max(70px, calc(50% - 380px)); top: 150px; }
+    .d-book { width: 120px; left: 22px; top: 310px; transform: rotate(-7deg); }
+    .d-bubble { width: 104px; right: 24px; top: 430px; transform: rotate(6deg); }
+    .d-bulb { width: 64px; left: 48px; top: 560px; transform: rotate(-8deg); }
+    .d-cloud { width: 118px; right: 40px; top: 690px; }
+    .d-star3 { width: 28px; left: 150px; top: 470px; }
+    @media (max-width: 1060px) { .d-book, .d-bubble, .d-bulb, .d-cloud, .d-star3 { display: none; } }
+    @media (max-width: 640px) { .d-pencil { width: 64px; right: 14px; top: 20px; } .d-star1, .d-star2 { display: none; } }
+
+    header { margin-bottom: 28px; }
+    .eyebrow { font-family: var(--font-display); font-size: 1.15rem; letter-spacing: .06em; color: var(--muted); }
     h1 {
       font-family: var(--font-display);
-      font-weight: 600;
-      font-size: clamp(2.2rem, 8vw, 3.4rem);
-      line-height: 1.05;
-      margin: 8px 0 10px;
+      font-weight: 400;
+      font-size: clamp(2.6rem, 9vw, 4rem);
+      line-height: 1;
+      margin: 6px 0 6px;
     }
+    .squig { display: block; width: 150px; height: 14px; margin: 0 0 12px; fill: none; stroke: var(--verbs); stroke-width: 3; stroke-linecap: round; }
     .lead { margin: 0; color: var(--muted); max-width: 52ch; }
+
+    /* search and filters */
+    .tools { display: flex; flex-direction: column; gap: 14px; margin-bottom: 22px; }
+    .search { position: relative; }
+    .search svg.mag { position: absolute; left: 16px; top: 50%; transform: translateY(-50%); width: 22px; height: 22px; fill: none; stroke: var(--muted); stroke-width: 2.4; stroke-linecap: round; pointer-events: none; }
+    .search input {
+      width: 100%; font: inherit; font-size: 1.05rem; color: var(--ink); background: var(--card);
+      border: 2px solid var(--line); border-radius: 26px 22px 28px 22px / 22px 26px 22px 28px;
+      padding: 13px 48px 13px 48px; appearance: none;
+    }
+    .search input::placeholder { color: var(--muted); }
+    .search input:focus-visible { outline: 3px solid var(--ok); outline-offset: 2px; border-color: var(--ok); }
+    .search input::-webkit-search-cancel-button { display: none; }
+    .clear { position: absolute; right: 10px; top: 50%; transform: translateY(-50%); width: 32px; height: 32px; border-radius: 50%; border: 0; background: var(--ok-soft); color: var(--ok); font: 700 1.1rem var(--font-body); cursor: pointer; line-height: 1; }
+    .clear:focus-visible { outline: 3px solid var(--ok); outline-offset: 2px; }
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+    .chip {
+      font-family: var(--font-display); font-size: 1.15rem; color: var(--ink); background: var(--card);
+      border: 2px solid var(--line); border-radius: 999px; padding: 4px 16px; cursor: pointer;
+    }
+    .chip:hover { border-color: var(--muted); }
+    .chip:focus-visible { outline: 3px solid var(--ok); outline-offset: 2px; }
+    .chip[aria-pressed="true"] { background: var(--ok-soft); border-color: var(--ok); color: var(--ok); }
+    .chip[data-cat="verbs"][aria-pressed="true"] { background: var(--verbs-soft); border-color: var(--verbs); color: var(--verbs); }
+    .chip[data-cat="pronouns"][aria-pressed="true"] { background: var(--pron-soft); border-color: var(--pron); color: var(--pron); }
+    .chip[data-cat="small"][aria-pressed="true"] { background: var(--small-soft); border-color: var(--small); color: var(--small); }
+    .count { margin-left: auto; color: var(--muted); font-size: .92rem; }
+
+    /* cards */
     .cards { display: grid; gap: 16px; }
     .card {
-      display: flex;
-      align-items: center;
-      gap: 18px;
-      padding: 20px 22px;
-      background: var(--card);
-      border: 2px solid var(--line);
-      border-radius: 18px;
-      color: inherit;
-      text-decoration: none;
+      --c: var(--ok); --c-soft: var(--ok-soft);
+      display: flex; align-items: center; gap: 18px; padding: 20px 22px;
+      background: var(--card); border: 2px solid var(--line);
+      border-radius: 24px 20px 26px 20px / 20px 26px 20px 24px;
+      color: inherit; text-decoration: none;
       transition: transform .15s ease, border-color .15s ease;
     }
-    .card:hover { transform: translateY(-2px); border-color: var(--accent); }
-    .card:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+    .card.verbs { --c: var(--verbs); --c-soft: var(--verbs-soft); }
+    .card.pronouns { --c: var(--pron); --c-soft: var(--pron-soft); }
+    .card.small { --c: var(--small); --c-soft: var(--small-soft); }
+    .card:hover { transform: translateY(-2px) rotate(-.4deg); border-color: var(--c); }
+    .card:focus-visible { outline: 3px solid var(--c); outline-offset: 3px; }
     .icon {
-      flex: none;
-      width: 56px;
-      height: 56px;
-      border-radius: 16px;
-      display: grid;
-      place-items: center;
-      font-family: var(--font-display);
-      font-weight: 600;
-      font-size: 1.4rem;
-      background: var(--accent-soft);
-      color: var(--accent);
+      flex: none; min-width: 64px; height: 60px; padding: 0 8px; border-radius: 18px 14px 20px 14px / 14px 20px 14px 18px;
+      display: grid; place-items: center; transform: rotate(-4deg);
+      font-family: var(--font-display); font-size: 1.45rem; background: var(--c-soft); color: var(--c); white-space: nowrap;
+      border: 2px dashed var(--c);
     }
-    .card.alt .icon { background: var(--accent2-soft); color: var(--accent2); }
-    .card.alt:hover { border-color: var(--accent2); }
     .text { min-width: 0; flex: 1; }
-    .text h2 {
-      font-family: var(--font-display);
-      font-weight: 600;
-      font-size: 1.3rem;
-      margin: 0 0 2px;
-    }
-    .text p { margin: 0; color: var(--muted); font-size: .95rem; }
-    .arrow { flex: none; font-size: 1.4rem; color: var(--muted); }
-    footer { margin-top: 40px; color: var(--muted); font-size: .85rem; }
-    @media (prefers-reduced-motion: reduce) { .card { transition: none; } }
+    .text h2 { font-family: var(--font-display); font-weight: 400; font-size: 1.5rem; line-height: 1.15; margin: 0 0 2px; }
+    .text p { margin: 0; color: var(--muted); font-size: .96rem; }
+    .tag { display: inline-block; margin-top: 8px; font-family: var(--font-display); font-size: 1rem; background: var(--c-soft); color: var(--c); border-radius: 999px; padding: 0 12px; }
+    .arrow { flex: none; font-size: 1.5rem; color: var(--muted); }
+
+    .empty { text-align: center; padding: 28px 16px; border: 2px dashed var(--line); border-radius: 24px; color: var(--muted); }
+    .empty svg { width: 64px; height: 64px; fill: none; stroke: var(--muted); stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+    .empty p { margin: 6px 0 0; }
+    footer { margin-top: 40px; color: var(--muted); font-size: .9rem; }
+    @media (prefers-reduced-motion: reduce) { .card { transition: none; } .card:hover { transform: none; } }
+    @media (max-width: 520px) { .card { padding: 16px; gap: 14px; } .arrow { display: none; } .count { margin-left: 0; width: 100%; } }
   </style>
 </head>
 <body>
+  <svg class="dd d-pencil" viewBox="0 0 90 90" aria-hidden="true"><path class="f2" d="M14 70 L18 56 L60 14 Q65 9 70 14 L76 20 Q81 25 76 30 L34 72 Z"/><path class="f1" d="M18 56 L34 72 L12 78 Z"/><path d="M54 20 L70 36 M24 63 L28 67"/></svg>
+  <svg class="dd d-star1" viewBox="0 0 40 40" aria-hidden="true"><path class="f2" d="M20 4 L24 16 L37 18 L27 26 L30 38 L20 31 L10 38 L13 26 L3 18 L16 16 Z"/></svg>
+  <svg class="dd d-star2" viewBox="0 0 40 40" aria-hidden="true"><path class="f1" d="M20 4 L24 16 L37 18 L27 26 L30 38 L20 31 L10 38 L13 26 L3 18 L16 16 Z"/></svg>
+  <svg class="dd d-book" viewBox="0 0 100 70" aria-hidden="true"><path class="f4" d="M50 14 Q30 4 8 10 V56 Q30 50 50 60 Q70 50 92 56 V10 Q70 4 50 14 Z"/><path d="M50 14 V60 M16 24 Q30 20 42 26 M16 34 Q30 30 42 36 M58 26 Q70 20 84 24 M58 36 Q70 30 84 34"/></svg>
+  <svg class="dd d-bubble" viewBox="0 0 96 72" aria-hidden="true"><path class="f3" d="M10 10 H82 Q88 10 88 16 V46 Q88 52 82 52 H42 L24 66 L28 52 H16 Q10 52 10 46 Z"/><text x="30" y="40">Aa</text></svg>
+  <svg class="dd d-bulb" viewBox="-4 -4 68 88" aria-hidden="true"><path class="f2" d="M30 6 C14 6 6 18 6 28 C6 38 14 42 18 52 H42 C46 42 54 38 54 28 C54 18 46 6 30 6 Z"/><path d="M20 58 H40 M22 66 H38 M30 52 V38 M-2 6 L6 12 M62 6 L54 12 M-3 30 H2 M63 30 H58"/></svg>
+  <svg class="dd d-cloud" viewBox="0 0 100 56" aria-hidden="true"><path class="f0" d="M24 46 Q6 46 8 32 Q10 22 22 24 Q24 8 42 10 Q54 4 62 16 Q80 12 84 28 Q96 30 92 42 Q90 46 80 46 Z"/></svg>
+  <svg class="dd d-star3" viewBox="0 0 40 40" aria-hidden="true"><path class="f3" d="M20 4 L24 16 L37 18 L27 26 L30 38 L20 31 L10 38 L13 26 L3 18 L16 16 Z"/></svg>
+
   <main>
     <header>
       <span class="eyebrow">Study pages</span>
       <h1>English Grammar</h1>
-      <p class="lead">Pick a page to start studying. Every page opens from here.</p>
+      <svg class="squig" viewBox="0 0 150 14" aria-hidden="true"><path d="M3 8 Q15 0 27 8 T51 8 T75 8 T99 8 T123 8 T147 8"/></svg>
+      <p class="lead">Pick a page to start studying, or search for a topic. Every page opens from here.</p>
     </header>
 
+    <div class="tools">
+      <div class="search" role="search">
+        <label class="sr-only" for="q">Search the study pages</label>
+        <svg class="mag" viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 L21 21"/></svg>
+        <input id="q" type="search" placeholder="Search a topic, e.g. passive" autocomplete="off">
+        <button class="clear" id="clear" type="button" aria-label="Clear search" hidden>&times;</button>
+      </div>
+      <div class="chips" role="group" aria-label="Filter by topic">
+        <button class="chip" type="button" data-cat="all" aria-pressed="true">All</button>
+        <button class="chip" type="button" data-cat="verbs" aria-pressed="false">Verbs</button>
+        <button class="chip" type="button" data-cat="pronouns" aria-pressed="false">Pronouns</button>
+        <button class="chip" type="button" data-cat="small" aria-pressed="false">Small words</button>
+        <span class="count" id="count" role="status" aria-live="polite"></span>
+      </div>
+    </div>
+
     <nav class="cards" aria-label="Grammar pages">
-      <a class="card" href="tense_style_options.html">
+      <a class="card verbs" href="tense_style_options.html" data-cat="verbs" data-keywords="tenses present past future simple continuous perfect progressive twelve 12 timeline verbs study ways">
         <span class="icon" aria-hidden="true">12</span>
         <span class="text">
           <h2>Tense Style Options</h2>
           <p>All 12 tenses, with five ways to study them: tap grid, build it, cover-up sheet, full table and key words.</p>
+          <span class="tag">Verbs</span>
         </span>
         <span class="arrow" aria-hidden="true">&rarr;</span>
       </a>
 
-      <a class="card alt" href="be_verb_study_page.html">
+      <a class="card verbs" href="be_verb_study_page.html" data-cat="verbs" data-keywords="be verb am is are was were been being helping linking modal passive voice continuous structures practice quiz">
         <span class="icon" aria-hidden="true">be</span>
         <span class="text">
           <h2>Be Verb Study Page</h2>
           <p>Forms, meanings, the 12 tenses, helping-verb uses, passive voice and special structures of &ldquo;be&rdquo;.</p>
+          <span class="tag">Verbs</span>
         </span>
         <span class="arrow" aria-hidden="true">&rarr;</span>
       </a>
-      <a class="card" href="some_any_study_page.html">
-        <span class="icon" aria-hidden="true">s/a</span>
-        <span class="text">
-          <h2>Some and Any Study Page</h2>
-          <p>When to use some, any or a / an, with tap cards for the rule and its exceptions, plus a quiz.</p>
-        </span>
-        <span class="arrow" aria-hidden="true">&rarr;</span>
-      </a>
-      <a class="card alt" href="personal_pronouns_study_page.html">
+
+      <a class="card pronouns" href="personal_pronouns_study_page.html" data-cat="pronouns" data-keywords="pronouns personal I me he him she her it we us they them you subject object possessive adjective reflexive myself intensive agreement antecedent errors practice">
         <span class="icon" aria-hidden="true">I/me</span>
         <span class="text">
           <h2>Personal Pronouns Study Page</h2>
           <p>Subject, object, possessive and reflexive pronouns in eight tabs, with agreement, common errors and practice.</p>
+          <span class="tag">Pronouns</span>
+        </span>
+        <span class="arrow" aria-hidden="true">&rarr;</span>
+      </a>
+
+      <a class="card small" href="some_any_study_page.html" data-cat="small" data-keywords="some any a an articles quantifiers determiners countable uncountable questions negatives quiz">
+        <span class="icon" aria-hidden="true">s/a</span>
+        <span class="text">
+          <h2>Some and Any Study Page</h2>
+          <p>When to use some, any or a / an, with tap cards for the rule and its exceptions, plus a quiz.</p>
+          <span class="tag">Small words</span>
         </span>
         <span class="arrow" aria-hidden="true">&rarr;</span>
       </a>
     </nav>
 
+    <div class="empty" id="empty" hidden>
+      <svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="28" cy="28" r="16"/><path d="M40 40 L56 56 M22 24 h.01 M34 24 h.01 M22 35 Q28 30 34 35"/></svg>
+      <p>No pages match that search. Try another word or choose All.</p>
+    </div>
+
     <footer>More pages will appear here as they are added.</footer>
   </main>
+
+  <script>
+  (function () {
+    var q = document.getElementById('q');
+    var clear = document.getElementById('clear');
+    var count = document.getElementById('count');
+    var empty = document.getElementById('empty');
+    var cards = Array.prototype.slice.call(document.querySelectorAll('.cards .card'));
+    var chips = Array.prototype.slice.call(document.querySelectorAll('.chip'));
+    var cat = 'all';
+    function apply() {
+      var words = q.value.toLowerCase().trim().split(/\s+/).filter(Boolean);
+      var shown = 0;
+      cards.forEach(function (c) {
+        var hay = (c.textContent + ' ' + c.getAttribute('data-keywords')).toLowerCase();
+        var okQ = words.every(function (w) { return hay.indexOf(w) !== -1; });
+        var okC = cat === 'all' || c.getAttribute('data-cat') === cat;
+        c.hidden = !(okQ && okC);
+        if (!c.hidden) shown++;
+      });
+      count.textContent = 'Showing ' + shown + ' of ' + cards.length + (cards.length === 1 ? ' page' : ' pages');
+      empty.hidden = shown !== 0;
+      clear.hidden = q.value === '';
+    }
+    q.addEventListener('input', apply);
+    q.addEventListener('keydown', function (e) { if (e.key === 'Escape') { q.value = ''; apply(); } });
+    clear.addEventListener('click', function () { q.value = ''; apply(); q.focus(); });
+    chips.forEach(function (b) {
+      b.addEventListener('click', function () {
+        cat = b.getAttribute('data-cat');
+        chips.forEach(function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
+        apply();
+      });
+    });
+    apply();
+  })();
+  </script>
 </body>
 </html>

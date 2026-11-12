@@ -1,49 +1,48 @@
 <!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
-<title>Tense Style Options</title>
+<title>Tenses Study Page</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Lexend:wght@400;500;600&family=Atkinson+Hyperlegible:wght@400;700&family=STIX+Two+Text:ital,wght@0,500;0,600;1,500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Nunito+Sans:opsz,wght@6..12,400;6..12,600;6..12,700&family=STIX+Two+Text:ital,wght@0,500;0,600;1,500&display=swap">
 <style>
 /* Layout: a switcher on top picks one of three study styles over the same 12 tenses.
    A = tap tiles in a time grid, B = cover-up study sheet, C = build the pattern game. */
 :root {
-  --bg: #F3F1FA;
+  --bg: #FAF6F1;
   --surface: #FFFFFF;
-  --ink: #1D1B3A;
-  --muted: #5B5880;
-  --line: #DAD6EE;
-  --line-strong: #A39FCB;
-  --grid: #5E5990;
-  --grid: #5E5990;
-  --good: #1F7A3A; --good-soft: #DDF3E3;
-  --bad: #B3261E;  --bad-soft: #FBE3E1;
-  --present: #0F7C74; --present-soft: #DDF3F0; --present-on: #FFFFFF;
-  --past: #6A45B8;    --past-soft: #ECE6F8;    --past-on: #FFFFFF;
-  --future: #B25E00;  --future-soft: #FBEBD3;  --future-on: #FFFFFF;
-  --font-display: 'Fredoka', 'Trebuchet MS', system-ui, sans-serif;
-  --font-body: 'Lexend', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --ink: #1D3338;
+  --muted: #4A5E62;
+  --line: #E3DACE;
+  --line-strong: #9DA9A8;
+  --grid: #2C4C53;
+  --good: #3F6A2A; --good-soft: #E6EFD9;
+  --bad: #9C2A2A;  --bad-soft: #F7DEDE;
+  --present: #2C4C53; --present-soft: #E3EBEC; --present-on: #FFFFFF;
+  --past: #A8452F;    --past-soft: #F6E3DC;    --past-on: #FFFFFF;
+  --future: #7D600D;  --future-soft: #F3EAD0;  --future-on: #FFFFFF;
+  --font-display: 'Fraunces', Georgia, 'Times New Roman', serif;
+  --font-body: 'Nunito Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
   --font-formula: 'STIX Two Text', 'Cambria Math', Cambria, Georgia, serif;
-  --font-pattern: 'Atkinson Hyperlegible', 'Lexend', system-ui, sans-serif;
+  --font-pattern: 'Nunito Sans', system-ui, sans-serif;
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --bg: #14132B; --surface: #1E1D40; --ink: #ECEBFA; --muted: #AAA8CF;
-    --line: #302F5C; --line-strong: #5C5A92; --grid: #9A96CF;
-    --good: #6FD58B; --good-soft: #173A24;
-    --bad: #FF8A80;  --bad-soft: #4A1F1C;
-    --present: #4FD1C5; --present-soft: #17383A; --present-on: #0B2B28;
-    --past: #B79CF2;    --past-soft: #2C2450;    --past-on: #20123F;
-    --future: #F2A94E;  --future-soft: #43321A;  --future-on: #3A2100;
+    --bg: #15262A; --surface: #1F3438; --ink: #F3ECE2; --muted: #BAC6C4;
+    --line: #35494D; --line-strong: #647A7E; --grid: #A9C0C2;
+    --good: #A5D08A; --good-soft: #263A1C;
+    --bad: #FF9E9E;  --bad-soft: #4A2222;
+    --present: #86C3CB; --present-soft: #1E3F44; --present-on: #0D2226;
+    --past: #EE9E86;    --past-soft: #4A2A22;    --past-on: #3A180F;
+    --future: #E4C263;  --future-soft: #43371A;  --future-on: #2F2300;
     color-scheme: dark;
   }
 }
 :root[data-theme="dark"] {
-  --bg: #14132B; --surface: #1E1D40; --ink: #ECEBFA; --muted: #AAA8CF;
-  --line: #302F5C; --line-strong: #5C5A92; --grid: #9A96CF;
-  --good: #6FD58B; --good-soft: #173A24;
-  --bad: #FF8A80;  --bad-soft: #4A1F1C;
-  --present: #4FD1C5; --present-soft: #17383A; --present-on: #0B2B28;
-  --past: #B79CF2;    --past-soft: #2C2450;    --past-on: #20123F;
-  --future: #F2A94E;  --future-soft: #43321A;  --future-on: #3A2100;
+  --bg: #15262A; --surface: #1F3438; --ink: #F3ECE2; --muted: #BAC6C4;
+  --line: #35494D; --line-strong: #647A7E; --grid: #A9C0C2;
+  --good: #A5D08A; --good-soft: #263A1C;
+  --bad: #FF9E9E;  --bad-soft: #4A2222;
+  --present: #86C3CB; --present-soft: #1E3F44; --present-on: #0D2226;
+  --past: #EE9E86;    --past-soft: #4A2A22;    --past-on: #3A180F;
+  --future: #E4C263;  --future-soft: #43371A;  --future-on: #2F2300;
   color-scheme: dark;
 }
 
@@ -288,10 +287,10 @@ button:focus-visible, select:focus-visible { outline: 3px solid var(--t, var(--i
 </style>
 
 <div class="wrap">
-  <style>.gh-home{align-self:flex-start;display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:999px;background:#fff;color:#1d1b3a;border:2px solid #dad6ee;font:600 .9rem system-ui,-apple-system,"Segoe UI",sans-serif;text-decoration:none}.gh-home:hover{border-color:#6a45b8}.gh-home:focus-visible{outline:3px solid #6a45b8;outline-offset:2px}@media (prefers-color-scheme:dark){.gh-home{background:#1e1d40;color:#ecebfa;border-color:#302f5c}.gh-home:hover{border-color:#b79cf2}.gh-home:focus-visible{outline-color:#b79cf2}}</style>
+  <style>.gh-home{align-self:flex-start;display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:999px;background:#fff;color:#1d3338;border:2px solid #e3dace;font:600 .9rem "Nunito Sans",system-ui,sans-serif;text-decoration:none}.gh-home:hover{border-color:#2c4c53}.gh-home:focus-visible{outline:3px solid #2c4c53;outline-offset:2px}@media (prefers-color-scheme:dark){.gh-home{background:#1f3438;color:#f3ece2;border-color:#35494d}.gh-home:hover{border-color:#86c3cb}.gh-home:focus-visible{outline-color:#86c3cb}}</style>
   <a class="gh-home" href="index.html" aria-label="Back to the home page">&larr; Home</a>
   <header>
-    <h1>Tense Style Options</h1>
+    <h1>Tenses Study Page</h1>
     <p class="lead">Same 12 tenses, three ways to study them. Try each one, then tell me which to keep.</p>
   </header>
 

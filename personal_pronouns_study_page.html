@@ -5,63 +5,66 @@
 <style>
 /* Layout: one reading column. Terracotta base with warm biscuit background; job colors are deep teal, terracotta, olive, ochre and plum. Job colors (subject, object, possessive adjective, possessive pronoun, reflexive) mark words in examples. The main table colors rows by person instead. */
 :root {
-  --hero: #8f3a27; --hero-fg: #fffaf5; --hero-accent: #ffd9a8;
-  --bg: #fbf1ec; --surface: #fffaf7; --soft: #f5e4db; --fg: #3a2a22; --muted: #6e5a50; --line: #e9d4c9;
-  --band-fg: #fffdf8; --subj-band: #2c4c53; --obj-band: #a03d28; --padj-band: #66701f; --ppro-band: #7d600d; --refl-band: #68407a;
-  --subj-pill: #bcd9d9; --obj-pill: #f3b9a4; --padj-pill: #d3de9f; --ppro-pill: #f0cf79; --refl-pill: #d3bce0; --pill-fg: #33241d;
-  --subj: #1f5a63; --subj-bg: #d8ecec;
-  --obj: #a03d28; --obj-bg: #fbe0d3;
-  --padj: #4d5e1a; --padj-bg: #e9efcd;
-  --ppro: #7a5206; --ppro-bg: #f8ebc2;
-  --refl: #68407a; --refl-bg: #eadff0;
-  --wrong: #8c3b26; --wrong-bg: #f7e6dd;
-  --right: #3f6a0c; --right-bg: #e9f8c4;
-  --p1-fg: #33241d; --p2-fg: #33241d; --p3-fg: #fffaf5; --p4-fg: #fffaf5;
-  --p1: #e3b783; --p1-a: #fbefdc; --p1-b: #fdf6ea;
-  --p2: #d98a5f; --p2-a: #fadfcd; --p2-b: #fdeee3;
-  --p3: #b0502f; --p3-a: #f6d9cd; --p3-b: #fbebe4;
-  --p4: #5a2e22; --p4-a: #ecdcd6; --p4-b: #f3e9e5;
+  --hero: #6B4A85; --hero-fg: #FFFAFD; --hero-accent: #F8C9DC;
+  --bg: #F7F0F8; --surface: #FFFAFD; --soft: #F0E4F2; --fg: #2F2236; --muted: #5E4D68; --line: #E4D3E8;
+  --band-fg: #FFFDFE; --subj-band: #A03A6D; --obj-band: #A03A6D; --padj-band: #A03A6D; --ppro-band: #A03A6D; --refl-band: #A03A6D;
+  --subj-pill: #F8D3E3; --obj-pill: #F8D3E3; --padj-pill: #F8D3E3; --ppro-pill: #F8D3E3; --refl-pill: #F8D3E3; --pill-fg: #2F2236;
+  --subj: #5A3A99; --subj-bg: #E9DDF5;
+  --obj: #A3295F; --obj-bg: #FBDBE8;
+  --padj: #3A4FA0; --padj-bg: #E0E5F6;
+  --ppro: #1C6A68; --ppro-bg: #D8EEEC;
+  --refl: #9A4D1A; --refl-bg: #F7E4D2;
+  --wrong: #9A2A3A; --wrong-bg: #F9E0E4;
+  --right: #2F6A2A; --right-bg: #E2F3DC;
+  --p1-fg: #2F2236; --p2-fg: #2F2236; --p3-fg: #FFFFFF; --p4-fg: #FFFFFF;
+  --p1: #F4B8CD; --p1-a: #FDE8F0; --p1-b: #FFF2F7;
+  --p2: #D98CB0; --p2-a: #F8DBE9; --p2-b: #FCEAF2;
+  --p3: #8A5AA6; --p3-a: #EADCF2; --p3-b: #F4EAF8;
+  --p4: #4F3077; --p4-a: #E4D8EE; --p4-b: #EFE7F5;
+  --h2c: #8A2F5F; --h3c: #5B3A86; --lblc: #6E4F82;
   --head: "Fraunces", Georgia, "Times New Roman", serif;
   --body: "Nunito Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --hero: #5c2519; --hero-fg: #fff4ee; --hero-accent: #ffd9a8;
-    --bg: #1f1512; --surface: #2a1c18; --soft: #38261f; --fg: #f6ece6; --muted: #c9b4a9; --line: #503830;
-    --band-fg: #fffdf8; --subj-band: #254247; --obj-band: #7e3326; --padj-band: #55601a; --ppro-band: #6b520a; --refl-band: #55346a;
-    --subj-pill: #bcd9d9; --obj-pill: #f3b9a4; --padj-pill: #d3de9f; --ppro-pill: #f0cf79; --refl-pill: #d3bce0; --pill-fg: #33241d;
-    --subj: #7fd0d2; --subj-bg: #12383b;
-    --obj: #ffa98e; --obj-bg: #4a2218;
-    --padj: #c9dd7c; --padj-bg: #2f3a12;
-    --ppro: #f0c35a; --ppro-bg: #46350a;
-    --refl: #cfa8e8; --refl-bg: #3a2447;
-    --wrong: #f0a58c; --wrong-bg: #46261a;
-    --right: #c9dd7c; --right-bg: #2f3a12;
-    --p1-fg: #1f1608; --p2-fg: #2a1410; --p3-fg: #fffaf5; --p4-fg: #fffaf5;
-    --p1: #c9a063; --p1-a: #3b2f1a; --p1-b: #46382a;
-    --p2: #c9774f; --p2-a: #3f2418; --p2-b: #4b2c1e;
-    --p3: #a24a2b; --p3-a: #3d231a; --p3-b: #482a20;
-    --p4: #7a4636; --p4-a: #2e211d; --p4-b: #372822;
+    --hero: #43285E; --hero-fg: #FFF4FA; --hero-accent: #F8C9DC;
+    --bg: #1E1424; --surface: #2A1B33; --soft: #36244A; --fg: #F6ECF8; --muted: #CDB9D6; --line: #4A3558;
+    --band-fg: #FFFDFE; --subj-band: #7A2A55; --obj-band: #7A2A55; --padj-band: #7A2A55; --ppro-band: #7A2A55; --refl-band: #7A2A55;
+    --subj-pill: #F8D3E3; --obj-pill: #F8D3E3; --padj-pill: #F8D3E3; --ppro-pill: #F8D3E3; --refl-pill: #F8D3E3; --pill-fg: #2F2236;
+    --subj: #C9A8F5; --subj-bg: #3F2A66;
+    --obj: #FF9DC2; --obj-bg: #4D1F36;
+    --padj: #A9B8FF; --padj-bg: #27316B;
+    --ppro: #7FD8D4; --ppro-bg: #12403F;
+    --refl: #F5B27A; --refl-bg: #4A2C14;
+    --wrong: #FF9DA9; --wrong-bg: #4D1F26;
+    --right: #A9E39A; --right-bg: #21401C;
+    --p1-fg: #1E1424; --p2-fg: #1E1424; --p3-fg: #FFFFFF; --p4-fg: #FFFFFF;
+    --p1: #D98CB0; --p1-a: #3F2535; --p1-b: #4A2D3E;
+    --p2: #B77AA8; --p2-a: #3C2640; --p2-b: #472D4B;
+    --p3: #8A5AA6; --p3-a: #33254A; --p3-b: #3C2C54;
+    --p4: #6B4A92; --p4-a: #2B2040; --p4-b: #332749;
+    --h2c: #F29BC2; --h3c: #C9A6F0; --lblc: #CDB9D6;
     color-scheme: dark;
   }
 }
 :root[data-theme="dark"] {
-  --hero: #5c2519; --hero-fg: #fff4ee; --hero-accent: #ffd9a8;
-  --bg: #1f1512; --surface: #2a1c18; --soft: #38261f; --fg: #f6ece6; --muted: #c9b4a9; --line: #503830;
-  --band-fg: #fffdf8; --subj-band: #254247; --obj-band: #7e3326; --padj-band: #55601a; --ppro-band: #6b520a; --refl-band: #55346a;
-  --subj-pill: #bcd9d9; --obj-pill: #f3b9a4; --padj-pill: #d3de9f; --ppro-pill: #f0cf79; --refl-pill: #d3bce0; --pill-fg: #33241d;
-  --subj: #7fd0d2; --subj-bg: #12383b;
-  --obj: #ffa98e; --obj-bg: #4a2218;
-  --padj: #c9dd7c; --padj-bg: #2f3a12;
-  --ppro: #f0c35a; --ppro-bg: #46350a;
-  --refl: #cfa8e8; --refl-bg: #3a2447;
-  --wrong: #f0a58c; --wrong-bg: #46261a;
-  --right: #c9dd7c; --right-bg: #2f3a12;
-  --p1-fg: #1f1608; --p2-fg: #2a1410; --p3-fg: #fffaf5; --p4-fg: #fffaf5;
-  --p1: #c9a063; --p1-a: #3b2f1a; --p1-b: #46382a;
-  --p2: #c9774f; --p2-a: #3f2418; --p2-b: #4b2c1e;
-  --p3: #a24a2b; --p3-a: #3d231a; --p3-b: #482a20;
-  --p4: #7a4636; --p4-a: #2e211d; --p4-b: #372822;
+  --hero: #43285E; --hero-fg: #FFF4FA; --hero-accent: #F8C9DC;
+  --bg: #1E1424; --surface: #2A1B33; --soft: #36244A; --fg: #F6ECF8; --muted: #CDB9D6; --line: #4A3558;
+  --band-fg: #FFFDFE; --subj-band: #7A2A55; --obj-band: #7A2A55; --padj-band: #7A2A55; --ppro-band: #7A2A55; --refl-band: #7A2A55;
+  --subj-pill: #F8D3E3; --obj-pill: #F8D3E3; --padj-pill: #F8D3E3; --ppro-pill: #F8D3E3; --refl-pill: #F8D3E3; --pill-fg: #2F2236;
+  --subj: #C9A8F5; --subj-bg: #3F2A66;
+  --obj: #FF9DC2; --obj-bg: #4D1F36;
+  --padj: #A9B8FF; --padj-bg: #27316B;
+  --ppro: #7FD8D4; --ppro-bg: #12403F;
+  --refl: #F5B27A; --refl-bg: #4A2C14;
+  --wrong: #FF9DA9; --wrong-bg: #4D1F26;
+  --right: #A9E39A; --right-bg: #21401C;
+  --p1-fg: #1E1424; --p2-fg: #1E1424; --p3-fg: #FFFFFF; --p4-fg: #FFFFFF;
+  --p1: #D98CB0; --p1-a: #3F2535; --p1-b: #4A2D3E;
+  --p2: #B77AA8; --p2-a: #3C2640; --p2-b: #472D4B;
+  --p3: #8A5AA6; --p3-a: #33254A; --p3-b: #3C2C54;
+  --p4: #6B4A92; --p4-a: #2B2040; --p4-b: #332749;
+  --h2c: #F29BC2; --h3c: #C9A6F0; --lblc: #CDB9D6;
   color-scheme: dark;
 }
 * { box-sizing: border-box; }
@@ -104,7 +107,7 @@ section > header p { max-width: none; }
 .hero > * { position: relative; z-index: 1; }
 .hero .orb { position: absolute; border-radius: 50%; z-index: 0; pointer-events: none; }
 .hero .orb1 { width: 150px; height: 150px; right: 34px; top: -44px; background: var(--hero-accent); opacity: 1; }
-.hero .orb2 { width: 104px; height: 104px; right: 140px; top: 30px; background: #e9a074; opacity: 0.95; mix-blend-mode: normal; }
+.hero .orb2 { width: 104px; height: 104px; right: 140px; top: 30px; background: #C9A6F0; opacity: 0.95; mix-blend-mode: normal; }
 .hero .label { color: var(--hero-accent); }
 .hero .lede { color: var(--hero-fg); opacity: 0.92; }
 .hero .jump a { background: rgba(255, 255, 255, 0.10); border-color: rgba(255, 255, 255, 0.30); color: var(--hero-fg); }
@@ -226,6 +229,27 @@ details p b { color: var(--right); }
 .part-head .s { background: var(--subj-bg); border-bottom: 0; } .part-head .o { background: var(--obj-bg); border-bottom: 0; } .part-head .pa { background: var(--padj-bg); border-bottom: 0; } .part-head .r { background: var(--refl-bg); border-bottom: 0; }
 .part-head .pp { background: var(--ppro-bg); border-bottom: 0; } .part-head .n { background: var(--soft); color: var(--fg); }
 .part { display: flex; flex-direction: column; gap: 12px; }
+/* Fixed heading colors: every section title sits on one raspberry band, every h3 is violet, every small label is mauve */
+section > header h2 { color: var(--band-fg); }
+h3, .use h3, .four h3, .part-head h3 { color: var(--h3c); }
+.label { color: var(--lblc); }
+.hero .label { color: var(--hero-accent); }
+.hero h1 { color: var(--hero-fg); }
+/* Soft decoration */
+body { background-image: radial-gradient(color-mix(in srgb, var(--line) 80%, transparent) 1.2px, transparent 1.4px); background-size: 24px 24px; }
+.hero { background: linear-gradient(135deg, var(--hero), color-mix(in srgb, var(--hero) 76%, #b0407a)); box-shadow: 0 10px 30px rgba(70,40,90,.22); }
+.hero::after { content: ""; position: absolute; left: -64px; bottom: -84px; width: 210px; height: 210px; border-radius: 50%; border: 28px solid rgba(255,255,255,.09); pointer-events: none; z-index: 0; }
+.hero h1::after { content: ""; display: block; width: 68px; height: 5px; border-radius: 4px; background: var(--hero-accent); margin-top: 14px; }
+.hero .label::before { content: ""; display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--hero-accent); margin-right: 9px; vertical-align: middle; }
+section > header { position: relative; overflow: hidden; }
+section > header::after { content: ""; position: absolute; right: -26px; top: -34px; width: 110px; height: 110px; border-radius: 50%; background: var(--band); opacity: .13; pointer-events: none; }
+section > header > * { position: relative; z-index: 1; }
+.scroll { border-radius: 14px; border-top: 5px solid var(--band, var(--h2c)); box-shadow: 0 1px 2px rgba(70,40,90,.06), 0 6px 18px rgba(70,40,90,.07); }
+.uses, .qs { border-radius: 14px; box-shadow: 0 1px 2px rgba(70,40,90,.06), 0 6px 18px rgba(70,40,90,.07); }
+.four > div { background: var(--surface); border: 1px solid var(--line); border-top: 5px solid var(--h3c); border-radius: 14px; padding: 14px 16px 16px; }
+.rule { border-left: 6px solid var(--h2c); border-radius: 4px 12px 12px 4px; }
+.use .ex { border-radius: 0 12px 12px 0; }
+.points li::marker { color: var(--h2c); }
 /* Verbs-page letter styles: Fraunces headings, Nunito Sans body */
 h1, h2, h3, .steps li::before, .btn, .persons thead th, .persons th.plabel { font-weight: 700; }
 .label { font-family: var(--body); font-weight: 700; }

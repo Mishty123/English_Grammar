@@ -1,45 +1,45 @@
 <!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
 <title>Some and Any Study Page</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Lexend:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Nunito+Sans:opsz,wght@6..12,400;6..12,600;6..12,700&display=swap">
 <style>
 /* Layout: a switcher picks Tap Cards (the rule, then the exceptions) or Pick It (a quiz).
    Colour = the word: some is teal, any is purple, a / an or no word is orange. */
 :root {
-  --bg: #F3F1FA;
+  --bg: #FAF6F1;
   --surface: #FFFFFF;
-  --ink: #1D1B3A;
-  --muted: #5B5880;
-  --line: #DAD6EE;
-  --line-strong: #A39FCB;
-  --good: #1F7A3A; --good-soft: #DDF3E3;
-  --bad: #B3261E;  --bad-soft: #FBE3E1;
-  --some: #0F7C74; --some-soft: #DDF3F0; --some-on: #FFFFFF;
-  --any: #6A45B8;  --any-soft: #ECE6F8;  --any-on: #FFFFFF;
-  --a: #B25E00;    --a-soft: #FBEBD3;    --a-on: #FFFFFF;
-  --font-display: 'Fredoka', 'Trebuchet MS', system-ui, sans-serif;
-  --font-body: 'Lexend', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --ink: #1D3338;
+  --muted: #4A5E62;
+  --line: #E3DACE;
+  --line-strong: #9DA9A8;
+  --good: #3F6A2A; --good-soft: #E6EFD9;
+  --bad: #9C2A2A;  --bad-soft: #F7DEDE;
+  --some: #2C4C53; --some-soft: #E3EBEC; --some-on: #FFFFFF;
+  --any: #A8452F;  --any-soft: #F6E3DC;  --any-on: #FFFFFF;
+  --a: #7D600D;    --a-soft: #F3EAD0;    --a-on: #FFFFFF;
+  --font-display: 'Fraunces', Georgia, 'Times New Roman', serif;
+  --font-body: 'Nunito Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --bg: #14132B; --surface: #1E1D40; --ink: #ECEBFA; --muted: #AAA8CF;
-    --line: #302F5C; --line-strong: #5C5A92;
-    --good: #6FD58B; --good-soft: #173A24;
-    --bad: #FF8A80;  --bad-soft: #4A1F1C;
-    --some: #4FD1C5; --some-soft: #17383A; --some-on: #0B2B28;
-    --any: #B79CF2;  --any-soft: #2C2450;  --any-on: #20123F;
-    --a: #F2A94E;    --a-soft: #43321A;    --a-on: #3A2100;
+    --bg: #15262A; --surface: #1F3438; --ink: #F3ECE2; --muted: #BAC6C4;
+    --line: #35494D; --line-strong: #647A7E;
+    --good: #A5D08A; --good-soft: #263A1C;
+    --bad: #FF9E9E;  --bad-soft: #4A2222;
+    --some: #86C3CB; --some-soft: #1E3F44; --some-on: #0D2226;
+    --any: #EE9E86;  --any-soft: #4A2A22;  --any-on: #3A180F;
+    --a: #E4C263;    --a-soft: #43371A;    --a-on: #2F2300;
     color-scheme: dark;
   }
 }
 :root[data-theme="dark"] {
-  --bg: #14132B; --surface: #1E1D40; --ink: #ECEBFA; --muted: #AAA8CF;
-  --line: #302F5C; --line-strong: #5C5A92;
-  --good: #6FD58B; --good-soft: #173A24;
-  --bad: #FF8A80;  --bad-soft: #4A1F1C;
-  --some: #4FD1C5; --some-soft: #17383A; --some-on: #0B2B28;
-  --any: #B79CF2;  --any-soft: #2C2450;  --any-on: #20123F;
-  --a: #F2A94E;    --a-soft: #43321A;    --a-on: #3A2100;
+  --bg: #15262A; --surface: #1F3438; --ink: #F3ECE2; --muted: #BAC6C4;
+  --line: #35494D; --line-strong: #647A7E;
+  --good: #A5D08A; --good-soft: #263A1C;
+  --bad: #FF9E9E;  --bad-soft: #4A2222;
+  --some: #86C3CB; --some-soft: #1E3F44; --some-on: #0D2226;
+  --any: #EE9E86;  --any-soft: #4A2A22;  --any-on: #3A180F;
+  --a: #E4C263;    --a-soft: #43371A;    --a-on: #2F2300;
   color-scheme: dark;
 }
 
@@ -139,7 +139,7 @@ button:focus-visible { outline: 3px solid var(--t, var(--ink)); outline-offset: 
 </style>
 
 <div class="wrap">
-  <style>.gh-home{align-self:flex-start;display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:999px;background:#fff;color:#1d1b3a;border:2px solid #dad6ee;font:600 .9rem system-ui,-apple-system,"Segoe UI",sans-serif;text-decoration:none}.gh-home:hover{border-color:#6a45b8}.gh-home:focus-visible{outline:3px solid #6a45b8;outline-offset:2px}@media (prefers-color-scheme:dark){.gh-home{background:#1e1d40;color:#ecebfa;border-color:#302f5c}.gh-home:hover{border-color:#b79cf2}.gh-home:focus-visible{outline-color:#b79cf2}}</style>
+  <style>.gh-home{align-self:flex-start;display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:999px;background:#fff;color:#1d3338;border:2px solid #e3dace;font:600 .9rem "Nunito Sans",system-ui,sans-serif;text-decoration:none}.gh-home:hover{border-color:#2c4c53}.gh-home:focus-visible{outline:3px solid #2c4c53;outline-offset:2px}@media (prefers-color-scheme:dark){.gh-home{background:#1f3438;color:#f3ece2;border-color:#35494d}.gh-home:hover{border-color:#86c3cb}.gh-home:focus-visible{outline-color:#86c3cb}}</style>
   <a class="gh-home" href="index.html" aria-label="Back to the home page">&larr; Home</a>
   <header>
     <h1>Some and Any</h1>

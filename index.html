@@ -6,23 +6,26 @@
   <title>English Grammar</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Poppins:wght@600;700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@600;700&display=swap">
   <style>
     :root {
-      --bg: #eef3ef;
-      --card: #ffffff;
-      --ink: #14281f;
-      --muted: #4f6257;
-      --line: #d3dfd7;
-      --dot: #c9d8ce;
-      --verbs: #a8472a; --small: #7d5a06; --pron: #66447a; --ok: #1f6b57; --ok-soft: #d8ebe2;
-      --font-display: "Poppins", "Segoe UI", system-ui, sans-serif;
+      --bg: #efe3d6;
+      --glow1: rgba(205, 150, 150, .28);
+      --glow2: rgba(214, 178, 110, .26);
+      --card: #fffaf3;
+      --ink: #30211a;
+      --muted: #6b574c;
+      --line: #e0cfbd;
+      --verbs: #9b4155; --pron: #3f6a5e; --small: #86601a; --ok: #3f6a5e; --ok-soft: #e2ebe3;
+      --frame: #c9a46a; --on: #ffffff;
+      --font-display: "Playfair Display", Georgia, "Times New Roman", serif;
       --font-body: "DM Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
     }
     @media (prefers-color-scheme: dark) {
       :root {
-        --bg: #101e18; --card: #18302a; --ink: #eaf4ee; --muted: #a9c2b5; --line: #2c4a3d; --dot: #1d3329;
-        --verbs: #e2704f; --small: #c18f17; --pron: #9a74b4; --ok: #7fd0b4; --ok-soft: #12382b;
+        --bg: #1e1612; --glow1: rgba(170, 90, 100, .18); --glow2: rgba(190, 140, 60, .14);
+        --card: #2a2019; --ink: #f3e8dc; --muted: #c4b0a0; --line: #45352b;
+        --verbs: #e0788c; --pron: #7fc0ad; --small: #d7a74a; --ok: #7fc0ad; --ok-soft: #1f342d; --frame: #8c6e3c; --on: #1e1612;
       }
     }
     * { box-sizing: border-box; }
@@ -30,48 +33,31 @@
     body {
       margin: 0;
       background-color: var(--bg);
-      background-image: radial-gradient(var(--dot) 1.2px, transparent 1.2px);
-      background-size: 24px 24px;
+      background-image: radial-gradient(60rem 40rem at 0% 0%, var(--glow1), transparent 70%), radial-gradient(55rem 40rem at 100% 100%, var(--glow2), transparent 70%);
+      background-attachment: fixed;
       color: var(--ink);
       font-family: var(--font-body);
       font-size: 16px;
       line-height: 1.55;
-      padding: 48px 20px 72px;
-      position: relative;
-      overflow-x: hidden;
+      padding: 44px 20px 72px;
     }
-    main { max-width: 760px; margin: 0 auto; position: relative; z-index: 1; }
     .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
-
-    /* doodles: fine line art */
-    .dd { position: absolute; pointer-events: none; z-index: 0; fill: none; stroke: var(--ink); stroke-width: 1.3; stroke-linecap: round; stroke-linejoin: round; opacity: .35; }
-    .dd .glyph { fill: none; stroke: var(--ink); stroke-width: 1.1; font-family: Georgia, "Times New Roman", serif; font-size: 78px; }
-    .d-quill { width: 76px; right: max(18px, calc(50% - 440px)); top: 34px; transform: rotate(10deg); }
-    .d-spark1 { width: 22px; right: max(120px, calc(50% - 330px)); top: 128px; }
-    .d-spark2 { width: 13px; right: max(80px, calc(50% - 372px)); top: 112px; }
-    .d-book { width: 124px; left: 24px; top: 300px; transform: rotate(-6deg); }
-    .d-ink { width: 66px; right: 52px; top: 420px; transform: rotate(5deg); }
-    .d-olive { width: 108px; left: 40px; top: 520px; transform: rotate(-4deg); }
-    .d-nib { width: 52px; right: 80px; top: 640px; transform: rotate(14deg); }
-    .d-amp { width: 70px; left: 150px; top: 720px; opacity: .3; }
-    .d-pilcrow { width: 52px; right: 160px; top: 780px; opacity: .3; }
-    @media (max-width: 1060px) { .d-book, .d-ink, .d-olive, .d-nib, .d-amp, .d-pilcrow { display: none; } }
-    @media (max-width: 640px) { .d-quill { width: 54px; right: 14px; top: 20px; } .d-spark1, .d-spark2 { display: none; } }
+    .layout { max-width: 1080px; margin: 0 auto; display: grid; grid-template-columns: 360px minmax(0, 1fr); gap: 48px; align-items: start; }
+    .art { position: sticky; top: 28px; }
+    .art figure { margin: 0; padding: 10px; background: var(--card); border: 1px solid var(--line); border-radius: 22px; box-shadow: 0 18px 40px rgba(58, 42, 34, .18); }
+    .art img { display: block; width: 100%; height: auto; border-radius: 14px; outline: 1px solid var(--frame); outline-offset: -1px; }
+    main { min-width: 0; }
 
     header { margin-bottom: 26px; }
-    .eyebrow { font-size: .78rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--verbs); }
-    h1 { font-family: var(--font-display); font-weight: 700; font-size: clamp(2.2rem, 7.5vw, 3.2rem); line-height: 1.08; letter-spacing: -.02em; margin: 8px 0 12px; }
-    .bar { display: block; width: 56px; height: 5px; border-radius: 3px; background: var(--verbs); margin: 0 0 14px; }
+    .eyebrow { font-size: .78rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--verbs); }
+    h1 { font-family: var(--font-display); font-weight: 700; font-size: clamp(2.3rem, 6.5vw, 3.3rem); line-height: 1.08; letter-spacing: -.01em; margin: 8px 0 12px; }
+    .bar { display: block; width: 56px; height: 4px; border-radius: 3px; background: var(--frame); margin: 0 0 14px; }
     .lead { margin: 0; color: var(--muted); max-width: 54ch; }
 
     .tools { display: flex; flex-direction: column; gap: 12px; margin-bottom: 20px; }
     .search { position: relative; }
     .search svg.mag { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); width: 20px; height: 20px; fill: none; stroke: var(--muted); stroke-width: 2.2; stroke-linecap: round; pointer-events: none; }
-    .search input {
-      width: 100%; font: inherit; font-size: 1rem; color: var(--ink); background: var(--card);
-      border: 1.5px solid var(--line); border-radius: 12px; padding: 12px 44px; appearance: none;
-      box-shadow: 0 1px 0 rgba(20, 40, 31, .04);
-    }
+    .search input { width: 100%; font: inherit; font-size: 1rem; color: var(--ink); background: var(--card); border: 1.5px solid var(--line); border-radius: 12px; padding: 12px 44px; appearance: none; }
     .search input::placeholder { color: var(--muted); }
     .search input:focus-visible { outline: 3px solid var(--ok); outline-offset: 2px; border-color: var(--ok); }
     .search input::-webkit-search-cancel-button { display: none; }
@@ -85,19 +71,14 @@
     .count { margin-left: auto; color: var(--muted); font-size: .85rem; }
 
     .cards { display: grid; gap: 10px; }
-    .card {
-      --c: var(--ok);
-      position: relative; display: flex; align-items: center; gap: 14px; padding: 14px 18px 14px 20px;
-      background: var(--card); border: 1.5px solid var(--line); border-radius: 14px; overflow: hidden;
-      color: inherit; text-decoration: none; transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease;
-    }
+    .card { --c: var(--ok); position: relative; display: flex; align-items: center; gap: 14px; padding: 14px 18px 14px 20px; background: var(--card); border: 1.5px solid var(--line); border-radius: 14px; overflow: hidden; color: inherit; text-decoration: none; transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease; }
     .card::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 5px; background: var(--c); }
     .card.verbs { --c: var(--verbs); } .card.pronouns { --c: var(--pron); } .card.small { --c: var(--small); }
-    .card:hover { transform: translateY(-2px); border-color: var(--c); box-shadow: 0 6px 16px rgba(20, 40, 31, .10); }
+    .card:hover { transform: translateY(-2px); border-color: var(--c); box-shadow: 0 8px 18px rgba(58, 42, 34, .12); }
     .card:focus-visible { outline: 3px solid var(--c); outline-offset: 3px; }
-    .icon { flex: none; width: 52px; height: 44px; border-radius: 10px; display: grid; place-items: center; font-family: var(--font-display); font-weight: 600; font-size: .95rem; background: var(--c); color: #fff; }
+    .icon { flex: none; width: 52px; height: 44px; border-radius: 10px; display: grid; place-items: center; font-family: var(--font-display); font-weight: 700; font-size: .95rem; background: var(--c); color: var(--on); }
     .text { min-width: 0; flex: 1; }
-    .text h2 { font-family: var(--font-display); font-weight: 600; font-size: 1.05rem; line-height: 1.25; margin: 0 0 2px; }
+    .text h2 { font-family: var(--font-display); font-weight: 600; font-size: 1.1rem; line-height: 1.25; margin: 0 0 2px; }
     .text p { margin: 0; color: var(--muted); font-size: .88rem; line-height: 1.45; }
     .tag { display: inline-block; margin-top: 6px; font-size: .68rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--c); }
     .arrow { flex: none; font-size: 1.2rem; color: var(--muted); }
@@ -107,20 +88,20 @@
     .empty p { margin: 6px 0 0; }
     footer { margin-top: 36px; color: var(--muted); font-size: .85rem; }
     @media (prefers-reduced-motion: reduce) { .card { transition: none; } .card:hover { transform: none; } }
+    @media (max-width: 900px) {
+      .layout { grid-template-columns: minmax(0, 1fr); gap: 28px; }
+      .art { position: static; max-width: 340px; margin: 0 auto; }
+    }
     @media (max-width: 520px) { .card { padding: 12px 14px 12px 18px; gap: 12px; } .arrow { display: none; } .count { margin-left: 0; width: 100%; } }
   </style>
 </head>
 <body>
-  <svg class="dd d-quill" viewBox="0 0 80 100" aria-hidden="true"><path d="M66 12 C52 14 34 28 26 48 C22 58 20 70 16 84"/><path d="M66 12 C71 30 64 50 50 62 C40 70 28 77 16 84"/><path d="M16 84 L66 12"/><path d="M16 84 L10 94"/><path d="M56 26 L44 30 M50 36 L36 42 M44 46 L30 54 M38 56 L26 64 M58 34 L63 42 M52 46 L58 54 M44 58 L50 64"/></svg>
-  <svg class="dd d-spark1" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0 C10 7 13 10 20 10 C13 10 10 13 10 20 C10 13 7 10 0 10 C7 10 10 7 10 0 Z"/></svg>
-  <svg class="dd d-spark2" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0 C10 7 13 10 20 10 C13 10 10 13 10 20 C10 13 7 10 0 10 C7 10 10 7 10 0 Z"/></svg>
-  <svg class="dd d-book" viewBox="0 0 120 90" aria-hidden="true"><path d="M60 18 C46 8 24 8 6 14 V72 C24 66 46 66 60 76 C74 66 96 66 114 72 V14 C96 8 74 8 60 18 Z"/><path d="M60 18 V76"/><path d="M6 76 C24 70 46 70 60 80 C74 70 96 70 114 76"/><path d="M14 26 C26 22 40 24 52 30 M14 36 C26 32 40 34 52 40 M14 46 C26 42 40 44 52 50 M68 30 C80 24 94 22 106 26 M68 40 C80 34 94 32 106 36 M68 50 C80 44 94 42 106 46"/></svg>
-  <svg class="dd d-ink" viewBox="0 0 70 90" aria-hidden="true"><path d="M20 34 H50 Q58 34 58 42 V64 Q58 74 48 74 H22 Q12 74 12 64 V42 Q12 34 20 34 Z"/><path d="M26 34 V26 H44 V34"/><path d="M12 48 H58"/><path d="M35 26 L52 4 L56 7 L42 28"/></svg>
-  <svg class="dd d-olive" viewBox="0 0 110 110" aria-hidden="true"><path d="M8 96 Q30 40 92 10 M13.7 83.2 Q13.6 75.1 7.0 70.3 Q7.2 78.4 13.7 83.2 M13.7 83.2 Q21.4 85.6 28.1 81.0 Q20.3 78.5 13.7 83.2 M20.6 71.1 Q21.3 63.2 15.3 58.1 Q14.6 66.0 20.6 71.1 M20.6 71.1 Q27.8 74.3 34.5 70.3 Q27.3 67.1 20.6 71.1 M28.5 59.7 Q30.0 52.2 24.6 46.8 Q23.1 54.3 28.5 59.7 M28.5 59.7 Q35.1 63.6 42.0 60.2 Q35.4 56.4 28.5 59.7 M37.6 49.1 Q39.8 42.0 35.0 36.3 Q32.7 43.4 37.6 49.1 M37.6 49.1 Q43.5 53.5 50.5 50.7 Q44.5 46.3 37.6 49.1 M47.7 39.1 Q50.6 32.5 46.4 26.7 Q43.5 33.3 47.7 39.1 M47.7 39.1 Q53.0 44.0 59.9 41.8 Q54.6 37.0 47.7 39.1 M59.0 29.9 Q62.5 23.8 58.7 17.9 Q55.3 24.0 59.0 29.9 M59.0 29.9 Q63.6 35.1 70.4 33.5 Q65.8 28.3 59.0 29.9 M71.4 21.4 Q75.3 15.9 72.0 9.9 Q68.1 15.4 71.4 21.4 M71.4 21.4 Q75.3 26.9 82.0 25.8 Q78.0 20.2 71.4 21.4"/><path d="M92 10 q5 -1 7 -6"/></svg>
-  <svg class="dd d-nib" viewBox="0 0 60 90" aria-hidden="true"><path d="M30 6 L46 44 L30 82 L14 44 Z"/><path d="M30 30 V52"/><circle cx="30" cy="58" r="3.5"/><path d="M20 12 H40"/></svg>
-  <svg class="dd d-amp" viewBox="0 0 80 90" aria-hidden="true"><text x="4" y="76" class="glyph">&amp;</text></svg>
-  <svg class="dd d-pilcrow" viewBox="0 0 60 80" aria-hidden="true"><text x="6" y="64" class="glyph">&para;</text></svg>
-
+  <div class="layout">
+    <aside class="art">
+      <figure>
+        <img src="images/english_grammar_shelf.jpg" width="800" height="1073" alt="A decorative letter G shelf filled with grammar books, a clock, a typewriter and a girl reading, with an English Grammar sign hanging below">
+      </figure>
+    </aside>
   <main>
     <header>
       <span class="eyebrow">Study pages</span>
@@ -194,6 +175,7 @@
 
     <footer>More pages will appear here as they are added.</footer>
   </main>
+  </div>
 
   <script>
   (function () {

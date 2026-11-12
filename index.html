@@ -50,20 +50,20 @@
     main { max-width: 760px; margin: 0 auto; position: relative; z-index: 1; }
     .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 
-    /* doodles */
-    .dd { position: absolute; pointer-events: none; z-index: 0; fill: none; stroke: var(--ink); stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; opacity: .55; }
-    .dd .f1 { fill: var(--verbs-soft); } .dd .f2 { fill: var(--small-soft); } .dd .f3 { fill: var(--pron-soft); } .dd .f4 { fill: var(--ok-soft); } .dd .f0 { fill: var(--card); }
-    .dd text { fill: var(--ink); stroke: none; font-family: var(--font-display); font-size: 26px; }
-    .d-pencil { width: 92px; right: max(18px, calc(50% - 440px)); top: 38px; transform: rotate(8deg); }
-    .d-star1 { width: 34px; right: max(120px, calc(50% - 330px)); top: 128px; }
-    .d-star2 { width: 22px; right: max(70px, calc(50% - 380px)); top: 150px; }
-    .d-book { width: 120px; left: 22px; top: 310px; transform: rotate(-7deg); }
-    .d-bubble { width: 104px; right: 24px; top: 430px; transform: rotate(6deg); }
-    .d-bulb { width: 64px; left: 48px; top: 560px; transform: rotate(-8deg); }
-    .d-cloud { width: 118px; right: 40px; top: 690px; }
-    .d-star3 { width: 28px; left: 150px; top: 470px; }
-    @media (max-width: 1060px) { .d-book, .d-bubble, .d-bulb, .d-cloud, .d-star3 { display: none; } }
-    @media (max-width: 640px) { .d-pencil { width: 64px; right: 14px; top: 20px; } .d-star1, .d-star2 { display: none; } }
+    /* doodles: fine line art */
+    .dd { position: absolute; pointer-events: none; z-index: 0; fill: none; stroke: var(--ink); stroke-width: 1.3; stroke-linecap: round; stroke-linejoin: round; opacity: .42; }
+    .dd .glyph { fill: none; stroke: var(--ink); stroke-width: 1.1; font-family: Georgia, "Times New Roman", serif; font-size: 78px; }
+    .d-quill { width: 76px; right: max(18px, calc(50% - 440px)); top: 34px; transform: rotate(10deg); }
+    .d-spark1 { width: 22px; right: max(120px, calc(50% - 330px)); top: 128px; }
+    .d-spark2 { width: 13px; right: max(80px, calc(50% - 372px)); top: 112px; }
+    .d-book { width: 124px; left: 24px; top: 300px; transform: rotate(-6deg); }
+    .d-ink { width: 66px; right: 52px; top: 420px; transform: rotate(5deg); }
+    .d-olive { width: 108px; left: 40px; top: 520px; transform: rotate(-4deg); }
+    .d-nib { width: 52px; right: 80px; top: 640px; transform: rotate(14deg); }
+    .d-amp { width: 70px; left: 150px; top: 720px; opacity: .3; }
+    .d-pilcrow { width: 52px; right: 160px; top: 780px; opacity: .3; }
+    @media (max-width: 1060px) { .d-book, .d-ink, .d-olive, .d-nib, .d-amp, .d-pilcrow { display: none; } }
+    @media (max-width: 640px) { .d-quill { width: 54px; right: 14px; top: 20px; } .d-spark1, .d-spark2 { display: none; } }
 
     header { margin-bottom: 28px; }
     .eyebrow { font-family: var(--font-display); font-size: 1.15rem; letter-spacing: .06em; color: var(--muted); }
@@ -84,7 +84,7 @@
     .search input {
       width: 100%; font: inherit; font-size: 1.05rem; color: var(--ink); background: var(--card);
       border: 2px solid var(--line); border-radius: 26px 22px 28px 22px / 22px 26px 22px 28px;
-      padding: 13px 48px 13px 48px; appearance: none;
+      padding: 10px 46px; appearance: none;
     }
     .search input::placeholder { color: var(--muted); }
     .search input:focus-visible { outline: 3px solid var(--ok); outline-offset: 2px; border-color: var(--ok); }
@@ -93,8 +93,8 @@
     .clear:focus-visible { outline: 3px solid var(--ok); outline-offset: 2px; }
     .chips { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
     .chip {
-      font-family: var(--font-display); font-size: 1.15rem; color: var(--ink); background: var(--card);
-      border: 2px solid var(--line); border-radius: 999px; padding: 4px 16px; cursor: pointer;
+      font-family: var(--font-display); font-size: 1.02rem; color: var(--ink); background: var(--card);
+      border: 2px solid var(--line); border-radius: 999px; padding: 1px 13px; cursor: pointer;
     }
     .chip:hover { border-color: var(--muted); }
     .chip:focus-visible { outline: 3px solid var(--ok); outline-offset: 2px; }
@@ -105,10 +105,10 @@
     .count { margin-left: auto; color: var(--muted); font-size: .92rem; }
 
     /* cards */
-    .cards { display: grid; gap: 16px; }
+    .cards { display: grid; gap: 10px; }
     .card {
       --c: var(--ok); --c-soft: var(--ok-soft);
-      display: flex; align-items: center; gap: 18px; padding: 20px 22px;
+      display: flex; align-items: center; gap: 14px; padding: 12px 16px;
       background: var(--card); border: 2px solid var(--line);
       border-radius: 24px 20px 26px 20px / 20px 26px 20px 24px;
       color: inherit; text-decoration: none;
@@ -120,34 +120,35 @@
     .card:hover { transform: translateY(-2px) rotate(-.4deg); border-color: var(--c); }
     .card:focus-visible { outline: 3px solid var(--c); outline-offset: 3px; }
     .icon {
-      flex: none; min-width: 64px; height: 60px; padding: 0 8px; border-radius: 18px 14px 20px 14px / 14px 20px 14px 18px;
+      flex: none; width: 58px; height: 44px; padding: 0; border-radius: 18px 14px 20px 14px / 14px 20px 14px 18px;
       display: grid; place-items: center; transform: rotate(-4deg);
-      font-family: var(--font-display); font-size: 1.45rem; background: var(--c-soft); color: var(--c); white-space: nowrap;
+      font-family: var(--font-display); font-size: 1.15rem; background: var(--c-soft); color: var(--c); white-space: nowrap;
       border: 2px dashed var(--c);
     }
     .text { min-width: 0; flex: 1; }
-    .text h2 { font-family: var(--font-display); font-weight: 400; font-size: 1.5rem; line-height: 1.15; margin: 0 0 2px; }
-    .text p { margin: 0; color: var(--muted); font-size: .96rem; }
-    .tag { display: inline-block; margin-top: 8px; font-family: var(--font-display); font-size: 1rem; background: var(--c-soft); color: var(--c); border-radius: 999px; padding: 0 12px; }
-    .arrow { flex: none; font-size: 1.5rem; color: var(--muted); }
+    .text h2 { font-family: var(--font-display); font-weight: 400; font-size: 1.28rem; line-height: 1.15; margin: 0 0 1px; }
+    .text p { margin: 0; color: var(--muted); font-size: .88rem; line-height: 1.45; }
+    .tag { display: inline-block; margin-top: 4px; font-family: var(--font-display); font-size: .92rem; line-height: 1.35; background: var(--c-soft); color: var(--c); border-radius: 999px; padding: 0 12px; }
+    .arrow { flex: none; font-size: 1.2rem; color: var(--muted); }
 
     .empty { text-align: center; padding: 28px 16px; border: 2px dashed var(--line); border-radius: 24px; color: var(--muted); }
     .empty svg { width: 64px; height: 64px; fill: none; stroke: var(--muted); stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
     .empty p { margin: 6px 0 0; }
     footer { margin-top: 40px; color: var(--muted); font-size: .9rem; }
     @media (prefers-reduced-motion: reduce) { .card { transition: none; } .card:hover { transform: none; } }
-    @media (max-width: 520px) { .card { padding: 16px; gap: 14px; } .arrow { display: none; } .count { margin-left: 0; width: 100%; } }
+    @media (max-width: 520px) { .card { padding: 12px; gap: 12px; } .arrow { display: none; } .count { margin-left: 0; width: 100%; } }
   </style>
 </head>
 <body>
-  <svg class="dd d-pencil" viewBox="0 0 90 90" aria-hidden="true"><path class="f2" d="M14 70 L18 56 L60 14 Q65 9 70 14 L76 20 Q81 25 76 30 L34 72 Z"/><path class="f1" d="M18 56 L34 72 L12 78 Z"/><path d="M54 20 L70 36 M24 63 L28 67"/></svg>
-  <svg class="dd d-star1" viewBox="0 0 40 40" aria-hidden="true"><path class="f2" d="M20 4 L24 16 L37 18 L27 26 L30 38 L20 31 L10 38 L13 26 L3 18 L16 16 Z"/></svg>
-  <svg class="dd d-star2" viewBox="0 0 40 40" aria-hidden="true"><path class="f1" d="M20 4 L24 16 L37 18 L27 26 L30 38 L20 31 L10 38 L13 26 L3 18 L16 16 Z"/></svg>
-  <svg class="dd d-book" viewBox="0 0 100 70" aria-hidden="true"><path class="f4" d="M50 14 Q30 4 8 10 V56 Q30 50 50 60 Q70 50 92 56 V10 Q70 4 50 14 Z"/><path d="M50 14 V60 M16 24 Q30 20 42 26 M16 34 Q30 30 42 36 M58 26 Q70 20 84 24 M58 36 Q70 30 84 34"/></svg>
-  <svg class="dd d-bubble" viewBox="0 0 96 72" aria-hidden="true"><path class="f3" d="M10 10 H82 Q88 10 88 16 V46 Q88 52 82 52 H42 L24 66 L28 52 H16 Q10 52 10 46 Z"/><text x="30" y="40">Aa</text></svg>
-  <svg class="dd d-bulb" viewBox="-4 -4 68 88" aria-hidden="true"><path class="f2" d="M30 6 C14 6 6 18 6 28 C6 38 14 42 18 52 H42 C46 42 54 38 54 28 C54 18 46 6 30 6 Z"/><path d="M20 58 H40 M22 66 H38 M30 52 V38 M-2 6 L6 12 M62 6 L54 12 M-3 30 H2 M63 30 H58"/></svg>
-  <svg class="dd d-cloud" viewBox="0 0 100 56" aria-hidden="true"><path class="f0" d="M24 46 Q6 46 8 32 Q10 22 22 24 Q24 8 42 10 Q54 4 62 16 Q80 12 84 28 Q96 30 92 42 Q90 46 80 46 Z"/></svg>
-  <svg class="dd d-star3" viewBox="0 0 40 40" aria-hidden="true"><path class="f3" d="M20 4 L24 16 L37 18 L27 26 L30 38 L20 31 L10 38 L13 26 L3 18 L16 16 Z"/></svg>
+  <svg class="dd d-quill" viewBox="0 0 80 100" aria-hidden="true"><path d="M66 12 C52 14 34 28 26 48 C22 58 20 70 16 84"/><path d="M66 12 C71 30 64 50 50 62 C40 70 28 77 16 84"/><path d="M16 84 L66 12"/><path d="M16 84 L10 94"/><path d="M56 26 L44 30 M50 36 L36 42 M44 46 L30 54 M38 56 L26 64 M58 34 L63 42 M52 46 L58 54 M44 58 L50 64"/></svg>
+  <svg class="dd d-spark1" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0 C10 7 13 10 20 10 C13 10 10 13 10 20 C10 13 7 10 0 10 C7 10 10 7 10 0 Z"/></svg>
+  <svg class="dd d-spark2" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 0 C10 7 13 10 20 10 C13 10 10 13 10 20 C10 13 7 10 0 10 C7 10 10 7 10 0 Z"/></svg>
+  <svg class="dd d-book" viewBox="0 0 120 90" aria-hidden="true"><path d="M60 18 C46 8 24 8 6 14 V72 C24 66 46 66 60 76 C74 66 96 66 114 72 V14 C96 8 74 8 60 18 Z"/><path d="M60 18 V76"/><path d="M6 76 C24 70 46 70 60 80 C74 70 96 70 114 76"/><path d="M14 26 C26 22 40 24 52 30 M14 36 C26 32 40 34 52 40 M14 46 C26 42 40 44 52 50 M68 30 C80 24 94 22 106 26 M68 40 C80 34 94 32 106 36 M68 50 C80 44 94 42 106 46"/></svg>
+  <svg class="dd d-ink" viewBox="0 0 70 90" aria-hidden="true"><path d="M20 34 H50 Q58 34 58 42 V64 Q58 74 48 74 H22 Q12 74 12 64 V42 Q12 34 20 34 Z"/><path d="M26 34 V26 H44 V34"/><path d="M12 48 H58"/><path d="M35 26 L52 4 L56 7 L42 28"/></svg>
+  <svg class="dd d-olive" viewBox="0 0 110 110" aria-hidden="true"><path d="M8 96 Q30 40 92 10 M13.7 83.2 Q13.6 75.1 7.0 70.3 Q7.2 78.4 13.7 83.2 M13.7 83.2 Q21.4 85.6 28.1 81.0 Q20.3 78.5 13.7 83.2 M20.6 71.1 Q21.3 63.2 15.3 58.1 Q14.6 66.0 20.6 71.1 M20.6 71.1 Q27.8 74.3 34.5 70.3 Q27.3 67.1 20.6 71.1 M28.5 59.7 Q30.0 52.2 24.6 46.8 Q23.1 54.3 28.5 59.7 M28.5 59.7 Q35.1 63.6 42.0 60.2 Q35.4 56.4 28.5 59.7 M37.6 49.1 Q39.8 42.0 35.0 36.3 Q32.7 43.4 37.6 49.1 M37.6 49.1 Q43.5 53.5 50.5 50.7 Q44.5 46.3 37.6 49.1 M47.7 39.1 Q50.6 32.5 46.4 26.7 Q43.5 33.3 47.7 39.1 M47.7 39.1 Q53.0 44.0 59.9 41.8 Q54.6 37.0 47.7 39.1 M59.0 29.9 Q62.5 23.8 58.7 17.9 Q55.3 24.0 59.0 29.9 M59.0 29.9 Q63.6 35.1 70.4 33.5 Q65.8 28.3 59.0 29.9 M71.4 21.4 Q75.3 15.9 72.0 9.9 Q68.1 15.4 71.4 21.4 M71.4 21.4 Q75.3 26.9 82.0 25.8 Q78.0 20.2 71.4 21.4"/><path d="M92 10 q5 -1 7 -6"/></svg>
+  <svg class="dd d-nib" viewBox="0 0 60 90" aria-hidden="true"><path d="M30 6 L46 44 L30 82 L14 44 Z"/><path d="M30 30 V52"/><circle cx="30" cy="58" r="3.5"/><path d="M20 12 H40"/></svg>
+  <svg class="dd d-amp" viewBox="0 0 80 90" aria-hidden="true"><text x="4" y="76" class="glyph">&amp;</text></svg>
+  <svg class="dd d-pilcrow" viewBox="0 0 60 80" aria-hidden="true"><text x="6" y="64" class="glyph">&para;</text></svg>
 
   <main>
     <header>

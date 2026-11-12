@@ -1,7 +1,7 @@
 <!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
 <title>Personal Pronouns</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Nunito:wght@600;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Nunito+Sans:ital,opsz,wght@0,6..12,400;0,6..12,600;0,6..12,700;1,6..12,400;1,6..12,700&display=swap">
 <style>
 /* Layout: one reading column. Terracotta base with warm biscuit background; job colors are deep teal, terracotta, olive, ochre and plum. Job colors (subject, object, possessive adjective, possessive pronoun, reflexive) mark words in examples. The main table colors rows by person instead. */
 :root {
@@ -21,7 +21,7 @@
   --p2: #d98a5f; --p2-a: #fadfcd; --p2-b: #fdeee3;
   --p3: #b0502f; --p3-a: #f6d9cd; --p3-b: #fbebe4;
   --p4: #5a2e22; --p4-a: #ecdcd6; --p4-b: #f3e9e5;
-  --head: "Nunito", system-ui, sans-serif;
+  --head: "Fraunces", Georgia, "Times New Roman", serif;
   --body: "Nunito Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
 }
 @media (prefers-color-scheme: dark) {
@@ -226,12 +226,16 @@ details p b { color: var(--right); }
 .part-head .s { background: var(--subj-bg); border-bottom: 0; } .part-head .o { background: var(--obj-bg); border-bottom: 0; } .part-head .pa { background: var(--padj-bg); border-bottom: 0; } .part-head .r { background: var(--refl-bg); border-bottom: 0; }
 .part-head .pp { background: var(--ppro-bg); border-bottom: 0; } .part-head .n { background: var(--soft); color: var(--fg); }
 .part { display: flex; flex-direction: column; gap: 12px; }
+/* Verbs-page letter styles: Fraunces headings, Nunito Sans body */
+h1, h2, h3, .steps li::before, .btn, .persons thead th, .persons th.plabel { font-weight: 700; }
+.label { font-family: var(--body); font-weight: 700; }
+thead th { font-weight: 600; }
 @media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; transition: none !important; } }
 </style>
 
 <div class="page">
 
-<style>.gh-home{align-self:flex-start;display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:999px;background:var(--surface);color:var(--fg);border:2px solid var(--line);font:700 .9rem var(--head);text-decoration:none}.gh-home:hover{border-color:var(--obj)}.gh-home:focus-visible{outline:3px solid var(--obj);outline-offset:2px}</style>
+<style>.gh-home{align-self:flex-start;display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:999px;background:var(--surface);color:var(--fg);border:2px solid var(--line);font:700 .9rem var(--body);text-decoration:none}.gh-home:hover{border-color:var(--obj)}.gh-home:focus-visible{outline:3px solid var(--obj);outline-offset:2px}</style>
 <a class="gh-home" href="index.html" aria-label="Back to the home page">&larr; Home</a>
 
 <header class="hero">

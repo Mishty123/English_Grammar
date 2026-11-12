@@ -4,42 +4,42 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Nunito+Sans:opsz,wght@6..12,400;6..12,600;6..12,700&display=swap">
 <style>
 /* Layout: a switcher picks Tap Cards (the rule, then the exceptions) or Pick It (a quiz).
-   Colour = the word: some is plum, any is green, a / an or no word is blue. */
+   Colour = the word: some is navy, any is rose, a / an or no word is green. */
 :root {
-  --bg: #F5F1F8;
+  --bg: #F0F4F8;
   --surface: #FFFFFF;
-  --ink: #2B2138;
-  --muted: #55496A;
-  --line: #DDD3E6;
-  --line-strong: #A79DB8;
+  --ink: #14283D;
+  --muted: #445A70;
+  --line: #D3DEEA;
+  --line-strong: #8FA3B8;
   --good: #3F6A2A; --good-soft: #E6EFD9;
   --bad: #9C2A2A;  --bad-soft: #F7DEDE;
-  --some: #6B4A82; --some-soft: #EEE6F4; --some-on: #FFFFFF;
-  --any: #2F6B5E;  --any-soft: #E0EEEA;  --any-on: #FFFFFF;
-  --a: #3D5A80;    --a-soft: #E2E9F2;    --a-on: #FFFFFF;
+  --some: #1F4E79; --some-soft: #E0EAF4; --some-on: #FFFFFF;
+  --any: #A33A5B;  --any-soft: #F7E2E8;  --any-on: #FFFFFF;
+  --a: #2F6B3E;    --a-soft: #E1EFE5;    --a-on: #FFFFFF;
   --font-display: 'Fraunces', Georgia, 'Times New Roman', serif;
   --font-body: 'Nunito Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --bg: #1D1829; --surface: #29223A; --ink: #F1ECF7; --muted: #C0B6D2;
-    --line: #3E3552; --line-strong: #7C7198;
+    --bg: #101C2B; --surface: #192B40; --ink: #E9F0F7; --muted: #B4C4D6;
+    --line: #2D4560; --line-strong: #5F7A99;
     --good: #A5D08A; --good-soft: #263A1C;
     --bad: #FF9E9E;  --bad-soft: #4A2222;
-    --some: #C9A6E0; --some-soft: #3A2A4A; --some-on: #2A1038;
-    --any: #7FC4B4;  --any-soft: #1E3A35;  --any-on: #0C2A24;
-    --a: #9DBDE6;    --a-soft: #243348;    --a-on: #0F2038;
+    --some: #8DBDEB; --some-soft: #1F3A58; --some-on: #0A2038;
+    --any: #F09AB4;  --any-soft: #4A2331;  --any-on: #3A0F20;
+    --a: #8FD1A0;    --a-soft: #1F3D2A;    --a-on: #0B2A16;
     color-scheme: dark;
   }
 }
 :root[data-theme="dark"] {
-  --bg: #1D1829; --surface: #29223A; --ink: #F1ECF7; --muted: #C0B6D2;
-  --line: #3E3552; --line-strong: #7C7198;
+  --bg: #101C2B; --surface: #192B40; --ink: #E9F0F7; --muted: #B4C4D6;
+  --line: #2D4560; --line-strong: #5F7A99;
   --good: #A5D08A; --good-soft: #263A1C;
   --bad: #FF9E9E;  --bad-soft: #4A2222;
-  --some: #C9A6E0; --some-soft: #3A2A4A; --some-on: #2A1038;
-  --any: #7FC4B4;  --any-soft: #1E3A35;  --any-on: #0C2A24;
-  --a: #9DBDE6;    --a-soft: #243348;    --a-on: #0F2038;
+  --some: #8DBDEB; --some-soft: #1F3A58; --some-on: #0A2038;
+  --any: #F09AB4;  --any-soft: #4A2331;  --any-on: #3A0F20;
+  --a: #8FD1A0;    --a-soft: #1F3D2A;    --a-on: #0B2A16;
   color-scheme: dark;
 }
 
@@ -139,7 +139,7 @@ button:focus-visible { outline: 3px solid var(--t, var(--ink)); outline-offset: 
 </style>
 
 <div class="wrap">
-  <style>.gh-home{align-self:flex-start;display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:999px;background:#fff;color:#2b2138;border:2px solid #ddd3e6;font:600 .9rem "Nunito Sans",system-ui,sans-serif;text-decoration:none}.gh-home:hover{border-color:#6b4a82}.gh-home:focus-visible{outline:3px solid #6b4a82;outline-offset:2px}@media (prefers-color-scheme:dark){.gh-home{background:#29223a;color:#f1ecf7;border-color:#3e3552}.gh-home:hover{border-color:#c9a6e0}.gh-home:focus-visible{outline-color:#c9a6e0}}</style>
+  <style>.gh-home{align-self:flex-start;display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:999px;background:#fff;color:#14283d;border:2px solid #d3deea;font:600 .9rem "Nunito Sans",system-ui,sans-serif;text-decoration:none}.gh-home:hover{border-color:#1f4e79}.gh-home:focus-visible{outline:3px solid #1f4e79;outline-offset:2px}@media (prefers-color-scheme:dark){.gh-home{background:#192b40;color:#e9f0f7;border-color:#2d4560}.gh-home:hover{border-color:#8dbdeb}.gh-home:focus-visible{outline-color:#8dbdeb}}</style>
   <a class="gh-home" href="index.html" aria-label="Back to the home page">&larr; Home</a>
   <header>
     <h1>Some and Any</h1>

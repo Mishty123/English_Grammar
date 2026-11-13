@@ -1,0 +1,1130 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Determiners</title>
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Nunito+Sans:ital,opsz,wght@0,6..12,400;0,6..12,600;0,6..12,700;1,6..12,400;1,6..12,700&display=swap">
+<style>
+/* Layout: one reading column. Slate banner on a cool base; section headings in rust, olive and mustard; job colors are deep teal, terracotta, olive, ochre and plum. Job colors (subject, object, possessive adjective, possessive pronoun, reflexive) mark words in examples. The main table colors rows by person instead. */
+:root {
+  --hero: #13496B; --hero-fg: #FFFFFF; --hero-accent: #BFD8E8;
+  --bg: #F2F6F9; --surface: #FBFDFE; --soft: #E6EEF4; --fg: #14262F; --muted: #4A5F6B; --line: #D3DFE7;
+  --band-fg: #FFFFFF; --subj-band: #13496B; --obj-band: #13496B; --padj-band: #13496B; --ppro-band: #13496B; --refl-band: #13496B;
+  --subj-pill: #D6E6F0; --obj-pill: #D6E6F0; --padj-pill: #D6E6F0; --ppro-pill: #D6E6F0; --refl-pill: #D6E6F0; --pill-fg: #14262F;
+  --subj: #8A5A00; --subj-bg: #F8EBCB;
+  --obj: #8A5A00; --obj-bg: #F8EBCB;
+  --padj: #8A5A00; --padj-bg: #F8EBCB;
+  --ppro: #8A5A00; --ppro-bg: #F8EBCB;
+  --refl: #8A5A00; --refl-bg: #F8EBCB;
+  --wrong: #9A4B00; --wrong-bg: #FBE8D2;
+  --right: #1F6B3A; --right-bg: #DDF1E3;
+  --p1-fg: #14262F; --p2-fg: #14262F; --p3-fg: #FFFFFF; --p4-fg: #FFFFFF;
+  --p1: #BFD8E8; --p1-a: #E6F0F7; --p1-b: #F1F7FB;
+  --p2: #8FBBD6; --p2-a: #DCEAF3; --p2-b: #EAF2F8;
+  --p3: #2B6C93; --p3-a: #D6E6F0; --p3-b: #E6F0F6;
+  --p4: #0E3550; --p4-a: #D3DEE7; --p4-b: #E3EBF1;
+  --h2c: #13496B; --h3c: #0F6B73; --lblc: #1F5F7A;
+  --head: "Fraunces", Georgia, "Times New Roman", serif;
+  --body: "Nunito Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --hero: #1B3342; --hero-fg: #F2F8FC; --hero-accent: #8FBBD6;
+    --bg: #0F1C24; --surface: #17272F; --soft: #1F3440; --fg: #EAF2F7; --muted: #B4C6D2; --line: #2F4654;
+    --band-fg: #FFFFFF; --subj-band: #1D5073; --obj-band: #1D5073; --padj-band: #1D5073; --ppro-band: #1D5073; --refl-band: #1D5073;
+    --subj-pill: #D6E6F0; --obj-pill: #D6E6F0; --padj-pill: #D6E6F0; --ppro-pill: #D6E6F0; --refl-pill: #D6E6F0; --pill-fg: #14262F;
+    --subj: #F0C96A; --subj-bg: #43350F;
+    --obj: #F0C96A; --obj-bg: #43350F;
+    --padj: #F0C96A; --padj-bg: #43350F;
+    --ppro: #F0C96A; --ppro-bg: #43350F;
+    --refl: #F0C96A; --refl-bg: #43350F;
+    --wrong: #FFB070; --wrong-bg: #4A2E12;
+    --right: #9BE0AE; --right-bg: #17402A;
+    --p1-fg: #0F1C24; --p2-fg: #0F1C24; --p3-fg: #FFFFFF; --p4-fg: #FFFFFF;
+    --p1: #8FBBD6; --p1-a: #1B3340; --p1-b: #21404F;
+    --p2: #5F9BC0; --p2-a: #1A3140; --p2-b: #20394A;
+    --p3: #3A7CA5; --p3-a: #182C3A; --p3-b: #1E3646;
+    --p4: #2B5F85; --p4-a: #15262F; --p4-b: #1A303B;
+    --h2c: #8FC6E8; --h3c: #7FD0D0; --lblc: #B4C6D2;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --hero: #1B3342; --hero-fg: #F2F8FC; --hero-accent: #8FBBD6;
+  --bg: #0F1C24; --surface: #17272F; --soft: #1F3440; --fg: #EAF2F7; --muted: #B4C6D2; --line: #2F4654;
+  --band-fg: #FFFFFF; --subj-band: #1D5073; --obj-band: #1D5073; --padj-band: #1D5073; --ppro-band: #1D5073; --refl-band: #1D5073;
+  --subj-pill: #D6E6F0; --obj-pill: #D6E6F0; --padj-pill: #D6E6F0; --ppro-pill: #D6E6F0; --refl-pill: #D6E6F0; --pill-fg: #14262F;
+  --subj: #F0C96A; --subj-bg: #43350F;
+  --obj: #F0C96A; --obj-bg: #43350F;
+  --padj: #F0C96A; --padj-bg: #43350F;
+  --ppro: #F0C96A; --ppro-bg: #43350F;
+  --refl: #F0C96A; --refl-bg: #43350F;
+  --wrong: #FFB070; --wrong-bg: #4A2E12;
+  --right: #9BE0AE; --right-bg: #17402A;
+  --p1-fg: #0F1C24; --p2-fg: #0F1C24; --p3-fg: #FFFFFF; --p4-fg: #FFFFFF;
+  --p1: #8FBBD6; --p1-a: #1B3340; --p1-b: #21404F;
+  --p2: #5F9BC0; --p2-a: #1A3140; --p2-b: #20394A;
+  --p3: #3A7CA5; --p3-a: #182C3A; --p3-b: #1E3646;
+  --p4: #2B5F85; --p4-a: #15262F; --p4-b: #1A303B;
+  --h2c: #8FC6E8; --h3c: #7FD0D0; --lblc: #B4C6D2;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body {
+  background: var(--bg); color: var(--fg); font-family: var(--body); font-size: 18px; line-height: 1.65;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 28px 64px;
+}
+.page { max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; gap: 44px; }
+h1, h2, h3 { font-family: var(--head); line-height: 1.2; text-wrap: balance; margin: 0; }
+h1 { font-size: clamp(2rem, 6vw, 2.8rem); font-weight: 800; letter-spacing: -0.01em; }
+h2 { font-size: 1.5rem; font-weight: 800; }
+h3 { font-size: 1.08rem; font-weight: 800; }
+p { margin: 0; }
+p + p { margin-top: 10px; }
+.label { font-family: var(--head); font-size: 0.78rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+.lede { font-size: 1.12rem; max-width: 62ch; margin-top: 12px; }
+.muted { color: var(--muted); }
+
+/* jump links */
+.jump { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; padding: 0; list-style: none; }
+.jump a { display: inline-block; padding: 5px 12px; border: 1px solid var(--line); border-radius: 999px; color: var(--fg); text-decoration: none; font-size: 0.92rem; background: var(--surface); }
+.jump a:hover, .jump a:focus-visible { border-color: var(--fg); outline: none; }
+
+/* sections */
+section { display: flex; flex-direction: column; gap: 16px; min-width: 0; scroll-margin-top: 16px; }
+section > header { display: flex; flex-direction: column; gap: 8px; padding: 16px 20px 16px 22px; border-radius: 14px; background: var(--surface); color: var(--fg); border: 1px solid var(--line); border-left: 8px solid var(--band, var(--hero)); box-shadow: 0 1px 2px rgba(40,46,54,.06), 0 4px 14px rgba(40,46,54,.05); }
+section > header h2 { color: var(--fg); }
+section > header p { color: var(--muted); }
+section > header p { max-width: none; }
+.forms { display: inline-block; vertical-align: middle; font-family: var(--body); font-weight: 700; font-size: 0.9rem; line-height: 1.5; margin-left: 8px; padding: 3px 14px; border-radius: 14px; background: var(--pill, transparent); color: var(--pill-fg); letter-spacing: 0.01em; }
+.c-subj, .c-denim { --c: var(--subj); --c-bg: var(--subj-bg); --band: var(--subj-band); --pill: var(--subj-pill); }
+.c-obj, .c-peach { --c: var(--obj); --c-bg: var(--obj-bg); --band: var(--obj-band); --pill: var(--obj-pill); }
+.c-padj, .c-aloe { --c: var(--padj); --c-bg: var(--padj-bg); --band: var(--padj-band); --pill: var(--padj-pill); }
+.c-ppro, .c-pine { --c: var(--ppro); --c-bg: var(--ppro-bg); --band: var(--ppro-band); --pill: var(--ppro-pill); }
+.c-refl { --c: var(--refl); --c-bg: var(--refl-bg); --band: var(--refl-band); --pill: var(--refl-pill); }
+
+/* hero */
+.hero { position: relative; overflow: hidden; background: var(--hero); color: var(--hero-fg); border-radius: 18px; padding: 30px 28px 26px; }
+.hero > * { position: relative; z-index: 1; }
+.hero .orb { position: absolute; border-radius: 50%; z-index: 0; pointer-events: none; }
+.hero .orb1 { width: 150px; height: 150px; right: 34px; top: -44px; background: var(--hero-accent); opacity: 1; }
+.hero .orb2 { width: 104px; height: 104px; right: 140px; top: 30px; background: var(--orb2); opacity: 0.95; mix-blend-mode: normal; }
+.hero .label { color: var(--hero-accent); }
+.hero .lede { color: var(--hero-fg); opacity: 0.92; }
+.hero .jump a { background: var(--chip-bg); border-color: var(--chip-bd); color: var(--hero-fg); }
+.hero .jump a:hover, .hero .jump a:focus-visible { background: var(--hero-accent); border-color: var(--hero-accent); color: var(--chip-on-fg); }
+.hero .jump a[aria-selected="true"] { background: var(--hero-accent); border-color: var(--hero-accent); color: var(--chip-on-fg); }
+.tabpanel { display: flex; flex-direction: column; gap: 44px; }
+.tabpanel[hidden] { display: none; }
+@media (max-width: 640px) { .hero .orb { display: none; } .hero { padding: 24px 20px 20px; } }
+
+.legend .s, .legend .o, .legend .pa, .legend .pp, .legend .r { border-bottom: 0; padding: 3px 12px; border-radius: 999px; font-size: 0.92rem; }
+.legend .s { background: var(--subj-bg); } .legend .o { background: var(--obj-bg); } .legend .pa { background: var(--padj-bg); } .legend .pp { background: var(--ppro-bg); } .legend .r { background: var(--refl-bg); }
+
+/* colored words inside examples */
+.s, .o, .pa, .pp, .r { font-weight: 700; border-bottom: 2px solid currentColor; }
+.s { color: var(--subj); } .o { color: var(--obj); } .pa { color: var(--padj); } .pp { color: var(--ppro); } .r { color: var(--refl); }
+.legend { display: flex; flex-wrap: wrap; gap: 8px 18px; font-size: 0.95rem; }
+
+/* tables */
+.scroll { overflow-x: auto; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); }
+table { border-collapse: collapse; width: 100%; min-width: 600px; font-size: 0.98rem; }
+th, td { padding: 9px 12px; text-align: left; border-bottom: 1px solid var(--line); vertical-align: top; }
+tr:last-child td { border-bottom: 0; }
+thead th { font-family: var(--head); font-weight: 500; font-size: 0.85rem; background: var(--soft); }
+th.s { background: var(--subj-bg); color: var(--subj); border-bottom: 0; }
+th.o { background: var(--obj-bg); color: var(--obj); border-bottom: 0; }
+th.pa { background: var(--padj-bg); color: var(--padj); border-bottom: 0; }
+th.pp { background: var(--ppro-bg); color: var(--ppro); border-bottom: 0; }
+th.r { background: var(--refl-bg); color: var(--refl); border-bottom: 0; }
+td.s { color: var(--subj); } td.o { color: var(--obj); } td.pa { color: var(--padj); } td.pp { color: var(--ppro); } td.r { color: var(--refl); }
+td.s, td.o, td.pa, td.pp, td.r { font-weight: 700; border-bottom: 1px solid var(--line); }
+tr:last-child td.s, tr:last-child td.o, tr:last-child td.pa, tr:last-child td.pp, tr:last-child td.r { border-bottom: 0; }
+td.who { color: var(--muted); font-size: 0.92rem; }
+.none { color: var(--muted); font-weight: 400 !important; }
+td.wrong { color: var(--wrong); text-decoration: line-through; text-decoration-thickness: 1.5px; }
+td.right { color: var(--right); font-weight: 700; }
+th.wrong { background: var(--wrong-bg); color: var(--wrong); }
+th.right { background: var(--right-bg); color: var(--right); }
+
+/* person table */
+.persons { min-width: 700px; text-align: center; font-size: 1rem; }
+.persons th, .persons td { text-align: center; vertical-align: middle; padding: 10px 10px; border: 1px solid var(--line); }
+.persons thead th { background: transparent; border: 0; border-bottom: 2px solid var(--line); font-family: var(--head); font-weight: 800; font-size: 0.95rem; color: var(--fg); vertical-align: bottom; }
+.persons thead th small { display: block; font-weight: 400; color: var(--muted); font-size: 0.85rem; font-family: var(--body); }
+.persons td { font-weight: 700; }
+.persons td:nth-child(1) { font-weight: 400; color: var(--muted); }
+.persons td.none { font-weight: 400; color: var(--muted); }
+.persons th.plabel { font-family: var(--head); font-weight: 800; font-size: 1.05rem; border-color: transparent; }
+.persons tbody.gap td { border: 0; padding: 0; height: 14px; background: transparent; }
+.persons tbody.p1 th.plabel { background: var(--p1); color: var(--p1-fg); } .persons tbody.p1 tr:nth-child(odd) td { background: var(--p1-a); } .persons tbody.p1 tr:nth-child(even) td { background: var(--p1-b); }
+.persons tbody.p2 th.plabel { background: var(--p2); color: var(--p2-fg); } .persons tbody.p2 tr:nth-child(odd) td { background: var(--p2-a); } .persons tbody.p2 tr:nth-child(even) td { background: var(--p2-b); }
+.persons tbody.p3 th.plabel { background: var(--p3); color: var(--p3-fg); } .persons tbody.p3 tr:nth-child(odd) td { background: var(--p3-a); } .persons tbody.p3 tr:nth-child(even) td { background: var(--p3-b); }
+.persons tbody.p4 th.plabel { background: var(--p4); color: var(--p4-fg); } .persons tbody.p4 td { background: var(--p4-a); }
+.persons small { font-weight: 400; color: var(--muted); }
+
+/* notes list */
+.points { margin: 0; padding-left: 1.2em; display: flex; flex-direction: column; gap: 6px; }
+.points li::marker { color: var(--muted); }
+
+/* use cases */
+.uses { display: flex; flex-direction: column; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); overflow: hidden; }
+.use { display: grid; grid-template-columns: minmax(0, 1fr); gap: 4px 20px; padding: 14px 16px; border-bottom: 1px solid var(--line); }
+.use:last-child { border-bottom: 0; }
+.use h3 { color: var(--c); }
+.use .ex { font-size: 1.05rem; background: var(--soft); border-left: 4px solid var(--c); border-radius: 0 8px 8px 0; padding: 7px 12px; }
+.use .ex + .ex { margin-top: 4px; }
+.use > div > .ex:first-child::before { content: "Example"; display: block; font-family: var(--body); font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--c); margin-bottom: 1px; }
+.use > div > .ex:first-child:has(+ .ex:not(.phr))::before { content: "Examples"; }
+.use > div > .ex.many:first-child::before { content: "Examples"; }
+.use .ex.phr { background: none; border-left: 0; border-radius: 0; padding: 0; }
+.use > div > .ex.phr::before { content: none !important; }
+.use .tip { color: var(--muted); font-size: 0.96rem; margin-top: 4px; }
+.use > div { min-width: 0; }
+.how { margin: 6px 0 0; padding-left: 1.35em; color: var(--muted); font-size: 0.96rem; }
+.how li + li { margin-top: 3px; }
+.how ul { margin: 4px 0 4px; padding-left: 1.1em; }
+.how ul li + li { margin-top: 8px; }
+.how .ex { color: var(--fg); font-size: 1rem; margin-top: 4px; }
+.how b { color: var(--fg); }
+.sumh { margin: 22px 0 10px; }
+.sumnote { margin: 10px 0 0; color: var(--muted); font-size: 0.96rem; }
+@media (max-width: 620px) { .use { grid-template-columns: minmax(0, 1fr); } }
+
+/* four ideas */
+.four { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 16px; }
+.four > div { border-top: 2px solid var(--line); padding-top: 10px; min-width: 0; }
+.four h3 { margin-bottom: 4px; }
+.four p { font-size: 0.96rem; }
+
+/* sequence */
+.steps { margin: 0; padding: 0; list-style: none; counter-reset: step; display: flex; flex-direction: column; gap: 10px; }
+.steps li { counter-increment: step; display: grid; grid-template-columns: 2.2rem minmax(0, 1fr); gap: 10px; align-items: start; }
+.steps li::before { content: counter(step); font-family: var(--head); font-weight: 800; width: 2.2rem; height: 2.2rem; display: grid; place-items: center; border-radius: 50%; background: var(--soft); }
+.steps li:nth-child(1)::before { background: var(--refl-bg); color: var(--refl); }
+.steps li:nth-child(2)::before { background: var(--padj-bg); color: var(--padj); }
+.steps li:nth-child(3)::before { background: var(--subj-bg); color: var(--subj); }
+.steps li:nth-child(4)::before { background: var(--obj-bg); color: var(--obj); }
+
+/* callout */
+.rule { background: var(--obj-bg); border-radius: 10px; padding: 12px 16px; }
+
+/* practice */
+.btn { font: inherit; font-family: var(--head); font-weight: 800; font-size: 0.95rem; padding: 9px 18px; border-radius: 999px; border: 1px solid var(--subj-band); background: var(--subj-band); color: #fdfdfe; cursor: pointer; align-self: flex-start; }
+.btn:focus-visible, summary:focus-visible { outline: 3px solid var(--subj); outline-offset: 2px; }
+.qs { margin: 0; padding: 0; list-style: none; counter-reset: q; display: flex; flex-direction: column; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); overflow: hidden; }
+.qs > li { counter-increment: q; padding: 12px 16px; border-bottom: 1px solid var(--line); display: grid; grid-template-columns: 1.8rem minmax(0, 1fr); gap: 2px 8px; }
+.qs > li:last-child { border-bottom: 0; }
+.qs > li::before { content: counter(q) "."; color: var(--muted); font-weight: 700; }
+.qs > li > * { grid-column: 2; }
+.qs .opt { color: var(--muted); white-space: nowrap; }
+.blank { display: inline-block; min-width: 3.4em; height: 1.3em; vertical-align: middle; border-radius: 8px; background: var(--soft); box-shadow: inset 0 -2px 0 var(--obj); margin: 0 2px; }
+details { margin-top: 4px; }
+summary { cursor: pointer; width: fit-content; color: var(--subj); font-size: 0.95rem; font-weight: 700; }
+details[open] > summary { color: var(--muted); }
+details p { margin-top: 6px; padding: 8px 12px; background: var(--right-bg); border-radius: 6px; font-size: 0.97rem; }
+details p b { color: var(--right); }
+.part-head { display: flex; flex-direction: column; gap: 4px; }
+.part-head h3 { font-size: 1.12rem; }
+.part-head h3 span { padding: 2px 12px; border-radius: 999px; margin-right: 6px; }
+.part-head .s { background: var(--subj-bg); border-bottom: 0; } .part-head .o { background: var(--obj-bg); border-bottom: 0; } .part-head .pa { background: var(--padj-bg); border-bottom: 0; } .part-head .r { background: var(--refl-bg); border-bottom: 0; }
+.part-head .pp { background: var(--ppro-bg); border-bottom: 0; } .part-head .n { background: var(--soft); color: var(--fg); }
+.part { display: flex; flex-direction: column; gap: 12px; }
+/* Soft decoration: dotted paper, gradient hero, accent bars, rounded cards. Text colors and sizes are untouched. */
+.hero { background: linear-gradient(135deg, var(--hero), color-mix(in srgb, var(--hero) 78%, #000)); box-shadow: 0 10px 30px rgba(40,46,54,.18); }
+.hero::after { content: ""; position: absolute; left: -64px; bottom: -84px; width: 210px; height: 210px; border-radius: 50%; border: 28px solid rgba(255,255,255,.08); pointer-events: none; z-index: 0; }
+.hero h1::after { content: ""; display: block; width: 68px; height: 5px; border-radius: 4px; background: var(--hero-accent); margin-top: 14px; }
+.hero .label::before { content: ""; display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--hero-accent); margin-right: 9px; vertical-align: middle; }
+.hero .jump a { transition: transform .15s ease, background .15s ease; }
+.hero .jump a:hover { transform: translateY(-2px); }
+section > header { position: relative; overflow: hidden; }
+section > header::after { content: ""; position: absolute; right: -26px; top: -34px; width: 110px; height: 110px; border-radius: 50%; background: var(--band, var(--hero)); opacity: .12; pointer-events: none; }
+section > header > * { position: relative; z-index: 1; }
+.scroll { border-radius: 14px; border-top: 5px solid var(--band, var(--hero)); box-shadow: 0 1px 2px rgba(40,46,54,.06), 0 6px 18px rgba(40,46,54,.06); }
+.uses, .qs { border-radius: 14px; box-shadow: 0 1px 2px rgba(40,46,54,.06), 0 6px 18px rgba(40,46,54,.06); }
+.four > div { background: var(--surface); border: 1px solid var(--line); border-top: 5px solid var(--padj-band); border-radius: 14px; padding: 14px 16px 16px; box-shadow: 0 1px 2px rgba(40,46,54,.05); }
+.four > div:nth-child(2) { border-top-color: var(--obj-band); }
+.four > div:nth-child(3) { border-top-color: var(--ppro-band); }
+.four > div:nth-child(4) { border-top-color: var(--subj-band); }
+.rule { border-left: 6px solid var(--obj); border-radius: 4px 12px 12px 4px; }
+.use .ex { border-radius: 0 12px 12px 0; }
+.points li::marker { color: var(--band, var(--obj)); }
+.tabpanel > section + section { position: relative; }
+.tabpanel > section + section::before { content: ""; position: absolute; top: -26px; left: 50%; width: 56px; height: 6px; margin-left: -28px; border-radius: 4px; background: radial-gradient(circle, var(--line-dot, var(--muted)) 2.5px, transparent 3px) 0 0 / 14px 6px repeat-x; opacity: .5; }
+/* Verbs-page letter styles: Fraunces headings, Nunito Sans body */
+h1, h2, h3, .steps li::before, .btn, .persons thead th, .persons th.plabel { font-weight: 700; }
+.label { font-family: var(--body); font-weight: 700; }
+thead th { font-weight: 600; }
+/* Fixed heading colors: every section title sits on one raspberry band, every h3 is violet, every small label is mauve */
+section > header h2 { color: var(--band-fg); }
+h3, .use h3, .four h3, .part-head h3 { color: var(--h3c); }
+.label { color: var(--lblc); }
+.hero .label { color: var(--hero-accent); }
+.hero h1 { color: var(--hero-fg); }
+/* Soft decoration */
+.hero { background: linear-gradient(135deg, var(--hero), color-mix(in srgb, var(--hero) 76%, #2a7fa8)); box-shadow: 0 10px 30px rgba(15,50,75,.22); }
+.hero::after { content: ""; position: absolute; left: -64px; bottom: -84px; width: 210px; height: 210px; border-radius: 50%; border: 28px solid rgba(255,255,255,.09); pointer-events: none; z-index: 0; }
+.hero h1::after { content: ""; display: block; width: 68px; height: 5px; border-radius: 4px; background: var(--hero-accent); margin-top: 14px; }
+.hero .label::before { content: ""; display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--hero-accent); margin-right: 9px; vertical-align: middle; }
+section > header { position: relative; overflow: hidden; }
+section > header::after { content: ""; position: absolute; right: -26px; top: -34px; width: 110px; height: 110px; border-radius: 50%; background: var(--band); opacity: .13; pointer-events: none; }
+section > header > * { position: relative; z-index: 1; }
+.scroll { border-radius: 14px; border-top: 5px solid var(--band, var(--h2c)); box-shadow: 0 1px 2px rgba(15,50,75,.06), 0 6px 18px rgba(15,50,75,.07); }
+.uses, .qs { border-radius: 14px; box-shadow: 0 1px 2px rgba(15,50,75,.06), 0 6px 18px rgba(15,50,75,.07); }
+.four > div { background: var(--surface); border: 1px solid var(--line); border-top: 5px solid var(--h3c); border-radius: 14px; padding: 14px 16px 16px; }
+.rule { border-left: 6px solid var(--h2c); border-radius: 4px 12px 12px 4px; }
+.use .ex { border-radius: 0 12px 12px 0; }
+.points li::marker { color: var(--h2c); }
+/* Light blue banner */
+.hero { --hb: #DCE9F2; --ht: #14262F; --hh: #13496B; --hl: #1F5F7A; --hbar: #13496B; --hchip: #FBFDFE; --hchip-bd: #AFC6D6; --hsel: #13496B; --hsel-t: #FFFFFF; --hring: rgba(19,73,107,.08); --ho1: #BFD8E8; --ho2: #9CCBC8; background: var(--hb); color: var(--ht); box-shadow: 0 8px 24px rgba(15,50,75,.12); }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .hero { --hb: #1B3342; --ht: #EAF2F7; --hh: #D6EAF7; --hl: #8FC6E8; --hbar: #8FBBD6; --hchip: #17272F; --hchip-bd: #3A6784; --hsel: #8FC6E8; --hsel-t: #0F1C24; --hring: rgba(255,255,255,.07); --ho1: #1D5073; --ho2: #1F6B6B; } }
+:root[data-theme="dark"] .hero { --hb: #1B3342; --ht: #EAF2F7; --hh: #D6EAF7; --hl: #8FC6E8; --hbar: #8FBBD6; --hchip: #17272F; --hchip-bd: #3A6784; --hsel: #8FC6E8; --hsel-t: #0F1C24; --hring: rgba(255,255,255,.07); --ho1: #1D5073; --ho2: #1F6B6B; }
+.hero h1 { color: var(--hh); }
+.hero .label { color: var(--hl); }
+.hero .label::before, .hero h1::after { background: var(--hbar); }
+.hero .lede { color: var(--ht); opacity: 1; }
+.hero::after { border-color: var(--hring); }
+.hero .orb1 { background: var(--ho1); }
+.hero .orb2 { background: var(--ho2); }
+.hero .jump a { background: var(--hchip); border-color: var(--hchip-bd); color: var(--ht); }
+.hero .jump a:hover, .hero .jump a:focus-visible { background: var(--hchip); border-color: var(--hsel); color: var(--ht); }
+.hero .jump a[aria-selected="true"] { background: var(--hsel); border-color: var(--hsel); color: var(--hsel-t); font-weight: 700; }
+/* Section titles: blue box with a dashed stitch border inside */
+section > header { background: var(--band); border: 0; }
+section > header::after { display: none; }
+section > header::before { content: ""; position: absolute; inset: 6px; border: 2px dashed rgba(200, 224, 240, .75); border-radius: 10px; pointer-events: none; z-index: 0; }
+section > header { padding: 20px 26px; }
+section > header h2, section > header p { color: var(--band-fg); }
+/* Verbs-page letter styles: Fraunces headings, Nunito Sans body */
+h1, h2, h3, .steps li::before, .btn, .persons thead th, .persons th.plabel { font-weight: 700; }
+.label { font-family: var(--body); font-weight: 700; }
+thead th { font-weight: 600; }
+.use .ex { border-left-color: var(--h2c); }
+.use > div > .ex:first-child::before { color: var(--subj); }
+.tabpanel > section + section::before { display: none; }
+@media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; transition: none !important; } }
+</style>
+
+</head>
+<body>
+<div class="page">
+
+<style>.gh-home{align-self:flex-start;display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:999px;background:var(--surface);color:var(--fg);border:2px solid var(--line);font:700 .9rem var(--body);text-decoration:none}.gh-home:hover{border-color:var(--obj)}.gh-home:focus-visible{outline:3px solid var(--obj);outline-offset:2px}</style>
+<a class="gh-home" href="index.html" aria-label="Back to the home page">&larr; Home</a>
+
+<header class="hero">
+  <span class="orb orb1"></span><span class="orb orb2"></span>
+  <div class="label">A word class</div>
+  <h1>Determiners</h1>
+  <p class="lede">A determiner comes before a noun and says which one, whose, how many or how much. Examples: a, the, this, my, some, two.</p>
+  <ul class="jump" role="tablist" aria-label="Determiner topics">
+    <li><a href="#overview" role="tab" data-tab="overview">Overview</a></li>
+    <li><a href="#articles-tab" role="tab" data-tab="articles-tab">A, an, the</a></li>
+    <li><a href="#demo-tab" role="tab" data-tab="demo-tab">This, that</a></li>
+    <li><a href="#poss-tab" role="tab" data-tab="poss-tab">My, your, Sara&rsquo;s</a></li>
+    <li><a href="#quant-tab" role="tab" data-tab="quant-tab">Some, many, few</a></li>
+    <li><a href="#numdist-tab" role="tab" data-tab="numdist-tab">Numbers, each, every</a></li>
+    <li><a href="#extras-tab" role="tab" data-tab="extras-tab">Which, what, such</a></li>
+    <li><a href="#order-tab" role="tab" data-tab="order-tab">Order and agreement</a></li>
+    <li><a href="#choosing" role="tab" data-tab="choosing">Choosing and errors</a></li>
+    <li><a href="#practice-tab" role="tab" data-tab="practice-tab">Practice</a></li>
+  </ul>
+</header>
+
+<div class="tabpanel" id="overview" role="tabpanel" hidden>
+
+<section id="big" class="c-subj">
+  <header>
+    <h2>Four things to know about determiners</h2>
+  </header>
+  <div class="four">
+    <div><h3>What it does</h3><p>It limits a noun. It tells which one (<i>the, this</i>), whose (<i>my, Sara&rsquo;s</i>) or how many and how much (<i>some, two, much</i>).</p></div>
+    <div><h3>Where it goes</h3><p>First in the noun phrase, before any adjective. <i>the old house, my two sisters, some cold water</i>.</p></div>
+    <div><h3>How many</h3><p>A noun usually takes one main determiner. Say <i>my book</i> or <i>the book</i>. Do not say &ldquo;the my book.&rdquo;</p></div>
+    <div><h3>It must fit the noun</h3><p>Some determiners go only with singular nouns (<i>a, this, each</i>). Some go only with plural nouns (<i>these, many, few</i>). Some go only with uncountable nouns (<i>much, little</i>).</p></div>
+  </div>
+  <div class="legend">
+    <span><span class="s">the</span> = the determiner</span>
+    <span><span class="pa">book</span> = the noun it goes with</span>
+    <span><b>old</b> = an adjective, which comes after the determiner</span>
+  </div>
+</section>
+
+<section id="types" class="c-denim">
+  <header>
+    <h2>All the types of determiners</h2>
+    <p>Find the group, then read across for its words and an example.</p>
+  </header>
+  <div class="scroll">
+    <table style="min-width: 640px">
+      <thead><tr><th>Type</th><th>Words</th><th>What it tells</th><th>Example</th></tr></thead>
+      <tbody>
+        <tr><td>Articles</td><td><b>a, an, the</b></td><td>Not known or known</td><td><span class="s">the</span> <span class="pa">dog</span></td></tr>
+        <tr><td>Demonstratives</td><td><b>this, that, these, those</b></td><td>Near or far</td><td><span class="s">these</span> <span class="pa">books</span></td></tr>
+        <tr><td>Possessives</td><td><b>my, your, his, her, its, our, their, Sara&rsquo;s</b></td><td>Whose</td><td><span class="s">her</span> <span class="pa">bag</span></td></tr>
+        <tr><td>Quantifiers</td><td><b>some, any, no, much, many, few, little, several, enough, all, most, more, a lot of</b></td><td>How many, how much</td><td><span class="s">many</span> <span class="pa">people</span></td></tr>
+        <tr><td>Numbers</td><td><b>one, two, three&hellip; first, second, third&hellip;</b></td><td>Exact count or place in order</td><td><span class="s">two</span> <span class="pa">cats</span></td></tr>
+        <tr><td>Distributives</td><td><b>each, every, either, neither, both</b></td><td>Members of a group</td><td><span class="s">every</span> <span class="pa">student</span></td></tr>
+        <tr><td>Questions</td><td><b>which, what, whose</b></td><td>Asks for the noun</td><td><span class="s">Which</span> <span class="pa">bag</span>?</td></tr>
+        <tr><td>Relative</td><td><b>whose, which, whichever, whatever</b></td><td>Joins a clause to a noun</td><td>a girl <span class="s">whose</span> <span class="pa">bag</span> was lost</td></tr>
+        <tr><td>Others</td><td><b>another, other, such, certain, various</b></td><td>One more, a different one, a kind</td><td><span class="s">another</span> <span class="pa">book</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <ul class="points">
+    <li>A word that stands alone with no noun after it is a pronoun, not a determiner. <i>Mine</i> is red. <i>Some</i> came.</li>
+    <li>Nouns that need no determiner: names (<i>Maria</i>), and plural or uncountable nouns used in general (<i>Dogs bark. Water is wet.</i>).</li>
+  </ul>
+</section>
+
+<section id="adjtest" class="c-peach">
+  <header>
+    <h2>Determiner, adjective or pronoun?</h2>
+    <p>Look at what comes right after the word, and at where the word can stand.</p>
+  </header>
+  <div class="scroll">
+    <table style="min-width: 600px">
+      <thead><tr><th>Word</th><th>Determiner (a noun follows)</th><th>Pronoun (stands alone)</th></tr></thead>
+      <tbody>
+        <tr><td>this</td><td><b>This</b> book is mine.</td><td><b>This</b> is mine.</td></tr>
+        <tr><td>my / mine</td><td><b>My</b> bag is red.</td><td><b>Mine</b> is red.</td></tr>
+        <tr><td>some</td><td><b>Some</b> students came.</td><td><b>Some</b> came.</td></tr>
+        <tr><td>many</td><td><b>Many</b> people agree.</td><td><b>Many</b> agree.</td></tr>
+        <tr><td>each</td><td><b>Each</b> child has a pen.</td><td><b>Each</b> has a pen.</td></tr>
+        <tr><td>which</td><td><b>Which</b> bag is yours?</td><td><b>Which</b> is yours?</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="uses">
+    <div class="use"><h3>The <i>the</i> test</h3><div>
+      <p class="ex many">the <b>red</b> book (an adjective, so <i>the</i> fits before it)<br>&ldquo;the <b>my</b> book&rdquo; (does not work, so <i>my</i> is a determiner)</p>
+      <p class="tip">An adjective can follow <i>the</i> or <i>a</i>. A determiner cannot, because it already does the same job.</p>
+    </div></div>
+    <div class="use"><h3>Adjectives can stack, determiners cannot</h3><div>
+      <p class="ex">a <b>big old red</b> car &nbsp;/&nbsp; &ldquo;a the this car&rdquo; is wrong</p>
+      <p class="tip">Use several adjectives if you like. Use one main determiner.</p>
+    </div></div>
+    <div class="use"><h3>Adjectives can follow a verb</h3><div>
+      <p class="ex many">The car is <b>red</b>. (adjective after <i>is</i>)<br>&ldquo;The car is <i>my</i>.&rdquo; (wrong)  &rarr;  The car is <span class="s">mine</span>.</p>
+      <p class="tip">A determiner never stands after <i>be</i>. The matching pronoun does.</p>
+    </div></div>
+  </div>
+  <div class="rule">
+    <p><b>Test.</b> Is there a noun right after the word? Yes: it is a determiner. No: it is a pronoun. A word followed by <i>of</i> is still a pronoun: &ldquo;Many of the students came.&rdquo;</p>
+  </div>
+</section>
+
+</div>
+
+<div class="tabpanel" id="articles-tab" role="tabpanel" hidden>
+
+<section id="articles" class="c-obj">
+  <header>
+    <h2>Articles <span class="forms">a &middot; an &middot; the &middot; no article</span></h2>
+    <p>An article shows whether the noun is known to the listener or not. <i>a / an</i> is the indefinite article. <i>the</i> is the definite article. Sometimes no article is needed.</p>
+  </header>
+  <div class="scroll">
+    <table style="min-width: 600px">
+      <thead><tr><th>Noun</th><th>Not known, or one of many</th><th>Known, or the only one</th><th>In general</th></tr></thead>
+      <tbody>
+        <tr><td>Singular countable</td><td><span class="s">a</span> / <span class="s">an</span> <span class="pa">dog</span></td><td><span class="s">the</span> <span class="pa">dog</span></td><td><span class="s">a</span> dog is a pet, or <i>dogs are pets</i></td></tr>
+        <tr><td>Plural countable</td><td>(<i>some</i>) <span class="pa">dogs</span></td><td><span class="s">the</span> <span class="pa">dogs</span></td><td><span class="pa">dogs</span> (no article)</td></tr>
+        <tr><td>Uncountable</td><td>(<i>some</i>) <span class="pa">water</span></td><td><span class="s">the</span> <span class="pa">water</span></td><td><span class="pa">water</span> (no article)</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <ul class="points">
+    <li><b>a / an</b> goes only with a singular countable noun. It means one.</li>
+    <li><b>the</b> goes with any noun. It means both of us know which one.</li>
+    <li>With a plural or uncountable noun in general, use no article.</li>
+  </ul>
+  <div class="uses">
+    <div class="use"><h3>a or an</h3><div>
+      <p class="ex many"><span class="s">a</span> book, <span class="s">a</span> chair, <span class="s">a</span> unit<br><span class="s">an</span> apple, <span class="s">an</span> egg, <span class="s">an</span> hour</p>
+      <p class="tip">Choose by the first <b>sound</b>, not the first letter. A consonant sound takes <i>a</i>. A vowel sound takes <i>an</i>. <i>a university</i> starts with a <i>y</i> sound. <i>an hour</i> starts with a vowel sound because the <i>h</i> is silent.</p>
+    </div></div>
+    <div class="use"><h3>a / an: a new thing</h3><div>
+      <p class="ex">I saw <span class="s">a</span> dog in the park.</p>
+      <p class="tip">The first time you mention something, the listener does not know which one yet.</p>
+    </div></div>
+    <div class="use"><h3>a / an: what someone is</h3><div>
+      <p class="ex">She is <span class="s">a</span> doctor. He is <span class="s">an</span> engineer.</p>
+      <p class="tip">Use it for jobs, types and identities after <i>be</i>.</p>
+    </div></div>
+    <div class="use"><h3>a / an: every, per</h3><div>
+      <p class="ex">twice <span class="s">a</span> week, five dollars <span class="s">a</span> kilo, sixty miles <span class="s">an</span> hour</p>
+      <p class="tip">It can mean <i>each</i> or <i>per</i> with time, price and speed.</p>
+    </div></div>
+    <div class="use"><h3>a / an: all of a kind</h3><div>
+      <p class="ex">A dog is loyal. = Dogs are loyal.</p>
+      <p class="tip">A singular countable noun can speak for the whole group. The plural without an article means the same.</p>
+    </div></div>
+    <div class="use"><h3>the: both of you know which</h3><div>
+      <p class="ex many">Close <span class="s">the</span> door.<br>I saw a dog. <span class="s">The</span> dog was big.</p>
+      <p class="tip">Use it when the thing is clear from the room, or was mentioned before.</p>
+    </div></div>
+    <div class="use"><h3>the: only one exists</h3><div>
+      <p class="ex phr"><span class="s">the</span> sun, <span class="s">the</span> moon, <span class="s">the</span> sky, <span class="s">the</span> world, <span class="s">the</span> internet</p>
+    </div></div>
+    <div class="use"><h3>the: made clear by what follows</h3><div>
+      <p class="ex many">The book <b>on the table</b> is mine.<br>The girl <b>who called</b> is my cousin.</p>
+      <p class="tip">A phrase or clause after the noun tells which one, so <i>the</i> is used.</p>
+    </div></div>
+    <div class="use"><h3>the: best, first, same, only, next</h3><div>
+      <p class="ex phr"><span class="s">the</span> best idea, <span class="s">the</span> first day, <span class="s">the</span> same answer, <span class="s">the</span> only chance, <span class="s">the</span> next bus</p>
+      <p class="tip">Superlatives, ordinals and words such as <i>same, only, next, last</i> point to one thing, so they take <i>the</i>.</p>
+    </div></div>
+    <div class="use"><h3>the: a whole group</h3><div>
+      <p class="ex many"><span class="s">the</span> rich, <span class="s">the</span> elderly, <span class="s">the</span> French<br>He plays <span class="s">the</span> piano.</p>
+      <p class="tip">Use it before an adjective for a group of people, with nationalities, and with musical instruments.</p>
+    </div></div>
+    <div class="use"><h3>the: some place names</h3><div>
+      <p class="ex many"><span class="s">the</span> Nile, <span class="s">the</span> Pacific, <span class="s">the</span> Alps, <span class="s">the</span> Sahara<br><span class="s">the</span> Philippines, <span class="s">the</span> United States, <span class="s">the</span> UK</p>
+      <p class="tip">Rivers, oceans, mountain ranges, deserts, island groups and countries with a plural or union name take <i>the</i>.</p>
+    </div></div>
+    <div class="use"><h3>No article: in general</h3><div>
+      <p class="ex many"><span class="pa">Dogs</span> bark. <span class="pa">Water</span> is wet. I like <span class="pa">music</span>.</p>
+      <p class="tip">A plural or uncountable noun used in a general sense needs no article.</p>
+    </div></div>
+    <div class="use"><h3>No article: meals, languages, sports, subjects</h3><div>
+      <p class="ex many">We have <b>breakfast</b> at eight. She speaks <b>English</b>.<br>They play <b>tennis</b>. He studies <b>maths</b>.</p>
+    </div></div>
+    <div class="use"><h3>No article: names</h3><div>
+      <p class="ex many">I live in <b>Paris</b>. This is <b>Maria</b>.<br><b>Lake Victoria</b>, <b>Mount Everest</b>, <b>India</b>, <b>Oxford Street</b></p>
+      <p class="tip">Most names of people, cities, countries, lakes, single mountains and streets take no article.</p>
+    </div></div>
+    <div class="use"><h3>No article: school, work, bed, home</h3><div>
+      <p class="ex many">She goes to <b>school</b> by <b>bus</b>. He is at <b>work</b>. I go to <b>bed</b> at ten.<br>I went to <span class="s">the</span> school to meet a teacher.</p>
+      <p class="tip">For the usual purpose of a place, use no article. For the building itself, use <i>the</i>. Transport after <i>by</i> takes no article: <i>by car, by train, on foot</i>.</p>
+    </div></div>
+    <div class="use"><h3>No article: times and seasons</h3><div>
+      <p class="ex many">at <b>night</b>, at <b>noon</b>, in <b>summer</b>, on <b>Monday</b><br>in <span class="s">the</span> morning, in <span class="s">the</span> evening, in <span class="s">the</span> 1990s</p>
+    </div></div>
+  </div>
+</section>
+
+</div>
+
+<div class="tabpanel" id="demo-tab" role="tabpanel" hidden>
+
+<section id="demo" class="c-padj">
+  <header>
+    <h2>Demonstratives <span class="forms">this &middot; that &middot; these &middot; those</span></h2>
+    <p>They point to a noun and show whether it is near or far, one or more than one.</p>
+  </header>
+  <div class="scroll">
+    <table style="min-width: 420px">
+      <thead><tr><th></th><th>Near</th><th>Far</th></tr></thead>
+      <tbody>
+        <tr><td>One (singular)</td><td><span class="s">this</span> <span class="pa">book</span></td><td><span class="s">that</span> <span class="pa">book</span></td></tr>
+        <tr><td>More than one (plural)</td><td><span class="s">these</span> <span class="pa">books</span></td><td><span class="s">those</span> <span class="pa">books</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="uses">
+    <div class="use"><h3>Near or far in space</h3><div>
+      <p class="ex many"><span class="s">This</span> <span class="pa">pen</span> in my hand is new.<br><span class="s">That</span> <span class="pa">pen</span> on the shelf is old.</p>
+      <p class="tip"><i>this / these</i> are close to the speaker. <i>that / those</i> are farther away.</p>
+    </div></div>
+    <div class="use"><h3>Match the number</h3><div>
+      <p class="ex many"><span class="s">this</span> book, <span class="s">these</span> books<br><span class="s">that</span> girl, <span class="s">those</span> girls</p>
+      <p class="tip">Wrong: &ldquo;this books&rdquo; and &ldquo;those girl.&rdquo; Uncountable nouns take the singular: <i>this water, that music</i>.</p>
+    </div></div>
+    <div class="use"><h3>Time</h3><div>
+      <p class="ex many"><span class="s">this</span> morning, <span class="s">this</span> week, <span class="s">these</span> days<br><span class="s">that</span> night, <span class="s">that</span> year, <span class="s">those</span> days</p>
+      <p class="tip"><i>this / these</i> are for now and the near future. <i>that / those</i> are for a time in the past, or far away.</p>
+    </div></div>
+    <div class="use"><h3>Something just said</h3><div>
+      <p class="ex">&ldquo;We are moving to Spain.&rdquo; &ldquo;<span class="s">That</span> <span class="pa">idea</span> is wonderful.&rdquo;</p>
+      <p class="tip"><i>that</i> points back to something already said. <i>this</i> often points forward: &ldquo;Listen to <span class="s">this</span> <span class="pa">story</span>.&rdquo;</p>
+    </div></div>
+    <div class="use"><h3>Feelings about a thing</h3><div>
+      <p class="ex many">I love <span class="s">this</span> <span class="pa">song</span>!<br>I can&rsquo;t stand <span class="s">that</span> <span class="pa">noise</span>.</p>
+      <p class="tip">Speakers often use <i>this</i> for what they like or feel close to, and <i>that</i> for what they dislike or hold at a distance.</p>
+    </div></div>
+    <div class="use"><h3>Before a noun, or alone</h3><div>
+      <p class="ex many"><span class="s">This</span> <span class="pa">cake</span> is good. (determiner)<br><span class="s">This</span> is good. (pronoun)<br>I like <span class="s">this</span> one, not <span class="s">that</span> one.</p>
+      <p class="tip">With no noun, the word is a pronoun. <i>one</i> can replace a singular noun.</p>
+    </div></div>
+    <div class="use"><h3>That of, those of</h3><div>
+      <p class="ex">The climate of Spain is warmer than <span class="s">that</span> of England.</p>
+      <p class="tip">Formal writing uses <i>that of</i> and <i>those of</i> to avoid repeating a noun.</p>
+    </div></div>
+  </div>
+</section>
+
+</div>
+
+<div class="tabpanel" id="poss-tab" role="tabpanel" hidden>
+
+<section id="poss" class="c-ppro">
+  <header>
+    <h2>Possessive determiners <span class="forms">my, your, his, her, its, our, their &middot; Sara&rsquo;s</span></h2>
+    <p>They show who owns the noun. They are the same words as the possessive adjectives, and they always have a noun after them.</p>
+  </header>
+  <div class="scroll">
+    <table style="min-width: 520px">
+      <thead><tr><th>Owner</th><th>Determiner</th><th>Example</th></tr></thead>
+      <tbody>
+        <tr><td>I</td><td><b>my</b></td><td><span class="s">my</span> <span class="pa">pen</span></td></tr>
+        <tr><td>you</td><td><b>your</b></td><td><span class="s">your</span> <span class="pa">bag</span></td></tr>
+        <tr><td>he</td><td><b>his</b></td><td><span class="s">his</span> <span class="pa">car</span></td></tr>
+        <tr><td>she</td><td><b>her</b></td><td><span class="s">her</span> <span class="pa">coat</span></td></tr>
+        <tr><td>it</td><td><b>its</b></td><td><span class="s">its</span> <span class="pa">tail</span></td></tr>
+        <tr><td>we</td><td><b>our</b></td><td><span class="s">our</span> <span class="pa">house</span></td></tr>
+        <tr><td>they</td><td><b>their</b></td><td><span class="s">their</span> <span class="pa">garden</span></td></tr>
+        <tr><td>a noun</td><td><b>noun + &rsquo;s</b></td><td><span class="s">Sara&rsquo;s</span> <span class="pa">book</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="uses">
+    <div class="use"><h3>Match the owner</h3><div>
+      <p class="ex many">Sara loves <span class="s">her</span> brother.<br>Tom loves <span class="s">his</span> sister.</p>
+      <p class="tip">Choose <i>his</i> or <i>her</i> by the owner, not by the thing owned.</p>
+    </div></div>
+    <div class="use"><h3>No change for plural nouns</h3><div>
+      <p class="ex phr"><span class="s">my</span> book, <span class="s">my</span> books</p>
+      <p class="tip">Only the owner changes the word.</p>
+    </div></div>
+    <div class="use"><h3>Names and nouns with &rsquo;s</h3><div>
+      <p class="ex many"><span class="s">Sara&rsquo;s</span> <span class="pa">bag</span>, the <span class="s">dog&rsquo;s</span> <span class="pa">tail</span><br>the <span class="s">boys&rsquo;</span> <span class="pa">room</span>, <span class="s">James&rsquo;s</span> <span class="pa">car</span></p>
+      <p class="tip">Add <i>&rsquo;s</i> to a singular noun. For a plural noun ending in <i>s</i>, add only the apostrophe. Names ending in <i>s</i> take either <i>James&rsquo;s</i> or <i>James&rsquo;</i>.</p>
+    </div></div>
+    <div class="use"><h3>Body parts and clothes</h3><div>
+      <p class="ex">He washed <span class="s">his</span> <span class="pa">hands</span>. She put on <span class="s">her</span> <span class="pa">coat</span>.</p>
+      <p class="tip">English uses a possessive here, not <i>the</i>.</p>
+    </div></div>
+    <div class="use"><h3>own</h3><div>
+      <p class="ex many">I have <span class="s">my</span> <b>own</b> room.<br>She makes <span class="s">her</span> <b>own</b> bread.</p>
+      <p class="tip"><i>own</i> comes after the possessive and stresses ownership. Wrong: &ldquo;an own room.&rdquo;</p>
+    </div></div>
+    <div class="use"><h3>Only one determiner</h3><div>
+      <p class="ex many"><span class="s">my</span> friend (not &ldquo;the my friend&rdquo; or &ldquo;a my friend&rdquo;)<br>a friend of <span class="s">mine</span></p>
+      <p class="tip">To say <i>a</i> with an owner, use <i>of</i> and a possessive pronoun. The same works for <i>this friend of mine</i>.</p>
+    </div></div>
+    <div class="use"><h3>each other&rsquo;s</h3><div>
+      <p class="ex">They borrow <span class="s">each other&rsquo;s</span> <span class="pa">books</span>.</p>
+    </div></div>
+    <div class="use"><h3>Look-alike words</h3><div>
+      <p class="ex many">The dog wagged <span class="s">its</span> tail. <b>It&rsquo;s</b> raining.<br><span class="s">their</span> house, over <b>there</b>, <b>they&rsquo;re</b> late<br><span class="s">your</span> bag, <b>you&rsquo;re</b> late</p>
+      <p class="tip">The possessive has no apostrophe. The apostrophe form is a short verb: <i>it&rsquo;s = it is</i>, <i>they&rsquo;re = they are</i>, <i>you&rsquo;re = you are</i>.</p>
+    </div></div>
+    <div class="use"><h3>whose</h3><div>
+      <p class="ex many"><span class="s">Whose</span> <span class="pa">bag</span> is this?<br>The girl <span class="s">whose</span> <span class="pa">bag</span> was lost is here.</p>
+      <p class="tip"><i>whose</i> asks who owns the noun, and it also joins a clause to a noun.</p>
+    </div></div>
+  </div>
+</section>
+
+</div>
+
+<div class="tabpanel" id="quant-tab" role="tabpanel" hidden>
+
+<section id="quant" class="c-refl">
+  <header>
+    <h2>Quantifiers <span class="forms">some, any, no, much, many, few, little, enough, all, most&hellip;</span></h2>
+    <p>They tell how many or how much. First check whether the noun can be counted.</p>
+  </header>
+  <div class="scroll">
+    <table style="min-width: 680px">
+      <thead><tr><th>Determiner</th><th>Plural countable</th><th>Uncountable</th><th>Where it is used</th></tr></thead>
+      <tbody>
+        <tr><td><b>some</b></td><td>some books</td><td>some water</td><td>Positive statements, offers, requests</td></tr>
+        <tr><td><b>any</b></td><td>any books</td><td>any water</td><td>Negatives, questions, after <i>if</i></td></tr>
+        <tr><td><b>no</b></td><td>no books</td><td>no water</td><td>Means <i>not any</i>. Also before a singular countable noun: <i>no problem</i></td></tr>
+        <tr><td><b>many</b></td><td>many books</td><td>&mdash;</td><td>Questions, negatives, formal positives</td></tr>
+        <tr><td><b>much</b></td><td>&mdash;</td><td>much water</td><td>Questions, negatives, formal positives</td></tr>
+        <tr><td><b>a lot of, lots of, plenty of</b></td><td>a lot of books</td><td>a lot of water</td><td>Everyday positives</td></tr>
+        <tr><td><b>few, a few</b></td><td>few books, a few books</td><td>&mdash;</td><td>Small number</td></tr>
+        <tr><td><b>little, a little</b></td><td>&mdash;</td><td>little water, a little water</td><td>Small amount</td></tr>
+        <tr><td><b>fewer / less</b></td><td>fewer books</td><td>less water</td><td>Smaller number / smaller amount</td></tr>
+        <tr><td><b>several</b></td><td>several books</td><td>&mdash;</td><td>More than two, not many</td></tr>
+        <tr><td><b>enough</b></td><td>enough books</td><td>enough water</td><td>As much as needed</td></tr>
+        <tr><td><b>more, most</b></td><td>more books, most books</td><td>more water, most water</td><td>Larger part, largest part</td></tr>
+        <tr><td><b>all, half</b></td><td>all books, half the books</td><td>all water, half the water</td><td>Whole, 50 percent</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="uses">
+    <div class="use"><h3>some or any</h3><div>
+      <p class="ex many">I have <span class="s">some</span> <span class="pa">ideas</span>.<br>I don&rsquo;t have <span class="s">any</span> <span class="pa">ideas</span>.<br>Do you have <span class="s">any</span> <span class="pa">ideas</span>?</p>
+      <p class="tip">Positive: <i>some</i>. Negative or a plain question: <i>any</i>. An offer or request also takes <i>some</i>: &ldquo;Would you like <span class="s">some</span> tea?&rdquo; In a positive sentence, <i>any</i> means it does not matter which: &ldquo;Take <span class="s">any</span> <span class="pa">seat</span>.&rdquo;</p>
+    </div></div>
+    <div class="use"><h3>no, none and not any</h3><div>
+      <p class="ex many">I have <span class="s">no</span> <span class="pa">money</span>. = I do not have <span class="s">any</span> <span class="pa">money</span>.<br>&ldquo;How much money?&rdquo; &ldquo;<b>None</b>.&rdquo;</p>
+      <p class="tip">Use only one negative in a clause. With no noun after it, <i>no</i> becomes <i>none</i> (a pronoun).</p>
+    </div></div>
+    <div class="use"><h3>many and much</h3><div>
+      <p class="ex many">How <span class="s">many</span> <span class="pa">people</span> came?<br>I don&rsquo;t have <span class="s">much</span> <span class="pa">time</span>.<br>She has <span class="s">a lot of</span> <span class="pa">friends</span> and <span class="s">a lot of</span> <span class="pa">energy</span>.</p>
+      <p class="tip"><i>many</i> goes with plural nouns and <i>much</i> with uncountable ones. In everyday positives, <i>a lot of</i> sounds more natural. After <i>too, so, as</i> and <i>how</i>, <i>many</i> and <i>much</i> are normal: <i>too much sugar, so many people</i>.</p>
+    </div></div>
+    <div class="use"><h3>few and a few</h3><div>
+      <p class="ex many"><span class="s">Few</span> <span class="pa">people</span> came. (almost nobody)<br><span class="s">A few</span> <span class="pa">people</span> came. (some, enough)</p>
+      <p class="tip"><i>few</i> is a negative idea. <i>a few</i> is a positive idea. Both go with plural nouns.</p>
+    </div></div>
+    <div class="use"><h3>little and a little</h3><div>
+      <p class="ex many">There is <span class="s">little</span> <span class="pa">time</span>. (almost none)<br>There is <span class="s">a little</span> <span class="pa">time</span>. (some, enough)</p>
+      <p class="tip">The same idea as <i>few</i> and <i>a few</i>, for uncountable nouns.</p>
+    </div></div>
+    <div class="use"><h3>fewer and less</h3><div>
+      <p class="ex many"><span class="s">fewer</span> <span class="pa">cars</span>, <span class="s">fewer</span> <span class="pa">students</span><br><span class="s">less</span> <span class="pa">traffic</span>, <span class="s">less</span> <span class="pa">money</span></p>
+      <p class="tip"><i>fewer</i> for what you can count. <i>less</i> for what you cannot. Time, money and distance in amounts often take <i>less</i>: <i>less than five dollars</i>.</p>
+    </div></div>
+    <div class="use"><h3>several and enough</h3><div>
+      <p class="ex many">She read <span class="s">several</span> <span class="pa">books</span>.<br>We have <span class="s">enough</span> <span class="pa">chairs</span> and <span class="s">enough</span> <span class="pa">space</span>.</p>
+      <p class="tip"><i>several</i> is plural only. <i>enough</i> comes before the noun.</p>
+    </div></div>
+    <div class="use"><h3>all, most and half</h3><div>
+      <p class="ex many"><span class="s">All</span> <span class="pa">children</span> need sleep. (in general)<br><span class="s">All the</span> <span class="pa">children</span> in my class like football. (a known group)<br><span class="s">Most</span> <span class="pa">people</span> agree.<br><span class="s">Half</span> the <span class="pa">cake</span> is gone.</p>
+      <p class="tip">For a general idea, use no <i>the</i>. For a known group, add <i>the</i>, <i>my</i> or <i>these</i> after the quantifier.</p>
+    </div></div>
+    <div class="use"><h3>Quantifier + of</h3><div>
+      <p class="ex many"><span class="s">some</span> of <b>the boys</b>, <span class="s">many</span> of <b>my friends</b>, <span class="s">most</span> of <b>us</b><br>(not &ldquo;some of boys&rdquo;)</p>
+      <p class="tip">When a determiner or pronoun follows, add <i>of</i>. With a bare noun, leave <i>of</i> out: <i>some boys</i>. <i>all, both</i> and <i>half</i> may skip <i>of</i>: <i>all the boys, both my brothers</i>. These words then stand as pronouns.</p>
+    </div></div>
+    <div class="use"><h3>Amount words with of</h3><div>
+      <p class="ex many">a <span class="s">number of</span> <span class="pa">students</span>, <span class="s">a large number of</span> <span class="pa">cars</span><br><span class="s">a great deal of</span> <span class="pa">money</span>, <span class="s">a large amount of</span> <span class="pa">water</span></p>
+      <p class="tip">Use <i>a number of</i> with plural nouns and <i>an amount of / a great deal of</i> with uncountable nouns.</p>
+    </div></div>
+  </div>
+</section>
+
+</div>
+
+<div class="tabpanel" id="numdist-tab" role="tabpanel" hidden>
+
+<section id="nums" class="c-denim">
+  <header>
+    <h2>Numbers <span class="forms">one, two, three&hellip; &middot; first, second, third&hellip;</span></h2>
+    <p>Cardinal numbers count. Ordinal numbers give the place in a list.</p>
+  </header>
+  <div class="uses">
+    <div class="use"><h3>Cardinal numbers</h3><div>
+      <p class="ex many"><span class="s">one</span> <span class="pa">book</span>, <span class="s">two</span> <span class="pa">books</span>, <span class="s">ten</span> <span class="pa">books</span></p>
+      <p class="tip"><i>one</i> goes with a singular noun. Every other number goes with a plural noun. Wrong: &ldquo;two book.&rdquo;</p>
+    </div></div>
+    <div class="use"><h3>Ordinal numbers</h3><div>
+      <p class="ex many"><span class="s">the first</span> <span class="pa">day</span>, <span class="s">the second</span> <span class="pa">chapter</span>, <span class="s">the third</span> <span class="pa">time</span></p>
+      <p class="tip">Ordinals usually take <i>the</i>. Without it, they mean one more: <i>a second chance</i>.</p>
+    </div></div>
+    <div class="use"><h3>Order of first, last and numbers</h3><div>
+      <p class="ex many">the <b>first two</b> days<br>the <b>last three</b> chapters<br>(not &ldquo;the two first days&rdquo;)</p>
+      <p class="tip">The ordinal comes before the cardinal number.</p>
+    </div></div>
+    <div class="use"><h3>Number + noun as an adjective</h3><div>
+      <p class="ex many">a <b>ten-year-old</b> boy, a <b>two-day</b> trip<br>The boy is <b>ten years old</b>.</p>
+      <p class="tip">In a compound before a noun, the unit stays singular and takes hyphens.</p>
+    </div></div>
+    <div class="use"><h3>Another with a number</h3><div>
+      <p class="ex">I need <span class="s">another</span> <b>two</b> <span class="pa">weeks</span>.</p>
+      <p class="tip"><i>another</i> usually goes with a singular noun, but it can come before a number and a plural noun.</p>
+    </div></div>
+  </div>
+</section>
+
+<section id="dist" class="c-padj">
+  <header>
+    <h2>Each, every, either, neither, both <span class="forms">distributives</span></h2>
+    <p>They talk about the members of a group one by one, or two together.</p>
+  </header>
+  <div class="scroll">
+    <table style="min-width: 600px">
+      <thead><tr><th>Determiner</th><th>Group size</th><th>Noun after it</th><th>Example</th></tr></thead>
+      <tbody>
+        <tr><td><b>each</b></td><td>Two or more</td><td>Singular</td><td><span class="s">Each</span> <span class="pa">child</span> has a pen.</td></tr>
+        <tr><td><b>every</b></td><td>Three or more</td><td>Singular</td><td><span class="s">Every</span> <span class="pa">student</span> passed.</td></tr>
+        <tr><td><b>either</b></td><td>Exactly two</td><td>Singular</td><td>Take <span class="s">either</span> <span class="pa">road</span>.</td></tr>
+        <tr><td><b>neither</b></td><td>Exactly two</td><td>Singular</td><td><span class="s">Neither</span> <span class="pa">answer</span> is right.</td></tr>
+        <tr><td><b>both</b></td><td>Exactly two</td><td>Plural</td><td><span class="s">Both</span> <span class="pa">books</span> are mine.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="uses">
+    <div class="use"><h3>each and every</h3><div>
+      <p class="ex many"><span class="s">Each</span> <span class="pa">student</span> gets a different book. (one at a time)<br><span class="s">Every</span> <span class="pa">student</span> passed. (all, as a group)</p>
+      <p class="tip">Both take a singular noun and a singular verb. <i>each</i> looks at individuals. <i>every</i> looks at the whole group.</p>
+    </div></div>
+    <div class="use"><h3>every for time and repeats</h3><div>
+      <p class="ex many"><span class="s">every</span> day, <span class="s">every</span> two weeks, <span class="s">every</span> other day<br>Almost <span class="s">every</span> <span class="pa">child</span> likes sweets.</p>
+      <p class="tip"><i>every</i> works with <i>almost, nearly, practically</i> and with periods of time. <i>each</i> does not.</p>
+    </div></div>
+    <div class="use"><h3>each and every with of</h3><div>
+      <p class="ex many"><span class="s">each</span> of <b>the boys</b> has a pen. (a pronoun)<br><span class="s">every one</span> of <b>the boys</b> has a pen.</p>
+      <p class="tip"><i>every</i> cannot stand alone before <i>of</i>. Use <i>every one of</i> or <i>each of</i>. The verb stays singular.</p>
+    </div></div>
+    <div class="use"><h3>either</h3><div>
+      <p class="ex many">You can sit on <span class="s">either</span> <span class="pa">side</span>.<br>I don&rsquo;t like <span class="s">either</span> <span class="pa">answer</span>.</p>
+      <p class="tip">It means one or the other, of two. It can also mean both: <i>on either side of the road</i>.</p>
+    </div></div>
+    <div class="use"><h3>neither</h3><div>
+      <p class="ex"><span class="s">Neither</span> <span class="pa">answer</span> is correct.</p>
+      <p class="tip">It means not one and not the other. Do not add <i>not</i>: &ldquo;Neither answer is not right&rdquo; is wrong.</p>
+    </div></div>
+    <div class="use"><h3>both</h3><div>
+      <p class="ex many"><span class="s">Both</span> <span class="pa">books</span> are mine.<br><span class="s">Both</span> my <span class="pa">brothers</span> play chess.<br><span class="s">Both</span> of <b>the books</b> are mine.</p>
+      <p class="tip"><i>both</i> takes a plural noun and a plural verb. It can come before <i>the, my, these</i>.</p>
+    </div></div>
+    <div class="use"><h3>another, other, the other</h3><div>
+      <p class="ex many"><span class="s">another</span> <span class="pa">book</span> (one more)<br><span class="s">other</span> <span class="pa">books</span> (different ones)<br><span class="s">the other</span> <span class="pa">book</span>, <span class="s">the other</span> <span class="pa">books</span> (the rest)</p>
+      <p class="tip"><i>another</i> is <i>an + other</i>, so it goes with singular nouns. <i>other</i> goes with plural and uncountable nouns. <i>the other</i> goes with either, when the group is known.</p>
+    </div></div>
+  </div>
+</section>
+
+</div>
+
+<div class="tabpanel" id="extras-tab" role="tabpanel" hidden>
+
+<section id="wh" class="c-obj">
+  <header>
+    <h2>Question and relative determiners <span class="forms">which, what, whose</span></h2>
+    <p>They stand before a noun to ask for it or to join a clause to it.</p>
+  </header>
+  <div class="uses">
+    <div class="use"><h3>which: a choice from a known set</h3><div>
+      <p class="ex many"><span class="s">Which</span> <span class="pa">bag</span> is yours?<br><span class="s">Which</span> <span class="pa">books</span> did you buy?</p>
+      <p class="tip">Use it when the choices are limited and known.</p>
+    </div></div>
+    <div class="use"><h3>what: an open choice</h3><div>
+      <p class="ex many"><span class="s">What</span> <span class="pa">time</span> is it?<br><span class="s">What</span> <span class="pa">music</span> do you like?</p>
+      <p class="tip">Use it when there are many possible answers or the set is not known.</p>
+    </div></div>
+    <div class="use"><h3>whose: the owner</h3><div>
+      <p class="ex"><span class="s">Whose</span> <span class="pa">pen</span> is this?</p>
+    </div></div>
+    <div class="use"><h3>Relative whose</h3><div>
+      <p class="ex">The girl <span class="s">whose</span> <span class="pa">bag</span> was lost is here.</p>
+      <p class="tip"><i>whose</i> joins a clause to a noun and shows ownership. It works for people, animals and things.</p>
+    </div></div>
+    <div class="use"><h3>whichever and whatever</h3><div>
+      <p class="ex many">Take <span class="s">whichever</span> <span class="pa">seat</span> you like.<br><span class="s">Whatever</span> <span class="pa">time</span> you come, I will be home.</p>
+      <p class="tip">They mean it does not matter which one.</p>
+    </div></div>
+    <div class="use"><h3>what in exclamations</h3><div>
+      <p class="ex many"><span class="s">What a</span> <span class="pa">day</span>!<br><span class="s">What</span> beautiful <span class="pa">flowers</span>!<br><span class="s">What</span> <span class="pa">nonsense</span>!</p>
+      <p class="tip">Use <i>what a / an</i> with a singular countable noun. Use <i>what</i> alone with plural and uncountable nouns.</p>
+    </div></div>
+  </div>
+</section>
+
+<section id="pre" class="c-padj">
+  <header>
+    <h2>Words that come before the article <span class="forms">all, both, half, such, what, quite, double, twice</span></h2>
+    <p>A few words can stand before <i>a, the, this, my</i>. They are called predeterminers.</p>
+  </header>
+  <div class="scroll">
+    <table style="min-width: 560px">
+      <thead><tr><th>Word</th><th>Pattern</th><th>Example</th></tr></thead>
+      <tbody>
+        <tr><td><b>all, both, half</b></td><td>+ the / my / these + noun</td><td><span class="s">all</span> the <span class="pa">children</span>, <span class="s">both</span> my <span class="pa">brothers</span>, <span class="s">half</span> the <span class="pa">price</span></td></tr>
+        <tr><td><b>double, twice, three times</b></td><td>+ the + noun</td><td><span class="s">twice</span> the <span class="pa">cost</span></td></tr>
+        <tr><td><b>such</b></td><td>+ a / an + (adjective) + noun</td><td><span class="s">such</span> a <span class="pa">day</span>, <span class="s">such</span> nice <span class="pa">people</span></td></tr>
+        <tr><td><b>what</b></td><td>+ a / an + noun (exclamation)</td><td><span class="s">what</span> a <span class="pa">surprise</span>!</td></tr>
+        <tr><td><b>quite, rather</b></td><td>+ a / an + noun</td><td><span class="s">quite</span> a long <span class="pa">way</span>, <span class="s">rather</span> a <span class="pa">surprise</span></td></tr>
+        <tr><td><b>half</b></td><td>+ a / an + noun</td><td><span class="s">half</span> an <span class="pa">hour</span>, <span class="s">half</span> a <span class="pa">day</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="uses">
+    <div class="use"><h3>such and so</h3><div>
+      <p class="ex many">It was <span class="s">such</span> a <b>nice</b> <span class="pa">day</span>.<br>The day was <b>so</b> nice.</p>
+      <p class="tip"><i>such</i> goes before a noun phrase. <i>so</i> goes before an adjective or adverb alone. Wrong: &ldquo;so a nice day.&rdquo;</p>
+    </div></div>
+    <div class="use"><h3>Other words that act like determiners</h3><div>
+      <p class="ex many"><span class="s">certain</span> <span class="pa">people</span>, <span class="s">various</span> <span class="pa">reasons</span>, <span class="s">different</span> <span class="pa">ideas</span><br><span class="s">the same</span> <span class="pa">answer</span>, <span class="s">the whole</span> <span class="pa">day</span></p>
+      <p class="tip">These words point to the noun without being an adjective of quality. They follow the main determiner.</p>
+    </div></div>
+  </div>
+</section>
+
+</div>
+
+<div class="tabpanel" id="order-tab" role="tabpanel" hidden>
+
+<section id="order" class="c-subj">
+  <header>
+    <h2>The order inside a noun phrase</h2>
+    <p>Determiners come before adjectives. When there are several, they follow a fixed order.</p>
+  </header>
+  <div class="scroll">
+    <table style="min-width: 680px">
+      <thead><tr><th>1. Before the article</th><th>2. Main determiner</th><th>3. After the determiner</th><th>4. Adjectives</th><th>5. Noun</th></tr></thead>
+      <tbody>
+        <tr><td><span class="s">all</span></td><td><span class="s">the</span></td><td>&nbsp;</td><td>little</td><td><span class="pa">children</span></td></tr>
+        <tr><td><span class="s">both</span></td><td><span class="s">my</span></td><td>&nbsp;</td><td>younger</td><td><span class="pa">brothers</span></td></tr>
+        <tr><td>&nbsp;</td><td><span class="s">the</span></td><td><span class="s">first two</span></td><td>&nbsp;</td><td><span class="pa">days</span></td></tr>
+        <tr><td>&nbsp;</td><td><span class="s">these</span></td><td><span class="s">three</span></td><td>old</td><td><span class="pa">books</span></td></tr>
+        <tr><td><span class="s">such</span></td><td><span class="s">a</span></td><td>&nbsp;</td><td>lovely</td><td><span class="pa">day</span></td></tr>
+        <tr><td>&nbsp;</td><td><span class="s">some</span></td><td><span class="s">other</span></td><td>cold</td><td><span class="pa">drinks</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <ul class="points">
+    <li>Column 1: <i>all, both, half, such, what, quite, double, twice</i>.</li>
+    <li>Column 2: one of <i>a, an, the, this, that, these, those, my&hellip;, some, any, no, each, every, either, neither, which, whose</i>.</li>
+    <li>Column 3: <i>first, last, next, other, same</i>, numbers, and <i>many, few, several</i>. Ordinals come before cardinals: <i>the first two</i>.</li>
+  </ul>
+</section>
+
+<section id="agree" class="c-peach">
+  <header>
+    <h2>Which determiner goes with which noun?</h2>
+    <p>Check the noun first. A tick means the determiner can go with that kind of noun.</p>
+  </header>
+  <div class="scroll">
+    <table style="min-width: 640px">
+      <thead><tr><th>Determiner</th><th>Singular countable<br><small>book</small></th><th>Plural countable<br><small>books</small></th><th>Uncountable<br><small>water</small></th></tr></thead>
+      <tbody>
+        <tr><td><b>a / an, one</b></td><td>&#10003;</td><td>&mdash;</td><td>&mdash;</td></tr>
+        <tr><td><b>the, my, your, his, her, its, our, their, whose, which, what, no, some, any</b></td><td>&#10003; (<i>some, any</i>: not with a singular noun)</td><td>&#10003;</td><td>&#10003;</td></tr>
+        <tr><td><b>this, that</b></td><td>&#10003;</td><td>&mdash;</td><td>&#10003;</td></tr>
+        <tr><td><b>these, those</b></td><td>&mdash;</td><td>&#10003;</td><td>&mdash;</td></tr>
+        <tr><td><b>each, every, either, neither, another</b></td><td>&#10003;</td><td>&mdash;</td><td>&mdash;</td></tr>
+        <tr><td><b>both, many, few, fewer, several, two&hellip;</b></td><td>&mdash;</td><td>&#10003;</td><td>&mdash;</td></tr>
+        <tr><td><b>much, little, less</b></td><td>&mdash;</td><td>&mdash;</td><td>&#10003;</td></tr>
+        <tr><td><b>a lot of, plenty of, enough, all, most, more, half</b></td><td>&mdash;</td><td>&#10003;</td><td>&#10003;</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="uses">
+    <div class="use"><h3>One determiner only</h3><div>
+      <p class="ex many">&ldquo;the my book&rdquo;  &rarr;  <span class="s">my</span> <span class="pa">book</span><br>&ldquo;a this house&rdquo;  &rarr;  <span class="s">this</span> <span class="pa">house</span></p>
+      <p class="tip">Articles, demonstratives and possessives cannot be stacked. The words in the first column of the order table are the exception.</p>
+    </div></div>
+    <div class="use"><h3>The noun is left out</h3><div>
+      <p class="ex many">I bought two <b>books</b>. I bought <span class="s">two</span>.<br>This <b>bag</b> is red. <span class="s">This</span> is red.</p>
+      <p class="tip">When the noun is understood, the determiner stands alone and becomes a pronoun. <i>my</i> becomes <i>mine</i>, and <i>no</i> becomes <i>none</i>.</p>
+    </div></div>
+    <div class="use"><h3>Determiners with other nouns</h3><div>
+      <p class="ex many"><span class="s">the</span> Smiths, <span class="s">the</span> United States<br>Maria, Mr Smith, tomorrow (no determiner)</p>
+      <p class="tip">Names usually take none. A family name in the plural takes <i>the</i>.</p>
+    </div></div>
+    <div class="use"><h3>Singular words with a plural meaning</h3><div>
+      <p class="ex many"><span class="s">Every</span> <span class="pa">student</span> <b>has</b> a book.<br><span class="s">Each</span> <span class="pa">child</span> <b>was</b> given a prize.</p>
+      <p class="tip">The determiner is singular, so the verb is singular too, even when many people are meant.</p>
+    </div></div>
+  </div>
+</section>
+
+</div>
+
+<div class="tabpanel" id="choosing" role="tabpanel" hidden>
+
+<section id="choose" class="c-obj">
+  <header>
+    <h2>How to choose the right determiner</h2>
+    <p>Ask these questions in order. Each answer narrows the list.</p>
+  </header>
+  <div class="uses">
+    <div class="use"><h3>1. Is the noun countable?</h3><div>
+      <ol class="how">
+        <li>Countable and singular: <i>a / an, the, this, that, my, each, every, either, neither, another, one</i>.</li>
+        <li>Countable and plural: <i>the, these, those, my, some, any, many, few, several, both, two</i>, or no determiner.</li>
+        <li>Uncountable: <i>the, this, that, my, some, any, much, little, less, enough</i>, or no determiner.</li>
+      </ol>
+    </div></div>
+    <div class="use"><h3>2. Does the listener know which one?</h3><div>
+      <ol class="how">
+        <li>Yes, or only one exists: <i>the</i>.</li>
+        <li>No, and it is one of many: <i>a / an</i> (singular), <i>some</i> (plural or uncountable).</li>
+        <li>You mean the whole group in general: no article.</li>
+      </ol>
+    </div></div>
+    <div class="use"><h3>3. Does someone own it?</h3><div>
+      <ol class="how">
+        <li>Use <i>my, your, his, her, its, our, their</i> or a noun with <i>&rsquo;s</i>.</li>
+        <li>Do not add <i>a</i> or <i>the</i>.</li>
+      </ol>
+    </div></div>
+    <div class="use"><h3>4. Is it near or far?</h3><div>
+      <ol class="how">
+        <li>Near: <i>this</i> (one), <i>these</i> (more than one).</li>
+        <li>Far: <i>that</i> (one), <i>those</i> (more than one).</li>
+      </ol>
+    </div></div>
+    <div class="use"><h3>5. Do you need an amount?</h3><div>
+      <ol class="how">
+        <li>Exact number: <i>one, two, three&hellip;</i></li>
+        <li>Large: <i>many</i> (count), <i>much</i> (cannot count), <i>a lot of</i> (both).</li>
+        <li>Small: <i>few / a few</i> (count), <i>little / a little</i> (cannot count).</li>
+        <li>Group members: <i>each, every, either, neither, both</i>.</li>
+      </ol>
+    </div></div>
+  </div>
+</section>
+
+<section id="errors" class="c-padj">
+  <header>
+    <h2>Common errors</h2>
+    <p>Read across: the wrong form, the right form, and the reason.</p>
+  </header>
+  <div class="scroll">
+    <table style="min-width: 640px">
+      <thead><tr><th class="wrong">Wrong</th><th class="right">Right</th><th>Why</th></tr></thead>
+      <tbody>
+        <tr><td class="wrong">an information</td><td class="right">some information, a piece of information</td><td><i>information</i> is uncountable</td></tr>
+        <tr><td class="wrong">an university</td><td class="right">a university</td><td>It starts with a <i>y</i> sound</td></tr>
+        <tr><td class="wrong">a hour</td><td class="right">an hour</td><td>The <i>h</i> is silent</td></tr>
+        <tr><td class="wrong">much books</td><td class="right">many books</td><td><i>books</i> are countable</td></tr>
+        <tr><td class="wrong">many informations</td><td class="right">much information</td><td>Uncountable, so no plural</td></tr>
+        <tr><td class="wrong">less people</td><td class="right">fewer people</td><td>You can count people</td></tr>
+        <tr><td class="wrong">every students</td><td class="right">every student, all students</td><td><i>every</i> takes a singular noun</td></tr>
+        <tr><td class="wrong">this books, those girl</td><td class="right">these books, that girl</td><td>Match the number</td></tr>
+        <tr><td class="wrong">the my book, a my friend</td><td class="right">my book, a friend of mine</td><td>One determiner only</td></tr>
+        <tr><td class="wrong">He is doctor.</td><td class="right">He is a doctor.</td><td>A job after <i>be</i> needs <i>a / an</i></td></tr>
+        <tr><td class="wrong">The life is beautiful.</td><td class="right">Life is beautiful.</td><td>In general, no article</td></tr>
+        <tr><td class="wrong">I go to the school by the bus.</td><td class="right">I go to school by bus.</td><td>Usual purpose of a place, and transport after <i>by</i></td></tr>
+        <tr><td class="wrong">one of my friend</td><td class="right">one of my friends</td><td>After <i>of</i>, the noun is plural</td></tr>
+        <tr><td class="wrong">Each of the boys have a pen.</td><td class="right">Each of the boys has a pen.</td><td><i>each</i> is singular</td></tr>
+        <tr><td class="wrong">all of student</td><td class="right">all the students, all of the students</td><td>A determiner comes after <i>of</i></td></tr>
+        <tr><td class="wrong">I have few money.</td><td class="right">I have little money.</td><td><i>money</i> is uncountable</td></tr>
+        <tr><td class="wrong">so a nice day</td><td class="right">such a nice day, so nice a day</td><td><i>such</i> goes before the noun phrase</td></tr>
+        <tr><td class="wrong">the two first days</td><td class="right">the first two days</td><td>Ordinal before cardinal</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+</div>
+
+<div class="tabpanel" id="practice-tab" role="tabpanel" hidden>
+
+<section id="practice" class="practice c-aloe">
+  <header>
+    <h2>Practice</h2>
+    <p>Answers are hidden. Try each question first, then tap <b>Answer</b>.</p>
+  </header>
+  <button class="btn" id="toggle-all" type="button" data-open="0">Show all answers</button>
+
+  <div class="part">
+    <div class="part-head"><h3><span class="s">Part A</span> A, an, the or no article</h3></div>
+    <ol class="qs">
+      <li><span>She has <span class="blank"></span> umbrella. (a / an / the)</span><details><summary>Answer</summary><p><b>an.</b> <i>umbrella</i> starts with a vowel sound.</p></details></li>
+      <li><span>He studies at <span class="blank"></span> university. (a / an)</span><details><summary>Answer</summary><p><b>a.</b> <i>university</i> starts with a <i>y</i> sound.</p></details></li>
+      <li><span>It takes <span class="blank"></span> hour. (a / an)</span><details><summary>Answer</summary><p><b>an.</b> The <i>h</i> is silent.</p></details></li>
+      <li><span>I saw a cat. <span class="blank"></span> cat was black. (A / The)</span><details><summary>Answer</summary><p><b>The.</b> The cat was mentioned before.</p></details></li>
+      <li><span>My mother is <span class="blank"></span> nurse. (a / the / no article)</span><details><summary>Answer</summary><p><b>a.</b> A job after <i>be</i>.</p></details></li>
+      <li><span><span class="blank"></span> sun rises in the east. (A / The)</span><details><summary>Answer</summary><p><b>The.</b> There is only one sun.</p></details></li>
+      <li><span>She is <span class="blank"></span> tallest girl in class. (a / the)</span><details><summary>Answer</summary><p><b>the.</b> A superlative.</p></details></li>
+      <li><span>We play <span class="blank"></span> tennis on Sundays. (the / no article)</span><details><summary>Answer</summary><p><b>no article.</b> Sports take none.</p></details></li>
+      <li><span>He plays <span class="blank"></span> guitar well. (the / no article)</span><details><summary>Answer</summary><p><b>the.</b> A musical instrument.</p></details></li>
+      <li><span><span class="blank"></span> dogs are loyal. (The / no article) General meaning.</span><details><summary>Answer</summary><p><b>no article.</b> Plural noun in general.</p></details></li>
+      <li><span>They sailed across <span class="blank"></span> Pacific. (the / no article)</span><details><summary>Answer</summary><p><b>the.</b> Names of oceans take <i>the</i>.</p></details></li>
+      <li><span>Children go to <span class="blank"></span> school to learn. (the / no article)</span><details><summary>Answer</summary><p><b>no article.</b> The usual purpose of a school.</p></details></li>
+    </ol>
+  </div>
+
+  <div class="part">
+    <div class="part-head"><h3><span class="pa">Part B</span> This, that and possessives</h3></div>
+    <ol class="qs">
+      <li><span>The pen in my hand: <span class="blank"></span> pen. (this / that)</span><details><summary>Answer</summary><p><b>this.</b> It is near.</p></details></li>
+      <li><span>The books on the far shelf: <span class="blank"></span> books. (these / those)</span><details><summary>Answer</summary><p><b>those.</b> Far and plural.</p></details></li>
+      <li><span>Tom loves <span class="blank"></span> sister. (his / her)</span><details><summary>Answer</summary><p><b>his.</b> Match the owner, Tom.</p></details></li>
+      <li><span>Sara loves <span class="blank"></span> brother. (his / her)</span><details><summary>Answer</summary><p><b>her.</b> The owner is Sara.</p></details></li>
+      <li><span>The dog wagged <span class="blank"></span> tail. (its / it&rsquo;s)</span><details><summary>Answer</summary><p><b>its.</b> No apostrophe for ownership.</p></details></li>
+      <li><span>Fix: a my friend</span><details><summary>Answer</summary><p><b>a friend of mine</b> (or <b>my friend</b>). One determiner only.</p></details></li>
+      <li><span><span class="blank"></span> bag is this? (Who&rsquo;s / Whose)</span><details><summary>Answer</summary><p><b>Whose.</b> It asks about the owner of the noun.</p></details></li>
+      <li><span>That is the dog&rsquo;s bowl. Which word is the determiner?</span><details><summary>Answer</summary><p><b>the dog&rsquo;s.</b> It tells whose bowl. <i>That</i> is the pronoun here.</p></details></li>
+    </ol>
+  </div>
+
+  <div class="part">
+    <div class="part-head"><h3><span class="s">Part C</span> Some, any, many, much, few, little</h3></div>
+    <ol class="qs">
+      <li><span>I would like <span class="blank"></span> water. (some / any)</span><details><summary>Answer</summary><p><b>some.</b> A request.</p></details></li>
+      <li><span>I don&rsquo;t have <span class="blank"></span> time. (some / any)</span><details><summary>Answer</summary><p><b>any.</b> A negative statement.</p></details></li>
+      <li><span>How <span class="blank"></span> people came? (many / much)</span><details><summary>Answer</summary><p><b>many.</b> People can be counted.</p></details></li>
+      <li><span>How <span class="blank"></span> sugar do you take? (many / much)</span><details><summary>Answer</summary><p><b>much.</b> <i>sugar</i> is uncountable.</p></details></li>
+      <li><span>He has <span class="blank"></span> friends. Almost none. (few / a few)</span><details><summary>Answer</summary><p><b>few.</b> It means almost none.</p></details></li>
+      <li><span>We have <span class="blank"></span> time. Enough to finish. (little / a little)</span><details><summary>Answer</summary><p><b>a little.</b> It means some.</p></details></li>
+      <li><span>There are <span class="blank"></span> cars today. (fewer / less)</span><details><summary>Answer</summary><p><b>fewer.</b> Cars can be counted.</p></details></li>
+      <li><span>She read <span class="blank"></span> books on the trip. (several / much)</span><details><summary>Answer</summary><p><b>several.</b> <i>much</i> does not go with plural nouns.</p></details></li>
+      <li><span><span class="blank"></span> of the boys were late. (Some / Much)</span><details><summary>Answer</summary><p><b>Some.</b> <i>boys</i> are countable, and <i>much</i> goes only with uncountable nouns.</p></details></li>
+      <li><span>I have <span class="blank"></span> homework. Not any. (no / none)</span><details><summary>Answer</summary><p><b>no.</b> A noun follows, so <i>no</i>. Alone it would be <i>none</i>.</p></details></li>
+    </ol>
+  </div>
+
+  <div class="part">
+    <div class="part-head"><h3><span class="o">Part D</span> Each, every, both, either, another</h3></div>
+    <ol class="qs">
+      <li><span><span class="blank"></span> student has a locker. (Each / Both)</span><details><summary>Answer</summary><p><b>Each.</b> <i>both</i> needs a plural noun.</p></details></li>
+      <li><span>Every child <span class="blank"></span> a book. (has / have)</span><details><summary>Answer</summary><p><b>has.</b> <i>every</i> is singular.</p></details></li>
+      <li><span><span class="blank"></span> books are mine. (Both / Either)</span><details><summary>Answer</summary><p><b>Both.</b> A plural noun, two books.</p></details></li>
+      <li><span>You can take <span class="blank"></span> road. There are two. (either / every)</span><details><summary>Answer</summary><p><b>either.</b> One or the other of two.</p></details></li>
+      <li><span><span class="blank"></span> answer is correct. Not one of the two. (Neither / Either)</span><details><summary>Answer</summary><p><b>Neither.</b> Not one and not the other.</p></details></li>
+      <li><span>Would you like <span class="blank"></span> cup of tea? (another / other)</span><details><summary>Answer</summary><p><b>another.</b> One more, singular.</p></details></li>
+      <li><span>Some people like tea. <span class="blank"></span> people like coffee. (Another / Other)</span><details><summary>Answer</summary><p><b>Other.</b> Different people, plural.</p></details></li>
+      <li><span>One shoe is here. Where is <span class="blank"></span> shoe? (another / the other)</span><details><summary>Answer</summary><p><b>the other.</b> The one remaining of a known pair.</p></details></li>
+      <li><span>Put these in order: (a) days (b) two (c) the (d) first</span><details><summary>Answer</summary><p><b>the first two days.</b> Ordinal before cardinal.</p></details></li>
+      <li><span>Put these in order: (a) friends (b) all (c) old (d) my</span><details><summary>Answer</summary><p><b>all my old friends.</b> Before the article, the determiner, then the adjective, then the noun.</p></details></li>
+      <li><span>It was <span class="blank"></span> nice day. (such / so)</span><details><summary>Answer</summary><p><b>such.</b> <i>such a nice day</i>. <i>so</i> would go with an adjective alone.</p></details></li>
+      <li><span><span class="blank"></span> a surprise! (What / Which)</span><details><summary>Answer</summary><p><b>What.</b> An exclamation uses <i>what</i>.</p></details></li>
+    </ol>
+  </div>
+
+  <div class="part">
+    <div class="part-head"><h3><span class="pp">Part E</span> Fix the error</h3></div>
+    <ol class="qs">
+      <li><span>Fix: I need an information.</span><details><summary>Answer</summary><p><b>I need some information.</b> or <b>a piece of information.</b></p></details></li>
+      <li><span>Fix: There are less people here.</span><details><summary>Answer</summary><p><b>There are fewer people here.</b></p></details></li>
+      <li><span>Fix: Every students passed.</span><details><summary>Answer</summary><p><b>Every student passed.</b> or <b>All students passed.</b></p></details></li>
+      <li><span>Fix: I have much books.</span><details><summary>Answer</summary><p><b>I have many books.</b></p></details></li>
+      <li><span>Fix: He is engineer.</span><details><summary>Answer</summary><p><b>He is an engineer.</b></p></details></li>
+      <li><span>Fix: Each of the boys have a pen.</span><details><summary>Answer</summary><p><b>Each of the boys has a pen.</b></p></details></li>
+      <li><span>Fix: one of my friend</span><details><summary>Answer</summary><p><b>one of my friends.</b></p></details></li>
+      <li><span>Fix: The life is short.</span><details><summary>Answer</summary><p><b>Life is short.</b> A general idea takes no article.</p></details></li>
+    </ol>
+  </div>
+
+</section>
+
+</div>
+
+</div>
+
+<script>
+(function () {
+  var tabs = Array.prototype.slice.call(document.querySelectorAll('.jump a[data-tab]'));
+  var panels = Array.prototype.slice.call(document.querySelectorAll('.tabpanel'));
+  var names = tabs.map(function (a) { return a.dataset.tab; });
+  function show(name, scroll) {
+    if (names.indexOf(name) < 0) name = names[0];
+    tabs.forEach(function (a) {
+      var on = a.dataset.tab === name;
+      a.setAttribute('aria-selected', on ? 'true' : 'false');
+      a.tabIndex = on ? 0 : -1;
+    });
+    panels.forEach(function (p) { p.hidden = p.id !== name; });
+    if (scroll) { var h = document.querySelector('.hero'); if (h) h.scrollIntoView({ block: 'start' }); }
+  }
+  tabs.forEach(function (a, i) {
+    a.addEventListener('click', function (e) {
+      e.preventDefault(); show(a.dataset.tab, false);
+      try { history.replaceState(null, '', '#' + a.dataset.tab); } catch (x) {}
+    });
+    a.addEventListener('keydown', function (e) {
+      var j = e.key === 'ArrowRight' ? i + 1 : (e.key === 'ArrowLeft' ? i - 1 : -1);
+      if (j < 0) return;
+      e.preventDefault(); j = (j + tabs.length) % tabs.length; tabs[j].focus(); tabs[j].click();
+    });
+  });
+  window.addEventListener('hashchange', function () { show(location.hash.slice(1), false); });
+  show(location.hash.slice(1), false);
+})();
+</script>
+
+<script>
+(function () {
+  var btn = document.getElementById('toggle-all');
+  if (!btn) return;
+  btn.addEventListener('click', function () {
+    var open = btn.getAttribute('data-open') !== '1';
+    var items = document.querySelectorAll('#practice details');
+    for (var i = 0; i < items.length; i++) items[i].open = open;
+    btn.setAttribute('data-open', open ? '1' : '0');
+    btn.textContent = open ? 'Hide all answers' : 'Show all answers';
+  });
+})();
+</script>
+</body>
+</html>

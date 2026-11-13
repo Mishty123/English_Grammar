@@ -9,11 +9,11 @@
   --bg: #F2F6F9; --surface: #FBFDFE; --soft: #E6EEF4; --fg: #14262F; --muted: #4A5F6B; --line: #D3DFE7;
   --band-fg: #FFFFFF; --subj-band: #13496B; --obj-band: #13496B; --padj-band: #13496B; --ppro-band: #13496B; --refl-band: #13496B;
   --subj-pill: #D6E6F0; --obj-pill: #D6E6F0; --padj-pill: #D6E6F0; --ppro-pill: #D6E6F0; --refl-pill: #D6E6F0; --pill-fg: #14262F;
-  --subj: #13496B; --subj-bg: #DCE9F2;
-  --obj: #13496B; --obj-bg: #DCE9F2;
-  --padj: #13496B; --padj-bg: #DCE9F2;
-  --ppro: #13496B; --ppro-bg: #DCE9F2;
-  --refl: #13496B; --refl-bg: #DCE9F2;
+  --subj: #8A5A00; --subj-bg: #F8EBCB;
+  --obj: #8A5A00; --obj-bg: #F8EBCB;
+  --padj: #8A5A00; --padj-bg: #F8EBCB;
+  --ppro: #8A5A00; --ppro-bg: #F8EBCB;
+  --refl: #8A5A00; --refl-bg: #F8EBCB;
   --wrong: #9A4B00; --wrong-bg: #FBE8D2;
   --right: #1F6B3A; --right-bg: #DDF1E3;
   --p1-fg: #14262F; --p2-fg: #14262F; --p3-fg: #FFFFFF; --p4-fg: #FFFFFF;
@@ -31,11 +31,11 @@
     --bg: #0F1C24; --surface: #17272F; --soft: #1F3440; --fg: #EAF2F7; --muted: #B4C6D2; --line: #2F4654;
     --band-fg: #FFFFFF; --subj-band: #1D5073; --obj-band: #1D5073; --padj-band: #1D5073; --ppro-band: #1D5073; --refl-band: #1D5073;
     --subj-pill: #D6E6F0; --obj-pill: #D6E6F0; --padj-pill: #D6E6F0; --ppro-pill: #D6E6F0; --refl-pill: #D6E6F0; --pill-fg: #14262F;
-    --subj: #8FC6E8; --subj-bg: #17394F;
-    --obj: #8FC6E8; --obj-bg: #17394F;
-    --padj: #8FC6E8; --padj-bg: #17394F;
-    --ppro: #8FC6E8; --ppro-bg: #17394F;
-    --refl: #8FC6E8; --refl-bg: #17394F;
+    --subj: #F0C96A; --subj-bg: #43350F;
+    --obj: #F0C96A; --obj-bg: #43350F;
+    --padj: #F0C96A; --padj-bg: #43350F;
+    --ppro: #F0C96A; --ppro-bg: #43350F;
+    --refl: #F0C96A; --refl-bg: #43350F;
     --wrong: #FFB070; --wrong-bg: #4A2E12;
     --right: #9BE0AE; --right-bg: #17402A;
     --p1-fg: #0F1C24; --p2-fg: #0F1C24; --p3-fg: #FFFFFF; --p4-fg: #FFFFFF;
@@ -52,11 +52,11 @@
   --bg: #0F1C24; --surface: #17272F; --soft: #1F3440; --fg: #EAF2F7; --muted: #B4C6D2; --line: #2F4654;
   --band-fg: #FFFFFF; --subj-band: #1D5073; --obj-band: #1D5073; --padj-band: #1D5073; --ppro-band: #1D5073; --refl-band: #1D5073;
   --subj-pill: #D6E6F0; --obj-pill: #D6E6F0; --padj-pill: #D6E6F0; --ppro-pill: #D6E6F0; --refl-pill: #D6E6F0; --pill-fg: #14262F;
-  --subj: #8FC6E8; --subj-bg: #17394F;
-  --obj: #8FC6E8; --obj-bg: #17394F;
-  --padj: #8FC6E8; --padj-bg: #17394F;
-  --ppro: #8FC6E8; --ppro-bg: #17394F;
-  --refl: #8FC6E8; --refl-bg: #17394F;
+  --subj: #F0C96A; --subj-bg: #43350F;
+  --obj: #F0C96A; --obj-bg: #43350F;
+  --padj: #F0C96A; --padj-bg: #43350F;
+  --ppro: #F0C96A; --ppro-bg: #43350F;
+  --refl: #F0C96A; --refl-bg: #43350F;
   --wrong: #FFB070; --wrong-bg: #4A2E12;
   --right: #9BE0AE; --right-bg: #17402A;
   --p1-fg: #0F1C24; --p2-fg: #0F1C24; --p3-fg: #FFFFFF; --p4-fg: #FFFFFF;
@@ -173,7 +173,7 @@ th.right { background: var(--right-bg); color: var(--right); }
 .use h3 { color: var(--c); }
 .use .ex { font-size: 1.05rem; background: var(--soft); border-left: 4px solid var(--h2c); border-radius: 0 8px 8px 0; padding: 7px 12px; }
 .use .ex + .ex { margin-top: 4px; }
-.use > div > .ex:first-child::before { content: "Example"; display: block; font-family: var(--body); font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--h2c); margin-bottom: 1px; }
+.use > div > .ex:first-child::before { content: "Example"; display: block; font-family: var(--body); font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--subj); margin-bottom: 1px; }
 .use > div > .ex:first-child:has(+ .ex:not(.phr))::before { content: "Examples"; }
 .use > div > .ex.many:first-child::before { content: "Examples"; }
 .use .ex.phr { background: none; border-left: 0; border-radius: 0; padding: 0; }

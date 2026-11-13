@@ -1,0 +1,1103 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Indefinite Pronouns</title>
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Nunito+Sans:ital,opsz,wght@0,6..12,400;0,6..12,600;0,6..12,700;1,6..12,400;1,6..12,700&display=swap">
+<style>
+/* Layout: one reading column. Slate banner on a cool base; section headings in rust, olive and mustard; job colors are deep teal, terracotta, olive, ochre and plum. Job colors (subject, object, possessive adjective, possessive pronoun, reflexive) mark words in examples. The main table colors rows by person instead. */
+:root {
+  --hero: #13496B; --hero-fg: #FFFFFF; --hero-accent: #BFD8E8;
+  --bg: #F2F6F9; --surface: #FBFDFE; --soft: #E6EEF4; --fg: #14262F; --muted: #4A5F6B; --line: #D3DFE7;
+  --band-fg: #FFFFFF; --subj-band: #13496B; --obj-band: #13496B; --padj-band: #13496B; --ppro-band: #13496B; --refl-band: #13496B;
+  --subj-pill: #D6E6F0; --obj-pill: #D6E6F0; --padj-pill: #D6E6F0; --ppro-pill: #D6E6F0; --refl-pill: #D6E6F0; --pill-fg: #14262F;
+  --subj: #8A5A00; --subj-bg: #F8EBCB;
+  --obj: #8A5A00; --obj-bg: #F8EBCB;
+  --padj: #8A5A00; --padj-bg: #F8EBCB;
+  --ppro: #8A5A00; --ppro-bg: #F8EBCB;
+  --refl: #8A5A00; --refl-bg: #F8EBCB;
+  --wrong: #9A4B00; --wrong-bg: #FBE8D2;
+  --right: #1F6B3A; --right-bg: #DDF1E3;
+  --p1-fg: #14262F; --p2-fg: #14262F; --p3-fg: #FFFFFF; --p4-fg: #FFFFFF;
+  --p1: #BFD8E8; --p1-a: #E6F0F7; --p1-b: #F1F7FB;
+  --p2: #8FBBD6; --p2-a: #DCEAF3; --p2-b: #EAF2F8;
+  --p3: #2B6C93; --p3-a: #D6E6F0; --p3-b: #E6F0F6;
+  --p4: #0E3550; --p4-a: #D3DEE7; --p4-b: #E3EBF1;
+  --h2c: #13496B; --h3c: #0F6B73; --lblc: #1F5F7A;
+  --head: "Fraunces", Georgia, "Times New Roman", serif;
+  --body: "Nunito Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --hero: #1B3342; --hero-fg: #F2F8FC; --hero-accent: #8FBBD6;
+    --bg: #0F1C24; --surface: #17272F; --soft: #1F3440; --fg: #EAF2F7; --muted: #B4C6D2; --line: #2F4654;
+    --band-fg: #FFFFFF; --subj-band: #1D5073; --obj-band: #1D5073; --padj-band: #1D5073; --ppro-band: #1D5073; --refl-band: #1D5073;
+    --subj-pill: #D6E6F0; --obj-pill: #D6E6F0; --padj-pill: #D6E6F0; --ppro-pill: #D6E6F0; --refl-pill: #D6E6F0; --pill-fg: #14262F;
+    --subj: #F0C96A; --subj-bg: #43350F;
+    --obj: #F0C96A; --obj-bg: #43350F;
+    --padj: #F0C96A; --padj-bg: #43350F;
+    --ppro: #F0C96A; --ppro-bg: #43350F;
+    --refl: #F0C96A; --refl-bg: #43350F;
+    --wrong: #FFB070; --wrong-bg: #4A2E12;
+    --right: #9BE0AE; --right-bg: #17402A;
+    --p1-fg: #0F1C24; --p2-fg: #0F1C24; --p3-fg: #FFFFFF; --p4-fg: #FFFFFF;
+    --p1: #8FBBD6; --p1-a: #1B3340; --p1-b: #21404F;
+    --p2: #5F9BC0; --p2-a: #1A3140; --p2-b: #20394A;
+    --p3: #3A7CA5; --p3-a: #182C3A; --p3-b: #1E3646;
+    --p4: #2B5F85; --p4-a: #15262F; --p4-b: #1A303B;
+    --h2c: #8FC6E8; --h3c: #7FD0D0; --lblc: #B4C6D2;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --hero: #1B3342; --hero-fg: #F2F8FC; --hero-accent: #8FBBD6;
+  --bg: #0F1C24; --surface: #17272F; --soft: #1F3440; --fg: #EAF2F7; --muted: #B4C6D2; --line: #2F4654;
+  --band-fg: #FFFFFF; --subj-band: #1D5073; --obj-band: #1D5073; --padj-band: #1D5073; --ppro-band: #1D5073; --refl-band: #1D5073;
+  --subj-pill: #D6E6F0; --obj-pill: #D6E6F0; --padj-pill: #D6E6F0; --ppro-pill: #D6E6F0; --refl-pill: #D6E6F0; --pill-fg: #14262F;
+  --subj: #F0C96A; --subj-bg: #43350F;
+  --obj: #F0C96A; --obj-bg: #43350F;
+  --padj: #F0C96A; --padj-bg: #43350F;
+  --ppro: #F0C96A; --ppro-bg: #43350F;
+  --refl: #F0C96A; --refl-bg: #43350F;
+  --wrong: #FFB070; --wrong-bg: #4A2E12;
+  --right: #9BE0AE; --right-bg: #17402A;
+  --p1-fg: #0F1C24; --p2-fg: #0F1C24; --p3-fg: #FFFFFF; --p4-fg: #FFFFFF;
+  --p1: #8FBBD6; --p1-a: #1B3340; --p1-b: #21404F;
+  --p2: #5F9BC0; --p2-a: #1A3140; --p2-b: #20394A;
+  --p3: #3A7CA5; --p3-a: #182C3A; --p3-b: #1E3646;
+  --p4: #2B5F85; --p4-a: #15262F; --p4-b: #1A303B;
+  --h2c: #8FC6E8; --h3c: #7FD0D0; --lblc: #B4C6D2;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body {
+  background: var(--bg); color: var(--fg); font-family: var(--body); font-size: 18px; line-height: 1.65;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 28px 64px;
+}
+.page { max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; gap: 44px; }
+h1, h2, h3 { font-family: var(--head); line-height: 1.2; text-wrap: balance; margin: 0; }
+h1 { font-size: clamp(2rem, 6vw, 2.8rem); font-weight: 800; letter-spacing: -0.01em; }
+h2 { font-size: 1.5rem; font-weight: 800; }
+h3 { font-size: 1.08rem; font-weight: 800; }
+p { margin: 0; }
+p + p { margin-top: 10px; }
+.label { font-family: var(--head); font-size: 0.78rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+.lede { font-size: 1.12rem; max-width: 62ch; margin-top: 12px; }
+.muted { color: var(--muted); }
+
+/* jump links */
+.jump { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; padding: 0; list-style: none; }
+.jump a { display: inline-block; padding: 5px 12px; border: 1px solid var(--line); border-radius: 999px; color: var(--fg); text-decoration: none; font-size: 0.92rem; background: var(--surface); }
+.jump a:hover, .jump a:focus-visible { border-color: var(--fg); outline: none; }
+
+/* sections */
+section { display: flex; flex-direction: column; gap: 16px; min-width: 0; scroll-margin-top: 16px; }
+section > header { display: flex; flex-direction: column; gap: 8px; padding: 16px 20px 16px 22px; border-radius: 14px; background: var(--surface); color: var(--fg); border: 1px solid var(--line); border-left: 8px solid var(--band, var(--hero)); box-shadow: 0 1px 2px rgba(40,46,54,.06), 0 4px 14px rgba(40,46,54,.05); }
+section > header h2 { color: var(--fg); }
+section > header p { color: var(--muted); }
+section > header p { max-width: none; }
+.forms { display: inline-block; vertical-align: middle; font-family: var(--body); font-weight: 700; font-size: 0.9rem; line-height: 1.5; margin-left: 8px; padding: 3px 14px; border-radius: 14px; background: var(--pill, transparent); color: var(--pill-fg); letter-spacing: 0.01em; }
+.c-subj, .c-denim { --c: var(--subj); --c-bg: var(--subj-bg); --band: var(--subj-band); --pill: var(--subj-pill); }
+.c-obj, .c-peach { --c: var(--obj); --c-bg: var(--obj-bg); --band: var(--obj-band); --pill: var(--obj-pill); }
+.c-padj, .c-aloe { --c: var(--padj); --c-bg: var(--padj-bg); --band: var(--padj-band); --pill: var(--padj-pill); }
+.c-ppro, .c-pine { --c: var(--ppro); --c-bg: var(--ppro-bg); --band: var(--ppro-band); --pill: var(--ppro-pill); }
+.c-refl { --c: var(--refl); --c-bg: var(--refl-bg); --band: var(--refl-band); --pill: var(--refl-pill); }
+
+/* hero */
+.hero { position: relative; overflow: hidden; background: var(--hero); color: var(--hero-fg); border-radius: 18px; padding: 30px 28px 26px; }
+.hero > * { position: relative; z-index: 1; }
+.hero .orb { position: absolute; border-radius: 50%; z-index: 0; pointer-events: none; }
+.hero .orb1 { width: 150px; height: 150px; right: 34px; top: -44px; background: var(--hero-accent); opacity: 1; }
+.hero .orb2 { width: 104px; height: 104px; right: 140px; top: 30px; background: var(--orb2); opacity: 0.95; mix-blend-mode: normal; }
+.hero .label { color: var(--hero-accent); }
+.hero .lede { color: var(--hero-fg); opacity: 0.92; }
+.hero .jump a { background: var(--chip-bg); border-color: var(--chip-bd); color: var(--hero-fg); }
+.hero .jump a:hover, .hero .jump a:focus-visible { background: var(--hero-accent); border-color: var(--hero-accent); color: var(--chip-on-fg); }
+.hero .jump a[aria-selected="true"] { background: var(--hero-accent); border-color: var(--hero-accent); color: var(--chip-on-fg); }
+.tabpanel { display: flex; flex-direction: column; gap: 44px; }
+.tabpanel[hidden] { display: none; }
+@media (max-width: 640px) { .hero .orb { display: none; } .hero { padding: 24px 20px 20px; } }
+
+.legend .s, .legend .o, .legend .pa, .legend .pp, .legend .r { border-bottom: 0; padding: 3px 12px; border-radius: 999px; font-size: 0.92rem; }
+.legend .s { background: var(--subj-bg); } .legend .o { background: var(--obj-bg); } .legend .pa { background: var(--padj-bg); } .legend .pp { background: var(--ppro-bg); } .legend .r { background: var(--refl-bg); }
+
+/* colored words inside examples */
+.s, .o, .pa, .pp, .r { font-weight: 700; border-bottom: 2px solid currentColor; }
+.s { color: var(--subj); } .o { color: var(--obj); } .pa { color: var(--padj); } .pp { color: var(--ppro); } .r { color: var(--refl); }
+.legend { display: flex; flex-wrap: wrap; gap: 8px 18px; font-size: 0.95rem; }
+
+/* tables */
+.scroll { overflow-x: auto; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); }
+table { border-collapse: collapse; width: 100%; min-width: 600px; font-size: 0.98rem; }
+th, td { padding: 9px 12px; text-align: left; border-bottom: 1px solid var(--line); vertical-align: top; }
+tr:last-child td { border-bottom: 0; }
+thead th { font-family: var(--head); font-weight: 500; font-size: 0.85rem; background: var(--soft); }
+th.s { background: var(--subj-bg); color: var(--subj); border-bottom: 0; }
+th.o { background: var(--obj-bg); color: var(--obj); border-bottom: 0; }
+th.pa { background: var(--padj-bg); color: var(--padj); border-bottom: 0; }
+th.pp { background: var(--ppro-bg); color: var(--ppro); border-bottom: 0; }
+th.r { background: var(--refl-bg); color: var(--refl); border-bottom: 0; }
+td.s { color: var(--subj); } td.o { color: var(--obj); } td.pa { color: var(--padj); } td.pp { color: var(--ppro); } td.r { color: var(--refl); }
+td.s, td.o, td.pa, td.pp, td.r { font-weight: 700; border-bottom: 1px solid var(--line); }
+tr:last-child td.s, tr:last-child td.o, tr:last-child td.pa, tr:last-child td.pp, tr:last-child td.r { border-bottom: 0; }
+td.who { color: var(--muted); font-size: 0.92rem; }
+.none { color: var(--muted); font-weight: 400 !important; }
+td.wrong { color: var(--wrong); text-decoration: line-through; text-decoration-thickness: 1.5px; }
+td.right { color: var(--right); font-weight: 700; }
+th.wrong { background: var(--wrong-bg); color: var(--wrong); }
+th.right { background: var(--right-bg); color: var(--right); }
+
+/* person table */
+.persons { min-width: 700px; text-align: center; font-size: 1rem; }
+.persons th, .persons td { text-align: center; vertical-align: middle; padding: 10px 10px; border: 1px solid var(--line); }
+.persons thead th { background: transparent; border: 0; border-bottom: 2px solid var(--line); font-family: var(--head); font-weight: 800; font-size: 0.95rem; color: var(--fg); vertical-align: bottom; }
+.persons thead th small { display: block; font-weight: 400; color: var(--muted); font-size: 0.85rem; font-family: var(--body); }
+.persons td { font-weight: 700; }
+.persons td:nth-child(1) { font-weight: 400; color: var(--muted); }
+.persons td.none { font-weight: 400; color: var(--muted); }
+.persons th.plabel { font-family: var(--head); font-weight: 800; font-size: 1.05rem; border-color: transparent; }
+.persons tbody.gap td { border: 0; padding: 0; height: 14px; background: transparent; }
+.persons tbody.p1 th.plabel { background: var(--p1); color: var(--p1-fg); } .persons tbody.p1 tr:nth-child(odd) td { background: var(--p1-a); } .persons tbody.p1 tr:nth-child(even) td { background: var(--p1-b); }
+.persons tbody.p2 th.plabel { background: var(--p2); color: var(--p2-fg); } .persons tbody.p2 tr:nth-child(odd) td { background: var(--p2-a); } .persons tbody.p2 tr:nth-child(even) td { background: var(--p2-b); }
+.persons tbody.p3 th.plabel { background: var(--p3); color: var(--p3-fg); } .persons tbody.p3 tr:nth-child(odd) td { background: var(--p3-a); } .persons tbody.p3 tr:nth-child(even) td { background: var(--p3-b); }
+.persons tbody.p4 th.plabel { background: var(--p4); color: var(--p4-fg); } .persons tbody.p4 td { background: var(--p4-a); }
+.persons small { font-weight: 400; color: var(--muted); }
+
+/* notes list */
+.points { margin: 0; padding-left: 1.2em; display: flex; flex-direction: column; gap: 6px; }
+.points li::marker { color: var(--muted); }
+
+/* use cases */
+.uses { display: flex; flex-direction: column; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); overflow: hidden; }
+.use { display: grid; grid-template-columns: minmax(0, 1fr); gap: 4px 20px; padding: 14px 16px; border-bottom: 1px solid var(--line); }
+.use:last-child { border-bottom: 0; }
+.use h3 { color: var(--c); }
+.use .ex { font-size: 1.05rem; background: var(--soft); border-left: 4px solid var(--c); border-radius: 0 8px 8px 0; padding: 7px 12px; }
+.use .ex + .ex { margin-top: 4px; }
+.use > div > .ex:first-child::before { content: "Example"; display: block; font-family: var(--body); font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--c); margin-bottom: 1px; }
+.use > div > .ex:first-child:has(+ .ex:not(.phr))::before { content: "Examples"; }
+.use > div > .ex.many:first-child::before { content: "Examples"; }
+.use .ex.phr { background: none; border-left: 0; border-radius: 0; padding: 0; }
+.use > div > .ex.phr::before { content: none !important; }
+.use .tip { color: var(--muted); font-size: 0.96rem; margin-top: 4px; }
+.use > div { min-width: 0; }
+.how { margin: 6px 0 0; padding-left: 1.35em; color: var(--muted); font-size: 0.96rem; }
+.how li + li { margin-top: 3px; }
+.how ul { margin: 4px 0 4px; padding-left: 1.1em; }
+.how ul li + li { margin-top: 8px; }
+.how .ex { color: var(--fg); font-size: 1rem; margin-top: 4px; }
+.how b { color: var(--fg); }
+.sumh { margin: 22px 0 10px; }
+.sumnote { margin: 10px 0 0; color: var(--muted); font-size: 0.96rem; }
+@media (max-width: 620px) { .use { grid-template-columns: minmax(0, 1fr); } }
+
+/* four ideas */
+.four { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 16px; }
+.four > div { border-top: 2px solid var(--line); padding-top: 10px; min-width: 0; }
+.four h3 { margin-bottom: 4px; }
+.four p { font-size: 0.96rem; }
+
+/* sequence */
+.steps { margin: 0; padding: 0; list-style: none; counter-reset: step; display: flex; flex-direction: column; gap: 10px; }
+.steps li { counter-increment: step; display: grid; grid-template-columns: 2.2rem minmax(0, 1fr); gap: 10px; align-items: start; }
+.steps li::before { content: counter(step); font-family: var(--head); font-weight: 800; width: 2.2rem; height: 2.2rem; display: grid; place-items: center; border-radius: 50%; background: var(--soft); }
+.steps li:nth-child(1)::before { background: var(--refl-bg); color: var(--refl); }
+.steps li:nth-child(2)::before { background: var(--padj-bg); color: var(--padj); }
+.steps li:nth-child(3)::before { background: var(--subj-bg); color: var(--subj); }
+.steps li:nth-child(4)::before { background: var(--obj-bg); color: var(--obj); }
+
+/* callout */
+.rule { background: var(--obj-bg); border-radius: 10px; padding: 12px 16px; }
+
+/* practice */
+.btn { font: inherit; font-family: var(--head); font-weight: 800; font-size: 0.95rem; padding: 9px 18px; border-radius: 999px; border: 1px solid var(--subj-band); background: var(--subj-band); color: #fdfdfe; cursor: pointer; align-self: flex-start; }
+.btn:focus-visible, summary:focus-visible { outline: 3px solid var(--subj); outline-offset: 2px; }
+.qs { margin: 0; padding: 0; list-style: none; counter-reset: q; display: flex; flex-direction: column; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); overflow: hidden; }
+.qs > li { counter-increment: q; padding: 12px 16px; border-bottom: 1px solid var(--line); display: grid; grid-template-columns: 1.8rem minmax(0, 1fr); gap: 2px 8px; }
+.qs > li:last-child { border-bottom: 0; }
+.qs > li::before { content: counter(q) "."; color: var(--muted); font-weight: 700; }
+.qs > li > * { grid-column: 2; }
+.qs .opt { color: var(--muted); white-space: nowrap; }
+.blank { display: inline-block; min-width: 3.4em; height: 1.3em; vertical-align: middle; border-radius: 8px; background: var(--soft); box-shadow: inset 0 -2px 0 var(--obj); margin: 0 2px; }
+details { margin-top: 4px; }
+summary { cursor: pointer; width: fit-content; color: var(--subj); font-size: 0.95rem; font-weight: 700; }
+details[open] > summary { color: var(--muted); }
+details p { margin-top: 6px; padding: 8px 12px; background: var(--right-bg); border-radius: 6px; font-size: 0.97rem; }
+details p b { color: var(--right); }
+.part-head { display: flex; flex-direction: column; gap: 4px; }
+.part-head h3 { font-size: 1.12rem; }
+.part-head h3 span { padding: 2px 12px; border-radius: 999px; margin-right: 6px; }
+.part-head .s { background: var(--subj-bg); border-bottom: 0; } .part-head .o { background: var(--obj-bg); border-bottom: 0; } .part-head .pa { background: var(--padj-bg); border-bottom: 0; } .part-head .r { background: var(--refl-bg); border-bottom: 0; }
+.part-head .pp { background: var(--ppro-bg); border-bottom: 0; } .part-head .n { background: var(--soft); color: var(--fg); }
+.part { display: flex; flex-direction: column; gap: 12px; }
+/* Soft decoration: dotted paper, gradient hero, accent bars, rounded cards. Text colors and sizes are untouched. */
+.hero { background: linear-gradient(135deg, var(--hero), color-mix(in srgb, var(--hero) 78%, #000)); box-shadow: 0 10px 30px rgba(40,46,54,.18); }
+.hero::after { content: ""; position: absolute; left: -64px; bottom: -84px; width: 210px; height: 210px; border-radius: 50%; border: 28px solid rgba(255,255,255,.08); pointer-events: none; z-index: 0; }
+.hero h1::after { content: ""; display: block; width: 68px; height: 5px; border-radius: 4px; background: var(--hero-accent); margin-top: 14px; }
+.hero .label::before { content: ""; display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--hero-accent); margin-right: 9px; vertical-align: middle; }
+.hero .jump a { transition: transform .15s ease, background .15s ease; }
+.hero .jump a:hover { transform: translateY(-2px); }
+section > header { position: relative; overflow: hidden; }
+section > header::after { content: ""; position: absolute; right: -26px; top: -34px; width: 110px; height: 110px; border-radius: 50%; background: var(--band, var(--hero)); opacity: .12; pointer-events: none; }
+section > header > * { position: relative; z-index: 1; }
+.scroll { border-radius: 14px; border-top: 5px solid var(--band, var(--hero)); box-shadow: 0 1px 2px rgba(40,46,54,.06), 0 6px 18px rgba(40,46,54,.06); }
+.uses, .qs { border-radius: 14px; box-shadow: 0 1px 2px rgba(40,46,54,.06), 0 6px 18px rgba(40,46,54,.06); }
+.four > div { background: var(--surface); border: 1px solid var(--line); border-top: 5px solid var(--padj-band); border-radius: 14px; padding: 14px 16px 16px; box-shadow: 0 1px 2px rgba(40,46,54,.05); }
+.four > div:nth-child(2) { border-top-color: var(--obj-band); }
+.four > div:nth-child(3) { border-top-color: var(--ppro-band); }
+.four > div:nth-child(4) { border-top-color: var(--subj-band); }
+.rule { border-left: 6px solid var(--obj); border-radius: 4px 12px 12px 4px; }
+.use .ex { border-radius: 0 12px 12px 0; }
+.points li::marker { color: var(--band, var(--obj)); }
+.tabpanel > section + section { position: relative; }
+.tabpanel > section + section::before { content: ""; position: absolute; top: -26px; left: 50%; width: 56px; height: 6px; margin-left: -28px; border-radius: 4px; background: radial-gradient(circle, var(--line-dot, var(--muted)) 2.5px, transparent 3px) 0 0 / 14px 6px repeat-x; opacity: .5; }
+/* Verbs-page letter styles: Fraunces headings, Nunito Sans body */
+h1, h2, h3, .steps li::before, .btn, .persons thead th, .persons th.plabel { font-weight: 700; }
+.label { font-family: var(--body); font-weight: 700; }
+thead th { font-weight: 600; }
+/* Fixed heading colors: every section title sits on one raspberry band, every h3 is violet, every small label is mauve */
+section > header h2 { color: var(--band-fg); }
+h3, .use h3, .four h3, .part-head h3 { color: var(--h3c); }
+.label { color: var(--lblc); }
+.hero .label { color: var(--hero-accent); }
+.hero h1 { color: var(--hero-fg); }
+/* Soft decoration */
+.hero { background: linear-gradient(135deg, var(--hero), color-mix(in srgb, var(--hero) 76%, #2a7fa8)); box-shadow: 0 10px 30px rgba(15,50,75,.22); }
+.hero::after { content: ""; position: absolute; left: -64px; bottom: -84px; width: 210px; height: 210px; border-radius: 50%; border: 28px solid rgba(255,255,255,.09); pointer-events: none; z-index: 0; }
+.hero h1::after { content: ""; display: block; width: 68px; height: 5px; border-radius: 4px; background: var(--hero-accent); margin-top: 14px; }
+.hero .label::before { content: ""; display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--hero-accent); margin-right: 9px; vertical-align: middle; }
+section > header { position: relative; overflow: hidden; }
+section > header::after { content: ""; position: absolute; right: -26px; top: -34px; width: 110px; height: 110px; border-radius: 50%; background: var(--band); opacity: .13; pointer-events: none; }
+section > header > * { position: relative; z-index: 1; }
+.scroll { border-radius: 14px; border-top: 5px solid var(--band, var(--h2c)); box-shadow: 0 1px 2px rgba(15,50,75,.06), 0 6px 18px rgba(15,50,75,.07); }
+.uses, .qs { border-radius: 14px; box-shadow: 0 1px 2px rgba(15,50,75,.06), 0 6px 18px rgba(15,50,75,.07); }
+.four > div { background: var(--surface); border: 1px solid var(--line); border-top: 5px solid var(--h3c); border-radius: 14px; padding: 14px 16px 16px; }
+.rule { border-left: 6px solid var(--h2c); border-radius: 4px 12px 12px 4px; }
+.use .ex { border-radius: 0 12px 12px 0; }
+.points li::marker { color: var(--h2c); }
+/* Light blue banner */
+.hero { --hb: #DCE9F2; --ht: #14262F; --hh: #13496B; --hl: #1F5F7A; --hbar: #13496B; --hchip: #FBFDFE; --hchip-bd: #AFC6D6; --hsel: #13496B; --hsel-t: #FFFFFF; --hring: rgba(19,73,107,.08); --ho1: #BFD8E8; --ho2: #9CCBC8; background: var(--hb); color: var(--ht); box-shadow: 0 8px 24px rgba(15,50,75,.12); }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .hero { --hb: #1B3342; --ht: #EAF2F7; --hh: #D6EAF7; --hl: #8FC6E8; --hbar: #8FBBD6; --hchip: #17272F; --hchip-bd: #3A6784; --hsel: #8FC6E8; --hsel-t: #0F1C24; --hring: rgba(255,255,255,.07); --ho1: #1D5073; --ho2: #1F6B6B; } }
+:root[data-theme="dark"] .hero { --hb: #1B3342; --ht: #EAF2F7; --hh: #D6EAF7; --hl: #8FC6E8; --hbar: #8FBBD6; --hchip: #17272F; --hchip-bd: #3A6784; --hsel: #8FC6E8; --hsel-t: #0F1C24; --hring: rgba(255,255,255,.07); --ho1: #1D5073; --ho2: #1F6B6B; }
+.hero h1 { color: var(--hh); }
+.hero .label { color: var(--hl); }
+.hero .label::before, .hero h1::after { background: var(--hbar); }
+.hero .lede { color: var(--ht); opacity: 1; }
+.hero::after { border-color: var(--hring); }
+.hero .orb1 { background: var(--ho1); }
+.hero .orb2 { background: var(--ho2); }
+.hero .jump a { background: var(--hchip); border-color: var(--hchip-bd); color: var(--ht); }
+.hero .jump a:hover, .hero .jump a:focus-visible { background: var(--hchip); border-color: var(--hsel); color: var(--ht); }
+.hero .jump a[aria-selected="true"] { background: var(--hsel); border-color: var(--hsel); color: var(--hsel-t); font-weight: 700; }
+/* Section titles: blue box with a dashed stitch border inside */
+section > header { background: var(--band); border: 0; }
+section > header::after { display: none; }
+section > header::before { content: ""; position: absolute; inset: 6px; border: 2px dashed rgba(200, 224, 240, .75); border-radius: 10px; pointer-events: none; z-index: 0; }
+section > header { padding: 20px 26px; }
+section > header h2, section > header p { color: var(--band-fg); }
+/* Verbs-page letter styles: Fraunces headings, Nunito Sans body */
+h1, h2, h3, .steps li::before, .btn, .persons thead th, .persons th.plabel { font-weight: 700; }
+.label { font-family: var(--body); font-weight: 700; }
+thead th { font-weight: 600; }
+.use .ex { border-left-color: var(--h2c); }
+.use > div > .ex:first-child::before { color: var(--subj); }
+.tabpanel > section + section::before { display: none; }
+@media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; transition: none !important; } }
+</style>
+
+</head>
+<body>
+<div class="page">
+
+<style>.gh-home{align-self:flex-start;display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:999px;background:var(--surface);color:var(--fg);border:2px solid var(--line);font:700 .9rem var(--body);text-decoration:none}.gh-home:hover{border-color:var(--obj)}.gh-home:focus-visible{outline:3px solid var(--obj);outline-offset:2px}</style>
+<a class="gh-home" href="index.html" aria-label="Back to the home page">&larr; Home</a>
+
+<header class="hero">
+  <span class="orb orb1"></span><span class="orb orb2"></span>
+  <div class="label">A type of pronoun</div>
+  <h1>Indefinite Pronouns</h1>
+  <p class="lede">An indefinite pronoun refers to people, things or amounts without saying exactly which one. Examples: someone, nothing, many, all.</p>
+  <ul class="jump" role="tablist" aria-label="Indefinite pronoun topics">
+    <li><a href="#overview" role="tab" data-tab="overview">Overview</a></li>
+    <li><a href="#compound-tab" role="tab" data-tab="compound-tab">Someone, anything</a></li>
+    <li><a href="#someany-tab" role="tab" data-tab="someany-tab">Some, any, no</a></li>
+    <li><a href="#amounts-tab" role="tab" data-tab="amounts-tab">Amounts</a></li>
+    <li><a href="#groups-tab" role="tab" data-tab="groups-tab">All, most, none</a></li>
+    <li><a href="#pairs-tab" role="tab" data-tab="pairs-tab">Both, each, either</a></li>
+    <li><a href="#other-tab" role="tab" data-tab="other-tab">One, another, other</a></li>
+    <li><a href="#agreement-tab" role="tab" data-tab="agreement-tab">Agreement</a></li>
+    <li><a href="#choosing" role="tab" data-tab="choosing">Choosing and errors</a></li>
+    <li><a href="#practice-tab" role="tab" data-tab="practice-tab">Practice</a></li>
+  </ul>
+</header>
+
+<div class="tabpanel" id="overview" role="tabpanel" hidden>
+
+<section id="big" class="c-pine">
+  <header>
+    <h2>Four things to know about indefinite pronouns</h2>
+  </header>
+  <div class="four">
+    <div><h3>What it does</h3><p>It refers to a person, a thing or an amount without saying exactly which one. <i>someone</i> is a person we do not name or do not know.</p></div>
+    <div><h3>What stays the same</h3><p>It has no subject form, no object form and no gender. &ldquo;Someone called.&rdquo; &ldquo;I called someone.&rdquo; Only ownership changes the word: <i>someone&rsquo;s</i>.</p></div>
+    <div><h3>The verb</h3><p>Some words take a singular verb (<i>everyone is</i>). Some take a plural verb (<i>both are</i>). Some follow the noun (<i>all of the water is, all of the boys are</i>).</p></div>
+    <div><h3>Pronoun or determiner</h3><p>Alone, it is a pronoun: &ldquo;Many came.&rdquo; Before a noun, it is a determiner: &ldquo;Many students came.&rdquo; This page is about the pronoun job.</p></div>
+  </div>
+  <div class="legend">
+    <span><span class="s">someone</span> = the indefinite pronoun</span>
+    <span><span class="pa">students</span> = the noun it stands for or comes before</span>
+    <span><b>is</b> = the verb</span>
+  </div>
+</section>
+
+<section id="table" class="c-denim">
+  <header>
+    <h2>All the indefinite pronouns, by verb</h2>
+    <p>Find the word, then read across for its verb. Singular means V5 (is, has, goes). Plural means V1 (are, have, go).</p>
+  </header>
+  <div class="scroll">
+    <table style="min-width: 680px">
+      <thead><tr><th>Group</th><th>Words</th><th>Verb</th><th>Example</th></tr></thead>
+      <tbody>
+        <tr><td>People compounds</td><td><b>someone, somebody, anyone, anybody, no one, nobody, everyone, everybody</b></td><td>Singular</td><td><span class="s">Everyone</span> <b>is</b> here.</td></tr>
+        <tr><td>Thing compounds</td><td><b>something, anything, nothing, everything</b></td><td>Singular</td><td><span class="s">Nothing</span> <b>is</b> wrong.</td></tr>
+        <tr><td>Amounts you cannot count</td><td><b>much, little, less</b></td><td>Singular</td><td><span class="s">Much</span> <b>has</b> changed.</td></tr>
+        <tr><td>One from a group</td><td><b>each, either, neither, one, another, the other</b></td><td>Singular</td><td><span class="s">Each</span> <b>has</b> a pen.</td></tr>
+        <tr><td>Plural words</td><td><b>both, few, fewer, many, several, others, the others</b></td><td>Plural</td><td><span class="s">Many</span> <b>are</b> late.</td></tr>
+        <tr><td>Part or all of a group</td><td><b>all, any, more, most, none, some, enough, half</b></td><td>Follows the noun</td><td><span class="s">All</span> of the <span class="pa">water</span> <b>is</b> gone.<br><span class="s">All</span> of the <span class="pa">boys</span> <b>are</b> here.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <ul class="points">
+    <li><b>somewhere, anywhere, nowhere, everywhere</b> are adverbs of place, not pronouns.</li>
+    <li><b>each other</b> and <b>one another</b> are reciprocal pronouns, a separate type.</li>
+    <li>All indefinite pronouns stand for people or things in general. For a named person or thing, use a personal pronoun.</li>
+  </ul>
+</section>
+
+<section id="pd" class="c-peach">
+  <header>
+    <h2>Pronoun or determiner?</h2>
+    <p>Many of these words do both jobs. Look at what comes right after the word.</p>
+  </header>
+  <div class="scroll">
+    <table style="min-width: 560px">
+      <thead><tr><th>Word</th><th>Pronoun (stands alone)</th><th>Determiner (a noun follows)</th></tr></thead>
+      <tbody>
+        <tr><td>some</td><td><span class="s">Some</span> came.</td><td><b>Some</b> students came.</td></tr>
+        <tr><td>many</td><td><span class="s">Many</span> came.</td><td><b>Many</b> students came.</td></tr>
+        <tr><td>each</td><td><span class="s">Each</span> has a pen.</td><td><b>Each</b> student has a pen.</td></tr>
+        <tr><td>both</td><td><span class="s">Both</span> are here.</td><td><b>Both</b> books are here.</td></tr>
+        <tr><td>either</td><td><span class="s">Either</span> is fine.</td><td><b>Either</b> answer is fine.</td></tr>
+        <tr><td>another</td><td>I need <span class="s">another</span>.</td><td>I need <b>another</b> book.</td></tr>
+        <tr><td>none / no</td><td><span class="s">None</span> came.</td><td><b>No</b> student came.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="rule">
+    <p><b>Test.</b> Is there a noun right after the word? Yes: it is a determiner. No: it is a pronoun. A word followed by <i>of</i> is still a pronoun: &ldquo;Many of the students came.&rdquo;</p>
+  </div>
+</section>
+
+</div>
+
+<div class="tabpanel" id="compound-tab" role="tabpanel" hidden>
+
+<section id="compound" class="c-subj">
+  <header>
+    <h2>Compound words</h2>
+    <p>They are built from <i>some, any, no</i> or <i>every</i> plus <i>one, body</i> or <i>thing</i>.</p>
+  </header>
+  <div class="scroll">
+    <table style="min-width: 480px">
+      <thead><tr><th></th><th>+ one</th><th>+ body</th><th>+ thing</th></tr></thead>
+      <tbody>
+        <tr><td><b>some</b></td><td>someone</td><td>somebody</td><td>something</td></tr>
+        <tr><td><b>any</b></td><td>anyone</td><td>anybody</td><td>anything</td></tr>
+        <tr><td><b>no</b></td><td>no one</td><td>nobody</td><td>nothing</td></tr>
+        <tr><td><b>every</b></td><td>everyone</td><td>everybody</td><td>everything</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <ul class="points">
+    <li><b>-one</b> and <b>-body</b> mean the same: a person. <b>-body</b> is a little more informal.</li>
+    <li><b>-thing</b> is for things and ideas.</li>
+    <li><b>no one</b> is two words. <b>nobody</b> and <b>nothing</b> are one word. British English also writes <i>no-one</i>. &ldquo;Noone&rdquo; is wrong.</li>
+    <li>Choosing between <i>some-</i>, <i>any-</i> and <i>no-</i> is on the next tab.</li>
+  </ul>
+  <div class="uses">
+    <div class="use"><h3>Subject of a verb</h3><div>
+      <p class="ex"><span class="s">Someone</span> <b>called</b>. <span class="s">Everybody</span> <b>is</b> here.</p>
+      <p class="tip">The verb is always singular (V5): everyone <i>is</i>, nobody <i>was</i>, something <i>has</i>. This includes <i>everyone</i> and <i>everybody</i>, which mean many people.</p>
+    </div></div>
+    <div class="use"><h3>Object of a verb</h3><div>
+      <p class="ex">I saw <span class="s">someone</span>. She told <span class="s">nobody</span>. He knows <span class="s">everything</span>.</p>
+      <p class="tip">The word does not change. <i>someone</i> is the same as a subject and as an object.</p>
+    </div></div>
+    <div class="use"><h3>After a preposition</h3><div>
+      <p class="ex phr">with <span class="s">someone</span>, for <span class="s">everyone</span>, about <span class="s">nothing</span></p>
+      <p class="ex">We talked about <span class="s">everything</span>.</p>
+    </div></div>
+    <div class="use"><h3>Ownership</h3><div>
+      <p class="ex"><span class="s">Someone</span>&rsquo;s phone rang. It is <span class="s">nobody</span>&rsquo;s fault. <span class="s">Everyone</span>&rsquo;s favorite song is on.</p>
+      <p class="tip">Add <i>&rsquo;s</i> to the word. Nothing else changes.</p>
+    </div></div>
+    <div class="use"><h3>An adjective goes after</h3><div>
+      <p class="ex">I want <span class="s">something</span> <b>cold</b>. She is <span class="s">someone</span> <b>special</b>. There is <span class="s">nothing</span> <b>new</b>.</p>
+      <p class="tip">The adjective comes after the word, not before. Wrong: &ldquo;a cold something.&rdquo;</p>
+    </div></div>
+    <div class="use"><h3>else</h3><div>
+      <p class="ex many">Ask <span class="s">someone</span> <b>else</b>. I want <span class="s">something</span> <b>else</b>. <span class="s">Everyone</span> <b>else</b> left.<br>This is <span class="s">someone</span> <b>else&rsquo;s</b> bag.</p>
+      <p class="tip"><i>else</i> means other. For ownership, <i>&rsquo;s</i> goes after <i>else</i>, not after the first word. Wrong: &ldquo;someone&rsquo;s else.&rdquo;</p>
+    </div></div>
+    <div class="use"><h3>Followed by to + verb</h3><div>
+      <p class="ex">I need <span class="s">something</span> <b>to eat</b>. She has <span class="s">nothing</span> <b>to wear</b>. We need <span class="s">someone</span> <b>to help</b>.</p>
+      <p class="tip"><i>to</i> + the base verb tells what the thing or person is for.</p>
+    </div></div>
+    <div class="use"><h3>One word or two</h3><div>
+      <p class="ex many"><span class="s">Everyone</span> passed. (all the people)<br><b>Every one</b> of the boys passed. (each single boy)<br><span class="s">Anyone</span> can come. (no matter who)<br><b>Any one</b> of the boys can come. (one boy out of the group)</p>
+      <p class="tip">Before <i>of</i>, write two words. Without <i>of</i>, write one word.</p>
+    </div></div>
+  </div>
+</section>
+
+</div>
+
+<div class="tabpanel" id="someany-tab" role="tabpanel" hidden>
+
+<section id="someany" class="c-obj">
+  <header>
+    <h2>Some, any and no <span class="forms">some- &middot; any- &middot; no-</span></h2>
+    <p>The same choice works for <i>someone / anyone / no one</i>, <i>something / anything / nothing</i> and <i>some / any / none</i>.</p>
+  </header>
+  <div class="scroll">
+    <table style="min-width: 620px">
+      <thead><tr><th>Kind of sentence</th><th>Use</th><th>Example</th></tr></thead>
+      <tbody>
+        <tr><td>Positive statement</td><td><b>some-</b></td><td>I saw <span class="s">someone</span>. I need <span class="s">something</span>.</td></tr>
+        <tr><td>Negative statement</td><td><b>not + any-</b>, or <b>no-</b></td><td>I did not see <span class="s">anyone</span>. = I saw <span class="s">no one</span>.</td></tr>
+        <tr><td>Question</td><td><b>any-</b></td><td>Did you see <span class="s">anyone</span>? Do you need <span class="s">anything</span>?</td></tr>
+        <tr><td>Offer or request (you expect &ldquo;yes&rdquo;)</td><td><b>some-</b></td><td>Would you like <span class="s">something</span> to drink?</td></tr>
+        <tr><td>After <i>if</i></td><td><b>any-</b></td><td>If you need <span class="s">anything</span>, call me.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section id="someany-uses" class="c-obj">
+  <header>
+    <h2>The uses, one by one</h2>
+  </header>
+  <div class="uses">
+    <div class="use"><h3>Positive: some-</h3><div>
+      <p class="ex">I saw <span class="s">someone</span> in the garden. <span class="s">Somebody</span> is at the door. I want <span class="s">something</span> sweet.</p>
+      <p class="tip">It means a person or thing that exists, but is not named or not known.</p>
+    </div></div>
+    <div class="use"><h3>Negative: not + any-</h3><div>
+      <p class="ex">I did not see <span class="s">anyone</span>. She does not want <span class="s">anything</span>. We do not know <span class="s">anybody</span> here.</p>
+      <p class="tip"><i>not</i> and <i>any-</i> go together.</p>
+    </div></div>
+    <div class="use"><h3>Negative: no-</h3><div>
+      <p class="ex">I saw <span class="s">no one</span>. She wants <span class="s">nothing</span>. We know <span class="s">nobody</span> here.</p>
+      <p class="tip">Same meaning as <i>not + any-</i>. Use one negative word only.</p>
+    </div></div>
+    <div class="use"><h3>No- starts a negative sentence</h3><div>
+      <p class="ex many"><span class="s">Nobody</span> called. <span class="s">Nothing</span> happened.<br><b>Wrong:</b> Anyone did not call. <b>Right:</b> <span class="s">Nobody</span> called.</p>
+      <p class="tip">Do not begin a negative sentence with <i>any-</i> + <i>not</i>. Use <i>no-</i>.</p>
+    </div></div>
+    <div class="use"><h3>One negative only</h3><div>
+      <p class="ex many"><b>Wrong:</b> I did not see nobody.<br><b>Right:</b> I did not see <span class="s">anybody</span>. / I saw <span class="s">nobody</span>.</p>
+      <p class="tip">Standard English uses one negative word in a clause. Two negatives cancel each other. Some dialects use them, but exams do not.</p>
+    </div></div>
+    <div class="use"><h3>Questions: any-</h3><div>
+      <p class="ex">Did <span class="s">anyone</span> call? Is there <span class="s">anything</span> to eat? Do you know <span class="s">anybody</span> here?</p>
+      <p class="tip">In a plain question, <i>any-</i> asks whether there is even one.</p>
+    </div></div>
+    <div class="use"><h3>Offers and requests: some-</h3><div>
+      <p class="ex">Would you like <span class="s">something</span> to eat? Can I ask you <span class="s">something</span>?</p>
+      <p class="tip">You expect the answer <i>yes</i>, so use <i>some-</i>.</p>
+    </div></div>
+    <div class="use"><h3>Any- in a positive sentence</h3><div>
+      <p class="ex"><span class="s">Anyone</span> can learn. You can ask <span class="s">anybody</span>. Take <span class="s">anything</span> you like.</p>
+      <p class="tip">It means it does not matter who or what.</p>
+    </div></div>
+    <div class="use"><h3>Hidden negatives</h3><div>
+      <p class="ex">She left without saying <span class="s">anything</span>. I hardly know <span class="s">anyone</span>. He never tells <span class="s">anybody</span>.</p>
+      <p class="tip"><i>without, hardly, barely, never, rarely, seldom</i> already make the meaning negative, so use <i>any-</i>. Do not add <i>not</i>: wrong &ldquo;I do not hardly know anyone.&rdquo;</p>
+    </div></div>
+    <div class="use"><h3>Some- at the start of a negative sentence</h3><div>
+      <p class="ex"><span class="s">Someone</span> did not lock the door.</p>
+      <p class="tip">It means one person, not known, did not lock it. It does not mean nobody locked it.</p>
+    </div></div>
+    <div class="use"><h3>Some, any and none on their own</h3><div>
+      <p class="ex">I have <span class="s">some</span>. I do not have <span class="s">any</span>. I have <span class="s">none</span>. Do you have <span class="s">any</span>?</p>
+      <p class="tip">The noun is left out because it is clear. Before a noun, <i>none</i> becomes <i>no</i>: &ldquo;I have <i>no</i> books&rdquo; = &ldquo;I have <i>none</i>.&rdquo;</p>
+    </div></div>
+    <div class="use"><h3>Short answers</h3><div>
+      <p class="ex">&ldquo;Who called?&rdquo; &ldquo;<span class="s">Nobody</span>.&rdquo; &ldquo;What did you buy?&rdquo; &ldquo;<span class="s">Nothing</span>.&rdquo;</p>
+      <p class="tip">A short answer that means <i>no one</i> or <i>nothing</i> uses <i>no-</i>.</p>
+    </div></div>
+  </div>
+</section>
+
+</div>
+
+<div class="tabpanel" id="amounts-tab" role="tabpanel" hidden>
+
+<section id="amounts" class="c-padj">
+  <header>
+    <h2>Amounts <span class="forms">many, much, few, little, several, fewer, less</span></h2>
+    <p>Choose by what you are counting: things you can count, or things you cannot.</p>
+  </header>
+  <div class="scroll">
+    <table style="min-width: 560px">
+      <thead><tr><th>You can count them</th><th>You cannot count them</th><th>Example</th></tr></thead>
+      <tbody>
+        <tr><td><b>many</b></td><td><b>much</b></td><td>many friends &middot; much time</td></tr>
+        <tr><td><b>few</b> / <b>a few</b></td><td><b>little</b> / <b>a little</b></td><td>few books &middot; little water</td></tr>
+        <tr><td><b>fewer</b></td><td><b>less</b></td><td>fewer cars &middot; less traffic</td></tr>
+        <tr><td><b>several</b></td><td>&mdash;</td><td>several books</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="muted">You can count <i>books</i> (one book, two books), so <i>books</i> is countable. You cannot count <i>water, time, money</i> or <i>information</i>, so they are uncountable.</p>
+</section>
+
+<section id="amounts-uses" class="c-padj">
+  <header>
+    <h2>The uses, one by one</h2>
+  </header>
+  <div class="uses">
+    <div class="use"><h3>many: things you count</h3><div>
+      <p class="ex"><span class="s">Many</span> <b>were</b> late. How <span class="s">many</span> <b>came</b>? Too <span class="s">many</span> <b>left</b>.</p>
+      <p class="tip">Plural verb (V1). <i>many</i> stands for many people or things.</p>
+    </div></div>
+    <div class="use"><h3>much: amounts you cannot count</h3><div>
+      <p class="ex"><span class="s">Much</span> <b>has</b> changed. How <span class="s">much</span> <b>is</b> it? I do not have <span class="s">much</span>.</p>
+      <p class="tip">Singular verb (V5). In an everyday positive sentence, use <i>a lot</i>: &ldquo;I have a lot,&rdquo; not &ldquo;I have much.&rdquo;</p>
+    </div></div>
+    <div class="use"><h3>few and a few</h3><div>
+      <p class="ex many"><span class="s">Few</span> <b>came</b>. (almost nobody)<br><span class="s">A few</span> <b>came</b>. (some people)</p>
+      <p class="tip"><i>few</i> means almost none, and it sounds negative. <i>a few</i> means some, and it sounds positive. Both take a plural verb.</p>
+    </div></div>
+    <div class="use"><h3>little and a little</h3><div>
+      <p class="ex many"><span class="s">Little</span> <b>is</b> known. (almost nothing)<br><span class="s">A little</span> <b>is</b> enough. (some)</p>
+      <p class="tip">Same idea as <i>few</i> and <i>a few</i>, for amounts you cannot count. Singular verb.</p>
+    </div></div>
+    <div class="use"><h3>fewer and less</h3><div>
+      <p class="ex many"><span class="s">Fewer</span> <b>came</b> than we expected.<br><span class="s">Less</span> <b>was</b> said than we expected.</p>
+      <p class="tip"><i>fewer</i> is for things you count (plural verb). <i>less</i> is for amounts (singular verb).</p>
+    </div></div>
+    <div class="use"><h3>several</h3><div>
+      <p class="ex"><span class="s">Several</span> <b>agreed</b>. <span class="s">Several</span> of them <b>were</b> late.</p>
+      <p class="tip">More than two, but not many. Plural verb.</p>
+    </div></div>
+    <div class="use"><h3>Amount word + of</h3><div>
+      <p class="ex">many of <span class="s">them</span> &middot; few of <span class="s">us</span> &middot; much of the time &middot; several of the students</p>
+      <p class="tip">After <i>of</i>, use the object pronoun (<i>them, us, you, him, her, it</i>) or <i>the / my / these</i> + noun. Wrong: &ldquo;many of they.&rdquo; The verb still follows the amount word: &ldquo;Many of the students <i>are</i> late.&rdquo; &ldquo;Much of the time <i>was</i> wasted.&rdquo;</p>
+    </div></div>
+    <div class="use"><h3>a lot and lots</h3><div>
+      <p class="ex">I have <span class="s">a lot</span>. <span class="s">A lot</span> of them came. <span class="s">Lots</span> are left.</p>
+      <p class="tip">Everyday English uses these in positive sentences. The verb follows the noun after <i>of</i>. See the <i>All, most, none</i> tab.</p>
+    </div></div>
+  </div>
+</section>
+
+</div>
+
+<div class="tabpanel" id="groups-tab" role="tabpanel" hidden>
+
+<section id="groups" class="c-ppro">
+  <header>
+    <h2>All, most, some, none and others <span class="forms">all, most, some, any, more, half, enough, none</span></h2>
+    <p>These words name a part or all of a group or an amount. The verb follows the noun after <i>of</i>, or the noun the word stands for.</p>
+  </header>
+  <div class="rule">
+    <p><b>Rule.</b> Find the noun. A plural noun takes a plural verb (V1: are, have). An uncountable or singular noun takes a singular verb (V5: is, has).</p>
+  </div>
+  <div class="scroll">
+    <table style="min-width: 640px">
+      <thead><tr><th>Word</th><th>Plural noun</th><th>Uncountable noun</th></tr></thead>
+      <tbody>
+        <tr><td><b>all</b></td><td><span class="s">All</span> of the <span class="pa">boys</span> <b>are</b> here.</td><td><span class="s">All</span> of the <span class="pa">water</span> <b>is</b> gone.</td></tr>
+        <tr><td><b>most</b></td><td><span class="s">Most</span> of the <span class="pa">students</span> <b>are</b> late.</td><td><span class="s">Most</span> of the <span class="pa">work</span> <b>is</b> done.</td></tr>
+        <tr><td><b>some</b></td><td><span class="s">Some</span> of the <span class="pa">books</span> <b>are</b> old.</td><td><span class="s">Some</span> of the <span class="pa">milk</span> <b>is</b> left.</td></tr>
+        <tr><td><b>any</b></td><td>Are <span class="s">any</span> of the <span class="pa">books</span> yours?</td><td>Is <span class="s">any</span> of the <span class="pa">milk</span> left?</td></tr>
+        <tr><td><b>more</b></td><td><span class="s">More</span> of the <span class="pa">boys</span> <b>are</b> coming.</td><td><span class="s">More</span> of the <span class="pa">rice</span> <b>is</b> needed.</td></tr>
+        <tr><td><b>half</b></td><td><span class="s">Half</span> of the <span class="pa">apples</span> <b>are</b> bad.</td><td><span class="s">Half</span> of the <span class="pa">cake</span> <b>is</b> gone.</td></tr>
+        <tr><td><b>enough</b></td><td><span class="s">Enough</span> of the <span class="pa">chairs</span> <b>are</b> here.</td><td><span class="s">Enough</span> of the <span class="pa">food</span> <b>is</b> ready.</td></tr>
+        <tr><td><b>none</b></td><td><span class="s">None</span> of the <span class="pa">boys</span> <b>are</b> here.</td><td><span class="s">None</span> of the <span class="pa">water</span> <b>is</b> left.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section id="groups-uses" class="c-ppro">
+  <header>
+    <h2>The uses, one by one</h2>
+  </header>
+  <div class="uses">
+    <div class="use"><h3>How to choose the verb</h3><div>
+      <ol class="how">
+        <li>Find the noun after <i>of</i>, or the noun the word replaces.</li>
+        <li>Plural noun: use a plural verb.</li>
+        <li>Uncountable or singular noun: use a singular verb.</li>
+      </ol>
+      <p class="ex many"><span class="s">Some</span> of the <span class="pa">cake</span> <b>is</b> left.<br><span class="s">Some</span> of the <span class="pa">cakes</span> <b>are</b> left.</p>
+    </div></div>
+    <div class="use"><h3>all: the whole group</h3><div>
+      <p class="ex"><span class="s">All</span> of <span class="s">us</span> <b>agree</b>. <span class="s">All</span> <b>are</b> welcome. We <span class="s">all</span> <b>agree</b>.</p>
+      <p class="tip">After <i>of</i>, use the object form (<i>us, them</i>). When <i>all</i> follows the subject, the subject form stays (<i>we all</i>).</p>
+    </div></div>
+    <div class="use"><h3>all: everything, or the only thing</h3><div>
+      <p class="ex"><span class="s">All</span> <b>is</b> well. <span class="s">All</span> I want <b>is</b> peace.</p>
+      <p class="tip">Here <i>all</i> is singular. <i>All I want</i> means <i>the only thing I want</i>.</p>
+    </div></div>
+    <div class="use"><h3>most and more</h3><div>
+      <p class="ex"><span class="s">Most</span> <b>agree</b>. <span class="s">More</span> <b>are</b> coming.</p>
+      <p class="tip"><i>most</i> means more than half. <i>more</i> means an extra number or amount. With no noun, the meaning of the sentence tells you if it is plural.</p>
+    </div></div>
+    <div class="use"><h3>some</h3><div>
+      <p class="ex many"><span class="s">Some</span> like tea; others like coffee.<br>I have <span class="s">some</span>.</p>
+      <p class="tip"><i>some</i> is a part, not all and not none. For the choice between <i>some</i> and <i>any</i>, see the <i>Some, any, no</i> tab.</p>
+    </div></div>
+    <div class="use"><h3>none</h3><div>
+      <p class="ex"><span class="s">None</span> of the boys <b>are</b> here. <span class="s">None</span> of the water <b>is</b> left.</p>
+      <p class="tip"><i>none</i> means not one, or not any. With a plural noun, both a plural verb (everyday English) and a singular verb (formal) are correct. With an uncountable noun, use a singular verb.</p>
+    </div></div>
+    <div class="use"><h3>none or no one</h3><div>
+      <p class="ex many"><span class="s">None</span> of the students passed.<br><span class="s">No one</span> called while you were out.</p>
+      <p class="tip"><i>none</i> points to a particular group or amount, usually with <i>of</i>. <i>no one</i> means nobody, people in general. <i>no one</i> is only for people.</p>
+    </div></div>
+  </div>
+</section>
+
+</div>
+
+<div class="tabpanel" id="pairs-tab" role="tabpanel" hidden>
+
+<section id="pairs" class="c-refl">
+  <header>
+    <h2>Both, each, either and neither <span class="forms">both, each, either, neither</span></h2>
+    <p>These words pick from a group. Three of them are about two items. <i>each</i> works for two or more.</p>
+  </header>
+  <div class="scroll">
+    <table style="min-width: 660px">
+      <thead><tr><th>Word</th><th>Meaning</th><th>Items</th><th>Verb</th><th>Example</th></tr></thead>
+      <tbody>
+        <tr><td><b>both</b></td><td>the two together</td><td>two</td><td>plural</td><td><span class="s">Both</span> <b>are</b> ready.</td></tr>
+        <tr><td><b>either</b></td><td>one or the other, no matter which</td><td>two</td><td>singular</td><td><span class="s">Either</span> <b>is</b> fine.</td></tr>
+        <tr><td><b>neither</b></td><td>not one and not the other</td><td>two</td><td>singular</td><td><span class="s">Neither</span> <b>is</b> ready.</td></tr>
+        <tr><td><b>each</b></td><td>every one, one at a time</td><td>two or more</td><td>singular</td><td><span class="s">Each</span> <b>has</b> a pen.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section id="pairs-uses" class="c-refl">
+  <header>
+    <h2>The uses, one by one</h2>
+  </header>
+  <div class="uses">
+    <div class="use"><h3>both</h3><div>
+      <p class="ex"><span class="s">Both</span> <b>are</b> ready. <span class="s">Both</span> of <span class="s">them</span> <b>are</b> ready. They <span class="s">both</span> <b>left</b>.</p>
+      <p class="tip"><i>both</i> looks at the two together. Plural verb. After <i>of</i>, use the object form (<i>both of us</i>). After a subject pronoun, <i>both</i> follows it (<i>we both</i>).</p>
+    </div></div>
+    <div class="use"><h3>either</h3><div>
+      <p class="ex many"><span class="s">Either</span> <b>is</b> fine. <span class="s">Either</span> of the answers <b>is</b> correct.<br>&ldquo;Tea or coffee?&rdquo; &ldquo;<span class="s">Either</span>.&rdquo;</p>
+      <p class="tip"><i>either</i> looks at one of the two. It does not matter which. Singular verb. In speech, a plural verb after <i>either of the + plural noun</i> is also heard. Use the singular in exams.</p>
+    </div></div>
+    <div class="use"><h3>neither</h3><div>
+      <p class="ex"><span class="s">Neither</span> <b>is</b> ready. <span class="s">Neither</span> of the boys <b>is</b> here.</p>
+      <p class="tip"><i>neither</i> means both are not. It is already negative, so do not add <i>not</i>. Wrong: &ldquo;Neither of them did not come.&rdquo; Singular verb in exams.</p>
+    </div></div>
+    <div class="use"><h3>each</h3><div>
+      <p class="ex"><span class="s">Each</span> <b>has</b> a pen. <span class="s">Each</span> of the girls <b>has</b> a pen.</p>
+      <p class="tip"><i>each</i> looks at one at a time. Singular verb, even when <i>of</i> + a plural noun follows.</p>
+    </div></div>
+    <div class="use"><h3>each after the subject</h3><div>
+      <p class="ex">They <span class="s">each</span> <b>have</b> a pen. We <span class="s">each</span> <b>know</b> our job.</p>
+      <p class="tip">When <i>each</i> comes after a plural subject, the verb agrees with the subject (<i>they, we</i>), not with <i>each</i>.</p>
+    </div></div>
+    <div class="use"><h3>each at the end</h3><div>
+      <p class="ex">The tickets cost $2 <span class="s">each</span>.</p>
+      <p class="tip">Here <i>each</i> means <i>for one</i>.</p>
+    </div></div>
+    <div class="use"><h3>either&hellip;or and neither&hellip;nor</h3><div>
+      <p class="ex many">Either Tom or the girls <b>are</b> late.<br>Neither she nor I <b>am</b> ready.</p>
+      <p class="tip">The verb matches the nearer subject. The Agreement tab of the Personal Pronouns page has the full table.</p>
+    </div></div>
+    <div class="use"><h3>either and neither as adverbs</h3><div>
+      <p class="ex">I do not like it <span class="s">either</span>. <span class="s">Neither</span> do I.</p>
+      <p class="tip">These are adverbs, not pronouns. They mean <i>also not</i>.</p>
+    </div></div>
+  </div>
+</section>
+
+</div>
+
+<div class="tabpanel" id="other-tab" role="tabpanel" hidden>
+
+<section id="other" class="c-peach">
+  <header>
+    <h2>One, another, the other and others <span class="forms">one, another, the other, others, the others</span></h2>
+    <p>These words point to one more, the one that is left, or the rest.</p>
+  </header>
+  <div class="scroll">
+    <table style="min-width: 640px">
+      <thead><tr><th>Word</th><th>Meaning</th><th>Verb</th><th>Example</th></tr></thead>
+      <tbody>
+        <tr><td><b>one</b></td><td>one person or thing from a group</td><td>singular</td><td><span class="s">One</span> of them <b>is</b> late.</td></tr>
+        <tr><td><b>another</b></td><td>one more, or a different one</td><td>singular</td><td>I need <span class="s">another</span>.</td></tr>
+        <tr><td><b>the other</b></td><td>the one that is left (of two)</td><td>singular</td><td>One is red; <span class="s">the other</span> <b>is</b> blue.</td></tr>
+        <tr><td><b>others</b></td><td>some more, or some different ones</td><td>plural</td><td>Some like tea; <span class="s">others</span> <b>like</b> coffee.</td></tr>
+        <tr><td><b>the others</b></td><td>all the rest</td><td>plural</td><td>Two stayed. <span class="s">The others</span> <b>left</b>.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section id="other-uses" class="c-peach">
+  <header>
+    <h2>The uses, one by one</h2>
+  </header>
+  <div class="uses">
+    <div class="use"><h3>one: one from a group</h3><div>
+      <p class="ex"><span class="s">One</span> of the boys <b>is</b> late. <span class="s">One</span> of them <b>has</b> my pen.</p>
+      <p class="tip">The verb matches <i>one</i>, not the plural noun after <i>of</i>. Wrong: &ldquo;One of the boys are late.&rdquo;</p>
+    </div></div>
+    <div class="use"><h3>one and ones: standing in for a noun</h3><div>
+      <p class="ex">I want the red <span class="s">one</span>. Which shoes? The red <span class="s">ones</span>.</p>
+      <p class="tip"><i>one</i> replaces a singular noun, and <i>ones</i> replaces a plural noun. It saves repeating the noun.</p>
+    </div></div>
+    <div class="use"><h3>one: people in general (formal)</h3><div>
+      <p class="ex"><span class="s">One</span> should always check <span class="s">one</span>&rsquo;s work.</p>
+      <p class="tip">Formal. Everyday English uses <i>you</i> or <i>we</i>. The forms are <i>one, one&rsquo;s, oneself</i>. See the Personal Pronouns page.</p>
+    </div></div>
+    <div class="use"><h3>another</h3><div>
+      <p class="ex">I do not like this shirt. Show me <span class="s">another</span>. Would you like <span class="s">another</span>?</p>
+      <p class="tip"><i>another</i> = <i>an</i> + <i>other</i>, so it is singular. It means one more of the same kind, or a different one. With a noun: <i>another book</i>.</p>
+    </div></div>
+    <div class="use"><h3>the other</h3><div>
+      <p class="ex">I have two pens. One is blue; <span class="s">the other</span> is red.</p>
+      <p class="tip">Use it only when the group has two. After <i>one</i>, the one that is left is <i>the other</i>.</p>
+    </div></div>
+    <div class="use"><h3>others and the others</h3><div>
+      <p class="ex many">Some like tea; <span class="s">others</span> like coffee.<br>Two students stayed. <span class="s">The others</span> left.</p>
+      <p class="tip"><i>others</i> means some different ones, not all. <i>the others</i> means all the rest. Both are plural.</p>
+    </div></div>
+    <div class="use"><h3>Matching patterns</h3><div>
+      <p class="ex many">One is red; the other is blue. (exactly two things)<br>Some are red; others are blue. (not all of them are listed)<br>Some are red; the others are blue. (all the rest are blue)</p>
+    </div></div>
+    <div class="use"><h3>other before a noun</h3><div>
+      <p class="ex">Other people agreed. We met the other day.</p>
+      <p class="tip"><i>other</i> before a noun never ends in <i>s</i>. Wrong: &ldquo;others people.&rdquo; <i>others</i> is the pronoun and stands alone.</p>
+    </div></div>
+  </div>
+</section>
+
+</div>
+
+<div class="tabpanel" id="agreement-tab" role="tabpanel" hidden>
+
+<section id="agreement" class="c-denim">
+  <header>
+    <h2>Agreement</h2>
+    <p>Check three things: the verb, the pronoun that refers back, and the question tag.</p>
+  </header>
+  <h3>The verb</h3>
+  <div class="uses">
+    <div class="use"><h3>Singular verb (V5)</h3><div>
+      <p class="ex"><span class="s">Everyone</span> <b>is</b> here. <span class="s">Nobody</span> <b>was</b> late. <span class="s">Each</span> <b>has</b> a book. <span class="s">Something</span> <b>smells</b> good.</p>
+      <p class="tip">Compounds, <i>each, either, neither, one, much, little</i> and <i>less</i>. Wrong: &ldquo;Everyone are here.&rdquo;</p>
+    </div></div>
+    <div class="use"><h3>Plural verb (V1)</h3><div>
+      <p class="ex"><span class="s">Both</span> <b>are</b> here. <span class="s">Few</span> <b>know</b>. <span class="s">Many</span> <b>have</b> left. <span class="s">Several</span> <b>were</b> late.</p>
+      <p class="tip"><i>both, few, fewer, many, several, others</i>.</p>
+    </div></div>
+    <div class="use"><h3>The verb follows the noun</h3><div>
+      <p class="ex many"><span class="s">All</span> of the <span class="pa">water</span> <b>is</b> gone.<br><span class="s">All</span> of the <span class="pa">boys</span> <b>are</b> here.</p>
+      <p class="tip">For <i>all, any, more, most, none, some, enough, half</i>. See the <i>All, most, none</i> tab.</p>
+    </div></div>
+    <div class="use"><h3>Word + of + plural noun</h3><div>
+      <p class="ex"><span class="s">One</span> of the boys <b>is</b> late. <span class="s">Each</span> of the girls <b>has</b> a pen. <span class="s">Neither</span> of the answers <b>is</b> right.</p>
+      <p class="tip">For <i>one, each, either, neither</i>, the verb matches the first word, not the plural noun after <i>of</i>.</p>
+    </div></div>
+  </div>
+  <h3>The pronoun that refers back</h3>
+  <div class="uses">
+    <div class="use"><h3>their</h3><div>
+      <p class="ex"><span class="s">Everyone</span> should bring <b>their</b> book. <span class="s">Somebody</span> left <b>their</b> umbrella.</p>
+      <p class="tip">Modern English uses <i>their</i> after <i>everyone, someone, anyone, nobody, each</i>. Older exam style writes <i>his or her</i>. Choose one style and keep it in the sentence.</p>
+    </div></div>
+    <div class="use"><h3>Plural words</h3><div>
+      <p class="ex"><span class="s">Both</span> of the boys lost <b>their</b> books. <span class="s">Many</span> left <b>their</b> coats.</p>
+    </div></div>
+    <div class="use"><h3>Things: it and its</h3><div>
+      <p class="ex"><span class="s">Something</span> fell, and <b>it</b> broke. <span class="s">Everything</span> has <b>its</b> place.</p>
+      <p class="tip"><i>something, anything, nothing, everything</i> use <i>it</i> and <i>its</i>.</p>
+    </div></div>
+    <div class="use"><h3>Reflexive</h3><div>
+      <p class="ex"><span class="s">Everyone</span> enjoyed <b>themselves</b>. <span class="s">Nobody</span> hurt <b>themselves</b>.</p>
+      <p class="tip">Match <i>their</i>: use <i>themselves</i>. Older style: <i>himself or herself</i>.</p>
+    </div></div>
+  </div>
+  <h3>Question tags</h3>
+  <div class="scroll">
+    <table style="min-width: 620px">
+      <thead><tr><th>Subject</th><th>Tag</th><th>Example</th></tr></thead>
+      <tbody>
+        <tr><td>someone, everyone, anyone, nobody (people)</td><td><b>they</b></td><td><span class="s">Everyone</span> is here, aren&rsquo;t <b>they</b>?<br><span class="s">Somebody</span> called, didn&rsquo;t <b>they</b>?</td></tr>
+        <tr><td>something, everything, nothing (things)</td><td><b>it</b></td><td><span class="s">Everything</span> is ready, isn&rsquo;t <b>it</b>?</td></tr>
+        <tr><td>nobody, nothing (already negative)</td><td>positive tag</td><td><span class="s">Nobody</span> called, did <b>they</b>?<br><span class="s">Nothing</span> happened, did <b>it</b>?</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+</div>
+
+<div class="tabpanel" id="choosing" role="tabpanel" hidden>
+
+<section id="which" class="c-peach">
+  <header>
+    <h2>Which word? Four questions</h2>
+    <p>Ask them in order.</p>
+  </header>
+  <ol class="steps">
+    <li><div>Does it name a <b>place</b> (<i>somewhere, anywhere</i>)? It is an <span class="r">adverb</span>, not a pronoun.</div></li>
+    <li><div>Is a <b>noun right after</b> it? It is a <span class="pa">determiner</span> (<i>many students</i>). No noun, or <i>of</i> follows? It is a <span class="s">pronoun</span>.</div></li>
+    <li><div>What kind of sentence? Positive: <b>some-</b>. Negative: <b>not any-</b> or <b>no-</b>. Question: <b>any-</b>. Offer: <b>some-</b>.</div></li>
+    <li><div>Which verb? Compounds, <i>each, either, neither, one, much, little</i>: <b>singular</b>. <i>both, few, many, several, others</i>: <b>plural</b>. <i>all, most, some, none, more, half</i>: <b>follows the noun</b>.</div></li>
+  </ol>
+</section>
+
+<section id="errors" class="c-pine">
+  <header>
+    <h2>Common errors</h2>
+  </header>
+  <div class="scroll">
+    <table>
+      <thead><tr><th class="wrong">Wrong</th><th class="right">Right</th><th>Why</th></tr></thead>
+      <tbody>
+        <tr><td class="wrong">Everyone are here.</td><td class="right">Everyone is here.</td><td><i>everyone</i> takes a singular verb.</td></tr>
+        <tr><td class="wrong">Everybody have a book.</td><td class="right">Everybody has a book.</td><td>Singular verb (V5).</td></tr>
+        <tr><td class="wrong">I did not see nobody.</td><td class="right">I did not see anybody. / I saw nobody.</td><td>Use one negative word.</td></tr>
+        <tr><td class="wrong">Anyone did not come.</td><td class="right">Nobody came.</td><td>A negative sentence starts with <i>no-</i>.</td></tr>
+        <tr><td class="wrong">Both of them is late.</td><td class="right">Both of them are late.</td><td><i>both</i> is plural.</td></tr>
+        <tr><td class="wrong">One of the boys are late.</td><td class="right">One of the boys is late.</td><td>The verb matches <i>one</i>.</td></tr>
+        <tr><td class="wrong">Each of the girls have a pen.</td><td class="right">Each of the girls has a pen.</td><td><i>each</i> is singular.</td></tr>
+        <tr><td class="wrong">Neither of them are ready. (exam)</td><td class="right">Neither of them is ready.</td><td>Singular in formal English.</td></tr>
+        <tr><td class="wrong">Much people came.</td><td class="right">Many people came.</td><td><i>people</i> are countable.</td></tr>
+        <tr><td class="wrong">I do not have many money.</td><td class="right">I do not have much money.</td><td><i>money</i> is uncountable.</td></tr>
+        <tr><td class="wrong">There is less people today.</td><td class="right">There are fewer people today.</td><td><i>fewer</i> for things you count.</td></tr>
+        <tr><td class="wrong">Someone&rsquo;s else bag</td><td class="right">Someone else&rsquo;s bag</td><td><i>&rsquo;s</i> goes after <i>else</i>.</td></tr>
+        <tr><td class="wrong">I want cold something.</td><td class="right">I want something cold.</td><td>The adjective goes after.</td></tr>
+        <tr><td class="wrong">Noone came.</td><td class="right">No one came.</td><td><i>no one</i> is two words. (<i>nobody</i> is one word.)</td></tr>
+        <tr><td class="wrong">All of we agree.</td><td class="right">All of us agree.</td><td>After <i>of</i>, use the object form.</td></tr>
+        <tr><td class="wrong">Others people came.</td><td class="right">Other people came.</td><td>Before a noun, <i>other</i> has no <i>s</i>.</td></tr>
+        <tr><td class="wrong">I need other.</td><td class="right">I need another.</td><td><i>another</i> stands alone. <i>other</i> does not.</td></tr>
+        <tr><td class="wrong">Everyone is here, isn&rsquo;t he?</td><td class="right">Everyone is here, aren&rsquo;t they?</td><td>People compounds take the tag <i>they</i>.</td></tr>
+        <tr><td class="wrong">Nobody called, didn&rsquo;t they?</td><td class="right">Nobody called, did they?</td><td><i>nobody</i> is negative, so the tag is positive.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+</div>
+
+<div class="tabpanel" id="practice-tab" role="tabpanel" hidden>
+
+<section id="practice" class="practice c-aloe">
+  <header>
+    <h2>Practice</h2>
+    <p>Answers are hidden. Try each question first, then tap <b>Answer</b>. Every use case above appears at least once.</p>
+  </header>
+  <button class="btn" id="toggle-all" type="button" data-open="0">Show all answers</button>
+
+  <div class="part">
+    <div class="part-head"><h3><span class="s">Part A</span> Compound words</h3></div>
+    <ol class="qs">
+      <li><span><span class="blank"></span> of the boys passed. Each single boy passed. (Everyone / Every one)</span><details><summary>Answer</summary><p><b>Every one.</b> Before <i>of</i>, write two words.</p></details></li>
+      <li><span><span class="blank"></span> is here. All the people are here. (Everyone / Every one)</span><details><summary>Answer</summary><p><b>Everyone.</b> No <i>of</i> follows, so one word.</p></details></li>
+      <li><span>I want (cold something / something cold).</span><details><summary>Answer</summary><p><b>something cold.</b> The adjective comes after the word.</p></details></li>
+      <li><span>This is <span class="blank"></span> bag. (someone&rsquo;s else / someone else&rsquo;s)</span><details><summary>Answer</summary><p><b>someone else&rsquo;s.</b> <i>&rsquo;s</i> goes after <i>else</i>.</p></details></li>
+      <li><span>She has nothing <span class="blank"></span> wear. (to / for)</span><details><summary>Answer</summary><p><b>to.</b> The word is followed by <i>to</i> + the base verb.</p></details></li>
+      <li><span>Which word is an adverb, not a pronoun: <i>someone, anywhere, nothing</i>?</span><details><summary>Answer</summary><p><b>anywhere.</b> Words ending in <i>-where</i> are adverbs of place.</p></details></li>
+      <li><span>Pronoun or determiner? (a) Some came. (b) Some students came.</span><details><summary>Answer</summary><p><b>(a) pronoun, (b) determiner.</b> In (a) no noun follows. In (b) the noun <i>students</i> follows.</p></details></li>
+      <li><span>Fix: Noone came.</span><details><summary>Answer</summary><p><b>No one came.</b> Two words. <i>Nobody came</i> is also correct.</p></details></li>
+    </ol>
+  </div>
+
+  <div class="part">
+    <div class="part-head"><h3><span class="o">Part B</span> Some, any and no</h3></div>
+    <ol class="qs">
+      <li><span>I saw <span class="blank"></span> in the garden. (someone / anyone)</span><details><summary>Answer</summary><p><b>someone.</b> A positive statement, so <i>some-</i>.</p></details></li>
+      <li><span>I did not see <span class="blank"></span> in the garden. (someone / anyone)</span><details><summary>Answer</summary><p><b>anyone.</b> A negative statement: <i>not + any-</i>.</p></details></li>
+      <li><span>Did you see <span class="blank"></span> in the garden? (someone / anyone)</span><details><summary>Answer</summary><p><b>anyone.</b> A plain question, so <i>any-</i>.</p></details></li>
+      <li><span>Would you like <span class="blank"></span> to drink? (something / anything)</span><details><summary>Answer</summary><p><b>something.</b> An offer, so <i>some-</i>.</p></details></li>
+      <li><span>If you need <span class="blank"></span>, call me. (something / anything)</span><details><summary>Answer</summary><p><b>anything.</b> After <i>if</i>, <i>any-</i>.</p></details></li>
+      <li><span><span class="blank"></span> came to the party. Not one person came. (Nobody / Anybody)</span><details><summary>Answer</summary><p><b>Nobody.</b> A negative sentence starts with <i>no-</i>.</p></details></li>
+      <li><span>Fix: I did not see nobody.</span><details><summary>Answer</summary><p><b>I did not see anybody.</b> Or: <i>I saw nobody.</i> One negative only.</p></details></li>
+      <li><span>Fix: Anyone did not come.</span><details><summary>Answer</summary><p><b>Nobody came.</b> Do not start with <i>any-</i> + <i>not</i>.</p></details></li>
+      <li><span>She left without saying <span class="blank"></span> . (something / anything)</span><details><summary>Answer</summary><p><b>anything.</b> <i>without</i> is a hidden negative.</p></details></li>
+      <li><span>I hardly know <span class="blank"></span> here. (anyone / no one)</span><details><summary>Answer</summary><p><b>anyone.</b> <i>hardly</i> is a hidden negative. Do not add another negative.</p></details></li>
+      <li><span>You can take <span class="blank"></span> you like. It does not matter which. (anything / something)</span><details><summary>Answer</summary><p><b>anything.</b> <i>any-</i> in a positive sentence means it does not matter which.</p></details></li>
+      <li><span>&ldquo;Who called?&rdquo; &ldquo;<span class="blank"></span> .&rdquo; Nobody called. (Nobody / Anybody)</span><details><summary>Answer</summary><p><b>Nobody.</b> A short answer meaning <i>no one</i> uses <i>no-</i>.</p></details></li>
+      <li><span>I have no books. = I have <span class="blank"></span> . (none / any)</span><details><summary>Answer</summary><p><b>none.</b> The noun is left out, so <i>no</i> becomes <i>none</i>.</p></details></li>
+      <li><span>I do not have <span class="blank"></span> . The noun is left out. (some / any)</span><details><summary>Answer</summary><p><b>any.</b> A negative statement, so <i>any</i>.</p></details></li>
+    </ol>
+  </div>
+
+  <div class="part">
+    <div class="part-head"><h3><span class="pa">Part C</span> Amounts</h3></div>
+    <ol class="qs">
+      <li><span><span class="blank"></span> people came. (Many / Much)</span><details><summary>Answer</summary><p><b>Many.</b> <i>people</i> are countable.</p></details></li>
+      <li><span>How <span class="blank"></span> money do you need? (many / much)</span><details><summary>Answer</summary><p><b>much.</b> <i>money</i> is uncountable.</p></details></li>
+      <li><span><span class="blank"></span> came. Almost nobody. (Few / A few)</span><details><summary>Answer</summary><p><b>Few.</b> <i>few</i> means almost none.</p></details></li>
+      <li><span><span class="blank"></span> came. Enough to start the meeting. (Few / A few)</span><details><summary>Answer</summary><p><b>A few.</b> <i>a few</i> means some, enough.</p></details></li>
+      <li><span>There is <span class="blank"></span> time left. Almost none. (little / a little)</span><details><summary>Answer</summary><p><b>little.</b> <i>little</i> means almost none.</p></details></li>
+      <li><span>There are <span class="blank"></span> cars today than yesterday. (fewer / less)</span><details><summary>Answer</summary><p><b>fewer.</b> Cars can be counted.</p></details></li>
+      <li><span>There is <span class="blank"></span> traffic today. (fewer / less)</span><details><summary>Answer</summary><p><b>less.</b> <i>traffic</i> cannot be counted.</p></details></li>
+      <li><span>Several of them <span class="blank"></span> late. (was / were)</span><details><summary>Answer</summary><p><b>were.</b> <i>several</i> is plural.</p></details></li>
+      <li><span>Much of the time <span class="blank"></span> wasted. (was / were)</span><details><summary>Answer</summary><p><b>was.</b> <i>much</i> is singular.</p></details></li>
+      <li><span>Many of <span class="blank"></span> agree. (we / us)</span><details><summary>Answer</summary><p><b>us.</b> After <i>of</i>, use the object form.</p></details></li>
+      <li><span>Which sentence means that some people came? (a) Few came. (b) A few came.</span><details><summary>Answer</summary><p><b>(b).</b> <i>a few</i> means some. <i>few</i> means almost none.</p></details></li>
+    </ol>
+  </div>
+
+  <div class="part">
+    <div class="part-head"><h3><span class="pp">Part D</span> All, most, some and none</h3></div>
+    <ol class="qs">
+      <li><span>All of the water <span class="blank"></span> gone. (is / are)</span><details><summary>Answer</summary><p><b>is.</b> <i>water</i> is uncountable.</p></details></li>
+      <li><span>All of the boys <span class="blank"></span> here. (is / are)</span><details><summary>Answer</summary><p><b>are.</b> <i>boys</i> is plural.</p></details></li>
+      <li><span>Most of the students <span class="blank"></span> late. (was / were)</span><details><summary>Answer</summary><p><b>were.</b> <i>students</i> is plural.</p></details></li>
+      <li><span>Most of the work <span class="blank"></span> done. (is / are)</span><details><summary>Answer</summary><p><b>is.</b> <i>work</i> is uncountable.</p></details></li>
+      <li><span>Some of the milk <span class="blank"></span> left. (is / are)</span><details><summary>Answer</summary><p><b>is.</b> <i>milk</i> is uncountable.</p></details></li>
+      <li><span>Half of the apples <span class="blank"></span> bad. (is / are)</span><details><summary>Answer</summary><p><b>are.</b> <i>apples</i> is plural.</p></details></li>
+      <li><span>None of the water <span class="blank"></span> left. (is / are)</span><details><summary>Answer</summary><p><b>is.</b> With an uncountable noun, use a singular verb.</p></details></li>
+      <li><span>None of the boys (is / are) here. Which is formal, and which is everyday English?</span><details><summary>Answer</summary><p><b>is is formal. are is everyday.</b> Both are correct.</p></details></li>
+      <li><span>All I want <span class="blank"></span> peace. (is / are)</span><details><summary>Answer</summary><p><b>is.</b> <i>All I want</i> means <i>the only thing I want</i>. Singular.</p></details></li>
+      <li><span>All of <span class="blank"></span> agree. (we / us)</span><details><summary>Answer</summary><p><b>us.</b> After <i>of</i>, use the object form.</p></details></li>
+      <li><span>We <span class="blank"></span> agree. (all / of all)</span><details><summary>Answer</summary><p><b>all.</b> After a subject pronoun, <i>all</i> follows directly.</p></details></li>
+      <li><span><span class="blank"></span> called while I was out. Choose the word for people in general. (None / No one)</span><details><summary>Answer</summary><p><b>No one.</b> <i>no one</i> means nobody.</p></details></li>
+    </ol>
+  </div>
+
+  <div class="part">
+    <div class="part-head"><h3><span class="r">Part E</span> Both, each, either and neither</h3></div>
+    <ol class="qs">
+      <li><span>Both of them <span class="blank"></span> ready. (is / are)</span><details><summary>Answer</summary><p><b>are.</b> <i>both</i> is plural.</p></details></li>
+      <li><span>Either of the answers <span class="blank"></span> correct. (is / are)</span><details><summary>Answer</summary><p><b>is.</b> <i>either</i> is singular.</p></details></li>
+      <li><span>Neither of the boys <span class="blank"></span> here. Choose the formal form. (is / are)</span><details><summary>Answer</summary><p><b>is.</b> <i>neither</i> is singular.</p></details></li>
+      <li><span>Each of the girls <span class="blank"></span> a pen. (has / have)</span><details><summary>Answer</summary><p><b>has.</b> <i>each</i> is singular.</p></details></li>
+      <li><span>They each <span class="blank"></span> a pen. (has / have)</span><details><summary>Answer</summary><p><b>have.</b> The verb agrees with <i>they</i>.</p></details></li>
+      <li><span>&ldquo;Tea or coffee?&rdquo; &ldquo;<span class="blank"></span> is fine.&rdquo; (Either / Both)</span><details><summary>Answer</summary><p><b>Either.</b> It does not matter which of the two.</p></details></li>
+      <li><span><span class="blank"></span> of the two answers is correct. Both are wrong. (Neither / Either)</span><details><summary>Answer</summary><p><b>Neither.</b> Not one and not the other.</p></details></li>
+      <li><span>Fix: Neither of them did not come.</span><details><summary>Answer</summary><p><b>Neither of them came.</b> <i>neither</i> is already negative.</p></details></li>
+      <li><span>The tickets cost $2 <span class="blank"></span> . (each / both)</span><details><summary>Answer</summary><p><b>each.</b> <i>each</i> means for one.</p></details></li>
+      <li><span>Both of <span class="blank"></span> like tea. (we / us)</span><details><summary>Answer</summary><p><b>us.</b> After <i>of</i>, use the object form.</p></details></li>
+      <li><span>Either Tom or the girls <span class="blank"></span> late. (is / are)</span><details><summary>Answer</summary><p><b>are.</b> The verb matches the nearer subject, <i>the girls</i>.</p></details></li>
+    </ol>
+  </div>
+
+  <div class="part">
+    <div class="part-head"><h3><span class="n">Part F</span> One, another and other</h3></div>
+    <ol class="qs">
+      <li><span>One is red; <span class="blank"></span> is blue. There are only two. (other / the other)</span><details><summary>Answer</summary><p><b>the other.</b> The one left of two.</p></details></li>
+      <li><span>Some students like tea; <span class="blank"></span> like coffee. Not all of the rest. (others / the others)</span><details><summary>Answer</summary><p><b>others.</b> Some different ones.</p></details></li>
+      <li><span>Two students stayed. <span class="blank"></span> left. (Others / The others)</span><details><summary>Answer</summary><p><b>The others.</b> All the rest.</p></details></li>
+      <li><span>I do not like this shirt. Show me <span class="blank"></span> . (another / other)</span><details><summary>Answer</summary><p><b>another.</b> <i>another</i> stands alone. <i>other</i> does not.</p></details></li>
+      <li><span>Fix: Others people came.</span><details><summary>Answer</summary><p><b>Other people came.</b> Before a noun, <i>other</i> has no <i>s</i>.</p></details></li>
+      <li><span>Which shoes? The red <span class="blank"></span> . (one / ones)</span><details><summary>Answer</summary><p><b>ones.</b> Shoes is plural.</p></details></li>
+      <li><span>One of the boys <span class="blank"></span> late. (is / are)</span><details><summary>Answer</summary><p><b>is.</b> The verb matches <i>one</i>.</p></details></li>
+      <li><span>One should always check <span class="blank"></span> work. Formal. (one&rsquo;s / his)</span><details><summary>Answer</summary><p><b>one&rsquo;s.</b> Formal <i>one</i> takes <i>one&rsquo;s</i>.</p></details></li>
+    </ol>
+  </div>
+
+  <div class="part">
+    <div class="part-head"><h3><span class="s">Part G</span> Agreement</h3></div>
+    <ol class="qs">
+      <li><span>Everybody <span class="blank"></span> here. (is / are)</span><details><summary>Answer</summary><p><b>is.</b> Singular.</p></details></li>
+      <li><span>Few <span class="blank"></span> the answer. (knows / know)</span><details><summary>Answer</summary><p><b>know.</b> <i>few</i> is plural.</p></details></li>
+      <li><span>Nobody <span class="blank"></span> late. (was / were)</span><details><summary>Answer</summary><p><b>was.</b> Singular.</p></details></li>
+      <li><span>Somebody left <span class="blank"></span> umbrella. Choose the modern form. (his or her / their)</span><details><summary>Answer</summary><p><b>their.</b> Older exam style writes <i>his or her</i>.</p></details></li>
+      <li><span>Everything has <span class="blank"></span> place. (its / their)</span><details><summary>Answer</summary><p><b>its.</b> Thing compounds use <i>it / its</i>.</p></details></li>
+      <li><span>Everyone enjoyed <span class="blank"></span> . (themselves / himself)</span><details><summary>Answer</summary><p><b>themselves.</b> Match <i>their</i>.</p></details></li>
+      <li><span>Both of the boys lost <span class="blank"></span> books. (his / their)</span><details><summary>Answer</summary><p><b>their.</b> <i>both</i> is plural.</p></details></li>
+      <li><span>Everyone is here, <span class="blank"></span> ? (aren&rsquo;t they / isn&rsquo;t he)</span><details><summary>Answer</summary><p><b>aren&rsquo;t they.</b> People compounds take <i>they</i>.</p></details></li>
+      <li><span>Everything is ready, <span class="blank"></span> ? (isn&rsquo;t it / aren&rsquo;t they)</span><details><summary>Answer</summary><p><b>isn&rsquo;t it.</b> Thing compounds take <i>it</i>.</p></details></li>
+      <li><span>Nobody called, <span class="blank"></span> ? (did they / didn&rsquo;t they)</span><details><summary>Answer</summary><p><b>did they.</b> <i>nobody</i> is negative, so the tag is positive.</p></details></li>
+      <li><span>One of the books <span class="blank"></span> missing. (is / are)</span><details><summary>Answer</summary><p><b>is.</b> The verb matches <i>one</i>.</p></details></li>
+    </ol>
+  </div>
+
+  <div class="part">
+    <div class="part-head"><h3><span class="o">Part H</span> Fix the sentence</h3></div>
+    <ol class="qs">
+      <li><span>Everyone are here.</span><details><summary>Answer</summary><p><b>Everyone is here.</b> Singular verb.</p></details></li>
+      <li><span>I did not see nobody.</span><details><summary>Answer</summary><p><b>I did not see anybody.</b> Or: <i>I saw nobody.</i></p></details></li>
+      <li><span>Much people came.</span><details><summary>Answer</summary><p><b>Many people came.</b> <i>people</i> are countable.</p></details></li>
+      <li><span>Someone&rsquo;s else bag is here.</span><details><summary>Answer</summary><p><b>Someone else&rsquo;s bag is here.</b> <i>&rsquo;s</i> goes after <i>else</i>.</p></details></li>
+      <li><span>There is less people today.</span><details><summary>Answer</summary><p><b>There are fewer people today.</b> Countable, plural.</p></details></li>
+      <li><span>Each of the girls have a pen.</span><details><summary>Answer</summary><p><b>Each of the girls has a pen.</b> <i>each</i> is singular.</p></details></li>
+      <li><span>All of we agree.</span><details><summary>Answer</summary><p><b>All of us agree.</b> Object form after <i>of</i>.</p></details></li>
+      <li><span>I want cold something.</span><details><summary>Answer</summary><p><b>I want something cold.</b> The adjective goes after.</p></details></li>
+      <li><span>Neither of them are ready. (exam)</span><details><summary>Answer</summary><p><b>Neither of them is ready.</b> Singular in formal English.</p></details></li>
+      <li><span>Nobody called, didn&rsquo;t they?</span><details><summary>Answer</summary><p><b>Nobody called, did they?</b> Positive tag after a negative subject.</p></details></li>
+      <li><span>Others people came.</span><details><summary>Answer</summary><p><b>Other people came.</b> No <i>s</i> before a noun.</p></details></li>
+    </ol>
+  </div>
+
+</section>
+
+</div>
+
+</div>
+
+<script>
+(function () {
+  var tabs = Array.prototype.slice.call(document.querySelectorAll('.jump a[data-tab]'));
+  var panels = Array.prototype.slice.call(document.querySelectorAll('.tabpanel'));
+  var names = tabs.map(function (a) { return a.dataset.tab; });
+  function show(name, scroll) {
+    if (names.indexOf(name) < 0) name = names[0];
+    tabs.forEach(function (a) {
+      var on = a.dataset.tab === name;
+      a.setAttribute('aria-selected', on ? 'true' : 'false');
+      a.tabIndex = on ? 0 : -1;
+    });
+    panels.forEach(function (p) { p.hidden = p.id !== name; });
+    if (scroll) { var h = document.querySelector('.hero'); if (h) h.scrollIntoView({ block: 'start' }); }
+  }
+  tabs.forEach(function (a, i) {
+    a.addEventListener('click', function (e) {
+      e.preventDefault(); show(a.dataset.tab, false);
+      try { history.replaceState(null, '', '#' + a.dataset.tab); } catch (x) {}
+    });
+    a.addEventListener('keydown', function (e) {
+      var j = e.key === 'ArrowRight' ? i + 1 : (e.key === 'ArrowLeft' ? i - 1 : -1);
+      if (j < 0) return;
+      e.preventDefault(); j = (j + tabs.length) % tabs.length; tabs[j].focus(); tabs[j].click();
+    });
+  });
+  window.addEventListener('hashchange', function () { show(location.hash.slice(1), false); });
+  show(location.hash.slice(1), false);
+})();
+</script>
+
+<script>
+(function () {
+  var btn = document.getElementById('toggle-all');
+  if (!btn) return;
+  btn.addEventListener('click', function () {
+    var open = btn.getAttribute('data-open') !== '1';
+    var items = document.querySelectorAll('#practice details');
+    for (var i = 0; i < items.length; i++) items[i].open = open;
+    btn.setAttribute('data-open', open ? '1' : '0');
+    btn.textContent = open ? 'Hide all answers' : 'Show all answers';
+  });
+})();
+</script>
+</body>
+</html>

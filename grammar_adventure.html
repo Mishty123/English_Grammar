@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Grammar Adventure</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Yeseva+One&family=Lora:ital,wght@0,400..700;1,400..700&family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet">
 <style>
 :root{
   --adj:#e3b5c4; --det:#b3c9e0; --aux:#e8d6a6; --q:#b8d4bf; --mod:#cdbfe0; --act:#eec3b2; --noun:#e6e3dc;
@@ -221,6 +221,22 @@ main{padding:10px 16px 40px}
 .fc:hover .ff{box-shadow:0 10px 22px rgba(63,61,74,.14)}
 .fc.fw{margin:12px 0}
 .fc .fk.pot{margin:0}
+.cal{font-family:'Dancing Script','Brush Script MT',cursive;font-size:3.4rem;font-weight:700;line-height:1.1;color:#8f6a0c;margin:4px 0 6px}
+.mini .cl{font-weight:600;font-size:1.05rem}
+.mini small{display:block;margin-top:6px;color:#6b6877}
+.mini{border:2px solid var(--e,var(--c))}
+body{font-family:'Lora',Georgia,serif}
+h1,h2,h3,.big{font-family:'Yeseva One',Georgia,serif;font-weight:400;letter-spacing:0}
+header h1{font-family:'Dancing Script','Brush Script MT',cursive;font-weight:700;font-size:3rem;letter-spacing:0}
+.hk-line{font-family:'Dancing Script','Brush Script MT',cursive;font-size:1.5rem;font-weight:700}
+.hk-label{font-family:'Lora',serif}
+.sentence,.exw>span:first-child,.quiz>div:not(.opts):not(.fb):not(.ctl),.trick,.eg,.pics small,.hl2,.flow .br-t,.flow-note,.note i{font-style:italic}
+.exw>span:first-child{font-weight:600}
+button{font-family:inherit}
+:root{--ink:#121118}
+.cal,.fc .ff h3,.exw>span:first-child{background-image:linear-gradient(180deg,#4a4957 0%,#0b0a0f 52%,#2c2b36 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.exw>span:first-child{-webkit-text-fill-color:var(--ink);background-image:none}
+.hk-label,.sm,.eg,.pot h3 small,.wl li b,.flow-note,.flow .br-s,.flow .ask-s,.cnt,.mini small,.fc .fq,.fc .fh{color:#34323f;opacity:1}
 .stars{font-size:1.4rem}
 </style>
 </head>
@@ -492,20 +508,23 @@ main{padding:10px 16px 40px}
 <div id="helping" class="panel" style="--c:var(--aux)">
   <span class="tag">Lesson 3</span>
   <h2>🦸 Helping Verbs = the Sidekicks</h2>
-  <div class="hero">
-    <div class="emoji">🦸‍♂️🤝🏃</div>
+  <div class="note" style="border-left-color:#e3bd62;background:color-mix(in srgb,#e3bd62 12%,white)">
+    <div class="ne">🦸</div>
     <div>
       <div class="trick">A helping verb is the SIDEKICK of the main verb.</div>
       <div>The hero (main verb) does the action. The sidekick adds <b>time</b> or <b>power</b>.</div>
     </div>
   </div>
-  <div class="sentence"><span class="n">She</span> <span class="v">is</span> <span class="s">reading</span> · <span class="n">I</span> <span class="m">can</span> <span class="s">swim</span></div>
+  <div class="exs">
+    <div class="ex"><span class="exw"><span class="n">She</span><small>who</small></span><span class="exw"><span class="v">is</span><small style="color:#8f6a0c">helper</small></span><span class="exw"><span class="s">reading</span><small style="color:#b0603f">action</small></span></div>
+    <div class="ex"><span class="exw"><span class="n">I</span><small>who</small></span><span class="exw"><span class="v">can</span><small style="color:#8f6a0c">helper</small></span><span class="exw"><span class="s">swim</span><small style="color:#b0603f">action</small></span></div>
+  </div>
 
-  <h3>Team 1: The Primary Trio 👨‍👩‍👧 (be · have · do)</h3>
+  <h3>Team 1: The Primary Trio (be · have · do)</h3>
   <div class="grid">
-    <div class="mini"><div class="e">🏃</div><b>BE</b><br>am is are was were<br><small>"is running" (happening now)</small></div>
-    <div class="mini"><div class="e">✅</div><b>HAVE</b><br>have has had<br><small>"have finished" (done!)</small></div>
-    <div class="mini"><div class="e">❓</div><b>DO</b><br>do does did<br><small>"Do you like it?" / "I did not go"</small></div>
+    <div class="mini"><div class="cal">be</div><div class="cl">am · is · are · was · were</div><small>"is running" (happening now)</small></div>
+    <div class="mini"><div class="cal">have</div><div class="cl">have · has · had</div><small>"have finished" (done!)</small></div>
+    <div class="mini"><div class="cal">do</div><div class="cl">do · does · did</div><small>"Do you like it?" / "I did not go"</small></div>
   </div>
 
   <h3>Team 2: The Modal Superheroes 💪</h3>

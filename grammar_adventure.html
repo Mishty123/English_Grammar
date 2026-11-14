@@ -237,11 +237,15 @@ button{font-family:inherit}
 .cal,.fc .ff h3,.exw>span:first-child{background-image:linear-gradient(180deg,#4a4957 0%,#0b0a0f 52%,#2c2b36 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
 .exw>span:first-child{-webkit-text-fill-color:var(--ink);background-image:none}
 .hk-label,.sm,.eg,.pot h3 small,.wl li b,.flow-note,.flow .br-s,.flow .ask-s,.cnt,.mini small,.fc .fq,.fc .fh{color:#34323f;opacity:1}
+.home{position:absolute;top:16px;left:18px;text-decoration:none;color:var(--ink);font-weight:600;font-size:.95rem;background:#fff;border:1.5px solid #e2d9c8;border-radius:999px;padding:7px 16px;box-shadow:0 2px 8px rgba(63,61,74,.08);transition:transform .15s,box-shadow .15s}
+.home:hover{transform:translateY(-1px);box-shadow:0 5px 12px rgba(63,61,74,.12)}
+@media(max-width:700px){.home{position:static;display:inline-block;margin-bottom:8px}}
 .stars{font-size:1.4rem}
 </style>
 </head>
 <body>
 <header>
+  <a class="home" href="index.html">🏠 Home</a>
   <h1>🌈 My Grammar Adventure 🚀</h1>
   <p>Tap the cards. Say the trick out loud. Try the quiz!</p>
 </header>

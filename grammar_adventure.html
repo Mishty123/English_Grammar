@@ -4,27 +4,36 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Grammar Adventure</title>
-<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Nunito:wght@600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
   --adj:#e3b5c4; --det:#b3c9e0; --aux:#e8d6a6; --q:#b8d4bf; --mod:#cdbfe0; --act:#eec3b2; --noun:#e6e3dc;
   --ink:#3f3d4a; --bg:#f6f2ea; --card:#fdfbf7;
 }
 *{box-sizing:border-box}
-body{margin:0;font-family:'Nunito',sans-serif;background:var(--bg);color:var(--ink);font-size:18px;line-height:1.5}
-h1,h2,h3,.big{font-family:'Baloo 2',sans-serif;margin:0}
-header{text-align:center;padding:28px 16px 12px;background:#ece4d6;}
+body{margin:0;font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--ink);font-size:17px;line-height:1.6}
+h1,h2{font-family:'Inter',system-ui,sans-serif;font-weight:700;letter-spacing:-.01em;margin:0}
+h3,.big{font-family:'Inter',system-ui,sans-serif;font-weight:700;margin:0}
+header{position:relative;text-align:center;padding:28px 16px 12px;background:#ece4d6;}
 header h1{font-size:2.3rem;color:var(--ink)}
 header p{margin:4px 0 0;font-weight:700}
+.hook{position:absolute;top:18px;right:18px;max-width:250px;text-align:left;background:#fff;border:1.5px solid #e2d9c8;border-radius:14px;padding:10px 14px 11px;box-shadow:0 3px 0 #e2d9c8}
+.hk-label{font-size:.68rem;letter-spacing:.16em;font-weight:700;color:#8a8576;margin-bottom:5px}
+.hk-line{font-size:1.1rem;font-weight:700;line-height:1.4}
+.hk-line b{padding:0 6px;border-radius:7px;margin-right:1px}
+.hk-c{background:#e3b5c4}.hk-s{background:#b3c9e0}.hk-f{background:#e8d6a6}
+.hk-p{background:#b3c9e0}.hk-o{background:#cdbfe0}.hk-k{background:#b8d4bf}
+@media(max-width:700px){.hook{position:static;max-width:none;margin:0 0 10px;display:inline-block}}
 .map{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;padding:14px;position:sticky;top:0;background:rgba(246,242,234,.95);backdrop-filter:blur(6px);z-index:5;border-bottom:2px solid #e2d9c8}
-.map a{text-decoration:none;color:var(--ink);font-weight:800;padding:8px 14px;border-radius:999px;font-family:'Baloo 2';font-size:1rem}
+.map a{text-decoration:none;color:var(--ink);font-weight:800;padding:8px 14px;border-radius:999px;font-family:'Inter',sans-serif;font-size:.95rem}
 main{max-width:900px;margin:0 auto;padding:16px}
-section{background:var(--card);border-radius:28px;padding:22px;margin:26px 0;border:3px solid var(--c);box-shadow:0 4px 0 var(--c)}
+section{position:relative;background:var(--card);border-radius:28px;padding:22px;margin:26px 0;border:3px solid var(--c);box-shadow:0 4px 0 var(--c)}
 section>h2{font-size:1.8rem;color:var(--ink)}
 .tag{display:inline-block;background:var(--c);color:var(--ink);border-radius:999px;padding:2px 12px;font-weight:800;font-size:.85rem;margin-bottom:6px}
 .hero{display:flex;gap:16px;align-items:center;flex-wrap:wrap;background:color-mix(in srgb,var(--c) 28%,white);border-radius:20px;padding:14px;margin:12px 0}
 .hero .emoji{font-size:4rem;line-height:1}
 .trick{font-weight:800;font-size:1.15rem}
+.hero .trick,.note .trick{font-weight:500;font-size:1.05rem}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin:12px 0}
 .mini{background:color-mix(in srgb,var(--c) 22%,white);border-radius:18px;padding:12px;text-align:center}
 .mini .e{font-size:2.4rem}
@@ -37,7 +46,7 @@ section>h2{font-size:1.8rem;color:var(--ink)}
 .m{background:var(--mod)}
 .w{background:var(--q)}
 .s{background:var(--act)}
-.sentence{font-size:1.5rem;text-align:center;margin:10px 0;font-family:'Baloo 2'}
+.sentence{font-size:1.5rem;text-align:center;margin:10px 0;font-weight:700}
 .flip{perspective:700px;cursor:pointer}
 .flip .in{position:relative;height:130px;transition:transform .5s;transform-style:preserve-3d}
 .flip.on .in{transform:rotateY(180deg)}
@@ -46,18 +55,172 @@ section>h2{font-size:1.8rem;color:var(--ink)}
 .back{background:color-mix(in srgb,var(--c) 22%,white);border:2px solid var(--c);transform:rotateY(180deg)}
 .front .big{font-size:1.6rem}
 .hint{font-size:.9rem;opacity:.85}
-.quiz{background:#f3eedf;border:2px dashed #cbbd94;border-radius:20px;padding:14px;margin-top:16px}
-.quiz h3{color:#6b5d2e}
-.opts{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
-.opts button{font:inherit;font-weight:800;border:2px solid #d6cfc0;background:#fdfbf7;color:var(--ink);border-radius:14px;padding:6px 14px;cursor:pointer}
+.quiz{display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px;background:#f3eedf;border:2px dashed #cbbd94;border-radius:14px;padding:8px 14px;margin-top:10px}
+.quiz h3{color:#6b5d2e;font-size:1rem;margin:0}
+.opts{display:flex;flex-wrap:wrap;gap:6px}
+.opts button{font:inherit;font-weight:800;border:2px solid #d6cfc0;background:#fdfbf7;color:var(--ink);border-radius:10px;padding:2px 12px;cursor:pointer;font-size:.95rem}
 .opts button.ok{background:#b8d4bf;border-color:#8fb89a}
 .opts button.no{background:#ecc3bd;border-color:#d49c94}
-.fb{min-height:1.5em;font-weight:800;margin-top:6px}
+.fb{font-weight:800;font-size:.95rem}
 table{width:100%;border-collapse:collapse;margin:10px 0}
 td,th{padding:8px;border-bottom:2px solid #ebe5d9;text-align:left}
 th{color:var(--ink)}
 .sandwich{display:flex;flex-direction:column;gap:6px;align-items:center;margin:10px 0}
 .next{text-align:center;color:#8a8576;font-weight:800;border:3px dashed #d6cfc0;border-radius:28px;padding:22px;margin:26px 0}
+.pot{background:color-mix(in srgb,var(--g) 30%,white);border-left:8px solid var(--g);border-radius:18px;padding:12px 16px;margin:12px 0}
+.pot h3{font-size:1.4rem}
+.pot h3 small{font-weight:700;font-size:.9rem;color:#6b6877}
+.w2{display:inline-block;background:var(--g);padding:2px 12px;border-radius:10px;font-weight:800;margin:3px}
+.pics{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px}
+.pics>span{display:flex;flex-direction:column;justify-content:flex-end;align-items:center;flex:1 1 110px;text-align:center;font-size:2.4rem;line-height:1.2;background:rgba(255,255,255,.7);border-radius:14px;padding:8px}
+.pics small{font-size:1rem}
+.pics .em{font-style:normal;line-height:1;margin-bottom:6px;height:3.2rem;display:flex;align-items:flex-end;justify-content:center}
+.hl{display:inline-block;background:var(--g);padding:1px 10px;border-radius:10px;font-weight:800;font-size:1rem}
+.note{display:flex;align-items:center;gap:14px;background:color-mix(in srgb,var(--det) 25%,white);border-left:8px solid var(--det);border-radius:16px;padding:12px 16px;margin:14px 0;font-size:1rem;line-height:1.5}
+.note .ne{font-size:1.8rem;flex:none;line-height:1}
+.hl2{color:#b4506e;font-weight:700}
+details.gn{background:#f3eedf;border:1.5px dashed #cbbd94;border-radius:14px;padding:8px 14px;margin:10px 0;font-size:.95rem}
+details.gn summary{cursor:pointer;font-weight:700;color:#6b5d2e}
+details.gn p{margin:8px 0 0}
+.ctl{display:flex;gap:6px;align-items:center;margin-left:auto}
+.cnt{font-size:.85rem;color:#8a8576;font-weight:700;margin-right:4px}
+.ctl button{font:inherit;font-weight:800;font-size:.95rem;border:2px solid #d6cfc0;background:#fdfbf7;color:var(--ink);border-radius:10px;padding:2px 12px;cursor:pointer}
+.ctl button.next{background:#b8d4bf;border-color:#8fb89a}
+.wl{list-style:none;margin:12px 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:10px 28px}
+.wl li{padding:2px 0 8px;border-bottom:1px solid rgba(63,61,74,.14);font-size:.95rem;font-weight:500;line-height:1.4}
+.wl li b{display:block;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;font-weight:700;color:#6b6877;margin-bottom:3px}
+.eg{display:block;color:#8a8794;font-size:.8rem;font-weight:400;margin-top:2px}
+.sm{font-size:.8rem;color:#8a8794;margin:12px 0 0;font-weight:400}
+.pocgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:12px 0;align-items:stretch}
+.pocstack{display:flex;flex-direction:column;gap:12px}
+.pocstack .pot{flex:1}
+.pocgrid .pot{margin:0;padding:12px 14px}
+.pocgrid .pot h3{font-size:1.25rem;line-height:1.25}
+.pocgrid .pot h3 small{display:block;margin-top:2px;font-size:.82rem}
+.pocgrid .wl{grid-template-columns:1fr;gap:0;margin-top:8px}
+.pocgrid .wl li{padding:6px 0;font-size:.92rem}
+.pocgrid .wl li:last-child{border-bottom:0}
+.pocgrid .pp .wl li b{color:#3f6590}
+.pocgrid .po .wl li b{color:#7a5fa3}
+.pocgrid .pc .wl li b{color:#3f7a58}
+@media(max-width:820px){.pocgrid{grid-template-columns:1fr}}
+.panel{position:relative}
+.panel>h2{font-size:1.8rem;color:var(--ink)}
+.tabs{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 18px;padding-bottom:12px;border-bottom:2px solid #e2d9c8}
+.tab{font:inherit;font-weight:700;border:2px solid #d6cfc0;background:#fdfbf7;color:var(--ink);border-radius:999px;padding:6px 18px;cursor:pointer}
+.tab.on[data-t="adjectives"]{background:var(--adj);border-color:var(--adj)}
+.tab.on[data-t="determiners"]{background:var(--det);border-color:var(--det)}
+.top{font:inherit;font-weight:700;font-size:1rem;border:2px solid #d6cfc0;background:#fdfbf7;color:var(--ink);border-radius:999px;padding:8px 18px;cursor:pointer}
+.top.on{background:#e6dcc8;border-color:#cbbd94}
+.tab.on[data-t="helping"]{background:var(--aux);border-color:var(--aux)}
+.tab.on[data-t="questions"]{background:var(--q);border-color:var(--q)}
+.flow{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:14px 0 6px}
+.flow .ask{flex:1 1 200px;background:#f4f0e8;border-radius:14px;padding:14px 16px;text-align:center}
+.flow .ask-s{font-size:.9rem;color:#6b6877}
+.flow .ask-q{font-size:1.1rem;font-weight:600;margin-top:2px}
+.flow .arw{font-size:1.5rem;color:#8a8576}
+.flow .branches{flex:1 1 240px;display:flex;flex-direction:column;gap:8px}
+.flow .br{border-radius:14px;padding:10px 14px}
+.flow .br-d{background:#eef3f8}
+.flow .br-a{background:#f9eff3}
+.flow .br-s{font-size:.9rem;color:#6b6877}
+.flow .br-t{font-size:1.05rem;font-weight:600;margin-top:2px}
+.flow-note{font-size:.9rem;color:#6b6877;margin:6px 0 0}
+@media(max-width:640px){.flow .arw{display:none}}
+:root{--bg:#fbf9f4}
+header{background:#f4eee2}
+.hero{background:color-mix(in srgb,var(--c) 14%,white)}
+.mini{background:color-mix(in srgb,var(--c) 11%,white)}
+.back{background:color-mix(in srgb,var(--c) 11%,white)}
+.pot{background:color-mix(in srgb,var(--g) 13%,white)}
+.hl{background:color-mix(in srgb,var(--g) 45%,white)}
+.note{background:color-mix(in srgb,var(--det) 12%,white);border-left-color:#6f9bd1}
+.quiz{background:#f8f5ec}
+.opts button.ok{background:#dcebe0;border-color:#9cc7ac}
+.opts button.no{background:#f6dedb;border-color:#e0aaa3}
+.ctl button.next{background:#dcebe0;border-color:#9cc7ac}
+.top.on{background:#f1eadb}
+.tab.on[data-t="adjectives"]{background:color-mix(in srgb,var(--adj) 45%,white)}
+.tab.on[data-t="determiners"]{background:color-mix(in srgb,var(--det) 45%,white)}
+.tab.on[data-t="helping"]{background:color-mix(in srgb,var(--aux) 45%,white)}
+.tab.on[data-t="questions"]{background:color-mix(in srgb,var(--q) 45%,white)}
+.tag{background:var(--e,var(--c))}
+.panel>h2{color:var(--eh,var(--ink))}
+#adjectives{--e:#e08ba8;--eh:#b03e66}
+#determiners{--e:#8fb0dc;--eh:#2f64a3}
+#helping{--e:#e3bd62;--eh:#8f6a0c}
+#questions{--e:#86c7a0;--eh:#2d7a52}
+.tab.on[data-t^="quiz"]{background:color-mix(in srgb,var(--mod) 45%,white);border-color:var(--mod)}
+#quizv,#quizs{--e:#ae9ad6;--eh:#6b4fa3}
+.quiz{display:block;background:#fff;border:2px solid #e3dbf0;border-radius:22px;padding:20px 22px 16px;margin-top:14px;box-shadow:0 4px 0 #e3dbf0}
+.quiz h3{font-size:1.15rem;color:#6b4fa3;margin:0 0 10px}
+.quiz>div:not(.opts):not(.fb):not(.ctl){font-size:1.6rem;font-weight:600;text-align:center;background:#f7f3fc;border-radius:14px;padding:12px;margin:0 0 14px}
+.quiz .opts{gap:10px;justify-content:center}
+.quiz .opts button{font-size:1.1rem;padding:9px 22px;border-radius:14px;border:2px solid #d9cfea;background:#fdfbff;transition:transform .1s,background .15s}
+.quiz .opts button:hover{background:#f1eafa;transform:translateY(-2px)}
+.quiz .opts button.ok{background:#dcebe0;border-color:#86c7a0}
+.quiz .opts button.no{background:#f6dedb;border-color:#e0aaa3}
+.quiz .fb{text-align:center;min-height:1.6em;margin-top:12px;font-size:1.05rem;color:#6b4fa3}
+.quiz .ctl{margin:12px 0 0;padding-top:12px;border-top:1.5px dashed #e3dbf0;justify-content:flex-end}
+.arr .slot{min-height:3.4rem;display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:center;background:#f7f3fc;border:2px dashed #d9cfea;border-radius:16px;padding:10px;margin:0 0 12px}
+.arr .slot:empty::before{content:'Tap the words in order ↓';color:#9a8fb3;font-size:.95rem;font-weight:500}
+.arr .bank{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:0}
+.arr .w{font:inherit;font-weight:700;font-size:1.1rem;color:var(--ink);background:#fdfbff;border:2px solid #d9cfea;border-radius:14px;padding:7px 16px;cursor:pointer;transition:transform .1s,background .15s}
+.arr .w:hover{background:#f1eafa;transform:translateY(-2px)}
+.arr .slot .w{background:#ece4f8;border-color:#ae9ad6}
+.arr .checkrow{text-align:center;margin:14px 0 0}
+.arr .check{font:inherit;font-weight:700;border:2px solid #ae9ad6;background:#ae9ad6;color:#fff;border-radius:12px;padding:6px 22px;cursor:pointer}
+.arr.good .slot{background:#e9f4ec;border-color:#86c7a0}
+.arr.bad .slot{background:#fbeceb;border-color:#e0aaa3}
+body{line-height:1.65;-webkit-font-smoothing:antialiased}
+header{background:linear-gradient(180deg,#f4eee2 0%,#fbf9f4 100%);padding:34px 16px 18px}
+header h1{font-size:2.4rem;letter-spacing:-.02em}
+header p{font-weight:500;color:#7a7687}
+.map{gap:8px;padding:12px;background:rgba(251,249,244,.92);border-bottom:1.5px solid #ece4d6}
+.top{font-weight:600;font-size:.98rem;padding:9px 20px;border:1.5px solid #e2d9c8;background:#fff;transition:background .15s,transform .15s,box-shadow .15s}
+.top:hover{transform:translateY(-1px);box-shadow:0 4px 10px rgba(63,61,74,.08)}
+.top.on{background:#f1eadb;border-color:#d9cdb0;box-shadow:0 2px 8px rgba(63,61,74,.08)}
+section{border:1.5px solid #e6dfd0;border-radius:30px;padding:28px 26px;box-shadow:0 10px 30px rgba(63,61,74,.07)}
+section>h2,.panel>h2{font-size:1.9rem;letter-spacing:-.02em;margin:4px 0 6px}
+.tag{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700;padding:3px 14px;color:#fff}
+.tabs{gap:10px;border-bottom:1.5px solid #ece4d6}
+.tab{font-weight:600;border:1.5px solid #e2d9c8;background:#fff;padding:7px 20px;transition:background .15s,transform .15s}
+.tab:hover{transform:translateY(-1px)}
+.hook{border:1.5px solid #ece4d6;border-radius:16px;box-shadow:0 6px 16px rgba(63,61,74,.08)}
+.hero,.note{border-radius:20px}
+.pot{border-radius:20px;box-shadow:0 3px 12px rgba(63,61,74,.05)}
+.pot h3{letter-spacing:-.01em}
+.pics{gap:12px}
+.pics>span{background:#fff;border-radius:16px;box-shadow:0 2px 8px rgba(63,61,74,.06);transition:transform .15s,box-shadow .15s}
+.pics>span:hover{transform:translateY(-3px);box-shadow:0 8px 16px rgba(63,61,74,.1)}
+.mini{border-radius:20px;box-shadow:0 2px 8px rgba(63,61,74,.05);transition:transform .15s}
+.mini:hover{transform:translateY(-2px)}
+.sentence{font-size:1.55rem;letter-spacing:-.01em;margin:16px 0}
+.word{border-radius:12px;font-weight:700}
+.flip .face{box-shadow:0 4px 12px rgba(63,61,74,.08)}
+.flow .ask,.flow .br{box-shadow:0 2px 8px rgba(63,61,74,.05)}
+.quiz{border-radius:24px;box-shadow:0 8px 22px rgba(107,79,163,.08);border:1.5px solid #e3dbf0}
+main{padding:10px 16px 40px}
+.exs{display:flex;flex-wrap:wrap;gap:18px 44px;justify-content:center;margin:18px 0}
+.ex{display:flex;gap:8px}
+.exw{display:flex;flex-direction:column;align-items:center}
+.exw>span:first-child{font-size:1.5rem;font-weight:700;padding:2px 12px;border-radius:10px}
+.exw small{font-size:.75rem;font-weight:600;margin-top:5px;color:#6b6877;letter-spacing:.02em}
+.pocgrid{grid-template-columns:repeat(3,1fr)}
+@media(max-width:820px){.pocgrid{grid-template-columns:1fr}}
+.fc{perspective:1000px;cursor:pointer}
+.fc .fin{display:grid;height:100%;transition:transform .55s;transform-style:preserve-3d}
+.fc.on .fin{transform:rotateY(180deg)}
+.fc .ff,.fc .fk{grid-area:1/1;backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.fc .ff{background:var(--g);border-radius:20px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:18px;min-height:150px;box-shadow:0 6px 18px rgba(63,61,74,.1)}
+.fc .fe{font-size:3rem;line-height:1}
+.fc .ff h3{font-size:1.5rem;margin-top:8px}
+.fc .fq{font-size:1rem;margin-top:4px}
+.fc .fh{margin-top:12px;font-size:.85rem;opacity:.7}
+.fc .fk{transform:rotateY(180deg)}
+.fc:hover .ff{box-shadow:0 10px 22px rgba(63,61,74,.14)}
+.fc.fw{margin:12px 0}
+.fc .fk.pot{margin:0}
 .stars{font-size:1.4rem}
 </style>
 </head>
@@ -68,93 +231,265 @@ th{color:var(--ink)}
 </header>
 
 <nav class="map">
-  <a href="#adjectives" style="background:var(--adj)">🎨 Adjectives</a>
-  <a href="#determiners" style="background:var(--det)">👉 Determiners</a>
-  <a href="#helping" style="background:var(--aux)">🦸 Helping Verbs</a>
-  <a href="#questions" style="background:var(--q)">❓ Questions</a>
+  <button type="button" class="top on" data-p="page-versus">⚖️ Determiners vs Adjectives</button>
+  <button type="button" class="top" data-p="page-verbs">🦸 Helping Verbs &amp; Question Structures</button>
 </nav>
 
 <main>
 
+<div class="page" id="page-versus">
+<!-- ============ PAGE 1: DETERMINERS vs ADJECTIVES ============ -->
+<section id="versus" style="--c:#d6cfc0">
+  <span class="tag">Versus</span>
+  <h2>⚖️ Determiners vs Adjectives</h2>
+  <div class="tabs">
+    <button type="button" class="tab on" data-t="determiners">👉 Determiners</button>
+    <button type="button" class="tab" data-t="adjectives">🎨 Adjectives</button>
+    <button type="button" class="tab" data-t="quizv">⭐ Quiz</button>
+  </div>
+
 <!-- ============ LESSON 1 ============ -->
-<section id="adjectives" style="--c:var(--adj)">
+<div id="adjectives" class="panel" style="--c:var(--adj)" hidden>
+  <div class="hook"><div class="hk-label">🧠 MEMORY HOOK</div><div class="hk-line"><b class="hk-c">C</b>arpet <b class="hk-s">S</b>mells <b class="hk-f">F</b>unny!</div></div>
   <span class="tag">Lesson 1</span>
   <h2>🎨 Adjectives = the Paint Brush</h2>
   <div class="hero">
     <div class="emoji">🖌️</div>
     <div>
       <div class="trick">Adjectives PAINT a noun with details.</div>
-      <div>They tell us: <b>What kind? How many? Which one?</b></div>
+      <div>They tell us: <b>What kind?</b> (Color, Size, Feeling)</div>
     </div>
   </div>
-  <div class="sentence"><span class="a">tall</span> <span class="n">giraffe</span> · <span class="a">three</span> <span class="n">apples</span> · <span class="a">red</span> <span class="n">car</span></div>
-  <div class="grid">
-    <div class="mini"><div class="e">🦒</div><b>tall</b> giraffe<br><small>What kind?</small></div>
-    <div class="mini"><div class="e">🍎🍎🍎</div><b>three</b> apples<br><small>How many?</small></div>
-    <div class="mini"><div class="e">🚗</div><b>red</b> car<br><small>What colour?</small></div>
-  </div>
-  <p><b>Remember:</b> adjective goes <u>before</u> the noun (<i>a red car</i>) or after <i>is / feels / seems</i> (<i>the car is red</i>).<br>
-  It never adds "s": <i>two big dogs</i> ✅ (not "bigs").</p>
-  <p><b>Stairs of comparing:</b> 🐭 <b>small</b> → 🐶 <b>smaller</b> → 🐘 <b>smallest</b> (tall → taller → tallest)</p>
 
-  <div class="quiz" data-answer="fluffy">
-    <h3>⭐ Quiz: Find the adjective</h3>
-    <div>The <i>fluffy</i> cat ran home. Which word paints the cat?</div>
-    <div class="opts"><button>fluffy</button><button>cat</button><button>ran</button></div>
-    <div class="fb"></div>
+  <p class="sm">👆 Tap a card to flip it and see the pictures.</p>
+  <div class="fc fw" style="--g:#e08ba8" onclick="this.classList.toggle('on')"><div class="fin">
+  <div class="ff"><div class="fe">🎨</div><h3>C = Color &amp; Look</h3><div class="fq">how it looks to your eyes</div><div class="fh">tap to flip</div></div>
+  <div class="fk pot">
+    <h3>🎨 C = Color &amp; Look <small>how it looks to your eyes</small></h3>
+    <div class="pics"><span>🍎<br><small><span class="hl">red</span> apple</small></span><span>🪙<br><small><span class="hl">shiny</span> coin</small></span><span>✨<br><small><span class="hl">sparkly</span> star</small></span><span>🦓<br><small><span class="hl">striped</span> zebra</small></span></div>
+  </div></div></div>
+
+  <div class="fc fw" style="--g:#8fb0dc" onclick="this.classList.toggle('on')"><div class="fin">
+  <div class="ff"><div class="fe">📏</div><h3>S = Size &amp; Shape</h3><div class="fq">how big or shaped it is</div><div class="fh">tap to flip</div></div>
+  <div class="fk pot">
+    <h3>📏 S = Size &amp; Shape <small>how big or shaped it is</small></h3>
+    <div class="pics"><span><em class="em" style="font-size:1rem">🐜</em><small><span class="hl">tiny</span> ant</small></span><span><em class="em" style="font-size:3rem">🐘</em><small><span class="hl">giant</span> elephant</small></span><span><em class="em">⚽</em><small><span class="hl">round</span> ball</small></span><span><em class="em">🐍</em><small><span class="hl">long</span> snake</small></span></div>
+  </div></div></div>
+
+  <div class="fc fw" style="--g:#e3bd62" onclick="this.classList.toggle('on')"><div class="fin">
+  <div class="ff"><div class="fe">💛</div><h3>F = Feeling &amp; Personality</h3><div class="fq">how it feels or acts</div><div class="fh">tap to flip</div></div>
+  <div class="fk pot">
+    <h3>💛 F = Feeling &amp; Personality <small>how it feels or acts</small></h3>
+    <div class="pics"><span><em class="em">👧🏽</em><small><span class="hl">happy</span> girl</small></span><span><em class="em">😾</em><small><span class="hl">grumpy</span> cat</small></span><span>🧸<br><small><span class="hl">soft</span> teddy</small></span><span>🐌<br><small><span class="hl">slimy</span> snail</small></span></div>
+  </div></div></div>
+
+  <p><b>Remember:</b> an <span class="hl2">adjective</span> goes <u>before</u> the noun (<i>a <span class="hl2">red</span> car</i>) or after <i>is / feels / seems</i> (<i>the car is <span class="hl2">red</span></i>).<br>
+  It never adds "s": <i>two <span class="hl2">big</span> dogs</i> ✅ (not "bigs").</p>
+  <details class="gn">
+    <summary>🔒 Grown-up note (tap to open)</summary>
+    <p>After <i>is / feels / seems</i>, the adjective is a <b>subject complement</b> (also called a predicative adjective): it describes the subject, not the verb. These are <b>linking (copular) verbs</b>: <i>be</i> (am, is, are, was, were) and others such as <i>seem, become, look, feel, sound, smell, taste, get, grow, stay, remain</i>.</p>
+    <p>Many linking verbs are state verbs (<i>seem, feel, look</i>), but the two groups are not the same. Some state verbs do not link (<i>know, own, love</i>), and some linking verbs show change, not a state (<i>become, get, turn</i>). Also, <i>feel / look / smell / taste</i> can be action verbs with no complement: <i>She looked at me.</i></p>
+  </details>
+  <p><b>Degrees of Comparison:</b> 🐶 <span class="hl2">small</span> → 🐱 <span class="hl2">smaller</span> → 🐭 <span class="hl2">smallest</span> (<span class="hl2">tall</span> → <span class="hl2">taller</span> → <span class="hl2">tallest</span>)</p>
+  <div class="note">
+    <div class="ne">👉</div>
+    <div><b>No longer adjectives!</b> Words that answer "Which one?", "Whose?" and "How many?" (like <i>this, my, many</i>) used to be called adjectives in old grammar books. In modern English grammar they are <b>determiners</b>. See Lesson 2!</div>
   </div>
-</section>
+
+</div>
 
 <!-- ============ LESSON 2 ============ -->
-<section id="determiners" style="--c:var(--det)">
+<div id="determiners" class="panel" style="--c:var(--det)">
+  <div class="hook"><div class="hk-label">🧠 MEMORY HOOK</div><div class="hk-line"><b class="hk-p">P</b>oop <b class="hk-o">O</b>n the <b class="hk-k">C</b>arpet</div></div>
   <span class="tag">Lesson 2</span>
   <h2>👉 Determiners = the Pointer</h2>
-  <div class="hero">
-    <div class="emoji">👆</div>
+  <div class="note">
+    <div class="ne">👆</div>
     <div>
-      <div class="trick">Determiners POINT to the noun and say which one or how much.</div>
+      <div class="trick">Determiners point to the noun and say <b><i>which one, whose one, how much, or how many</i></b> (point, own, and count).</div>
       <div>They come <b>first</b>, before any adjective.</div>
     </div>
   </div>
-  <div class="sentence"><span class="d">the</span> <span class="a">old</span> <span class="n">book</span> &nbsp;·&nbsp; <span class="d">my</span> <span class="a">big</span> <span class="n">dog</span></div>
-  <p class="trick">Order: 👆 Pointer first → 🎨 Paint next → 📦 Noun last</p>
-  <div class="grid">
-    <div class="flip" onclick="this.classList.toggle('on')"><div class="in">
-      <div class="face front"><div class="big">a / an / the</div><div class="hint">tap me</div></div>
-      <div class="face back"><b>Articles</b><br>a book, an egg, the sun</div></div></div>
-    <div class="flip" onclick="this.classList.toggle('on')"><div class="in">
-      <div class="face front"><div class="big">this / that</div><div class="hint">tap me</div></div>
-      <div class="face back"><b>Demonstratives</b><br>this (near) 👇 that (far) 👉<br>these / those = many</div></div></div>
-    <div class="flip" onclick="this.classList.toggle('on')"><div class="in">
-      <div class="face front"><div class="big">my / your / his</div><div class="hint">tap me</div></div>
-      <div class="face back"><b>Possessives</b><br>Who owns it?<br>my ball, her bag</div></div></div>
-    <div class="flip" onclick="this.classList.toggle('on')"><div class="in">
-      <div class="face front"><div class="big">some / many / few</div><div class="hint">tap me</div></div>
-      <div class="face back"><b>Quantifiers</b><br>How much?<br>some milk, many kids</div></div></div>
-    <div class="flip" onclick="this.classList.toggle('on')"><div class="in">
-      <div class="face front"><div class="big">one / two / three</div><div class="hint">tap me</div></div>
-      <div class="face back"><b>Numbers</b><br>two cats, five pens</div></div></div>
-    <div class="flip" onclick="this.classList.toggle('on')"><div class="in">
-      <div class="face front"><div class="big">which / whose</div><div class="hint">tap me</div></div>
-      <div class="face back"><b>Question words</b><br>Which road? Whose coat?</div></div></div>
+  <div class="exs">
+    <div class="ex"><span class="exw"><span class="d">the</span><small style="color:#3f6590">determiner</small></span><span class="exw"><span class="a">old</span><small style="color:#b4506e">adjective</small></span><span class="exw"><span class="n">book</span><small>noun</small></span></div>
+    <div class="ex"><span class="exw"><span class="d">my</span><small style="color:#3f6590">determiner</small></span><span class="exw"><span class="a">big</span><small style="color:#b4506e">adjective</small></span><span class="exw"><span class="n">dog</span><small>noun</small></span></div>
   </div>
-  <table style="--c:var(--det)">
-    <tr><th></th><th>Determiner 👆</th><th>Adjective 🎨</th></tr>
-    <tr><td>Job</td><td>Points / picks the noun</td><td>Describes the noun</td></tr>
-    <tr><td>Position</td><td>Comes first</td><td>Comes after it</td></tr>
-    <tr><td>After <i>is</i>?</td><td>No ❌ (not "The book is my")</td><td>Yes ✅ (The book is old)</td></tr>
-  </table>
+  <p class="trick">Order: 👆 Pointer first → 🎨 Paint next → 📦 Noun last</p>
+  <p class="sm">👆 Tap a card to flip it and see the words.</p>
+  <div class="pocgrid">
+  <div class="fc pp" style="--g:#8fb0dc" onclick="this.classList.toggle('on')"><div class="fin">
+  <div class="ff"><div class="fe">👆</div><h3>P = Point</h3><div class="fq">answers "which one?"</div><div class="fh">tap to flip</div></div>
+  <div class="fk pot">
+    <h3>👆 P = Point <small>answers "which one?"</small></h3>
+    <ul class="wl">
+      <li><b>Demonstratives:</b> this, that, these, those</li>
+      <li><b>Article:</b> the</li>
+      <li><b>Interrogatives (question words):</b> which, what <span class="eg">(which book? what color?)</span></li>
+    </ul>
+  </div></div></div>
 
+  <div class="fc po" style="--g:#ae9ad6" onclick="this.classList.toggle('on')"><div class="fin">
+  <div class="ff"><div class="fe">🎁</div><h3>O = Own</h3><div class="fq">answers "whose one?"</div><div class="fh">tap to flip</div></div>
+  <div class="fk pot">
+    <h3>🎁 O = Own <small>answers "whose one?"</small></h3>
+    <ul class="wl">
+      <li><b>Possessives (owners):</b> my, your, his, her, its, our, their</li>
+      <li><b>Interrogative (question word):</b> whose <span class="eg">(whose bag?)</span></li>
+    </ul>
+  </div></div></div>
+
+  <div class="fc pc" style="--g:#86c7a0" onclick="this.classList.toggle('on')"><div class="fin">
+  <div class="ff"><div class="fe">🔢</div><h3>C = Count</h3><div class="fq">answers "how many?" or "how much?"</div><div class="fh">tap to flip</div></div>
+  <div class="fk pot">
+    <h3>🔢 C = Count <small>answers "how many?" or "how much?"</small></h3>
+    <ul class="wl">
+      <li><b>Numbers:</b> one, two, three <span class="eg">(and first, second, third for order)</span></li>
+      <li><b>Article:</b> a, an <span class="eg">(means "one")</span></li>
+      <li><b>Quantifiers: countable (how many):</b> many, few, several, both, a couple of</li>
+      <li><b>Quantifiers: uncountable (how much):</b> much, little, a little</li>
+      <li><b>Quantifiers: work with both:</b> some, any, no, all, more, most, enough</li>
+      <li><b>Distributives: one at a time:</b> each, every, either, neither</li>
+    </ul>
+  </div></div></div>
+  </div>
+
+  <div class="note">
+    <div class="ne">🧠</div>
+    <div>
+      <b>Quick reminders</b><br>
+      • <i>a / an</i> sit under Count because they mean "one". <i>the</i> sits under Point because it points to a special noun.<br>
+      • Point and Own never go together: <i>the my book</i> ❌. Count can follow them: <i>my two cats</i> ✅<br>
+      • <i>whose</i> and <i>which</i> keep their group: whose = Own, which = Point.
+    </div>
+  </div>
+  <div class="flow">
+    <div class="ask"><div class="ask-s">Pick a word before a noun</div><div class="ask-q">What does it tell me?</div></div>
+    <div class="arw" aria-hidden="true">→</div>
+    <div class="branches">
+      <div class="br br-d"><div class="br-s">Which, whose, or how many?</div><div class="br-t" style="color:#3f6590">Determiner</div></div>
+      <div class="br br-a"><div class="br-s">What kind?</div><div class="br-t" style="color:#a14a66">Adjective</div></div>
+    </div>
+  </div>
+  <p class="flow-note">Determiners come first, adjectives come next. Only adjectives can follow <i>is</i>: <i>the book is old</i> ✅, <i>the book is my</i> ❌</p>
+</div>
+
+<!-- ============ QUIZ (Determiners vs Adjectives) ============ -->
+<div id="quizv" class="panel" style="--c:var(--mod)" hidden>
+  <span class="tag">Quiz</span>
+  <h2>⭐ Quiz Time</h2>
+  <p>Try each question. Tap <b>Next ›</b> for the next one.</p>
   <div class="quiz" data-answer="my">
-    <h3>⭐ Quiz: Which one is the determiner?</h3>
+    <h3>⭐ Which one is the determiner?</h3>
     <div><i>my red bag</i></div>
     <div class="opts"><button>my</button><button>red</button><button>bag</button></div>
     <div class="fb"></div>
   </div>
+  <div class="quiz" data-answer="C">
+    <h3>⭐ Which pot? &nbsp; <i>sparkly</i></h3>
+    <div class="opts"><button>C</button><button>S</button><button>F</button></div>
+    <div class="fb"></div>
+  </div>
+  <div class="quiz" data-answer="S">
+    <h3>⭐ Which pot? &nbsp; <i>giant</i></h3>
+    <div class="opts"><button>C</button><button>S</button><button>F</button></div>
+    <div class="fb"></div>
+  </div>
+  <div class="quiz" data-answer="F">
+    <h3>⭐ Which pot? &nbsp; <i>grumpy</i></h3>
+    <div class="opts"><button>C</button><button>S</button><button>F</button></div>
+    <div class="fb"></div>
+  </div>
+  <div class="quiz" data-answer="tall">
+    <h3>🎨 Which one is the adjective?</h3>
+    <div><i>the tall tree</i></div>
+    <div class="opts"><button>the</button><button>tall</button><button>tree</button></div>
+    <div class="fb"></div>
+  </div>
+  <div class="quiz" data-answer="those">
+    <h3>👆 Which one is the determiner?</h3>
+    <div><i>those green apples</i></div>
+    <div class="opts"><button>those</button><button>green</button><button>apples</button></div>
+    <div class="fb"></div>
+  </div>
+  <div class="quiz" data-answer="happy">
+    <h3>🎨 Which one is the adjective?</h3>
+    <div><i>my happy dog</i></div>
+    <div class="opts"><button>my</button><button>happy</button><button>dog</button></div>
+    <div class="fb"></div>
+  </div>
+  <div class="quiz" data-answer="three">
+    <h3>👆 Which one is the determiner?</h3>
+    <div><i>three small birds</i></div>
+    <div class="opts"><button>three</button><button>small</button><button>birds</button></div>
+    <div class="fb"></div>
+  </div>
+  <div class="quiz" data-answer="F">
+    <h3>⭐ Which pot? &nbsp; <i>soft</i></h3>
+    <div class="opts"><button>C</button><button>S</button><button>F</button></div>
+    <div class="fb"></div>
+  </div>
+  <div class="quiz" data-answer="S">
+    <h3>⭐ Which pot? &nbsp; <i>round</i></h3>
+    <div class="opts"><button>C</button><button>S</button><button>F</button></div>
+    <div class="fb"></div>
+  </div>
+  <div class="quiz" data-answer="C">
+    <h3>⭐ Which pot? &nbsp; <i>striped</i></h3>
+    <div class="opts"><button>C</button><button>S</button><button>F</button></div>
+    <div class="fb"></div>
+  </div>
+  <div class="quiz" data-answer="P">
+    <h3>👆 Which group? &nbsp; <i>this</i></h3>
+    <div class="opts"><button>P</button><button>O</button><button>C</button></div>
+    <div class="fb"></div>
+  </div>
+  <div class="quiz" data-answer="O">
+    <h3>👆 Which group? &nbsp; <i>their</i></h3>
+    <div class="opts"><button>P</button><button>O</button><button>C</button></div>
+    <div class="fb"></div>
+  </div>
+  <div class="quiz" data-answer="C">
+    <h3>👆 Which group? &nbsp; <i>many</i></h3>
+    <div class="opts"><button>P</button><button>O</button><button>C</button></div>
+    <div class="fb"></div>
+  </div>
+  <div class="quiz" data-answer="P">
+    <h3>👆 Which group? &nbsp; <i>which</i></h3>
+    <div class="opts"><button>P</button><button>O</button><button>C</button></div>
+    <div class="fb"></div>
+  </div>
+  <div class="quiz" data-answer="O">
+    <h3>👆 Which group? &nbsp; <i>whose</i></h3>
+    <div class="opts"><button>P</button><button>O</button><button>C</button></div>
+    <div class="fb"></div>
+  </div>
+  <div class="quiz" data-answer="the old book">
+    <h3>✅ Which one is in the right order?</h3>
+    <div class="opts"><button>old the book</button><button>the old book</button><button>book the old</button></div>
+    <div class="fb"></div>
+  </div>
+  <div class="quiz" data-answer="my two cats">
+    <h3>✅ Which one is correct?</h3>
+    <div class="opts"><button>the my cat</button><button>two my cats</button><button>my two cats</button></div>
+    <div class="fb"></div>
+  </div>
+</div>
 </section>
+</div>
+
+<!-- ============ PAGE 2: HELPING VERBS & QUESTION STRUCTURES ============ -->
+<div class="page" id="page-verbs" hidden>
+<section id="verbs" style="--c:#d6cfc0">
+  <span class="tag">Sentence building</span>
+  <h2>🦸 Helping Verbs &amp; ❓ Question Structures</h2>
+  <div class="tabs">
+    <button type="button" class="tab on" data-t="helping">🦸 Helping Verbs</button>
+    <button type="button" class="tab" data-t="questions">❓ Question Structures</button>
+    <button type="button" class="tab" data-t="quizs">⭐ Quiz</button>
+  </div>
 
 <!-- ============ LESSON 3 ============ -->
-<section id="helping" style="--c:var(--aux)">
+<div id="helping" class="panel" style="--c:var(--aux)">
   <span class="tag">Lesson 3</span>
   <h2>🦸 Helping Verbs = the Sidekicks</h2>
   <div class="hero">
@@ -193,17 +528,10 @@ th{color:var(--ink)}
       <div class="face back">Have to!<br>You must wear a seatbelt.</div></div></div>
   </div>
   <p><b>Song to remember:</b> "<i>Can, could, may, might, will, would, shall, should, must!</i>" 🎵</p>
-
-  <div class="quiz" data-answer="should">
-    <h3>⭐ Quiz: Pick the helping verb</h3>
-    <div><i>You should rest.</i></div>
-    <div class="opts"><button>You</button><button>should</button><button>rest</button></div>
-    <div class="fb"></div>
-  </div>
-</section>
+</div>
 
 <!-- ============ LESSON 4 ============ -->
-<section id="questions" style="--c:var(--q)">
+<div id="questions" class="panel" style="--c:var(--q)" hidden>
   <span class="tag">Lesson 4</span>
   <h2>❓ Questions = the Flip</h2>
   <div class="hero">
@@ -235,23 +563,130 @@ th{color:var(--ink)}
   <h3>3️⃣ Question tag — the Opposite Twin 👯</h3>
   <p>Positive sentence → negative tag. Negative sentence → positive tag.<br>
   <i>You are coming, <b>aren't you?</b></i> · <i>She doesn't smoke, <b>does she?</b></i></p>
+</div>
 
+<!-- ============ QUIZ (Helping Verbs & Questions) ============ -->
+<div id="quizs" class="panel" style="--c:var(--mod)" hidden>
+  <span class="tag">Quiz</span>
+  <h2>⭐ Quiz Time</h2>
+  <p>Try each question. Tap <b>Next ›</b> for the next one.</p>
+  <div class="quiz" data-answer="should">
+    <h3>⭐ Pick the helping verb</h3>
+    <div><i>You should rest.</i></div>
+    <div class="opts"><button>You</button><button>should</button><button>rest</button></div>
+    <div class="fb"></div>
+  </div>
   <div class="quiz" data-answer="Is he a doctor?">
-    <h3>⭐ Quiz: Make a question from "He is a doctor."</h3>
+    <h3>⭐ Make a question from "He is a doctor."</h3>
     <div class="opts"><button>He is a doctor?</button><button>Is he a doctor?</button><button>Does he is a doctor?</button></div>
     <div class="fb"></div>
   </div>
+  <div class="quiz arr" data-answer="Should I rest?" data-words="rest?|I|Should">
+    <h3>🧩 Make a question from the scrambled words</h3>
+    <p class="slot"></p><p class="bank"></p>
+    <p class="checkrow"><button type="button" class="check">Check ✓</button></p>
+    <div class="fb"></div>
+  </div>
+  <div class="quiz arr" data-answer="Is she coming?" data-words="coming?|she|Is">
+    <h3>🧩 Make a question from the scrambled words</h3>
+    <p class="slot"></p><p class="bank"></p>
+    <p class="checkrow"><button type="button" class="check">Check ✓</button></p>
+    <div class="fb"></div>
+  </div>
+  <div class="quiz arr" data-answer="Can you swim?" data-words="swim?|Can|you">
+    <h3>🧩 Make a question from the scrambled words</h3>
+    <p class="slot"></p><p class="bank"></p>
+    <p class="checkrow"><button type="button" class="check">Check ✓</button></p>
+    <div class="fb"></div>
+  </div>
+  <div class="quiz arr" data-answer="Do you like tea?" data-words="like|tea?|you|Do">
+    <h3>🧩 Make a question from the scrambled words</h3>
+    <p class="slot"></p><p class="bank"></p>
+    <p class="checkrow"><button type="button" class="check">Check ✓</button></p>
+    <div class="fb"></div>
+  </div>
+  <div class="quiz arr" data-answer="Where do you live?" data-words="do|Where|live?|you">
+    <h3>🧩 Make a question from the scrambled words</h3>
+    <p class="slot"></p><p class="bank"></p>
+    <p class="checkrow"><button type="button" class="check">Check ✓</button></p>
+    <div class="fb"></div>
+  </div>
+  <div class="quiz arr" data-answer="You are coming, aren't you?" data-words="are|You|aren't|you?|coming,">
+    <h3>🧩 Make a question tag from the scrambled words</h3>
+    <p class="slot"></p><p class="bank"></p>
+    <p class="checkrow"><button type="button" class="check">Check ✓</button></p>
+    <div class="fb"></div>
+  </div>
+  <div class="quiz" data-answer="is">
+    <h3>🦸 Pick the helping verb</h3>
+    <div><i>She is reading.</i></div>
+    <div class="opts"><button>She</button><button>is</button><button>reading</button></div>
+    <div class="fb"></div>
+  </div>
+  <div class="quiz" data-answer="must">
+    <h3>💪 Pick the modal verb</h3>
+    <div><i>You must wear a seatbelt.</i></div>
+    <div class="opts"><button>You</button><button>must</button><button>wear</button></div>
+    <div class="fb"></div>
+  </div>
+  <div class="quiz" data-answer="can">
+    <h3>💪 Which modal shows ability?</h3>
+    <div class="opts"><button>can</button><button>must</button><button>might</button></div>
+    <div class="fb"></div>
+  </div>
+  <div class="quiz" data-answer="Where do you live?">
+    <h3>❓ Which one is a correct question?</h3>
+    <div class="opts"><button>Where you live?</button><button>Where do you live?</button><button>Where does you live?</button></div>
+    <div class="fb"></div>
+  </div>
+  <div class="quiz" data-answer="Do">
+    <h3>📞 Call a free helper</h3>
+    <div><i>___ you like tea?</i></div>
+    <div class="opts"><button>Do</button><button>Is</button><button>Can</button></div>
+    <div class="fb"></div>
+  </div>
+  <div class="quiz" data-answer="does she?">
+    <h3>👯 Finish the question tag</h3>
+    <div><i>She doesn't smoke, ___</i></div>
+    <div class="opts"><button>does she?</button><button>doesn't she?</button><button>is she?</button></div>
+    <div class="fb"></div>
+  </div>
+  <div class="quiz arr" data-answer="Does he play?" data-words="play?|he|Does">
+    <h3>🧩 Make a question from the scrambled words</h3>
+    <p class="slot"></p><p class="bank"></p>
+    <p class="checkrow"><button type="button" class="check">Check ✓</button></p>
+    <div class="fb"></div>
+  </div>
+  <div class="quiz arr" data-answer="Who called you?" data-words="you?|Who|called">
+    <h3>🧩 Make a question from the scrambled words</h3>
+    <p class="slot"></p><p class="bank"></p>
+    <p class="checkrow"><button type="button" class="check">Check ✓</button></p>
+    <div class="fb"></div>
+  </div>
+  <div class="quiz arr" data-answer="When will you come?" data-words="you|come?|will|When">
+    <h3>🧩 Make a question from the scrambled words</h3>
+    <p class="slot"></p><p class="bank"></p>
+    <p class="checkrow"><button type="button" class="check">Check ✓</button></p>
+    <div class="fb"></div>
+  </div>
+  <div class="quiz arr" data-answer="Why is she crying?" data-words="crying?|she|Why|is">
+    <h3>🧩 Make a question from the scrambled words</h3>
+    <p class="slot"></p><p class="bank"></p>
+    <p class="checkrow"><button type="button" class="check">Check ✓</button></p>
+    <div class="fb"></div>
+  </div>
+</div>
 </section>
+</div>
 
 <!-- NEW LESSONS GET ADDED ABOVE THIS LINE -->
-<div class="next">🌱 More lessons coming soon...<br><small>Every new thing we learn will be added here!</small></div>
 
 </main>
 
 <script>
 document.querySelectorAll('.quiz').forEach(function(q){
   var ans = q.dataset.answer;
-  q.querySelectorAll('button').forEach(function(b){
+  q.querySelectorAll('.opts button').forEach(function(b){
     b.addEventListener('click', function(){
       var fb = q.querySelector('.fb');
       var right = b.textContent.trim().replace(/\?$/,'') === ans.replace(/\?$/,'');
@@ -259,6 +694,69 @@ document.querySelectorAll('.quiz').forEach(function(q){
       b.classList.add(right ? 'ok' : 'no');
       fb.textContent = right ? '🎉 Yes! Great job! ⭐⭐⭐' : '🤔 Almost! Try again.';
     });
+  });
+});
+</script>
+<script>
+document.querySelectorAll('.arr').forEach(function(q){
+  var slot = q.querySelector('.slot'), bank = q.querySelector('.bank'), fb = q.querySelector('.fb');
+  var words = q.dataset.words.split('|');
+  function mk(t){
+    var b = document.createElement('button'); b.type = 'button'; b.className = 'w'; b.textContent = t;
+    b.onclick = function(){ (b.parentNode === bank ? slot : bank).appendChild(b); q.classList.remove('good','bad'); fb.textContent = ''; };
+    return b;
+  }
+  function reset(){ slot.innerHTML = ''; bank.innerHTML = ''; words.forEach(function(t){ bank.appendChild(mk(t)); }); q.classList.remove('good','bad'); fb.textContent = ''; }
+  q._reset = reset; reset();
+  q.querySelector('.check').onclick = function(){
+    var s = [].map.call(slot.children, function(b){ return b.textContent; }).join(' ');
+    var ok = s === q.dataset.answer;
+    q.classList.toggle('good', ok); q.classList.toggle('bad', !ok);
+    fb.textContent = ok ? '🎉 Yes! Great job! ⭐⭐⭐' : '🤔 Almost! Tap a word to move it, then try again.';
+  };
+});
+</script>
+<script>
+(function(){
+  function clear(q){
+    if (q._reset) q._reset();
+    q.querySelectorAll('.opts button').forEach(function(b){ b.classList.remove('ok','no'); });
+    q.querySelector('.fb').textContent = '';
+  }
+  document.querySelectorAll('section:not(#versus):not(#verbs), .panel').forEach(function(sec){
+    var qs = [].slice.call(sec.querySelectorAll('.quiz'));
+    if (!qs.length) return;
+    function show(i){ qs.forEach(function(q,j){ q.style.display = (j === i) ? '' : 'none'; }); }
+    qs.forEach(function(q,i){
+      var ctl = document.createElement('div'); ctl.className = 'ctl';
+      if (qs.length > 1){
+        var cnt = document.createElement('span'); cnt.className = 'cnt'; cnt.textContent = (i+1) + ' / ' + qs.length; ctl.appendChild(cnt);
+      }
+      if (i < qs.length - 1){
+        var n = document.createElement('button'); n.type = 'button'; n.className = 'next'; n.textContent = 'Next ›';
+        n.onclick = function(){ show(i+1); }; ctl.appendChild(n);
+      }
+      var r = document.createElement('button'); r.type = 'button'; r.textContent = 'Reset ↺';
+      r.onclick = function(){ qs.forEach(clear); show(0); }; ctl.appendChild(r);
+      q.appendChild(ctl);
+    });
+    show(0);
+  });
+})();
+</script>
+<script>
+document.querySelectorAll('.tab').forEach(function(t){
+  t.addEventListener('click', function(){
+    var sec = t.closest('section');
+    sec.querySelectorAll('.tab').forEach(function(x){ x.classList.toggle('on', x === t); });
+    sec.querySelectorAll('.panel').forEach(function(p){ p.hidden = (p.id !== t.dataset.t); });
+  });
+});
+document.querySelectorAll('.top').forEach(function(b){
+  b.addEventListener('click', function(){
+    document.querySelectorAll('.top').forEach(function(x){ x.classList.toggle('on', x === b); });
+    document.querySelectorAll('.page').forEach(function(p){ p.hidden = (p.id !== b.dataset.p); });
+    window.scrollTo(0, 0);
   });
 });
 </script>

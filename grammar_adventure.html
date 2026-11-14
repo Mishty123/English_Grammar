@@ -58,6 +58,11 @@ td,th{padding:8px;border-bottom:2px solid #ebe5d9;text-align:left}
 th{color:var(--ink)}
 .sandwich{display:flex;flex-direction:column;gap:6px;align-items:center;margin:10px 0}
 .next{text-align:center;color:#8a8576;font-weight:800;border:3px dashed #d6cfc0;border-radius:28px;padding:22px;margin:26px 0}
+.poc{background:color-mix(in srgb,var(--g) 30%,white);border-left:8px solid var(--g);border-radius:18px;padding:12px 16px;margin:12px 0}
+.poc h3{font-size:1.4rem}
+.poc h3 small{font-family:'Nunito';font-weight:700;font-size:.9rem;color:#6b6877}
+.w2{display:inline-block;background:var(--g);padding:2px 12px;border-radius:10px;font-weight:800;margin:3px}
+.sm{font-size:.95rem;color:#5b5966;margin:4px 0}
 .stars{font-size:1.4rem}
 </style>
 </head>
@@ -83,24 +88,36 @@ th{color:var(--ink)}
   <div class="hero">
     <div class="emoji">🖌️</div>
     <div>
-      <div class="trick">Adjectives PAINT a noun with details.</div>
-      <div>They tell us: <b>What kind? How many? Which one?</b></div>
+      <div class="trick">Adjectives PAINT a noun. They tell us WHAT KIND.</div>
+      <div>Big or small? What colour? What feeling? What taste?</div>
     </div>
   </div>
-  <div class="sentence"><span class="a">tall</span> <span class="n">giraffe</span> · <span class="a">three</span> <span class="n">apples</span> · <span class="a">red</span> <span class="n">car</span></div>
+  <div class="sentence"><span class="a">tall</span> <span class="n">giraffe</span> · <span class="a">red</span> <span class="n">car</span> · <span class="a">happy</span> <span class="n">girl</span></div>
   <div class="grid">
-    <div class="mini"><div class="e">🦒</div><b>tall</b> giraffe<br><small>What kind?</small></div>
-    <div class="mini"><div class="e">🍎🍎🍎</div><b>three</b> apples<br><small>How many?</small></div>
-    <div class="mini"><div class="e">🚗</div><b>red</b> car<br><small>What colour?</small></div>
+    <div class="mini"><div class="e">🦒</div><b>tall</b> giraffe<br><small>size</small></div>
+    <div class="mini"><div class="e">🚗</div><b>red</b> car<br><small>colour</small></div>
+    <div class="mini"><div class="e">😊</div><b>happy</b> girl<br><small>feeling</small></div>
+    <div class="mini"><div class="e">🛏️</div><b>soft</b> pillow<br><small>touch</small></div>
+    <div class="mini"><div class="e">🥭</div><b>sweet</b> mango<br><small>taste</small></div>
   </div>
-  <p><b>Remember:</b> adjective goes <u>before</u> the noun (<i>a red car</i>) or after <i>is / feels / seems</i> (<i>the car is red</i>).<br>
+  <p><b>Remember:</b> an adjective goes <u>before</u> the noun (<i>a red car</i>) or after <i>is / feels / seems</i> (<i>the car is red</i>).<br>
   It never adds "s": <i>two big dogs</i> ✅ (not "bigs").</p>
   <p><b>Stairs of comparing:</b> 🐭 <b>small</b> → 🐶 <b>smaller</b> → 🐘 <b>smallest</b> (tall → taller → tallest)</p>
+  <div class="hero" style="--c:var(--det)">
+    <div class="emoji">👉</div>
+    <div><b>Not an adjective job:</b> "Which one?", "Whose?" and "How many?" belong to <b>determiners</b>. See Lesson 2!</div>
+  </div>
 
   <div class="quiz" data-answer="fluffy">
-    <h3>⭐ Quiz: Find the adjective</h3>
-    <div>The <i>fluffy</i> cat ran home. Which word paints the cat?</div>
-    <div class="opts"><button>fluffy</button><button>cat</button><button>ran</button></div>
+    <h3>⭐ Quiz: Which word tells WHAT KIND?</h3>
+    <div><i>The fluffy cat ran home.</i></div>
+    <div class="opts"><button>The</button><button>fluffy</button><button>cat</button></div>
+    <div class="fb"></div>
+  </div>
+  <div class="quiz" data-answer="red">
+    <h3>⭐ Quiz: Which word tells WHAT KIND?</h3>
+    <div><i>My three red balls</i></div>
+    <div class="opts"><button>My</button><button>three</button><button>red</button></div>
     <div class="fb"></div>
   </div>
 </section>
@@ -108,47 +125,72 @@ th{color:var(--ink)}
 <!-- ============ LESSON 2 ============ -->
 <section id="determiners" style="--c:var(--det)">
   <span class="tag">Lesson 2</span>
-  <h2>👉 Determiners = the Pointer</h2>
+  <h2>👉 Determiners = P · O · C</h2>
   <div class="hero">
-    <div class="emoji">👆</div>
+    <div class="emoji">👆🎁🔢</div>
     <div>
-      <div class="trick">Determiners POINT to the noun and say which one or how much.</div>
+      <div class="trick">Determiners come before a noun. Sort them with <b>P-O-C</b>: Point, Own, Count.</div>
       <div>They come <b>first</b>, before any adjective.</div>
     </div>
   </div>
-  <div class="sentence"><span class="d">the</span> <span class="a">old</span> <span class="n">book</span> &nbsp;·&nbsp; <span class="d">my</span> <span class="a">big</span> <span class="n">dog</span></div>
-  <p class="trick">Order: 👆 Pointer first → 🎨 Paint next → 📦 Noun last</p>
-  <div class="grid">
-    <div class="flip" onclick="this.classList.toggle('on')"><div class="in">
-      <div class="face front"><div class="big">a / an / the</div><div class="hint">tap me</div></div>
-      <div class="face back"><b>Articles</b><br>a book, an egg, the sun</div></div></div>
-    <div class="flip" onclick="this.classList.toggle('on')"><div class="in">
-      <div class="face front"><div class="big">this / that</div><div class="hint">tap me</div></div>
-      <div class="face back"><b>Demonstratives</b><br>this (near) 👇 that (far) 👉<br>these / those = many</div></div></div>
-    <div class="flip" onclick="this.classList.toggle('on')"><div class="in">
-      <div class="face front"><div class="big">my / your / his</div><div class="hint">tap me</div></div>
-      <div class="face back"><b>Possessives</b><br>Who owns it?<br>my ball, her bag</div></div></div>
-    <div class="flip" onclick="this.classList.toggle('on')"><div class="in">
-      <div class="face front"><div class="big">some / many / few</div><div class="hint">tap me</div></div>
-      <div class="face back"><b>Quantifiers</b><br>How much?<br>some milk, many kids</div></div></div>
-    <div class="flip" onclick="this.classList.toggle('on')"><div class="in">
-      <div class="face front"><div class="big">one / two / three</div><div class="hint">tap me</div></div>
-      <div class="face back"><b>Numbers</b><br>two cats, five pens</div></div></div>
-    <div class="flip" onclick="this.classList.toggle('on')"><div class="in">
-      <div class="face front"><div class="big">which / whose</div><div class="hint">tap me</div></div>
-      <div class="face back"><b>Question words</b><br>Which road? Whose coat?</div></div></div>
+
+  <div class="poc" style="--g:#b3c9e0">
+    <h3>👆 P = Point <small>"Which one?"</small></h3>
+    <p><span class="w2">this</span><span class="w2">that</span><span class="w2">these</span><span class="w2">those</span><span class="w2">the</span><span class="w2">which</span><span class="w2">what</span></p>
+    <p class="sm">this book · those shoes · <b>the</b> sun · <b>which</b> road? · <b>what</b> colour?</p>
+    <p class="sm">Grown-up names: demonstratives, "the", question words.</p>
   </div>
+
+  <div class="poc" style="--g:#cdbfe0">
+    <h3>🎁 O = Own <small>"Whose one?"</small></h3>
+    <p><span class="w2">my</span><span class="w2">your</span><span class="w2">his</span><span class="w2">her</span><span class="w2">its</span><span class="w2">our</span><span class="w2">their</span><span class="w2">whose</span></p>
+    <p class="sm">my bag · her coat · our house · <b>whose</b> bag?</p>
+    <p class="sm">Grown-up names: possessives, "whose".</p>
+  </div>
+
+  <div class="poc" style="--g:#b8d4bf">
+    <h3>🔢 C = Count <small>"How many? How much?"</small></h3>
+    <table style="--c:var(--det)">
+      <tr><td><b>Numbers</b></td><td>one, two, three · first, second, third</td></tr>
+      <tr><td><b>One</b></td><td>a, an (they mean "one")</td></tr>
+      <tr><td><b>How many?</b> 🍎🍎</td><td>many, few, several, both, a couple of</td></tr>
+      <tr><td><b>How much?</b> 💧</td><td>much, little, a little</td></tr>
+      <tr><td><b>Both kinds</b></td><td>some, any, no, all, more, most, enough</td></tr>
+      <tr><td><b>One at a time</b></td><td>each, every, either, neither</td></tr>
+    </table>
+    <p class="sm">Grown-up names: numbers, quantifiers, distributives, "a / an".</p>
+  </div>
+
+  <h3>🧠 Remember</h3>
+  <ul>
+    <li><b>a / an</b> are in <b>Count</b> because they mean "one". <b>the</b> is in <b>Point</b> because it points to a special noun.</li>
+    <li>👆 Point and 🎁 Own <b>never go together</b>: <i>the my book</i> ❌</li>
+    <li>🔢 Count can tag along after them: <i>my two cats</i> ✅ · <i>these three books</i> ✅ · <i>all the boys</i> ✅</li>
+  </ul>
+
+  <h3>The order picture</h3>
+  <div class="sentence"><span class="d">my</span> <span class="d">two</span> <span class="a">red</span> <span class="n">balls</span></div>
+  <p class="trick" style="text-align:center">👆🎁🔢 Determiner → 🎨 Adjective → 📦 Noun</p>
   <table style="--c:var(--det)">
-    <tr><th></th><th>Determiner 👆</th><th>Adjective 🎨</th></tr>
-    <tr><td>Job</td><td>Points / picks the noun</td><td>Describes the noun</td></tr>
+    <tr><th></th><th>Determiner 👆🎁🔢</th><th>Adjective 🎨</th></tr>
+    <tr><td>Job</td><td>Which? Whose? How many?</td><td>What kind?</td></tr>
     <tr><td>Position</td><td>Comes first</td><td>Comes after it</td></tr>
     <tr><td>After <i>is</i>?</td><td>No ❌ (not "The book is my")</td><td>Yes ✅ (The book is old)</td></tr>
   </table>
 
-  <div class="quiz" data-answer="my">
-    <h3>⭐ Quiz: Which one is the determiner?</h3>
-    <div><i>my red bag</i></div>
-    <div class="opts"><button>my</button><button>red</button><button>bag</button></div>
+  <div class="quiz" data-answer="Own">
+    <h3>⭐ Quiz: Which group? &nbsp; <i>whose</i></h3>
+    <div class="opts"><button>Point</button><button>Own</button><button>Count</button></div>
+    <div class="fb"></div>
+  </div>
+  <div class="quiz" data-answer="Count">
+    <h3>⭐ Quiz: Which group? &nbsp; <i>every</i></h3>
+    <div class="opts"><button>Point</button><button>Own</button><button>Count</button></div>
+    <div class="fb"></div>
+  </div>
+  <div class="quiz" data-answer="Point">
+    <h3>⭐ Quiz: Which group? &nbsp; <i>those</i></h3>
+    <div class="opts"><button>Point</button><button>Own</button><button>Count</button></div>
     <div class="fb"></div>
   </div>
 </section>

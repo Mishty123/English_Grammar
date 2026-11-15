@@ -1,0 +1,763 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Questions</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Yeseva+One&family=Lora:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Dancing+Script:wght@400;500;600;700&display=swap">
+<style>
+:root {
+  --hero:#13496B; --bg:#F2F6F9; --surface:#FBFDFE; --soft:#E6EEF4; --fg:#14262F; --muted:#4A5F6B; --line:#D3DFE7;
+  --band:#13496B; --band-fg:#FFFFFF; --h2c:#13496B; --h3c:#0F6B73;
+  --term:#8A5A00; --term-bg:#F8EBCB; --wrong:#9A4B00; --wrong-bg:#FBE8D2; --right:#1F6B3A; --right-bg:#DDF1E3;
+  --head:"Yeseva One",Georgia,serif; --body:"Lora",Georgia,serif; --cal:"Dancing Script","Brush Script MT",cursive;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --hero:#1B3342; --bg:#0F1C24; --surface:#17272F; --soft:#1F3440; --fg:#EAF2F7; --muted:#B4C6D2; --line:#2F4654;
+    --band:#1D5073; --h2c:#8FC6E8; --h3c:#7FD0D0; --term:#F0C96A; --term-bg:#43350F; --wrong:#FFB070; --wrong-bg:#4A2E12; --right:#9BE0AE; --right-bg:#17402A; color-scheme:dark; }
+}
+* { box-sizing:border-box; }
+body { margin:0; background:var(--bg); color:var(--fg); font-family:var(--body); font-size:18px; line-height:1.65; padding:28px max(16px,env(safe-area-inset-left)) 64px; }
+.page { max-width:900px; margin:0 auto; display:flex; flex-direction:column; gap:40px; }
+h1,h2,h3 { font-family:var(--head); font-weight:400; line-height:1.2; margin:0; text-wrap:balance; }
+h1 { font-size:clamp(2rem,6vw,2.8rem); color:#13496B; }
+h3 { font-size:1.1rem; color:var(--h3c); }
+p { margin:0; }
+.gh-home { align-self:flex-start; display:inline-flex; gap:6px; padding:7px 14px; border-radius:999px; background:var(--surface); color:var(--fg); border:2px solid var(--line); font:700 .9rem var(--body); text-decoration:none; }
+.hero { position:relative; overflow:hidden; background:#DCE9F2; border-radius:18px; padding:30px 28px 26px; box-shadow:0 8px 24px rgba(15,50,75,.12); }
+.hero .label { font-family:var(--cal); font-weight:700; font-size:1.45rem; color:#1F5F7A; }
+.hero .label::before { content:""; display:inline-block; width:8px; height:8px; border-radius:50%; background:#13496B; margin-right:9px; vertical-align:middle; }
+.hero h1::after { content:""; display:block; width:68px; height:5px; border-radius:4px; background:#13496B; margin-top:14px; }
+.lede { font-size:1.12rem; max-width:62ch; margin-top:12px; color:#14262F; }
+@media (prefers-color-scheme: dark) { .hero { background:#1B3342; } .hero h1,.lede { color:#EAF2F7; } .hero .label { color:#8FC6E8; } }
+.jump { display:flex; flex-wrap:wrap; gap:8px; margin:20px 0 0; padding:0; list-style:none; }
+.jump a { display:inline-block; padding:5px 14px; border:1px solid #AFC6D6; border-radius:999px; background:#FBFDFE; color:#14262F; text-decoration:none; font-size:.92rem; }
+.jump a:hover,.jump a:focus-visible { border-color:#13496B; outline:none; }
+.jump a[aria-selected="true"] { background:#13496B; border-color:#13496B; color:#fff; font-weight:700; }
+.tabpanel { display:flex; flex-direction:column; gap:40px; }
+.tabpanel[hidden] { display:none; }
+.score { font-family:var(--head); font-size:1.15rem; color:var(--h3c); }
+.qgroup { font-family:var(--cal); font-weight:700; font-size:1.35rem; color:var(--h3c); margin:22px 0 8px; }
+.qitem { background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:18px 20px; margin-bottom:12px; box-shadow:0 1px 2px rgba(15,50,75,.06); }
+.qitem .qt { font-style:italic; font-size:1.08rem; margin-bottom:10px; }
+.qopts { display:flex; flex-wrap:wrap; gap:8px; }
+.qopt { font:inherit; font-style:italic; padding:7px 16px; border-radius:999px; border:1.5px solid var(--line); background:var(--soft); color:var(--fg); cursor:pointer; }
+.qopt:hover:not(:disabled) { border-color:var(--h2c); }
+.qopt:disabled { cursor:default; }
+.qopt.right { background:var(--right-bg); border-color:var(--right); color:var(--right); font-weight:700; }
+.qopt.wrong { background:var(--wrong-bg); border-color:var(--wrong); color:var(--wrong); }
+.qfb { margin-top:10px; font-size:.98rem; color:var(--muted); }
+.qz-chips { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:14px; }
+.qz-chip { font:inherit; font-size:.92rem; padding:5px 14px; border-radius:999px; border:1px solid #AFC6D6; background:var(--surface); color:var(--fg); cursor:pointer; }
+.qz-chip[aria-pressed="true"] { background:#13496B; border-color:#13496B; color:#fff; font-weight:700; }
+.qz { background:var(--surface); border:1px solid var(--line); border-radius:26px; padding:26px 28px 22px; box-shadow:0 1px 2px rgba(15,50,75,.06),0 6px 18px rgba(15,50,75,.07); }
+.qz-set { font-family:var(--head); font-size:1.15rem; color:var(--h3c); margin-bottom:14px; }
+.qz-q { background:var(--soft); border-radius:18px; padding:22px 18px; text-align:center; font-style:italic; font-weight:600; font-size:1.35rem; }
+.qz-opts { display:flex; flex-wrap:wrap; justify-content:center; gap:12px; margin:20px 0 6px; }
+.qz-opt { font:inherit; font-weight:700; font-size:1.05rem; padding:12px 24px; border-radius:18px; border:2.5px solid var(--line); background:var(--surface); color:var(--fg); cursor:pointer; }
+.qz-opt:hover:not(:disabled) { border-color:var(--h2c); }
+.qz-opt:disabled { cursor:default; }
+.qz-opt.right { background:var(--right-bg); border-color:var(--right); color:var(--right); }
+.qz-opt.wrong { background:var(--wrong-bg); border-color:var(--wrong); color:var(--wrong); }
+.qz-fb { min-height:3.2em; margin-top:12px; text-align:center; color:var(--muted); font-size:1rem; }
+.qz-foot { display:flex; flex-wrap:wrap; align-items:center; justify-content:flex-end; gap:10px; border-top:2px dashed var(--line); margin-top:10px; padding-top:18px; }
+.qz-count { margin-right:auto; font-weight:700; color:var(--muted); }
+.qz-btn { font:inherit; font-weight:700; padding:9px 20px; border-radius:16px; border:2.5px solid var(--line); background:var(--soft); color:var(--fg); cursor:pointer; }
+.qz-btn.go { background:var(--right-bg); border-color:var(--right); color:var(--right); }
+.qz-btn:disabled { opacity:.45; cursor:default; }
+.qz-big { font-family:var(--head); font-size:2.6rem; color:var(--h2c); text-align:center; line-height:1.1; }
+.qz-msg { text-align:center; margin:6px 0 18px; color:var(--muted); }
+.qz h4 { font-family:var(--head); font-weight:400; font-size:1.05rem; color:var(--h3c); margin:20px 0 8px; }
+.qz-row { display:grid; grid-template-columns:minmax(0,1.2fr) minmax(0,2fr) auto; gap:10px; align-items:center; margin:6px 0; font-size:.98rem; }
+.qz-bar { height:12px; border-radius:8px; background:var(--soft); overflow:hidden; }
+.qz-bar > i { display:block; height:100%; background:var(--right); border-radius:8px; }
+.qz-miss { padding:10px 0; border-bottom:1px solid var(--line); font-size:.98rem; }
+.qz-miss:last-child { border-bottom:0; }
+.qz-hist { display:flex; flex-wrap:wrap; justify-content:space-between; gap:4px 12px; padding:8px 12px; border-radius:12px; background:var(--soft); margin:6px 0; font-size:.98rem; }
+.qz-hist.now { border-left:4px solid var(--h2c); font-weight:700; }
+.btn { font-family:var(--head); font-size:.95rem; padding:9px 18px; border-radius:999px; border:1px solid #13496B; background:#13496B; color:#fff; cursor:pointer; align-self:flex-start; }
+section { display:flex; flex-direction:column; gap:16px; }
+section > header { position:relative; padding:20px 26px; border-radius:14px; background:var(--band); color:var(--band-fg); display:flex; flex-direction:column; gap:8px; }
+section > header::before { content:""; position:absolute; inset:6px; border:2px dashed rgba(200,224,240,.75); border-radius:10px; pointer-events:none; }
+section > header h2 { font-size:1.5rem; color:var(--band-fg); position:relative; }
+section > header p { color:var(--band-fg); position:relative; }
+.uses { display:flex; flex-direction:column; border:1px solid var(--line); border-radius:14px; background:var(--surface); overflow:hidden; box-shadow:0 1px 2px rgba(15,50,75,.06),0 6px 18px rgba(15,50,75,.07); }
+.use { padding:24px 22px; border-bottom:1px solid var(--line); }
+.use:last-child { border-bottom:0; }
+.what { margin:6px 0 12px; }
+.pairs { display:flex; flex-direction:column; gap:10px; }
+.pair { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:10px 18px; align-items:start; }
+.pair > div { background:var(--soft); border-left:4px solid var(--h2c); border-radius:0 12px 12px 0; padding:8px 14px; font-style:italic; font-size:1.05rem; }
+.pair > div::before { display:block; font-family:var(--body); font-style:normal; font-size:.68rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--term); }
+.pair .st::before { content:"Statement"; }
+.pair .qu::before { content:"Question"; }
+.pair .bad::before { content:"Not this"; color:var(--wrong); }
+.pair .good::before { content:"Say this"; color:var(--right); }
+.pair .st { border-left-color:var(--line); }
+.pair [data-l]::before { content:attr(data-l) !important; }
+.exs { background:var(--soft); border-left:4px solid var(--h2c); border-radius:0 12px 12px 0; padding:8px 14px; font-style:italic; font-size:1.05rem; display:flex; flex-direction:column; gap:2px; }
+.exs::before { content:attr(data-label); font-family:var(--body); font-style:normal; font-size:.68rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--term); }
+.tip { color:var(--muted); font-size:.98rem; margin-top:12px; }
+b { font-weight:700; font-style:italic; }
+.t { --tc:var(--term); font-style:italic; font-weight:700; border-bottom:2px solid currentColor;
+  background-image:linear-gradient(180deg,color-mix(in srgb,var(--tc) 55%,#fff) 0%,var(--tc) 48%,color-mix(in srgb,var(--tc) 78%,#000) 100%);
+  -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; color:var(--tc);
+  filter:drop-shadow(0 0 1.5px color-mix(in srgb,var(--tc) 12%,transparent)); }
+.hl { font-style:italic; font-weight:600; background:#FFF0C2; color:#14262F; padding:1px 9px; border-radius:8px; }
+@media (prefers-color-scheme: dark) { .hl { background:#43350F; color:#F5E6B8; } }
+.muted { color:var(--muted); font-size:.85em; }
+.no { color:var(--wrong); text-decoration:line-through; }
+@media (max-width:700px) { .pair { grid-template-columns:minmax(0,1fr); } }
+</style>
+</head>
+<body>
+<div class="page">
+
+<a class="gh-home" href="index.html" aria-label="Back to the home page">&larr; Home</a>
+
+<header class="hero">
+  <div class="label">Question structures</div>
+  <h1>Questions</h1>
+  <p class="lede">In English, a question usually flips the subject and the helping (auxiliary) verb. The <i class="hl">verb</i> comes <b>before</b> the <i class="hl">subject</i>. <span class="t">Subject-Auxiliary Inversion</span> is the name for this. A few exceptions keep the normal order.</p>
+
+
+  <ul class="jump" role="tablist" aria-label="Question topics">
+    <li><a href="#questions" role="tab" data-tab="questions">Question structures</a></li>
+    <li><a href="#phrases" role="tab" data-tab="phrases">Question phrases</a></li>
+    <li><a href="#tags" role="tab" data-tab="tags">Question tags</a></li>
+    <li><a href="#quiz" role="tab" data-tab="quiz">Quiz</a></li>
+  </ul>
+</header>
+
+<div class="tabpanel" id="questions" role="tabpanel" hidden>
+
+<section id="inversion">
+  <header>
+    <h2>How the pattern works</h2>
+    <p>Three types of sentences, each with the verb in front of the subject.</p>
+  </header>
+  <div class="uses">
+
+    <div class="use"><h3>With &ldquo;to be&rdquo; and modal verbs</h3>
+      <p class="what">When the main verb is <i>to be</i> (am, is, are, was, were), or the sentence already has a helping or modal verb (can, will, should, have), move that verb in front of the subject.</p>
+      <div class="pairs">
+        <div class="pair"><div class="st">She <b>is</b> ready.</div><div class="qu"><span class="t">Is</span> she ready?</div></div>
+        <div class="pair"><div class="st">They <b>can</b> swim.</div><div class="qu"><span class="t">Can</span> they swim?</div></div>
+        <div class="pair"><div class="st">You <b>have</b> finished.</div><div class="qu"><span class="t">Have</span> you finished?</div></div>
+      </div>
+    </div>
+
+    <div class="use"><h3>With action verbs (using do / does / did)</h3>
+      <p class="what">If there is no helping verb, just a regular action verb in the simple present or simple past, English brings in <i>do, does</i> or <i>did</i> to sit in front of the subject. The main verb stays in its base form after the subject.</p>
+      <div class="pairs">
+        <div class="pair"><div class="st">You like coffee.</div><div class="qu"><span class="t">Do</span> you like coffee?</div></div>
+        <div class="pair"><div class="st">He works here.</div><div class="qu"><span class="t">Does</span> he work here?</div></div>
+        <div class="pair"><div class="st">They arrived early.</div><div class="qu"><span class="t">Did</span> they arrive early?</div></div>
+      </div>
+    </div>
+
+    <div class="use"><h3>With question words (who, what, where, when, why, how)</h3>
+      <p class="what">Even when you start with a question word, the verb-before-subject order still applies right after it.</p>
+      <div class="exs" data-label="Examples">
+        <span>Where <span class="t">are</span> you going?</span>
+        <span>Why <span class="t">did</span> she leave?</span>
+        <span>What <span class="t">can</span> I do?</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="more">
+  <header>
+    <h2>More question patterns</h2>
+    <p>Longer verb phrases, question phrases, negatives, small words at the end, and tags.</p>
+  </header>
+  <div class="uses">
+
+    <div class="use"><h3>With more than one helping verb</h3>
+      <p class="what">When a verb phrase has two or three helpers (<i>has been waiting, will be going, should have finished</i>), only the very first helper moves in front of the subject. The rest stay after the subject.</p>
+      <div class="pairs">
+        <div class="pair"><div class="st">She <b>has</b> been waiting.</div><div class="qu"><span class="t">Has</span> she been waiting?</div></div>
+        <div class="pair"><div class="st">They <b>will</b> be arriving soon.</div><div class="qu"><span class="t">Will</span> they be arriving soon?</div></div>
+      </div>
+      <p class="tip">Not &ldquo;Has been she waiting?&rdquo;</p>
+    </div>
+
+    <div class="use"><h3>With question phrases (question word + noun, or how + word)</h3>
+      <p class="what">When a question word teams up with a noun (<i>which book, what time</i>), or <i>how</i> teams up with an adjective or adverb (<i>how often, how many</i>), the whole phrase stays together at the start, before the verb and subject flip.</p>
+      <div class="pairs">
+        <div class="pair"><div class="st">You want <b>which book</b>.</div><div class="qu"><span class="t">Which book</span> do you want?</div></div>
+        <div class="pair"><div class="st">She swims <b>how often</b>.</div><div class="qu"><span class="t">How often</span> does she swim?</div></div>
+      </div>
+      <p class="tip">More on question phrases in the Question phrases tab.</p>
+    </div>
+
+    <div class="use"><h3>Negative questions</h3>
+      <p class="what">Negative questions usually express surprise, or expect the listener to agree. The word order shifts slightly, depending on whether you use a contraction.</p>
+      <div class="exs" data-label="Contracted (informal / everyday): the contraction moves together before the subject">
+        <span><span class="t">Don&rsquo;t</span> you like tea?</span>
+        <span><span class="t">Isn&rsquo;t</span> she here?</span>
+      </div>
+      <div class="exs" data-label="Uncontracted (formal): only the helping verb moves, and <i>not</i> stays right after the subject" style="margin-top:10px">
+        <span><span class="t">Do</span> you <span class="t">not</span> like tea?</span>
+        <span><span class="t">Is</span> she <span class="t">not</span> here?</span>
+      </div>
+    </div>
+
+    <div class="use"><h3>Questions ending in a preposition (&ldquo;small word&rdquo;)</h3>
+      <p class="what">In everyday English, prepositions (<i>to, for, with, about, at</i>) stay at the very end of the question instead of moving to the front.</p>
+      <div class="pairs">
+        <div class="pair"><div class="st">You are talking <b>to</b> someone.</div><div class="qu">Who are you talking <span class="t">to</span>?</div></div>
+        <div class="pair"><div class="st">She is looking <b>for</b> her keys.</div><div class="qu">What is she looking <span class="t">for</span>?</div></div>
+      </div>
+    </div>
+
+    <div class="use"><h3>Questions with <i>there</i></h3>
+      <p class="what">In a <i>there is / there are</i> sentence, <i>there</i> takes the subject spot. The verb flips in front of it, as in any other question.</p>
+      <div class="pairs">
+        <div class="pair"><div class="st">There <b>is</b> some milk.</div><div class="qu"><span class="t">Is</span> there any milk?</div></div>
+        <div class="pair"><div class="st">There <b>are</b> two seats.</div><div class="qu"><span class="t">Are</span> there any seats?</div></div>
+        <div class="pair"><div class="st">There <b>was</b> a problem.</div><div class="qu"><span class="t">Was</span> there a problem?</div></div>
+      </div>
+      <div class="exs" data-label="With a question word" style="margin-top:10px">
+        <span>How many seats <span class="t">are</span> there?</span>
+        <span>Where <span class="t">is</span> there a bank?</span>
+      </div>
+      <p class="tip">In questions and negatives, <i>some</i> usually changes to <i>any</i>: <i>some milk</i> becomes <i>any milk</i>.</p>
+    </div>
+
+    <div class="use"><h3>Question tags</h3>
+      <p class="what">Instead of flipping the main sentence, a short mini-question is added to the end to check or confirm information. It copies the helping verb (or uses <i>do / does / did</i>) and flips from positive to negative, or negative to positive.</p>
+      <div class="exs" data-label="Positive statement → negative tag">
+        <span>She is ready, <span class="t">isn&rsquo;t she</span>?</span>
+      </div>
+      <div class="exs" data-label="Negative statement → positive tag" style="margin-top:10px">
+        <span>They can&rsquo;t swim, <span class="t">can they</span>?</span>
+      </div>
+      <div class="exs" data-label="Action verb (no helper) → use do / does / did" style="margin-top:10px">
+        <span>You like coffee, <span class="t">don&rsquo;t you</span>?</span>
+      </div>
+      <p class="tip">More on tags in the Question tags tab.</p>
+    </div>
+
+  </div>
+</section>
+
+<section id="exceptions">
+  <header>
+    <h2>The main exceptions</h2>
+    <p>Two situations where the subject comes first and you do not flip.</p>
+  </header>
+  <div class="uses">
+
+    <div class="use"><h3>Subject questions</h3>
+      <p class="what">When the question word itself (<i>who</i> or <i>what</i>) is the subject doing the action, the word order stays the same as a normal statement.</p>
+      <div class="exs" data-label="Examples">
+        <span><span class="t">Who</span> called you?</span>
+        <span><span class="t">What</span> happened yesterday?</span>
+      </div>
+      <div class="exs" data-label="With a noun after the question word" style="margin-top:10px">
+        <span><span class="t">Which student</span> called you?</span>
+        <span><span class="t">Whose dog</span> barked?</span>
+        <span><span class="t">Which book</span> fell off the shelf?</span>
+      </div>
+      <p class="tip">Compare with an object question, where the flip comes back: <i>Who <b>did</b> you call?</i> and <i>Which student <b>did</b> you call?</i></p>
+    </div>
+
+    <div class="use"><h3>Indirect (embedded) questions</h3>
+      <p class="what">When a question is tucked inside a polite phrase or a larger statement, it goes back to the standard subject + verb order.</p>
+      <div class="pairs">
+        <div class="pair"><div class="st bad"><span class="no">Can you tell me where is the station?</span></div><div class="qu good">Can you tell me where the station <span class="t">is</span>?</div></div>
+      </div>
+      <div class="exs" data-label="Another example" style="margin-top:10px">
+        <span>I wonder what time <span class="t">it is</span>.</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="extras">
+  <header>
+    <h2>Quick reminders and extras</h2>
+    <p>Common mistakes, choice questions and short answers.</p>
+  </header>
+  <div class="uses">
+
+    <div class="use"><h3>Watch out for common mistakes</h3>
+      <div class="pairs">
+        <div class="pair"><div class="st bad" data-l="Not this"><span class="no">Do you be happy?</span></div><div class="qu" data-l="Say this"><span class="t">Are</span> you happy?</div></div>
+        <div class="pair"><div class="st bad" data-l="Not this"><span class="no">Does he works here?</span></div><div class="qu" data-l="Say this">Does he <span class="t">work</span> here?</div></div>
+      </div>
+      <p class="tip">Never add <i>do / does / did</i> when <i>to be</i> is the main verb. Always reset the main verb to its base form after <i>do / does / did</i>.</p>
+    </div>
+
+    <div class="use"><h3>Choice questions (or)</h3>
+      <p class="what">Use the standard helper + subject + verb order, and offer two options.</p>
+      <div class="exs" data-label="Example">
+        <span>Do you want <span class="t">tea or coffee</span>?</span>
+      </div>
+    </div>
+
+    <div class="use"><h3>Short answers</h3>
+      <p class="what">Mirror the exact helping verb used in the question.</p>
+      <div class="pairs">
+        <div class="pair"><div class="st" data-l="Question">Is she ready?</div><div class="qu" data-l="Answer">Yes, she <span class="t">is</span>.</div></div>
+        <div class="pair"><div class="st" data-l="Question">Can they swim?</div><div class="qu" data-l="Answer">No, they <span class="t">can&rsquo;t</span>.</div></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+</div>
+
+<div class="tabpanel" id="phrases" role="tabpanel" hidden>
+
+<section id="qp-words">
+  <header>
+    <h2>Question words and question phrases</h2>
+    <p>A question word asks for one piece of information. It can stand alone, or team up with a noun or an adjective to make a phrase.</p>
+  </header>
+  <div class="uses">
+
+    <div class="use"><h3>The question words</h3>
+      <p class="what">Each one asks for a different kind of information.</p>
+      <div class="exs" data-label="Question words">
+        <span><span class="t">Who</span> &ndash; a person</span>
+        <span><span class="t">Whom</span> &ndash; a person (object, formal)</span>
+        <span><span class="t">Whose</span> &ndash; the owner</span>
+        <span><span class="t">What</span> &ndash; a thing, or open choice</span>
+        <span><span class="t">Which</span> &ndash; a choice from a known group</span>
+        <span><span class="t">When</span> &ndash; time</span>
+        <span><span class="t">Where</span> &ndash; place</span>
+        <span><span class="t">Why</span> &ndash; reason</span>
+        <span><span class="t">How</span> &ndash; way, or amount, with a word after it</span>
+      </div>
+    </div>
+
+    <div class="use"><h3>The whole phrase stays together</h3>
+      <p class="what">A question phrase moves to the front as one piece. Then the verb and subject flip.</p>
+      <div class="pairs">
+        <div class="pair"><div class="st">You want <b>which book</b>.</div><div class="qu"><span class="t">Which book</span> do you want?</div></div>
+        <div class="pair"><div class="st">She swims <b>how often</b>.</div><div class="qu"><span class="t">How often</span> does she swim?</div></div>
+        <div class="pair"><div class="st">He is <b>how old</b>.</div><div class="qu"><span class="t">How old</span> is he?</div></div>
+      </div>
+      <p class="tip">Never split the phrase: not &ldquo;How do you want many books?&rdquo;</p>
+    </div>
+
+  </div>
+</section>
+
+<section id="qp-noun">
+  <header>
+    <h2>Question word + noun</h2>
+    <p><i>What, which</i> and <i>whose</i> can be followed by a noun.</p>
+  </header>
+  <div class="uses">
+
+    <div class="use"><h3>What + noun</h3>
+      <p class="what">Use <i>what</i> when the choices are open, and you do not have a set group in mind.</p>
+      <div class="exs" data-label="Examples">
+        <span>What time is it?</span>
+        <span>What colour is your bag?</span>
+        <span>What sport do you play?</span>
+      </div>
+    </div>
+
+    <div class="use"><h3>Which + noun</h3>
+      <p class="what">Use <i>which</i> when the choice is from a group you both know.</p>
+      <div class="exs" data-label="Examples">
+        <span>Which book do you want?</span>
+        <span>Which one is yours?</span>
+        <span>Which road leads to the station?</span>
+      </div>
+      <p class="tip"><i>What</i> is open: <i>What film do you like?</i> (any film). <i>Which</i> is limited: <i>Which film shall we watch?</i> (from the list).</p>
+    </div>
+
+    <div class="use"><h3>Whose + noun</h3>
+      <p class="what">Use <i>whose</i> to ask who owns something.</p>
+      <div class="exs" data-label="Examples">
+        <span>Whose bag is this?</span>
+        <span>Whose keys are these?</span>
+        <span>Whose turn is it?</span>
+      </div>
+    </div>
+
+    <div class="use"><h3>What kind / type / sort of + noun</h3>
+      <p class="what">Use these to ask about the type of something.</p>
+      <div class="exs" data-label="Examples">
+        <span>What kind of music do you like?</span>
+        <span>What type of car does he drive?</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="qp-how">
+  <header>
+    <h2>How + a word</h2>
+    <p><i>How</i> teams up with an adjective or an adverb to ask about an amount, a degree or a manner.</p>
+  </header>
+  <div class="uses">
+
+    <div class="use"><h3>How many and how much</h3>
+      <p class="what"><i>How many</i> goes with countable nouns (things you can count). <i>How much</i> goes with uncountable nouns (things you cannot count).</p>
+      <div class="pairs">
+        <div class="pair"><div class="st">There are <b>how many</b> apples.</div><div class="qu"><span class="t">How many</span> apples are there?</div></div>
+        <div class="pair"><div class="st">We need <b>how much</b> milk.</div><div class="qu"><span class="t">How much</span> milk do we need?</div></div>
+      </div>
+      <p class="tip"><i>How much</i> is also used for price: <i>How much is this bag?</i></p>
+    </div>
+
+    <div class="use"><h3>How + adjective</h3>
+      <p class="what">Ask about a measurement or a degree.</p>
+      <div class="exs" data-label="Examples">
+        <span>How old are you?</span>
+        <span>How tall is she?</span>
+        <span>How far is the station?</span>
+        <span>How heavy is the box?</span>
+      </div>
+    </div>
+
+    <div class="use"><h3>How + adverb</h3>
+      <p class="what">Ask how often, how well or how fast something happens.</p>
+      <div class="exs" data-label="Examples">
+        <span>How often do you swim?</span>
+        <span>How well does he sing?</span>
+        <span>How fast can it go?</span>
+        <span>How soon will you arrive?</span>
+      </div>
+    </div>
+
+    <div class="use"><h3>How long</h3>
+      <p class="what"><i>How long</i> asks about time or length.</p>
+      <div class="exs" data-label="Examples">
+        <span>How long does the trip take? (time)</span>
+        <span>How long is the bridge? (length)</span>
+      </div>
+    </div>
+
+    <div class="use"><h3>How come (informal)</h3>
+      <p class="what"><i>How come</i> means <i>why</i>, but the word order stays like a statement: no flip, and no <i>do</i>.</p>
+      <div class="pairs">
+        <div class="pair"><div class="st bad" data-l="Not this"><span class="no">How come did you leave early?</span></div><div class="qu" data-l="Say this">How come you <span class="t">left</span> early?</div></div>
+      </div>
+      <p class="tip">Compare: <i>Why <b>did</b> you leave early?</i></p>
+    </div>
+
+  </div>
+</section>
+
+<section id="qp-rules">
+  <header>
+    <h2>Rules and mistakes</h2>
+    <p>Subject or object phrases, and the errors to avoid.</p>
+  </header>
+  <div class="uses">
+
+    <div class="use"><h3>Is the phrase the subject or the object?</h3>
+      <p class="what">If the phrase is the subject (the one doing the action), there is no flip. If it is the object, the flip comes back.</p>
+      <div class="pairs">
+        <div class="pair"><div class="st" data-l="Subject phrase"><b>Which student</b> called you? <span class="muted">(subject: no flip)</span></div><div class="qu" data-l="Object phrase">Which student <span class="t">did</span> you call? <span class="muted">(object: flip)</span></div></div>
+        <div class="pair"><div class="st" data-l="Subject phrase"><b>How many people</b> came? <span class="muted">(subject: no flip)</span></div><div class="qu" data-l="Object phrase">How many people <span class="t">did</span> you invite? <span class="muted">(object: flip)</span></div></div>
+      </div>
+    </div>
+
+    <div class="use"><h3>Common mistakes</h3>
+      <div class="pairs">
+        <div class="pair"><div class="st bad" data-l="Not this"><span class="no">How much apples are there?</span></div><div class="qu" data-l="Say this"><span class="t">How many</span> apples are there?</div></div>
+        <div class="pair"><div class="st bad" data-l="Not this"><span class="no">Which time is it?</span></div><div class="qu" data-l="Say this"><span class="t">What</span> time is it?</div></div>
+        <div class="pair"><div class="st bad" data-l="Not this"><span class="no">How is your name?</span></div><div class="qu" data-l="Say this"><span class="t">What</span> is your name?</div></div>
+        <div class="pair"><div class="st bad" data-l="Not this"><span class="no">How old you are?</span></div><div class="qu" data-l="Say this">How old <span class="t">are you</span>?</div></div>
+      </div>
+      <p class="tip">Match the word to the noun (many with countable, much with uncountable), and keep the verb before the subject.</p>
+    </div>
+
+  </div>
+</section>
+
+</div>
+
+<div class="tabpanel" id="tags" role="tabpanel" hidden>
+
+<section id="tag-rules">
+  <header>
+    <h2>How question tags work</h2>
+    <p>A short mini-question at the end of a sentence, to check or confirm something.</p>
+  </header>
+  <div class="uses">
+
+    <div class="use"><h3>The opposite rule</h3>
+      <p class="what">A positive statement gets a negative tag. A negative statement gets a positive tag.</p>
+      <div class="pairs">
+        <div class="pair"><div class="st" data-l="Statement">She is ready,</div><div class="qu" data-l="Tag">Positive → <span class="t">isn&rsquo;t she</span>?</div></div>
+        <div class="pair"><div class="st" data-l="Statement">They can&rsquo;t swim,</div><div class="qu" data-l="Tag">Negative → <span class="t">can they</span>?</div></div>
+      </div>
+    </div>
+
+    <div class="use"><h3>Copy the helper</h3>
+      <p class="what">If the statement has a helping verb or <i>be</i>, the tag copies it.</p>
+      <div class="pairs">
+        <div class="pair"><div class="st" data-l="Statement">She <b>is</b> late,</div><div class="qu" data-l="Tag"><span class="t">isn&rsquo;t she</span>?</div></div>
+        <div class="pair"><div class="st" data-l="Statement">They <b>have</b> left,</div><div class="qu" data-l="Tag"><span class="t">haven&rsquo;t they</span>?</div></div>
+        <div class="pair"><div class="st" data-l="Statement">He <b>can</b> drive,</div><div class="qu" data-l="Tag"><span class="t">can&rsquo;t he</span>?</div></div>
+      </div>
+    </div>
+
+    <div class="use"><h3>No helper? Use do / does / did</h3>
+      <p class="what">If the statement has only an action verb, the tag uses <i>do, does</i> or <i>did</i>, matching the tense.</p>
+      <div class="pairs">
+        <div class="pair"><div class="st" data-l="Statement">You <b>like</b> coffee,</div><div class="qu" data-l="Tag"><span class="t">don&rsquo;t you</span>?</div></div>
+        <div class="pair"><div class="st" data-l="Statement">He <b>works</b> here,</div><div class="qu" data-l="Tag"><span class="t">doesn&rsquo;t he</span>?</div></div>
+        <div class="pair"><div class="st" data-l="Statement">They <b>arrived</b> early,</div><div class="qu" data-l="Tag"><span class="t">didn&rsquo;t they</span>?</div></div>
+      </div>
+    </div>
+
+    <div class="use"><h3>The tag uses a pronoun</h3>
+      <p class="what">The tag never repeats the noun. It uses a pronoun that matches the subject.</p>
+      <div class="pairs">
+        <div class="pair"><div class="st" data-l="Statement"><b>Tom</b> is late,</div><div class="qu" data-l="Tag"><span class="t">isn&rsquo;t he</span>?</div></div>
+        <div class="pair"><div class="st" data-l="Statement"><b>The girls</b> sing well,</div><div class="qu" data-l="Tag"><span class="t">don&rsquo;t they</span>?</div></div>
+        <div class="pair"><div class="st" data-l="Statement"><b>This</b> is yours,</div><div class="qu" data-l="Tag"><span class="t">isn&rsquo;t it</span>?</div></div>
+        <div class="pair"><div class="st" data-l="Statement"><b>There</b> is some milk,</div><div class="qu" data-l="Tag"><span class="t">isn&rsquo;t there</span>?</div></div>
+      </div>
+      <p class="tip"><i>Everyone, someone</i> and <i>nobody</i> take <i>they</i>: <i>Everyone is here, <b>aren&rsquo;t they</b>?</i></p>
+    </div>
+
+  </div>
+</section>
+
+<section id="tag-special">
+  <header>
+    <h2>Special cases</h2>
+    <p>Where the rules need a little care.</p>
+  </header>
+  <div class="uses">
+
+    <div class="use"><h3>I am &rarr; aren&rsquo;t I</h3>
+      <p class="what"><i>Am I not</i> is correct but very formal, and &ldquo;amn&rsquo;t I&rdquo; is not used. Everyday English says <i>aren&rsquo;t I</i>.</p>
+      <div class="exs" data-label="Example">
+        <span>I am late, <span class="t">aren&rsquo;t I</span>?</span>
+      </div>
+    </div>
+
+    <div class="use"><h3>Let&rsquo;s and commands</h3>
+      <p class="what">After <i>Let&rsquo;s</i> the tag is <i>shall we</i>. After a command, the tag is <i>will you</i>, <i>won&rsquo;t you</i> or <i>can you</i>.</p>
+      <div class="exs" data-label="Examples">
+        <span>Let&rsquo;s go, <span class="t">shall we</span>?</span>
+        <span>Open the door, <span class="t">will you</span>?</span>
+        <span>Don&rsquo;t be late, <span class="t">will you</span>?</span>
+      </div>
+    </div>
+
+    <div class="use"><h3>Negative words count as negative</h3>
+      <p class="what">Words like <i>never, hardly, nobody, nothing, no one</i> make the statement negative, so the tag is positive.</p>
+      <div class="exs" data-label="Examples">
+        <span>She never smokes, <span class="t">does she</span>?</span>
+        <span>Nobody called, <span class="t">did they</span>?</span>
+        <span>There is nothing left, <span class="t">is there</span>?</span>
+      </div>
+    </div>
+
+    <div class="use"><h3>Have as a main verb</h3>
+      <p class="what">With <i>have</i> meaning &ldquo;own&rdquo;, American English uses <i>do</i>. British English often copies <i>have</i>.</p>
+      <div class="exs" data-label="Examples">
+        <span>You have a car, <span class="t">don&rsquo;t you</span>? (American)</span>
+        <span>You have a car, <span class="t">haven&rsquo;t you</span>? (British)</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="tag-use">
+  <header>
+    <h2>Meaning, answers and mistakes</h2>
+    <p>How the voice changes the meaning, how to answer, and what to avoid.</p>
+  </header>
+  <div class="uses">
+
+    <div class="use"><h3>Voice: rising or falling</h3>
+      <p class="what">The voice on the tag changes what you mean.</p>
+      <div class="exs" data-label="Rising voice ↗ a real question: you are not sure">
+        <span>She is ready, <span class="t">isn&rsquo;t she</span>?</span>
+      </div>
+      <div class="exs" data-label="Falling voice ↘ you already think so and want agreement" style="margin-top:10px">
+        <span>She is ready, <span class="t">isn&rsquo;t she</span>.</span>
+      </div>
+    </div>
+
+    <div class="use"><h3>Answering a tag question</h3>
+      <p class="what">Answer with the facts, not with the tag. The answer repeats the helper, as in any short answer.</p>
+      <div class="pairs">
+        <div class="pair"><div class="st" data-l="Question">She is ready, isn&rsquo;t she?</div><div class="qu" data-l="Answer">Yes, she <span class="t">is</span>.</div></div>
+        <div class="pair"><div class="st" data-l="Question">She is ready, isn&rsquo;t she?</div><div class="qu" data-l="Answer">No, she <span class="t">isn&rsquo;t</span>.</div></div>
+        <div class="pair"><div class="st" data-l="Question">They can&rsquo;t swim, can they?</div><div class="qu" data-l="Answer">No, they <span class="t">can&rsquo;t</span>.</div></div>
+      </div>
+    </div>
+
+    <div class="use"><h3>Common mistakes</h3>
+      <div class="pairs">
+        <div class="pair"><div class="st bad" data-l="Not this"><span class="no">They are late, isn&rsquo;t it?</span></div><div class="qu" data-l="Say this"><span class="t">aren&rsquo;t they</span>?</div></div>
+        <div class="pair"><div class="st bad" data-l="Not this"><span class="no">You like tea, aren&rsquo;t you?</span></div><div class="qu" data-l="Say this"><span class="t">don&rsquo;t you</span>?</div></div>
+        <div class="pair"><div class="st bad" data-l="Not this"><span class="no">She can swim, doesn&rsquo;t she?</span></div><div class="qu" data-l="Say this"><span class="t">can&rsquo;t she</span>?</div></div>
+      </div>
+      <p class="tip">Copy the same helper, and match the subject. Do not use <i>isn&rsquo;t it</i> for everything.</p>
+    </div>
+
+  </div>
+</section>
+
+</div>
+
+<div class="tabpanel" id="quiz" role="tabpanel" hidden>
+
+<section id="quiz-sec">
+  <header>
+    <h2>Quiz</h2>
+    <p>One question at a time. Pick all 30, or practise one set. Your last 3 attempts are saved on this device.</p>
+  </header>
+  <div id="qapp"></div>
+</section>
+
+</div>
+
+</div>
+<script>
+(function () {
+  var tabs = Array.prototype.slice.call(document.querySelectorAll('.jump a[data-tab]'));
+  var panels = Array.prototype.slice.call(document.querySelectorAll('.tabpanel'));
+  var names = tabs.map(function (a) { return a.dataset.tab; });
+  function show(name) {
+    if (names.indexOf(name) < 0) name = names[0];
+    tabs.forEach(function (a) { var on = a.dataset.tab === name; a.setAttribute('aria-selected', on ? 'true' : 'false'); });
+    panels.forEach(function (p) { p.hidden = p.id !== name; });
+  }
+  tabs.forEach(function (a) {
+    a.addEventListener('click', function (e) {
+      e.preventDefault(); show(a.dataset.tab);
+      try { history.replaceState(null, '', '#' + a.dataset.tab); } catch (x) {}
+    });
+  });
+  window.addEventListener('hashchange', function () { show(location.hash.slice(1)); });
+  show(location.hash.slice(1));
+})();
+</script>
+<script>
+(function () {
+  var SETS = [{"t": "Set 1", "n": "Question structures", "q": [{"q": "Make a question from: <i>They can swim.</i>", "o": ["Can they swim?", "They can swim?", "Do they can swim?"], "a": 0, "e": "The helper <i>can</i> moves in front of the subject."}, {"q": "Make a question from: <i>He works here.</i>", "o": ["Does he works here?", "Does he work here?", "Works he here?"], "a": 1, "e": "No helper, so use <i>does</i>. The main verb goes back to its base form: <i>work</i>."}, {"q": "Make a question from: <i>You like coffee.</i>", "o": ["Like you coffee?", "You do like coffee?", "Do you like coffee?"], "a": 2, "e": "No helper, so use <i>do</i> in front of the subject."}, {"q": "Make a question from: <i>You have finished.</i>", "o": ["Have you finished?", "Do you have finished?", "You have finished?"], "a": 0, "e": "<i>Have</i> is the helper here, so it moves in front of the subject."}, {"q": "Which one is correct?", "o": ["Do you be happy?", "Are you happy?", "You are happy?"], "a": 1, "e": "<i>Be</i> is the main verb, so it moves by itself. No <i>do</i>."}, {"q": "Make a question from: <i>She has been waiting.</i>", "o": ["Has she been waiting?", "Has been she waiting?", "Does she have been waiting?"], "a": 0, "e": "Only the first helper moves in front of the subject."}, {"q": "Which one is correct?", "o": ["Who did call you?", "Did who call you?", "Who called you?"], "a": 2, "e": "<i>Who</i> is the subject, so the order stays like a statement. No flip."}, {"q": "Where ___ you going?", "o": ["are", "do", "is"], "a": 0, "e": "<i>Are</i> goes with <i>you</i> and moves in front of the subject."}, {"q": "Choose the correct indirect question: <i>Can you tell me where ___?</i>", "o": ["the station is", "is the station"], "a": 0, "e": "Inside a polite phrase, the order goes back to subject + verb."}, {"q": "Which one is correct?", "o": ["Do you want which book?", "Which book do you want?", "Which book you want?"], "a": 1, "e": "The whole phrase <i>which book</i> moves to the front. Then the verb and subject flip."}]}, {"t": "Set 2", "n": "Question phrases and more patterns", "q": [{"q": "How ___ apples are there?", "o": ["much", "many"], "a": 1, "e": "<i>Apples</i> can be counted, so use <i>many</i>."}, {"q": "How ___ milk do we need?", "o": ["much", "many"], "a": 0, "e": "<i>Milk</i> cannot be counted, so use <i>much</i>."}, {"q": "___ time is it?", "o": ["Which", "What"], "a": 1, "e": "Use <i>what</i> for an open choice, as in <i>what time</i>."}, {"q": "How ___ is she?", "o": ["many", "tall", "much"], "a": 1, "e": "<i>How</i> + an adjective asks about a degree: <i>how tall</i>."}, {"q": "Whose bag ___ this?", "o": ["is", "does"], "a": 0, "e": "The verb <i>be</i> moves in front of the subject <i>this</i>."}, {"q": "Which one is correct?", "o": ["How come did you leave early?", "How come you left early?"], "a": 1, "e": "After <i>how come</i> the order stays like a statement."}, {"q": "<i>Which student called you?</i> Is <i>which student</i> the subject or the object?", "o": ["Subject: no flip", "Object: flip"], "a": 0, "e": "<i>Which student</i> did the calling. It is the subject, so there is no flip. <i>Which student did you call?</i> is the object version."}, {"q": "Formal negative question: <i>Do you ___ like tea?</i>", "o": ["not", "n't", "no"], "a": 0, "e": "In the formal version, <i>not</i> stays right after the subject."}, {"q": "___ there any milk?", "o": ["Are", "Is", "Does"], "a": 1, "e": "<i>Milk</i> is uncountable, so use <i>is</i>. The verb flips in front of <i>there</i>."}, {"q": "Who are you talking ___?", "o": ["to", "about whom to", "for to"], "a": 0, "e": "In everyday English the small word stays at the end."}]}, {"t": "Set 3", "n": "Tags and short answers", "q": [{"q": "She is ready, ___?", "o": ["is she", "isn't she", "doesn't she"], "a": 1, "e": "Positive statement, so a negative tag. It copies <i>is</i>."}, {"q": "You like coffee, ___?", "o": ["don't you", "aren't you", "like you"], "a": 0, "e": "No helper, so use <i>do</i> in the tag."}, {"q": "I am late, ___?", "o": ["amn't I", "aren't I", "am I not"], "a": 1, "e": "<i>Aren't I</i> is the everyday tag for <i>I am</i>."}, {"q": "Let's go, ___?", "o": ["will we", "shall we", "don't we"], "a": 1, "e": "After <i>Let's</i>, the tag is <i>shall we</i>."}, {"q": "She never smokes, ___?", "o": ["doesn't she", "does she", "is she"], "a": 1, "e": "<i>Never</i> makes the statement negative, so the tag is positive."}, {"q": "They are late, ___?", "o": ["isn't it", "aren't they", "don't they"], "a": 1, "e": "Match the subject with a pronoun: <i>they</i>. Copy the helper: <i>are</i>."}, {"q": "Nobody called, ___?", "o": ["did they", "didn't they", "did he"], "a": 0, "e": "<i>Nobody</i> is negative, so the tag is positive. <i>Nobody</i> takes <i>they</i>."}, {"q": "<i>Can they swim?</i> Choose the correct short answer.", "o": ["No, they don't.", "No, they can't.", "No, they aren't."], "a": 1, "e": "Repeat the helper from the question: <i>can</i>."}, {"q": "<i>Is she ready?</i> Choose the correct short answer.", "o": ["Yes, she is.", "Yes, she does.", "Yes, she ready."], "a": 0, "e": "Repeat the helper from the question: <i>is</i>."}, {"q": "<i>Do you like tea?</i> Choose the correct short answer.", "o": ["Yes, I like.", "Yes, I do.", "Yes, I am."], "a": 1, "e": "Repeat the helper from the question: <i>do</i>."}]}];
+  var KEY = 'qz-questions-history-v1';
+  var app = document.getElementById('qapp');
+  var ALL = [];
+  SETS.forEach(function (st, si) { st.q.forEach(function (q) { ALL.push({ si: si, q: q }); }); });
+  var mode = 'all', list = [], ans = [], idx = 0, saved = false, current = null, saveOk = true;
+  function el(tag, cls, html) { var e = document.createElement(tag); if (cls) e.className = cls; if (html != null) e.innerHTML = html; return e; }
+  function hist() { try { var h = JSON.parse(localStorage.getItem(KEY)); return Array.isArray(h) ? h : []; } catch (e) { return []; } }
+  function saveHist(entry) {
+    try { var h = hist(); h.push(entry); h = h.slice(-3); localStorage.setItem(KEY, JSON.stringify(h)); return h; }
+    catch (e) { saveOk = false; return [entry]; }
+  }
+  function label(m) { return m === 'all' ? 'All 30 questions' : SETS[m].t + ': ' + SETS[m].n; }
+  function start(m) {
+    mode = m;
+    list = m === 'all' ? ALL.slice() : ALL.filter(function (x) { return x.si === m; });
+    ans = list.map(function () { return null; });
+    idx = 0; saved = false; current = null; saveOk = true;
+    render();
+  }
+  function chips() {
+    var box = el('div', 'qz-chips');
+    [['all', 'All 30'], [0, 'Set 1'], [1, 'Set 2'], [2, 'Set 3']].forEach(function (c) {
+      var b = el('button', 'qz-chip', c[1]); b.type = 'button';
+      b.setAttribute('aria-pressed', mode === c[0] ? 'true' : 'false');
+      b.addEventListener('click', function () { start(c[0]); });
+      box.appendChild(b);
+    });
+    return box;
+  }
+  function question() {
+    var it = list[idx], picked = ans[idx], card = el('div', 'qz');
+    card.appendChild(el('div', 'qz-set', '\u2B50 ' + SETS[it.si].t + ': ' + SETS[it.si].n));
+    card.appendChild(el('div', 'qz-q', it.q.q));
+    var opts = el('div', 'qz-opts');
+    it.q.o.forEach(function (t, k) {
+      var b = el('button', 'qz-opt'); b.type = 'button'; b.textContent = t;
+      if (picked !== null) {
+        b.disabled = true;
+        if (k === it.q.a) b.classList.add('right'); else if (k === picked) b.classList.add('wrong');
+      } else {
+        b.addEventListener('click', function () { ans[idx] = k; render(); });
+      }
+      opts.appendChild(b);
+    });
+    card.appendChild(opts);
+    card.appendChild(el('div', 'qz-fb', picked === null ? '' : (picked === it.q.a ? '\u2705 ' : '\u274C ') + it.q.e));
+    var foot = el('div', 'qz-foot');
+    foot.appendChild(el('span', 'qz-count', (idx + 1) + ' / ' + list.length));
+    var back = el('button', 'qz-btn', '\u2039 Back'); back.type = 'button'; back.disabled = idx === 0;
+    back.addEventListener('click', function () { idx--; render(); });
+    var next = el('button', 'qz-btn go', idx === list.length - 1 ? 'Finish \u203A' : 'Next \u203A'); next.type = 'button'; next.disabled = picked === null;
+    next.addEventListener('click', function () { idx++; render(); });
+    var reset = el('button', 'qz-btn', 'Reset \u21BA'); reset.type = 'button';
+    reset.addEventListener('click', function () { start(mode); });
+    foot.appendChild(back); foot.appendChild(next); foot.appendChild(reset);
+    card.appendChild(foot);
+    return card;
+  }
+  function results() {
+    var score = 0, per = {};
+    list.forEach(function (it, n) {
+      per[it.si] = per[it.si] || [0, 0]; per[it.si][1]++;
+      if (ans[n] === it.q.a) { score++; per[it.si][0]++; }
+    });
+    var pct = Math.round(100 * score / list.length);
+    var h;
+    if (!saved) {
+      current = { t: Date.now(), m: label(mode), s: score, n: list.length };
+      h = saveHist(current); saved = true;
+    } else { h = hist(); }
+    var card = el('div', 'qz');
+    card.appendChild(el('div', 'qz-set', '\u2B50 Your result'));
+    card.appendChild(el('div', 'qz-big', score + ' / ' + list.length));
+    card.appendChild(el('p', 'qz-msg', pct + '% correct. ' + (pct === 100 ? 'Perfect!' : pct >= 80 ? 'Great work!' : pct >= 60 ? 'Good job. Check the ones you missed.' : 'Keep practising. Read the tabs again, then retry.')));
+    card.appendChild(el('h4', null, 'Progress by set'));
+    Object.keys(per).forEach(function (k) {
+      var r = per[k], row = el('div', 'qz-row');
+      row.appendChild(el('span', null, SETS[k].t + ': ' + SETS[k].n));
+      row.appendChild(el('div', 'qz-bar', '<i style="width:' + Math.round(100 * r[0] / r[1]) + '%"></i>'));
+      row.appendChild(el('span', null, r[0] + ' / ' + r[1]));
+      card.appendChild(row);
+    });
+    var missed = list.filter(function (it, n) { return ans[n] !== it.q.a; });
+    card.appendChild(el('h4', null, missed.length ? 'To review (' + missed.length + ')' : 'Nothing to review'));
+    missed.forEach(function (it) {
+      card.appendChild(el('div', 'qz-miss', it.q.q + '<br><b>Answer:</b> ' + it.q.o[it.q.a] + '<br><span class="muted">' + it.q.e + '</span>'));
+    });
+    card.appendChild(el('h4', null, 'Last attempts'));
+    h.slice().reverse().forEach(function (e) {
+      var d = new Date(e.t).toLocaleString([], { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' });
+      card.appendChild(el('div', 'qz-hist' + (current && e.t === current.t ? ' now' : ''), '<span>' + d + ' \u2013 ' + e.m + (current && e.t === current.t ? ' (this one)' : '') + '</span><span>' + e.s + ' / ' + e.n + '</span>'));
+    });
+    card.appendChild(el('p', 'muted', saveOk ? 'The 3 newest attempts are kept. A new one replaces the oldest.' : 'This browser would not save progress, so these results will be lost when you leave.'));
+    var foot = el('div', 'qz-foot');
+    var back = el('button', 'qz-btn', '\u2039 Back'); back.type = 'button';
+    back.addEventListener('click', function () { idx = list.length - 1; render(); });
+    var again = el('button', 'qz-btn go', 'Try again \u21BA'); again.type = 'button';
+    again.addEventListener('click', function () { start(mode); });
+    foot.appendChild(back); foot.appendChild(again);
+    card.appendChild(foot);
+    return card;
+  }
+  function render() {
+    app.innerHTML = '';
+    app.appendChild(chips());
+    app.appendChild(idx >= list.length ? results() : question());
+  }
+  start('all');
+})();
+</script>
+</body>
+</html>

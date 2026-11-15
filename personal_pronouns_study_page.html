@@ -1,7 +1,7 @@
 <!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
 <title>Personal Pronouns</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Nunito+Sans:ital,opsz,wght@0,6..12,400;0,6..12,600;0,6..12,700;1,6..12,400;1,6..12,700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Yeseva+One&family=Lora:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Dancing+Script:wght@400;500;600;700&display=swap">
 <style>
 /* Layout: one reading column. Terracotta base with warm biscuit background; job colors are deep teal, terracotta, olive, ochre and plum. Job colors (subject, object, possessive determiner, possessive pronoun, reflexive) mark words in examples. The main table colors rows by person instead. */
 :root {
@@ -273,6 +273,81 @@ section > header h2, section > header p { color: var(--band-fg); }
 h1, h2, h3, .steps li::before, .btn, .persons thead th, .persons th.plabel { font-weight: 700; }
 .label { font-family: var(--body); font-weight: 700; }
 thead th { font-weight: 600; }
+/* Project formatting: Yeseva One headings, Lora text, italic Lora for examples, calligraphy accents, shiny glowing grammar terms */
+:root { --head: "Yeseva One", Georgia, serif; --body: "Lora", Georgia, serif; --cal: "Dancing Script", "Brush Script MT", cursive; }
+h1, h2, h3, .steps li::before, .btn, .persons thead th, .persons th.plabel, thead th, .part-head h3 { font-family: var(--head); font-weight: 400; letter-spacing: 0; }
+body, .lede, .tip, .how, table, .points, summary, details p { font-family: var(--body); }
+.label { font-family: var(--body); }
+/* calligraphy accents */
+.hero .label, .forms, .sumh { font-family: var(--cal); font-weight: 700; text-transform: none; letter-spacing: 0.01em; }
+.hero .label { font-size: 1.45rem; }
+.forms { font-size: 1.1rem; line-height: 1.4; }
+.hero .label::before { vertical-align: middle; }
+/* important text and examples: italic Lora, bold italic for emphasis */
+.use .ex, .how .ex, .rule p, .sumnote, td.wrong, td.right, .persons td:not(:nth-child(1)), .qs > li > span > i { font-style: italic; }
+b, strong, .points b, .tip b, details p b, .how b { font-style: italic; font-weight: 700; }
+.use .ex.phr, .use .ex { font-family: var(--body); }
+.use > div > .ex:first-child::before { font-style: normal; }
+/* grammar terms: shine with a faint glow in the same color */
+.s { --tc: var(--subj); } .o { --tc: var(--obj); } .pa { --tc: var(--padj); } .pp { --tc: var(--ppro); } .r { --tc: var(--refl); }
+:is(.s, .o, .pa, .pp, .r):not(th):not(td):not(.part-head *):not(.legend *) {
+  font-style: italic; font-weight: 700;
+  background-image: linear-gradient(180deg, color-mix(in srgb, var(--tc) 55%, #fff) 0%, var(--tc) 48%, color-mix(in srgb, var(--tc) 78%, #000) 100%);
+  -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: var(--tc);
+  filter: drop-shadow(0 0 1.5px color-mix(in srgb, var(--tc) 12%, transparent));
+}
+td.s, td.o, td.pa, td.pp, td.r, th.s, th.o, th.pa, th.pp, th.r { font-style: italic; text-shadow: 0 0 4px color-mix(in srgb, currentColor 11%, transparent); }
+/* italic key words such as than / as / its: bolder */
+.how i, .tip i, .points i, .rule i, .sumnote i, .muted i, td i, details p i, .ex i, .qs > li > span > i { font-style: italic; font-weight: 700; }
+/* label: Dancing Script bold */
+.hero .label { font-weight: 700; font-size: 1.45rem; letter-spacing: 0.01em; }
+/* banner word lists (I, you, he...): Lora italic */
+.forms { font-family: var(--body); font-style: italic; font-weight: 600; font-size: 0.95rem; letter-spacing: 0; }
+/* italic key words in the bullet lists: teal, shiny, faint glow */
+.points i { --ic: var(--h3c); color: var(--ic); font-style: italic; font-weight: 700;
+  background-image: linear-gradient(180deg, color-mix(in srgb, var(--ic) 55%, #fff) 0%, var(--ic) 48%, color-mix(in srgb, var(--ic) 78%, #000) 100%);
+  -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 1.5px color-mix(in srgb, var(--ic) 12%, transparent)); }
+/* Overview notes: italic/bold key words get the term colour, shine and faint glow */
+#table .points :is(b, i) {
+  --tc: var(--subj);
+  font-style: italic; font-weight: 700;
+  background-image: linear-gradient(180deg, color-mix(in srgb, var(--tc) 55%, #fff) 0%, var(--tc) 48%, color-mix(in srgb, var(--tc) 78%, #000) 100%);
+  -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: var(--tc);
+  filter: drop-shadow(0 0 1.5px color-mix(in srgb, var(--tc) 12%, transparent));
+}
+/* explanation steps: label + soft side line */
+.how{border-left:3px solid color-mix(in srgb,var(--h2c) 30%,transparent);padding-left:1.6em;margin-left:2px}
+.how::before{content:"How it works";display:block;margin:0 0 4px -.25em;font-family:var(--body);font-style:normal;font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--subj)}
+/* two columns: example on the left, how it works on the right (wide screens) */
+@media (min-width:760px){
+.use > div:has(> .how){display:grid;grid-template-columns:minmax(0,45fr) minmax(0,55fr);grid-template-rows:auto auto auto auto 1fr;column-gap:26px;align-items:start}
+.use > div:has(> .how) > :not(.how){grid-column:1}
+.use > div:has(> .how) > .how{grid-column:2;grid-row:1 / -1;margin-top:0}
+}
+/* labelled examples (Example 1, 2, 3) */
+.use .ex[data-label]::before{content:attr(data-label)!important;display:block;font-family:var(--body);font-size:.68rem;font-weight:700;font-style:normal;letter-spacing:.1em;text-transform:uppercase;color:var(--subj);margin-bottom:1px}
+.use > div > .ex[data-label] + .ex[data-label]{margin-top:10px}
+/* explanation line under a card heading */
+.use .what{color:var(--fg);font-size:1rem;margin:0 0 6px}
+/* two short cards side by side */
+.use-row{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);border-bottom:1px solid var(--line)}
+.use-row > .use{border-bottom:0}
+.use-row > .use + .use{border-left:1px solid var(--line)}
+@media (max-width:759px){.use-row{grid-template-columns:minmax(0,1fr)}.use-row > .use + .use{border-left:0;border-top:1px solid var(--line)}}
+/* two example boxes side by side */
+.ex-pair{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:14px;align-items:start}
+.ex-pair > .ex{margin-top:0!important}
+@media (max-width:759px){.ex-pair{grid-template-columns:minmax(0,1fr)}}
+/* more space between the rows of use cards */
+.use{padding:24px 22px}
+/* sub-tabs inside the Subject tab */
+.subjump{display:flex;flex-wrap:wrap;gap:8px;margin:0;padding:0;list-style:none}
+.subjump a{display:inline-block;padding:5px 16px;border:1px solid var(--hchip-bd,#AFC6D6);border-radius:999px;background:var(--surface);color:var(--fg);text-decoration:none;font-size:.92rem}
+.subjump a:hover,.subjump a:focus-visible{border-color:var(--h2c);outline:none}
+.subjump a[aria-selected="true"]{background:var(--h2c);border-color:var(--h2c);color:#fff;font-weight:700}
+.subpanel{display:flex;flex-direction:column;gap:44px}
+.subpanel[hidden]{display:none}
 @media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; transition: none !important; } }
 </style>
 
@@ -283,16 +358,16 @@ thead th { font-weight: 600; }
 
 <header class="hero">
   <span class="orb orb1"></span><span class="orb orb2"></span>
-  <div class="label">Type 1 of 9 pronouns</div>
+  <div class="label">Type 1 of 8 pronouns</div>
   <h1>Personal Pronouns</h1>
-  <p class="lede">A personal pronoun takes the place of a noun that names a person or thing. Its form changes with person, number, gender and its job in the sentence.</p>
+  <p class="lede">A personal pronoun takes the place of a noun that names a person or thing. Its form changes with <span class="pa">person</span>, <span class="pa">number</span>, <span class="pa">gender</span> and its <span class="pa">job in the sentence</span>.</p>
   <ul class="jump" role="tablist" aria-label="Pronoun topics">
     <li><a href="#overview" role="tab" data-tab="overview">Overview</a></li>
     <li><a href="#subject-tab" role="tab" data-tab="subject-tab">Subject</a></li>
     <li><a href="#object-tab" role="tab" data-tab="object-tab">Object</a></li>
     <li><a href="#possessives" role="tab" data-tab="possessives">Possessives</a></li>
     <li><a href="#reflexive-tab" role="tab" data-tab="reflexive-tab">Reflexive</a></li>
-    <li><a href="#uses-rules" role="tab" data-tab="uses-rules">Special uses and rules</a></li>
+    <li><a href="#uses-rules" role="tab" data-tab="uses-rules">Sentence rules</a></li>
     <li><a href="#agreement-tab" role="tab" data-tab="agreement-tab">Agreement</a></li>
     <li><a href="#choosing" role="tab" data-tab="choosing">Choosing and errors</a></li>
     <li><a href="#practice-tab" role="tab" data-tab="practice-tab">Practice</a></li>
@@ -363,56 +438,48 @@ thead th { font-weight: 600; }
 
 <div class="tabpanel" id="subject-tab" role="tabpanel" hidden>
 
+<ul class="subjump" role="tablist" aria-label="Subject pronoun topics">
+  <li><a href="#subject-tab" role="tab" data-sub="uses">Uses</a></li>
+  <li><a href="#subject-tab:special" role="tab" data-sub="special">Special uses</a></li>
+</ul>
+
+<div class="subpanel" data-sub="uses">
+
 <section id="subject" class="c-subj">
   <header>
     <h2>Subject pronouns <span class="forms">I, you, he, she, it, we, they</span></h2>
     <p>Use a subject pronoun when it does the action of the verb, or takes the place of the subject.</p>
   </header>
   <div class="uses">
-    <div class="use"><h3>Subject of a verb</h3><div>
-      <p class="ex"><span class="s">She</span> sings. <span class="s">They</span> play.</p>
-      <ol class="how">
-        <li>Find the verb.</li>
-        <li>Ask &ldquo;who or what does it?&rdquo;
-          <p>Who sings? <span class="s">She</span>. Who plays? <span class="s">They</span>.</p></li>
-        <li>The answer is the subject, so use the subject form.</li>
-      </ol></div></div>
-    <div class="use"><h3>Compound subject</h3><div>
-      <p class="ex">My brother and <span class="s">I</span> went home.</p>
-      <ol class="how">
-        <li>Remove the other person: &ldquo;<s>My brother and</s> I went home.&rdquo;</li>
-        <li>Read the sentence. &ldquo;I went home&rdquo; sounds right, and &ldquo;Me went home&rdquo; does not.</li>
-        <li>Use the form that works alone (<i>I</i>).</li>
-      </ol></div></div>
-    <div class="use"><h3>Subject in a question</h3><div>
-      <p class="ex">Is <span class="s">she</span> here? Can <span class="s">we</span> go?</p>
-      <ol class="how">
-        <li>In a question, the verb (auxiliary) comes first.</li>
-        <li>The subject comes right after it.</li>
-        <li>The pronoun stays in the subject form.</li>
-      </ol></div></div>
-    <div class="use"><h3>After than or as</h3><div>
-      <p class="ex">My sister is older than <span class="s">I</span> (am).</p>
-      <ol class="how">
-        <li>Spot <i>than</i> or <i>as</i>. The verb after it is usually left out.</li>
-        <li>Add the missing verb in your head to make a full clause.</li>
-        <li>Ask whether that verb has an object.
-          <ul>
-            <li><b>No object</b> (is, did, can): you are comparing two subjects, and there is only one meaning. Use the subject form.
-              <p class="ex many">You are taller than <span class="s">he</span> (is).<br>We worked as hard as <span class="s">they</span> (did).<br>I can run faster than <span class="s">she</span> (can).</p></li>
-            <li><b>Has an object</b> (like, help, trust): there are two possible meanings.
-              <p class="ex many">The pronoun <b>does</b> the action, so use the subject form: She likes him more than <span class="s">I</span> (like him).<br>The pronoun <b>receives</b> the action, so use the object form: She likes him more than <span class="o">me</span> (than she likes me).</p></li>
-          </ul></li>
-        <li>Pick the form that matches the meaning you want, because the two forms give different meanings.</li>
-        <li>Casual speech: &ldquo;older than me&rdquo; is common and accepted. Use the subject form for exams and formal writing.</li>
-      </ol></div></div>
-    <div class="use"><h3>After the verb <i>be</i></h3><div>
-      <p class="ex">&ldquo;Who is it?&rdquo; &ldquo;It is <span class="s">I</span>.&rdquo;</p>
-      <ol class="how">
-        <li><i>Be</i> (is, am, are) links two things that are the same, so the pronoun after it matches the subject.</li>
-        <li>Formal grammar and exams use the subject form: &ldquo;It is I.&rdquo;</li>
-        <li>In everyday speech, &ldquo;It&rsquo;s me&rdquo; is normal and accepted.</li>
-      </ol></div></div>
+    <div class="use-row">
+    <div class="use"><h3>Before a verb (Standard)</h3><div>
+      <p class="what">The subject pronoun does the action of the verb.</p>
+      <p class="ex many" data-label="Examples"><span class="s">She</span> sings.<br><span class="s">We</span> finished the project early.<br><span class="s">They</span> are arriving at noon.</p></div></div>
+    <div class="use"><h3>After the verb in a question</h3><div>
+      <p class="what">In a question, the subject comes right after the first verb: the main verb <i>be</i> or a helping verb. It stays in the subject form.</p>
+      <p class="ex many" data-label="Examples">Is <span class="s">she</span> here? <i>(main verb be)</i><br>Can <span class="s">we</span> go? <i>(helping verb)</i></p></div></div>
+    </div>
+    <div class="use"><h3>Compound Subjects (Paired with Another Noun/Pronoun)</h3><div>
+      <p class="what">When two subjects share a verb, both take the subject form. They also take a plural verb.</p>
+      <p class="ex many" data-label="Examples"><i>Correct:</i> My brother and <span class="s">I</span> went home.<br><i>Incorrect:</i> My brother and <s>me</s> went home.</p>
+      <p class="tip"><b>Quick trick:</b> drop the other person. You would not say &ldquo;Me went home,&rdquo; so use <i>I</i>. Two subjects joined by <i>and</i> take a plural verb, even when both are singular. See the Agreement tab for <i>or</i>, <i>nor</i> and <i>with</i>.</p></div></div>
+    <div class="use-row">
+    <div class="use"><h3>Rule 1: after <i>than</i> or <i>as</i>, use the subject pronoun</h3><div>
+      <p class="what">The pronoun is the subject of a hidden verb.</p>
+      <p class="ex many" data-label="Examples">My sister is older than <span class="s">I</span> (am).<br>You are as tall as <span class="s">he</span> (is).</p>
+      <p class="tip">This is the formal and exam rule. Casual speech accepts &ldquo;older than me.&rdquo;</p></div></div>
+    <div class="use"><h3>Rule 2: after &ldquo;more than&rdquo; with a verb that has an object, the form changes the meaning</h3><div>
+      <p class="what">Both forms are correct. Choose the one that says what you mean.</p>
+      <p class="ex many" data-label="Subject pronoun: one meaning">She likes him more than <span class="s">I</span> (like him).<br>= I like him less than she does.</p>
+      <p class="ex many" data-label="Object pronoun: another meaning">She likes him more than <span class="o">me</span> (than she likes me).<br>= She likes him more than she likes me.</p></div></div>
+    </div>
+    <div class="use"><h3>After linking verbs (predicate nominatives)</h3><div>
+      <p class="what">Linking verbs (am, is, are, was, were) act like an equals sign (=). Formally, the pronoun after a linking verb is a subject pronoun, though everyday speech often bends this rule.</p>
+      <div class="ex-pair">
+        <p class="ex many" data-label="Formal / grammatically strict">It is <span class="s">I</span>.<br>The winner was <span class="s">she</span>.<br>The best dancers are <span class="s">they</span>.<br>&ldquo;Who is it?&rdquo; &ldquo;It is <span class="s">he</span>.&rdquo;<br>&ldquo;May I speak to Anna?&rdquo; &ldquo;This is <span class="s">she</span>.&rdquo;</p>
+        <p class="ex many" data-label="Casual / everyday speech">It&rsquo;s <span class="o">me</span>.<br>That was <span class="o">her</span>.<br>It was <span class="o">them</span> at the door.<br>&ldquo;Who&rsquo;s there?&rdquo; &ldquo;It&rsquo;s <span class="o">us</span>.&rdquo;</p>
+      </div>
+      <p class="tip">The casual forms are accepted in conversation but avoided in formal writing and exams.</p></div></div>
   </div>
   <h3 class="sumh">Quick summary</h3>
   <div class="scroll">
@@ -428,6 +495,45 @@ thead th { font-weight: 600; }
     </table>
   </div>
 </section>
+
+</div>
+
+<div class="subpanel" data-sub="special" hidden>
+
+<section id="special" class="c-aloe">
+  <header>
+    <h2>Special uses of subject pronouns</h2>
+    <p>A few subject pronouns have uses that surprise learners.</p>
+  </header>
+  <div class="uses">
+    <div class="use"><h3>you</h3><div>
+      <p class="ex">You <b>are</b> late. (one person or many)</p>
+      <p class="tip">It is singular and plural, but the verb is always the plural form: you are, you were, you have, you go. Never &ldquo;you is.&rdquo;</p></div></div>
+    <div class="use"><h3>it for things</h3><div>
+      <p class="ex">I have a book. <span class="s">It</span> is new.</p>
+      <p class="tip">Use <i>it</i> for things, for animals, and for a baby when the sex is not known or not important.</p></div></div>
+    <div class="use"><h3>it as an empty subject</h3><div>
+      <p class="ex"><span class="s">It</span> is raining. <span class="s">It</span> is 5 o&rsquo;clock. <span class="s">It</span> is far from here.</p>
+      <p class="tip">Here <i>it</i> has no meaning of its own. The sentence needs a subject, so <i>it</i> fills the place. Used for weather, time and distance.</p></div></div>
+    <div class="use"><h3>it holding the place of a later subject</h3><div>
+      <p class="ex many"><span class="s">It</span> is important to study.<br><span class="s">It</span> was Sara who called.</p>
+      <p class="tip">The real subject (<i>to study</i>) comes later. In the second sentence, <i>It was ... who</i> puts the focus on Sara.</p></div></div>
+    <div class="use"><h3>he and she for animals</h3><div>
+      <p class="ex">My dog is old. <span class="s">She</span> sleeps all day.</p>
+      <p class="tip">People use <i>he</i> or <i>she</i> for a pet or animal they know well. Use <i>it</i> when the animal is just an animal.</p></div></div>
+    <div class="use"><h3>they for one person</h3><div>
+      <p class="ex">Someone called. <span class="s">They</span> left a message.</p>
+      <p class="tip">Modern English uses <i>they</i> for one person whose gender is unknown, not stated, or who uses <i>they</i>. The verb stays plural: they are, they were. Older exam style writes &ldquo;he or she.&rdquo;</p></div></div>
+    <div class="use"><h3>you for people in general</h3><div>
+      <p class="ex"><span class="s">You</span> never know what will happen.</p>
+      <p class="tip">Here <i>you</i> does not mean the listener. It means anyone, people in general. It is informal. Formal writing uses <i>one</i>: &ldquo;One never knows.&rdquo;</p></div></div>
+    <div class="use"><h3>they with no noun before it</h3><div>
+      <p class="ex"><span class="s">They</span> say it will snow tomorrow. <span class="s">They</span> closed the road.</p>
+      <p class="tip">No noun is named. <i>they</i> means an unnamed group of people, often the authorities. The verb is plural.</p></div></div>
+  </div>
+</section>
+
+</div>
 
 </div>
 
@@ -618,39 +724,6 @@ thead th { font-weight: 600; }
 </div>
 
 <div class="tabpanel" id="uses-rules" role="tabpanel" hidden>
-
-<section id="special" class="c-aloe">
-  <header>
-    <h2>You, it, they and others</h2>
-    <p>A few pronouns have uses that surprise learners.</p>
-  </header>
-  <div class="uses">
-    <div class="use"><h3>you</h3><div>
-      <p class="ex">You <b>are</b> late. (one person or many)</p>
-      <p class="tip">It is singular and plural, but the verb is always the plural form: you are, you were, you have, you go. Never &ldquo;you is.&rdquo;</p></div></div>
-    <div class="use"><h3>it for things</h3><div>
-      <p class="ex">I have a book. <span class="s">It</span> is new.</p>
-      <p class="tip">Use <i>it</i> for things, for animals, and for a baby when the sex is not known or not important.</p></div></div>
-    <div class="use"><h3>it as an empty subject</h3><div>
-      <p class="ex"><span class="s">It</span> is raining. <span class="s">It</span> is 5 o&rsquo;clock. <span class="s">It</span> is far from here.</p>
-      <p class="tip">Here <i>it</i> has no meaning of its own. The sentence needs a subject, so <i>it</i> fills the place. Used for weather, time and distance.</p></div></div>
-    <div class="use"><h3>it holding the place of a later subject</h3><div>
-      <p class="ex many"><span class="s">It</span> is important to study.<br><span class="s">It</span> was Sara who called.</p>
-      <p class="tip">The real subject (<i>to study</i>) comes later. In the second sentence, <i>It was ... who</i> puts the focus on Sara.</p></div></div>
-    <div class="use"><h3>he and she for animals</h3><div>
-      <p class="ex">My dog is old. <span class="s">She</span> sleeps all day.</p>
-      <p class="tip">People use <i>he</i> or <i>she</i> for a pet or animal they know well. Use <i>it</i> when the animal is just an animal.</p></div></div>
-    <div class="use"><h3>they for one person</h3><div>
-      <p class="ex">Someone called. <span class="s">They</span> left a message.</p>
-      <p class="tip">Modern English uses <i>they</i> for one person whose gender is unknown, not stated, or who uses <i>they</i>. The verb stays plural: they are, they were. Older exam style writes &ldquo;he or she.&rdquo;</p></div></div>
-    <div class="use"><h3>you for people in general</h3><div>
-      <p class="ex"><span class="s">You</span> never know what will happen.</p>
-      <p class="tip">Here <i>you</i> does not mean the listener. It means anyone, people in general. It is informal. Formal writing uses <i>one</i>: &ldquo;One never knows.&rdquo;</p></div></div>
-    <div class="use"><h3>they with no noun before it</h3><div>
-      <p class="ex"><span class="s">They</span> say it will snow tomorrow. <span class="s">They</span> closed the road.</p>
-      <p class="tip">No noun is named. <i>they</i> means an unnamed group of people, often the authorities. The verb is plural.</p></div></div>
-  </div>
-</section>
 
 <section id="rules" class="c-pine">
   <header>
@@ -910,8 +983,17 @@ thead th { font-weight: 600; }
   var tabs = Array.prototype.slice.call(document.querySelectorAll('.jump a[data-tab]'));
   var panels = Array.prototype.slice.call(document.querySelectorAll('.tabpanel'));
   var names = tabs.map(function (a) { return a.dataset.tab; });
+  var subs = Array.prototype.slice.call(document.querySelectorAll('.subjump a[data-sub]'));
+  var subpanels = Array.prototype.slice.call(document.querySelectorAll('.subpanel'));
+  function showSub(sub) {
+    if (['uses', 'special'].indexOf(sub) < 0) sub = 'uses';
+    subs.forEach(function (a) { a.setAttribute('aria-selected', a.dataset.sub === sub ? 'true' : 'false'); });
+    subpanels.forEach(function (p) { p.hidden = p.dataset.sub !== sub; });
+  }
   function show(name, scroll) {
+    var parts = name.split(':'); name = parts[0];
     if (names.indexOf(name) < 0) name = names[0];
+    if (name === 'subject-tab') showSub(parts[1]);
     tabs.forEach(function (a) {
       var on = a.dataset.tab === name;
       a.setAttribute('aria-selected', on ? 'true' : 'false');
@@ -920,6 +1002,12 @@ thead th { font-weight: 600; }
     panels.forEach(function (p) { p.hidden = p.id !== name; });
     if (scroll) { var h = document.querySelector('.hero'); if (h) h.scrollIntoView({ block: 'start' }); }
   }
+  subs.forEach(function (a) {
+    a.addEventListener('click', function (e) {
+      e.preventDefault(); showSub(a.dataset.sub);
+      try { history.replaceState(null, '', '#subject-tab' + (a.dataset.sub === 'uses' ? '' : ':' + a.dataset.sub)); } catch (x) {}
+    });
+  });
   tabs.forEach(function (a, i) {
     a.addEventListener('click', function (e) {
       e.preventDefault(); show(a.dataset.tab, false);

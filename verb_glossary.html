@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Grammar Glossary · Verbs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600;1,700&family=Yeseva+One&display=swap">
+<style>
+:root {
+  --bg: #f1f4f2; --bg-wash: #e3ecea; --card: #fbfcfb; --ink: #22333a; --muted: #5d6e75; --line: #d4ddda;
+  --mark: #f3e3a8; --on-c: #ffffff;
+  --c-kinds: #2c7a7b; --c-objects: #3d6c98; --c-forms: #5b8a52; --c-time: #a4752a; --c-grammar: #5a7280;
+  --h: "Yeseva One", Georgia, serif;
+  --b: "Lora", Georgia, "Times New Roman", serif;
+  --script: "Great Vibes", "Snell Roundhand", cursive;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #12191c; --bg-wash: #17262a; --card: #1a2428; --ink: #e4ecee; --muted: #9fb0b6; --line: #2f3d43;
+    --mark: #5b5127; --on-c: #12191c;
+    --c-kinds: #5fc0c0; --c-objects: #7fa9d6; --c-forms: #92c48a; --c-time: #deb06a; --c-grammar: #9fb4c0;
+    color-scheme: dark;
+  }
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0; color: var(--ink); font-family: var(--b); font-size: 17px; line-height: 1.6;
+  background: linear-gradient(180deg, var(--bg-wash) 0, var(--bg) 420px) var(--bg);
+  background-repeat: no-repeat;
+  -webkit-text-size-adjust: 100%;
+}
+.wrap { max-width: 1080px; margin: 0 auto; padding: 0 20px 64px; }
+
+/* shine + faint edge glow, same colour as the term (top lighter, middle base, bottom darker) */
+.shine, .m b, .ex b, .tip b {
+  --hi: color-mix(in srgb, var(--c, var(--c-kinds)) 70%, #fff);
+  --lo: color-mix(in srgb, var(--c, var(--c-kinds)) 80%, #000);
+  background: linear-gradient(180deg, var(--hi) 0%, var(--c, var(--c-kinds)) 50%, var(--lo) 100%);
+  -webkit-background-clip: text; background-clip: text;
+  color: transparent; -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 1.5px color-mix(in srgb, var(--c, var(--c-kinds)) 14%, transparent));
+  -webkit-box-decoration-break: clone; box-decoration-break: clone;
+}
+@supports not (color: color-mix(in srgb, red 50%, blue)) {
+  .shine, .m b, .ex b, .tip b { --hi: var(--c, #2c7a7b); --lo: var(--c, #2c7a7b); filter: none; }
+}
+mark {
+  background: var(--mark); color: var(--ink); -webkit-text-fill-color: var(--ink);
+  border-radius: 3px; padding: 0 .08em; filter: none;
+}
+
+/* hero */
+.hero { text-align: center; padding: 56px 0 26px; }
+.eyebrow { font-size: .78rem; letter-spacing: .22em; text-transform: uppercase; color: var(--muted); font-weight: 500; }
+.hero h1 { font-family: var(--h); font-weight: 400; font-size: clamp(2.1rem, 6.2vw, 3.4rem); line-height: 1.12; margin: 10px 0 0; }
+.script { font-family: var(--script); font-size: clamp(3.4rem, 12vw, 6rem); line-height: 1; display: block; margin: 4px 0 0; --c: var(--c-kinds); padding: .06em .12em .14em; }
+.hero p { max-width: 54ch; margin: 10px auto 0; font-style: italic; color: var(--muted); }
+.stats { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
+.stat { font-size: .85rem; border: 1px solid var(--line); background: var(--card); border-radius: 999px; padding: 4px 14px; color: var(--muted); }
+.stat b { font-family: var(--h); font-weight: 400; color: var(--ink); font-size: 1rem; margin-right: 4px; }
+
+/* search bar (sticky) */
+.bar { position: sticky; top: 0; z-index: 20; padding: 10px 0; background: color-mix(in srgb, var(--bg) 82%, transparent); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); }
+.search { position: relative; display: flex; align-items: center; background: var(--card); border: 1.5px solid var(--line); border-radius: 16px; box-shadow: 0 6px 22px -14px rgba(20,50,55,.45); transition: border-color .15s, box-shadow .15s; }
+.search:focus-within { border-color: var(--c-kinds); box-shadow: 0 0 0 4px color-mix(in srgb, var(--c-kinds) 18%, transparent); }
+.search svg { position: absolute; left: 16px; width: 20px; height: 20px; stroke: var(--muted); fill: none; stroke-width: 2; stroke-linecap: round; pointer-events: none; }
+.search input { flex: 1; min-width: 0; font: inherit; font-size: 1.05rem; color: var(--ink); background: transparent; border: 0; outline: 0; padding: 14px 12px 14px 48px; }
+.search input::placeholder { color: var(--muted); font-style: italic; opacity: .85; }
+.search input::-webkit-search-cancel-button { display: none; }
+.count { font-size: .82rem; color: var(--muted); white-space: nowrap; padding-right: 8px; }
+.clear { font: inherit; font-size: 1.1rem; line-height: 1; color: var(--muted); background: transparent; border: 0; cursor: pointer; padding: 8px 14px 8px 8px; border-radius: 12px; }
+.clear[hidden] { display: none; }
+.clear:hover { color: var(--ink); }
+kbd { font-family: var(--b); font-size: .75rem; border: 1px solid var(--line); border-bottom-width: 2px; border-radius: 6px; padding: 0 6px; margin-right: 10px; color: var(--muted); }
+.search:focus-within kbd, .search.has-q kbd { display: none; }
+
+/* controls */
+.controls { display: flex; flex-wrap: wrap; gap: 12px 18px; align-items: center; justify-content: space-between; margin: 14px 0 6px; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip { font: inherit; font-size: .86rem; cursor: pointer; color: var(--ink); background: var(--card); border: 1.5px solid var(--line); border-radius: 999px; padding: 5px 14px; transition: background .15s, border-color .15s; }
+.chip i { font-style: normal; color: var(--muted); font-size: .78rem; margin-left: 4px; }
+.chip:hover { border-color: var(--c, var(--muted)); }
+.chip[aria-pressed="true"] { background: color-mix(in srgb, var(--c, var(--ink)) 16%, var(--card)); border-color: var(--c, var(--ink)); font-weight: 600; }
+.chip::before { content: ""; display: inline-block; width: 9px; height: 9px; border-radius: 50%; background: var(--c, var(--muted)); margin-right: 7px; opacity: .9; }
+.chip.all::before { display: none; }
+.right { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+.seg { display: inline-flex; border: 1.5px solid var(--line); border-radius: 999px; overflow: hidden; background: var(--card); }
+.seg button { font: inherit; font-size: .86rem; cursor: pointer; background: transparent; border: 0; color: var(--muted); padding: 5px 14px; }
+.seg button[aria-pressed="true"] { background: var(--ink); color: var(--bg); font-weight: 600; }
+.cover-btn { font: inherit; font-size: .86rem; cursor: pointer; color: var(--ink); background: var(--card); border: 1.5px solid var(--line); border-radius: 999px; padding: 5px 14px; }
+.cover-btn[aria-pressed="true"] { background: color-mix(in srgb, var(--c-time) 18%, var(--card)); border-color: var(--c-time); font-weight: 600; }
+button:focus-visible, a:focus-visible, .entry:focus-visible, input:focus-visible { outline: 3px solid var(--c-objects); outline-offset: 2px; }
+.search input:focus-visible { outline: 0; }
+
+.letters { display: none; flex-wrap: wrap; gap: 6px; margin: 10px 0 0; }
+.letters.on { display: flex; }
+.letters a { font-family: var(--h); font-size: 1rem; text-decoration: none; color: var(--ink); width: 34px; height: 34px; display: grid; place-items: center; border-radius: 10px; border: 1px solid var(--line); background: var(--card); }
+.letters a:hover { border-color: var(--c-kinds); color: var(--c-kinds); }
+
+/* sections */
+#list { margin-top: 18px; }
+.group { margin-top: 38px; scroll-margin-top: calc(var(--bar, 72px) + 14px); }
+.group:first-child { margin-top: 10px; }
+.ghead { display: flex; align-items: baseline; flex-wrap: wrap; gap: 4px 14px; padding-bottom: 10px; margin-bottom: 16px; border-bottom: 1.5px solid color-mix(in srgb, var(--c, var(--line)) 40%, var(--line)); }
+.ghead h2 { font-family: var(--h); font-weight: 400; font-size: 1.7rem; margin: 0; line-height: 1.2; }
+.ghead p { margin: 0; font-style: italic; color: var(--muted); font-size: .95rem; }
+.ghead .n { margin-left: auto; font-size: .82rem; color: var(--muted); }
+.letter-h { font-family: var(--script); font-size: 3rem; line-height: 1; margin: 0; --c: var(--c-kinds); padding: .04em .1em .1em 0; }
+
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 330px), 1fr)); gap: 16px; }
+.entry {
+  --c: var(--c-kinds);
+  background: var(--card); border: 1px solid var(--line); border-top: 4px solid var(--c); border-radius: 14px;
+  padding: 16px 18px 16px; display: flex; flex-direction: column; gap: 10px; min-width: 0;
+  box-shadow: 0 10px 26px -22px rgba(20,50,55,.6);
+  scroll-margin-top: calc(var(--bar, 72px) + 14px);
+}
+.entry[data-cat="kinds"] { --c: var(--c-kinds); } .entry[data-cat="objects"] { --c: var(--c-objects); }
+.entry[data-cat="forms"] { --c: var(--c-forms); } .entry[data-cat="time"] { --c: var(--c-time); }
+.entry[data-cat="grammar"] { --c: var(--c-grammar); }
+.entry.flash { animation: flash 1.8s ease-out; }
+@keyframes flash { 0%, 35% { box-shadow: 0 0 0 4px color-mix(in srgb, var(--c) 45%, transparent); } 100% { box-shadow: 0 10px 26px -22px rgba(20,50,55,.6); } }
+.top { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; }
+.term { font-family: var(--h); font-weight: 400; font-size: 1.4rem; line-height: 1.25; margin: 0; }
+.tag { font-size: .68rem; letter-spacing: .08em; text-transform: uppercase; font-weight: 600; padding: 2px 9px; border-radius: 999px; color: color-mix(in srgb, var(--c) 78%, #000); background: color-mix(in srgb, var(--c) 14%, var(--card)); }
+@media (prefers-color-scheme: dark) { .tag { color: var(--c); } }
+.vtag { font-family: var(--h); font-size: .78rem; padding: 1px 9px; border-radius: 8px; border: 1.5px solid var(--c); color: var(--ink); }
+.aka { margin: -4px 0 0; font-size: .86rem; color: var(--muted); }
+.aka i { color: var(--ink); opacity: .85; }
+.m { margin: 0; }
+.m b { font-weight: 700; font-style: italic; }
+.lbl { display: inline-block; font-size: .66rem; letter-spacing: .1em; text-transform: uppercase; font-weight: 700; font-style: normal; color: var(--on-c); background: color-mix(in srgb, var(--c) 86%, #000); border-radius: 5px; padding: 1px 8px; }
+@media (prefers-color-scheme: dark) { .lbl { background: var(--c); } }
+.ex { background: color-mix(in srgb, var(--c) 8%, var(--card)); border-left: 3px solid var(--c); border-radius: 4px 10px 10px 4px; padding: 10px 14px 10px; }
+.ex ul { list-style: none; margin: 7px 0 0; padding: 0; display: flex; flex-direction: column; gap: 3px; }
+.ex li { font-style: italic; font-weight: 500; }
+.ex b { font-weight: 700; }
+.ex small, .m small { font-style: normal; font-weight: 400; font-size: .82rem; color: var(--muted); }
+.tip { margin: 0; font-size: .95rem; }
+.tip .lbl { margin-right: 8px; }
+.tip { font-style: italic; }
+.tip b { font-weight: 700; }
+.see { margin: 0; font-size: .86rem; color: var(--muted); display: flex; flex-wrap: wrap; gap: 6px 8px; align-items: center; }
+.see a { color: color-mix(in srgb, var(--ink) 85%, var(--c)); text-decoration: none; border: 1px solid var(--line); border-radius: 999px; padding: 0 10px; font-size: .84rem; background: var(--card); }
+.see a:hover { border-color: var(--c); background: color-mix(in srgb, var(--c) 10%, var(--card)); }
+
+/* cover mode */
+.cover .entry { cursor: pointer; }
+.cover .entry:not(.open) .m, .cover .entry:not(.open) .ex, .cover .entry:not(.open) .tip, .cover .entry:not(.open) .aka { filter: blur(7px); user-select: none; }
+.cover .entry:not(.open)::after { content: "tap to reveal"; font-size: .76rem; font-style: italic; color: var(--muted); text-align: center; }
+
+.empty { text-align: center; padding: 54px 16px; border: 1.5px dashed var(--line); border-radius: 16px; background: var(--card); }
+.empty h3 { font-family: var(--h); font-weight: 400; font-size: 1.5rem; margin: 0 0 6px; }
+.empty p { margin: 4px 0; color: var(--muted); font-style: italic; }
+.empty button { margin-top: 12px; }
+footer { text-align: center; margin-top: 54px; color: var(--muted); font-size: .9rem; font-style: italic; }
+footer .script { font-size: 2.4rem; display: inline; padding: 0 .1em; }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+@media (max-width: 560px) {
+  body { font-size: 16px; }
+  .wrap { padding: 0 14px 48px; }
+  .hero { padding-top: 38px; }
+  .count { display: none; }
+  .ghead .n { margin-left: 0; }
+  kbd { display: none; }
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .entry.flash { animation: none; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="hero">
+    <span class="eyebrow">Grammar Glossary &middot; Part 1</span>
+    <h1>Words we use to talk about</h1>
+    <span class="script shine">Verbs</span>
+    <p>Every grammar term you meet while learning verbs, explained in plain English with an example you can remember.</p>
+    <div class="stats" id="stats"></div>
+  </header>
+
+  <div class="bar" id="bar">
+    <div class="search" id="searchBox" role="search">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+      <label class="sr" for="q">Search the glossary</label>
+      <input id="q" type="search" autocomplete="off" spellcheck="false" placeholder="Search a term, a meaning or an example…">
+      <span class="count" id="count" aria-live="polite"></span>
+      <kbd>/</kbd>
+      <button class="clear" id="clear" type="button" aria-label="Clear search" hidden>&#x2715;</button>
+    </div>
+  </div>
+
+  <div class="controls">
+    <div class="chips" id="chips" role="group" aria-label="Filter by topic"></div>
+    <div class="right">
+      <div class="seg" role="group" aria-label="Sort order">
+        <button type="button" id="vTopic" aria-pressed="true">By topic</button>
+        <button type="button" id="vAz" aria-pressed="false">A&ndash;Z</button>
+      </div>
+      <button type="button" class="cover-btn" id="coverBtn" aria-pressed="false">Cover meanings</button>
+    </div>
+  </div>
+  <nav class="letters" id="letters" aria-label="Jump to letter"></nav>
+
+  <main id="list"></main>
+
+  <footer><span class="script shine" style="--c: var(--c-forms)">More soon</span><br>Next parts of speech will join this glossary.</footer>
+</div>
+
+<script>
+const CATS = [
+  { k: "kinds",   name: "Kinds of verbs",          sub: "What a verb does in a sentence." },
+  { k: "objects", name: "Verbs & sentence parts",   sub: "Who does it, and what it acts on." },
+  { k: "forms",   name: "Verb forms",               sub: "V1 to V5 and the shapes a verb can take." },
+  { k: "time",    name: "Tense & aspect",           sub: "When it happens, and how it unfolds." },
+  { k: "grammar", name: "Voice, mood & agreement",  sub: "Who acts, how it is said, and how verbs match subjects." }
+];
+
+const DATA = [
+/* ---------- KINDS OF VERBS ---------- */
+{ id:"verb", c:"kinds", t:"Verb", aka:"doing word",
+  m:"A word that shows an <b>action</b>, an <b>event</b> or a <b>state</b>. Every complete sentence needs at least one verb.",
+  e:["The children <b>laughed</b>.","My brother <b>is</b> tall."],
+  tip:"Take the verb away and the sentence falls apart. It is the <b>heart</b> of the sentence.",
+  see:["action","state","main"] },
+{ id:"action", c:"kinds", t:"Action verb", aka:"dynamic verb",
+  m:"A verb that shows something a person or thing <b>does</b>, or something that <b>happens</b>. It can usually be used in the continuous form.",
+  e:["She <b>kicked</b> the ball.","They are <b>building</b> a tree house."],
+  tip:"If you can act it out, it is an action verb.",
+  see:["state","continuous"] },
+{ id:"state", c:"kinds", t:"State verb", aka:"stative verb",
+  m:"A verb that describes a <b>condition</b>, a <b>feeling</b>, a <b>thought</b> or <b>ownership</b> instead of an action. It is rarely used in the continuous form.",
+  e:["I <b>know</b> the answer. <small>(not “I am knowing”)</small>","She <b>owns</b> two bikes."],
+  tip:"State verbs sit still: <b>know, love, want, own, believe</b>.",
+  see:["action","continuous"] },
+{ id:"main", c:"kinds", t:"Main verb", aka:"lexical verb, full verb",
+  m:"The verb that carries the <b>main meaning</b> of the sentence. In a verb phrase it comes <b>last</b>.",
+  e:["She has <b>finished</b> her homework.","He will <b>travel</b> tomorrow."],
+  see:["helping","vphrase"] },
+{ id:"helping", c:"kinds", t:"Helping verb", aka:"auxiliary verb",
+  m:"A verb that stands <b>before the main verb</b> and helps it make a tense, a question, a negative or a passive. It adds little meaning of its own.",
+  e:["She <b>has</b> finished.","<b>Do</b> you like tea?","The cake <b>was</b> eaten."],
+  see:["primary","modal","main"] },
+{ id:"primary", c:"kinds", t:"Primary auxiliary verbs", aka:"be, have, do",
+  m:"The three verbs <b>be</b>, <b>have</b> and <b>do</b>. Each can work as a helping verb, and each can also be a main verb.",
+  e:["He <b>is</b> sleeping. <small>(helping verb)</small>","He <b>is</b> tired. <small>(main verb)</small>"],
+  see:["helping","main"] },
+{ id:"modal", c:"kinds", t:"Modal verb", aka:"modal auxiliary",
+  m:"A helping verb that adds a meaning such as <b>ability</b>, <b>possibility</b>, <b>permission</b> or <b>duty</b>: can, could, may, might, shall, should, will, would, must.",
+  e:["She <b>can</b> swim.","You <b>must</b> wear a helmet."],
+  tip:"A modal never takes <b>-s</b> and is always followed by V1: <b>he can go</b>.",
+  see:["base","semi"] },
+{ id:"semi", c:"kinds", t:"Semi-modal verb", aka:"quasi-modal",
+  m:"A phrase that works like a modal in meaning but behaves partly like an ordinary verb, such as <b>have to</b>, <b>ought to</b>, <b>used to</b> and <b>be able to</b>.",
+  e:["You <b>have to</b> leave now.","She <b>used to</b> live here."],
+  see:["modal"] },
+{ id:"linking", c:"kinds", t:"Linking verb", aka:"copular verb",
+  m:"A verb that <b>joins</b> the subject to a word that describes or renames it. It shows no action. Examples: be, seem, become, look, feel, sound, taste, smell, remain.",
+  e:["The soup <b>smells</b> delicious.","He <b>became</b> a doctor."],
+  tip:"Swap the verb with <b>is</b>. If the sentence still makes sense, it is a linking verb.",
+  see:["complement","state"] },
+{ id:"phrasal", c:"kinds", t:"Phrasal verb", aka:"verb + particle",
+  m:"A verb joined with a small word (a <b>particle</b>) so that the two together have a <b>new meaning</b>.",
+  e:["He <b>gave up</b> the game.","We <b>looked after</b> the puppy."],
+  tip:"Read the whole group, not word by word: <b>give up = stop</b>.",
+  see:["prepositional"] },
+{ id:"prepositional", c:"kinds", t:"Prepositional verb", aka:"verb + preposition",
+  m:"A verb that always goes with one particular <b>preposition</b>. The meaning stays close to the verb, and a noun or pronoun follows the preposition.",
+  e:["I <b>listen to</b> music.","She <b>depends on</b> her sister."],
+  see:["phrasal"] },
+{ id:"causative", c:"kinds", t:"Causative verb", aka:"make, let, have, get",
+  m:"A verb that shows one person <b>makes</b>, <b>lets</b>, <b>has</b> or <b>gets</b> another person do something.",
+  e:["Mom <b>made</b> me clean my room.","The teacher <b>let</b> us leave early."],
+  see:["bareinf"] },
+{ id:"reporting", c:"kinds", t:"Reporting verb", aka:"speech verb",
+  m:"A verb that tells what someone <b>said</b> or <b>thought</b>: say, tell, ask, reply, explain, whisper, wonder.",
+  e:["She <b>asked</b> where I lived.","He <b>whispered</b> that it was late."] },
+{ id:"vphrase", c:"kinds", t:"Verb phrase", aka:"verb group",
+  m:"The <b>main verb</b> together with all of its <b>helping verbs</b>.",
+  e:["She <b>has been waiting</b>.","They <b>will leave</b> soon."],
+  tip:"<b>has been</b> = helpers, <b>waiting</b> = main verb.",
+  see:["main","helping"] },
+
+/* ---------- VERBS & SENTENCE PARTS ---------- */
+{ id:"transitive", c:"objects", t:"Transitive verb",
+  m:"A verb that needs an <b>object</b> to complete its meaning. The action passes from the subject to the object.",
+  e:["She <b>kicked</b> the ball.","I <b>need</b> help."],
+  tip:"After the verb ask <b>what?</b> or <b>whom?</b> If there is an answer, the verb is transitive.",
+  see:["intransitive","object"] },
+{ id:"intransitive", c:"objects", t:"Intransitive verb",
+  m:"A verb that does <b>not</b> take an object. The sentence is complete without one.",
+  e:["The baby <b>slept</b>.","The sun <b>rose</b> early."],
+  see:["transitive","ambitransitive"] },
+{ id:"ditransitive", c:"objects", t:"Ditransitive verb",
+  m:"A verb that takes <b>two objects</b>: an indirect object (who receives) and a direct object (what is given).",
+  e:["He <b>gave</b> her a book.","I <b>sent</b> Ben a message."],
+  see:["transitive","object"] },
+{ id:"ambitransitive", c:"objects", t:"Ambitransitive verb", aka:"verb used both ways",
+  m:"A verb that can be used <b>both ways</b>, with an object or without one.",
+  e:["He <b>ate</b>. <small>(no object)</small>","He <b>ate</b> an apple. <small>(object)</small>"],
+  see:["transitive","intransitive"] },
+{ id:"subject", c:"objects", t:"Subject",
+  m:"The person or thing the sentence is about. It <b>does</b> the action or <b>is</b> described, and it decides the form of the verb.",
+  e:["<b>The boys</b> play football.","<b>She</b> is happy."],
+  see:["agreement","predicate"] },
+{ id:"object", c:"objects", t:"Object", aka:"direct object, indirect object",
+  m:"The noun or pronoun that <b>receives</b> the action of a transitive verb. The <b>direct object</b> answers <b>what?</b> and the <b>indirect object</b> answers <b>to whom?</b>",
+  e:["She kicked <b>the ball</b>. <small>(direct)</small>","He gave <b>her</b> a book. <small>(indirect)</small>"],
+  see:["transitive","ditransitive"] },
+{ id:"predicate", c:"objects", t:"Predicate",
+  m:"The part of a sentence that tells what the subject <b>does</b> or <b>is</b>. It always begins with the verb.",
+  e:["The boys <b>play football after school</b>.","She <b>is happy</b>."],
+  see:["subject"] },
+{ id:"complement", c:"objects", t:"Complement", aka:"subject complement",
+  m:"A word or group of words after a <b>linking verb</b> that describes or renames the subject.",
+  e:["The soup is <b>hot</b>.","My sister is <b>a nurse</b>."],
+  see:["linking"] },
+
+/* ---------- VERB FORMS ---------- */
+{ id:"base", c:"forms", t:"Base form", v:"V1", aka:"root form, dictionary form",
+  m:"The verb in its <b>simplest form</b>, with no ending. It is the form you find in a dictionary.",
+  e:["They <b>play</b> chess.","She can <b>play</b> the piano."],
+  tip:"Use V1 with <b>I, you, we, they</b> and plural nouns in the present, and after a modal.",
+  see:["v5","modal","bareinf"] },
+{ id:"v2", c:"forms", t:"Past simple form", v:"V2", aka:"past form",
+  m:"The form that shows <b>finished past</b> time. Regular verbs add <b>-ed</b>; irregular verbs change shape.",
+  e:["She <b>played</b> yesterday.","We <b>went</b> home."],
+  see:["v3","regular","irregular"] },
+{ id:"v3", c:"forms", t:"Past participle", v:"V3",
+  m:"The form used after <b>have / has / had</b> and in the <b>passive</b>. For regular verbs it looks like V2; irregular verbs often differ.",
+  e:["She has <b>played</b>.","The window was <b>broken</b>."],
+  tip:"go – went – <b>gone</b>: V2 and V3 can be different.",
+  see:["perfect","passive","participle"] },
+{ id:"v4", c:"forms", t:"Present participle", v:"V4", aka:"-ing form",
+  m:"The verb plus <b>-ing</b>. It is used with <b>be</b> for continuous tenses, and it can also work as an adjective.",
+  e:["She is <b>playing</b>.","a <b>running</b> tap"],
+  see:["continuous","gerund","participle"] },
+{ id:"v5", c:"forms", t:"-s form", v:"V5", aka:"third person singular form",
+  m:"The verb plus <b>-s / -es</b>. It is used in the present simple with <b>he, she, it</b> and every <b>singular noun</b>.",
+  e:["He <b>plays</b> guitar.","The boy <b>watches</b> TV."],
+  tip:"Every noun counts as 3rd person: one boy = he (<b>V5</b>), two boys = they (<b>V1</b>).",
+  see:["agreement","person","base"] },
+{ id:"regular", c:"forms", t:"Regular verb",
+  m:"A verb that makes its past (V2) and past participle (V3) by adding <b>-ed</b> or <b>-d</b>.",
+  e:["walk – <b>walked</b> – <b>walked</b>","love – <b>loved</b> – <b>loved</b>"],
+  see:["irregular"] },
+{ id:"irregular", c:"forms", t:"Irregular verb",
+  m:"A verb that does <b>not</b> follow the -ed rule. Its V2 and V3 must be learned one by one.",
+  e:["go – <b>went</b> – <b>gone</b>","cut – <b>cut</b> – <b>cut</b>"],
+  see:["regular","v2","v3"] },
+{ id:"inflection", c:"forms", t:"Inflection",
+  m:"A change in the <b>ending or shape</b> of a verb to show tense, person or form.",
+  e:["walk → <b>walks</b>, <b>walked</b>, <b>walking</b>"],
+  see:["conjugation"] },
+{ id:"conjugation", c:"forms", t:"Conjugation",
+  m:"The complete list of a verb’s forms across <b>persons</b> and <b>tenses</b>.",
+  e:["I <b>am</b>, you <b>are</b>, he <b>is</b>","I <b>was</b>, you <b>were</b>, he <b>was</b>"],
+  see:["inflection","person"] },
+{ id:"infinitive", c:"forms", t:"Infinitive",
+  m:"The basic form of a verb used with no subject. It does not show tense or person. It comes in two types: the <b>to-infinitive</b> and the <b>bare infinitive</b>.",
+  e:["I want <b>to learn</b>.","She can <b>swim</b>."],
+  see:["toinf","bareinf","nonfinite"] },
+{ id:"toinf", c:"forms", t:"To-infinitive",
+  m:"The infinitive with <b>to</b> placed before V1.",
+  e:["She decided <b>to leave</b>.","It is hard <b>to wait</b>."],
+  see:["infinitive","bareinf"] },
+{ id:"bareinf", c:"forms", t:"Bare infinitive", aka:"zero infinitive",
+  m:"V1 <b>without to</b>. It follows modals and verbs such as let, make and help.",
+  e:["He can <b>swim</b>.","They made me <b>laugh</b>."],
+  see:["infinitive","modal","causative"] },
+{ id:"gerund", c:"forms", t:"Gerund",
+  m:"A verb ending in <b>-ing</b> that works as a <b>noun</b>.",
+  e:["<b>Swimming</b> is fun.","I enjoy <b>reading</b>."],
+  tip:"-ing as a <b>noun</b> = gerund. -ing as part of a verb or an adjective = present participle.",
+  see:["v4","participle"] },
+{ id:"participle", c:"forms", t:"Participle",
+  m:"A verb form used to build tenses or to describe a noun. The <b>present participle</b> ends in -ing (V4); the <b>past participle</b> is V3.",
+  e:["a <b>broken</b> window","the <b>sleeping</b> baby"],
+  see:["v3","v4","gerund"] },
+{ id:"finite", c:"forms", t:"Finite verb",
+  m:"A verb form that <b>shows tense</b> and agrees with its subject. It can be the main verb of a sentence on its own.",
+  e:["She <b>sings</b> well.","They <b>sang</b> yesterday."],
+  see:["nonfinite","tense"] },
+{ id:"nonfinite", c:"forms", t:"Non-finite verb",
+  m:"A verb form that does <b>not</b> show tense or person: the infinitive, the -ing form and the participle. It cannot be the only verb in a full sentence.",
+  e:["<b>Walking</b> home, I saw a fox.","I like <b>to draw</b>."],
+  see:["finite","infinitive","participle"] },
+
+/* ---------- TENSE & ASPECT ---------- */
+{ id:"tense", c:"time", t:"Tense",
+  m:"The form of a verb that shows <b>when</b> something happens: present, past or future.",
+  e:["She <b>walks</b> now. <small>(present)</small>","She <b>walked</b> then. <small>(past)</small>","She <b>will walk</b> later. <small>(future)</small>"],
+  tip:"Tense = <b>when</b>. Aspect = <b>how</b>.",
+  see:["aspect","present","past","future"] },
+{ id:"present", c:"time", t:"Present tense",
+  m:"Shows what is true <b>now</b>, what happens <b>regularly</b>, or what is happening at this moment.",
+  e:["She <b>walks</b> to school.","The bus <b>is coming</b>."],
+  see:["tense","past","future"] },
+{ id:"past", c:"time", t:"Past tense",
+  m:"Shows something that happened <b>before now</b>.",
+  e:["She <b>walked</b> to school.","It <b>was raining</b>."],
+  see:["tense","present","v2"] },
+{ id:"future", c:"time", t:"Future tense",
+  m:"Shows something that has <b>not happened yet</b>. It is made with <b>will</b> + V1.",
+  e:["She <b>will walk</b> tomorrow.","They <b>will be</b> here soon."],
+  see:["tense","modal"] },
+{ id:"aspect", c:"time", t:"Aspect",
+  m:"Shows <b>how</b> an action is spread over time: whole, in progress, finished with a link to another time, or going on up to a point. English has four: simple, continuous, perfect and perfect continuous.",
+  e:["She <b>walks</b>. <small>(simple)</small>","She <b>is walking</b>. <small>(continuous)</small>","She <b>has walked</b>. <small>(perfect)</small>","She <b>has been walking</b>. <small>(perfect continuous)</small>"],
+  tip:"Tense = <b>when</b>. Aspect = <b>how</b>.",
+  see:["simple","continuous","perfect","perfcont"] },
+{ id:"simple", c:"time", t:"Simple aspect",
+  m:"Presents an action or fact as a <b>whole</b>, with no stress on progress or result.",
+  e:["She <b>walks</b> daily.","She <b>walked</b> home."],
+  see:["aspect"] },
+{ id:"continuous", c:"time", t:"Continuous aspect", aka:"progressive aspect",
+  m:"Shows an action <b>in progress</b>. Formula: <b>be</b> + V4.",
+  e:["She <b>is walking</b>.","They <b>were playing</b>."],
+  see:["aspect","v4","action"] },
+{ id:"perfect", c:"time", t:"Perfect aspect",
+  m:"Links an action to <b>another point in time</b>, showing that it is finished or still matters. Formula: <b>have</b> + V3.",
+  e:["She <b>has walked</b> home.","He <b>had left</b> before noon."],
+  see:["aspect","v3"] },
+{ id:"perfcont", c:"time", t:"Perfect continuous aspect", aka:"perfect progressive",
+  m:"Shows an action that has been <b>going on</b> up to a point in time. Formula: <b>have</b> + <b>been</b> + V4.",
+  e:["She <b>has been walking</b> for an hour.","He <b>had been waiting</b> all day."],
+  see:["aspect","perfect","continuous"] },
+
+/* ---------- VOICE, MOOD & AGREEMENT ---------- */
+{ id:"voice", c:"grammar", t:"Voice",
+  m:"Shows whether the subject <b>does</b> the action (active) or <b>receives</b> it (passive).",
+  e:["The dog <b>chased</b> the cat. <small>(active)</small>","The cat <b>was chased</b>. <small>(passive)</small>"],
+  see:["active","passive"] },
+{ id:"active", c:"grammar", t:"Active voice",
+  m:"The subject <b>does</b> the action.",
+  e:["The chef <b>cooked</b> the meal.","Birds <b>build</b> nests."],
+  see:["voice","passive"] },
+{ id:"passive", c:"grammar", t:"Passive voice",
+  m:"The subject <b>receives</b> the action. Formula: <b>be</b> + V3. The doer can be added with <b>by</b>.",
+  e:["The meal <b>was cooked</b> by the chef.","A letter <b>is written</b>."],
+  see:["voice","active","v3"] },
+{ id:"mood", c:"grammar", t:"Mood",
+  m:"Shows the speaker’s <b>attitude</b> to what is said: a fact, a command or a wish. English has three moods: indicative, imperative and subjunctive.",
+  e:["He <b>lives</b> here. <small>(fact)</small>","<b>Close</b> the door. <small>(command)</small>","If I <b>were</b> you… <small>(wish)</small>"],
+  see:["indicative","imperative","subjunctive"] },
+{ id:"indicative", c:"grammar", t:"Indicative mood",
+  m:"States a <b>fact</b> or asks a question about one.",
+  e:["He <b>lives</b> here.","<b>Does</b> he live here?"],
+  see:["mood"] },
+{ id:"imperative", c:"grammar", t:"Imperative mood",
+  m:"Gives a <b>command</b>, a request or an instruction. It uses V1, and the subject <b>you</b> is understood.",
+  e:["<b>Close</b> the door.","Please <b>sit</b> down."],
+  tip:"Negative imperative: <b>Do not</b> + V1. <b>Don’t run.</b>",
+  see:["mood","base"] },
+{ id:"subjunctive", c:"grammar", t:"Subjunctive mood",
+  m:"Expresses a <b>wish</b>, a suggestion or an <b>unreal</b> situation. It often uses <b>were</b>, or V1 after verbs like suggest.",
+  e:["If I <b>were</b> you, I would go.","I suggest that he <b>be</b> on time."],
+  see:["mood"] },
+{ id:"person", c:"grammar", t:"Person",
+  m:"Shows who is speaking, spoken to, or spoken about: <b>1st</b> (I, we), <b>2nd</b> (you), <b>3rd</b> (he, she, it, they and every noun).",
+  e:["<b>I</b> play. <small>(1st)</small>","<b>You</b> play. <small>(2nd)</small>","<b>She</b> plays. <small>(3rd)</small>"],
+  see:["number","agreement","v5"] },
+{ id:"number", c:"grammar", t:"Number",
+  m:"Tells whether the subject is <b>singular</b> (one) or <b>plural</b> (more than one). The verb may change with it.",
+  e:["The boy <b>plays</b>. <small>(singular)</small>","The boys <b>play</b>. <small>(plural)</small>"],
+  see:["person","agreement"] },
+{ id:"agreement", c:"grammar", t:"Subject–verb agreement", aka:"concord",
+  m:"The verb must <b>match</b> its subject in person and number.",
+  e:["She <b>plays</b>; they <b>play</b>.","I <b>am</b>; he <b>is</b>; we <b>are</b>."],
+  see:["subject","person","number","v5"] },
+{ id:"negation", c:"grammar", t:"Negation", aka:"negative sentence",
+  m:"Making a sentence say <b>no</b>. Put <b>not</b> after the first helping verb.",
+  e:["She <b>is not</b> here.","He <b>has not</b> finished."],
+  see:["dosupport","helping"] },
+{ id:"dosupport", c:"grammar", t:"Do-support", aka:"do, does, did",
+  m:"In the present simple and past simple there is no helping verb, so a question or a negative borrows <b>do / does / did</b>.",
+  e:["<b>Do</b> you like tea?","She <b>did not</b> go."],
+  tip:"If another helper (is, can, has…) is already there, <b>no do</b> is needed.",
+  see:["negation","helping"] }
+];
+
+/* ---------- code ---------- */
+(function () {
+  var $ = function (id) { return document.getElementById(id); };
+  var list = $("list"), qEl = $("q"), clearBtn = $("clear"), countEl = $("count"), chipsEl = $("chips"),
+      lettersEl = $("letters"), bar = $("bar"), box = $("searchBox");
+  var byId = {}, catName = {};
+  CATS.forEach(function (c) { catName[c.k] = c.name; });
+  DATA.forEach(function (d) {
+    byId[d.id] = d;
+    var strip = function (s) { return String(s || "").replace(/<[^>]+>/g, " ").toLowerCase(); };
+    d._term = d.t.toLowerCase();
+    d._aka = (d.aka || "").toLowerCase();
+    d._all = [d._term, d._aka, d.v || "", strip(d.m), strip((d.e || []).join(" ")), strip(d.tip), (catName[d.c] || "").toLowerCase()].join(" | ");
+    d._key = d.t.replace(/^[^a-z]+/i, "").toLowerCase();
+  });
+
+  var state = { q: "", cat: "all", view: "topic", cover: false };
+
+  function esc(s) { return s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"); }
+  function words() { return state.q.toLowerCase().split(/\s+/).filter(Boolean); }
+
+  function highlighter() {
+    var w = words();
+    if (!w.length) return function (h) { return h; };
+    var re = new RegExp("(" + w.map(esc).join("|") + ")", "gi");
+    return function (h) {
+      return h.split(/(<[^>]+>)/).map(function (p) {
+        return p.charAt(0) === "<" ? p : p.replace(re, "<mark>$1</mark>");
+      }).join("");
+    };
+  }
+
+  function score(d, w) {
+    var q = w.join(" ");
+    if (d._term === q) return 0;
+    if (d._term.indexOf(q) === 0) return 1;
+    if (d._term.indexOf(q) > -1) return 2;
+    if (w.every(function (x) { return d._term.indexOf(x) > -1; })) return 2;
+    if (w.every(function (x) { return (d._term + " " + d._aka + " " + (d.v || "").toLowerCase()).indexOf(x) > -1; })) return 3;
+    return 4;
+  }
+
+  function entry(d, hl) {
+    var h = '<article class="entry" id="t-' + d.id + '" data-cat="' + d.c + '"' + (state.cover ? ' tabindex="0"' : '') + '>';
+    h += '<div class="top"><h3 class="term shine">' + hl(d.t) + '</h3><span class="tag">' + hl(catName[d.c]) + '</span>';
+    if (d.v) h += '<span class="vtag">' + hl(d.v) + '</span>';
+    h += '</div>';
+    if (d.aka) h += '<p class="aka">Also called: <i>' + hl(d.aka) + '</i></p>';
+    h += '<p class="m">' + hl(d.m) + '</p>';
+    h += '<div class="ex"><span class="lbl">Example</span><ul>' + d.e.map(function (x) { return '<li>' + hl(x) + '</li>'; }).join("") + '</ul></div>';
+    if (d.tip) h += '<p class="tip"><span class="lbl">Remember</span>' + hl(d.tip) + '</p>';
+    if (d.see && d.see.length) {
+      h += '<p class="see">See also: ' + d.see.map(function (id) {
+        return byId[id] ? '<a href="#t-' + id + '" data-go="' + id + '">' + byId[id].t + '</a>' : "";
+      }).join("") + '</p>';
+    }
+    return h + '</article>';
+  }
+
+  function render() {
+    var w = words(), hl = highlighter(), out = "", shown = 0;
+    var items = DATA.filter(function (d) {
+      return (state.cat === "all" || d.c === state.cat) && w.every(function (x) { return d._all.indexOf(x) > -1; });
+    });
+    shown = items.length;
+    lettersEl.classList.remove("on");
+
+    if (!shown) {
+      out = '<div class="empty"><h3>No term found</h3><p>Nothing matches “' + state.q.replace(/</g, "&lt;") + '”.</p><p>Try a shorter word, such as <b>tense</b> or <b>modal</b>.</p>' +
+            '<button class="cover-btn" type="button" id="resetBtn">Show all terms</button></div>';
+    } else if (w.length) {
+      items.sort(function (a, b) { return score(a, w) - score(b, w) || a._key.localeCompare(b._key); });
+      out = '<div class="grid">' + items.map(function (d) { return entry(d, hl); }).join("") + '</div>';
+    } else if (state.view === "az") {
+      items.sort(function (a, b) { return a._key.localeCompare(b._key); });
+      var groups = {}, order = [];
+      items.forEach(function (d) {
+        var L = d._key.charAt(0).toUpperCase();
+        if (!groups[L]) { groups[L] = []; order.push(L); }
+        groups[L].push(d);
+      });
+      lettersEl.innerHTML = order.map(function (L) { return '<a href="#L-' + L + '" data-letter="' + L + '">' + L + '</a>'; }).join("");
+      lettersEl.classList.add("on");
+      out = order.map(function (L) {
+        return '<section class="group" id="L-' + L + '"><h2 class="letter-h shine">' + L + '</h2><div class="grid">' +
+          groups[L].map(function (d) { return entry(d, hl); }).join("") + '</div></section>';
+      }).join("");
+    } else {
+      out = CATS.map(function (c) {
+        var arr = items.filter(function (d) { return d.c === c.k; });
+        if (!arr.length) return "";
+        return '<section class="group" style="--c: var(--c-' + c.k + ')"><div class="ghead"><h2>' + c.name + '</h2><p>' + c.sub + '</p><span class="n">' +
+          arr.length + (arr.length === 1 ? ' term' : ' terms') + '</span></div><div class="grid">' +
+          arr.map(function (d) { return entry(d, hl); }).join("") + '</div></section>';
+      }).join("");
+    }
+    list.innerHTML = out;
+    countEl.textContent = (w.length || state.cat !== "all") ? shown + " of " + DATA.length : DATA.length + " terms";
+    clearBtn.hidden = !state.q;
+    box.classList.toggle("has-q", !!state.q);
+    document.body.classList.toggle("cover", state.cover);
+    var rb = $("resetBtn");
+    if (rb) rb.onclick = function () { state.q = ""; state.cat = "all"; qEl.value = ""; syncChips(); render(); };
+  }
+
+  function syncChips() {
+    Array.prototype.forEach.call(chipsEl.children, function (b) { b.setAttribute("aria-pressed", String(b.dataset.cat === state.cat)); });
+  }
+
+  /* chips */
+  var ch = '<button type="button" class="chip all" data-cat="all" aria-pressed="true">All topics<i>' + DATA.length + '</i></button>';
+  CATS.forEach(function (c) {
+    var n = DATA.filter(function (d) { return d.c === c.k; }).length;
+    ch += '<button type="button" class="chip" data-cat="' + c.k + '" style="--c: var(--c-' + c.k + ')" aria-pressed="false">' + c.name + '<i>' + n + '</i></button>';
+  });
+  chipsEl.innerHTML = ch;
+  chipsEl.addEventListener("click", function (e) {
+    var b = e.target.closest(".chip"); if (!b) return;
+    state.cat = b.dataset.cat; syncChips(); render();
+  });
+
+  /* stats */
+  $("stats").innerHTML = '<span class="stat"><b>' + DATA.length + '</b>terms</span><span class="stat"><b>' + CATS.length + '</b>topics</span><span class="stat">V1 – V5 forms included</span>';
+
+  /* search */
+  var lastQ = "";
+  qEl.addEventListener("input", function () {
+    state.q = qEl.value.trim();
+    render();
+    if (state.q !== lastQ) {
+      var top = list.getBoundingClientRect().top, barH = bar.offsetHeight;
+      if (top < barH + 4) window.scrollBy(0, top - barH - 12);
+    }
+    lastQ = state.q;
+  });
+  qEl.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") { qEl.value = ""; state.q = ""; render(); }
+    if (e.key === "Enter") { var f = list.querySelector(".entry"); if (f) f.scrollIntoView({ block: "center" }); }
+  });
+  clearBtn.addEventListener("click", function () { qEl.value = ""; state.q = ""; render(); qEl.focus(); });
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "/" && document.activeElement !== qEl && !e.ctrlKey && !e.metaKey) { e.preventDefault(); qEl.focus(); qEl.select(); }
+  });
+
+  /* view toggle + cover */
+  function setView(v) {
+    state.view = v;
+    $("vTopic").setAttribute("aria-pressed", String(v === "topic"));
+    $("vAz").setAttribute("aria-pressed", String(v === "az"));
+    render();
+  }
+  $("vTopic").onclick = function () { setView("topic"); };
+  $("vAz").onclick = function () { setView("az"); };
+  $("coverBtn").onclick = function () {
+    state.cover = !state.cover;
+    this.setAttribute("aria-pressed", String(state.cover));
+    this.textContent = state.cover ? "Show meanings" : "Cover meanings";
+    render();
+  };
+
+  /* clicks in list: see-also, reveal */
+  function go(id) {
+    state.q = ""; qEl.value = ""; state.cat = "all"; syncChips(); render();
+    var el = $("t-" + id); if (!el) return;
+    el.scrollIntoView({ block: "center" });
+    el.classList.remove("flash"); void el.offsetWidth; el.classList.add("flash");
+    if (state.cover) el.classList.add("open");
+  }
+  list.addEventListener("click", function (e) {
+    var a = e.target.closest("a[data-go]");
+    if (a) { e.preventDefault(); go(a.dataset.go); return; }
+    if (state.cover) { var en = e.target.closest(".entry"); if (en) en.classList.toggle("open"); }
+  });
+  list.addEventListener("keydown", function (e) {
+    if (state.cover && (e.key === "Enter" || e.key === " ") && e.target.classList.contains("entry")) { e.preventDefault(); e.target.classList.toggle("open"); }
+  });
+  lettersEl.addEventListener("click", function (e) {
+    var a = e.target.closest("a[data-letter]"); if (!a) return;
+    e.preventDefault();
+    var g = $("L-" + a.dataset.letter); if (g) g.scrollIntoView({ block: "start" });
+  });
+
+  /* keep sticky offset in sync */
+  function setBar() { document.documentElement.style.setProperty("--bar", bar.offsetHeight + "px"); }
+  window.addEventListener("resize", setBar);
+
+  render(); setBar();
+  var m = /^#t-([a-z0-9]+)$/.exec(location.hash);
+  if (m && byId[m[1]]) go(m[1]);
+})();
+</script>
+</body>
+</html>

@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Helping &amp; Lexical Verbs · Verb Phrase Notes</title>
+<title>Role-to-Role: Who Decides What Follows</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600;1,700&family=Yeseva+One&display=swap">
@@ -188,6 +188,8 @@ button:focus-visible, a:focus-visible, .s:focus-visible { outline: 3px solid var
 .pages a[aria-current="page"] { border-color: var(--teal); background: color-mix(in srgb, var(--teal) 14%, var(--card)); font-weight: 600; font-style: italic; }
 a.nextlink { display: inline-block; margin-top: 8px; font-style: normal; font-weight: 600; color: var(--teal); text-decoration: none; border-bottom: 1.5px solid color-mix(in srgb, var(--teal) 40%, transparent); }
 a.go { color: var(--teal); font-weight: 600; font-style: italic; text-decoration: none; border-bottom: 1px solid color-mix(in srgb, var(--teal) 40%, transparent); }
+section[hidden] { display: none; }
+nav.toc a[aria-current="true"] { border-color: var(--teal); background: color-mix(in srgb, var(--teal) 14%, var(--card)); font-weight: 600; font-style: italic; }
 </style>
 </head>
 <body>
@@ -195,17 +197,17 @@ a.go { color: var(--teal); font-weight: 600; font-style: italic; text-decoration
 
 <header class="hero">
   <span class="eyebrow">Grammar notes &middot; Verbs</span>
-  <h1>Helping and lexical verbs</h1>
+  <h1>Role-to-Role: who decides what follows</h1>
   <span class="script shine">Helpers &amp; Heads</span>
   <p>Helping verbs set the form of the next verb. The lexical verb, always last, decides what the clause needs.</p>
 </header>
-<nav class="pages" aria-label="Pages in this set"><a href="verb_phrase_map.html">1 &middot; Verb Phrase Map</a><a href="helping_lexical_verbs.html" aria-current="page">2 &middot; Helping &amp; Lexical Verbs</a><a href="finite_verbs_tenses.html">3 &middot; Finite Verbs &amp; Tenses</a></nav>
+<nav class="pages" aria-label="Pages in this set"><a href="verb_phrase_map.html">1 &middot; Roles in a Verb Phrase</a><a href="helping_lexical_verbs.html" aria-current="page">2 &middot; Role-to-Role: Who Decides What Follows</a><a href="finite_verbs_tenses.html">3 &middot; Tense, Aspect and Voice from the Roles</a></nav>
 <nav class="toc" id="toc" aria-label="Sections">
-  <a href="#helpers">Helping verbs</a><a href="#pattern">Clause patterns</a><a href="#traps">Traps</a>
+  <a href="#helpers">A helper decides the form of the next verb</a><a href="#pattern">A lexical verb decides the clause pattern</a><a href="#traps">Traps: where this goes wrong</a>
 </nav>
 
 <section id="helpers">
-  <div class="sh"><span class="no shine" style="--c: var(--ochre)">1</span><h2>The helping roles in detail</h2><p>Each helping role decides the form of the next role.</p></div>
+  <div class="sh"><span class="no shine" style="--c: var(--ochre)">1</span><h2>A helper decides the form of the next verb</h2><p>Each helping role decides the form of the next role.</p></div>
   <div class="scroll"><table class="hlp">
     <colgroup><col style="width:35%"><col style="width:16%"><col style="width:23%"><col style="width:26%"></colgroup>
     <thead><tr><th>Helper</th><th class="ctr">Forces the next verb into</th><th>Builds</th><th>Example</th></tr></thead>
@@ -238,7 +240,7 @@ a.go { color: var(--teal); font-weight: 600; font-style: italic; text-decoration
 </section>
 
 <section id="pattern">
-  <div class="sh"><span class="no shine" style="--c: var(--blue)">2</span><h2>Clause patterns: None, O, C, A</h2><p>The lexical verb decides what, if anything, must follow it. A = adverbial.</p></div>
+  <div class="sh"><span class="no shine" style="--c: var(--blue)">2</span><h2>A lexical verb decides the clause pattern</h2><p>The lexical verb decides what, if anything, must follow it. A = adverbial.</p></div>
   <div class="scroll"><table>
     <thead><tr><th>Pattern</th><th>Verb type</th><th>Example</th><th>Tip</th></tr></thead>
     <tbody>
@@ -269,7 +271,7 @@ a.go { color: var(--teal); font-weight: 600; font-style: italic; text-decoration
 
 <!-- TRAPS -->
 <section id="traps">
-  <div class="sh"><span class="no shine" style="--c: var(--ochre)">3</span><h2>Common traps</h2><p>Easy mistakes with helpers and lexical verbs.</p></div>
+  <div class="sh"><span class="no shine" style="--c: var(--ochre)">3</span><h2>Traps: where this goes wrong</h2><p>Easy mistakes with helpers and lexical verbs.</p></div>
   <div class="traps">
     <div class="card" style="--c: var(--teal)"><span class="lbl" style="--c: var(--teal)">Modals</span><p>A modal is finite but never takes -s, and the verb after it is plain V1.</p><p class="eg"><span class="bad">She cans swims.</span> → She <span class="f">can</span> <span class="n">swim</span>.</p></div>
     <div class="card" style="--c: var(--blue)"><span class="lbl" style="--c: var(--blue)">Do-support</span><p>Does carries the -s, so the lexical verb goes back to V1.</p><p class="eg"><span class="bad">Does she plays?</span> → <span class="f">Does</span> she <span class="n">play</span>?</p></div>
@@ -279,11 +281,21 @@ a.go { color: var(--teal); font-weight: 600; font-style: italic; text-decoration
   </div>
 </section>
 
-<footer><span class="script shine">Well done</span><br><a class="nextlink" href="finite_verbs_tenses.html">Next: Finite Verbs &amp; Tenses &rarr;</a></footer>
+<footer><span class="script shine">Well done</span><br><a class="nextlink" href="finite_verbs_tenses.html">Next: Tense, Aspect and Voice from the Roles &rarr;</a></footer>
 </div>
 
 <script>
-(function(){var t=document.getElementById("toc");if(!t)return;t.addEventListener("click",function(e){var a=e.target.closest("a");if(!a)return;var h=a.getAttribute("href");if(h.charAt(0)!=="#")return;e.preventDefault();var x=document.getElementById(h.slice(1));if(x)x.scrollIntoView({block:"start"});});})();
+(function(){
+function setSub(c,id){var secs=c.querySelectorAll("section");var ok=false;secs.forEach(function(s){if(s.id===id)ok=true;});if(!ok)return false;
+ secs.forEach(function(s){s.hidden=(s.id!==id);});
+ c.querySelectorAll("nav.toc a").forEach(function(a){if(a.getAttribute("href")==="#"+id)a.setAttribute("aria-current","true");else a.removeAttribute("aria-current");});return true;}
+window.__setSub=setSub;
+var scopes=document.querySelectorAll(".panel");if(!scopes.length)scopes=[document.body];
+Array.prototype.forEach.call(scopes,function(c){var f=c.querySelector("nav.toc a");if(f)setSub(c,f.getAttribute("href").slice(1));});
+var h=location.hash.slice(1);if(h&&h.indexOf("go-")!==0){var el=document.getElementById(h);if(el&&el.tagName==="SECTION")setSub(el.closest(".panel")||document.body,h);}
+document.addEventListener("click",function(e){var a=e.target.closest("nav.toc a");if(!a)return;var hr=a.getAttribute("href")||"";if(hr.charAt(0)!=="#")return;e.preventDefault();
+ var id=hr.slice(1),c=a.closest(".panel")||document.body;if(setSub(c,id)){var t=document.getElementById(id);t.scrollIntoView({block:"start"});}});
+})();
 
 </script>
 </body>

@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Verb Phrase Map · Roles &amp; Quiz</title>
+<title>Roles in a Verb Phrase</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600;1,700&family=Yeseva+One&display=swap">
@@ -188,6 +188,8 @@ button:focus-visible, a:focus-visible, .s:focus-visible { outline: 3px solid var
 .pages a[aria-current="page"] { border-color: var(--teal); background: color-mix(in srgb, var(--teal) 14%, var(--card)); font-weight: 600; font-style: italic; }
 a.nextlink { display: inline-block; margin-top: 8px; font-style: normal; font-weight: 600; color: var(--teal); text-decoration: none; border-bottom: 1.5px solid color-mix(in srgb, var(--teal) 40%, transparent); }
 a.go { color: var(--teal); font-weight: 600; font-style: italic; text-decoration: none; border-bottom: 1px solid color-mix(in srgb, var(--teal) 40%, transparent); }
+section[hidden] { display: none; }
+nav.toc a[aria-current="true"] { border-color: var(--teal); background: color-mix(in srgb, var(--teal) 14%, var(--card)); font-weight: 600; font-style: italic; }
 </style>
 </head>
 <body>
@@ -195,17 +197,17 @@ a.go { color: var(--teal); font-weight: 600; font-style: italic; text-decoration
 
 <header class="hero">
   <span class="eyebrow">Grammar notes &middot; Verbs</span>
-  <h1>The anatomy of a verb phrase</h1>
+  <h1>Roles in a verb phrase</h1>
   <span class="script shine">Finite &amp; Friends</span>
   <p>One map that shows which role carries tense, which roles build aspect and voice, and which role decides the clause pattern.</p>
 </header>
-<nav class="pages" aria-label="Pages in this set"><a href="verb_phrase_map.html" aria-current="page">1 &middot; Verb Phrase Map</a><a href="helping_lexical_verbs.html">2 &middot; Helping &amp; Lexical Verbs</a><a href="finite_verbs_tenses.html">3 &middot; Finite Verbs &amp; Tenses</a></nav>
+<nav class="pages" aria-label="Pages in this set"><a href="verb_phrase_map.html" aria-current="page">1 &middot; Roles in a Verb Phrase</a><a href="helping_lexical_verbs.html">2 &middot; Role-to-Role: Who Decides What Follows</a><a href="finite_verbs_tenses.html">3 &middot; Tense, Aspect and Voice from the Roles</a></nav>
 <nav class="toc" id="toc" aria-label="Sections">
-  <a href="#map">The map</a><a href="#who">Role quiz</a>
+  <a href="#map">The map: roles 1 to 4 and what each can be</a><a href="#who">Role quiz: count the roles and label each verb</a>
 </nav>
 
 <section id="map">
-  <div class="sh"><span class="no shine" style="--c: var(--teal)">1</span><h2>The big map</h2><p>A verb phrase has 1, 2, 3 or 4 roles, counted from the left. Role 1 is finite, and the last role is always the lexical verb.</p></div>
+  <div class="sh"><span class="no shine" style="--c: var(--teal)">1</span><h2>The map: roles 1 to 4 and what each can be</h2><p>A verb phrase has 1, 2, 3 or 4 roles, counted from the left. Role 1 is finite, and the last role is always the lexical verb.</p></div>
   <div class="fig">
 <svg class="map" viewBox="0 0 720 482" role="img" aria-labelledby="mt md">
 <title id="mt">Verb phrase by number of roles</title>
@@ -261,7 +263,7 @@ a.go { color: var(--teal); font-weight: 600; font-style: italic; text-decoration
     <div class="card" style="--c: var(--slate)">
       <span class="lbl" style="--c: var(--slate)">Rule 2</span>
       <h4>The whole phrase builds aspect &amp; voice</h4>
-      <p>The helper in Role 1 plus the forms after it (<span class="n">be + V4</span>, <span class="n">have + V3</span>, <span class="n">be + V3</span>) decide continuous, perfect or passive. Role 1 alone tells only the tense. <a class="go" href="finite_verbs_tenses.html#tense">Aspect &amp; tense &rarr;</a></p>
+      <p>The helper in Role 1 plus the forms after it (<span class="n">be + V4</span>, <span class="n">have + V3</span>, <span class="n">be + V3</span>) decide continuous, perfect or passive. Role 1 alone tells only the tense. <a class="go" href="finite_verbs_tenses.html#aspect">Aspect and voice &rarr;</a></p>
     </div>
     <div class="card" style="--c: var(--blue)">
       <span class="lbl" style="--c: var(--blue)">Rule 3</span>
@@ -272,7 +274,7 @@ a.go { color: var(--teal); font-weight: 600; font-style: italic; text-decoration
 </section>
 
 <section id="who">
-  <div class="sh"><span class="no shine" style="--c: var(--blue)">2</span><h2>Role quiz</h2></div>
+  <div class="sh"><span class="no shine" style="--c: var(--blue)">2</span><h2>Role quiz: count the roles and label each verb</h2></div>
   <p class="sm">Tap a verb to label it: <b>?</b> &rarr; helping &middot; finite &rarr; helping &middot; non-finite &rarr; lexical &middot; finite &rarr; lexical &middot; non-finite. Then press Check.</p>
   <div class="scroll"><table class="qz">
     <thead><tr><th>Roles</th><th>Tap each verb</th><th>Answer</th></tr></thead>
@@ -280,11 +282,21 @@ a.go { color: var(--teal); font-weight: 600; font-style: italic; text-decoration
   </table></div>
 </section>
 
-<footer><span class="script shine">Well done</span><br><a class="nextlink" href="helping_lexical_verbs.html">Next: Helping &amp; Lexical Verbs &rarr;</a></footer>
+<footer><span class="script shine">Well done</span><br><a class="nextlink" href="helping_lexical_verbs.html">Next: Role-to-Role: Who Decides What Follows &rarr;</a></footer>
 </div>
 
 <script>
-(function(){var t=document.getElementById("toc");if(!t)return;t.addEventListener("click",function(e){var a=e.target.closest("a");if(!a)return;var h=a.getAttribute("href");if(h.charAt(0)!=="#")return;e.preventDefault();var x=document.getElementById(h.slice(1));if(x)x.scrollIntoView({block:"start"});});})();
+(function(){
+function setSub(c,id){var secs=c.querySelectorAll("section");var ok=false;secs.forEach(function(s){if(s.id===id)ok=true;});if(!ok)return false;
+ secs.forEach(function(s){s.hidden=(s.id!==id);});
+ c.querySelectorAll("nav.toc a").forEach(function(a){if(a.getAttribute("href")==="#"+id)a.setAttribute("aria-current","true");else a.removeAttribute("aria-current");});return true;}
+window.__setSub=setSub;
+var scopes=document.querySelectorAll(".panel");if(!scopes.length)scopes=[document.body];
+Array.prototype.forEach.call(scopes,function(c){var f=c.querySelector("nav.toc a");if(f)setSub(c,f.getAttribute("href").slice(1));});
+var h=location.hash.slice(1);if(h&&h.indexOf("go-")!==0){var el=document.getElementById(h);if(el&&el.tagName==="SECTION")setSub(el.closest(".panel")||document.body,h);}
+document.addEventListener("click",function(e){var a=e.target.closest("nav.toc a");if(!a)return;var hr=a.getAttribute("href")||"";if(hr.charAt(0)!=="#")return;e.preventDefault();
+ var id=hr.slice(1),c=a.closest(".panel")||document.body;if(setSub(c,id)){var t=document.getElementById(id);t.scrollIntoView({block:"start"});}});
+})();
 
 (function () {
   var L = ["?", "Helping · finite", "Helping · non-finite", "Lexical · finite", "Lexical · non-finite"];

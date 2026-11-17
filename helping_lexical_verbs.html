@@ -190,10 +190,14 @@ a.nextlink { display: inline-block; margin-top: 8px; font-style: normal; font-we
 a.go { color: var(--teal); font-weight: 600; font-style: italic; text-decoration: none; border-bottom: 1px solid color-mix(in srgb, var(--teal) 40%, transparent); }
 section[hidden] { display: none; }
 nav.toc a[aria-current="true"] { border-color: var(--teal); background: color-mix(in srgb, var(--teal) 14%, var(--card)); font-weight: 600; font-style: italic; }
+.gh-home { display: inline-flex; align-items: center; gap: 6px; margin-top: 18px; padding: 6px 16px; border-radius: 999px; background: var(--card); color: var(--ink); border: 1.5px solid var(--line); font: 600 .9rem var(--b); text-decoration: none; }
+.gh-home:hover { border-color: var(--teal); }
 </style>
 </head>
 <body>
 <div class="wrap">
+
+<a class="gh-home" href="index.html" aria-label="Back to the home page">&larr; Home</a>
 
 <header class="hero">
   <span class="eyebrow">Grammar notes &middot; Verbs</span>

@@ -188,6 +188,16 @@ button:focus-visible, a:focus-visible, .s:focus-visible { outline: 3px solid var
 .pages a[aria-current="page"] { border-color: var(--teal); background: color-mix(in srgb, var(--teal) 14%, var(--card)); font-weight: 600; font-style: italic; }
 a.nextlink { display: inline-block; margin-top: 8px; font-style: normal; font-weight: 600; color: var(--teal); text-decoration: none; border-bottom: 1.5px solid color-mix(in srgb, var(--teal) 40%, transparent); }
 a.go { color: var(--teal); font-weight: 600; font-style: italic; text-decoration: none; border-bottom: 1px solid color-mix(in srgb, var(--teal) 40%, transparent); }
+.g12 .ln { display: block; line-height: 1.55; }
+.g12 .ln + .ln { margin-top: 4px; }
+.g12 .vx { display: inline-block; min-width: 5.2em; font-size: .64rem; letter-spacing: .07em; text-transform: uppercase; font-weight: 600; color: var(--muted); font-style: normal; }
+.g12 td small { font-size: .74rem; font-style: normal; }
+.asp2 { min-width: 760px; }
+.asp2 td { line-height: 1.7; }
+.asp2 thead th { text-align: left; }
+.asp2 thead th.ctr { text-align: center; }
+.asp2 tr.sub2 th { font-size: .86rem; color: var(--muted); }
+.asp2 td small { font-size: .74rem; font-style: normal; }
 </style>
 </head>
 <body>
@@ -233,26 +243,26 @@ a.go { color: var(--teal); font-weight: 600; font-style: italic; text-decoration
 </section>
 
 <section id="tense">
-  <div class="sh"><span class="no shine" style="--c: var(--ochre)">2</span><h2>The 12 tense structures</h2><p>Finite verb in <span class="f">teal</span>, non-finite forms in <span class="n">slate</span>. Active voice.</p></div>
+  <div class="sh"><span class="no shine" style="--c: var(--ochre)">2</span><h2>Active and Passive Structures <small>(for reference)</small></h2><p>The finite verb (<span class="f">teal</span>) gives the tense. The whole phrase, with the non-finite forms in <span class="n">slate</span>, gives the aspect and voice.</p></div>
   <div class="scroll"><table class="g12">
     <thead><tr><th style="--c: var(--slate)">Aspect</th><th class="h-past">Past</th><th class="h-pres">Present</th><th class="h-fut">Future</th></tr></thead>
     <tbody>
       <tr class="r-simple"><th>Simple</th>
-        <td class="fm"><span class="f">V2</span><span class="eg">She walked.</span></td>
-        <td class="fm"><span class="f">V1 / V5</span><span class="eg">She walks.</span></td>
-        <td class="fm"><span class="f">will</span> + <span class="n">V1</span><span class="eg">She will walk.</span></td></tr>
+        <td class="fm"><span class="ln"><span class="vx">Active</span><span class="f">V2</span></span><span class="ln"><span class="vx">Passive</span><span class="f">was / were</span> + <span class="n">V3</span></span></td>
+        <td class="fm"><span class="ln"><span class="vx">Active</span><span class="f">V1 / V5</span></span><span class="ln"><span class="vx">Passive</span><span class="f">am / is / are</span> + <span class="n">V3</span></span></td>
+        <td class="fm"><span class="ln"><span class="vx">Active</span><span class="f">will</span> + <span class="n">V1</span></span><span class="ln"><span class="vx">Passive</span><span class="f">will</span> + <span class="n">be</span> + <span class="n">V3</span></span></td></tr>
       <tr class="r-cont"><th>Continuous</th>
-        <td class="fm"><span class="f">was / were</span> + <span class="n">V4</span><span class="eg">She was walking.</span></td>
-        <td class="fm"><span class="f">am / is / are</span> + <span class="n">V4</span><span class="eg">She is walking.</span></td>
-        <td class="fm"><span class="f">will</span> + <span class="n">be</span> + <span class="n">V4</span><span class="eg">She will be walking.</span></td></tr>
+        <td class="fm"><span class="ln"><span class="vx">Active</span><span class="f">was / were</span> + <span class="n">V4</span></span><span class="ln"><span class="vx">Passive</span><span class="f">was / were</span> + <span class="n">being</span> + <span class="n">V3</span></span></td>
+        <td class="fm"><span class="ln"><span class="vx">Active</span><span class="f">am / is / are</span> + <span class="n">V4</span></span><span class="ln"><span class="vx">Passive</span><span class="f">am / is / are</span> + <span class="n">being</span> + <span class="n">V3</span></span></td>
+        <td class="fm"><span class="ln"><span class="vx">Active</span><span class="f">will</span> + <span class="n">be</span> + <span class="n">V4</span></span><span class="ln"><span class="vx">Passive</span><span class="f">will</span> + <span class="n">be</span> + <span class="n">being</span> + <span class="n">V3</span> <small>(rare)</small></span></td></tr>
       <tr class="r-perf"><th>Perfect</th>
-        <td class="fm"><span class="f">had</span> + <span class="n">V3</span><span class="eg">She had walked.</span></td>
-        <td class="fm"><span class="f">has / have</span> + <span class="n">V3</span><span class="eg">She has walked.</span></td>
-        <td class="fm"><span class="f">will</span> + <span class="n">have</span> + <span class="n">V3</span><span class="eg">She will have walked.</span></td></tr>
+        <td class="fm"><span class="ln"><span class="vx">Active</span><span class="f">had</span> + <span class="n">V3</span></span><span class="ln"><span class="vx">Passive</span><span class="f">had</span> + <span class="n">been</span> + <span class="n">V3</span></span></td>
+        <td class="fm"><span class="ln"><span class="vx">Active</span><span class="f">has / have</span> + <span class="n">V3</span></span><span class="ln"><span class="vx">Passive</span><span class="f">has / have</span> + <span class="n">been</span> + <span class="n">V3</span></span></td>
+        <td class="fm"><span class="ln"><span class="vx">Active</span><span class="f">will</span> + <span class="n">have</span> + <span class="n">V3</span></span><span class="ln"><span class="vx">Passive</span><span class="f">will</span> + <span class="n">have</span> + <span class="n">been</span> + <span class="n">V3</span></span></td></tr>
       <tr class="r-pc"><th>Perfect continuous</th>
-        <td class="fm"><span class="f">had</span> + <span class="n">been</span> + <span class="n">V4</span><span class="eg">She had been walking.</span></td>
-        <td class="fm"><span class="f">has / have</span> + <span class="n">been</span> + <span class="n">V4</span><span class="eg">She has been walking.</span></td>
-        <td class="fm"><span class="f">will</span> + <span class="n">have</span> + <span class="n">been</span> + <span class="n">V4</span><span class="eg">She will have been walking.</span></td></tr>
+        <td class="fm"><span class="ln"><span class="vx">Active</span><span class="f">had</span> + <span class="n">been</span> + <span class="n">V4</span></span><span class="ln"><span class="vx">Passive</span><span class="f">had</span> + <span class="n">been</span> + <span class="n">being</span> + <span class="n">V3</span> <small>(rare)</small></span></td>
+        <td class="fm"><span class="ln"><span class="vx">Active</span><span class="f">has / have</span> + <span class="n">been</span> + <span class="n">V4</span></span><span class="ln"><span class="vx">Passive</span><span class="f">has / have</span> + <span class="n">been</span> + <span class="n">being</span> + <span class="n">V3</span> <small>(rare)</small></span></td>
+        <td class="fm"><span class="ln"><span class="vx">Active</span><span class="f">will</span> + <span class="n">have</span> + <span class="n">been</span> + <span class="n">V4</span></span><span class="ln"><span class="vx">Passive</span><span class="f">will</span> + <span class="n">have</span> + <span class="n">been</span> + <span class="n">being</span> + <span class="n">V3</span> <small>(rare)</small></span></td></tr>
     </tbody>
   </table></div>
 
@@ -269,28 +279,25 @@ a.go { color: var(--teal); font-weight: 600; font-style: italic; text-decoration
   <p class="note" style="--c: var(--ochre)">Strictly, <em>will</em> is a modal with a present form, but it is the finite verb that carries the time. That is why the future row starts with it.</p>
 
   <h3>Which forms give which aspect</h3>
-  <div class="scroll"><table class="asp">
-    <thead><tr><th>Aspect</th><th>Forms that show it</th><th>Key signal</th><th>Example</th></tr></thead>
+  <div class="scroll"><table class="asp2">
+    <thead><tr><th rowspan="2">Aspect</th><th colspan="2" class="ctr">Active</th><th colspan="2" class="ctr">Passive</th></tr>
+    <tr class="sub2"><th>Forms</th><th>Key signal</th><th>Forms</th><th>Key signal</th></tr></thead>
     <tbody>
       <tr class="r-simple"><th>Simple</th>
-        <td><span class="f">V1, V5, V2</span> alone<br><span class="f">will</span> + <span class="n">V1</span></td>
-        <td>no <em>be</em> or <em>have</em> helper</td>
-        <td><span class="eg">She <span class="f">walks</span>. She <span class="f">will</span> <span class="n">walk</span>.</span></td></tr>
+        <td><span class="f">V1, V5, V2</span> alone<br><span class="f">will</span> + <span class="n">V1</span></td><td>no <em>be</em> or <em>have</em> helper</td>
+        <td><span class="f">am / is / are / was / were</span> + <span class="n">V3</span><br><span class="f">will</span> + <span class="n">be</span> + <span class="n">V3</span></td><td><em>be</em> + <b>V3</b></td></tr>
       <tr class="r-cont"><th>Continuous</th>
-        <td><span class="f">am / is / are / was / were</span> + <span class="n">V4</span><br><span class="f">will</span> + <span class="n">be</span> + <span class="n">V4</span></td>
-        <td><em>be</em> + <b>V4</b></td>
-        <td><span class="eg">She <span class="f">is</span> <span class="n">walking</span>.</span></td></tr>
+        <td><span class="f">am / is / are / was / were</span> + <span class="n">V4</span><br><span class="f">will</span> + <span class="n">be</span> + <span class="n">V4</span></td><td><em>be</em> + <b>V4</b></td>
+        <td><span class="f">am / is / are / was / were</span> + <span class="n">being</span> + <span class="n">V3</span><br><span class="f">will</span> + <span class="n">be</span> + <span class="n">being</span> + <span class="n">V3</span> <small>(rare)</small></td><td><em>be</em> + <b>being</b> + <b>V3</b></td></tr>
       <tr class="r-perf"><th>Perfect</th>
-        <td><span class="f">has / have / had</span> + <span class="n">V3</span><br><span class="f">will</span> + <span class="n">have</span> + <span class="n">V3</span></td>
-        <td><em>have</em> + <b>V3</b></td>
-        <td><span class="eg">She <span class="f">has</span> <span class="n">walked</span>.</span></td></tr>
+        <td><span class="f">has / have / had</span> + <span class="n">V3</span><br><span class="f">will</span> + <span class="n">have</span> + <span class="n">V3</span></td><td><em>have</em> + <b>V3</b></td>
+        <td><span class="f">has / have / had</span> + <span class="n">been</span> + <span class="n">V3</span><br><span class="f">will</span> + <span class="n">have</span> + <span class="n">been</span> + <span class="n">V3</span></td><td><em>have</em> + <b>been</b> + <b>V3</b></td></tr>
       <tr class="r-pc"><th>Perfect continuous</th>
-        <td><span class="f">has / have / had</span> + <span class="n">been</span> + <span class="n">V4</span><br><span class="f">will</span> + <span class="n">have</span> + <span class="n">been</span> + <span class="n">V4</span></td>
-        <td><em>have</em> + <b>been</b> + <b>V4</b></td>
-        <td><span class="eg">She <span class="f">has</span> <span class="n">been</span> <span class="n">walking</span>.</span></td></tr>
+        <td><span class="f">has / have / had</span> + <span class="n">been</span> + <span class="n">V4</span><br><span class="f">will</span> + <span class="n">have</span> + <span class="n">been</span> + <span class="n">V4</span></td><td><em>have</em> + <b>been</b> + <b>V4</b></td>
+        <td><span class="f">has / have / had</span> + <span class="n">been</span> + <span class="n">being</span> + <span class="n">V3</span> <small>(rare)</small><br><span class="f">will</span> + <span class="n">have</span> + <span class="n">been</span> + <span class="n">being</span> + <span class="n">V3</span> <small>(rare)</small></td><td><em>have</em> + <b>been</b> + <b>being</b> + <b>V3</b></td></tr>
     </tbody>
   </table></div>
-  <p class="note" style="--c: var(--slate)">The finite verb gives the <b>tense</b>. The helper (<em>be</em> or <em>have</em>) together with the form after it (<b>V4</b> or <b>V3</b>) gives the <b>aspect</b>. In the active simple present and past there is no helper at all, so the aspect is simple.</p>
+  <p class="note" style="--c: var(--slate)">The finite verb gives the <b>tense</b>. The helper (<em>be</em> or <em>have</em>) together with the form after it gives the <b>aspect</b>. In the passive, the last verb is always <b>V3</b>, and a <em>be</em> before it (<b>be</b>, <b>been</b> or <b>being</b>) shows the voice. In the active simple present and past there is no helper at all, so the aspect is simple.</p>
 </section>
 
 <section id="aspect">

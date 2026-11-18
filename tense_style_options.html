@@ -740,16 +740,16 @@ button:focus-visible, select:focus-visible { outline: 3px solid var(--t, var(--i
     ['past', '2. Past Indefinite', 'Sub + V² + obj', 'Obj + was/were + V³ + by + sub'],
     ['future', '3. Future Indefinite', 'Sub + shall/will + V¹ + obj', 'Obj + shall/will + be + V³ + by + sub'],
     ['modal', '4. Modal (Indefinite)', 'Sub + modal + V¹ + obj', 'Obj + modal + be + V³ + by + sub'],
-    ['present', '5. Present Continuous', 'Sub + is/am/are + V¹(ing) + obj', 'Obj + is/am/are + being + V³ + by + sub'],
-    ['past', '6. Past Continuous', 'Sub + was/were + V¹(ing) + obj', 'Obj + was/were + being + V³ + by + sub'],
-    ['future', '7. Future Continuous', 'Sub + shall/will + be + V¹(ing) + obj', 'Obj + shall/will + be + being + V³ + by + sub'],
+    ['present', '5. Present Continuous', 'Sub + is/am/are + V⁵ + obj', 'Obj + is/am/are + being + V³ + by + sub'],
+    ['past', '6. Past Continuous', 'Sub + was/were + V⁵ + obj', 'Obj + was/were + being + V³ + by + sub'],
+    ['future', '7. Future Continuous', 'Sub + shall/will + be + V⁵ + obj', 'Obj + shall/will + be + being + V³ + by + sub'],
     ['present', '8. Present Perfect', 'Sub + has/have + V³ + obj', 'Obj + has/have + been + V³ + by + sub'],
     ['past', '9. Past Perfect', 'Sub + had + V³ + obj', 'Obj + had + been + V³ + by + sub'],
     ['future', '10. Future Perfect', 'Sub + shall/will + have + V³ + obj', 'Obj + shall/will + have + been + V³ + by + sub'],
     ['modal', '11. Modal Perfect', 'Sub + modal + have + V³ + obj', 'Obj + modal + have + been + V³ + by + sub']
   ];
   function pfx(x) {
-    return x.replace(/\b(Sub|Obj)\b/g, '<i class="f-s">$1</i>').replace(/V[¹²³](\(ing\))?/g, '<span class="f-v">$&</span>');
+    return x.replace(/\b(Sub|Obj)\b/g, '<i class="f-s">$1</i>').replace(/V[¹²³⁵]/g, '<span class="f-v">$&</span>');
   }
   var fh = '<p class="swipe">Swipe sideways to see every column.</p><p class="cap">Active: the doer comes first. Passive: the receiver of the action comes first, and the doer moves to the end with <i>by</i> (or is dropped when it is unknown or not important). The verb always ends in V³.</p>' +
     '<div class="tbl-wrap"><table class="tt pvt"><thead><tr><th>Tense</th><th>Active Voice</th><th>Passive Voice</th></tr></thead><tbody>';

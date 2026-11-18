@@ -205,7 +205,7 @@ nav.toc a[aria-current="true"] { border-color: var(--teal); background: color-mi
 .panel[hidden] { display: none; }
 
 /* ---- Verb Types: tab cards (Present Tenses layout), subtabs, quizzes ---- */
-.tabs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 22px; }
+.tabs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 22px; }
 .tabs button { font: inherit; text-align: left; background: var(--card); color: var(--ink); border: 2px solid var(--line); border-radius: 16px; padding: 10px 14px; cursor: pointer; display: flex; flex-direction: column; gap: 2px; min-width: 0; }
 .tabs button b { font-family: var(--h); font-weight: 400; font-size: 1.12rem; line-height: 1.2; }
 .tabs button b small { font-family: var(--b); font-size: .8em; font-weight: 500; font-style: italic; color: var(--muted); }
@@ -213,7 +213,8 @@ nav.toc a[aria-current="true"] { border-color: var(--teal); background: color-mi
 .tabs button:hover { border-color: var(--teal); }
 .tabs button[aria-selected="true"] { background: color-mix(in srgb, var(--teal) 14%, var(--card)); border-color: var(--teal); }
 .tabs button[aria-selected="true"] b { font-style: italic; }
-@media (max-width: 640px) { .tabs { grid-template-columns: 1fr; } }
+@media (max-width: 900px) { .tabs { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 520px) { .tabs { grid-template-columns: 1fr; } }
 .panel[hidden], section[hidden] { display: none; }
 nav.sub { display: flex; gap: 8px; overflow-x: auto; padding: 12px 2px 10px; margin-top: 8px; scrollbar-width: none; position: sticky; top: 0; z-index: 10; background: color-mix(in srgb, var(--bg) 86%, transparent); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); }
 nav.sub button { flex: none; font: inherit; font-size: .86rem; color: var(--ink); border: 1.5px solid var(--line); background: var(--card); border-radius: 999px; padding: 4px 14px; cursor: pointer; }
@@ -266,9 +267,9 @@ footer { margin-top: 48px; }
   <span class="eyebrow">Grammar notes &middot; Verbs</span>
   <h1>Verb types</h1>
   <span class="script shine">Who does what</span>
-  <p>The lexical verb, the helping verbs and the non-finite forms: three tabs, one for each part of the verb phrase.</p>
+  <p>The lexical verb, the helping verbs and the non-finite forms: four tabs: the lexical verb, the helping verbs, and the finite and non-finite forms.</p>
 </header>
-<div class="tabs" role="tablist" aria-label="Verb types"><button type="button" role="tab" data-tab="lexical" aria-selected="true"><b>Lexical <small>verbs</small></b><small>what the verb needs after it</small></button><button type="button" role="tab" data-tab="helping" aria-selected="false"><b>Helping <small>(auxiliary)</small></b><small>be, have, do and the modals</small></button><button type="button" role="tab" data-tab="nonfinite" aria-selected="false"><b>Non-finite <small>(verbals)</small></b><small>no tense, no agreement</small></button></div>
+<div class="tabs" role="tablist" aria-label="Verb types"><button type="button" role="tab" data-tab="lexical" aria-selected="true"><b>Lexical <small>verbs</small></b><small>what the verb needs after it</small></button><button type="button" role="tab" data-tab="helping" aria-selected="false"><b>Helping <small>(auxiliary)</small></b><small>be, have, do and the modals</small></button><button type="button" role="tab" data-tab="finite" aria-selected="false"><b>Finite <small>(tensed)</small></b><small>tense, agreement and mood</small></button><button type="button" role="tab" data-tab="nonfinite" aria-selected="false"><b>Non-finite <small>(verbals)</small></b><small>no tense, no agreement</small></button></div>
 
 <div class="panel" id="panel-lexical" role="tabpanel">
 <p class="sm" style="text-align:center;margin:18px 0 0">The lexical verb carries the meaning. It is the last role in the verb phrase.</p>
@@ -422,13 +423,13 @@ footer { margin-top: 48px; }
 </section>
 </div>
 
-<div class="panel" id="panel-nonfinite" role="tabpanel" hidden>
-<p class="sm" style="text-align:center;margin:18px 0 0">Non-finite verbs (verbals) have no tense or agreement of their own. They fill the later roles and the O, C and A slots.</p>
-<nav class="sub" aria-label="Sections"><button type="button" data-sec="n-over">Finite vs non-finite: the three types</button><button type="button" data-sec="n-inf">Infinitives</button><button type="button" data-sec="n-gp">Gerunds and participles</button><button type="button" data-sec="n-follow">Which form follows a verb</button><button type="button" data-sec="n-clauses">Non-finite clauses</button><button type="button" data-sec="n-practice">Mistakes and practice</button></nav>
+<div class="panel" id="panel-finite" role="tabpanel" hidden>
+<p class="sm" style="text-align:center;margin:18px 0 0">A finite verb has a tense and agrees with its subject. It is always the first verb in the verb phrase.</p>
+<nav class="sub" aria-label="Sections"><button type="button" data-sec="f-what">What makes a verb finite</button><button type="button" data-sec="f-tense">Finite verbs by tense</button><button type="button" data-sec="f-agree">Agreement with the subject</button><button type="button" data-sec="f-mood">Finite verbs by mood</button><button type="button" data-sec="f-kinds">Lexical or helping</button><button type="button" data-sec="f-quiz">Quiz: finite or non-finite?</button></nav>
 
-<section id="n-over">
-  <div class="sh"><span class="no shine" style="--c: var(--slate)">1</span><h2>Finite vs non-finite: the three types</h2><p>Non-finite verbs are verb forms with no tense, person or number of their own.</p></div>
-<p>A <span class="k">finite verb</span> changes with tense, person and number and can be the lexical verb of a sentence. A <span class="k" style="--c: var(--slate)">non-finite verb</span> cannot do this on its own. It needs a finite verb, or a subject and context, to complete the sentence.</p><div class="scroll"><table class="grid-fit">
+<section id="f-what">
+  <div class="sh"><span class="no shine" style="--c: var(--teal)">1</span><h2>What makes a verb finite</h2><p>A finite verb is a verb form with a tense and a subject. Each clause has one finite verb, and it is the first verb of the verb phrase.</p></div>
+<p>A <span class="k">finite verb</span> changes with tense, person and number and can be the only verb of a sentence. A non-finite verb cannot.</p><div class="scroll"><table class="grid-fit">
   <thead><tr><th>Feature</th><th>Finite verb</th><th>Non-finite verb</th></tr></thead>
   <tbody>
     <tr><th>Shows tense</th><td>Yes (<em>walks, walked</em>)</td><td>No</td></tr>
@@ -436,7 +437,83 @@ footer { margin-top: 48px; }
     <tr><th>Can be the only verb of a sentence</th><td>Yes</td><td>No</td></tr>
     <tr><th>Example</th><td>She <span class="f">wants</span> to leave.</td><td>She wants <span class="n">to leave</span>.</td></tr>
   </tbody>
-</table></div><h3>The three types</h3><div class="scroll"><table class="big">
+</table></div><h3>Which verb in the phrase is finite?</h3><p>Always the <b>first</b> one (Role 1). Every verb after it is non-finite.</p><div class="scroll"><table class="grid-fit">
+  <thead><tr><th>Verb phrase</th><th>Finite (Role 1)</th><th>Non-finite (later roles)</th></tr></thead>
+  <tbody>
+    <tr><th>She sings.</th><td><span class="f">sings</span></td><td>&mdash;</td></tr>
+    <tr><th>She is singing.</th><td><span class="f">is</span></td><td><span class="n">singing</span></td></tr>
+    <tr><th>She has been singing.</th><td><span class="f">has</span></td><td><span class="n">been, singing</span></td></tr>
+    <tr><th>She might have been singing.</th><td><span class="f">might</span></td><td><span class="n">have, been, singing</span></td></tr>
+  </tbody>
+</table></div><p class="note" style="--c: var(--teal)"><b>Why it matters:</b> only the finite verb takes the tense and agrees with the subject. <em>She <b>has</b> been singing</em> (has, not <s>have</s>) and <em>She <b>was</b> singing</em>. The later verbs never change for the subject.</p>
+</section>
+
+<section id="f-tense">
+  <div class="sh"><span class="no shine" style="--c: var(--blue)">2</span><h2>Finite verbs by tense</h2><p>English verbs have two tenses of their own: present and past. The future is built with a helper.</p></div>
+<div class="scroll"><table class="grid-fit">
+  <thead><tr><th>Verb</th><th>Present</th><th>Past</th></tr></thead>
+  <tbody>
+    <tr><th>walk</th><td>walk / walks</td><td>walked</td></tr>
+    <tr><th>write</th><td>write / writes</td><td>wrote</td></tr>
+    <tr><th>be</th><td>am / is / are</td><td>was / were</td></tr>
+    <tr><th>have</th><td>have / has</td><td>had</td></tr>
+    <tr><th>do</th><td>do / does</td><td>did</td></tr>
+    <tr><th>can <small>(modal)</small></th><td>can</td><td>could</td></tr>
+  </tbody>
+</table></div><p class="note" style="--c: var(--blue)"><b>No future form:</b> <em>will</em> is a modal helper, so <em>She will leave</em> has a present-tense finite verb (<em>will</em>) followed by a bare infinitive. The verb forms are V1 or V5 for the present and V2 for the past.</p><p class="watch"><span class="lbl" style="--c: var(--ochre)">Watch out</span> Aspect and voice are built with helpers, so they never add a third tense. <span class="eg">She <span class="f">has</span> <span class="n">written</span></span> is present tense (<em>has</em>) with perfect aspect.</p>
+</section>
+
+<section id="f-agree">
+  <div class="sh"><span class="no shine" style="--c: var(--sage)">3</span><h2>Agreement with the subject</h2><p>The finite verb matches its subject in person and number. Present tense shows it most, and be shows it in the past too.</p></div>
+<div class="scroll"><table class="grid-fit">
+  <thead><tr><th>Subject</th><th>walk</th><th>be (present)</th><th>be (past)</th><th>have</th></tr></thead>
+  <tbody>
+    <tr><th>I</th><td>walk</td><td>am</td><td>was</td><td>have</td></tr>
+    <tr><th>you / we / they</th><td>walk</td><td>are</td><td>were</td><td>have</td></tr>
+    <tr><th>he / she / it</th><td>walks</td><td>is</td><td>was</td><td>has</td></tr>
+  </tbody>
+</table></div><ul class="tick"><li>The <b>-s form (V5)</b> is only for <em>he, she, it</em> in the simple present.</li><li><b>Modals never take -s:</b> <span class="eg">she <span class="f">can</span></span>, not <s>she cans</s>.</li><li><b>Past tense</b> has no agreement, except <em>be</em>: <em>was</em> (I, he, she, it) and <em>were</em> (you, we, they).</li></ul>
+</section>
+
+<section id="f-mood">
+  <div class="sh"><span class="no shine" style="--c: var(--ochre)">4</span><h2>Finite verbs by mood</h2><p>Mood is the attitude a finite verb shows: a fact, a command or a wish.</p></div>
+<div class="scroll"><table class="big">
+  <thead><tr><th>Mood</th><th>Use</th><th>Example</th></tr></thead>
+  <tbody>
+    <tr><th>Indicative</th><td>facts, statements, questions</td><td>She <span class="f">sings</span> every day. <span class="f">Does</span> she <span class="n">sing</span>?</td></tr>
+    <tr><th>Imperative</th><td>commands, requests, advice</td><td><span class="f">Close</span> the door. <span class="f">Be</span> quiet.</td></tr>
+    <tr><th>Subjunctive</th><td>wishes, unreal situations, formal demands</td><td>If I <span class="f">were</span> you, I would wait. I suggest that he <span class="f">leave</span> early.</td></tr>
+  </tbody>
+</table></div><p class="note" style="--c: var(--ochre)">The imperative uses the bare verb (V1) and has no stated subject. The subjunctive often looks like a plain V1 (<em>he leave</em>, with no -s) or uses <em>were</em> for every person.</p>
+</section>
+
+<section id="f-kinds">
+  <div class="sh"><span class="no shine" style="--c: var(--slate)">5</span><h2>Lexical or helping: finite verbs are both</h2><p>Finite is not a third kind of verb. A lexical verb or a helping verb is finite when it stands first in the verb phrase.</p></div>
+<div class="scroll"><table class="grid-fit">
+  <thead><tr><th>Finite verb</th><th>Kind</th><th>Example</th></tr></thead>
+  <tbody>
+    <tr><th>sings</th><td>lexical verb alone</td><td>She <span class="f">sings</span>.</td></tr>
+    <tr><th>is</th><td>helping verb</td><td>She <span class="f">is</span> <span class="n">singing</span>.</td></tr>
+    <tr><th>can</th><td>modal helping verb</td><td>She <span class="f">can</span> <span class="n">sing</span>.</td></tr>
+    <tr><th>is</th><td>lexical (linking) verb</td><td>She <span class="f">is</span> tired.</td></tr>
+    <tr><th>has</th><td>lexical verb: owns</td><td>She <span class="f">has</span> two bikes.</td></tr>
+  </tbody>
+</table></div><p class="note" style="--c: var(--slate)">So the picture is two sorts at once: <b>lexical or helping</b> (what the verb does) and <b>finite or non-finite</b> (what form it takes). Every verb in a sentence has one answer for each.</p>
+</section>
+
+<section id="f-quiz">
+  <div class="sh"><span class="no shine" style="--c: var(--teal)">6</span><h2>Quiz: finite or non-finite?</h2><p>Tap the verb to change its label. Then press Check.</p></div>
+<div class="qlist" id="fq"><div class="qrow"><span>She</span><button type="button" class="qb" data-s="0" data-a="1">sings<small>?</small></button><span>.</span></div><div class="qrow"><span>She has</span><button type="button" class="qb" data-s="0" data-a="2">finished<small>?</small></button><span>.</span></div><div class="qrow"><span>She</span><button type="button" class="qb" data-s="0" data-a="1">has<small>?</small></button><span>finished.</span></div><div class="qrow"><span>He decided</span><button type="button" class="qb" data-s="0" data-a="2">to go<small>?</small></button><span>home.</span></div><div class="qrow"><span></span><button type="button" class="qb" data-s="0" data-a="2">Swimming<small>?</small></button><span>is fun.</span></div><div class="qrow"><span>Swimming</span><button type="button" class="qb" data-s="0" data-a="1">is<small>?</small></button><span>fun.</span></div><div class="qrow"><span>They were</span><button type="button" class="qb" data-s="0" data-a="2">waiting<small>?</small></button><span>.</span></div><div class="qrow"><span>They</span><button type="button" class="qb" data-s="0" data-a="1">were<small>?</small></button><span>waiting.</span></div></div><div class="qbar"><button type="button" class="btn" id="fq-check">Check</button><button type="button" class="btn" id="fq-reset">Start again</button><span class="qscore" id="fq-score"></span></div>
+</section>
+</div>
+
+<div class="panel" id="panel-nonfinite" role="tabpanel" hidden>
+<p class="sm" style="text-align:center;margin:18px 0 0">Non-finite verbs (verbals) have no tense or agreement of their own. They fill the later roles and the O, C and A slots.</p>
+<nav class="sub" aria-label="Sections"><button type="button" data-sec="n-over">Non-finite verbs: the three types</button><button type="button" data-sec="n-inf">Infinitives</button><button type="button" data-sec="n-gp">Gerunds and participles</button><button type="button" data-sec="n-follow">Which form follows a verb</button><button type="button" data-sec="n-clauses">Non-finite clauses</button><button type="button" data-sec="n-practice">Mistakes and practice</button></nav>
+
+<section id="n-over">
+  <div class="sh"><span class="no shine" style="--c: var(--slate)">1</span><h2>Non-finite verbs: the three types</h2><p>Non-finite verbs are verb forms with no tense, person or number of their own.</p></div>
+<p>A <span class="k" style="--c: var(--slate)">non-finite verb</span> cannot show tense or agree with a subject, and it cannot be the only verb of a sentence. It needs a finite verb, or a subject and context, to complete the sentence. <span class="eg">She <span class="f">wants</span> <span class="n">to leave</span>.</span> See the Finite tab for the full comparison.</p><h3>The three types</h3><div class="scroll"><table class="big">
   <thead><tr><th>Type</th><th>Also called</th><th>Typical marker</th><th>Verb form</th><th>Examples</th></tr></thead>
   <tbody>
     <tr><th>Infinitive</th><td>base verb form</td><td><em>to</em> + verb, or the bare verb</td><td>V1</td><td><span class="n">to run</span>, can <span class="n">run</span></td></tr>
@@ -657,7 +734,7 @@ footer { margin-top: 48px; }
     var p = b.closest('.panel'); if (setSub(p, b.dataset.sec)) document.getElementById(b.dataset.sec).scrollIntoView({ block: 'start' });
   });
   var start = (location.hash || '').replace('#', '');
-  var map = { lexical: 'lexical', helping: 'helping', nonfinite: 'nonfinite' };
+  var map = { lexical: 'lexical', helping: 'helping', finite: 'finite', nonfinite: 'nonfinite' };
   showTab(map[start] || 'lexical');
 
   /* label quizzes */
@@ -681,6 +758,7 @@ footer { margin-top: 48px; }
   }
   labelQuiz('lq', ["?", "Intransitive", "Transitive", "Ditransitive", "Linking", "Complex transitive"], 'lq-check', 'lq-reset', 'lq-score');
   labelQuiz('hq', ['?', 'Helping', 'Lexical verb'], 'hq-check', 'hq-reset', 'hq-score');
+  labelQuiz('fq', ['?', 'Finite', 'Non-finite'], 'fq-check', 'fq-reset', 'fq-score');
 
   /* multiple choice */
   var mc = document.getElementById('mc'), score = document.getElementById('mc-score');

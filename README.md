@@ -3,7 +3,7 @@ All about English Grammar
 ## Pages
 
 - [Home (navigation page)](https://mishty123.github.io/English_Grammar/)
-- [Tenses Overview](https://mishty123.github.io/English_Grammar/tenses_overview.html)
+- [Tense & Voice Overview](https://mishty123.github.io/English_Grammar/tense_voice_overview.html)
 - [Present Tenses](https://mishty123.github.io/English_Grammar/present_tenses_study_page.html)
 - [Be Verb Study Page](https://mishty123.github.io/English_Grammar/be_verb_study_page.html)
 - [Verb Phrase Notes](https://mishty123.github.io/English_Grammar/verb_phrase_notes.html)

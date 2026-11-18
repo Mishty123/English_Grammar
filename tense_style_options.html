@@ -207,6 +207,24 @@ button:focus-visible, select:focus-visible { outline: 3px solid var(--t, var(--i
 .tt .tx p + p { margin-top: 4px; }
 .tt .tp { width: 260px; border-left: 1px solid var(--line); }
 .tt .tk { width: 250px; border-left: 1px solid var(--line); }
+.asp-ind { --g: #3F6B3A; }
+.asp-con { --g: #2D5F8F; }
+.asp-per { --g: #8A5A00; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .asp-ind { --g: #8FC48A; }
+  :root:not([data-theme="light"]) .asp-con { --g: #8DBDEB; }
+  :root:not([data-theme="light"]) .asp-per { --g: #E0B46A; }
+}
+:root[data-theme="dark"] .asp-ind { --g: #8FC48A; }
+:root[data-theme="dark"] .asp-con { --g: #8DBDEB; }
+:root[data-theme="dark"] .asp-per { --g: #E0B46A; }
+.tt.pvt tr[class*="asp-"] { --t: var(--g); }
+.tt.pvt tr[class*="asp-"] th.tn { background: color-mix(in srgb, var(--g) 17%, var(--surface)); border-left: 6px solid var(--g); }
+.tt.pvt tr.grp td, .tt.pvt tr.grp th.tn { border-top: 2px solid var(--line-strong); }
+.tt.pvt .fm .f-v { border-bottom: 0; }
+.vp { display: inline-block; padding: 1px 9px; margin: 2px 0; border: 1.5px solid var(--g); border-radius: 9px; background: color-mix(in srgb, var(--g) 10%, var(--surface)); }
+.aspkey { display: flex; flex-wrap: wrap; gap: 8px 14px; align-items: center; margin: 0 0 12px; font-size: .88rem; color: var(--muted); }
+.aspkey b { padding: 3px 12px; border-radius: 8px; border-left: 6px solid var(--g); background: color-mix(in srgb, var(--g) 17%, var(--surface)); color: var(--ink); font-weight: 600; }
 .tt.pvt { min-width: 0; }
 .tt.pvt th.tn { width: 230px; }
 .tt.pvt td.pf { font-family: var(--font-formula); font-size: 1.02rem; line-height: 1.5; }
@@ -735,6 +753,7 @@ button:focus-visible, select:focus-visible { outline: 3px solid var(--t, var(--i
 
   /* ---------- F: passive voice ---------- */
   var F = document.getElementById('v-f');
+  var ASP = ['asp-ind','asp-ind','asp-ind','asp-ind','asp-con','asp-con','asp-con','asp-per','asp-per','asp-per','asp-per'];
   var PF = [
     ['present', '1. Present Indefinite', 'Sub + V¹ + obj', 'Obj + is/am/are + V³ + by + sub'],
     ['past', '2. Past Indefinite', 'Sub + V² + obj', 'Obj + was/were + V³ + by + sub'],
@@ -749,12 +768,16 @@ button:focus-visible, select:focus-visible { outline: 3px solid var(--t, var(--i
     ['modal', '11. Modal Perfect', 'Sub + modal + have + V³ + obj', 'Obj + modal + have + been + V³ + by + sub']
   ];
   function pfx(x) {
-    return x.replace(/\b(Sub|Obj)\b/g, '<i class="f-s">$1</i>').replace(/V[¹²³⁵]/g, '<span class="f-v">$&</span>');
+    var m = x.match(/^(Sub|Obj) \+ (.+?) \+ (obj|by \+ sub)$/);
+    var inner = function (t) { return t.replace(/V[¹²³⁵]/g, '<span class="f-v">$&</span>'); };
+    var tag = function (t) { return /^(Sub|Obj)$/.test(t) ? '<i class="f-s">' + t + '</i>' : t; };
+    if (!m) return x;
+    return tag(m[1]) + ' + <span class="vp">' + inner(m[2]) + '</span> + ' + m[3].replace(/\b(sub)\b/, '<i class="f-s">$1</i>').replace(/^obj$/, '<i class="f-s">obj</i>');
   }
   var fh = '<p class="swipe">Swipe sideways to see every column.</p><p class="cap">Active: the doer comes first. Passive: the receiver of the action comes first, and the doer moves to the end with <i>by</i> (or is dropped when it is unknown or not important). The verb always ends in V³.</p>' +
-    '<div class="tbl-wrap"><table class="tt pvt"><thead><tr><th>Tense</th><th>Active Voice</th><th>Passive Voice</th></tr></thead><tbody>';
+    '<p class="aspkey"><span class="asp-ind"><b>Indefinite</b></span><span class="asp-con"><b>Continuous</b></span><span class="asp-per"><b>Perfect</b></span><span>Boxed = the verb phrase</span></p><div class="tbl-wrap"><table class="tt pvt"><thead><tr><th>Tense</th><th>Active Voice</th><th>Passive Voice</th></tr></thead><tbody>';
   PF.forEach(function (r, i) {
-    fh += '<tr class="tense-' + r[0] + (i ? '' : ' first') + '"><th scope="row" class="tn"><span>' + r[1] + '</span></th><td class="pf fm">' + pfx(r[2]) + '</td><td class="pf fm">' + pfx(r[3]) + '</td></tr>';
+    fh += '<tr class="' + ASP[i] + (i === 0 ? ' first' : (i === 4 || i === 7 ? ' grp' : '')) + '"><th scope="row" class="tn"><span>' + r[1] + '</span></th><td class="pf fm">' + pfx(r[2]) + '</td><td class="pf fm">' + pfx(r[3]) + '</td></tr>';
   });
   fh += '</tbody></table></div><h2 class="pv-h">Passive voice: uses, examples and key words</h2>' +
     '<p class="cap">Use the passive when the doer is unknown, not important or obvious, or when the receiver of the action is the star of the sentence. Passive forms of the perfect continuous tenses are very rare, so they are left out.</p>';

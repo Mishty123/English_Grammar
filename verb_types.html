@@ -231,6 +231,11 @@ td.ex, .ex { font-style: italic; }
 .grid-fit { min-width: 640px; }
 .big { min-width: 760px; }
 table.needs { min-width: 760px; }
+table.subj { min-width: 0; table-layout: fixed; width: 100%; }
+table.subj th, table.subj td { white-space: normal; overflow-wrap: anywhere; }
+table.subj th:nth-child(1), table.subj td:nth-child(1) { width: 30%; }
+table.subj th:nth-child(2), table.subj td:nth-child(2) { width: 18%; }
+table.subj th:nth-child(3), table.subj td:nth-child(3) { width: 52%; min-width: 0; }
 table.needs th:nth-child(3), table.needs td:nth-child(3) { min-width: 170px; white-space: nowrap; }
 .qrow { display: flex; flex-wrap: wrap; gap: 8px 10px; align-items: flex-end; font-size: 1.12rem; font-style: italic; font-weight: 500; padding: 10px 14px; border-bottom: 1px solid var(--line); }
 .qrow:last-child { border-bottom: 0; }
@@ -449,15 +454,30 @@ footer { margin-top: 48px; }
 </section>
 
 <section id="f-mood">
-  <div class="sh"><span class="no shine" style="--c: var(--ochre)">2</span><h2>Finite verbs by mood</h2><p>Mood is the attitude a finite verb shows: a fact, a command or a wish.</p></div>
+  <div class="sh"><span class="no shine" style="--c: var(--ochre)">2</span><h2>Finite verbs by mood</h2><p>Mood shows how the speaker treats what is said: as a fact, as a command, or as a wish or something unreal. All three moods use finite verbs.</p></div>
 <div class="scroll"><table class="big">
-  <thead><tr><th>Mood</th><th>Use</th><th>Example</th></tr></thead>
+  <thead><tr><th>Mood</th><th>The speaker is...</th><th>How the verb is formed</th><th>Example</th></tr></thead>
   <tbody>
-    <tr><th>Indicative</th><td>facts, statements, questions</td><td>She <span class="f">sings</span> every day. <span class="f">Does</span> she <span class="n">sing</span>?</td></tr>
-    <tr><th>Imperative</th><td>commands, requests, advice</td><td><span class="f">Close</span> the door. <span class="f">Be</span> quiet.</td></tr>
-    <tr><th>Subjunctive</th><td>wishes, unreal situations, formal demands</td><td>If I <span class="f">were</span> you, I would wait. I suggest that he <span class="f">leave</span> early.</td></tr>
+    <tr><th>Indicative</th><td>stating a fact or asking a question</td><td>any tense; agrees with the subject</td><td>She <span class="f">sings</span> every day.</td></tr>
+    <tr><th>Imperative</th><td>giving a command, request or advice</td><td>bare verb (V1); the subject <em>you</em> is understood</td><td><span class="f">Close</span> the door.</td></tr>
+    <tr><th>Subjunctive</th><td>expressing a wish, a demand or an unreal situation</td><td>V1 for every person, or <em>were</em> for every person</td><td>If I <span class="f">were</span> you, I would wait.</td></tr>
   </tbody>
-</table></div><p class="note" style="--c: var(--ochre)">The imperative uses the bare verb (V1) and has no stated subject. The subjunctive often looks like a plain V1 (<em>he leave</em>, with no -s) or uses <em>were</em> for every person.</p>
+</table></div><h3>Indicative: facts and questions</h3><p>This is the everyday mood. Nearly every sentence you meet is indicative. It has all the tenses, and the verb agrees with the subject.</p><ul class="tick"><li><b>Statement:</b> <span class="eg">She <span class="f">sings</span> every day. They <span class="f">arrived</span> late.</span></li><li><b>Question:</b> <span class="eg"><span class="f">Does</span> she <span class="n">sing</span>? <span class="f">Did</span> they <span class="n">arrive</span>?</span></li><li><b>Negative:</b> <span class="eg">She <span class="f">does</span> not <span class="n">sing</span>. He <span class="f">is</span> not here.</span></li></ul><h3>Imperative: commands, requests and advice</h3><p>The verb is the plain base form (V1). There is no subject and no tense. The listener, <em>you</em>, is understood.</p><ul class="tick"><li><b>Command:</b> <span class="eg"><span class="f">Close</span> the door. <span class="f">Be</span> quiet.</span></li><li><b>Polite request:</b> <span class="eg"><span class="f">Please</span> sit down. <span class="f">Pass</span> me your pen, please.</span></li><li><b>Negative:</b> <em>do not</em> + V1: <span class="eg"><span class="f">Do</span> not run. <span class="f">Don't be</span> late.</span> <small>(not <s>Be not late</s>)</small></li><li><b>Including yourself:</b> <em>let's</em> + V1: <span class="eg"><span class="f">Let's</span> go.</span></li><li><b>With a named listener:</b> <span class="eg">Ravi, <span class="f">come</span> here.</span></li></ul><h3>Subjunctive: wishes, demands and unreal situations</h3><p>The subjunctive is rarer. It shows up in four places.</p><div class="scroll"><table class="big subj">
+  <thead><tr><th>Where it appears</th><th>The verb form</th><th>Example</th></tr></thead>
+  <tbody>
+    <tr><th>After verbs of demand or advice: <em>suggest, insist, demand, recommend, require, propose, ask</em> + <em>that</em></th><td>V1 for <b>every</b> person, with no -s</td><td>I suggest that he <span class="f">leave</span> early. She insisted that I <span class="f">be present</span>.</td></tr>
+    <tr><th>After <em>important, essential, vital, necessary</em> + <em>that</em></th><td>V1 for every person</td><td>It is essential that she <span class="f">arrive</span> on time.</td></tr>
+    <tr><th>In <em>if</em> clauses and after <em>wish</em>, <em>as if</em></th><td><em>were</em> for every person</td><td>If I <span class="f">were</span> you, I would wait. I wish it <span class="f">were</span> Friday.</td></tr>
+    <tr><th>Set phrases</th><td>old fixed forms</td><td><span class="f">God</span> help us. <span class="f">Long</span> live the king. So <span class="f">be</span> it.</td></tr>
+  </tbody>
+</table></div><p class="note" style="--c: var(--ochre)"><b>Everyday English often skips it.</b> Many speakers say <em>If I was you</em> and <em>I suggest he leaves</em>. Both are common in speech, but the subjunctive forms (<em>were</em> and <em>leave</em>) are the careful, formal choice.</p><h3>The same idea in three moods</h3><div class="scroll"><table class="grid-fit">
+  <thead><tr><th>Mood</th><th>Sentence</th><th>What it does</th></tr></thead>
+  <tbody>
+    <tr><th>Indicative</th><td>You <span class="f">are</span> quiet.</td><td>states a fact</td></tr>
+    <tr><th>Imperative</th><td><span class="f">Be</span> quiet.</td><td>gives a command</td></tr>
+    <tr><th>Subjunctive</th><td>It is vital that you <span class="f">be</span> quiet.</td><td>expresses a demand</td></tr>
+  </tbody>
+</table></div><p class="watch"><span class="lbl" style="--c: var(--ochre)">Watch out</span> In the subjunctive, <em>he leave</em> and <em>she be</em> are correct. Normal subject agreement (<em>he leaves, she is</em>) is switched off.</p>
 </section>
 
 <section id="f-quiz">

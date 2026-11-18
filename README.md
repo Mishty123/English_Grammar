@@ -7,6 +7,7 @@ All about English Grammar
 - [Present Tenses](https://mishty123.github.io/English_Grammar/present_tenses_study_page.html)
 - [Be Verb Study Page](https://mishty123.github.io/English_Grammar/be_verb_study_page.html)
 - [Verb Phrase Notes](https://mishty123.github.io/English_Grammar/verb_phrase_notes.html)
+- [Verb Types](https://mishty123.github.io/English_Grammar/verb_types.html)
 - [Verb Glossary](https://mishty123.github.io/English_Grammar/verb_glossary.html)
 - [Determiners Study Page](https://mishty123.github.io/English_Grammar/determiners_study_page.html)
 - [Some and Any Study Page](https://mishty123.github.io/English_Grammar/some_any_study_page.html)

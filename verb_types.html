@@ -229,6 +229,8 @@ nav.sub button[aria-current="true"] { border-color: var(--teal); background: col
 td.ex, .ex { font-style: italic; }
 .grid-fit { min-width: 640px; }
 .big { min-width: 760px; }
+table.needs { min-width: 760px; }
+table.needs th:nth-child(3), table.needs td:nth-child(3) { min-width: 170px; white-space: nowrap; }
 .qrow { display: flex; flex-wrap: wrap; gap: 8px 10px; align-items: flex-end; font-size: 1.12rem; font-style: italic; font-weight: 500; padding: 10px 14px; border-bottom: 1px solid var(--line); }
 .qrow:last-child { border-bottom: 0; }
 .qlist { background: var(--card); border: 1px solid var(--line); border-radius: 14px; margin: 12px 0; }
@@ -274,7 +276,7 @@ footer { margin-top: 48px; }
 
 <section id="l-needs">
   <div class="sh"><span class="no shine" style="--c: var(--blue)">1</span><h2>Categorizing lexical verbs by what follows them</h2><p>This is the sorting that sets the clause pattern. The lexical verb is the last role in the verb phrase.</p></div>
-<div class="scroll"><table class="grid-fit">
+<div class="scroll"><table class="grid-fit needs">
   <thead><tr><th>Type</th><th>What follows the verb</th><th>Pattern</th><th>Example</th></tr></thead>
   <tbody>
     <tr><th>Intransitive</th><td>nothing</td><td>None (S V)</td><td>The baby <span class="l">slept</span>.</td></tr>

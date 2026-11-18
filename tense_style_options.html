@@ -56,6 +56,7 @@ body {
 .wrap { max-width: 1000px; margin: 0 auto; display: flex; flex-direction: column; gap: 20px; }
 .tense-present { --t: var(--present); --t-soft: var(--present-soft); --t-on: var(--present-on); }
 .tense-past    { --t: var(--past);    --t-soft: var(--past-soft);    --t-on: var(--past-on); }
+.tense-modal  { --t: var(--ink); --t-soft: var(--bg); --t-on: var(--surface); }
 .tense-future  { --t: var(--future);  --t-soft: var(--future-soft);  --t-on: var(--future-on); }
 
 h1 { font-family: var(--font-display); font-weight: 600; font-size: clamp(2rem, 6vw, 3rem); line-height: 1.05; margin: 0; }
@@ -206,6 +207,12 @@ button:focus-visible, select:focus-visible { outline: 3px solid var(--t, var(--i
 .tt .tx p + p { margin-top: 4px; }
 .tt .tp { width: 260px; border-left: 1px solid var(--line); }
 .tt .tk { width: 250px; border-left: 1px solid var(--line); }
+.tt.pvt { min-width: 0; }
+.tt.pvt th.tn { width: 230px; }
+.tt.pvt td.pf { font-family: var(--font-formula); font-size: 1.02rem; line-height: 1.5; }
+.tt.pvt td.pf + td.pf { border-left: 1px solid var(--line); }
+.tt.pvt .f-v { font-weight: 600; }
+.pv-h { margin: 26px 0 8px; font-family: var(--font-display); font-weight: 600; font-size: 1.3rem; color: var(--ink); }
 .cap { margin: 0 0 8px; font-size: .88rem; color: var(--muted); }
 .tt .chip { font-size: .85rem; padding: 2px 8px; border-radius: 8px; }
 .tt .keys .chip { font-size: .85rem; padding: 2px 9px; }
@@ -307,6 +314,7 @@ button:focus-visible, select:focus-visible { outline: 3px solid var(--t, var(--i
   <section class="view" id="v-c" role="tabpanel" hidden></section>
   <section class="view" id="v-d" role="tabpanel" hidden></section>
   <section class="view" id="v-e" role="tabpanel" hidden></section>
+  <section class="view" id="v-f" role="tabpanel" hidden></section>
 </div>
 
 <script>
@@ -347,7 +355,8 @@ button:focus-visible, select:focus-visible { outline: 3px solid var(--t, var(--i
     { id: 'v-c', name: 'B  Build It', sub: 'Challenge. Put the pattern together yourself.' },
     { id: 'v-b', name: 'C  Cover-up Sheet', sub: 'Medium. Pick your own subject, verb and object, then check every tense.' },
     { id: 'v-d', name: 'D  All 12 Tenses', sub: 'Table. Uses, time scales, key words and examples at a glance.' },
-    { id: 'v-e', name: 'E  Key Words', sub: 'Clues sorted by type, with the tense each one points to.' }
+    { id: 'v-e', name: 'E  Key Words', sub: 'Clues sorted by type, with the tense each one points to.' },
+    { id: 'v-f', name: 'F  Passive Voice', sub: 'Active and passive side by side, then uses, examples and key words.' }
   ];
   var sw = document.getElementById('switch');
   VIEWS.forEach(function (v, i) {
@@ -359,7 +368,7 @@ button:focus-visible, select:focus-visible { outline: 3px solid var(--t, var(--i
       VIEWS.forEach(function (w) { document.getElementById(w.id).hidden = (w.id !== v.id); });
       Array.prototype.forEach.call(sw.children, function (c) { c.setAttribute('aria-selected', c === b ? 'true' : 'false'); });
       if (v.id !== 'v-c') tint('present'); else tint(T[game.i].time);
-      legend.hidden = (v.id === 'v-d' || v.id === 'v-e');
+      legend.hidden = (v.id === 'v-d' || v.id === 'v-e' || v.id === 'v-f');
     });
     sw.appendChild(b);
   });
@@ -723,6 +732,88 @@ button:focus-visible, select:focus-visible { outline: 3px solid var(--t, var(--i
     html += '</tbody>';
   });
   D.innerHTML = html + '</table></div>';
+
+  /* ---------- F: passive voice ---------- */
+  var F = document.getElementById('v-f');
+  var PF = [
+    ['present', '1. Present Indefinite', 'Sub + V¹ + obj', 'Obj + is/am/are + V³ + by + sub'],
+    ['past', '2. Past Indefinite', 'Sub + V² + obj', 'Obj + was/were + V³ + by + sub'],
+    ['future', '3. Future Indefinite', 'Sub + shall/will + V¹ + obj', 'Obj + shall/will + be + V³ + by + sub'],
+    ['modal', '4. Modal (Indefinite)', 'Sub + modal + V¹ + obj', 'Obj + modal + be + V³ + by + sub'],
+    ['present', '5. Present Continuous', 'Sub + is/am/are + V¹(ing) + obj', 'Obj + is/am/are + being + V³ + by + sub'],
+    ['past', '6. Past Continuous', 'Sub + was/were + V¹(ing) + obj', 'Obj + was/were + being + V³ + by + sub'],
+    ['future', '7. Future Continuous', 'Sub + shall/will + be + V¹(ing) + obj', 'Obj + shall/will + be + being + V³ + by + sub'],
+    ['present', '8. Present Perfect', 'Sub + has/have + V³ + obj', 'Obj + has/have + been + V³ + by + sub'],
+    ['past', '9. Past Perfect', 'Sub + had + V³ + obj', 'Obj + had + been + V³ + by + sub'],
+    ['future', '10. Future Perfect', 'Sub + shall/will + have + V³ + obj', 'Obj + shall/will + have + been + V³ + by + sub'],
+    ['modal', '11. Modal Perfect', 'Sub + modal + have + V³ + obj', 'Obj + modal + have + been + V³ + by + sub']
+  ];
+  function pfx(x) {
+    return x.replace(/\b(Sub|Obj)\b/g, '<i class="f-s">$1</i>').replace(/V[¹²³](\(ing\))?/g, '<span class="f-v">$&</span>');
+  }
+  var fh = '<p class="swipe">Swipe sideways to see every column.</p><p class="cap">Active: the doer comes first. Passive: the receiver of the action comes first, and the doer moves to the end with <i>by</i> (or is dropped when it is unknown or not important). The verb always ends in V³.</p>' +
+    '<div class="tbl-wrap"><table class="tt pvt"><thead><tr><th>Tense</th><th>Active Voice</th><th>Passive Voice</th></tr></thead><tbody>';
+  PF.forEach(function (r, i) {
+    fh += '<tr class="tense-' + r[0] + (i ? '' : ' first') + '"><th scope="row" class="tn"><span>' + r[1] + '</span></th><td class="pf fm">' + pfx(r[2]) + '</td><td class="pf fm">' + pfx(r[3]) + '</td></tr>';
+  });
+  fh += '</tbody></table></div><h2 class="pv-h">Passive voice: uses, examples and key words</h2>' +
+    '<p class="cap">Use the passive when the doer is unknown, not important or obvious, or when the receiver of the action is the star of the sentence. Passive forms of the perfect continuous tenses are very rare, so they are left out.</p>';
+
+  var PKEYS_MODAL = ['can', 'could', 'may', 'might', 'must', 'should', 'would', 'shall', 'ought to', 'has to', 'have to'];
+  var PKEYS_MODALP = ['must have', 'might have', 'could have', 'should have', 'would have', 'may have', 'perhaps', 'maybe', 'probably', 'if only'];
+  // [time, name, line, formula codes, key words, uses]
+  var PV = [
+    ['present', 'Present Indefinite', 'Habits and facts, when the doer is not important', ['s:Object', 'h:is / am / are', 'v:V3', 'h:by', 's:Subject'], KEYS[0], USES[0].slice(0, 2).map(function (u, k) { return [u[0], u[1], [
+      ['The room ~is~ ^cleaned^ every day.', 'Letters ~are~ ^delivered^ by the postman.'], ['Rice ~is~ ^grown^ in India.', 'English ~is~ ^spoken^ all over the world.']][k]]; })],
+    ['present', 'Present Continuous', 'In progress right now', ['s:Object', 'h:is / am / are', 'h:being', 'v:V3', 'h:by', 's:Subject'], KEYS[1], [
+      ['Happening right now', 'bar:62-98', ['The cake ~is being~ ^baked^ now.', 'The kids ~are being~ ^taken^ to school.']],
+      ['A temporary situation', 'bar:48-112', ['The road ~is being~ ^repaired^ this week.', 'Our house ~is being~ ^painted^ these days.']]]],
+    ['present', 'Present Perfect', 'Done, and the result matters now', ['s:Object', 'h:has / have', 'h:been', 'v:V3', 'h:by', 's:Subject'], KEYS[2], [
+      ['A finished action with a result now', 'arc:62:80', ['The homework ~has been~ ^finished^.', 'My key ~has been~ ^lost^.']],
+      ['Life experience', 'arc:28:80', ['That movie ~has been~ ^seen^ by millions.', '~Have~ the windows ~been~ ^cleaned^ yet?']]]],
+    ['past', 'Past Indefinite', 'Finished at a time in the past', ['s:Object', 'h:was / were', 'v:V3', 'h:by', 's:Subject'], KEYS[4], [
+      ['A finished action at a known past time', 'dot:40', ['The window ~was~ ^broken^ yesterday.', 'The letters ~were~ ^sent^ last week.']],
+      ['A list of past actions, one after another', 'dots:18,34,50', ['The tent ~was~ ^put^ up, the fire ~was~ ^lit^ and dinner ~was~ ^cooked^.', 'The door ~was~ ^opened^ and the room ~was~ ^searched^.']]]],
+    ['past', 'Past Continuous', 'In progress at a past moment', ['s:Object', 'h:was / were', 'h:being', 'v:V3', 'h:by', 's:Subject'], KEYS[5], [
+      ['In progress at a past moment', 'bar:16-58', ['The bridge ~was being~ ^built^ last year.', 'Dinner ~was being~ ^cooked^ when we arrived.']],
+      ['An action that was interrupted', 'barx:14-56:44', ['The kids ~were being~ ^taught^ when the lights went out.', 'The house ~was being~ ^painted^ when it started to rain.']]]],
+    ['past', 'Past Perfect', 'Finished before another past moment', ['s:Object', 'h:had', 'h:been', 'v:V3', 'h:by', 's:Subject'], KEYS[6], [
+      ['Finished before another past action', 'arcx:22:56', ['The food ~had been~ ^eaten^ before we arrived.', 'The work ~had been~ ^finished^ before dinner.']],
+      ['The reason for something in the past', 'arcx:34:62', ['He was happy. The game ~had been~ ^won^.', 'The road was closed. It ~had been~ ^damaged^.']]]],
+    ['future', 'Future Indefinite', 'Will happen later', ['s:Object', 'h:shall / will', 'h:be', 'v:V3', 'h:by', 's:Subject'], KEYS[8], [
+      ['Promises and plans', 'dot:112', ['The work ~will be~ ^done^ tomorrow.', 'You ~will be~ ^called^ tonight.']],
+      ['Predictions', 'dot:136', ['The results ~will be~ ^announced^ next week.', 'The match ~will be~ ^won^ by our team, I think.']]]],
+    ['future', 'Future Continuous', 'Will be in progress at a future moment', ['s:Object', 'h:shall / will', 'h:be', 'h:being', 'v:V3', 'h:by', 's:Subject'], KEYS[9], [
+      ['In progress at a future moment', 'bar:106-146', ['This time tomorrow, the house ~will be being~ ^painted^.', 'At eight tonight, dinner ~will be being~ ^served^.']]]],
+    ['future', 'Future Perfect', 'Will be finished by a future moment', ['s:Object', 'h:shall / will', 'h:have', 'h:been', 'v:V3', 'h:by', 's:Subject'], KEYS[10], [
+      ['Finished before a future moment', 'arcx:102:138', ['The homework ~will have been~ ^finished^ by five.', 'The room ~will have been~ ^cleaned^ by then.']],
+      ['A deadline', 'arcx:112:142', ['By Friday, the invitations ~will have been~ ^sent^.', 'The shop ~will have been~ ^closed^ by nine.']]]],
+    ['modal', 'Modal (Indefinite)', 'Rules, ability, advice, possibility', ['s:Object', 'h:modal', 'h:be', 'v:V3', 'h:by', 's:Subject'], PKEYS_MODAL, [
+      ['Rules, ability and possibility', 'dot:116', ['The door ~can be~ ^opened^ with this key.', 'Phones ~must be~ ^switched^ off here.']],
+      ['Advice and duty', 'dot:130', ['Homework ~should be~ ^done^ every day.', 'The rules ~must be~ ^followed^.']]]],
+    ['modal', 'Modal Perfect', 'Guessing or regretting about the past', ['s:Object', 'h:modal', 'h:have', 'h:been', 'v:V3', 'h:by', 's:Subject'], PKEYS_MODALP, [
+      ['Guessing about the past', 'arc:44:80', ['The window ~must have been~ ^broken^ by the storm.', 'The keys ~might have been~ ^lost^ at school.']],
+      ['Regret or a missed chance', 'arc:62:80', ['The match ~could have been~ ^won^.', 'The work ~should have been~ ^finished^ earlier.']]]]
+  ];
+  var PCAP = { present: 'Present', past: 'Past', future: 'Future', modal: 'Modal' };
+  fh += '<div class="tbl-wrap"><table class="tt"><thead><tr><th>Tense</th><th>Use it for</th><th>Time scale</th><th>Two examples</th><th>Key words</th></tr></thead>';
+  ['present', 'past', 'future', 'modal'].forEach(function (time) {
+    fh += '<tbody class="tense-' + time + '"><tr class="band-row"><th colspan="5">' + PCAP[time] + '</th></tr>';
+    PV.forEach(function (r) {
+      if (r[0] !== time) return;
+      var n = r[5].length;
+      r[5].forEach(function (u, k) {
+        fh += '<tr' + (k === 0 ? ' class="first"' : '') + '>';
+        if (k === 0) fh += '<th scope="row" class="tn" rowspan="' + n + '"><span>' + r[1] + '</span><small>' + r[2] + '</small><p class="tpat fm">' + formula(r[3]) + '</p></th>';
+        fh += '<td class="tu">' + u[0] + '</td><td class="ts">' + diagram(u[1], r[1] + ', ' + u[0]) + '</td>' +
+          '<td class="tx">' + u[2].map(function (e) { return '<p>' + sentence(e) + '</p>'; }).join('') + '</td>';
+        if (k === 0) fh += '<td class="tk" rowspan="' + n + '"><div class="chips keys">' + r[4].map(function (w) { return '<span class="chip c-x">' + w + '</span>'; }).join('') + '</div></td>';
+        fh += '</tr>';
+      });
+    });
+    fh += '</tbody>';
+  });
+  F.innerHTML = fh + '</table></div>';
 
   /* ---------- A: tap grid ---------- */
   function aForms(i) { return subjForms(i); }

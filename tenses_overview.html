@@ -759,9 +759,9 @@ button:focus-visible, select:focus-visible { outline: 3px solid var(--t, var(--i
     ['past', '2. Past Indefinite', 'Sub + V² + obj', 'Obj + was/were + V³ + by + sub'],
     ['future', '3. Future Indefinite', 'Sub + shall/will + V¹ + obj', 'Obj + shall/will + be + V³ + by + sub'],
     ['modal', '4. Modal (Indefinite)', 'Sub + modal + V¹ + obj', 'Obj + modal + be + V³ + by + sub'],
-    ['present', '5. Present Continuous', 'Sub + is/am/are + V⁵ + obj', 'Obj + is/am/are + being + V³ + by + sub'],
-    ['past', '6. Past Continuous', 'Sub + was/were + V⁵ + obj', 'Obj + was/were + being + V³ + by + sub'],
-    ['future', '7. Future Continuous', 'Sub + shall/will + be + V⁵ + obj', 'Obj + shall/will + be + being + V³ + by + sub'],
+    ['present', '5. Present Continuous', 'Sub + is/am/are + V⁴ + obj', 'Obj + is/am/are + being + V³ + by + sub'],
+    ['past', '6. Past Continuous', 'Sub + was/were + V⁴ + obj', 'Obj + was/were + being + V³ + by + sub'],
+    ['future', '7. Future Continuous', 'Sub + shall/will + be + V⁴ + obj', 'Obj + shall/will + be + being + V³ + by + sub'],
     ['present', '8. Present Perfect', 'Sub + has/have + V³ + obj', 'Obj + has/have + been + V³ + by + sub'],
     ['past', '9. Past Perfect', 'Sub + had + V³ + obj', 'Obj + had + been + V³ + by + sub'],
     ['future', '10. Future Perfect', 'Sub + shall/will + have + V³ + obj', 'Obj + shall/will + have + been + V³ + by + sub'],
@@ -769,7 +769,7 @@ button:focus-visible, select:focus-visible { outline: 3px solid var(--t, var(--i
   ];
   function pfx(x) {
     var m = x.match(/^(Sub|Obj) \+ (.+?) \+ (obj|by \+ sub)$/);
-    var inner = function (t) { return t.replace(/V[¹²³⁵]/g, '<span class="f-v">$&</span>'); };
+    var inner = function (t) { return t.replace(/V[¹²³⁴⁵]/g, '<span class="f-v">$&</span>'); };
     var tag = function (t) { return /^(Sub|Obj)$/.test(t) ? '<i class="f-s">' + t + '</i>' : t; };
     if (!m) return x;
     return tag(m[1]) + ' + <span class="vp">' + inner(m[2]) + '</span> + ' + m[3].replace(/\b(sub)\b/, '<i class="f-s">$1</i>').replace(/^obj$/, '<i class="f-s">obj</i>');

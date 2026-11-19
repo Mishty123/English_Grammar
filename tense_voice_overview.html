@@ -386,7 +386,7 @@ button:focus-visible, select:focus-visible { outline: 3px solid var(--t, var(--i
       VIEWS.forEach(function (w) { document.getElementById(w.id).hidden = (w.id !== v.id); });
       Array.prototype.forEach.call(sw.children, function (c) { c.setAttribute('aria-selected', c === b ? 'true' : 'false'); });
       if (v.id !== 'v-c') tint('present'); else tint(T[game.i].time);
-      legend.hidden = (v.id === 'v-d' || v.id === 'v-e' || v.id === 'v-f');
+      legend.hidden = (v.id === 'v-b' || v.id === 'v-d' || v.id === 'v-e' || v.id === 'v-f');
     });
     sw.appendChild(b);
   });

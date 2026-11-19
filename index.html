@@ -71,7 +71,7 @@
     .count { margin-left: auto; color: var(--muted); font-size: .85rem; }
 
     .cards { display: grid; gap: 10px; }
-    .card { --c: var(--ok); position: relative; display: flex; align-items: center; gap: 14px; padding: 14px 18px 14px 20px; background: var(--card); border: 1.5px solid var(--line); border-radius: 14px; overflow: hidden; color: inherit; text-decoration: none; transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease; }
+    .card { --c: var(--ok); position: relative; display: flex; align-items: center; gap: 14px; padding: 22px 18px 14px 20px; background: var(--card); border: 1.5px solid var(--line); border-radius: 14px; overflow: hidden; color: inherit; text-decoration: none; transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease; }
     .card::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 5px; background: var(--c); }
     .card.verbs { --c: var(--verbs); } .card.pronouns { --c: var(--pron); } .card.small { --c: var(--small); } .card.practice { --c: var(--practice); }
     .card:hover { transform: translateY(-2px); border-color: var(--c); box-shadow: 0 8px 18px rgba(27, 42, 52, .14); }
@@ -81,6 +81,7 @@
     .text h2 { font-family: var(--font-display); font-weight: 600; font-size: 1.1rem; line-height: 1.25; margin: 0 0 2px; }
     .text p { margin: 0; color: var(--muted); font-size: .88rem; line-height: 1.45; }
     .tag { display: inline-block; margin-top: 6px; font-size: .68rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--c); }
+    .upd { position: absolute; top: 7px; right: 14px; font-size: .68rem; font-style: italic; color: var(--muted); letter-spacing: .02em; }
     .arrow { flex: none; font-size: 1.2rem; color: var(--muted); }
 
     .empty { text-align: center; padding: 26px 16px; border: 1.5px dashed var(--line); border-radius: 14px; color: var(--muted); background: var(--card); }
@@ -130,6 +131,7 @@
 
     <nav class="cards" aria-label="Grammar pages">
       <a class="card verbs" href="tense_voice_overview.html" data-cat="verbs" data-keywords="tenses passive voice active present past future simple continuous perfect progressive twelve 12 timeline verbs study ways">
+        <time class="upd" datetime="2026-11-18">Updated 18 Nov 2026</time>
         <span class="icon" aria-hidden="true">12</span>
         <span class="text">
           <h2>Tense &amp; Voice Overview</h2>
@@ -140,6 +142,7 @@
       </a>
 
       <a class="card verbs" href="present_tenses_study_page.html" data-cat="verbs" data-keywords="present tenses simple continuous perfect perfect continuous progressive verbs have has been V1 V4 V3 uses key words drawings">
+        <time class="upd" datetime="2026-11-12">Updated 12 Nov 2026</time>
         <span class="icon" aria-hidden="true">Pr</span>
         <span class="text">
           <h2>Present Tenses</h2>
@@ -150,6 +153,7 @@
       </a>
 
       <a class="card verbs" href="be_verb_study_page.html" data-cat="verbs" data-keywords="be verb am is are was were been being helping linking modal passive voice continuous structures practice quiz">
+        <time class="upd" datetime="2026-11-19">Updated 19 Nov 2026</time>
         <span class="icon" aria-hidden="true">be</span>
         <span class="text">
           <h2>Be Verb Study Page</h2>
@@ -160,6 +164,7 @@
       </a>
 
       <a class="card verbs" href="verb_phrase_notes.html" data-cat="verbs" data-keywords="verb phrase notes roles role 1 2 3 4 finite non-finite helping lexical clause patterns tense aspect voice passive 12 tenses quiz sentence lab who decides what follows">
+        <time class="upd" datetime="2026-11-17">Updated 17 Nov 2026</time>
         <span class="icon" aria-hidden="true">VP</span>
         <span class="text">
           <h2>Verb Phrase Notes</h2>
@@ -170,6 +175,7 @@
       </a>
 
       <a class="card verbs" href="verb_types.html" data-cat="verbs" data-keywords="verb types finite lexical main helping auxiliary modal non-finite infinitive gerund participle transitive intransitive linking phrasal causative quiz">
+        <time class="upd" datetime="2026-11-17">Updated 17 Nov 2026</time>
         <span class="icon" aria-hidden="true">VT</span>
         <span class="text">
           <h2>Verb Types</h2>
@@ -180,6 +186,7 @@
       </a>
 
       <a class="card verbs" href="verb_glossary.html" data-cat="verbs" data-keywords="glossary verb terms meanings search finite transitive intransitive modal auxiliary helping phrasal gerund infinitive participle tense aspect voice mood V1 V2 V3 V4 V5">
+        <time class="upd" datetime="2026-11-15">Updated 15 Nov 2026</time>
         <span class="icon" aria-hidden="true">Aa</span>
         <span class="text">
           <h2>Verb Glossary</h2>
@@ -190,6 +197,7 @@
       </a>
 
       <a class="card pronouns" href="personal_pronouns_study_page.html" data-cat="pronouns" data-keywords="pronouns personal I me he him she her it we us they them you subject object possessive adjective reflexive myself intensive agreement antecedent errors practice">
+        <time class="upd" datetime="2026-11-14">Updated 14 Nov 2026</time>
         <span class="icon" aria-hidden="true">I/me</span>
         <span class="text">
           <h2>Personal Pronouns Study Page</h2>
@@ -200,6 +208,7 @@
       </a>
 
       <a class="card pronouns" href="indefinite_pronouns_study_page.html" data-cat="pronouns" data-keywords="indefinite pronouns someone anyone no one everyone something anything nothing everything some any none all most many few each either neither both another other agreement singular plural determiner">
+        <time class="upd" datetime="2026-11-12">Updated 12 Nov 2026</time>
         <span class="icon" aria-hidden="true">any</span>
         <span class="text">
           <h2>Indefinite Pronouns</h2>
@@ -210,6 +219,7 @@
       </a>
 
       <a class="card small" href="determiners_study_page.html" data-cat="small" data-keywords="determiners articles a an the demonstratives this that these those possessive my your quantifiers some any many much few little each every either neither both another other such what which whose numbers order agreement countable uncountable noun">
+        <time class="upd" datetime="2026-11-12">Updated 12 Nov 2026</time>
         <span class="icon" aria-hidden="true">the</span>
         <span class="text">
           <h2>Determiners</h2>
@@ -220,6 +230,7 @@
       </a>
 
       <a class="card small" href="some_any_study_page.html" data-cat="small" data-keywords="some any a an articles quantifiers determiners countable uncountable questions negatives quiz">
+        <time class="upd" datetime="2026-11-12">Updated 12 Nov 2026</time>
         <span class="icon" aria-hidden="true">s/a</span>
         <span class="text">
           <h2>Some and Any Study Page</h2>
@@ -229,6 +240,7 @@
         <span class="arrow" aria-hidden="true">&rarr;</span>
       </a>
       <a class="card sentences" href="questions_study_page.html" data-cat="sentences" data-keywords="questions question words tags wh who what where when why how subject auxiliary inversion helping verb do does did short answers indirect phrases quiz">
+        <time class="upd" datetime="2026-11-14">Updated 14 Nov 2026</time>
         <span class="icon" aria-hidden="true">?</span>
         <span class="text">
           <h2>Questions Study Page</h2>
@@ -239,6 +251,7 @@
       </a>
 
       <a class="card practice" href="grammar_adventure.html" data-cat="practice" data-keywords="practice grammar adventure kid child fun pictures adjectives determiners helping verbs auxiliary questions quiz flip cards revision">
+        <time class="upd" datetime="2026-11-15">Updated 15 Nov 2026</time>
         <span class="icon" aria-hidden="true">GA</span>
         <span class="text">
           <h2>Grammar Adventure</h2>

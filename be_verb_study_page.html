@@ -364,6 +364,10 @@ table .num { background: transparent; color: var(--fg); border: 1.5px solid var(
 html { font-synthesis-weight: none; }
 h1, h2, h3 { letter-spacing: -.005em; font-weight: 400; }
 body { font-size: 16.5px; }
+.subtabs{display:flex;flex-wrap:wrap;gap:8px;padding-bottom:4px;border-bottom:2px solid var(--line)}
+.stab{font:inherit;font-size:.9rem;font-weight:500;white-space:nowrap;color:var(--fg);background:transparent;border:0;border-bottom:4px solid transparent;border-radius:8px 8px 0 0;padding:8px 16px;margin-bottom:-6px;cursor:pointer}
+.stab[aria-selected="true"]{color:var(--pres);border-bottom-color:var(--pres);background:var(--pres-soft)}
+.stab:focus-visible{outline:3px solid var(--pres);outline-offset:2px}
 </style>
 
 <main id="page">
@@ -381,9 +385,8 @@ body { font-size: 16.5px; }
       <button class="tab" role="tab" id="t-intro" aria-controls="p-intro" data-tab="intro"><span class="n">i</span>Be Forms</button>
       <button class="tab" role="tab" id="t-forms" aria-controls="p-forms" data-tab="forms"><span class="n">1</span>As Main Verb</button>
       <button class="tab" role="tab" id="t-passive" aria-controls="p-passive" data-tab="passive"><span class="n">2</span>As Helping Verb</button>
-      <button class="tab" role="tab" id="t-build" aria-controls="p-build" data-tab="build"><span class="n">3</span>Structure build-up</button>
-      <button class="tab" role="tab" id="t-ways" aria-controls="p-ways" data-tab="ways"><span class="n">4</span>Ways &ldquo;be&rdquo; is used</button>
-      <button class="tab" role="tab" id="t-practice" aria-controls="p-practice" data-tab="practice"><span class="n">5</span>Practice</button>
+      <button class="tab" role="tab" id="t-ways" aria-controls="p-ways" data-tab="ways"><span class="n">3</span>Ways &ldquo;be&rdquo; is used</button>
+      <button class="tab" role="tab" id="t-practice" aria-controls="p-practice" data-tab="practice"><span class="n">4</span>Practice</button>
     </nav>
   </header>
 
@@ -602,11 +605,6 @@ body { font-size: 16.5px; }
     </div>
   </section>
 
-  <section class="panel" role="tabpanel" id="p-build" aria-labelledby="t-build" hidden>
-    <h2>Structure build-up</h2>
-    <p class="lead">Put the pattern together yourself. Pick a structure, then tap the chips in the right order.</p>
-    <div class="game" id="game"></div>
-  </section>
   <section class="panel" role="tabpanel" id="p-ways" aria-labelledby="t-ways" hidden>
     <h2>Ways &ldquo;be&rdquo; is used</h2>
     <p class="lead">From simple to advanced. Each way shows the pattern first, then examples.</p>
@@ -691,9 +689,21 @@ body { font-size: 16.5px; }
   </section>
   <section class="panel" role="tabpanel" id="p-practice" aria-labelledby="t-practice" hidden>
     <h2>Practice</h2>
+    <nav class="subtabs" role="tablist" aria-label="Practice sections">
+      <button class="stab" role="tab" id="st-build" aria-controls="sp-build" data-sub="build">Structure build-up</button>
+      <button class="stab" role="tab" id="st-quiz" aria-controls="sp-quiz" data-sub="quiz">Quiz</button>
+    </nav>
+    <div class="panel" id="sp-build" role="tabpanel" aria-labelledby="st-build">
+    <h2>Structure build-up</h2>
+    <p class="lead">Put the pattern together yourself. Pick a structure, then tap the chips in the right order.</p>
+    <div class="game" id="game"></div>
+    </div>
+    <div class="panel" id="sp-quiz" role="tabpanel" aria-labelledby="st-quiz" hidden>
+    <h2>Quiz</h2>
     <p class="lead">Tap an answer. You will see right away if it is correct and why.</p>
     <div class="pq-top"><span class="pq-score" aria-live="polite" id="pq-score">Score: 0 / 0</span><button class="pq-reset" id="pq-reset" type="button">Start again</button></div>
     <div id="pq-body"></div>
+    </div>
   </section>
 </main>
 
@@ -710,7 +720,26 @@ body { font-size: 16.5px; }
 
   var tabs = Array.prototype.slice.call(document.querySelectorAll('.tab'));
   var names = tabs.map(function (t) { return t.dataset.tab; });
+  var subs = Array.prototype.slice.call(document.querySelectorAll('.stab'));
+  function showSub(n) {
+    subs.forEach(function (t) {
+      var on = t.dataset.sub === n;
+      t.setAttribute('aria-selected', on ? 'true' : 'false');
+      t.tabIndex = on ? 0 : -1;
+      document.getElementById('sp-' + t.dataset.sub).hidden = !on;
+    });
+  }
+  subs.forEach(function (t, i) {
+    t.addEventListener('click', function () { showSub(t.dataset.sub); });
+    t.addEventListener('keydown', function (e) {
+      var j = e.key === 'ArrowRight' ? i + 1 : (e.key === 'ArrowLeft' ? i - 1 : -1);
+      if (j < 0) return;
+      j = (j + subs.length) % subs.length; subs[j].focus(); subs[j].click();
+    });
+  });
+  showSub('build');
   function show(name) {
+    if (name === 'build' || name === 'quiz') { showSub(name); name = 'practice'; }
     if (names.indexOf(name) < 0) name = names[0];
     tabs.forEach(function (t) {
       var on = t.dataset.tab === name;

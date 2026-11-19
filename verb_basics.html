@@ -1,0 +1,1195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Verb Basics · Verb Phrase Anatomy and Verb Types</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600;1,700&family=Yeseva+One&display=swap">
+<style>
+:root {
+  --bg: #f1f4f2; --bg-wash: #e3ecea; --card: #fbfcfb; --ink: #22333a; --muted: #5d6e75; --line: #d4ddda;
+  --teal: #2c7a7b; --blue: #3d6c98; --sage: #5b8a52; --ochre: #a4752a; --slate: #5a7280;
+  --h: "Yeseva One", Georgia, serif; --b: "Lora", Georgia, serif; --script: "Great Vibes", "Snell Roundhand", cursive;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #12191c; --bg-wash: #17262a; --card: #1a2428; --ink: #e4ecee; --muted: #9fb0b6; --line: #2f3d43;
+    --teal: #5fc0c0; --blue: #7fa9d6; --sage: #92c48a; --ochre: #deb06a; --slate: #9fb4c0; color-scheme: dark;
+  }
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; color: var(--ink); font-family: var(--b); font-size: 17px; line-height: 1.6;
+  background: linear-gradient(180deg, var(--bg-wash) 0, var(--bg) 460px) var(--bg); background-repeat: no-repeat; -webkit-text-size-adjust: 100%; }
+.wrap { max-width: 1020px; margin: 0 auto; padding: 0 20px 72px; }
+
+/* shine + faint glow */
+.shine, .k, .f, .l, .n {
+  --c: var(--teal);
+  --hi: color-mix(in srgb, var(--c) 70%, #fff); --lo: color-mix(in srgb, var(--c) 80%, #000);
+  background: linear-gradient(180deg, var(--hi) 0%, var(--c) 50%, var(--lo) 100%);
+  -webkit-background-clip: text; background-clip: text; color: transparent; -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 1.5px color-mix(in srgb, var(--c) 14%, transparent));
+  -webkit-box-decoration-break: clone; box-decoration-break: clone;
+}
+.f { --c: var(--teal); font-weight: 700; font-style: italic; }
+.l { --c: var(--blue); font-weight: 700; font-style: italic; }
+.n { --c: var(--slate); font-weight: 600; font-style: italic; }
+.k { --c: var(--teal); font-weight: 700; font-style: italic; }
+@supports not (color: color-mix(in srgb, red 50%, blue)) { .shine, .k, .f, .l, .n { --hi: var(--c); --lo: var(--c); filter: none; } }
+
+.hero { text-align: center; padding: 54px 0 14px; }
+.eyebrow { font-size: .78rem; letter-spacing: .22em; text-transform: uppercase; color: var(--muted); font-weight: 500; }
+.hero h1 { font-family: var(--h); font-weight: 400; font-size: clamp(2rem, 6vw, 3.2rem); line-height: 1.14; margin: 10px 0 0; }
+.script { font-family: var(--script); font-size: clamp(3.2rem, 11vw, 5.6rem); line-height: 1; display: block; padding: .06em .12em .14em; }
+.hero p { max-width: 58ch; margin: 8px auto 0; font-style: italic; color: var(--muted); }
+
+nav.toc { position: sticky; top: 0; z-index: 10; display: flex; gap: 8px; overflow-x: auto; padding: 10px 2px; margin-top: 18px; background: color-mix(in srgb, var(--bg) 84%, transparent); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); scrollbar-width: none; }
+nav.toc a { flex: none; font-size: .86rem; text-decoration: none; color: var(--ink); border: 1.5px solid var(--line); background: var(--card); border-radius: 999px; padding: 4px 14px; }
+nav.toc a:hover { border-color: var(--teal); }
+
+section { margin-top: 46px; scroll-margin-top: 64px; }
+.sh { display: flex; align-items: baseline; flex-wrap: wrap; gap: 4px 14px; padding-bottom: 10px; margin-bottom: 16px; border-bottom: 1.5px solid var(--line); }
+.sh .no { font-family: var(--script); font-size: 2.6rem; line-height: 1; padding: .04em .1em .1em 0; }
+.sh h2 { font-family: var(--h); font-weight: 400; font-size: 1.65rem; margin: 0; line-height: 1.2; }
+.sh p { margin: 0; font-style: italic; color: var(--muted); font-size: .95rem; flex-basis: 100%; }
+h3 { font-family: var(--h); font-weight: 400; font-size: 1.2rem; margin: 22px 0 8px; }
+p { margin: 8px 0; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 16px 18px; box-shadow: 0 10px 26px -22px rgba(20,50,55,.6); }
+.lbl { display: inline-block; font-size: .66rem; letter-spacing: .1em; text-transform: uppercase; font-weight: 700; font-style: normal; color: #fff; background: color-mix(in srgb, var(--c, var(--teal)) 86%, #000); border-radius: 5px; padding: 1px 8px; margin-right: 6px; }
+@media (prefers-color-scheme: dark) { .lbl { color: #12191c; background: var(--c, var(--teal)); } }
+.note { border-left: 3px solid var(--c, var(--teal)); background: color-mix(in srgb, var(--c, var(--teal)) 8%, var(--card)); padding: 10px 14px; border-radius: 4px 10px 10px 4px; font-style: italic; margin: 14px 0; }
+.eg { font-style: italic; font-weight: 500; }
+small, .sm { font-size: .84rem; color: var(--muted); font-weight: 400; font-style: normal; }
+
+/* diagram */
+.fig { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 14px 10px 8px; box-shadow: 0 10px 26px -22px rgba(20,50,55,.6); }
+svg.map { display: block; width: 100%; height: auto; max-width: 780px; margin: 0 auto; }
+svg.map text { font-family: var(--b); fill: var(--ink); }
+svg.map .t1 { font-family: var(--h); font-size: 16px; }
+svg.map .t2 { font-size: 13px; font-style: italic; fill: var(--muted); }
+svg.map .t3 { font-size: 13px; font-weight: 600; font-style: italic; }
+svg.map .on-ink { fill: var(--bg); }
+svg.map rect { stroke-width: 1.2; }
+svg.map .root { fill: var(--ink); stroke: var(--ink); }
+svg.map .role { fill: var(--card); stroke: var(--muted); }
+svg.map .b-teal { fill: color-mix(in srgb, var(--teal) 16%, var(--card)); stroke: var(--teal); }
+svg.map .b-slate { fill: color-mix(in srgb, var(--slate) 16%, var(--card)); stroke: var(--slate); }
+svg.map .b-blue { fill: color-mix(in srgb, var(--blue) 16%, var(--card)); stroke: var(--blue); }
+svg.map .cont { fill: none; stroke: var(--line); stroke-dasharray: 5 4; }
+svg.map .tree { fill: none; stroke: var(--muted); stroke-width: 1.4; }
+svg.map .e { fill: none; stroke-width: 1.6; opacity: .85; }
+svg.map .e-teal { stroke: var(--teal); } svg.map .e-slate { stroke: var(--slate); } svg.map .e-blue { stroke: var(--blue); }
+.legend { display: flex; flex-wrap: wrap; gap: 8px 20px; justify-content: center; font-size: .86rem; color: var(--muted); padding: 6px 8px 10px; }
+.legend i { display: inline-block; width: 12px; height: 12px; border-radius: 3px; margin-right: 7px; vertical-align: -1px; border: 1.2px solid; }
+.legend .a { background: color-mix(in srgb, var(--teal) 25%, var(--card)); border-color: var(--teal); }
+.legend .b { background: color-mix(in srgb, var(--slate) 25%, var(--card)); border-color: var(--slate); }
+.legend .c { background: color-mix(in srgb, var(--blue) 25%, var(--card)); border-color: var(--blue); }
+
+.three { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin-top: 16px; }
+.three .card { border-top: 4px solid var(--c); }
+.three h4 { font-family: var(--h); font-weight: 400; font-size: 1.1rem; margin: 6px 0 4px; }
+.three p { margin: 4px 0; font-size: .96rem; }
+
+/* tables */
+.scroll { overflow-x: auto; border: 1px solid var(--line); border-radius: 14px; background: var(--card); margin: 12px 0; }
+table { border-collapse: collapse; width: 100%; min-width: 560px; }
+th, td { padding: 10px 14px; text-align: left; vertical-align: top; border-bottom: 1px solid var(--line); border-right: 1px solid var(--line); }
+th:last-child, td:last-child { border-right: 0; } tr:last-child > * { border-bottom: 0; }
+thead th { font-family: var(--h); font-weight: 400; font-size: 1rem; background: color-mix(in srgb, var(--c, var(--slate)) 12%, var(--card)); white-space: nowrap; }
+tbody th { font-family: var(--h); font-weight: 400; white-space: nowrap; background: color-mix(in srgb, var(--c, var(--slate)) 10%, var(--card)); }
+td .eg { display: block; font-size: .9rem; color: var(--muted); margin-top: 2px; }
+.dot { display: inline-block; width: 13px; height: 13px; border-radius: 50%; background: var(--c); box-shadow: 0 0 0 3px color-mix(in srgb, var(--c) 20%, transparent); }
+.ctr { text-align: center; }
+.g12 { min-width: 760px; }
+.g12 td { min-width: 190px; }
+.g12 .fm { font-size: 1.02rem; }
+.r-simple { --c: var(--teal); } .r-cont { --c: var(--blue); } .r-perf { --c: var(--ochre); } .r-pc { --c: var(--sage); }
+.h-past { --c: var(--ochre); } .h-pres { --c: var(--teal); } .h-fut { --c: var(--blue); }
+
+/* order strip & chips */
+.strip { display: flex; flex-wrap: wrap; gap: 10px; align-items: stretch; margin: 12px 0; }
+.step { flex: 1 1 130px; background: var(--card); border: 1px solid var(--line); border-top: 4px solid var(--c); border-radius: 12px; padding: 10px 12px; text-align: center; }
+.step b { display: block; font-family: var(--h); font-weight: 400; font-size: 1.1rem; }
+.step span { font-size: .82rem; color: var(--muted); }
+.step em { display: block; font-size: 1.05rem; font-weight: 600; margin-top: 4px; }
+.pair { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 14px; }
+ul.tick { margin: 8px 0; padding-left: 1.2em; } ul.tick li { margin: 4px 0; }
+
+/* sentence lab */
+.tools { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin: 6px 0 14px; }
+.btn { font: inherit; font-size: .88rem; cursor: pointer; color: var(--ink); background: var(--card); border: 1.5px solid var(--line); border-radius: 999px; padding: 5px 16px; }
+.btn[aria-pressed="true"] { background: color-mix(in srgb, var(--ochre) 18%, var(--card)); border-color: var(--ochre); font-weight: 600; }
+.lab { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 440px), 1fr)); gap: 14px; }
+.s { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; display: flex; flex-direction: column; gap: 10px; }
+.words { display: flex; flex-wrap: wrap; gap: 6px 10px; align-items: flex-end; font-size: 1.12rem; }
+.w { display: inline-flex; flex-direction: column; align-items: center; line-height: 1.25; }
+.w .tx { font-style: italic; font-weight: 500; padding: 0 3px; }
+.w.vb .tx { font-weight: 700; border-bottom: 3px solid var(--blue); }
+.w.vb.fin .tx { border-bottom-color: var(--teal); }
+.w.vb.fin:not(.lex) .tx { border-bottom-style: solid; }
+.w.vb:not(.fin) .tx { border-bottom-color: var(--slate); border-bottom-style: dashed; }
+.w.vb.lex .tx { box-shadow: inset 0 -0px 0 transparent; background: color-mix(in srgb, var(--blue) 12%, transparent); border-radius: 4px 4px 0 0; }
+.w .tg { font-size: .66rem; letter-spacing: .06em; text-transform: uppercase; font-weight: 600; color: var(--slate); text-align: center; }
+.w.fin .tg { color: var(--teal); }
+.w .tg2 { font-size: .68rem; color: var(--muted); text-align: center; }
+.out { display: flex; flex-wrap: wrap; gap: 6px 8px; font-size: .84rem; }
+.out span { border-radius: 999px; padding: 1px 10px; border: 1px solid; }
+.out .t { border-color: var(--teal); background: color-mix(in srgb, var(--teal) 12%, var(--card)); }
+.out .a { border-color: var(--slate); background: color-mix(in srgb, var(--slate) 12%, var(--card)); }
+.out .p { border-color: var(--blue); background: color-mix(in srgb, var(--blue) 12%, var(--card)); }
+.sn { font-size: .88rem; color: var(--muted); font-style: italic; margin: 0; }
+.cover .s { cursor: pointer; }
+.cover .s:not(.open) .tg, .cover .s:not(.open) .tg2, .cover .s:not(.open) .out, .cover .s:not(.open) .sn { filter: blur(7px); user-select: none; }
+.cover .s:not(.open)::after { content: "tap to reveal"; font-size: .76rem; font-style: italic; color: var(--muted); text-align: center; }
+.keyline { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: .86rem; color: var(--muted); margin: 6px 0 12px; }
+.keyline span b { font-style: italic; }
+
+.traps { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 14px; }
+.traps .card { border-left: 4px solid var(--c); }
+.traps .bad { text-decoration: line-through; text-decoration-color: var(--ochre); color: var(--muted); }
+footer { text-align: center; margin-top: 56px; color: var(--muted); font-style: italic; }
+footer .script { font-size: 2.4rem; display: inline; padding: 0 .1em; --c: var(--sage); }
+button:focus-visible, a:focus-visible, .s:focus-visible { outline: 3px solid var(--blue); outline-offset: 2px; }
+@media (max-width: 560px) { body { font-size: 16px; } .wrap { padding: 0 14px 56px; } .hero { padding-top: 36px; } }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+.qz { min-width: 620px; }
+.qz td { vertical-align: middle; }
+.qs { display: flex; flex-wrap: wrap; gap: 8px 10px; align-items: flex-end; font-size: 1.1rem; font-style: italic; font-weight: 500; }
+.qv { font: inherit; font-style: italic; font-weight: 700; cursor: pointer; color: var(--ink); background: var(--card); border: 1.5px dashed var(--muted); border-radius: 10px; padding: 2px 10px 4px; display: inline-flex; flex-direction: column; align-items: center; line-height: 1.25; min-width: 64px; }
+.qv small { font-size: .66rem; font-style: normal; letter-spacing: .05em; text-transform: uppercase; font-weight: 600; color: var(--muted); }
+.qv[data-s="1"] { border-color: var(--teal); background: color-mix(in srgb, var(--teal) 12%, var(--card)); border-style: solid; }
+.qv[data-s="2"] { border-color: var(--slate); background: color-mix(in srgb, var(--slate) 12%, var(--card)); border-style: solid; }
+.qv[data-s="3"], .qv[data-s="4"] { border-color: var(--blue); background: color-mix(in srgb, var(--blue) 12%, var(--card)); border-style: solid; }
+.qv.ok { box-shadow: 0 0 0 3px color-mix(in srgb, var(--sage) 45%, transparent); }
+.qv.no { box-shadow: 0 0 0 3px color-mix(in srgb, var(--ochre) 55%, transparent); }
+.qa { display: flex; flex-direction: column; gap: 6px; align-items: flex-start; }
+.qa .btn { padding: 3px 14px; }
+.qf { font-size: .88rem; font-style: italic; color: var(--muted); min-height: 1.3em; }
+.stk { min-width: 760px; }
+.stk thead th { text-align: center; }
+.stk thead th:first-child, .stk tbody th { text-align: left; font-family: var(--b); font-weight: 500; white-space: normal; }
+.stk tr.sub td, .stk tr.sub th { font-size: .84rem; color: var(--muted); font-style: italic; background: color-mix(in srgb, var(--slate) 8%, var(--card)); font-weight: 400; }
+.stk td { font-size: 1.05rem; font-style: italic; font-weight: 600; }
+.stk .none { color: var(--line); font-weight: 400; }
+.asp { min-width: 720px; }
+.asp td { line-height: 1.7; }
+.bef { min-width: 640px; }
+.hlp { min-width: 700px; table-layout: fixed; }
+.hlp tbody th small.blk, .hlp td small.blk { display: block; margin-top: 3px; line-height: 1.35; }
+.hlp tbody th { white-space: normal; }
+.hlp thead th { white-space: normal; }
+.pages { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin: 22px 0 0; }
+.pages a { font-size: .9rem; text-decoration: none; color: var(--ink); border: 1.5px solid var(--line); background: var(--card); border-radius: 10px; padding: 6px 16px; }
+.pages a:hover { border-color: var(--teal); }
+.pages a[aria-current="page"] { border-color: var(--teal); background: color-mix(in srgb, var(--teal) 14%, var(--card)); font-weight: 600; font-style: italic; }
+a.nextlink { display: inline-block; margin-top: 8px; font-style: normal; font-weight: 600; color: var(--teal); text-decoration: none; border-bottom: 1.5px solid color-mix(in srgb, var(--teal) 40%, transparent); }
+a.go { color: var(--teal); font-weight: 600; font-style: italic; text-decoration: none; border-bottom: 1px solid color-mix(in srgb, var(--teal) 40%, transparent); }
+.g12 .ln { display: block; line-height: 1.55; }
+.g12 .ln + .ln { margin-top: 4px; }
+.g12 .vx { display: inline-block; min-width: 5.2em; font-size: .64rem; letter-spacing: .07em; text-transform: uppercase; font-weight: 600; color: var(--muted); font-style: normal; }
+.g12 td small { font-size: .74rem; font-style: normal; }
+.asp2 { min-width: 760px; }
+.asp2 td { line-height: 1.7; }
+.asp2 thead th { text-align: left; }
+.asp2 thead th.ctr { text-align: center; }
+.asp2 tr.sub2 th { font-size: .86rem; color: var(--muted); }
+.asp2 td small { font-size: .74rem; font-style: normal; }
+section[hidden] { display: none; }
+nav.toc a[aria-current="true"] { border-color: var(--teal); background: color-mix(in srgb, var(--teal) 14%, var(--card)); font-weight: 600; font-style: italic; }
+.gh-home { display: inline-flex; align-items: center; gap: 6px; margin-top: 18px; padding: 6px 16px; border-radius: 999px; background: var(--card); color: var(--ink); border: 1.5px solid var(--line); font: 600 .9rem var(--b); text-decoration: none; }
+.gh-home:hover { border-color: var(--teal); }
+.panel[hidden] { display: none; }
+
+/* ---- Verb Types: tab cards (Present Tenses layout), subtabs, quizzes ---- */
+.tabs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 22px; }
+.tabs button { font: inherit; text-align: left; background: var(--card); color: var(--ink); border: 2px solid var(--line); border-radius: 16px; padding: 10px 14px; cursor: pointer; display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.tabs button b { font-family: var(--h); font-weight: 400; font-size: 1.12rem; line-height: 1.2; }
+.tabs button b small { font-family: var(--b); font-size: .8em; font-weight: 500; font-style: italic; color: var(--muted); }
+.tabs button > small { color: var(--muted); font-size: .84rem; font-style: italic; }
+.tabs button:hover { border-color: var(--teal); }
+.tabs button[aria-selected="true"] { background: color-mix(in srgb, var(--teal) 14%, var(--card)); border-color: var(--teal); }
+.tabs button[aria-selected="true"] b { font-style: italic; }
+@media (max-width: 900px) { .tabs { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 520px) { .tabs { grid-template-columns: 1fr; } }
+.panel[hidden], .vtp[hidden], .vbpane[hidden], section[hidden] { display: none; }
+nav.sub { display: flex; gap: 8px; overflow-x: auto; padding: 12px 2px 10px; margin-top: 8px; scrollbar-width: none; position: sticky; top: 0; z-index: 10; background: color-mix(in srgb, var(--bg) 86%, transparent); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); }
+nav.sub button { flex: none; font: inherit; font-size: .86rem; color: var(--ink); border: 1.5px solid var(--line); background: var(--card); border-radius: 999px; padding: 4px 14px; cursor: pointer; }
+nav.sub button:hover { border-color: var(--teal); }
+nav.sub button[aria-current="true"] { border-color: var(--teal); background: color-mix(in srgb, var(--teal) 14%, var(--card)); font-weight: 600; font-style: italic; }
+.gh-home { display: inline-flex; align-items: center; gap: 6px; margin-top: 18px; padding: 6px 16px; border-radius: 999px; background: var(--card); color: var(--ink); border: 1.5px solid var(--line); font: 600 .9rem var(--b); text-decoration: none; }
+.gh-home:hover { border-color: var(--teal); }
+.cols2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 14px; }
+.watch { border-left: 3px solid var(--ochre); background: color-mix(in srgb, var(--ochre) 9%, var(--card)); padding: 10px 14px; border-radius: 4px 10px 10px 4px; margin: 14px 0; }
+.watch .lab { --c: var(--ochre); }
+.tg { display: inline-block; font-size: .72rem; letter-spacing: .06em; text-transform: uppercase; font-weight: 700; padding: 1px 9px; border-radius: 999px; border: 1px solid var(--c, var(--teal)); background: color-mix(in srgb, var(--c, var(--teal)) 12%, var(--card)); color: var(--ink); font-style: normal; }
+.c-t { --c: var(--teal); } .c-b { --c: var(--blue); } .c-s { --c: var(--slate); } .c-o { --c: var(--ochre); } .c-g { --c: var(--sage); }
+td.ex, .ex { font-style: italic; }
+.grid-fit { min-width: 640px; }
+.big { min-width: 760px; }
+table.needs { min-width: 760px; }
+table.subj { min-width: 0; table-layout: fixed; width: 100%; }
+table.subj th, table.subj td { white-space: normal; overflow-wrap: anywhere; }
+table.subj th:nth-child(1), table.subj td:nth-child(1) { width: 30%; }
+table.subj th:nth-child(2), table.subj td:nth-child(2) { width: 18%; }
+table.subj th:nth-child(3), table.subj td:nth-child(3) { width: 52%; min-width: 0; }
+table.needs th:nth-child(3), table.needs td:nth-child(3) { min-width: 170px; white-space: nowrap; }
+.qrow { display: flex; flex-wrap: wrap; gap: 8px 10px; align-items: flex-end; font-size: 1.12rem; font-style: italic; font-weight: 500; padding: 10px 14px; border-bottom: 1px solid var(--line); }
+.qrow:last-child { border-bottom: 0; }
+.qlist { background: var(--card); border: 1px solid var(--line); border-radius: 14px; margin: 12px 0; }
+.qb { font: inherit; font-style: italic; font-weight: 700; cursor: pointer; color: var(--ink); background: var(--card); border: 1.5px dashed var(--muted); border-radius: 10px; padding: 2px 12px 4px; display: inline-flex; flex-direction: column; align-items: center; line-height: 1.25; min-width: 70px; }
+.qb small { font-size: .64rem; font-style: normal; letter-spacing: .05em; text-transform: uppercase; font-weight: 600; color: var(--muted); }
+.qb[data-s="1"] { border-style: solid; border-color: var(--teal); background: color-mix(in srgb, var(--teal) 12%, var(--card)); }
+.qb[data-s="2"] { border-style: solid; border-color: var(--blue); background: color-mix(in srgb, var(--blue) 12%, var(--card)); }
+.qb[data-s="3"] { border-style: solid; border-color: var(--sage); background: color-mix(in srgb, var(--sage) 14%, var(--card)); }
+.qb[data-s="4"] { border-style: solid; border-color: var(--ochre); background: color-mix(in srgb, var(--ochre) 14%, var(--card)); }
+.qb[data-s="5"] { border-style: solid; border-color: var(--slate); background: color-mix(in srgb, var(--slate) 14%, var(--card)); }
+.qb.ok { box-shadow: 0 0 0 3px color-mix(in srgb, var(--sage) 50%, transparent); }
+.qb.no { box-shadow: 0 0 0 3px color-mix(in srgb, var(--ochre) 60%, transparent); }
+.qbar { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin: 6px 0 12px; }
+.qscore { font-style: italic; color: var(--muted); }
+.mc { display: grid; gap: 10px; margin: 12px 0; }
+.mcq { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 10px 14px; }
+.mcq p { margin: 0 0 6px; font-style: italic; font-weight: 500; }
+.mcq .opts { display: flex; flex-wrap: wrap; gap: 8px; }
+.mcq .opts .btn { padding: 3px 14px; }
+.mcq .opts .btn.ok { border-color: var(--sage); background: color-mix(in srgb, var(--sage) 22%, var(--card)); font-weight: 600; }
+.mcq .opts .btn.no { border-color: var(--ochre); background: color-mix(in srgb, var(--ochre) 20%, var(--card)); text-decoration: line-through; }
+.mcq .fb { font-size: .86rem; color: var(--muted); font-style: italic; min-height: 1.2em; margin-top: 4px; }
+.hero h1 { font-size: clamp(2rem, 6vw, 3.2rem); }
+footer { margin-top: 48px; }
+
+/* ---- Verb Basics: top-level switcher ---- */
+.hero h2 { font-family: var(--h); font-weight: 400; font-size: clamp(1.7rem, 5vw, 2.6rem); line-height: 1.14; margin: 10px 0 0; }
+.vbt { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 22px; }
+.vbt button { font: inherit; text-align: left; background: var(--card); color: var(--ink); border: 2px solid var(--line); border-radius: 16px; padding: 12px 16px; cursor: pointer; display: flex; flex-direction: column; gap: 2px; }
+.vbt button b { font-family: var(--h); font-weight: 400; font-size: 1.25rem; line-height: 1.2; }
+.vbt button b span { font-family: var(--script); font-size: 1.9rem; color: var(--teal); margin-right: 8px; line-height: 1; }
+.vbt button > small { color: var(--muted); font-size: .86rem; font-style: italic; }
+.vbt button:hover { border-color: var(--teal); }
+.vbt button[aria-selected="true"] { background: color-mix(in srgb, var(--teal) 14%, var(--card)); border-color: var(--teal); }
+.vbt button[aria-selected="true"] b { font-style: italic; }
+.vbtop { text-align: center; padding: 40px 0 0; }
+.vbpane .hero { padding-top: 30px; }
+.vbpane .hero .eyebrow { display: none; }
+.vbpane .hero .script { font-size: clamp(2.2rem, 7vw, 3.6rem); }
+@media (max-width: 520px) { .vbt { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body data-start="p1">
+<div class="wrap">
+
+<div class="vbtop">
+<a class="gh-home" href="index.html" aria-label="Back to the home page">&larr; Home</a>
+<header class="hero">
+  <span class="eyebrow">Grammar notes &middot; Verbs</span>
+  <h1>Verb Basics</h1>
+  <span class="script shine">Anatomy &amp; Types</span>
+  <p>Two parts in one page: how a verb phrase is built, and the kinds of verbs that fill it.</p>
+</header>
+</div>
+<div class="vbt" role="tablist" aria-label="Verb Basics"><button type="button" role="tab" id="vbt-pn" data-vb="pn" aria-selected="true"><b><span>1</span>Verb Phrase Anatomy</b><small>roles, what follows, tense, aspect and voice</small></button><button type="button" role="tab" id="vbt-vt" data-vb="vt" aria-selected="false"><b><span>2</span>Verb Types</b><small>lexical, helping, finite and non-finite</small></button></div>
+
+<div class="vbpane" id="vb-pn" role="tabpanel">
+
+<div class="panel" id="panel-p1">
+
+<header class="hero">
+  <span class="eyebrow">Grammar notes &middot; Verbs</span>
+  <h2>Roles in a verb phrase</h2>
+  <span class="script shine">Finite &amp; Friends</span>
+  <p>One map that shows which role carries tense, which roles build aspect and voice, and which role decides the clause pattern.</p>
+</header>
+<nav class="pages" aria-label="Pages in this set"><a href="#go-p1" aria-current="page">1 &middot; Roles in a Verb Phrase</a><a href="#go-p2">2 &middot; Role-to-Role: Who Decides What Follows</a><a href="#go-p3">3 &middot; Tense, Aspect and Voice from the Roles</a></nav>
+<nav class="toc" id="toc-p1" aria-label="Sections">
+  <a href="#map">The map: roles 1 to 4 and what each can be</a><a href="#who">Role quiz: count the roles and label each verb</a>
+</nav>
+
+<section id="map">
+  <div class="sh"><span class="no shine" style="--c: var(--teal)">1</span><h2>The map: roles 1 to 4 and what each can be</h2><p>A verb phrase has 1, 2, 3 or 4 roles, counted from the left. Role 1 is finite, and the last role is always the lexical verb.</p></div>
+  <div class="fig">
+<svg class="map" viewBox="0 0 720 482" role="img" aria-labelledby="mt md">
+<title id="mt">Verb phrase by number of roles</title>
+<desc id="md">Four rows show a verb phrase with one, two, three or four roles. Role 1 is always finite and alone gives tense. The whole verb phrase, Role 1 included, gives aspect and voice. The last role is always the lexical verb and decides the clause pattern: none, object, complement or a required adverbial.</desc>
+<defs><marker id="ar" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+<text class="t1" x="146" y="30" text-anchor="middle" dominant-baseline="central">Role 1</text>
+<text class="t1" x="254" y="30" text-anchor="middle" dominant-baseline="central">Role 2</text>
+<text class="t1" x="362" y="30" text-anchor="middle" dominant-baseline="central">Role 3</text>
+<text class="t1" x="470" y="30" text-anchor="middle" dominant-baseline="central">Role 4</text>
+<text class="t2" x="24" y="90" dominant-baseline="central">1 role</text>
+<text class="t2" x="24" y="166" dominant-baseline="central">2 roles</text>
+<text class="t2" x="24" y="242" dominant-baseline="central">3 roles</text>
+<text class="t2" x="24" y="318" dominant-baseline="central">4 roles</text>
+<path class="e e-blue" d="M196 90H540M304 166H540M412 242H540M520 318H540M540 90V318"/>
+<path class="e e-blue" d="M540 204H558" marker-end="url(#ar)"/>
+<rect class="b-teal" x="96" y="60" width="100" height="60" rx="10"/><text class="t1" x="146" y="76" text-anchor="middle" dominant-baseline="central">Lexical</text><text class="t2" x="146" y="94" text-anchor="middle" dominant-baseline="central">V1 / V5 / V2</text><text class="t3" x="146" y="110" text-anchor="middle" dominant-baseline="central">finite</text>
+<rect class="b-teal" x="96" y="136" width="100" height="60" rx="10"/><text class="t1" x="146" y="152" text-anchor="middle" dominant-baseline="central">Helping</text><text class="t2" x="146" y="170" text-anchor="middle" dominant-baseline="central">HV1</text><text class="t3" x="146" y="186" text-anchor="middle" dominant-baseline="central">finite</text>
+<rect class="b-slate" x="204" y="136" width="100" height="60" rx="10"/><text class="t1" x="254" y="152" text-anchor="middle" dominant-baseline="central">Lexical</text><text class="t2" x="254" y="170" text-anchor="middle" dominant-baseline="central">V1 / V3 / V4</text><text class="t3" x="254" y="186" text-anchor="middle" dominant-baseline="central">non-finite</text>
+<rect class="b-teal" x="96" y="212" width="100" height="60" rx="10"/><text class="t1" x="146" y="228" text-anchor="middle" dominant-baseline="central">Helping</text><text class="t2" x="146" y="246" text-anchor="middle" dominant-baseline="central">HV1</text><text class="t3" x="146" y="262" text-anchor="middle" dominant-baseline="central">finite</text>
+<rect class="b-slate" x="204" y="212" width="100" height="60" rx="10"/><text class="t1" x="254" y="228" text-anchor="middle" dominant-baseline="central">Helping</text><text class="t2" x="254" y="246" text-anchor="middle" dominant-baseline="central">HV2</text><text class="t3" x="254" y="262" text-anchor="middle" dominant-baseline="central">non-finite</text>
+<rect class="b-slate" x="312" y="212" width="100" height="60" rx="10"/><text class="t1" x="362" y="228" text-anchor="middle" dominant-baseline="central">Lexical</text><text class="t2" x="362" y="246" text-anchor="middle" dominant-baseline="central">V1 / V3 / V4</text><text class="t3" x="362" y="262" text-anchor="middle" dominant-baseline="central">non-finite</text>
+<rect class="b-teal" x="96" y="288" width="100" height="60" rx="10"/><text class="t1" x="146" y="304" text-anchor="middle" dominant-baseline="central">Helping</text><text class="t2" x="146" y="322" text-anchor="middle" dominant-baseline="central">HV1</text><text class="t3" x="146" y="338" text-anchor="middle" dominant-baseline="central">finite</text>
+<rect class="b-slate" x="204" y="288" width="100" height="60" rx="10"/><text class="t1" x="254" y="304" text-anchor="middle" dominant-baseline="central">Helping</text><text class="t2" x="254" y="322" text-anchor="middle" dominant-baseline="central">HV2</text><text class="t3" x="254" y="338" text-anchor="middle" dominant-baseline="central">non-finite</text>
+<rect class="b-slate" x="312" y="288" width="100" height="60" rx="10"/><text class="t1" x="362" y="304" text-anchor="middle" dominant-baseline="central">Helping</text><text class="t2" x="362" y="322" text-anchor="middle" dominant-baseline="central">HV3</text><text class="t3" x="362" y="338" text-anchor="middle" dominant-baseline="central">non-finite</text>
+<rect class="b-slate" x="420" y="288" width="100" height="60" rx="10"/><text class="t1" x="470" y="304" text-anchor="middle" dominant-baseline="central">Lexical</text><text class="t2" x="470" y="322" text-anchor="middle" dominant-baseline="central">V1 / V3 / V4</text><text class="t3" x="470" y="338" text-anchor="middle" dominant-baseline="central">non-finite</text>
+<rect class="b-blue" x="562" y="176" width="140" height="56" rx="10"/>
+<text class="t1" x="632" y="196" text-anchor="middle" dominant-baseline="central">Clause pattern</text>
+<text class="t2" x="632" y="217" text-anchor="middle" dominant-baseline="central">None / O / C (+ A)</text>
+<text class="t2" x="632" y="252" text-anchor="middle" dominant-baseline="central">A = adverbial if needed</text>
+<path class="e e-slate" d="M100 352V362H516V352" fill="none"/>
+<path class="e e-slate" d="M362 362V386" marker-end="url(#ar)"/>
+<path class="e e-teal" d="M146 350V386" marker-end="url(#ar)"/>
+<rect class="b-teal" x="96" y="390" width="100" height="56" rx="10"/>
+<text class="t1" x="146" y="410" text-anchor="middle" dominant-baseline="central">Tense</text>
+<text class="t2" x="146" y="431" text-anchor="middle" dominant-baseline="central">Role 1 only</text>
+<rect class="b-slate" x="204" y="390" width="316" height="56" rx="10"/>
+<text class="t1" x="362" y="410" text-anchor="middle" dominant-baseline="central">Aspect and voice</text>
+<text class="t2" x="362" y="431" text-anchor="middle" dominant-baseline="central">from the whole verb phrase</text>
+</svg>
+    <div class="legend">
+      <span><i class="a"></i>Finite verb &rarr; tense</span>
+      <span><i class="b"></i>Whole verb phrase &rarr; aspect and voice</span>
+      <span><i class="c"></i>Lexical verb &rarr; clause pattern</span>
+    </div>
+  </div>
+
+  <div class="three">
+    <div class="card" style="--c: var(--teal)">
+      <span class="lbl" style="--c: var(--teal)">Rule 1</span>
+      <h4>Role 1 is finite</h4>
+      <p><span class="f">Role 1</span> is always the finite verb. It shows tense and agrees with the subject. Every later role is non-finite. <a class="go" href="#go-p3-finite">Finite or not &rarr;</a></p>
+    </div>
+    <div class="card" style="--c: var(--slate)">
+      <span class="lbl" style="--c: var(--slate)">Rule 2</span>
+      <h4>The whole phrase builds aspect &amp; voice</h4>
+      <p>The helper in Role 1 plus the forms after it (<span class="n">be + V4</span>, <span class="n">have + V3</span>, <span class="n">be + V3</span>) decide continuous, perfect or passive. Role 1 alone tells only the tense. <a class="go" href="#go-p3-aspect">Aspect and voice &rarr;</a></p>
+    </div>
+    <div class="card" style="--c: var(--blue)">
+      <span class="lbl" style="--c: var(--blue)">Rule 3</span>
+      <h4>The last role is the lexical verb</h4>
+      <p>The last role, the <span class="l">lexical verb</span>, decides what comes next: <b>None</b>, an <b>Object</b>, a <b>Complement</b>, or an <b>Adverbial</b> when one is required. <a class="go" href="#go-p2-pattern">Clause patterns &rarr;</a></p>
+    </div>
+  </div>
+</section>
+
+<section id="who">
+  <div class="sh"><span class="no shine" style="--c: var(--blue)">2</span><h2>Role quiz: count the roles and label each verb</h2></div>
+  <p class="sm">Tap a verb to label it: <b>?</b> &rarr; helping &middot; finite &rarr; helping &middot; non-finite &rarr; lexical &middot; finite &rarr; lexical &middot; non-finite. Then press Check.</p>
+  <div class="scroll"><table class="qz">
+    <thead><tr><th>Roles</th><th>Tap each verb</th><th>Answer</th></tr></thead>
+    <tbody id="qbody"></tbody>
+  </table></div>
+</section>
+
+<footer><span class="script shine">Well done</span><br><a class="nextlink" href="#go-p2">Next: Role-to-Role: Who Decides What Follows &rarr;</a></footer>
+</div>
+<div class="panel" id="panel-p2" hidden>
+
+<header class="hero">
+  <span class="eyebrow">Grammar notes &middot; Verbs</span>
+  <h2>Role-to-Role: who decides what follows</h2>
+  <span class="script shine">Helpers &amp; Heads</span>
+  <p>Helping verbs set the form of the next verb. The lexical verb, always last, decides what the clause needs.</p>
+</header>
+<nav class="pages" aria-label="Pages in this set"><a href="#go-p1">1 &middot; Roles in a Verb Phrase</a><a href="#go-p2" aria-current="page">2 &middot; Role-to-Role: Who Decides What Follows</a><a href="#go-p3">3 &middot; Tense, Aspect and Voice from the Roles</a></nav>
+<nav class="toc" id="toc-p2" aria-label="Sections">
+  <a href="#helpers">A helper decides the form of the next verb</a><a href="#pattern">A lexical verb decides the clause pattern</a><a href="#p2-traps">Traps: where this goes wrong</a>
+</nav>
+
+<section id="helpers">
+  <div class="sh"><span class="no shine" style="--c: var(--ochre)">1</span><h2>A helper decides the form of the next verb</h2><p>Each helping role decides the form of the next role.</p></div>
+  <div class="scroll"><table class="hlp">
+    <colgroup><col style="width:35%"><col style="width:16%"><col style="width:23%"><col style="width:26%"></colgroup>
+    <thead><tr><th>Helper</th><th class="ctr">Forces the next verb into</th><th>Builds</th><th>Example</th></tr></thead>
+    <tbody>
+      <tr><th>Modal<small class="blk">can, could, may, might, will, would, shall, should, must</small></th><td class="ctr"><span class="n">V1</span><small class="blk">bare infinitive</small></td><td>ability, possibility, duty, future (<em>will</em>)</td><td><span class="eg">She <span class="f">can</span> <span class="n">swim</span>.<br>He <span class="f">will</span> <span class="n">go</span>.</span></td></tr>
+      <tr><th>have / has / had<small class="blk">perfect <em>have</em></small></th><td class="ctr"><span class="n">V3</span></td><td>perfect aspect</td><td><span class="eg">She <span class="f">has</span> <span class="n">finished</span>.</span></td></tr>
+      <tr><th>be<small class="blk">continuous <em>be</em> &middot; am, is, are, was, were</small></th><td class="ctr"><span class="n">V4</span></td><td>continuous aspect</td><td><span class="eg">She <span class="f">is</span> <span class="n">eating</span>.</span></td></tr>
+      <tr><th>be<small class="blk">passive <em>be</em> &middot; am, is, are, was, were</small></th><td class="ctr"><span class="n">V3</span></td><td>passive voice</td><td><span class="eg">The cake <span class="f">was</span> <span class="n">eaten</span>.</span></td></tr>
+      <tr><th>be + be<small class="blk">both in one phrase: continuous <em>be</em>, then passive <em>be</em></small></th><td class="ctr"><span class="n">V4</span>, then <span class="n">V3</span></td><td>continuous passive</td><td><span class="eg">The room <span class="f">is</span> <span class="n">being</span> <span class="l">cleaned</span>.<small class="blk">is = continuous (+ V4 <em>being</em>)<br>being = passive (+ V3 <em>cleaned</em>)</small></span></td></tr>
+      <tr><th>do / does / did<small class="blk">support helper</small></th><td class="ctr"><span class="n">V1</span></td><td>questions, negatives, emphasis</td><td><span class="eg"><span class="f">Does</span> she <span class="n">play</span>?<br>She <span class="f">did</span> not <span class="n">go</span>.</span></td></tr>
+    </tbody>
+  </table></div>
+
+  <h3>When helpers stack, they go in this order</h3>
+  <p>A verb phrase can have a maximum of <b>5 roles</b>: 4 helpers followed by the lexical verb. The four helper slots, in this order, are:</p>
+  <ol class="tick">
+    <li>Modal</li>
+    <li>Perfect <em>have</em></li>
+    <li>Continuous <em>be</em></li>
+    <li>Passive <em>be</em></li>
+  </ol>
+  <p>Filling all four gives <span class="eg">The room <span class="f">could</span> <span class="n">have</span> <span class="n">been</span> <span class="n">being</span> <span class="l">cleaned</span>.</span> (5 roles). That is the most a verb phrase can hold, because each slot can be used only once and the slots must come in this order. You can skip any slot you do not need.</p>
+  <p>In real use the limit is 4 roles, which is 3 helpers plus the lexical verb. Examples:</p>
+  <ul class="tick">
+    <li><span class="eg">She <span class="f">will</span> <span class="n">have</span> <span class="n">been</span> <span class="l">waiting</span>.</span> (modal + perfect + continuous)</li>
+    <li><span class="eg">The room <span class="f">could</span> <span class="n">have</span> <span class="n">been</span> <span class="l">cleaned</span>.</span> (modal + perfect + passive)</li>
+  </ul>
+  <p>Five-role phrases are grammatical but almost never used, as with <em>been being</em>. In the active voice there is no passive <em>be</em>, so 4 roles is the true maximum.</p>
+  <p>Each helper picks the <em>form</em> of the next verb, which is why only the first verb in the chain (<span class="f">teal</span>) is finite.</p>
+</section>
+
+<section id="pattern">
+  <div class="sh"><span class="no shine" style="--c: var(--blue)">2</span><h2>A lexical verb decides the clause pattern</h2><p>The lexical verb decides what, if anything, must follow it. A = adverbial.</p></div>
+  <div class="scroll"><table>
+    <thead><tr><th>Pattern</th><th>Verb type</th><th>Example</th><th>Tip</th></tr></thead>
+    <tbody>
+      <tr><th>None <small>(S + V)</small></th><td>intransitive</td><td><span class="eg">The baby <span class="l">slept</span>.</span></td><td>complete without anything after it</td></tr>
+      <tr><th>O <small>(S + V + O)</small></th><td>transitive</td><td><span class="eg">She <span class="l">kicked</span> the ball.</span></td><td>ask <em>what?</em> or <em>whom?</em> after the verb</td></tr>
+      <tr><th>C <small>(S + V + C)</small></th><td>linking</td><td><span class="eg">The soup <span class="l">is</span> hot.</span></td><td>C describes or renames the subject</td></tr>
+      <tr><th>O + O</th><td>ditransitive</td><td><span class="eg">He <span class="l">gave</span> her a book.</span></td><td>indirect object, then direct object</td></tr>
+      <tr><th>O + C</th><td>complex transitive</td><td><span class="eg">They <span class="l">made</span> him captain.</span></td><td>C describes or renames the object</td></tr>
+      <tr><th>A <small>(S + V + A)</small></th><td>verb that needs an adverbial</td><td><span class="eg">She <span class="l">lives</span> in Boston.</span></td><td>the adverbial is required: <em>She lives.</em> feels unfinished</td></tr>
+      <tr><th>O + A <small>(S + V + O + A)</small></th><td>transitive + adverbial</td><td><span class="eg">She <span class="l">put</span> the book on the table.</span></td><td>the adverbial is required: <em>She put the book.</em> feels unfinished</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3>What can fill the O, C or A slot?</h3>
+  <div class="scroll"><table>
+    <thead><tr><th>Filler</th><th>Can be O?</th><th>Can be C?</th><th>Can be A?</th><th>Example</th></tr></thead>
+    <tbody>
+      <tr><th>Noun or pronoun</th><td class="ctr">yes</td><td class="ctr">yes</td><td class="ctr">sometimes</td><td><span class="eg">She kicked <span class="k">the ball</span>. My sister is <span class="k">a nurse</span>. She left <span class="k">last week</span>.</span></td></tr>
+      <tr><th>Adjective</th><td class="ctr">no</td><td class="ctr">yes</td><td class="ctr">no</td><td><span class="eg">The soup is <span class="k">hot</span>.</span></td></tr>
+      <tr><th>Adverb or prepositional phrase</th><td class="ctr">no</td><td class="ctr">no</td><td class="ctr">yes</td><td><span class="eg">She lives <span class="k">in Boston</span>. She sang <span class="k">yesterday</span>.</span></td></tr>
+      <tr><th>Non-finite verb phrase</th><td class="ctr">yes</td><td class="ctr">yes</td><td class="ctr">yes</td><td><span class="eg">I want <span class="k">to learn</span>. I enjoy <span class="k">reading</span>. Her aim is <span class="k">to win</span>. She came <span class="k">to help</span>.</span></td></tr>
+      <tr><th>Finite clause</th><td class="ctr">yes</td><td class="ctr">yes</td><td class="ctr">yes</td><td><span class="eg">I know <span class="k">that she left</span>. The problem is <span class="k">that he left</span>. She left <span class="k">because it rained</span>.</span></td></tr>
+    </tbody>
+  </table></div>
+  <p class="note" style="--c: var(--blue)">Most adverbials are optional extras: <span class="eg">She sang <span class="k">yesterday</span>.</span> You can drop them and the pattern stays the same. A few verbs need one to be complete (<span class="eg">She lives <span class="k">in Boston</span></span>), and then it is part of the pattern.</p>
+  <p class="note" style="--c: var(--blue)">In a passive sentence the object becomes the subject, so the clause shows <b>None</b>: <span class="eg">She kicked the ball → The ball <span class="f">was</span> <span class="l">kicked</span>.</span></p>
+</section>
+
+<!-- TRAPS -->
+<section id="p2-traps">
+  <div class="sh"><span class="no shine" style="--c: var(--ochre)">3</span><h2>Traps: where this goes wrong</h2><p>Easy mistakes with helpers and lexical verbs.</p></div>
+  <div class="traps">
+    <div class="card" style="--c: var(--teal)"><span class="lbl" style="--c: var(--teal)">Modals</span><p>A modal is finite but never takes -s, and the verb after it is plain V1.</p><p class="eg"><span class="bad">She cans swims.</span> → She <span class="f">can</span> <span class="n">swim</span>.</p></div>
+    <div class="card" style="--c: var(--blue)"><span class="lbl" style="--c: var(--blue)">Do-support</span><p>Does carries the -s, so the lexical verb goes back to V1.</p><p class="eg"><span class="bad">Does she plays?</span> → <span class="f">Does</span> she <span class="n">play</span>?</p></div>
+    <div class="card" style="--c: var(--slate)"><span class="lbl" style="--c: var(--slate)">Be alone</span><p><em>Be</em> can be the lexical verb on its own. It is then finite and gives the pattern C.</p><p class="eg">She <span class="l">is</span> tired. <small>(finite + lexical, pattern C)</small></p></div>
+    <div class="card" style="--c: var(--sage)"><span class="lbl" style="--c: var(--sage)">Verbs inside O or C</span><p>A to-infinitive or -ing phrase inside O or C is non-finite. It never replaces the finite verb of the clause.</p><p class="eg">I <span class="f">want</span> <span class="n">to learn</span>. <small>(finite: want)</small></p></div>
+    <div class="card" style="--c: var(--teal)"><span class="lbl" style="--c: var(--teal)">“Been” and “being”</span><p>Both are non-finite: <em>been</em> is V3 of be, <em>being</em> is V4. They can never be the first verb.</p><p class="eg">She <span class="f">has</span> <span class="n">been</span> <span class="l">waiting</span>.</p></div>
+  </div>
+</section>
+
+<footer><span class="script shine">Well done</span><br><a class="nextlink" href="#go-p3">Next: Tense, Aspect and Voice from the Roles &rarr;</a></footer>
+</div>
+<div class="panel" id="panel-p3" hidden>
+
+<header class="hero">
+  <span class="eyebrow">Grammar notes &middot; Verbs</span>
+  <h2>Tense, aspect and voice from the roles</h2>
+  <span class="script shine">Time &amp; Form</span>
+  <p>Find the finite verb, then see how tense, aspect and voice are built from the whole verb phrase.</p>
+</header>
+<nav class="pages" aria-label="Pages in this set"><a href="#go-p1">1 &middot; Roles in a Verb Phrase</a><a href="#go-p2">2 &middot; Role-to-Role: Who Decides What Follows</a><a href="#go-p3" aria-current="page">3 &middot; Tense, Aspect and Voice from the Roles</a></nav>
+<nav class="toc" id="toc-p3" aria-label="Sections">
+  <a href="#finite">Finding the finite verb (Role 1)</a><a href="#aspect">Aspect and voice: from the whole phrase</a><a href="#tense">Tense: from Role 1 only</a><a href="#lab">Sentence lab: take whole sentences apart</a><a href="#p3-traps">Trap: the finite verb in two clauses</a>
+</nav>
+
+<section id="finite">
+  <div class="sh"><span class="no shine" style="--c: var(--teal)">1</span><h2>Finding the finite verb (Role 1)</h2><p>Role 1 is the finite verb. Here is how to spot it in a clause.</p></div>
+  <div class="pair">
+    <div class="card" style="--c: var(--teal)">
+      <span class="lbl" style="--c: var(--teal)">Finite verb</span>
+      <ul class="tick">
+        <li>It is <b>Role 1</b>, the first verb of the verb phrase.</li>
+        <li>It shows <b>tense</b>: <span class="eg">plays / played</span>.</li>
+        <li>It <b>agrees</b> with the subject: <span class="eg">he plays, they play, I am, you are</span>.</li>
+        <li>It jumps in front of the subject in questions and takes <em>not</em>: <span class="eg">Has she gone? She has not gone.</span></li>
+        <li>One finite verb makes <b>one clause</b>.</li>
+      </ul>
+    </div>
+    <div class="card" style="--c: var(--slate)">
+      <span class="lbl" style="--c: var(--slate)">Non-finite verb</span>
+      <ul class="tick">
+        <li>No tense and no agreement. But with the finite verb it builds the <b>aspect</b> and <b>voice</b>: <span class="eg">has <span class="n">gone</span>, is <span class="n">eating</span>, was <span class="n">eaten</span></span>.</li>
+        <li><b>To-infinitive:</b> <span class="eg">to learn</span></li>
+        <li><b>Bare infinitive (V1):</b> <span class="eg">can <span class="n">swim</span></span></li>
+        <li><b>-ing form (V4):</b> <span class="eg">is <span class="n">eating</span>, <span class="n">Swimming</span> is fun</span></li>
+        <li><b>Past participle (V3):</b> <span class="eg">has <span class="n">gone</span>, was <span class="n">eaten</span></span></li>
+        <li><b>Exception:</b> active simple present and simple past (<span class="eg">plays, played</span>) have only the finite verb, so there is no non-finite part.</li>
+      </ul>
+    </div>
+  </div>
+  <p class="note" style="--c: var(--teal)">Quick test: turn the sentence into a question or add <em>not</em>. The verb that moves or takes <em>not</em> is the finite verb. With no helper, borrow <em>do</em>: <span class="eg">She plays → Does she play?</span> (the lexical verb was finite).</p>
+</section>
+
+<section id="aspect">
+  <div class="sh"><span class="no shine" style="--c: var(--slate)">2</span><h2>Aspect and voice: from the whole phrase</h2><p>The helper and the form after it build the aspect and the voice. Finite verbs are <span class="f">teal</span>, non-finite forms <span class="n">slate</span>.</p></div>
+  <div class="scroll"><table class="asp2">
+    <thead><tr><th rowspan="2">Aspect</th><th colspan="2" class="ctr">Active</th><th colspan="2" class="ctr">Passive</th></tr>
+    <tr class="sub2"><th>Forms</th><th>Key signal</th><th>Forms</th><th>Key signal</th></tr></thead>
+    <tbody>
+      <tr class="r-simple"><th>Simple</th>
+        <td><span class="f">V1, V5, V2</span> alone<br><span class="f">will</span> + <span class="n">V1</span></td><td>no <em>be</em> or <em>have</em> helper</td>
+        <td><span class="f">am / is / are / was / were</span> + <span class="n">V3</span><br><span class="f">will</span> + <span class="n">be</span> + <span class="n">V3</span></td><td><em>be</em> + <b>V3</b></td></tr>
+      <tr class="r-cont"><th>Continuous</th>
+        <td><span class="f">am / is / are / was / were</span> + <span class="n">V4</span><br><span class="f">will</span> + <span class="n">be</span> + <span class="n">V4</span></td><td><em>be</em> + <b>V4</b></td>
+        <td><span class="f">am / is / are / was / were</span> + <span class="n">being</span> + <span class="n">V3</span><br><span class="f">will</span> + <span class="n">be</span> + <span class="n">being</span> + <span class="n">V3</span> <small>(rare)</small></td><td><em>be</em> + <b>being</b> + <b>V3</b></td></tr>
+      <tr class="r-perf"><th>Perfect</th>
+        <td><span class="f">has / have / had</span> + <span class="n">V3</span><br><span class="f">will</span> + <span class="n">have</span> + <span class="n">V3</span></td><td><em>have</em> + <b>V3</b></td>
+        <td><span class="f">has / have / had</span> + <span class="n">been</span> + <span class="n">V3</span><br><span class="f">will</span> + <span class="n">have</span> + <span class="n">been</span> + <span class="n">V3</span></td><td><em>have</em> + <b>been</b> + <b>V3</b></td></tr>
+      <tr class="r-pc"><th>Perfect continuous</th>
+        <td><span class="f">has / have / had</span> + <span class="n">been</span> + <span class="n">V4</span><br><span class="f">will</span> + <span class="n">have</span> + <span class="n">been</span> + <span class="n">V4</span></td><td><em>have</em> + <b>been</b> + <b>V4</b></td>
+        <td><span class="f">has / have / had</span> + <span class="n">been</span> + <span class="n">being</span> + <span class="n">V3</span> <small>(rare)</small><br><span class="f">will</span> + <span class="n">have</span> + <span class="n">been</span> + <span class="n">being</span> + <span class="n">V3</span> <small>(rare)</small></td><td><em>have</em> + <b>been</b> + <b>being</b> + <b>V3</b></td></tr>
+    </tbody>
+  </table></div>
+  <p class="note" style="--c: var(--slate)">The finite verb gives the <b>tense</b>. The helper (<em>be</em> or <em>have</em>) together with the form after it gives the <b>aspect</b>. In the passive, the last verb is always <b>V3</b>, and a <em>be</em> before it (<b>be</b>, <b>been</b> or <b>being</b>) shows the voice. In the active simple present and past there is no helper at all, so the aspect is simple.</p>
+</section>
+
+<!-- TENSE -->
+<section id="tense">
+  <div class="sh"><span class="no shine" style="--c: var(--ochre)">3</span><h2>Tense: from Role 1 only</h2><p>Only the finite verb, Role 1 (<span class="f">teal</span>), gives the tense.</p></div>
+  <div class="scroll"><table>
+    <thead><tr><th>Tense</th><th>Finite forms that show it</th></tr></thead>
+    <tbody>
+      <tr><th class="h-pres">Present</th><td><span class="f">V1, V5, am, is, are, has, have, do, does</span> <small>and the modals can, may, shall, must</small></td></tr>
+      <tr><th class="h-past">Past</th><td><span class="f">V2, was, were, had, did</span> <small>and the modals could, might, should, would</small></td></tr>
+      <tr><th class="h-fut">Future</th><td><span class="f">will</span> + V1 <small>(will is the finite verb of the future)</small></td></tr>
+    </tbody>
+  </table></div>
+  <p class="note" style="--c: var(--teal)"><b>Passive voice uses these same finite forms.</b> The finite verb is still the first verb, a form of <em>be</em> (or <em>have</em>, or <em>will</em>), and it alone gives the tense: <span class="eg">The cake <span class="f">is</span> <span class="n">eaten</span>.</span> (present) &middot; <span class="eg">The cake <span class="f">was</span> <span class="n">eaten</span>.</span> (past) &middot; <span class="eg">The cake <span class="f">will</span> <span class="n">be</span> <span class="n">eaten</span>.</span> (future)</p>
+  <p class="note" style="--c: var(--ochre)">Strictly, <em>will</em> is a modal with a present form, but it is the finite verb that carries the time. That is why the future row starts with it.</p>
+</section>
+
+<section id="lab">
+  <div class="sh"><span class="no shine" style="--c: var(--sage)">4</span><h2>Sentence lab: take whole sentences apart</h2><p>Eleven sentences, taken apart. Try “Quiz me” to hide the labels and guess first.</p></div>
+  <div class="keyline">
+    <span><b style="border-bottom: 3px solid var(--teal)">word</b> finite</span>
+    <span><b style="border-bottom: 3px dashed var(--slate)">word</b> non-finite</span>
+    <span><b style="background: color-mix(in srgb, var(--blue) 14%, transparent)">word</b> lexical verb</span>
+  </div>
+  <div class="tools"><button class="btn" id="quiz" type="button" aria-pressed="false">Quiz me</button></div>
+  <div class="lab" id="labgrid"></div>
+</section>
+
+<!-- TRAPS -->
+<section id="p3-traps">
+  <div class="sh"><span class="no shine" style="--c: var(--ochre)">5</span><h2>Trap: the finite verb in two clauses</h2><p>Where the finite verb is easy to miss.</p></div>
+  <div class="traps">
+    <div class="card" style="--c: var(--ochre)"><span class="lbl" style="--c: var(--ochre)">Two clauses</span><p>Each clause has its own finite verb.</p><p class="eg">I <span class="f">know</span> that she <span class="f">has</span> <span class="n">left</span>.</p></div>
+  </div>
+</section>
+
+<footer><span class="script shine">Well done</span><br><a class="nextlink" href="#go-p1">Back to Roles in a Verb Phrase &rarr;</a></footer>
+</div>
+</div>
+
+<div class="vbpane" id="vb-vt" role="tabpanel" hidden>
+
+
+<header class="hero">
+  <span class="eyebrow">Grammar notes &middot; Verbs</span>
+  <h2>Verb types</h2>
+  <span class="script shine">Who does what</span>
+  <p>The lexical verb, the helping verbs and the non-finite forms: four tabs: the lexical verb, the helping verbs, and the finite and non-finite forms.</p>
+</header>
+<div class="tabs" role="tablist" aria-label="Verb types"><button type="button" role="tab" data-tab="lexical" aria-selected="true"><b>Lexical <small>verbs</small></b><small>what the verb needs after it</small></button><button type="button" role="tab" data-tab="helping" aria-selected="false"><b>Helping <small>(auxiliary)</small></b><small>be, have, do and the modals</small></button><button type="button" role="tab" data-tab="finite" aria-selected="false"><b>Finite <small>(tensed)</small></b><small>what makes a verb finite</small></button><button type="button" role="tab" data-tab="nonfinite" aria-selected="false"><b>Non-finite <small>(verbals)</small></b><small>no tense, no agreement</small></button></div>
+
+<div class="vtp" id="panel-lexical" role="tabpanel">
+<p class="sm" style="text-align:center;margin:18px 0 0">The lexical verb carries the meaning. It is the last role in the verb phrase.</p>
+<nav class="sub" aria-label="Sections"><button type="button" data-sec="l-needs">Categorizing lexical verbs by what follows them</button><button type="button" data-sec="l-meaning">By meaning: action or state</button><button type="button" data-sec="l-struct">By structure: phrasal and causative</button><button type="button" data-sec="l-form">By form: regular or irregular</button><button type="button" data-sec="l-overlap">How the types overlap</button><button type="button" data-sec="l-quiz">Quiz: what does this verb need?</button></nav>
+
+<section id="l-needs">
+  <div class="sh"><span class="no shine" style="--c: var(--blue)">1</span><h2>Categorizing lexical verbs by what follows them</h2><p>This is the sorting that sets the clause pattern. The lexical verb is the last role in the verb phrase.</p></div>
+<div class="scroll"><table class="grid-fit needs">
+  <thead><tr><th>Type</th><th>What follows the verb</th><th>Pattern</th><th>Example</th></tr></thead>
+  <tbody>
+    <tr><th>Intransitive</th><td>nothing</td><td>None (S V)</td><td>The baby <span class="l">slept</span>.</td></tr>
+    <tr><th>Transitive</th><td>an object</td><td>O (S V O)</td><td>She <span class="l">kicked</span> the ball.</td></tr>
+    <tr><th>Ambitransitive</th><td>an object, or nothing: the verb works both ways</td><td>O or none</td><td>He <span class="l">ate</span>. <small>(no object)</small><br>He <span class="l">ate</span> an apple. <small>(object)</small></td></tr>
+    <tr><th>Ditransitive</th><td>two objects: who gets it, then what</td><td>O + O</td><td>He <span class="l">gave</span> her a book.</td></tr>
+    <tr><th>Linking <small>(copular)</small></th><td>a complement that describes or renames the subject</td><td>C (S V C)</td><td>The soup <span class="l">is</span> hot.</td></tr>
+    <tr><th>Complex transitive</th><td>an object, then a complement for it</td><td>O + C</td><td>They <span class="l">made</span> him captain.</td></tr>
+    <tr><th>Needs an adverbial</th><td>a required adverbial</td><td>A (S V A)</td><td>She <span class="l">lives</span> in Boston.</td></tr>
+    <tr><th>Transitive + adverbial</th><td>an object and a required adverbial</td><td>O + A</td><td>She <span class="l">put</span> the book on the table.</td></tr>
+  </tbody>
+</table></div><div class="cols2" style="margin-top:14px"><div class="card" style="--c: var(--teal)"><span class="lbl" style="--c: var(--teal)">Test for an object</span><p>After the verb ask <em>what?</em> or <em>whom?</em> If there is an answer, the verb is <b>transitive</b>.</p><p class="eg">She kicked <span class="k">the ball</span>. <small>(kicked what?)</small></p></div><div class="card" style="--c: var(--blue)"><span class="lbl" style="--c: var(--blue)">Linking verbs</span><p>A linking verb connects the subject to a description. The commonest are <em>be, seem, become, look, feel, sound, taste, smell, appear, remain, get</em> and <em>turn</em>.</p><p class="eg">She <span class="l">seems</span> tired. The cake <span class="l">smells</span> good.</p></div></div><p class="note" style="--c: var(--teal)"><b>Complement and object are not the same thing.</b> A complement describes or renames the subject (after a linking verb). An object receives the action (after a transitive verb).</p><p class="watch"><span class="lbl" style="--c: var(--ochre)">Watch out</span> The same verb can change type with its meaning. <span class="eg">She <span class="l">looks</span> tired. (linking) She <span class="l">felt</span> the sound. (transitive)</span> Look at what follows the verb, not at the verb alone.</p>
+</section>
+
+<section id="l-meaning">
+  <div class="sh"><span class="no shine" style="--c: var(--sage)">2</span><h2>By meaning: action or state</h2><p>Ask whether you can act it out. If you can, it is an action verb.</p></div>
+<div class="scroll"><table class="grid-fit">
+  <thead><tr><th>Type</th><th>What it shows</th><th>Continuous form?</th><th>Examples</th></tr></thead>
+  <tbody>
+    <tr><th>Action <small>(dynamic)</small></th><td>something a person or thing <b>does</b>, or something that <b>happens</b></td><td>yes</td><td><span class="eg">kick, build, run, write, open</span></td></tr>
+    <tr><th>State <small>(stative)</small></th><td>a <b>condition</b>, <b>feeling</b>, <b>thought</b> or <b>ownership</b></td><td>rarely</td><td><span class="eg">know, love, want, own, believe, seem</span></td></tr>
+  </tbody>
+</table></div><div class="cols2" style="margin-top:14px"><div class="card" style="--c: var(--teal)"><span class="lbl" style="--c: var(--teal)">Action verb</span><p class="eg">She is <span class="l">kicking</span> the ball. They are <span class="l">building</span> a tree house.</p><p>The continuous form <em>be + V4</em> works.</p></div><div class="card" style="--c: var(--sage)"><span class="lbl" style="--c: var(--sage)">State verb</span><p class="eg">I <span class="l">know</span> the answer. <small>(not <s>I am knowing</s>)</small></p><p>State verbs sit still: <em>know, love, want, own, believe</em>.</p></div></div><h3>Some verbs do both jobs</h3><div class="scroll"><table class="grid-fit">
+  <thead><tr><th>Verb</th><th>As a state</th><th>As an action</th></tr></thead>
+  <tbody>
+    <tr><th>have</th><td>She <span class="l">has</span> two bikes. <small>(owns)</small></td><td>She is <span class="l">having</span> lunch. <small>(eating)</small></td></tr>
+    <tr><th>think</th><td>I <span class="l">think</span> he is right. <small>(believe)</small></td><td>I am <span class="l">thinking</span> about it. <small>(using my mind)</small></td></tr>
+    <tr><th>see</th><td>I <span class="l">see</span> the problem. <small>(understand)</small></td><td>I am <span class="l">seeing</span> the doctor. <small>(meeting)</small></td></tr>
+    <tr><th>be</th><td>He <span class="l">is</span> tall.</td><td>He is <span class="l">being</span> silly. <small>(behaving)</small></td></tr>
+  </tbody>
+</table></div>
+</section>
+
+<section id="l-struct">
+  <div class="sh"><span class="no shine" style="--c: var(--ochre)">3</span><h2>By structure: phrasal and causative</h2><p>Some lexical verbs are built from more than one word, or make someone else act.</p></div>
+<h3>Phrasal verbs <small>(verb + particle)</small></h3><p>A phrasal verb is a verb with a small word such as <em>up, down, off, out, after</em>. Together they have one meaning, often different from the verb alone.</p><div class="scroll"><table class="grid-fit">
+  <thead><tr><th>Kind</th><th>What it does</th><th>Example</th></tr></thead>
+  <tbody>
+    <tr><th>Separable</th><td>the object can go in the middle or after the particle</td><td>She <span class="l">picked up</span> the phone. / She <span class="l">picked</span> it <span class="l">up</span>.</td></tr>
+    <tr><th>Inseparable</th><td>the object always comes after the particle</td><td>She <span class="l">looks after</span> the baby. <small>(not <s>looked the baby after</s>)</small></td></tr>
+    <tr><th>Intransitive</th><td>no object at all</td><td>The car <span class="l">broke down</span>.</td></tr>
+  </tbody>
+</table></div><h3>Causative verbs</h3><p>A causative verb says that someone <b>makes or lets</b> another person do something. The four to know are <em>make, have, let, get</em>.</p><div class="scroll"><table class="grid-fit">
+  <thead><tr><th>Verb</th><th>Pattern</th><th>Example</th></tr></thead>
+  <tbody>
+    <tr><th>make</th><td>make + object + <b>bare infinitive</b></td><td>She <span class="l">made</span> him <span class="n">laugh</span>.</td></tr>
+    <tr><th>have</th><td>have + object + <b>bare infinitive</b></td><td>I <span class="l">had</span> the barber <span class="n">cut</span> my hair.</td></tr>
+    <tr><th>let</th><td>let + object + <b>bare infinitive</b></td><td>He <span class="l">let</span> me <span class="n">go</span>.</td></tr>
+    <tr><th>get</th><td>get + object + <b>to-infinitive</b></td><td>I <span class="l">got</span> him <span class="n">to wash</span> the car.</td></tr>
+  </tbody>
+</table></div><p class="note" style="--c: var(--ochre)">Causative verbs sit in the <b>Verb</b> slot. What follows them is a non-finite verb. See the Non-finite tab for the bare infinitive.</p>
+</section>
+
+<section id="l-form">
+  <div class="sh"><span class="no shine" style="--c: var(--teal)">4</span><h2>By form: regular or irregular</h2><p>The five forms of a verb are V1 to V5. A regular verb adds -ed. An irregular verb changes in its own way.</p></div>
+<div class="scroll"><table class="grid-fit">
+  <thead><tr><th>Form</th><th>Name</th><th>Regular: walk</th><th>Irregular: write</th></tr></thead>
+  <tbody>
+    <tr><th>V1</th><td>base form</td><td>walk</td><td>write</td></tr>
+    <tr><th>V2</th><td>simple past</td><td>walked</td><td>wrote</td></tr>
+    <tr><th>V3</th><td>past participle</td><td>walked</td><td>written</td></tr>
+    <tr><th>V4</th><td>-ing form</td><td>walking</td><td>writing</td></tr>
+    <tr><th>V5</th><td>3rd person singular, present (-s / -es)</td><td>walks</td><td>writes</td></tr>
+  </tbody>
+</table></div><p class="note" style="--c: var(--teal)"><b>Regular</b> verbs have the same V2 and V3 (<em>walked, walked</em>). <b>Irregular</b> verbs often differ (<em>write, wrote, written</em>), and some do not change at all (<em>put, put, put</em>).</p>
+</section>
+
+<section id="l-overlap">
+  <div class="sh"><span class="no shine" style="--c: var(--slate)">5</span><h2>How the types overlap</h2><p>One verb belongs to every group at once. Read each row across.</p></div>
+<div class="scroll"><table class="big">
+  <thead><tr><th>Verb</th><th>Needs</th><th>Meaning</th><th>Structure</th><th>Form</th></tr></thead>
+  <tbody>
+    <tr><th><span class="l">kick</span></th><td>transitive</td><td>action</td><td>&mdash;</td><td>regular</td></tr>
+    <tr><th><span class="l">walk</span></th><td>intransitive</td><td>action</td><td>&mdash;</td><td>regular</td></tr>
+    <tr><th><span class="l">sleep</span></th><td>intransitive</td><td>action</td><td>&mdash;</td><td>irregular <small>(slept)</small></td></tr>
+    <tr><th><span class="l">know</span></th><td>transitive</td><td>state</td><td>&mdash;</td><td>irregular <small>(knew, known)</small></td></tr>
+    <tr><th><span class="l">give</span></th><td>ditransitive</td><td>action</td><td>&mdash;</td><td>irregular <small>(gave, given)</small></td></tr>
+    <tr><th><span class="l">be</span></th><td>linking</td><td>state</td><td>&mdash;</td><td>irregular <small>(was, been)</small></td></tr>
+    <tr><th><span class="l">make</span></th><td>complex transitive <small>(made him captain)</small></td><td>action</td><td>causative <small>(made him laugh)</small></td><td>irregular <small>(made)</small></td></tr>
+    <tr><th><span class="l">put</span></th><td>transitive + adverbial</td><td>action</td><td>&mdash;</td><td>irregular <small>(put, put)</small></td></tr>
+    <tr><th><span class="l">look after</span></th><td>transitive</td><td>action</td><td>phrasal, inseparable</td><td>regular <small>(looked after)</small></td></tr>
+  </tbody>
+</table></div><p class="note" style="--c: var(--slate)">The four ways of sorting are <b>not</b> rival lists. <em>Kick</em> is a transitive verb, an action verb and a regular verb all at the same time.</p>
+</section>
+
+<section id="l-quiz">
+  <div class="sh"><span class="no shine" style="--c: var(--blue)">6</span><h2>Quiz: what does this verb need?</h2><p>Tap the verb to change its label. Then press Check.</p></div>
+<div class="qlist" id="lq"><div class="qrow"><span>The baby</span><button type="button" class="qb" data-s="0" data-a="1">slept<small>?</small></button><span>.</span></div><div class="qrow"><span>She</span><button type="button" class="qb" data-s="0" data-a="2">kicked<small>?</small></button><span>the ball.</span></div><div class="qrow"><span>He</span><button type="button" class="qb" data-s="0" data-a="3">gave<small>?</small></button><span>her a book.</span></div><div class="qrow"><span>The soup</span><button type="button" class="qb" data-s="0" data-a="4">is<small>?</small></button><span>hot.</span></div><div class="qrow"><span>They</span><button type="button" class="qb" data-s="0" data-a="5">made<small>?</small></button><span>him captain.</span></div><div class="qrow"><span>The sun</span><button type="button" class="qb" data-s="0" data-a="1">rose<small>?</small></button><span>early.</span></div><div class="qrow"><span>She</span><button type="button" class="qb" data-s="0" data-a="4">looks<small>?</small></button><span>happy.</span></div><div class="qrow"><span>I</span><button type="button" class="qb" data-s="0" data-a="3">sent<small>?</small></button><span>Ben a message.</span></div></div><div class="qbar"><button type="button" class="btn" id="lq-check">Check</button><button type="button" class="btn" id="lq-reset">Start again</button><span class="qscore" id="lq-score"></span></div>
+</section>
+</div>
+
+<div class="vtp" id="panel-helping" role="tabpanel" hidden>
+<p class="sm" style="text-align:center;margin:18px 0 0">Helping (auxiliary) verbs come before the lexical verb and set its form.</p>
+<nav class="sub" aria-label="Sections"><button type="button" data-sec="h-kinds">Three kinds of helping verbs</button><button type="button" data-sec="h-pm">Be, have, do and the modals</button><button type="button" data-sec="h-quiz">Quiz: helper or lexical verb?</button></nav>
+
+<section id="h-kinds">
+  <div class="sh"><span class="no shine" style="--c: var(--teal)">1</span><h2>Three kinds of helping verbs</h2><p>A helping verb stands before the lexical verb. It adds little meaning of its own. It sets the tense, the aspect or the voice, or it makes a question or a negative.</p></div>
+<div class="three"><div class="card" style="--c: var(--teal)"><span class="lbl" style="--c: var(--teal)">Primary</span><h4>be, have, do</h4><p>The three verbs that can be a helper <b>or</b> a lexical verb.</p><p class="eg">She <span class="f">is</span> eating. She <span class="l">is</span> tired.</p></div><div class="card" style="--c: var(--blue)"><span class="lbl" style="--c: var(--blue)">Modal</span><h4>can, could, may, might, shall, should, will, would, must</h4><p>Helpers only. They add a meaning such as ability, possibility or duty.</p><p class="eg">She <span class="f">can</span> <span class="n">swim</span>.</p></div><div class="card" style="--c: var(--ochre)"><span class="lbl" style="--c: var(--ochre)">Semi-modal</span><h4>ought to, have to, used to, be going to, be about to, be able to</h4><p>Two or three words that work like a modal.</p><p class="eg">She <span class="f">has to</span> <span class="n">leave</span> early.</p></div></div><div class="scroll"><table class="grid-fit">
+  <thead><tr><th>Kind</th><th>Can also be a lexical verb?</th><th>Changes with the subject (-s)?</th></tr></thead>
+  <tbody>
+    <tr><th>Primary: be, have, do</th><td>yes</td><td>yes: <em>is, has, does</em></td></tr>
+    <tr><th>Modal</th><td>no, never</td><td>no: <em>she can</em>, not <s>she cans</s></td></tr>
+    <tr><th>Semi-modal</th><td>some can: <em>have to, be able to</em></td><td>the first word does: <em>she has to</em></td></tr>
+  </tbody>
+</table></div><p class="note" style="--c: var(--teal)">In a verb phrase the helper is the first verb, so it is <b>finite</b> (Role 1). It gives the tense. The lexical verb at the end is the head of the phrase.</p>
+</section>
+
+<section id="h-pm">
+  <div class="sh"><span class="no shine" style="--c: var(--blue)">2</span><h2>Be, have, do and the modals</h2><p>Be, have and do can be a helper or a lexical verb. Modals are always helpers.</p></div>
+<h3>Be, have and do: helper or lexical verb</h3><p>The same word can do either job. Look at what follows it.</p><div class="scroll"><table class="big">
+  <thead><tr><th>Verb</th><th>Forms</th><th>As a helper</th><th>As a lexical verb</th></tr></thead>
+  <tbody>
+    <tr><th>be</th><td>am, is, are, was, were, be, being, been</td><td>She <span class="f">is</span> <span class="n">eating</span>. <small>(continuous: be + V4)</small><br>The cake <span class="f">was</span> <span class="n">eaten</span>. <small>(passive: be + V3)</small></td><td>She <span class="l">is</span> tired. <small>(linking, pattern C)</small></td></tr>
+    <tr><th>have</th><td>have, has, had, having</td><td>She <span class="f">has</span> <span class="n">finished</span>. <small>(perfect: have + V3)</small></td><td>She <span class="l">has</span> two bikes. <small>(owns, pattern O)</small></td></tr>
+    <tr><th>do</th><td>do, does, did, doing, done</td><td><span class="f">Do</span> you <span class="n">like</span> tea? <small>(question)</small><br>She <span class="f">did</span> not <span class="n">go</span>. <small>(negative)</small></td><td>I <span class="l">do</span> my homework. <small>(pattern O)</small></td></tr>
+  </tbody>
+</table></div><h3>Modals</h3><div class="scroll"><table class="grid-fit">
+  <thead><tr><th>Meaning</th><th>Modals</th><th>Example</th></tr></thead>
+  <tbody>
+    <tr><th>Ability</th><td>can, could</td><td>She <span class="f">can</span> <span class="n">swim</span>.</td></tr>
+    <tr><th>Possibility</th><td>may, might, could</td><td>It <span class="f">might</span> <span class="n">rain</span> tonight.</td></tr>
+    <tr><th>Permission</th><td>can, may</td><td>You <span class="f">may</span> <span class="n">go</span> now.</td></tr>
+    <tr><th>Duty and advice</th><td>must, should</td><td>You <span class="f">must</span> <span class="n">wear</span> a helmet.</td></tr>
+    <tr><th>Future and prediction</th><td>will, shall, would</td><td>He <span class="f">will</span> <span class="n">travel</span> tomorrow.</td></tr>
+    <tr><th>Polite request</th><td>could, would, can</td><td><span class="f">Could</span> you <span class="n">help</span> me?</td></tr>
+  </tbody>
+</table></div><h3>Four rules for modals</h3><ul class="tick"><li><b>No -s:</b> <span class="eg">she <span class="f">can</span></span>, not <s>she cans</s>.</li><li><b>No <em>to</em>:</b> the next verb is a bare infinitive. <span class="eg">He <span class="f">can</span> <span class="n">drive</span>.</span> not <s>He can to drive</s>.</li><li><b>No -ing or V3 form of their own.</b> A modal is always Role 1.</li><li><b>Questions and negatives need no <em>do</em>:</b> <span class="eg"><span class="f">Can</span> she <span class="n">swim</span>? She <span class="f">can</span> not <span class="n">swim</span>.</span></li></ul><h3>Semi-modals</h3><div class="scroll"><table class="grid-fit">
+  <thead><tr><th>Semi-modal</th><th>Meaning</th><th>Example</th></tr></thead>
+  <tbody>
+    <tr><th>ought to</th><td>advice, duty</td><td>You <span class="f">ought to</span> <span class="n">rest</span> more.</td></tr>
+    <tr><th>have to</th><td>duty from outside</td><td>She <span class="f">has to</span> <span class="n">leave</span> early.</td></tr>
+    <tr><th>used to</th><td>a past habit or state</td><td>We <span class="f">used to</span> <span class="n">live</span> there.</td></tr>
+    <tr><th>be going to</th><td>a plan or a sure sign</td><td>I <span class="f">am going to</span> <span class="n">make</span> tea.</td></tr>
+    <tr><th>be about to</th><td>very soon</td><td>The film <span class="f">is about to</span> <span class="n">start</span>.</td></tr>
+    <tr><th>be able to</th><td>ability, in any tense</td><td>He <span class="f">will be able to</span> <span class="n">come</span>.</td></tr>
+  </tbody>
+</table></div><p class="note" style="--c: var(--ochre)">Also used with a bare infinitive: <em>had better, would rather, would sooner</em>. <span class="eg">You <span class="f">had better</span> <span class="n">hurry</span>.</span></p>
+</section>
+
+<section id="h-quiz">
+  <div class="sh"><span class="no shine" style="--c: var(--teal)">3</span><h2>Quiz: helper or lexical verb?</h2><p>Tap the verb to change its label: helping or lexical verb. Then press Check.</p></div>
+<div class="qlist" id="hq"><div class="qrow"><span>She</span><button type="button" class="qb" data-s="0" data-a="1">is<small>?</small></button><span>eating.</span></div><div class="qrow"><span>She</span><button type="button" class="qb" data-s="0" data-a="2">is<small>?</small></button><span>tired.</span></div><div class="qrow"><span>He</span><button type="button" class="qb" data-s="0" data-a="1">has<small>?</small></button><span>finished.</span></div><div class="qrow"><span>He</span><button type="button" class="qb" data-s="0" data-a="2">has<small>?</small></button><span>a dog.</span></div><div class="qrow"><span></span><button type="button" class="qb" data-s="0" data-a="1">Do<small>?</small></button><span>you like tea?</span></div><div class="qrow"><span>I</span><button type="button" class="qb" data-s="0" data-a="2">do<small>?</small></button><span>my homework.</span></div><div class="qrow"><span>They</span><button type="button" class="qb" data-s="0" data-a="1">will<small>?</small></button><span>leave.</span></div><div class="qrow"><span>She</span><button type="button" class="qb" data-s="0" data-a="1">did<small>?</small></button><span>not go.</span></div></div><div class="qbar"><button type="button" class="btn" id="hq-check">Check</button><button type="button" class="btn" id="hq-reset">Start again</button><span class="qscore" id="hq-score"></span></div>
+</section>
+</div>
+
+<div class="vtp" id="panel-finite" role="tabpanel" hidden>
+<p class="sm" style="text-align:center;margin:18px 0 0">A finite verb has a tense and agrees with its subject. It is always the first verb in the verb phrase.</p>
+<nav class="sub" aria-label="Sections"><button type="button" data-sec="f-what">What makes a verb finite</button><button type="button" data-sec="f-mood">Finite verbs by mood</button><button type="button" data-sec="f-quiz">Quiz: finite or non-finite?</button></nav>
+
+<section id="f-what">
+  <div class="sh"><span class="no shine" style="--c: var(--teal)">1</span><h2>What makes a verb finite</h2><p>A finite verb is a verb form with a tense and a subject. Each clause has one finite verb, and it is the first verb of the verb phrase.</p></div>
+<p>A <span class="k">finite verb</span> changes with tense, person and number and can be the only verb of a sentence. A non-finite verb cannot.</p><div class="scroll"><table class="grid-fit">
+  <thead><tr><th>Feature</th><th>Finite verb</th><th>Non-finite verb</th></tr></thead>
+  <tbody>
+    <tr><th>Shows tense</th><td>Yes (<em>walks, walked</em>)</td><td>No</td></tr>
+    <tr><th>Agrees with subject</th><td>Yes (<em>he walks, they walk</em>)</td><td>No</td></tr>
+    <tr><th>Can be the only verb of a sentence</th><td>Yes</td><td>No</td></tr>
+    <tr><th>Example</th><td>She <span class="f">wants</span> to leave.</td><td>She wants <span class="n">to leave</span>.</td></tr>
+  </tbody>
+</table></div><h3>Which verb in the phrase is finite?</h3><p>Always the <b>first</b> one (Role 1). Every verb after it is non-finite.</p><div class="scroll"><table class="grid-fit">
+  <thead><tr><th>Verb phrase</th><th>Finite (Role 1)</th><th>Non-finite (later roles)</th></tr></thead>
+  <tbody>
+    <tr><th>She sings.</th><td><span class="f">sings</span></td><td>&mdash;</td></tr>
+    <tr><th>She is singing.</th><td><span class="f">is</span></td><td><span class="n">singing</span></td></tr>
+    <tr><th>She has been singing.</th><td><span class="f">has</span></td><td><span class="n">been, singing</span></td></tr>
+    <tr><th>She might have been singing.</th><td><span class="f">might</span></td><td><span class="n">have, been, singing</span></td></tr>
+  </tbody>
+</table></div><p class="note" style="--c: var(--teal)"><b>Why it matters:</b> only the finite verb takes the tense and agrees with the subject. <em>She <b>has</b> been singing</em> (has, not <s>have</s>) and <em>She <b>was</b> singing</em>. The later verbs never change for the subject.</p>
+</section>
+
+<section id="f-mood">
+  <div class="sh"><span class="no shine" style="--c: var(--ochre)">2</span><h2>Finite verbs by mood</h2><p>Mood shows how the speaker treats what is said: as a fact, as a command, or as a wish or something unreal. All three moods use finite verbs.</p></div>
+<div class="scroll"><table class="big">
+  <thead><tr><th>Mood</th><th>The speaker is...</th><th>How the verb is formed</th><th>Example</th></tr></thead>
+  <tbody>
+    <tr><th>Indicative</th><td>stating a fact or asking a question</td><td>any tense; agrees with the subject</td><td>She <span class="f">sings</span> every day.</td></tr>
+    <tr><th>Imperative</th><td>giving a command, request or advice</td><td>bare verb (V1); the subject <em>you</em> is understood</td><td><span class="f">Close</span> the door.</td></tr>
+    <tr><th>Subjunctive</th><td>expressing a wish, a demand or an unreal situation</td><td>V1 for every person, or <em>were</em> for every person</td><td>If I <span class="f">were</span> you, I would wait.</td></tr>
+  </tbody>
+</table></div><h3>Indicative: facts and questions</h3><p>This is the everyday mood. Nearly every sentence you meet is indicative. It has all the tenses, and the verb agrees with the subject.</p><ul class="tick"><li><b>Statement:</b> <span class="eg">She <span class="f">sings</span> every day. They <span class="f">arrived</span> late.</span></li><li><b>Question:</b> <span class="eg"><span class="f">Does</span> she <span class="n">sing</span>? <span class="f">Did</span> they <span class="n">arrive</span>?</span></li><li><b>Negative:</b> <span class="eg">She <span class="f">does</span> not <span class="n">sing</span>. He <span class="f">is</span> not here.</span></li></ul><h3>Imperative: commands, requests and advice</h3><p>The verb is the plain base form (V1). There is no subject and no tense. The listener, <em>you</em>, is understood.</p><ul class="tick"><li><b>Command:</b> <span class="eg"><span class="f">Close</span> the door. <span class="f">Be</span> quiet.</span></li><li><b>Polite request:</b> <span class="eg"><span class="f">Please</span> sit down. <span class="f">Pass</span> me your pen, please.</span></li><li><b>Negative:</b> <em>do not</em> + V1: <span class="eg"><span class="f">Do</span> not run. <span class="f">Don't be</span> late.</span> <small>(not <s>Be not late</s>)</small></li><li><b>Including yourself:</b> <em>let's</em> + V1: <span class="eg"><span class="f">Let's</span> go.</span></li><li><b>With a named listener:</b> <span class="eg">Ravi, <span class="f">come</span> here.</span></li></ul><h3>Subjunctive: wishes, demands and unreal situations</h3><p>The subjunctive is rarer. It shows up in four places.</p><div class="scroll"><table class="big subj">
+  <thead><tr><th>Where it appears</th><th>The verb form</th><th>Example</th></tr></thead>
+  <tbody>
+    <tr><th>After verbs of demand or advice: <em>suggest, insist, demand, recommend, require, propose, ask</em> + <em>that</em></th><td>V1 for <b>every</b> person, with no -s</td><td>I suggest that he <span class="f">leave</span> early. She insisted that I <span class="f">be present</span>.</td></tr>
+    <tr><th>After <em>important, essential, vital, necessary</em> + <em>that</em></th><td>V1 for every person</td><td>It is essential that she <span class="f">arrive</span> on time.</td></tr>
+    <tr><th>In <em>if</em> clauses and after <em>wish</em>, <em>as if</em></th><td><em>were</em> for every person</td><td>If I <span class="f">were</span> you, I would wait. I wish it <span class="f">were</span> Friday.</td></tr>
+    <tr><th>Set phrases</th><td>old fixed forms</td><td><span class="f">God</span> help us. <span class="f">Long</span> live the king. So <span class="f">be</span> it.</td></tr>
+  </tbody>
+</table></div><p class="note" style="--c: var(--ochre)"><b>Everyday English often skips it.</b> Many speakers say <em>If I was you</em> and <em>I suggest he leaves</em>. Both are common in speech, but the subjunctive forms (<em>were</em> and <em>leave</em>) are the careful, formal choice.</p><h3>The same idea in three moods</h3><div class="scroll"><table class="grid-fit">
+  <thead><tr><th>Mood</th><th>Sentence</th><th>What it does</th></tr></thead>
+  <tbody>
+    <tr><th>Indicative</th><td>You <span class="f">are</span> quiet.</td><td>states a fact</td></tr>
+    <tr><th>Imperative</th><td><span class="f">Be</span> quiet.</td><td>gives a command</td></tr>
+    <tr><th>Subjunctive</th><td>It is vital that you <span class="f">be</span> quiet.</td><td>expresses a demand</td></tr>
+  </tbody>
+</table></div><p class="watch"><span class="lbl" style="--c: var(--ochre)">Watch out</span> In the subjunctive, <em>he leave</em> and <em>she be</em> are correct. Normal subject agreement (<em>he leaves, she is</em>) is switched off.</p>
+</section>
+
+<section id="f-quiz">
+  <div class="sh"><span class="no shine" style="--c: var(--teal)">3</span><h2>Quiz: finite or non-finite?</h2><p>Tap the verb to change its label. Then press Check.</p></div>
+<div class="qlist" id="fq"><div class="qrow"><span>She</span><button type="button" class="qb" data-s="0" data-a="1">sings<small>?</small></button><span>.</span></div><div class="qrow"><span>She has</span><button type="button" class="qb" data-s="0" data-a="2">finished<small>?</small></button><span>.</span></div><div class="qrow"><span>She</span><button type="button" class="qb" data-s="0" data-a="1">has<small>?</small></button><span>finished.</span></div><div class="qrow"><span>He decided</span><button type="button" class="qb" data-s="0" data-a="2">to go<small>?</small></button><span>home.</span></div><div class="qrow"><span></span><button type="button" class="qb" data-s="0" data-a="2">Swimming<small>?</small></button><span>is fun.</span></div><div class="qrow"><span>Swimming</span><button type="button" class="qb" data-s="0" data-a="1">is<small>?</small></button><span>fun.</span></div><div class="qrow"><span>They were</span><button type="button" class="qb" data-s="0" data-a="2">waiting<small>?</small></button><span>.</span></div><div class="qrow"><span>They</span><button type="button" class="qb" data-s="0" data-a="1">were<small>?</small></button><span>waiting.</span></div></div><div class="qbar"><button type="button" class="btn" id="fq-check">Check</button><button type="button" class="btn" id="fq-reset">Start again</button><span class="qscore" id="fq-score"></span></div>
+</section>
+</div>
+
+<div class="vtp" id="panel-nonfinite" role="tabpanel" hidden>
+<p class="sm" style="text-align:center;margin:18px 0 0">Non-finite verbs (verbals) have no tense or agreement of their own. They fill the later roles and the O, C and A slots.</p>
+<nav class="sub" aria-label="Sections"><button type="button" data-sec="n-over">Non-finite verbs: the three types</button><button type="button" data-sec="n-inf">Infinitives</button><button type="button" data-sec="n-gp">Gerunds and participles</button><button type="button" data-sec="n-follow">Which form follows a verb</button><button type="button" data-sec="n-clauses">Non-finite clauses</button><button type="button" data-sec="n-practice">Mistakes and practice</button></nav>
+
+<section id="n-over">
+  <div class="sh"><span class="no shine" style="--c: var(--slate)">1</span><h2>Non-finite verbs: the three types</h2><p>Non-finite verbs are verb forms with no tense, person or number of their own.</p></div>
+<p>A <span class="k" style="--c: var(--slate)">non-finite verb</span> cannot show tense or agree with a subject, and it cannot be the only verb of a sentence. It needs a finite verb, or a subject and context, to complete the sentence. <span class="eg">She <span class="f">wants</span> <span class="n">to leave</span>.</span> See the Finite tab for the full comparison.</p><h3>The three types</h3><div class="scroll"><table class="big">
+  <thead><tr><th>Type</th><th>Also called</th><th>Typical marker</th><th>Verb form</th><th>Examples</th></tr></thead>
+  <tbody>
+    <tr><th>Infinitive</th><td>base verb form</td><td><em>to</em> + verb, or the bare verb</td><td>V1</td><td><span class="n">to run</span>, can <span class="n">run</span></td></tr>
+    <tr><th>Gerund</th><td>verbal noun</td><td>verb + <em>-ing</em>, works as a noun</td><td>V4</td><td><span class="n">Swimming</span> is fun.</td></tr>
+    <tr><th>Participle</th><td>verbal adjective</td><td>verb + <em>-ing</em> / <em>-ed</em> / <em>-en</em></td><td>V4 / V3</td><td>a <span class="n">crying</span> baby, a <span class="n">broken</span> window</td></tr>
+  </tbody>
+</table></div><p class="note" style="--c: var(--slate)"><b>Key idea:</b> each type keeps its verb qualities (it can take an object or an adverb) while also acting as another part of speech: a noun, an adjective or an adverb.</p><p class="note" style="--c: var(--teal)">In the verb phrase, every role after Role 1 is non-finite. That is why <em>been</em> in <em>has been waiting</em> and <em>waiting</em> are slate, and only <em>has</em> is teal.</p>
+</section>
+
+<section id="n-inf">
+  <div class="sh"><span class="no shine" style="--c: var(--teal)">2</span><h2>Infinitives</h2><p>An infinitive is the base form of a verb, usually with <em>to</em>. It works as a noun, an adjective or an adverb.</p></div>
+<h3>Two basic kinds</h3><div class="scroll"><table class="grid-fit">
+  <thead><tr><th>Kind</th><th>Form</th><th>Example</th></tr></thead>
+  <tbody>
+    <tr><th>To-infinitive (full)</th><td><em>to</em> + base verb</td><td>I want <span class="n">to learn</span>.</td></tr>
+    <tr><th>Bare infinitive (plain)</th><td>base verb, no <em>to</em></td><td>She can <span class="n">swim</span>.</td></tr>
+  </tbody>
+</table></div><h3>Forms of the to-infinitive: aspect and voice</h3><div class="scroll"><table class="big">
+  <thead><tr><th>Aspect</th><th>Active</th><th>Passive</th><th>Meaning</th></tr></thead>
+  <tbody>
+    <tr><th>Simple</th><td>to write</td><td>to be written</td><td>same time as, or after, the lexical verb: <em>He hopes to win.</em></td></tr>
+    <tr><th>Continuous</th><td>to be writing</td><td>(none)</td><td>in progress at that time: <em>She seems to be sleeping.</em></td></tr>
+    <tr><th>Perfect</th><td>to have written</td><td>to have been written</td><td>before the lexical verb: <em>He is said to have left.</em></td></tr>
+    <tr><th>Perfect continuous</th><td>to have been writing</td><td>(none)</td><td>ongoing, before the lexical verb: <em>She appears to have been crying.</em></td></tr>
+  </tbody>
+</table></div><h3>Negative and split to-infinitives</h3><div class="scroll"><table class="big">
+  <thead><tr><th>Kind</th><th>Active</th><th>Passive</th><th>How it works</th></tr></thead>
+  <tbody>
+    <tr><th>Negative</th><td>not to write</td><td>not to be written</td><td>put <em>not</em> before <em>to</em></td></tr>
+    <tr><th>Split</th><td>to <em>quickly</em> write</td><td>to be <em>carefully</em> written</td><td>an adverb between <em>to</em> and the verb</td></tr>
+  </tbody>
+</table></div><h3>Bare infinitive: when <em>to</em> is dropped</h3><ul class="tick"><li>After modal verbs (<em>can, could, may, might, shall, should, will, would, must</em>): <span class="eg">You must <span class="n">go</span>.</span></li><li>After <em>do, does, did</em> (questions, negatives, emphasis): <span class="eg">I did not <span class="n">see</span> him.</span></li><li>After <em>let, make</em> and <em>have</em> (causative) + object: <span class="eg">She made him <span class="n">laugh</span>.</span></li><li>After perception verbs + object (<em>see, hear, watch, notice, feel</em>): <span class="eg">I saw him <span class="n">leave</span>.</span> <small>(the whole action)</small></li><li>After <em>help</em> (<em>to</em> is optional): <span class="eg">He helped me (to) <span class="n">carry</span> it.</span></li><li>After <em>had better, would rather, would sooner, why not, why</em>: <span class="eg">You had better <span class="n">hurry</span>.</span></li><li>After <em>than</em> and <em>but / except</em> when a bare verb comes before: <span class="eg">He did nothing but <span class="n">complain</span>.</span></li></ul><p class="note" style="--c: var(--ochre)"><b>Passive note:</b> in the passive, <em>make</em> and perception verbs take <em>to</em>. <span class="eg">He was made <span class="n">to apologise</span>. He was seen <span class="n">to leave</span>.</span></p><h3>Uses of the to-infinitive</h3><div class="scroll"><table class="grid-fit">
+  <thead><tr><th>Function</th><th>Example</th></tr></thead>
+  <tbody>
+    <tr><th>Subject</th><td><span class="n">To err</span> is human.</td></tr>
+    <tr><th>Object of a verb</th><td>I want <span class="n">to go</span>.</td></tr>
+    <tr><th>Subject complement</th><td>My aim is <span class="n">to win</span>.</td></tr>
+    <tr><th>Adjective (modifies a noun)</th><td>She has a report <span class="n">to finish</span>.</td></tr>
+    <tr><th>Adverb of purpose</th><td>He came <span class="n">to help</span>.</td></tr>
+    <tr><th>After an adjective</th><td>We are glad <span class="n">to see</span> you.</td></tr>
+    <tr><th>After <em>too</em> / <em>enough</em></th><td>It is too cold <span class="n">to swim</span>. He is old enough <span class="n">to vote</span>.</td></tr>
+    <tr><th>With question words</th><td>I don't know what <span class="n">to say</span>.</td></tr>
+    <tr><th>Arrangement or duty (<em>be to</em>)</th><td>The PM is <span class="n">to visit</span> Delhi.</td></tr>
+    <tr><th>With its own subject (<em>for</em> + noun + <em>to</em>)</th><td>It is easy <span class="n">for her to win</span>.</td></tr>
+    <tr><th>Object + infinitive</th><td>I asked him <span class="n">to leave</span>.</td></tr>
+    <tr><th>Comment phrase</th><td><span class="n">To be honest</span>, I disagree.</td></tr>
+  </tbody>
+</table></div><h3>Special types</h3><ul class="tick"><li><b>Split infinitive:</b> an adverb sits between <em>to</em> and the verb (<em>to boldly go</em>). Fine in modern usage. Avoid it in very formal writing when a clearer alternative exists.</li><li><b>Infinitive of purpose:</b> <em>in order to / so as to</em> + verb. <span class="eg">She left early in order to <span class="n">catch</span> the train.</span></li><li><b>Elliptical infinitive:</b> the verb is dropped after <em>to</em>. <span class="eg">Do you want to? Yes, I'd love to.</span></li><li><b>Semi-modals with <em>to</em>:</b> <em>ought to, have to, used to, be going to, be about to, be able to</em>.</li><li><b>Emphatic use:</b> <span class="eg">All she did was (to) smile.</span></li></ul>
+</section>
+
+<section id="n-gp">
+  <div class="sh"><span class="no shine" style="--c: var(--blue)">3</span><h2>Gerunds and participles</h2><p>Both can end in <em>-ing</em>. The job the word does tells you which one it is.</p></div>
+<h3>Gerunds <small>(the -ing form as a noun)</small></h3><p>A gerund keeps verb features: it can take an object and be modified by an adverb.</p><div class="scroll"><table class="grid-fit">
+  <thead><tr><th>Form</th><th>Active</th><th>Passive</th></tr></thead>
+  <tbody>
+    <tr><th>Simple (present)</th><td>writing</td><td>being written</td></tr>
+    <tr><th>Perfect</th><td>having written</td><td>having been written</td></tr>
+    <tr><th>Negative</th><td>not writing</td><td>not being written</td></tr>
+  </tbody>
+</table></div><p><b>Simple:</b> same time as, or general with, the lexical verb. <span class="eg">She enjoys <span class="n">singing</span>. He hates <span class="n">being ignored</span>.</span> <b>Perfect:</b> earlier than the lexical verb. <span class="eg">He denied <span class="n">having taken</span> the money.</span></p><div class="scroll"><table class="grid-fit">
+  <thead><tr><th>Function of the gerund</th><th>Example</th></tr></thead>
+  <tbody>
+    <tr><th>Subject</th><td><span class="n">Reading</span> improves vocabulary.</td></tr>
+    <tr><th>Object of a verb</th><td>She enjoys <span class="n">painting</span>.</td></tr>
+    <tr><th>Object of a preposition</th><td>He is good at <span class="n">solving</span> puzzles.</td></tr>
+    <tr><th>Subject complement</th><td>My hobby is <span class="n">collecting</span> stamps.</td></tr>
+    <tr><th>Appositive</th><td>His job, <span class="n">teaching</span>, suits him.</td></tr>
+    <tr><th>Part of a compound noun</th><td>a <span class="n">swimming</span> pool, a <span class="n">washing</span> machine</td></tr>
+    <tr><th>After a possessive or object</th><td>I dislike <span class="n">his leaving</span> early. / I dislike <span class="n">him leaving</span> early.</td></tr>
+    <tr><th>With <em>go</em> for activities</th><td>Let's go <span class="n">shopping</span>.</td></tr>
+  </tbody>
+</table></div><p class="note" style="--c: var(--blue)"><b>Possessive with a gerund:</b> the possessive (<em>his, Mary's</em>) is more formal. The object form (<em>him, Mary</em>) is common in speech. When the gerund is the subject of the sentence, use the possessive: <span class="eg">His leaving surprised us.</span></p><h3>Fixed gerund expressions</h3><ul class="tick"><li><em>It's no use / no good / not worth</em> + gerund: <span class="eg">It's no use <span class="n">crying</span>.</span></li><li><em>can't help / can't stand / can't bear</em>: <span class="eg">I can't help <span class="n">laughing</span>.</span></li><li><em>There's no</em> + gerund: <span class="eg">There's no <span class="n">denying</span> it.</span> &nbsp; <em>be worth</em>: <span class="eg">The film is worth <span class="n">watching</span>.</span></li><li><em>be busy / spend / waste (time)</em>: <span class="eg">She spent an hour <span class="n">cleaning</span>.</span></li><li>Prepositional <em>to</em> + gerund (<em>look forward to, be used to, get used to, object to, in addition to</em>): <span class="eg">I look forward to <span class="n">meeting</span> you.</span></li><li>After other prepositions (<em>in spite of, instead of, before, after, without, by, on</em>): <span class="eg">He left without <span class="n">saying</span> goodbye.</span></li></ul><h3>Participles <small>(a verb form used as an adjective or adverbial)</small></h3><p>A participle also helps form verb tenses.</p><div class="scroll"><table class="big">
+  <thead><tr><th>Type</th><th>Active</th><th>Passive</th><th>Meaning</th></tr></thead>
+  <tbody>
+    <tr><th>Present participle</th><td>writing</td><td>being written</td><td>action happening at the same time</td></tr>
+    <tr><th>Past participle</th><td>written <small>(with have)</small></td><td>written</td><td>completed action, or passive meaning</td></tr>
+    <tr><th>Perfect participle</th><td>having written</td><td>having been written</td><td>action finished before the lexical verb</td></tr>
+    <tr><th>Negative</th><td>not writing</td><td>not having written</td><td>the same, negated</td></tr>
+  </tbody>
+</table></div><p class="note" style="--c: var(--blue)"><b>Past participle spelling:</b> regular verbs add <em>-ed</em> (<em>walked</em>). Irregular verbs vary (<em>written, broken, gone, taught, put, cut</em>).</p><div class="scroll"><table class="grid-fit">
+  <thead><tr><th>Function of the participle</th><th>Example</th></tr></thead>
+  <tbody>
+    <tr><th>Adjective before a noun</th><td>a <span class="n">sleeping</span> child, a <span class="n">broken</span> window</td></tr>
+    <tr><th>Adjective after a noun</th><td>the man <span class="n">standing</span> there, the letter <span class="n">written</span> yesterday</td></tr>
+    <tr><th>Subject complement</th><td>The story is <span class="n">amazing</span>. She looked <span class="n">tired</span>.</td></tr>
+    <tr><th>Verb formation: continuous</th><td>He <span class="f">is</span> <span class="n">reading</span>.</td></tr>
+    <tr><th>Verb formation: perfect</th><td>She <span class="f">has</span> <span class="n">finished</span>.</td></tr>
+    <tr><th>Verb formation: passive</th><td>The door <span class="f">was</span> <span class="n">locked</span>.</td></tr>
+    <tr><th>Adverbial of time</th><td><span class="n">Walking</span> home, I met Ravi.</td></tr>
+    <tr><th>Adverbial of reason</th><td><span class="n">Being</span> tired, she slept early.</td></tr>
+    <tr><th>Adverbial of condition</th><td><span class="n">Given</span> more time, I could finish.</td></tr>
+    <tr><th>Adverbial of manner or result</th><td>He left, <span class="n">slamming</span> the door.</td></tr>
+    <tr><th>Reduced relative clause</th><td>The book <span class="n">lying</span> on the table is mine. <small>(= that is lying)</small></td></tr>
+    <tr><th>After perception verbs + object</th><td>I saw him <span class="n">running</span>. I heard my name <span class="n">called</span>.</td></tr>
+    <tr><th>After <em>catch, find, leave</em> + object</th><td>I found her <span class="n">crying</span>.</td></tr>
+    <tr><th>Causative <em>have / get</em> + object</th><td>I had my car <span class="n">repaired</span>.</td></tr>
+    <tr><th>After <em>keep, spend, waste</em></th><td>They spent hours <span class="n">arguing</span>.</td></tr>
+  </tbody>
+</table></div><h3>-ing or -ed? Participial adjectives</h3><div class="scroll"><table class="grid-fit">
+  <thead><tr><th>-ing: causes the feeling</th><th>-ed: experiences the feeling</th></tr></thead>
+  <tbody>
+    <tr><td>The film was <span class="n">boring</span>.</td><td>The audience was <span class="n">bored</span>.</td></tr>
+    <tr><td>a <span class="n">surprising</span> result</td><td>a <span class="n">surprised</span> look</td></tr>
+    <tr><td><span class="n">exciting</span> news</td><td><span class="n">excited</span> fans</td></tr>
+    <tr><td>a <span class="n">tiring</span> journey</td><td>a <span class="n">tired</span> traveller</td></tr>
+  </tbody>
+</table></div><h3>Participial phrases</h3><p>A participial phrase is a participle with its object and modifiers. It acts as an adjective or adverb. Its subject is understood to be <b>the subject of the main clause</b>.</p><ul class="tick"><li><b>Present:</b> <span class="eg"><span class="n">Opening</span> the door, she saw a cat.</span> <small>(she opened and saw, nearly together)</small></li><li><b>Perfect:</b> <span class="eg"><span class="n">Having finished</span> the work, he went home.</span> <small>(finished first)</small></li><li><b>Past:</b> <span class="eg"><span class="n">Delighted</span> by the news, she smiled.</span> <small>(she was delighted)</small></li><li><b>Perfect passive:</b> <span class="eg"><span class="n">Having been warned</span> twice, he still ignored the sign.</span></li><li><b>Negative:</b> <span class="eg"><span class="n">Not knowing</span> the way, we asked for help.</span></li><li><b>Conjunction + participle:</b> <span class="eg">While <span class="n">waiting</span>, he read. Although <span class="n">tired</span>, she stayed.</span></li></ul><h3>Gerund vs present participle</h3><div class="scroll"><table class="big">
+  <thead><tr><th>Test</th><th>Gerund</th><th>Present participle</th></tr></thead>
+  <tbody>
+    <tr><th>Part of speech</th><td>noun</td><td>adjective, adverbial, or verb part</td></tr>
+    <tr><th>Can <em>it</em> or <em>something</em> replace it?</th><td>yes</td><td>no</td></tr>
+    <tr><th>Example</th><td><span class="n">Swimming</span> is fun. <small>(= It is fun.)</small></td><td>The <span class="n">swimming</span> girl waved.</td></tr>
+    <tr><th>In compounds</th><td>a <span class="n">swimming</span> pool <small>(a pool for swimming)</small></td><td>a <span class="n">swimming</span> dog <small>(a dog that is swimming)</small></td></tr>
+    <tr><th>Example</th><td>I like <span class="n">dancing</span>.</td><td>I saw her <span class="n">dancing</span>.</td></tr>
+  </tbody>
+</table></div><p class="note" style="--c: var(--teal)"><b>Quick test:</b> replace the <em>-ing</em> word with <em>it</em>. If the sentence still works, it is a gerund. <em>I like it.</em> works, so <em>dancing</em> is a gerund. <em>I saw her it.</em> does not work, so <em>dancing</em> is a participle.</p>
+</section>
+
+<section id="n-follow">
+  <div class="sh"><span class="no shine" style="--c: var(--ochre)">4</span><h2>Which form follows a verb</h2><p>The lexical verb decides which non-finite form follows it. Learn the groups.</p></div>
+<div class="scroll"><table class="big">
+  <thead><tr><th>Pattern</th><th>Common verbs</th><th>Example</th></tr></thead>
+  <tbody>
+    <tr><th>Verb + gerund only</th><td>enjoy, avoid, finish, mind, suggest, deny, admit, consider, practise, risk, postpone, delay, miss, imagine, appreciate, keep, resent, dislike, give up, put off, carry on</td><td>She avoided <span class="n">answering</span>.</td></tr>
+    <tr><th>Verb + to-infinitive only</th><td>want, decide, hope, plan, promise, refuse, manage, afford, agree, learn, offer, expect, fail, seem, appear, pretend, tend, wish, arrange, choose, deserve</td><td>He decided <span class="n">to leave</span>.</td></tr>
+    <tr><th>Verb + object + to-infinitive</th><td>ask, tell, order, allow, advise, encourage, persuade, invite, force, warn, remind, enable, expect</td><td>She told him <span class="n">to wait</span>.</td></tr>
+    <tr><th>Verb + object + bare infinitive</th><td>let, make, have (causative), see, hear, watch, feel, notice</td><td>He let me <span class="n">go</span>.</td></tr>
+    <tr><th>Verb + either, same meaning</th><td>begin, start, continue, intend, attempt, can't bear, like / love / hate / prefer (general)</td><td>It began <span class="n">to rain</span> / <span class="n">raining</span>.</td></tr>
+    <tr><th>Verb + either, different meaning</th><td>remember, forget, stop, try, regret, go on, mean, need</td><td>see the table below</td></tr>
+  </tbody>
+</table></div><h3>Verbs that change meaning</h3><div class="scroll"><table class="big">
+  <thead><tr><th>Verb</th><th>+ gerund</th><th>+ to-infinitive</th></tr></thead>
+  <tbody>
+    <tr><th>remember</th><td>recall a past action: <em>I remember locking the door.</em></td><td>remember a duty still to do: <em>Remember to lock the door.</em></td></tr>
+    <tr><th>forget</th><td>forget a past action: <em>I'll never forget meeting her.</em></td><td>forget a task: <em>Don't forget to call.</em></td></tr>
+    <tr><th>stop</th><td>end an action: <em>He stopped smoking.</em></td><td>stop in order to do: <em>He stopped to smoke.</em></td></tr>
+    <tr><th>try</th><td>experiment: <em>Try adding salt.</em></td><td>make an effort: <em>She tried to open it.</em></td></tr>
+    <tr><th>regret</th><td>feel sorry about the past: <em>I regret saying that.</em></td><td>announce bad news: <em>We regret to inform you...</em></td></tr>
+    <tr><th>go on</th><td>continue the same action: <em>He went on talking.</em></td><td>move to a new action: <em>He went on to become a doctor.</em></td></tr>
+    <tr><th>mean</th><td>involve: <em>This means waiting.</em></td><td>intend: <em>I meant to call.</em></td></tr>
+    <tr><th>need</th><td>passive sense: <em>The car needs washing.</em> (= needs to be washed)</td><td>active need: <em>I need to wash the car.</em></td></tr>
+    <tr><th>like</th><td>enjoy, habit: <em>I like swimming.</em></td><td>prefer, choice: <em>I like to swim in the morning.</em></td></tr>
+  </tbody>
+</table></div><h3>Other useful patterns</h3><ul class="tick"><li><b>Adjective + to-infinitive:</b> <em>happy, ready, eager, sorry, afraid, sure, likely, able, certain</em>. <span class="eg">She is eager <span class="n">to learn</span>.</span></li><li><b>Noun + to-infinitive:</b> <em>chance, way, time, decision, ability, right, need</em>. <span class="eg">He had no time <span class="n">to waste</span>.</span></li><li><b>Preposition + gerund:</b> <em>interested in, capable of, tired of, keen on, good at, afraid of, insist on</em>. <span class="eg">He is tired of <span class="n">waiting</span>.</span></li><li><b>Sense verbs, two patterns:</b> <span class="eg">I saw him <span class="n">cross</span> the road.</span> (the whole action, bare infinitive) <span class="eg">I saw him <span class="n">crossing</span> the road.</span> (in progress, participle)</li></ul>
+</section>
+
+<section id="n-clauses">
+  <div class="sh"><span class="no shine" style="--c: var(--sage)">5</span><h2>Non-finite clauses</h2><p>A non-finite clause is built around a non-finite verb and usually has no stated subject.</p></div>
+<div class="scroll"><table class="grid-fit">
+  <thead><tr><th>Clause type</th><th>Example</th></tr></thead>
+  <tbody>
+    <tr><th>To-infinitive clause</th><td><span class="n">To finish on time</span>, we worked late.</td></tr>
+    <tr><th>Bare infinitive clause</th><td>All he did was <span class="n">cry</span>.</td></tr>
+    <tr><th>-ing clause</th><td><span class="n">Hearing the news</span>, she cried.</td></tr>
+    <tr><th>-ed clause</th><td><span class="n">Exhausted by the trip</span>, he slept.</td></tr>
+  </tbody>
+</table></div><h3>Absolute constructions</h3><p>An absolute construction has its <b>own subject</b>, different from the subject of the main clause, and is not joined by a conjunction.</p><ul class="tick"><li><b>Noun + present participle:</b> <span class="eg">The weather <span class="n">being</span> fine, we went out.</span></li><li><b>Noun + past participle:</b> <span class="eg">The work <span class="n">done</span>, they went home.</span></li><li><b>Noun + perfect participle:</b> <span class="eg">The rain <span class="n">having stopped</span>, we left.</span></li><li><b>With + noun + participle:</b> <span class="eg">With the sun <span class="n">setting</span>, we turned back.</span></li><li><b>Fixed absolutes:</b> <em>weather permitting, all things considered, God willing, that said, generally speaking, judging by, granted that</em></li></ul><h3>Dangling (misrelated) participles</h3><p>A participle must refer to <b>the subject of the main clause</b>. If it does not, it dangles.</p><div class="scroll"><table class="grid-fit">
+  <thead><tr><th>Incorrect (dangling)</th><th>Correct</th></tr></thead>
+  <tbody>
+    <tr><td><s>Walking down the street, a car hit him.</s></td><td>Walking down the street, <b>he</b> was hit by a car.</td></tr>
+    <tr><td><s>Having finished the work, the day was free.</s></td><td>Having finished the work, <b>she</b> had a free day.</td></tr>
+    <tr><td><s>To pass the exam, hard work is needed.</s></td><td>To pass the exam, <b>you</b> need hard work.</td></tr>
+  </tbody>
+</table></div><p class="note" style="--c: var(--sage)"><b>Exceptions:</b> fixed phrases such as <em>generally speaking, considering everything</em> and <em>judging by his looks</em> are accepted as they stand.</p>
+</section>
+
+<section id="n-practice">
+  <div class="sh"><span class="no shine" style="--c: var(--teal)">6</span><h2>Mistakes and practice</h2><p>Common mistakes first, then ten questions. Tap an answer.</p></div>
+<h3>Common mistakes</h3><div class="scroll"><table class="big">
+  <thead><tr><th>Mistake</th><th>Correction</th><th>Rule</th></tr></thead>
+  <tbody>
+    <tr><td>She enjoys <s>to swim</s>.</td><td>She enjoys <b>swimming</b>.</td><td><em>enjoy</em> takes a gerund</td></tr>
+    <tr><td>He decided <s>going</s> home.</td><td>He decided <b>to go</b> home.</td><td><em>decide</em> takes a to-infinitive</td></tr>
+    <tr><td>I look forward <s>to meet</s> you.</td><td>I look forward <b>to meeting</b> you.</td><td><em>to</em> is a preposition here</td></tr>
+    <tr><td>He can <s>to drive</s>.</td><td>He can <b>drive</b>.</td><td>bare infinitive after a modal</td></tr>
+    <tr><td>She made him <s>to cry</s>.</td><td>She made him <b>cry</b>.</td><td>bare infinitive after <em>make</em> (active)</td></tr>
+    <tr><td>I stopped <s>to smoke</s>. <small>(meaning: quit)</small></td><td>I stopped <b>smoking</b>.</td><td><em>stop</em> + gerund = end the action</td></tr>
+    <tr><td><s>Being</s> a rainy day, we stayed in.</td><td><b>It being</b> a rainy day, we stayed in.</td><td>give the participle its own subject</td></tr>
+    <tr><td>He is used to <s>wake</s> early.</td><td>He is used to <b>waking</b> early.</td><td><em>be used to</em> takes a gerund</td></tr>
+  </tbody>
+</table></div><h3>Quick practice: choose the correct form</h3><div class="mc" id="mc"><div class="mcq" data-a="1"><p>1. She avoided ___ him.</p><div class="opts"><button type="button" class="btn" data-i="0">to meet</button><button type="button" class="btn" data-i="1">meeting</button></div><div class="fb"></div></div><div class="mcq" data-a="0"><p>2. They agreed ___ us.</p><div class="opts"><button type="button" class="btn" data-i="0">to help</button><button type="button" class="btn" data-i="1">helping</button></div><div class="fb"></div></div><div class="mcq" data-a="0"><p>3. I saw him ___ the road.</p><div class="opts"><button type="button" class="btn" data-i="0">cross</button><button type="button" class="btn" data-i="1">to cross</button></div><div class="fb"></div></div><div class="mcq" data-a="1"><p>4. ___ in the park, I found a wallet.</p><div class="opts"><button type="button" class="btn" data-i="0">Walk</button><button type="button" class="btn" data-i="1">Walking</button></div><div class="fb"></div></div><div class="mcq" data-a="0"><p>5. Don't forget ___ the letter.</p><div class="opts"><button type="button" class="btn" data-i="0">to post</button><button type="button" class="btn" data-i="1">posting</button></div><div class="fb"></div></div><div class="mcq" data-a="1"><p>6. I remember ___ her last year.</p><div class="opts"><button type="button" class="btn" data-i="0">to meet</button><button type="button" class="btn" data-i="1">meeting</button></div><div class="fb"></div></div><div class="mcq" data-a="1"><p>7. The film was ___.</p><div class="opts"><button type="button" class="btn" data-i="0">bored</button><button type="button" class="btn" data-i="1">boring</button></div><div class="fb"></div></div><div class="mcq" data-a="0"><p>8. He was made ___ overtime.</p><div class="opts"><button type="button" class="btn" data-i="0">to work</button><button type="button" class="btn" data-i="1">work</button></div><div class="fb"></div></div><div class="mcq" data-a="0"><p>9. ___ lunch, we left.</p><div class="opts"><button type="button" class="btn" data-i="0">Having finished</button><button type="button" class="btn" data-i="1">Finished</button></div><div class="fb"></div></div><div class="mcq" data-a="1"><p>10. She is looking forward to ___ you.</p><div class="opts"><button type="button" class="btn" data-i="0">see</button><button type="button" class="btn" data-i="1">seeing</button></div><div class="fb"></div></div></div><div class="qbar"><button type="button" class="btn" id="mc-reset">Start again</button><span class="qscore" id="mc-score"></span></div><h3>One-glance summary</h3><div class="scroll"><table class="big">
+  <thead><tr><th>Type</th><th>Form</th><th>Function</th><th>Key example</th></tr></thead>
+  <tbody>
+    <tr><th>To-infinitive</th><td>to + verb</td><td>noun, adjective, adverb</td><td>I want <span class="n">to go</span>.</td></tr>
+    <tr><th>Bare infinitive</th><td>verb</td><td>after modals, <em>let, make</em>, perception verbs</td><td>She can <span class="n">sing</span>.</td></tr>
+    <tr><th>Gerund</th><td>verb + -ing</td><td>noun</td><td><span class="n">Reading</span> is fun.</td></tr>
+    <tr><th>Present participle</th><td>verb + -ing</td><td>adjective, adverbial</td><td>a <span class="n">crying</span> baby</td></tr>
+    <tr><th>Past participle</th><td>verb + -ed / -en</td><td>adjective, passive or perfect</td><td>a <span class="n">broken</span> cup</td></tr>
+    <tr><th>Perfect participle</th><td>having + past participle</td><td>adverbial (earlier action)</td><td><span class="n">Having eaten</span>, we left.</td></tr>
+    <tr><th>Absolute construction</th><td>noun + participle</td><td>adverbial with its own subject</td><td>The work <span class="n">done</span>, we left.</td></tr>
+  </tbody>
+</table></div>
+</section>
+</div>
+
+<footer><span class="script shine">Well done</span><br>Next stop: nouns, to match the verbs.</footer>
+</div>
+</div>
+
+<script>
+(function(){
+function setSub(c,id){var secs=c.querySelectorAll("section");var ok=false;secs.forEach(function(s){if(s.id===id)ok=true;});if(!ok)return false;
+ secs.forEach(function(s){s.hidden=(s.id!==id);});
+ c.querySelectorAll("nav.toc a").forEach(function(a){if(a.getAttribute("href")==="#"+id)a.setAttribute("aria-current","true");else a.removeAttribute("aria-current");});return true;}
+window.__setSub=setSub;
+var scopes=document.querySelectorAll(".panel");if(!scopes.length)scopes=[document.body];
+Array.prototype.forEach.call(scopes,function(c){var f=c.querySelector("nav.toc a");if(f)setSub(c,f.getAttribute("href").slice(1));});
+var h=location.hash.slice(1);if(h&&h.indexOf("go-")!==0){var el=document.getElementById(h);if(el&&el.tagName==="SECTION")setSub(el.closest(".panel")||document.body,h);}
+document.addEventListener("click",function(e){var a=e.target.closest("nav.toc a");if(!a)return;var hr=a.getAttribute("href")||"";if(hr.charAt(0)!=="#")return;e.preventDefault();
+ var id=hr.slice(1),c=a.closest(".panel")||document.body;if(setSub(c,id)){var t=document.getElementById(id);t.scrollIntoView({block:"start"});}});
+})();
+
+(function () {
+  var L = ["?", "Helping · finite", "Helping · non-finite", "Lexical · finite", "Lexical · non-finite"];
+  var Q = [
+    { r: "1 role",  w: [["She"], ["plays", 3], ["."]] },
+    { r: "2 roles", w: [["She"], ["has", 1], ["gone", 4], ["."]] },
+    { r: "3 roles", w: [["She"], ["has", 1], ["been", 2], ["waiting", 4], ["."]] },
+    { r: "4 roles", w: [["She"], ["will", 1], ["have", 2], ["been", 2], ["waiting", 4], ["."]] },
+    { r: "4 roles", w: [["The room"], ["could", 1], ["have", 2], ["been", 2], ["cleaned", 4], ["."]] }
+  ];
+  var body = document.getElementById("qbody"); if (!body) return;
+  Q.forEach(function (q) {
+    var tr = document.createElement("tr");
+    var h = '<th>' + q.r + '</th><td><div class="qs">';
+    q.w.forEach(function (x) {
+      h += x.length > 1 ? '<button type="button" class="qv" data-s="0" data-a="' + x[1] + '">' + x[0] + '<small>?</small></button>' : '<span>' + x[0] + '</span>';
+    });
+    h += '</div></td><td><div class="qa"><button type="button" class="btn qc">Check</button><span class="qf"></span></div></td>';
+    tr.innerHTML = h; body.appendChild(tr);
+  });
+  body.addEventListener("click", function (e) {
+    var v = e.target.closest(".qv");
+    if (v) {
+      var n = (+v.dataset.s + 1) % 5; v.dataset.s = n; v.querySelector("small").textContent = L[n];
+      v.classList.remove("ok", "no"); v.closest("tr").querySelector(".qf").textContent = ""; return;
+    }
+    var c = e.target.closest(".qc"); if (!c) return;
+    var tr = c.closest("tr"), vs = tr.querySelectorAll(".qv"), right = 0;
+    vs.forEach(function (b) {
+      var ok = +b.dataset.s === +b.dataset.a; if (ok) right++;
+      b.classList.toggle("ok", ok); b.classList.toggle("no", !ok);
+      if (!ok && +b.dataset.s !== 0) b.title = "Correct: " + L[+b.dataset.a];
+    });
+    var f = tr.querySelector(".qf");
+    if (right === vs.length) f.textContent = "All correct.";
+    else { var miss = []; vs.forEach(function (b) { if (+b.dataset.s !== +b.dataset.a) miss.push(b.firstChild.textContent + " = " + L[+b.dataset.a]); }); f.textContent = right + " of " + vs.length + ". Answer: " + miss.join(", ") + "."; }
+  });
+})();
+
+var LAB = [
+ { w:[{t:"She"},{t:"plays",r:"Lexical",f:"V5",fin:1,lex:1},{t:"."}], out:{t:"Present",a:"Simple",p:"None (S V)"}, n:"No helper, so the lexical verb is the finite verb." },
+ { w:[{t:"The boys"},{t:"played",r:"Lexical",f:"V2",fin:1,lex:1},{t:"football."}], out:{t:"Past",a:"Simple",p:"O (S V O)"}, n:"Football answers “played what?”" },
+ { w:[{t:"She"},{t:"is",r:"Lexical",f:"be",fin:1,lex:1},{t:"happy."}], out:{t:"Present",a:"Simple",p:"C (S V C)"}, n:"Be alone is a linking verb; happy describes She." },
+ { w:[{t:"He"},{t:"has",r:"HV1",fin:1},{t:"been",r:"HV2",f:"V3",fin:0},{t:"waiting",r:"Lexical",f:"V4",fin:0,lex:1},{t:"."}], out:{t:"Present",a:"Perfect continuous",p:"None (S V)"}, n:"Only has is finite. Been and waiting are non-finite." },
+ { w:[{t:"They"},{t:"will",r:"HV1",fin:1},{t:"learn",r:"Lexical",f:"V1",fin:0,lex:1},{t:"grammar."}], out:{t:"Future",a:"Simple",p:"O (S V O)"}, n:"Learn is a bare infinitive after will." },
+ { w:[{t:"The cake"},{t:"was",r:"HV1",fin:1},{t:"eaten",r:"Lexical",f:"V3",fin:0,lex:1},{t:"."}], out:{t:"Past",a:"Simple",p:"None (passive)",v:"Passive"}, n:"Be + V3 = passive. The object became the subject, so no O is left." },
+ { w:[{t:"Did",r:"HV1",fin:1},{t:"you"},{t:"see",r:"Lexical",f:"V1",fin:0,lex:1},{t:"her?"}], out:{t:"Past",a:"Simple",p:"O (S V O)"}, n:"Did is the do-support helper. It moves in front of the subject in a question." },
+ { w:[{t:"The room"},{t:"could",r:"HV1",fin:1},{t:"have",r:"HV2",f:"V1",fin:0},{t:"been",r:"HV3",f:"V3",fin:0},{t:"cleaned",r:"Lexical",f:"V3",fin:0,lex:1},{t:"."}], out:{t:"Past form (modal)",a:"Perfect",p:"None (passive)",v:"Passive"}, n:"Order: modal, have, be, lexical. Only could is finite." },
+ { w:[{t:"He"},{t:"gave",r:"Lexical",f:"V2",fin:1,lex:1},{t:"her a book."}], out:{t:"Past",a:"Simple",p:"O + O"}, n:"Two objects: her (who) and a book (what)." },
+ { w:[{t:"They"},{t:"made",r:"Lexical",f:"V2",fin:1,lex:1},{t:"him captain."}], out:{t:"Past",a:"Simple",p:"O + C"}, n:"Captain renames the object him." },
+ { w:[{t:"I"},{t:"want",r:"Lexical",f:"V1",fin:1,lex:1},{t:"to learn",r:"Non-finite",f:"to-infinitive",fin:0,nl:1},{t:"."}], out:{t:"Present",a:"Simple",p:"O (S V O)"}, n:"To learn fills the O slot but is non-finite. The clause’s finite verb is want." }
+];
+(function () {
+  var host = document.getElementById("labgrid"), h = "";
+  LAB.forEach(function (s) {
+    h += '<div class="s" tabindex="0"><div class="words">';
+    var rn = 0;
+    s.w.forEach(function (x) {
+      if (!x.r) { h += '<span class="w"><span class="tx">' + x.t + '</span></span>'; return; }
+      var c = "w vb" + (x.fin ? " fin" : "") + (x.lex ? " lex" : "");
+      h += '<span class="' + c + '"><span class="tx">' + x.t + '</span><span class="tg">' + (x.r === "Non-finite" ? "Non-finite" : "Role " + (++rn) + (x.lex ? " · Lexical" : " · Helping")) + '</span><span class="tg2">' + (x.fin ? "finite" : "non-finite") + (x.f ? " · " + x.f : "") + '</span></span>';
+    });
+    h += '</div><div class="out"><span class="t">Tense: ' + s.out.t + '</span><span class="a">Aspect: ' + s.out.a + '</span>' +
+         (s.out.v ? '<span class="a">Voice: ' + s.out.v + '</span>' : '') + '<span class="p">Pattern: ' + s.out.p + '</span></div><p class="sn">' + s.n + '</p></div>';
+  });
+  host.innerHTML = h;
+  var q = document.getElementById("quiz");
+  q.addEventListener("click", function () {
+    var on = q.getAttribute("aria-pressed") !== "true";
+    q.setAttribute("aria-pressed", String(on));
+    q.textContent = on ? "Show answers" : "Quiz me";
+    host.classList.toggle("cover", on);
+    Array.prototype.forEach.call(host.children, function (c) { c.classList.remove("open"); });
+  });
+  host.addEventListener("click", function (e) { var s = e.target.closest(".s"); if (s && host.classList.contains("cover")) s.classList.toggle("open"); });
+  host.addEventListener("keydown", function (e) { if ((e.key === "Enter" || e.key === " ") && e.target.classList.contains("s") && host.classList.contains("cover")) { e.preventDefault(); e.target.classList.toggle("open"); } });
+})();
+
+
+(function(){
+var names=["p1","p2","p3"];
+function show(k,sec){names.forEach(function(n){document.getElementById("panel-"+n).hidden=(n!==k);});
+ var id=sec?(sec==="traps"?k+"-traps":sec):null;
+ if(id&&window.__setSub(document.getElementById("panel-"+k),id)){document.getElementById(id).scrollIntoView({block:"start"});}else window.scrollTo(0,0);}
+document.addEventListener("click",function(e){var a=e.target.closest("a");if(!a)return;var h=a.getAttribute("href")||"";
+ var m=h.match(/^#go-(p\d)(?:-(\w+))?$/);
+ if(m){e.preventDefault();show(m[1],m[2]);return;}
+});
+var st=(location.hash.match(/^#go-(p\d)/)||[])[1]||document.body.getAttribute("data-start")||"p1";
+show(st);
+})();
+</script>
+<script>
+(function () {
+  var tabs = document.querySelectorAll('.tabs button'), panels = document.querySelectorAll('.vtp');
+  function setSub(panel, id) {
+    var secs = panel.querySelectorAll('section'), ok = false;
+    secs.forEach(function (s) { if (s.id === id) ok = true; });
+    if (!ok) return false;
+    secs.forEach(function (s) { s.hidden = (s.id !== id); });
+    panel.querySelectorAll('nav.sub button').forEach(function (b) { if (b.dataset.sec === id) b.setAttribute('aria-current', 'true'); else b.removeAttribute('aria-current'); });
+    return true;
+  }
+  function showTab(id) {
+    tabs.forEach(function (t) { t.setAttribute('aria-selected', String(t.dataset.tab === id)); });
+    panels.forEach(function (p) { p.hidden = (p.id !== 'panel-' + id); });
+  }
+  panels.forEach(function (p) { var f = p.querySelector('nav.sub button'); if (f) setSub(p, f.dataset.sec); });
+  tabs.forEach(function (t) { t.addEventListener('click', function () { showTab(t.dataset.tab); window.scrollTo(0, 0); history.replaceState && 0; }); });
+  document.addEventListener('click', function (e) {
+    var b = e.target.closest('nav.sub button'); if (!b) return;
+    var p = b.closest('.vtp'); if (setSub(p, b.dataset.sec)) document.getElementById(b.dataset.sec).scrollIntoView({ block: 'start' });
+  });
+  var start = (location.hash || '').replace('#', '');
+  var map = { lexical: 'lexical', helping: 'helping', finite: 'finite', nonfinite: 'nonfinite' };
+  showTab(map[start] || 'lexical');
+
+  /* label quizzes */
+  function labelQuiz(root, labels, checkId, resetId, scoreId) {
+    var host = document.getElementById(root); if (!host) return;
+    host.addEventListener('click', function (e) {
+      var b = e.target.closest('.qb'); if (!b) return;
+      var n = (+b.dataset.s + 1) % labels.length; b.dataset.s = n; b.querySelector('small').textContent = labels[n];
+      b.classList.remove('ok', 'no'); document.getElementById(scoreId).textContent = '';
+    });
+    document.getElementById(checkId).addEventListener('click', function () {
+      var bs = host.querySelectorAll('.qb'), right = 0;
+      bs.forEach(function (b) { var ok = +b.dataset.s === +b.dataset.a; if (ok) right++; b.classList.toggle('ok', ok); b.classList.toggle('no', !ok); b.title = ok ? '' : 'Correct: ' + labels[+b.dataset.a]; });
+      var miss = []; bs.forEach(function (b) { if (+b.dataset.s !== +b.dataset.a) miss.push(b.firstChild.textContent + ' = ' + labels[+b.dataset.a]); });
+      document.getElementById(scoreId).textContent = right + ' of ' + bs.length + (miss.length ? '. Answers: ' + miss.join(', ') + '.' : '. All correct.');
+    });
+    document.getElementById(resetId).addEventListener('click', function () {
+      host.querySelectorAll('.qb').forEach(function (b) { b.dataset.s = 0; b.querySelector('small').textContent = labels[0]; b.classList.remove('ok', 'no'); b.title = ''; });
+      document.getElementById(scoreId).textContent = '';
+    });
+  }
+  labelQuiz('lq', ["?", "Intransitive", "Transitive", "Ditransitive", "Linking", "Complex transitive"], 'lq-check', 'lq-reset', 'lq-score');
+  labelQuiz('hq', ['?', 'Helping', 'Lexical verb'], 'hq-check', 'hq-reset', 'hq-score');
+  labelQuiz('fq', ['?', 'Finite', 'Non-finite'], 'fq-check', 'fq-reset', 'fq-score');
+
+  /* multiple choice */
+  var mc = document.getElementById('mc'), score = document.getElementById('mc-score');
+  function tally() {
+    var qs = mc.querySelectorAll('.mcq'), done = 0, right = 0;
+    qs.forEach(function (q) { if (q.dataset.done) { done++; if (q.dataset.right) right++; } });
+    score.textContent = done ? right + ' of ' + done + ' correct' + (done === qs.length ? '. Finished.' : '.') : '';
+  }
+  mc.addEventListener('click', function (e) {
+    var b = e.target.closest('.btn'); if (!b) return;
+    var q = b.closest('.mcq'); if (q.dataset.done) return;
+    var ans = +q.dataset.a, pick = +b.dataset.i, btns = q.querySelectorAll('.btn');
+    btns.forEach(function (x) { if (+x.dataset.i === ans) x.classList.add('ok'); });
+    if (pick !== ans) b.classList.add('no'); else q.dataset.right = '1';
+    q.dataset.done = '1';
+    q.querySelector('.fb').textContent = pick === ans ? 'Correct.' : 'Not quite. The answer is ' + btns[ans].textContent + '.';
+    tally();
+  });
+  document.getElementById('mc-reset').addEventListener('click', function () {
+    mc.querySelectorAll('.mcq').forEach(function (q) { delete q.dataset.done; delete q.dataset.right; q.querySelector('.fb').textContent = ''; q.querySelectorAll('.btn').forEach(function (x) { x.classList.remove('ok', 'no'); }); });
+    tally();
+  });
+})();
+</script>
+<script>
+(function(){
+var tabs=document.querySelectorAll(".vbt button");
+function showVB(k){tabs.forEach(function(t){t.setAttribute("aria-selected",String(t.dataset.vb===k));});
+ ["pn","vt"].forEach(function(n){document.getElementById("vb-"+n).hidden=(n!==k);});}
+tabs.forEach(function(t){t.addEventListener("click",function(){showVB(t.dataset.vb);window.scrollTo(0,0);});});
+var h=location.hash.slice(1);
+if(h==="types"||/^(lexical|helping|finite|nonfinite)$/.test(h))showVB("vt");
+else showVB("pn");
+})();
+</script>
+</body>
+</html>

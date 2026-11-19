@@ -448,7 +448,10 @@ body { font-size: 16.5px; }
       </script>
     </div>
     <style>
-.term{-webkit-box-decoration-break:clone;box-decoration-break:clone;font-weight:700;color:var(--pres);padding:0 .18em;border-radius:5px;background:linear-gradient(180deg,color-mix(in srgb,var(--pres) 5%,transparent),color-mix(in srgb,var(--pres) 1.5%,transparent));box-shadow:inset 0 1px 0 color-mix(in srgb,#fff 40%,transparent);text-shadow:0 0 .55em color-mix(in srgb,var(--pres) 10%,transparent),0 0 .12em color-mix(in srgb,var(--pres) 11%,transparent)}
+.term{-webkit-box-decoration-break:clone;box-decoration-break:clone;font-weight:700;color:var(--acc-t,var(--pres));padding:0 .18em;border-radius:5px;background:linear-gradient(180deg,color-mix(in srgb,var(--acc,var(--pres)) 7%,transparent),color-mix(in srgb,var(--acc,var(--pres)) 2.5%,transparent));box-shadow:inset 0 1px 0 color-mix(in srgb,#fff 40%,transparent);text-shadow:0 0 .55em color-mix(in srgb,var(--acc,var(--pres)) 12%,transparent),0 0 .12em color-mix(in srgb,var(--acc,var(--pres)) 12%,transparent)}
+#be-list>.card:nth-child(1){--acc:var(--past);--acc-t:var(--past)}
+#be-list>.card:nth-child(2){--acc:var(--pres);--acc-t:var(--pres)}
+#be-list>.card:nth-child(3){--acc:var(--rare-be);--acc-t:color-mix(in srgb,var(--rare-be) 20%,var(--fg))}
 #p-intro .card.mean .formula{font-weight:600;font-size:1rem;white-space:nowrap}
 #p-intro .card.mean .be{margin-right:.15em}
 .vft{min-width:560px}

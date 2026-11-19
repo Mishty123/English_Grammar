@@ -5,7 +5,7 @@ All about English Grammar
 - [Home (navigation page)](https://mishty123.github.io/English_Grammar/)
 - [Tense & Voice Overview](https://mishty123.github.io/English_Grammar/tense_voice_overview.html)
 - [Present Tenses](https://mishty123.github.io/English_Grammar/present_tenses_study_page.html)
-- [Be Verb Study Page](https://mishty123.github.io/English_Grammar/be_verb_study_page.html)
+- [Be Verb](https://mishty123.github.io/English_Grammar/be_verb_study_page.html)
 - [Verb Basics](https://mishty123.github.io/English_Grammar/verb_basics.html) (Verb Phrase Anatomy and Verb Types)
 - [Verb Glossary](https://mishty123.github.io/English_Grammar/verb_glossary.html)
 - [Determiners Study Page](https://mishty123.github.io/English_Grammar/determiners_study_page.html)

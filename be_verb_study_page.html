@@ -391,68 +391,12 @@ body { font-size: 16.5px; }
     <h2>&ldquo;Be&rdquo; Verb Forms</h2>
     <span class="label">The 8 forms of &ldquo;be&rdquo;</span>
     <p class="lead" style="max-width:none">Regular verbs have 4 forms and most irregular verbs have 5. <b class="be">Be</b> has 8 distinct forms: be, am, is, are, was, were, been, being. It is the most irregular and versatile verb in English. Depending on how it is used in a clause, it falls under three grammatical categories.</p>
-    <div class="grid">
+    <span class="label">Finite and non-finite be in the verb phrase</span>
+    <div id="be-pair" style="position:relative;display:flex;flex-wrap:wrap;align-items:flex-start">
+    <div id="be-list">
       <div class="card mean"><h3>Lexical (main) verb</h3><p class="what">A <span class="term">linking (copular) verb</span>. It connects the subject to a <span class="term">complement</span>: a noun, an adjective, or a prepositional phrase that gives identity, state or location.</p></div>
       <div class="card mean"><h3>Auxiliary (helping) verb: finite</h3><p class="what">Works inside the verb phrase to build the <span class="term">progressive aspect</span> (<span class="formula">be + V-ing</span>) and the <span class="term">passive voice</span> (<span class="formula">be + V&sup3;</span>). <span class="term">Finite forms</span>: <b class="be">am</b> <b class="be">is</b> <b class="be">are</b> <b class="be">was</b> <b class="be">were</b></p></div>
       <div class="card mean"><h3>Auxiliary (helping) verb: non-finite</h3><p class="what">Same jobs, but <span class="term">after another helper</span>. <span class="term">Non-finite forms</span>: <b class="be">be</b> <b class="be">being</b> <b class="be">been</b></p></div>
-    </div>
-    <style>
-.term{-webkit-box-decoration-break:clone;box-decoration-break:clone;font-weight:700;color:var(--pres);padding:0 .18em;border-radius:5px;background:linear-gradient(180deg,color-mix(in srgb,var(--pres) 12%,transparent),color-mix(in srgb,var(--pres) 4%,transparent));box-shadow:inset 0 1px 0 color-mix(in srgb,#fff 55%,transparent);text-shadow:0 0 .55em color-mix(in srgb,var(--pres) 10%,transparent),0 0 .12em color-mix(in srgb,var(--pres) 11%,transparent)}
-#p-intro .card.mean .formula{font-weight:600;font-size:1rem;white-space:nowrap}
-#p-intro .card.mean .be{margin-right:.15em}
-.vft{min-width:560px}
-.vft th,.vft td{padding:14px 18px;vertical-align:top}
-.vft tbody tr + tr > *{border-top:1px solid var(--line)}
-.vft .vf-h{white-space:nowrap;font-weight:500;width:9.5rem}
-.vft .vf-v{display:block;font-family:var(--font-display);font-weight:600;font-size:1.15rem;line-height:1.2}
-.vft .vf-h small{display:block;color:var(--muted);font-weight:400;font-size:.8rem;margin-top:2px}
-.vft .vf-f{white-space:nowrap;width:11rem}
-.vft .vf-f .be{margin-right:.3em;font-size:1.05rem}
-.vft .vf-s{line-height:1.6}
-.vft tbody tr:last-child > *{border-bottom:0}
-#p-intro{gap:26px}
-#p-intro .label{margin:0 0 -12px;letter-spacing:.1em}
-#p-intro h2{margin-bottom:-6px}
-#p-intro .lead{line-height:1.7}
-#p-intro .grid{gap:16px}
-#p-intro .card.mean{padding:20px 22px;gap:10px;border-radius:16px}
-#p-intro .card.mean h3{line-height:1.3}
-#p-intro .card.mean .what{line-height:1.6}
-#p-intro .card.mean .note{margin-top:4px}
-#be-pair{gap:22px 56px;align-items:center}
-#be-list{padding:6px 0}
-#be-list ul.ex{gap:10px;line-height:1.55}
-#be-list ul.ex ul.ex{gap:6px;margin-top:8px!important}
-#be-card{padding:18px 20px;border-radius:16px}
-@media (max-width:640px){#p-intro{gap:22px}#be-pair{align-items:stretch}}
-</style>
-    <style>.vgrid{grid-template-columns:repeat(6,1fr)}.vgrid>.card{grid-column:span 2}.vgrid>.card:nth-child(n+4){grid-column:span 3}@media (max-width:640px){.vgrid{grid-template-columns:1fr}.vgrid>.card,.vgrid>.card:nth-child(n+4){grid-column:auto}}</style>
-    <span class="label">The 8 forms of &ldquo;be&rdquo;, mapped to V1 to V5</span>
-    <div class="scroll" tabindex="0" role="region" aria-label="The forms of be, V1 to V5">
-      <table class="vft"><thead><tr><th>Form</th><th>Forms of &ldquo;be&rdquo;</th><th>Grammatical status</th></tr></thead>
-        <tbody>
-          <tr><th scope="row" class="vf-h"><span class="vf-v">V1</span><small>base</small></th><td class="vf-f"><b class="be">be</b></td><td class="vf-s"><strong>Non-finite.</strong> Used after modals, after &ldquo;to&rdquo;, and in commands or the subjunctive.</td></tr>
-          <tr><th scope="row" class="vf-h"><span class="vf-v">V2</span><small>past</small></th><td class="vf-f"><b class="be">was</b> <b class="be">were</b></td><td class="vf-s"><strong>Finite.</strong> The only English verb with two past forms: <em>I / he / she / it was</em> (singular) and <em>we / you / they were</em> (plural and &ldquo;you&rdquo;).</td></tr>
-          <tr><th scope="row" class="vf-h"><span class="vf-v">V3</span><small>past participle</small></th><td class="vf-f"><b class="be">been</b></td><td class="vf-s"><strong>Non-finite.</strong> Always follows a form of the helping verb have: <em>has / have / had been.</em></td></tr>
-          <tr><th scope="row" class="vf-h"><span class="vf-v">V4</span><small>present participle</small></th><td class="vf-f"><b class="be">being</b></td><td class="vf-s"><strong>Non-finite.</strong> Follows a finite form of be (<em>am / is / are / was / were being</em>) or works on its own as a gerund or participle.<p class="note" style="font-size:.85rem;margin-top:8px">Being can also follow non-finite be in rare constructions (<em>He must be being followed</em>), and it works as a gerund in <em>She hates being watched</em>.</p></td></tr>
-          <tr><th scope="row" class="vf-h"><span class="vf-v">V5</span><small>present</small></th><td class="vf-f"><b class="be">am</b> <b class="be">is</b> <b class="be">are</b></td><td class="vf-s"><strong>Finite.</strong> Marked for person and number: <em>I am, he / she / it is, we / you / they are.</em></td></tr>
-        </tbody></table>
-    </div>
-    <span class="label">Finite and non-finite be in the verb phrase</span>
-    <div id="be-pair" style="position:relative;display:flex;flex-wrap:wrap;gap:18px 28px;align-items:flex-start">
-    <div id="be-list" style="flex:1 1 340px;min-width:0">
-    <ul class="ex" style="max-width:none">
-      <li><strong>Helping verb:</strong> It has two forms:
-        <ul class="ex" style="margin-top:4px">
-      <li><strong>Finite be</strong>: <b class="be">am</b>, <b class="be">is</b>, <b class="be">are</b>, <b class="be">was</b>, <b class="be">were</b>. It comes first in the verb phrase, as in <span class="formula" style="font-size:.98rem;white-space:nowrap">Subject + am/is/are + V&#8308;</span> (<em>She is eating</em>), <span class="formula" style="font-size:.98rem;white-space:nowrap">Subject + am/is/are + V&sup3;</span> (<em>A letter is written</em>), and the same with was/were.</li>
-      <li><strong>Non-finite be</strong>: <b class="be">be</b>, <b class="be">being</b>, <b class="be">been</b>. It comes after another helper, so it never starts the verb phrase.
-        <ul class="ex" style="margin-top:4px">
-          <li>After a modal verb: <span class="formula" style="font-size:.98rem;white-space:nowrap">will be done</span>, <span class="formula" style="font-size:.98rem;white-space:nowrap">can be opened</span>.</li>
-          <li>After have/has/had: <span class="formula" style="font-size:.98rem;white-space:nowrap">has been finished</span>, <span class="formula" style="font-size:.98rem;white-space:nowrap">had been eaten</span>.</li>
-          <li>After finite be: <span class="formula" style="font-size:.98rem;white-space:nowrap">is being baked</span>, <span class="formula" style="font-size:.98rem;white-space:nowrap">was being built</span>.</li>
-        </ul></li>
-    </ul></li>
-    </ul>
     </div>
     <div class="card" id="be-card" style="flex:1 1 420px;min-width:0;max-width:540px"><div style="overflow-x:auto"><svg viewBox="0 0 450 384" role="img" aria-labelledby="vr-t vr-d" style="display:block;width:100%;min-width:300px;max-width:100%;height:auto;font-family:inherit"><title id="vr-t">Verb roles with the forms of be that fit each one</title><desc id="vr-d">One role: a finite lexical verb. Two roles: finite helping verb and non-finite lexical verb. Three roles: finite helping verb, non-finite helping verb and non-finite lexical verb. Under each box are the forms of be that fit.</desc><style>.vh{font-size:14px;font-weight:600;fill:var(--fg)}.vs{font-size:12.5px;fill:var(--fg)}.vm{fill:var(--muted)}.vf{fill:#e1f5ee;stroke:#0f6e56;stroke-width:1}.vn{fill:var(--rare);stroke:var(--rare-be);stroke-width:1}.vl{stroke:#378add;stroke-width:2.5}.vft{fill:#085041}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .vf{fill:#085041;stroke:#5dcaa5}:root:not([data-theme="light"]) .vft{fill:#9fe1cb}}
@@ -485,10 +429,10 @@ body { font-size: 16.5px; }
           var lr = list.getBoundingClientRect(), kr = card.getBoundingClientRect(), cr = box.getBoundingClientRect();
           if (!kr.width || kr.left < lr.right - 10) { sv.style.display = 'none'; return; }
           sv.style.display = '';
-          var lis = list.querySelectorAll('ul ul > li');
+          var cs = list.children, c2 = cs[1].getBoundingClientRect(), c3 = cs[2].getBoundingClientRect();
           var t1 = document.getElementById('vr-hv1-2').getBoundingClientRect(), t2 = document.getElementById('vr-hv2-3').getBoundingClientRect();
-          var s1 = lineEnd(lis[0], 4, cr), s2 = lineEnd(lis[1], 2, cr);
-          var cl = kr.left - cr.left, g1 = Math.max(s1[0] + 8, cl - 12), g2 = Math.max(s2[0] + 8, Math.min(g1 - 12, cl - 26));
+          var s1 = [c2.right - cr.left, c2.top + 34 - cr.top], s2 = [c3.right - cr.left, c3.top + 34 - cr.top];
+          var cl = kr.left - cr.left, g1 = cl - 14, g2 = cl - 34;
           var e1 = [t1.left - cr.left - 3, t1.top - cr.top + 9];
           var lane = t2.top - cr.top - 16, e2 = [t2.left - cr.left + 26, t2.top - cr.top - 3];
           document.getElementById('be-a1').setAttribute('d', rounded([s1, [g1, s1[1]], [g1, e1[1]], e1], 9));
@@ -501,6 +445,46 @@ body { font-size: 16.5px; }
         draw();
       })();
       </script>
+    </div>
+    <style>
+.term{-webkit-box-decoration-break:clone;box-decoration-break:clone;font-weight:700;color:var(--pres);padding:0 .18em;border-radius:5px;background:linear-gradient(180deg,color-mix(in srgb,var(--pres) 12%,transparent),color-mix(in srgb,var(--pres) 4%,transparent));box-shadow:inset 0 1px 0 color-mix(in srgb,#fff 55%,transparent);text-shadow:0 0 .55em color-mix(in srgb,var(--pres) 10%,transparent),0 0 .12em color-mix(in srgb,var(--pres) 11%,transparent)}
+#p-intro .card.mean .formula{font-weight:600;font-size:1rem;white-space:nowrap}
+#p-intro .card.mean .be{margin-right:.15em}
+.vft{min-width:560px}
+.vft th,.vft td{padding:14px 18px;vertical-align:top}
+.vft tbody tr + tr > *{border-top:1px solid var(--line)}
+.vft .vf-h{white-space:nowrap;font-weight:500;width:9.5rem}
+.vft .vf-v{display:block;font-family:var(--font-display);font-weight:600;font-size:1.15rem;line-height:1.2}
+.vft .vf-h small{display:block;color:var(--muted);font-weight:400;font-size:.8rem;margin-top:2px}
+.vft .vf-f{white-space:nowrap;width:11rem}
+.vft .vf-f .be{margin-right:.3em;font-size:1.05rem}
+.vft .vf-s{line-height:1.6}
+.vft tbody tr:last-child > *{border-bottom:0}
+#p-intro{gap:26px}
+#p-intro .label{margin:0 0 -12px;letter-spacing:.1em}
+#p-intro h2{margin-bottom:-6px}
+#p-intro .lead{line-height:1.7}
+#p-intro .grid{gap:16px}
+#p-intro .card.mean{padding:20px 22px;gap:10px;border-radius:16px}
+#p-intro .card.mean h3{line-height:1.3}
+#p-intro .card.mean .what{line-height:1.6}
+#p-intro .card.mean .note{margin-top:4px}
+#be-pair{gap:22px 64px;align-items:center}
+#be-list{flex:1 1 340px;min-width:0;display:flex;flex-direction:column;gap:16px}
+#be-card{padding:18px 20px;border-radius:16px}
+@media (max-width:640px){#p-intro{gap:22px}#be-pair{align-items:stretch}}
+</style>
+    <style>.vgrid{grid-template-columns:repeat(6,1fr)}.vgrid>.card{grid-column:span 2}.vgrid>.card:nth-child(n+4){grid-column:span 3}@media (max-width:640px){.vgrid{grid-template-columns:1fr}.vgrid>.card,.vgrid>.card:nth-child(n+4){grid-column:auto}}</style>
+    <span class="label">The 8 forms of &ldquo;be&rdquo;, mapped to V1 to V5</span>
+    <div class="scroll" tabindex="0" role="region" aria-label="The forms of be, V1 to V5">
+      <table class="vft"><thead><tr><th>Form</th><th>Forms of &ldquo;be&rdquo;</th><th>Grammatical status</th></tr></thead>
+        <tbody>
+          <tr><th scope="row" class="vf-h"><span class="vf-v">V1</span><small>base</small></th><td class="vf-f"><b class="be">be</b></td><td class="vf-s"><strong>Non-finite.</strong> Used after modals, after &ldquo;to&rdquo;, and in commands or the subjunctive.</td></tr>
+          <tr><th scope="row" class="vf-h"><span class="vf-v">V2</span><small>past</small></th><td class="vf-f"><b class="be">was</b> <b class="be">were</b></td><td class="vf-s"><strong>Finite.</strong> The only English verb with two past forms: <em>I / he / she / it was</em> (singular) and <em>we / you / they were</em> (plural and &ldquo;you&rdquo;).</td></tr>
+          <tr><th scope="row" class="vf-h"><span class="vf-v">V3</span><small>past participle</small></th><td class="vf-f"><b class="be">been</b></td><td class="vf-s"><strong>Non-finite.</strong> Always follows a form of the helping verb have: <em>has / have / had been.</em></td></tr>
+          <tr><th scope="row" class="vf-h"><span class="vf-v">V4</span><small>present participle</small></th><td class="vf-f"><b class="be">being</b></td><td class="vf-s"><strong>Non-finite.</strong> Follows a finite form of be (<em>am / is / are / was / were being</em>) or works on its own as a gerund or participle.<p class="note" style="font-size:.85rem;margin-top:8px">Being can also follow non-finite be in rare constructions (<em>He must be being followed</em>), and it works as a gerund in <em>She hates being watched</em>.</p></td></tr>
+          <tr><th scope="row" class="vf-h"><span class="vf-v">V5</span><small>present</small></th><td class="vf-f"><b class="be">am</b> <b class="be">is</b> <b class="be">are</b></td><td class="vf-s"><strong>Finite.</strong> Marked for person and number: <em>I am, he / she / it is, we / you / they are.</em></td></tr>
+        </tbody></table>
     </div>
     <div class="btns"><button class="btn" type="button" data-go="forms">Next: Meanings &rarr;</button></div>
   </section>

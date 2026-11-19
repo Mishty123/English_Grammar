@@ -10,12 +10,14 @@
 <style>
 :root {
   --bg: #f1f4f2; --bg-wash: #e3ecea; --card: #fbfcfb; --ink: #22333a; --muted: #5d6e75; --line: #d4ddda;
+  --bp: #2c4c53; --bp-soft: #e3edf3; --bo: #7d600d; --bn: #ebe8e1; --bn-rim: #d3cec2; --bnx: #7a7466;
   --teal: #2c7a7b; --blue: #3d6c98; --sage: #5b8a52; --ochre: #a4752a; --slate: #5a7280;
   --h: "Yeseva One", Georgia, serif; --b: "Lora", Georgia, serif; --script: "Great Vibes", "Snell Roundhand", cursive;
 }
 @media (prefers-color-scheme: dark) {
   :root {
     --bg: #12191c; --bg-wash: #17262a; --card: #1a2428; --ink: #e4ecee; --muted: #9fb0b6; --line: #2f3d43;
+    --bp: #8fc3d1; --bp-soft: #1d3840; --bo: #e8cc78; --bn: #2c3a3e; --bn-rim: #44565a; --bnx: #a9b4b0;
     --teal: #5fc0c0; --blue: #7fa9d6; --sage: #92c48a; --ochre: #deb06a; --slate: #9fb4c0; color-scheme: dark;
   }
 }
@@ -88,18 +90,20 @@ svg.map .e-teal { stroke: var(--teal); } svg.map .e-slate { stroke: var(--slate)
 .legend .b { background: color-mix(in srgb, var(--slate) 25%, var(--card)); border-color: var(--slate); }
 .legend .c { background: color-mix(in srgb, var(--blue) 25%, var(--card)); border-color: var(--blue); }
 
-svg.map .b-nf { fill: color-mix(in srgb, var(--ochre) 20%, var(--card)); stroke: var(--ochre); }
-svg.map .b-lexf { fill: color-mix(in srgb, var(--teal) 16%, var(--card)); stroke: var(--teal); stroke-width: 2; }
-svg.map .rim-lex { fill: none; stroke: var(--blue); stroke-width: 2; }
-svg.map .b-lexnf { fill: color-mix(in srgb, var(--ochre) 20%, var(--card)); stroke: var(--blue); stroke-width: 2.6; }
+svg.map .b-teal { fill: var(--bp-soft); stroke: var(--bp); }
+svg.map .b-nf { fill: var(--bn); stroke: var(--bn-rim); }
+svg.map .b-lexf { fill: var(--bp-soft); stroke: var(--bp); stroke-width: 2; }
+svg.map .rim-lex { fill: none; stroke: var(--bo); stroke-width: 2.5; }
+svg.map .b-lexnf { fill: var(--bn); stroke: var(--bo); stroke-width: 2.5; }
 .legend2 { border-top: 1px dashed var(--line); margin-top: 4px; padding-top: 10px; }
-.legend .d { background: color-mix(in srgb, var(--ochre) 25%, var(--card)); border-color: var(--ochre); }
-.legend .e { background: color-mix(in srgb, var(--ochre) 25%, var(--card)); border-color: var(--blue); border-width: 2.4px; }
-.legend .g { background: color-mix(in srgb, var(--teal) 25%, var(--card)); border: 2px solid var(--teal); box-shadow: inset 0 0 0 1.5px var(--card), inset 0 0 0 3px var(--blue); }
-.three .card.rf { background: color-mix(in srgb, var(--teal) 12%, var(--card)); border-color: var(--teal); }
-.three .card.rn { background: color-mix(in srgb, var(--ochre) 14%, var(--card)); border-color: var(--ochre); }
-.three .card.rn .n { --c: var(--ochre); }
-.three .card.rl { border: 2px solid var(--blue); border-top-width: 4px; box-shadow: inset 0 0 0 3px var(--card), inset 0 0 0 5px var(--blue); }
+.legend .d { background: var(--bn); border-color: var(--bn-rim); }
+.legend .e { background: var(--bn); border-color: var(--bo); border-width: 2.4px; }
+.legend .g { background: var(--bp-soft); border: 2px solid var(--bp); box-shadow: inset 0 0 0 1.5px var(--card), inset 0 0 0 3px var(--bo); }
+.legend .f1 { background: var(--bp-soft); border-color: var(--bp); }
+.three .card.rf { background: var(--bp-soft); border-color: var(--bp); }
+.three .card.rn { background: var(--bn); border-color: var(--bn-rim); }
+.three .card.rn .n { --c: var(--bnx); }
+.three .card.rl { border: 2px solid var(--bo); border-top-width: 4px; box-shadow: inset 0 0 0 3px var(--card), inset 0 0 0 5px var(--bo); }
 .three { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin-top: 16px; }
 .three .card { border-top: 4px solid var(--c); }
 .three h4 { font-family: var(--h); font-weight: 400; font-size: 1.1rem; margin: 6px 0 4px; }
@@ -367,26 +371,26 @@ footer { margin-top: 48px; }
       <span><i class="c"></i>Lexical verb &rarr; clause pattern</span>
     </div>
     <div class="legend legend2">
-      <span><i class="a"></i>Finite verb</span>
+      <span><i class="f1"></i>Finite verb</span>
       <span><i class="d"></i>Non-finite verb</span>
-      <span><i class="e"></i>Lexical verb, non-finite (blue rim)</span>
-      <span><i class="g"></i>Lexical verb, finite (double rim)</span>
+      <span><i class="e"></i>Lexical verb, non-finite (ochre rim)</span>
+      <span><i class="g"></i>Lexical verb, finite (teal + ochre double rim)</span>
     </div>
   </div>
 
   <div class="three">
-    <div class="card rf" style="--c: var(--teal)">
-      <span class="lbl" style="--c: var(--teal)">Rule 1</span>
+    <div class="card rf" style="--c: var(--bp)">
+      <span class="lbl" style="--c: var(--bp)">Rule 1</span>
       <h4>Role 1 is finite</h4>
       <p><span class="f">Role 1</span> is always the finite verb. It shows tense and agrees with the subject. Every later role is non-finite. <a class="go" href="#go-p3-finite">Finite or not &rarr;</a></p>
     </div>
-    <div class="card rn" style="--c: var(--ochre)">
-      <span class="lbl" style="--c: var(--ochre)">Rule 2</span>
+    <div class="card rn" style="--c: var(--bnx)">
+      <span class="lbl" style="--c: var(--bnx)">Rule 2</span>
       <h4>The whole phrase builds aspect &amp; voice</h4>
       <p>The helper in Role 1 plus the forms after it (<span class="n">be + V4</span>, <span class="n">have + V3</span>, <span class="n">be + V3</span>) decide continuous, perfect or passive. Role 1 alone tells only the tense. <a class="go" href="#go-p3-aspect">Aspect and voice &rarr;</a></p>
     </div>
-    <div class="card rl" style="--c: var(--blue)">
-      <span class="lbl" style="--c: var(--blue)">Rule 3</span>
+    <div class="card rl" style="--c: var(--bo)">
+      <span class="lbl" style="--c: var(--bo)">Rule 3</span>
       <h4>The last role is the lexical verb</h4>
       <p>The last role, the <span class="l">lexical verb</span>, decides what comes next: <b>None</b>, an <b>Object</b>, a <b>Complement</b>, or an <b>Adverbial</b> when one is required. <a class="go" href="#go-p2-pattern">Clause patterns &rarr;</a></p>
     </div>

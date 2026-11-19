@@ -460,6 +460,9 @@ body { font-size: 16.5px; }
 .vft .vf-f{white-space:nowrap;width:11rem}
 .vft .vf-f .be{margin-right:.3em;font-size:1.05rem}
 .vft .vf-s{line-height:1.6}
+.vft .vst{display:block;width:fit-content;margin-bottom:6px;padding:2px 11px;border-radius:999px;font-size:.78rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;line-height:1.5}
+.vft .vst.fin{background:var(--pres-soft);color:var(--pres);box-shadow:inset 0 0 0 1px var(--pres)}
+.vft .vst.nonfin{background:var(--rare);color:var(--fg);box-shadow:inset 0 0 0 1px var(--rare-be)}
 .vft tbody tr:last-child > *{border-bottom:0}
 #p-intro{gap:26px}
 #p-intro .label{margin:0 0 -12px;letter-spacing:.1em}
@@ -480,11 +483,11 @@ body { font-size: 16.5px; }
     <div class="scroll" tabindex="0" role="region" aria-label="The forms of be, V1 to V5">
       <table class="vft"><thead><tr><th>Form</th><th>Forms of &ldquo;be&rdquo;</th><th>Grammatical status</th></tr></thead>
         <tbody>
-          <tr><th scope="row" class="vf-h"><span class="vf-v">V1</span><small>base</small></th><td class="vf-f"><b class="be">be</b></td><td class="vf-s"><strong>Non-finite.</strong> Used after modals, after &ldquo;to&rdquo;, and in commands or the subjunctive.</td></tr>
-          <tr><th scope="row" class="vf-h"><span class="vf-v">V2</span><small>past</small></th><td class="vf-f"><b class="be">was</b> <b class="be">were</b></td><td class="vf-s"><strong>Finite.</strong> The only English verb with two past forms: <em>I / he / she / it was</em> (singular) and <em>we / you / they were</em> (plural and &ldquo;you&rdquo;).</td></tr>
-          <tr><th scope="row" class="vf-h"><span class="vf-v">V3</span><small>past participle</small></th><td class="vf-f"><b class="be">been</b></td><td class="vf-s"><strong>Non-finite.</strong> Always follows a form of the helping verb have: <em>has / have / had been.</em></td></tr>
-          <tr><th scope="row" class="vf-h"><span class="vf-v">V4</span><small>present participle</small></th><td class="vf-f"><b class="be">being</b></td><td class="vf-s"><strong>Non-finite.</strong> Follows a finite form of be (<em>am / is / are / was / were being</em>) or works on its own as a gerund or participle.<p class="note" style="font-size:.85rem;margin-top:8px">Being can also follow non-finite be in rare constructions (<em>He must be being followed</em>), and it works as a gerund in <em>She hates being watched</em>.</p></td></tr>
-          <tr><th scope="row" class="vf-h"><span class="vf-v">V5</span><small>present</small></th><td class="vf-f"><b class="be">am</b> <b class="be">is</b> <b class="be">are</b></td><td class="vf-s"><strong>Finite.</strong> Marked for person and number: <em>I am, he / she / it is, we / you / they are.</em></td></tr>
+          <tr><th scope="row" class="vf-h"><span class="vf-v">V1</span><small>base</small></th><td class="vf-f"><b class="be">be</b></td><td class="vf-s"><strong class="vst nonfin">Non-finite</strong>Used after modals, after &ldquo;to&rdquo;, and in commands or the subjunctive.</td></tr>
+          <tr><th scope="row" class="vf-h"><span class="vf-v">V2</span><small>past</small></th><td class="vf-f"><b class="be">was</b> <b class="be">were</b></td><td class="vf-s"><strong class="vst fin">Finite</strong>The only English verb with two past forms: <em>I / he / she / it was</em> (singular) and <em>we / you / they were</em> (plural and &ldquo;you&rdquo;).</td></tr>
+          <tr><th scope="row" class="vf-h"><span class="vf-v">V3</span><small>past participle</small></th><td class="vf-f"><b class="be">been</b></td><td class="vf-s"><strong class="vst nonfin">Non-finite</strong>Always follows a form of the helping verb have: <em>has / have / had been.</em></td></tr>
+          <tr><th scope="row" class="vf-h"><span class="vf-v">V4</span><small>present participle</small></th><td class="vf-f"><b class="be">being</b></td><td class="vf-s"><strong class="vst nonfin">Non-finite</strong>Follows a finite form of be (<em>am / is / are / was / were being</em>) or works on its own as a gerund or participle.<p class="note" style="font-size:.85rem;margin-top:8px">Being can also follow non-finite be in rare constructions (<em>He must be being followed</em>), and it works as a gerund in <em>She hates being watched</em>.</p></td></tr>
+          <tr><th scope="row" class="vf-h"><span class="vf-v">V5</span><small>present</small></th><td class="vf-f"><b class="be">am</b> <b class="be">is</b> <b class="be">are</b></td><td class="vf-s"><strong class="vst fin">Finite</strong>Marked for person and number: <em>I am, he / she / it is, we / you / they are.</em></td></tr>
         </tbody></table>
     </div>
     <div class="btns"><button class="btn" type="button" data-go="forms">Next: Meanings &rarr;</button></div>

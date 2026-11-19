@@ -238,46 +238,46 @@ th small { font-weight: 400; color: var(--muted); }
 .scene .road { fill: none; stroke: var(--muted); stroke-width: 12; opacity: .35; stroke-linecap: round; }
 .scene .dash { stroke-width: 2; stroke-dasharray: 6 6; opacity: 1; stroke: var(--fg); }
 .form .alt { margin-top: 6px; padding-top: 6px; border-top: 1px dashed var(--line); color: var(--fg); }
-#p-ways .step, #p-main .step { margin-top: 6px; }
+#p-ways .step, #p-forms .step { margin-top: 6px; }
 /* 12-tense table: calmer layout */
-#p-main .t12 { min-width: 660px; font-size: .92rem; border-collapse: separate; border-spacing: 0; }
-#p-main .t12 th, #p-main .t12 td { padding: 11px 16px; border: 0; border-bottom: 1px solid color-mix(in srgb, var(--line) 60%, transparent); vertical-align: middle; }
-#p-main .t12 tbody tr > * { border-top: 0; }
-#p-main .t12 thead th { background: transparent; color: var(--muted); font-family: var(--font-body); font-size: .72rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; border-bottom: 2px solid var(--line); }
-#p-main .t12 thead th small { text-transform: none; letter-spacing: 0; font-size: .75rem; }
-#p-main .t12 tbody th { background: transparent; color: var(--fg); font-weight: 500; font-size: .92rem; border-left: 4px solid transparent; }
-#p-main .t12 tbody th.h-pres { border-left-color: var(--pres); }
-#p-main .t12 tbody th.h-past { border-left-color: var(--past); }
-#p-main .t12 tbody th.h-fut { border-left-color: var(--fut); }
-#p-main .t12 tr.grp th { border: 0; padding: 20px 16px 6px; font-family: var(--font-display); font-size: .8rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; }
-#p-main .t12 tr.grp:first-child th, #p-main .t12 tbody tr.grp:first-child th { padding-top: 10px; }
-#p-main .t12 tr.grp th.g-pres { color: var(--pres); } #p-main .t12 tr.grp th.g-past { color: var(--past); } #p-main .t12 tr.grp th.g-fut { color: var(--fut); }
-#p-main .t12 .be { background: none; padding: 0; font-weight: 600; }
-#p-main .t12 tr.common .be { color: var(--pres); }
-#p-main .t12 tr.beh .be { color: var(--past); }
-#p-main .t12 tr.rare > * { background: color-mix(in srgb, var(--rare) 65%, transparent); color: var(--muted); }
-#p-main .t12 tr.rare .be { background: none; color: var(--muted); font-weight: 500; }
-#p-main .t12 .dot { width: .6rem; height: .6rem; margin-right: 10px; }
-#p-main .t12 td:nth-child(2), #p-main .t12 td:nth-child(3), #p-main .t12 td:nth-child(4) { white-space: nowrap; }
+#p-forms .t12 { min-width: 660px; font-size: .92rem; border-collapse: separate; border-spacing: 0; }
+#p-forms .t12 th, #p-forms .t12 td { padding: 11px 16px; border: 0; border-bottom: 1px solid color-mix(in srgb, var(--line) 60%, transparent); vertical-align: middle; }
+#p-forms .t12 tbody tr > * { border-top: 0; }
+#p-forms .t12 thead th { background: transparent; color: var(--muted); font-family: var(--font-body); font-size: .72rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; border-bottom: 2px solid var(--line); }
+#p-forms .t12 thead th small { text-transform: none; letter-spacing: 0; font-size: .75rem; }
+#p-forms .t12 tbody th { background: transparent; color: var(--fg); font-weight: 500; font-size: .92rem; border-left: 4px solid transparent; }
+#p-forms .t12 tbody th.h-pres { border-left-color: var(--pres); }
+#p-forms .t12 tbody th.h-past { border-left-color: var(--past); }
+#p-forms .t12 tbody th.h-fut { border-left-color: var(--fut); }
+#p-forms .t12 tr.grp th { border: 0; padding: 20px 16px 6px; font-family: var(--font-display); font-size: .8rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; }
+#p-forms .t12 tr.grp:first-child th, #p-forms .t12 tbody tr.grp:first-child th { padding-top: 10px; }
+#p-forms .t12 tr.grp th.g-pres { color: var(--pres); } #p-forms .t12 tr.grp th.g-past { color: var(--past); } #p-forms .t12 tr.grp th.g-fut { color: var(--fut); }
+#p-forms .t12 .be { background: none; padding: 0; font-weight: 600; }
+#p-forms .t12 tr.common .be { color: var(--pres); }
+#p-forms .t12 tr.beh .be { color: var(--past); }
+#p-forms .t12 tr.rare > * { background: color-mix(in srgb, var(--rare) 65%, transparent); color: var(--muted); }
+#p-forms .t12 tr.rare .be { background: none; color: var(--muted); font-weight: 500; }
+#p-forms .t12 .dot { width: .6rem; height: .6rem; margin-right: 10px; }
+#p-forms .t12 td:nth-child(2), #p-forms .t12 td:nth-child(3), #p-forms .t12 td:nth-child(4) { white-space: nowrap; }
 
-#p-main .t12.tt { min-width: 720px; }
-#p-main .t12.tt td { white-space: normal; }
-#p-main .t12.tt tbody th { border-left: 0; font-weight: 600; white-space: nowrap; }
-#p-main .t12.tt thead th.h-pres { color: var(--pres); } #p-main .t12.tt thead th.h-past { color: var(--past); } #p-main .t12.tt thead th.h-fut { color: var(--fut); }
-#p-main .t12.tt tr td.cr .be { color: var(--muted); font-weight: 500; }
-#p-main .t12.tt td small { display: block; margin-top: 4px; }
-#p-main .t12.tt tr.common .be { color: var(--pres); } #p-main .t12.tt tr.beh .be { color: var(--past); }
-#p-main .t12.tt td.cr { background: color-mix(in srgb, var(--rare) 65%, transparent); color: var(--muted); }
-#p-main .t12 .be, #p-main .t12 tr.rare .be, #p-main .t12.tt tr td.cr .be { font-weight: 700; }
+#p-forms .t12.tt { min-width: 720px; }
+#p-forms .t12.tt td { white-space: normal; }
+#p-forms .t12.tt tbody th { border-left: 0; font-weight: 600; white-space: nowrap; }
+#p-forms .t12.tt thead th.h-pres { color: var(--pres); } #p-forms .t12.tt thead th.h-past { color: var(--past); } #p-forms .t12.tt thead th.h-fut { color: var(--fut); }
+#p-forms .t12.tt tr td.cr .be { color: var(--muted); font-weight: 500; }
+#p-forms .t12.tt td small { display: block; margin-top: 4px; }
+#p-forms .t12.tt tr.common .be { color: var(--pres); } #p-forms .t12.tt tr.beh .be { color: var(--past); }
+#p-forms .t12.tt td.cr { background: color-mix(in srgb, var(--rare) 65%, transparent); color: var(--muted); }
+#p-forms .t12 .be, #p-forms .t12 tr.rare .be, #p-forms .t12.tt tr td.cr .be { font-weight: 700; }
 :root { --be: #2f6286; --be-soft: #e1ebf2; --cover: #5f6a22; }
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --be: #9cc3dd; --be-soft: #1f3442; --cover: #c3cf79; } }
 :root[data-theme="dark"] { --be: #9cc3dd; --be-soft: #1f3442; --cover: #c3cf79; }
-.cover .be, .cover .new, .cover #p-main .t12 .be, .cover #p-main .t12 tr .be { border-bottom-color: var(--cover) !important; }
+.cover .be, .cover .new, .cover #p-forms .t12 .be, .cover #p-forms .t12 tr .be { border-bottom-color: var(--cover) !important; }
 :root { --bem: #563c44; }
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --bem: #e0b4c6; } }
 :root[data-theme="dark"] { --bem: #e0b4c6; }
-#p-main .t12 .be, #p-main .t12 tr.common .be, #p-main .t12 tr.beh .be, #p-main .t12 tr.rare .be, #p-main .t12.tt tr.common .be, #p-main .t12.tt tr.beh .be, #p-main .t12.tt tr td.cr .be { color: var(--bem); }
-.cover #p-main .t12 .be, .cover #p-main .t12 tr .be { color: transparent !important; background: none !important; border-bottom: 2px solid var(--be); border-radius: 0; user-select: none; }
+#p-forms .t12 .be, #p-forms .t12 tr.common .be, #p-forms .t12 tr.beh .be, #p-forms .t12 tr.rare .be, #p-forms .t12.tt tr.common .be, #p-forms .t12.tt tr.beh .be, #p-forms .t12.tt tr td.cr .be { color: var(--bem); }
+.cover #p-forms .t12 .be, .cover #p-forms .t12 tr .be { color: transparent !important; background: none !important; border-bottom: 2px solid var(--be); border-radius: 0; user-select: none; }
 
 #p-intro .rung .t { color: var(--pres); font-weight: 600; font-size: 1.1rem; }
 #p-intro .rung { border-left: 5px solid var(--pres); }
@@ -330,9 +330,9 @@ th small { font-weight: 400; color: var(--muted); }
 /* All tables: same calm style (light header, thick top border, horizontal lines only) */
 table th, table td { border-left: 0 !important; border-right: 0 !important; }
 table thead th { background: #e3ebec !important; color: var(--navy) !important; box-shadow: inset 0 6px 0 var(--navy) !important; padding-top: 14px; border-bottom: 1px solid var(--line) !important; font-family: var(--font-display); text-transform: none; letter-spacing: .01em; }
-#p-main .t12.tt thead th.h-pres { box-shadow: inset 0 6px 0 var(--pres) !important; }
-#p-main .t12.tt thead th.h-past { box-shadow: inset 0 6px 0 var(--past) !important; }
-#p-main .t12.tt thead th.h-fut { box-shadow: inset 0 6px 0 var(--fut) !important; }
+#p-forms .t12.tt thead th.h-pres { box-shadow: inset 0 6px 0 var(--pres) !important; }
+#p-forms .t12.tt thead th.h-past { box-shadow: inset 0 6px 0 var(--past) !important; }
+#p-forms .t12.tt thead th.h-fut { box-shadow: inset 0 6px 0 var(--fut) !important; }
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) table thead th { background: #243a40 !important; color: var(--fg) !important; } }
 :root[data-theme="dark"] table thead th { background: #243a40 !important; color: var(--fg) !important; }
 table .num { background: transparent; color: var(--fg); border: 1.5px solid var(--muted); font-weight: 700; }
@@ -379,11 +379,10 @@ body { font-size: 16.5px; }
     <nav class="tabs" role="tablist" aria-label="Study tabs">
       <button class="tab" role="tab" id="t-intro" aria-controls="p-intro" data-tab="intro"><span class="n">i</span>Be Forms</button>
       <button class="tab" role="tab" id="t-forms" aria-controls="p-forms" data-tab="forms"><span class="n">1</span>Meanings</button>
-      <button class="tab" role="tab" id="t-main" aria-controls="p-main" data-tab="main"><span class="n">2</span>Be in tenses</button>
-      <button class="tab" role="tab" id="t-passive" aria-controls="p-passive" data-tab="passive"><span class="n">3</span>Be in the passive</button>
-      <button class="tab" role="tab" id="t-build" aria-controls="p-build" data-tab="build"><span class="n">4</span>Structure build-up</button>
-      <button class="tab" role="tab" id="t-ways" aria-controls="p-ways" data-tab="ways"><span class="n">5</span>Ways &ldquo;be&rdquo; is used</button>
-      <button class="tab" role="tab" id="t-practice" aria-controls="p-practice" data-tab="practice"><span class="n">6</span>Practice</button>
+      <button class="tab" role="tab" id="t-passive" aria-controls="p-passive" data-tab="passive"><span class="n">2</span>Be in the passive</button>
+      <button class="tab" role="tab" id="t-build" aria-controls="p-build" data-tab="build"><span class="n">3</span>Structure build-up</button>
+      <button class="tab" role="tab" id="t-ways" aria-controls="p-ways" data-tab="ways"><span class="n">4</span>Ways &ldquo;be&rdquo; is used</button>
+      <button class="tab" role="tab" id="t-practice" aria-controls="p-practice" data-tab="practice"><span class="n">5</span>Practice</button>
     </nav>
   </header>
 
@@ -509,10 +508,6 @@ body { font-size: 16.5px; }
     <p class="lead">As a main verb, &ldquo;be&rdquo; is a <strong>linking verb</strong>. It links the subject to information about it.</p>
     <p class="lead">&ldquo;Be&rdquo; expresses five core meanings: <strong>identity</strong>, <strong>description</strong>, <strong>location</strong>, <strong>happening</strong>, and <strong>existence</strong>.</p>
     <div class="grid"><div class="card mean"><svg class="scene bg-be" viewBox="0 0 240 120" role="img" aria-label="An ID card with a name and a globe for where someone is from"><rect x="26" y="18" width="136" height="84" rx="10" class="o"/><rect x="38" y="30" width="38" height="46" rx="6" class="fp"/><circle cx="57" cy="46" r="8" class="fcard"/><path d="M43 76a14 14 0 0 1 28 0z" class="fcard"/><text x="86" y="46" font-size="15" class="txt">Lara</text><path d="M86 56h60M86 66h42" class="ln"/><rect x="26" y="86" width="136" height="16" rx="8" class="fbe"/><circle cx="196" cy="52" r="26" class="o"/><ellipse cx="196" cy="52" rx="11" ry="26" class="ln"/><path d="M170 52h52M176 38h40M176 66h40" class="ln"/><path d="M208 44s-6-6-6-11a6 6 0 0 1 12 0c0 5-6 11-6 11z" class="fbe"/><text x="196" y="96" text-anchor="middle" font-size="11" class="txt">from</text></svg><h3>A. Identity</h3><p class="what">Gives a name, a job, a role, or where someone is from (origin).</p><ul class="ex"><li>She <b class="be">is</b> Lara and this <b class="be">is</b> Bob.</li><li>He <b class="be">is</b> a singer.</li><li>He <b class="be">is</b> <em>not</em> a singer.</li><li>Alex <b class="be">is</b> from Ireland.</li><li>Sonia <b class="be">is</b> Spanish.</li></ul></div><div class="card mean"><svg class="scene bg-ok" viewBox="0 0 240 120" role="img" aria-label="Weather, feeling, colour and price"><circle cx="48" cy="54" r="10" class="fpa"/><path d="M48 36v5M48 67v5M30 54h5M61 54h5M35 41l4 4M57 63l4 4M61 41l-4 4M39 63l-4 4" class="ln"/><circle cx="96" cy="54" r="17" class="o"/><circle cx="90" cy="49" r="2" class="fg"/><circle cx="102" cy="49" r="2" class="fg"/><path d="M88 58q8 9 16 0" class="ln"/><path d="M144 34C144 34 128 52 128 62a16 16 0 0 0 32 0C160 52 144 34 144 34z" class="fbe"/><path d="M137 62a7 7 0 0 0 5 6" class="hl"/><g transform="rotate(-12 192 54)"><rect x="174" y="42" width="36" height="24" rx="5" class="o"/><circle cx="180" cy="54" r="2.500" class="fg"/><text x="197" y="59" text-anchor="middle" font-size="13" class="txt">$5</text></g><text x="48" y="102" text-anchor="middle" font-size="10" class="txt">weather</text><text x="96" y="102" text-anchor="middle" font-size="10" class="txt">feeling</text><text x="144" y="102" text-anchor="middle" font-size="10" class="txt">colour</text><text x="192" y="102" text-anchor="middle" font-size="10" class="txt">price</text></svg><h3>B. Description</h3><p class="what">Tells what someone or something is like: colour, age, feelings, weather, price.</p><ul class="ex"><li>Our dog <b class="be">is</b> black.</li><li>I <b class="be">am</b> tired.</li><li>My father <b class="be">is</b> 50.</li><li>It <b class="be">is</b> sunny today.</li></ul></div><div class="card mean"><svg class="scene bg-fut" viewBox="0 0 240 120" role="img" aria-label="A map with a pin on the school"><rect x="20" y="12" width="200" height="96" rx="10" class="o"/><path d="M88 84Q130 62 170 82T216 68" class="road"/><path d="M88 84Q130 62 170 82T216 68" class="ln dash"/><circle cx="190" cy="42" r="10" class="fok"/><path d="M190 52v10" class="ln"/><rect x="44" y="62" width="40" height="30" class="o"/><path d="M38 62L64 46l26 16z" class="fpa st"/><rect x="58" y="74" width="12" height="18" class="fg"/><path d="M64 44s-11-12-11-22a11 11 0 0 1 22 0c0 10-11 22-11 22z" class="fbe"/><circle cx="64" cy="22" r="4" class="fcard"/></svg><h3>C. Location</h3><p class="what">Says where a person or thing is.</p><ul class="ex"><li>She <b class="be">is</b> at school.</li><li>She <b class="be">is</b> home.</li><li>The food <b class="be">is</b> on the table.</li><li>The meeting <b class="be">is</b> down the hall.</li></ul></div><div class="card mean"><svg class="scene bg-past" viewBox="0 0 240 120" role="img" aria-label="A calendar and a clock for a party tonight"><rect x="36" y="20" width="84" height="80" rx="8" class="o"/><rect x="36" y="20" width="84" height="22" rx="8" class="fpa"/><path d="M56 14v12M100 14v12" class="ln"/><circle cx="48" cy="56" r="2" class="fg"/><circle cx="63" cy="56" r="2" class="fg"/><circle cx="78" cy="56" r="2" class="fg"/><circle cx="93" cy="56" r="2" class="fg"/><circle cx="108" cy="56" r="2" class="fg"/><circle cx="48" cy="70" r="2" class="fg"/><circle cx="63" cy="70" r="2" class="fg"/><circle cx="78" cy="70" r="8" class="fbe"/><circle cx="93" cy="70" r="2" class="fg"/><circle cx="108" cy="70" r="2" class="fg"/><circle cx="48" cy="84" r="2" class="fg"/><circle cx="63" cy="84" r="2" class="fg"/><circle cx="78" cy="84" r="2" class="fg"/><circle cx="93" cy="84" r="2" class="fg"/><circle cx="176" cy="60" r="32" class="o"/><path d="M176 32v5M204 60h-5M176 88v-5M148 60h5" class="ln"/><path d="M176 60l-13.900 8M176 60V38" class="ln"/><circle cx="176" cy="60" r="2.5" class="fg"/><text x="176" y="108" text-anchor="middle" font-size="12" class="txt">tonight</text></svg><h3>D. Happening</h3><p class="what">Says when an event takes place.</p><ul class="ex"><li>The party <b class="be">is</b> tonight.</li><li>The meeting <b class="be">is</b> at five o&rsquo;clock.</li><li>The test <b class="be">was</b> yesterday.</li></ul></div><div class="card mean"><svg class="scene bg-pres" viewBox="0 0 240 120" role="img" aria-label="A rabbit sitting in the grass"><path d="M0 100Q60 90 120 99T240 97V120H0z" class="fok"/><circle cx="150" cy="94" r="7" class="o"/><ellipse cx="118" cy="88" rx="28" ry="22" class="o"/><ellipse cx="102" cy="108" rx="11" ry="5" class="o"/><ellipse cx="104" cy="30" rx="7" ry="20" class="o"/><ellipse cx="124" cy="26" rx="7" ry="20" class="o"/><ellipse cx="114" cy="56" rx="20" ry="17" class="o"/><circle cx="107" cy="54" r="2.5" class="fg"/><circle cx="121" cy="54" r="2.5" class="fg"/><circle cx="114" cy="61" r="2.3" class="fbe"/><text x="24" y="62" font-size="14" class="txt">there is</text><path d="M80 58h18M92 52l6 6-6 6" class="ln"/></svg><h3>E. Existence</h3><p class="what">Says that someone or something is there. Use &ldquo;there is&rdquo; for one and &ldquo;there are&rdquo; for more than one.</p><ul class="ex"><li>There <b class="be">is</b> a rabbit inside.</li><li>There <b class="be">is</b> nothing in the fridge.</li><li>There <b class="be">are</b> two cats here.</li></ul></div></div>
-  </section>
-
-  <section class="panel" role="tabpanel" id="p-main" aria-labelledby="t-main" hidden>
-    <h2>Be in tenses</h2>
     <h3>&ldquo;Be&rdquo; as a main verb in all 12 tenses</h3>
             <div class="scroll" tabindex="0" role="region" aria-label="Forms of be in all 12 tenses">
       <table class="t12 tt">
@@ -526,10 +521,8 @@ body { font-size: 16.5px; }
       </table>
     </div>
     <p class="note"><strong>Being</strong> (V4) shows behaviour and is used only with words like rude or polite. You cannot say &ldquo;I am being here&rdquo;. <strong>Been</strong> (V3) comes after have / has / had and joins the past to now. It does not mean &ldquo;finished&rdquo;.</p>
+  </section>
 
-
-
-    </section>
 
   <section class="panel" role="tabpanel" id="p-passive" aria-labelledby="t-passive" hidden>
     <h2>Active to passive voice: tense-wise changes</h2>
@@ -608,7 +601,7 @@ body { font-size: 16.5px; }
 
     <span class="step">Level 2 &middot; Intermediate</span>
     <h3>Be as a helping verb</h3>
-    <div class="pair"><div class="card mean"><h3>Be + V4: continuous</h3><p class="what">Shows an action in progress. See Be in tenses.</p><p class="formula">Subject + <span class="be">be form</span> + V4</p><ul class="ex"><li>We <b class="be">were</b> walking home.</li><li>It <b class="be">has been</b> raining all day.</li></ul></div><div class="card mean"><h3>Be + V3: passive</h3><p class="what">The subject receives the action. See Be in the passive.</p><p class="formula">Subject + <span class="be">be form</span> + V3</p><ul class="ex"><li>The window <b class="be">was</b> broken.</li><li>These toys <b class="be">are</b> made of wood.</li></ul></div></div>
+    <div class="pair"><div class="card mean"><h3>Be + V4: continuous</h3><p class="what">Shows an action in progress. See Meanings.</p><p class="formula">Subject + <span class="be">be form</span> + V4</p><ul class="ex"><li>We <b class="be">were</b> walking home.</li><li>It <b class="be">has been</b> raining all day.</li></ul></div><div class="card mean"><h3>Be + V3: passive</h3><p class="what">The subject receives the action. See Be in the passive.</p><p class="formula">Subject + <span class="be">be form</span> + V3</p><ul class="ex"><li>The window <b class="be">was</b> broken.</li><li>These toys <b class="be">are</b> made of wood.</li></ul></div></div>
 
     <h3>Be with &ldquo;to&rdquo;: plans and near future</h3>
     <div class="grid">

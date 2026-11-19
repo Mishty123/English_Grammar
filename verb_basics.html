@@ -88,6 +88,18 @@ svg.map .e-teal { stroke: var(--teal); } svg.map .e-slate { stroke: var(--slate)
 .legend .b { background: color-mix(in srgb, var(--slate) 25%, var(--card)); border-color: var(--slate); }
 .legend .c { background: color-mix(in srgb, var(--blue) 25%, var(--card)); border-color: var(--blue); }
 
+svg.map .b-nf { fill: color-mix(in srgb, var(--ochre) 20%, var(--card)); stroke: var(--ochre); }
+svg.map .b-lexf { fill: color-mix(in srgb, var(--teal) 16%, var(--card)); stroke: var(--teal); stroke-width: 2; }
+svg.map .rim-lex { fill: none; stroke: var(--blue); stroke-width: 2; }
+svg.map .b-lexnf { fill: color-mix(in srgb, var(--ochre) 20%, var(--card)); stroke: var(--blue); stroke-width: 2.6; }
+.legend2 { border-top: 1px dashed var(--line); margin-top: 4px; padding-top: 10px; }
+.legend .d { background: color-mix(in srgb, var(--ochre) 25%, var(--card)); border-color: var(--ochre); }
+.legend .e { background: color-mix(in srgb, var(--ochre) 25%, var(--card)); border-color: var(--blue); border-width: 2.4px; }
+.legend .g { background: color-mix(in srgb, var(--teal) 25%, var(--card)); border: 2px solid var(--teal); box-shadow: inset 0 0 0 1.5px var(--card), inset 0 0 0 3px var(--blue); }
+.three .card.rf { background: color-mix(in srgb, var(--teal) 12%, var(--card)); border-color: var(--teal); }
+.three .card.rn { background: color-mix(in srgb, var(--ochre) 14%, var(--card)); border-color: var(--ochre); }
+.three .card.rn .n { --c: var(--ochre); }
+.three .card.rl { border: 2px solid var(--blue); border-top-width: 4px; box-shadow: inset 0 0 0 3px var(--card), inset 0 0 0 5px var(--blue); }
 .three { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin-top: 16px; }
 .three .card { border-top: 4px solid var(--c); }
 .three h4 { font-family: var(--h); font-weight: 400; font-size: 1.1rem; margin: 6px 0 4px; }
@@ -325,16 +337,16 @@ footer { margin-top: 48px; }
 <text class="t2" x="24" y="318" dominant-baseline="central">4 roles</text>
 <path class="e e-blue" d="M196 90H540M304 166H540M412 242H540M520 318H540M540 90V318"/>
 <path class="e e-blue" d="M540 204H558" marker-end="url(#ar)"/>
-<rect class="b-teal" x="96" y="60" width="100" height="60" rx="10"/><text class="t1" x="146" y="76" text-anchor="middle" dominant-baseline="central">Lexical</text><text class="t2" x="146" y="94" text-anchor="middle" dominant-baseline="central">V1 / V5 / V2</text><text class="t3" x="146" y="110" text-anchor="middle" dominant-baseline="central">finite</text>
+<rect class="b-lexf" x="96" y="60" width="100" height="60" rx="10"/><rect class="rim-lex" x="99" y="63" width="94" height="54" rx="8"/><text class="t1" x="146" y="76" text-anchor="middle" dominant-baseline="central">Lexical</text><text class="t2" x="146" y="94" text-anchor="middle" dominant-baseline="central">V1 / V5 / V2</text><text class="t3" x="146" y="110" text-anchor="middle" dominant-baseline="central">finite</text>
 <rect class="b-teal" x="96" y="136" width="100" height="60" rx="10"/><text class="t1" x="146" y="152" text-anchor="middle" dominant-baseline="central">Helping</text><text class="t2" x="146" y="170" text-anchor="middle" dominant-baseline="central">HV1</text><text class="t3" x="146" y="186" text-anchor="middle" dominant-baseline="central">finite</text>
-<rect class="b-slate" x="204" y="136" width="100" height="60" rx="10"/><text class="t1" x="254" y="152" text-anchor="middle" dominant-baseline="central">Lexical</text><text class="t2" x="254" y="170" text-anchor="middle" dominant-baseline="central">V1 / V3 / V4</text><text class="t3" x="254" y="186" text-anchor="middle" dominant-baseline="central">non-finite</text>
+<rect class="b-lexnf" x="204" y="136" width="100" height="60" rx="10"/><text class="t1" x="254" y="152" text-anchor="middle" dominant-baseline="central">Lexical</text><text class="t2" x="254" y="170" text-anchor="middle" dominant-baseline="central">V1 / V3 / V4</text><text class="t3" x="254" y="186" text-anchor="middle" dominant-baseline="central">non-finite</text>
 <rect class="b-teal" x="96" y="212" width="100" height="60" rx="10"/><text class="t1" x="146" y="228" text-anchor="middle" dominant-baseline="central">Helping</text><text class="t2" x="146" y="246" text-anchor="middle" dominant-baseline="central">HV1</text><text class="t3" x="146" y="262" text-anchor="middle" dominant-baseline="central">finite</text>
-<rect class="b-slate" x="204" y="212" width="100" height="60" rx="10"/><text class="t1" x="254" y="228" text-anchor="middle" dominant-baseline="central">Helping</text><text class="t2" x="254" y="246" text-anchor="middle" dominant-baseline="central">HV2</text><text class="t3" x="254" y="262" text-anchor="middle" dominant-baseline="central">non-finite</text>
-<rect class="b-slate" x="312" y="212" width="100" height="60" rx="10"/><text class="t1" x="362" y="228" text-anchor="middle" dominant-baseline="central">Lexical</text><text class="t2" x="362" y="246" text-anchor="middle" dominant-baseline="central">V1 / V3 / V4</text><text class="t3" x="362" y="262" text-anchor="middle" dominant-baseline="central">non-finite</text>
+<rect class="b-nf" x="204" y="212" width="100" height="60" rx="10"/><text class="t1" x="254" y="228" text-anchor="middle" dominant-baseline="central">Helping</text><text class="t2" x="254" y="246" text-anchor="middle" dominant-baseline="central">HV2</text><text class="t3" x="254" y="262" text-anchor="middle" dominant-baseline="central">non-finite</text>
+<rect class="b-lexnf" x="312" y="212" width="100" height="60" rx="10"/><text class="t1" x="362" y="228" text-anchor="middle" dominant-baseline="central">Lexical</text><text class="t2" x="362" y="246" text-anchor="middle" dominant-baseline="central">V1 / V3 / V4</text><text class="t3" x="362" y="262" text-anchor="middle" dominant-baseline="central">non-finite</text>
 <rect class="b-teal" x="96" y="288" width="100" height="60" rx="10"/><text class="t1" x="146" y="304" text-anchor="middle" dominant-baseline="central">Helping</text><text class="t2" x="146" y="322" text-anchor="middle" dominant-baseline="central">HV1</text><text class="t3" x="146" y="338" text-anchor="middle" dominant-baseline="central">finite</text>
-<rect class="b-slate" x="204" y="288" width="100" height="60" rx="10"/><text class="t1" x="254" y="304" text-anchor="middle" dominant-baseline="central">Helping</text><text class="t2" x="254" y="322" text-anchor="middle" dominant-baseline="central">HV2</text><text class="t3" x="254" y="338" text-anchor="middle" dominant-baseline="central">non-finite</text>
-<rect class="b-slate" x="312" y="288" width="100" height="60" rx="10"/><text class="t1" x="362" y="304" text-anchor="middle" dominant-baseline="central">Helping</text><text class="t2" x="362" y="322" text-anchor="middle" dominant-baseline="central">HV3</text><text class="t3" x="362" y="338" text-anchor="middle" dominant-baseline="central">non-finite</text>
-<rect class="b-slate" x="420" y="288" width="100" height="60" rx="10"/><text class="t1" x="470" y="304" text-anchor="middle" dominant-baseline="central">Lexical</text><text class="t2" x="470" y="322" text-anchor="middle" dominant-baseline="central">V1 / V3 / V4</text><text class="t3" x="470" y="338" text-anchor="middle" dominant-baseline="central">non-finite</text>
+<rect class="b-nf" x="204" y="288" width="100" height="60" rx="10"/><text class="t1" x="254" y="304" text-anchor="middle" dominant-baseline="central">Helping</text><text class="t2" x="254" y="322" text-anchor="middle" dominant-baseline="central">HV2</text><text class="t3" x="254" y="338" text-anchor="middle" dominant-baseline="central">non-finite</text>
+<rect class="b-nf" x="312" y="288" width="100" height="60" rx="10"/><text class="t1" x="362" y="304" text-anchor="middle" dominant-baseline="central">Helping</text><text class="t2" x="362" y="322" text-anchor="middle" dominant-baseline="central">HV3</text><text class="t3" x="362" y="338" text-anchor="middle" dominant-baseline="central">non-finite</text>
+<rect class="b-lexnf" x="420" y="288" width="100" height="60" rx="10"/><text class="t1" x="470" y="304" text-anchor="middle" dominant-baseline="central">Lexical</text><text class="t2" x="470" y="322" text-anchor="middle" dominant-baseline="central">V1 / V3 / V4</text><text class="t3" x="470" y="338" text-anchor="middle" dominant-baseline="central">non-finite</text>
 <rect class="b-blue" x="562" y="176" width="140" height="56" rx="10"/>
 <text class="t1" x="632" y="196" text-anchor="middle" dominant-baseline="central">Clause pattern</text>
 <text class="t2" x="632" y="217" text-anchor="middle" dominant-baseline="central">None / O / C (+ A)</text>
@@ -354,20 +366,26 @@ footer { margin-top: 48px; }
       <span><i class="b"></i>Whole verb phrase &rarr; aspect and voice</span>
       <span><i class="c"></i>Lexical verb &rarr; clause pattern</span>
     </div>
+    <div class="legend legend2">
+      <span><i class="a"></i>Finite verb</span>
+      <span><i class="d"></i>Non-finite verb</span>
+      <span><i class="e"></i>Lexical verb, non-finite (blue rim)</span>
+      <span><i class="g"></i>Lexical verb, finite (double rim)</span>
+    </div>
   </div>
 
   <div class="three">
-    <div class="card" style="--c: var(--teal)">
+    <div class="card rf" style="--c: var(--teal)">
       <span class="lbl" style="--c: var(--teal)">Rule 1</span>
       <h4>Role 1 is finite</h4>
       <p><span class="f">Role 1</span> is always the finite verb. It shows tense and agrees with the subject. Every later role is non-finite. <a class="go" href="#go-p3-finite">Finite or not &rarr;</a></p>
     </div>
-    <div class="card" style="--c: var(--slate)">
-      <span class="lbl" style="--c: var(--slate)">Rule 2</span>
+    <div class="card rn" style="--c: var(--ochre)">
+      <span class="lbl" style="--c: var(--ochre)">Rule 2</span>
       <h4>The whole phrase builds aspect &amp; voice</h4>
       <p>The helper in Role 1 plus the forms after it (<span class="n">be + V4</span>, <span class="n">have + V3</span>, <span class="n">be + V3</span>) decide continuous, perfect or passive. Role 1 alone tells only the tense. <a class="go" href="#go-p3-aspect">Aspect and voice &rarr;</a></p>
     </div>
-    <div class="card" style="--c: var(--blue)">
+    <div class="card rl" style="--c: var(--blue)">
       <span class="lbl" style="--c: var(--blue)">Rule 3</span>
       <h4>The last role is the lexical verb</h4>
       <p>The last role, the <span class="l">lexical verb</span>, decides what comes next: <b>None</b>, an <b>Object</b>, a <b>Complement</b>, or an <b>Adverbial</b> when one is required. <a class="go" href="#go-p2-pattern">Clause patterns &rarr;</a></p>

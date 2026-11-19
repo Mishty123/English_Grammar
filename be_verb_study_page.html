@@ -396,8 +396,10 @@ body { font-size: 16.5px; }
       <div class="card mean"><h3>Auxiliary (helping) verb: finite</h3><p class="what">Works inside the verb phrase to build the progressive aspect (be + V-ing) and the passive voice. Finite form: am, is, are, was, were.</p></div>
       <div class="card mean"><h3>Auxiliary (helping) verb: non-finite</h3><p class="what">Same jobs, but after another helper. Non-finite forms: be, being, been.</p></div>
     </div>
+    <style>.vgrid{grid-template-columns:repeat(6,1fr)}.vgrid>.card{grid-column:span 2}.vgrid>.card:nth-child(n+4){grid-column:span 3}@media (max-width:640px){.vgrid{grid-template-columns:1fr}.vgrid>.card,.vgrid>.card:nth-child(n+4){grid-column:auto}}</style>
     <span class="label">The 8 forms of &ldquo;be&rdquo;, mapped to V1 to V5</span>
-    <div class="grid"><div class="card mean"><h3>V1 <small style="font-family:var(--font-body);font-weight:400;color:var(--muted);font-size:.85rem">base</small></h3><p style="font-size:1.25rem;font-weight:600"><b class="be">be</b></p><p class="what"><strong>Non-finite.</strong> Used after modals, after &ldquo;to&rdquo;, and in commands or the subjunctive.</p></div><div class="card mean"><h3>V2 <small style="font-family:var(--font-body);font-weight:400;color:var(--muted);font-size:.85rem">past</small></h3><p style="font-size:1.25rem;font-weight:600"><b class="be">was</b>, <b class="be">were</b></p><p class="what"><strong>Finite.</strong> The only English verb with two past forms: <em>I / he / she / it was</em> (singular) and <em>we / you / they were</em> (plural and &ldquo;you&rdquo;).</p></div><div class="card mean"><h3>V3 <small style="font-family:var(--font-body);font-weight:400;color:var(--muted);font-size:.85rem">past participle</small></h3><p style="font-size:1.25rem;font-weight:600"><b class="be">been</b></p><p class="what"><strong>Non-finite.</strong> Always follows a form of the helping verb have: <em>has / have / had been.</em></p></div><div class="card mean"><h3>V4 <small style="font-family:var(--font-body);font-weight:400;color:var(--muted);font-size:.85rem">present participle</small></h3><p style="font-size:1.25rem;font-weight:600"><b class="be">being</b></p><p class="what"><strong>Non-finite.</strong> Follows a finite form of be (<em>am / is / are / was / were being</em>) or works on its own as a gerund or participle.</p></div><div class="card mean"><h3>V5 <small style="font-family:var(--font-body);font-weight:400;color:var(--muted);font-size:.85rem">present</small></h3><p style="font-size:1.25rem;font-weight:600"><b class="be">am</b>, <b class="be">is</b>, <b class="be">are</b></p><p class="what"><strong>Finite.</strong> Marked for person and number: <em>I am, he / she / it is, we / you / they are.</em></p></div></div>
+    <div class="grid vgrid"><div class="card mean"><h3>V1 <small style="font-family:var(--font-body);font-weight:400;color:var(--muted);font-size:.85rem">base</small></h3><p style="font-size:1.25rem;font-weight:600"><b class="be">be</b></p><p class="what"><strong>Non-finite.</strong> Used after modals, after &ldquo;to&rdquo;, and in commands or the subjunctive.</p></div><div class="card mean"><h3>V2 <small style="font-family:var(--font-body);font-weight:400;color:var(--muted);font-size:.85rem">past</small></h3><p style="font-size:1.25rem;font-weight:600"><b class="be">was</b>, <b class="be">were</b></p><p class="what"><strong>Finite.</strong> The only English verb with two past forms: <em>I / he / she / it was</em> (singular) and <em>we / you / they were</em> (plural and &ldquo;you&rdquo;).</p></div><div class="card mean"><h3>V3 <small style="font-family:var(--font-body);font-weight:400;color:var(--muted);font-size:.85rem">past participle</small></h3><p style="font-size:1.25rem;font-weight:600"><b class="be">been</b></p><p class="what"><strong>Non-finite.</strong> Always follows a form of the helping verb have: <em>has / have / had been.</em></p></div><div class="card mean"><h3>V4 <small style="font-family:var(--font-body);font-weight:400;color:var(--muted);font-size:.85rem">present participle</small></h3><p style="font-size:1.25rem;font-weight:600"><b class="be">being</b></p><p class="what"><strong>Non-finite.</strong> Follows a finite form of be (<em>am / is / are / was / were being</em>) or works on its own as a gerund or participle.</p></div><div class="card mean"><h3>V5 <small style="font-family:var(--font-body);font-weight:400;color:var(--muted);font-size:.85rem">present</small></h3><p style="font-size:1.25rem;font-weight:600"><b class="be">am</b>, <b class="be">is</b>, <b class="be">are</b></p><p class="what"><strong>Finite.</strong> Marked for person and number: <em>I am, he / she / it is, we / you / they are.</em></p></div></div>
+    <span class="label">Finite and non-finite be, in the verb phrase</span>
     <div id="be-pair" style="position:relative;display:flex;flex-wrap:wrap;gap:18px 28px;align-items:flex-start">
     <div id="be-list" style="flex:1 1 340px;min-width:0">
     <ul class="ex" style="max-width:none">
@@ -423,9 +425,9 @@ body { font-size: 16.5px; }
         var box = document.getElementById('be-pair'); if (!box) return;
         var list = document.getElementById('be-list'), card = document.getElementById('be-card');
         var a1 = document.getElementById('be-a1'), a2 = document.getElementById('be-a2'), sv = document.getElementById('be-arrows');
-        function arrow(path, li, n, target, cr) {
+        function arrow(path, li, n, target, cr, side) {
           var chips = li.querySelectorAll(':scope > b.be'); var c = chips[n].getBoundingClientRect(), t = target.getBoundingClientRect();
-          var x1 = c.right - cr.left + 10, y1 = c.top + c.height / 2 - cr.top;
+          var x1 = side ? c.right - cr.left + 30 : c.right - cr.left - 6, y1 = side ? c.top + c.height / 2 - cr.top : c.bottom - cr.top + 3;
           path.setAttribute('d', 'M' + x1 + ' ' + y1 + ' L' + (t.left - cr.left - 3) + ' ' + (t.top - cr.top + 3));
         }
         function draw() {
@@ -434,7 +436,7 @@ body { font-size: 16.5px; }
           sv.style.display = '';
           var lis = list.querySelectorAll('ul ul > li');
           arrow(a1, lis[0], 4, document.getElementById('vr-hv1-2'), cr);
-          arrow(a2, lis[1], 2, document.getElementById('vr-hv2-3'), cr);
+          arrow(a2, lis[1], 2, document.getElementById('vr-hv2-3'), cr, true);
         }
         if (window.ResizeObserver) new ResizeObserver(draw).observe(box);
         window.addEventListener('resize', draw); window.addEventListener('load', draw);

@@ -92,18 +92,18 @@ svg.map .e-teal { stroke: var(--teal); } svg.map .e-slate { stroke: var(--slate)
 
 svg.map .b-teal { fill: var(--bp-soft); stroke: var(--bp); }
 svg.map .b-nf { fill: var(--bn); stroke: var(--bn-rim); }
-svg.map .b-lexf { fill: var(--bp-soft); stroke: var(--bp); stroke-width: 2; }
+svg.map .b-lexf { fill: var(--bp-soft); stroke: var(--bp); stroke-width: 2.2; }
 svg.map .rim-lex { fill: none; stroke: var(--bo); stroke-width: 2.5; }
 svg.map .b-lexnf { fill: var(--bn); stroke: var(--bo); stroke-width: 2.5; }
 .legend2 { border-top: 1px dashed var(--line); margin-top: 4px; padding-top: 10px; }
 .legend .d { background: var(--bn); border-color: var(--bn-rim); }
 .legend .e { background: var(--bn); border-color: var(--bo); border-width: 2.4px; }
-.legend .g { background: var(--bp-soft); border: 2px solid var(--bp); box-shadow: inset 0 0 0 1.5px var(--card), inset 0 0 0 3px var(--bo); }
+.legend .g { background: var(--bp-soft); border: 2px solid var(--bo); box-shadow: inset 0 0 0 1.5px var(--card), inset 0 0 0 3px var(--bp); }
 .legend .f1 { background: var(--bp-soft); border-color: var(--bp); }
 .three .card.rf { background: var(--bp-soft); border-color: var(--bp); }
 .three .card.rn { background: var(--bn); border-color: var(--bn-rim); }
 .three .card.rn .n { --c: var(--bnx); }
-.three .card.rl { border: 2px solid var(--bo); border-top-width: 4px; box-shadow: inset 0 0 0 3px var(--card), inset 0 0 0 5px var(--bo); }
+.three .card.rl { border: 2px solid var(--bo); border-top-width: 4px; box-shadow: inset 0 0 0 3px var(--card), inset 0 0 0 5px var(--bp); }
 .three { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin-top: 16px; }
 .three .card { border-top: 4px solid var(--c); }
 .three h4 { font-family: var(--h); font-weight: 400; font-size: 1.1rem; margin: 6px 0 4px; }
@@ -341,7 +341,7 @@ footer { margin-top: 48px; }
 <text class="t2" x="24" y="318" dominant-baseline="central">4 roles</text>
 <path class="e e-blue" d="M196 90H540M304 166H540M412 242H540M520 318H540M540 90V318"/>
 <path class="e e-blue" d="M540 204H558" marker-end="url(#ar)"/>
-<rect class="b-lexf" x="96" y="60" width="100" height="60" rx="10"/><rect class="rim-lex" x="99" y="63" width="94" height="54" rx="8"/><text class="t1" x="146" y="76" text-anchor="middle" dominant-baseline="central">Lexical</text><text class="t2" x="146" y="94" text-anchor="middle" dominant-baseline="central">V1 / V5 / V2</text><text class="t3" x="146" y="110" text-anchor="middle" dominant-baseline="central">finite</text>
+<rect class="rim-lex" x="92" y="56" width="108" height="68" rx="13"/><rect class="b-lexf" x="96" y="60" width="100" height="60" rx="10"/><text class="t1" x="146" y="76" text-anchor="middle" dominant-baseline="central">Lexical</text><text class="t2" x="146" y="94" text-anchor="middle" dominant-baseline="central">V1 / V5 / V2</text><text class="t3" x="146" y="110" text-anchor="middle" dominant-baseline="central">finite</text>
 <rect class="b-teal" x="96" y="136" width="100" height="60" rx="10"/><text class="t1" x="146" y="152" text-anchor="middle" dominant-baseline="central">Helping</text><text class="t2" x="146" y="170" text-anchor="middle" dominant-baseline="central">HV1</text><text class="t3" x="146" y="186" text-anchor="middle" dominant-baseline="central">finite</text>
 <rect class="b-lexnf" x="204" y="136" width="100" height="60" rx="10"/><text class="t1" x="254" y="152" text-anchor="middle" dominant-baseline="central">Lexical</text><text class="t2" x="254" y="170" text-anchor="middle" dominant-baseline="central">V1 / V3 / V4</text><text class="t3" x="254" y="186" text-anchor="middle" dominant-baseline="central">non-finite</text>
 <rect class="b-teal" x="96" y="212" width="100" height="60" rx="10"/><text class="t1" x="146" y="228" text-anchor="middle" dominant-baseline="central">Helping</text><text class="t2" x="146" y="246" text-anchor="middle" dominant-baseline="central">HV1</text><text class="t3" x="146" y="262" text-anchor="middle" dominant-baseline="central">finite</text>
@@ -374,7 +374,7 @@ footer { margin-top: 48px; }
       <span><i class="f1"></i>Finite verb</span>
       <span><i class="d"></i>Non-finite verb</span>
       <span><i class="e"></i>Lexical verb, non-finite (ochre rim)</span>
-      <span><i class="g"></i>Lexical verb, finite (teal + ochre double rim)</span>
+      <span><i class="g"></i>Lexical verb, finite (ochre outside, teal inside)</span>
     </div>
   </div>
 

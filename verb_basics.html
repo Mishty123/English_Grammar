@@ -333,11 +333,36 @@ footer { margin-top: 48px; }
 .pages a { font-size: .9rem; }
 .vbpane nav.toc { margin-top: 14px; }
 .vbpane nav.toc a, .vbpane nav.sub button { font-size: .82rem; padding: 3px 13px; }
+/* ---- Three navigation levels, three looks ----
+   Level 1  part cards      : boxed cards, tinted when selected
+   Level 2  page tabs       : text tabs with an underline (also the 4 Verb Types tabs)
+   Level 3  section chips   : small filled chips, solid teal when selected */
+:root { --on-teal: #fff; }
+@media (prefers-color-scheme: dark) { :root { --on-teal: #12191c; } }
+
+/* level 2: underline tabs */
+.pages { display: flex; flex-wrap: wrap; justify-content: center; gap: 0 26px; margin: 20px 0 0; border-bottom: 1.5px solid var(--line); }
+.pages a { border: 0; background: none; border-radius: 0; padding: 6px 2px 9px; margin-bottom: -1.5px; border-bottom: 3px solid transparent; font-size: .95rem; color: var(--muted); }
+.pages a:hover { border-color: color-mix(in srgb, var(--teal) 45%, transparent); color: var(--ink); }
+.pages a[aria-current="page"] { background: none; border-bottom-color: var(--teal); color: var(--ink); font-weight: 600; }
+.tabs { gap: 0 22px; border-bottom: 1.5px solid var(--line); }
+.tabs button { background: none; border: 0; border-radius: 0; border-bottom: 3px solid transparent; margin-bottom: -1.5px; padding: 6px 2px 10px; }
+.tabs button:hover { border-bottom-color: color-mix(in srgb, var(--teal) 45%, transparent); }
+.tabs button[aria-selected="true"] { background: none; border-bottom-color: var(--teal); }
+.tabs button b { font-size: 1.08rem; }
+
+/* level 3: filled chips */
+.vbpane nav.toc, .vbpane nav.sub { border-top: 0; gap: 6px; margin-top: 10px; padding-top: 6px; }
+.vbpane nav.toc a, .vbpane nav.sub button { border: 0; border-radius: 8px; background: color-mix(in srgb, var(--slate) 11%, var(--card)); color: var(--muted); font-size: .8rem; padding: 4px 12px; }
+.vbpane nav.toc a:hover, .vbpane nav.sub button:hover { background: color-mix(in srgb, var(--teal) 16%, var(--card)); color: var(--ink); }
+.vbpane nav.toc a[aria-current="true"], .vbpane nav.sub button[aria-current="true"] { background: color-mix(in srgb, var(--teal) 88%, #000); color: var(--on-teal); font-weight: 600; }
 @media (max-width: 700px) {
   .vbtop { grid-template-columns: 1fr; row-gap: 8px; justify-items: center; padding-top: 14px; }
   .vbtop .hero { grid-column: 1; white-space: normal; }
 }
 @media (max-width: 520px) { .vbt { grid-template-columns: 1fr; } }
+@media (max-width: 900px) { .tabs { gap: 0 14px; } }
+@media (max-width: 520px) { .tabs { grid-template-columns: repeat(2, 1fr); gap: 4px 14px; border-bottom: 0; } .tabs button { border-bottom-width: 3px; border-bottom-color: var(--line); margin-bottom: 0; } .tabs button[aria-selected="true"] { border-bottom-color: var(--teal); } }
 </style>
 </head>
 <body data-start="p1">

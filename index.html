@@ -6,27 +6,21 @@
   <title>English Grammar</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@600;700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Yeseva+One&display=swap">
   <style>
     :root {
-      --bg: #e3e9ee;
-      --glow1: rgba(214, 160, 172, .30);
-      --glow2: rgba(120, 156, 190, .30);
-      --card: #fffdf9;
-      --ink: #1b2a34;
-      --muted: #4d606c;
-      --line: #cfd9e1;
-      --verbs: #9b4155; --pron: #3f6a5e; --small: #1f4e79; --practice: #8a6420; --ok: #3f6a5e; --ok-soft: #dbe8e4;
+      --bg: #f3f0e8;
+      --glow1: rgba(120, 170, 180, .20);
+      --glow2: rgba(150, 175, 205, .22);
+      --card: #fdfbf6;
+      --ink: #1f3a40;
+      --muted: #566a6d;
+      --line: #dcd5c6;
+      --verbs: #2c6b78; --pron: #3a6a99; --small: #3a6a99; --practice: #8a6a12; --ok: #667a2a; --ok-soft: #e9eed6;
       --frame: #c9a46a; --on: #ffffff;
-      --font-display: "Playfair Display", Georgia, "Times New Roman", serif;
-      --font-body: "DM Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
-    }
-    @media (prefers-color-scheme: dark) {
-      :root {
-        --bg: #131b23; --glow1: rgba(170, 90, 110, .16); --glow2: rgba(80, 120, 170, .20);
-        --card: #1c2630; --ink: #e8eef3; --muted: #a9b8c4; --line: #2f3d4a;
-        --verbs: #e0788c; --pron: #7fc0ad; --small: #8dbdeb; --practice: #d9b878; --ok: #7fc0ad; --ok-soft: #1f342d; --frame: #8c6e3c; --on: #131b23;
-      }
+      --font-display: "Yeseva One", Georgia, "Times New Roman", serif;
+      --font-body: "Lora", Georgia, "Times New Roman", serif;
+      --font-script: "Great Vibes", "Snell Roundhand", cursive;
     }
     * { box-sizing: border-box; }
     [hidden] { display: none !important; }
@@ -109,6 +103,30 @@
     .card.nested { margin-left: 24px; padding-top: 10px; }
     .gh { margin-top: 18px; }
     .sub h4 { padding: 10px 0 4px; }
+    body { font-size: 17px; background-image: radial-gradient(60rem 40rem at 0% 0%, var(--glow1), transparent 70%), radial-gradient(55rem 40rem at 100% 100%, var(--glow2), transparent 70%); }
+    .eyebrow { font-family: var(--font-script); font-size: 2rem; font-weight: 400; letter-spacing: .01em; text-transform: none; color: var(--verbs); line-height: 1; }
+    h1 { font-weight: 400; letter-spacing: .005em; color: var(--ink); }
+    .bar { width: 64px; height: 3px; background: linear-gradient(90deg, var(--verbs), var(--small)); }
+    .lead { font-style: italic; font-size: 1.05rem; }
+    .search input { border-radius: 999px; padding: 12px 46px; box-shadow: 0 2px 10px rgba(31,58,64,.06); }
+    .search input:focus-visible { border-color: var(--verbs); outline-color: var(--verbs); }
+    .chip { border-radius: 999px; font-family: var(--font-body); font-weight: 500; padding: 6px 16px; }
+    .chip[aria-pressed="true"] { background: var(--verbs); border-color: var(--verbs); color: #fff; }
+    .art figure { box-shadow: 0 16px 36px rgba(31,58,64,.16); }
+    .grp + .grp { margin-top: 24px; }
+    .gh { margin-top: 6px; font-family: var(--font-script); font-weight: 400; font-size: 1.9rem; letter-spacing: .01em; text-transform: none; color: var(--small); border-bottom: 1px solid var(--line); line-height: 1.1; }
+    .sub h4 { font-family: var(--font-body); font-style: italic; font-weight: 600; font-size: .95rem; letter-spacing: .01em; color: var(--muted); }
+    .sub { border-left: 2px solid color-mix(in srgb, var(--small) 35%, var(--line)); }
+    .card { padding: 11px 8px; }
+    .card:hover { background: color-mix(in srgb, var(--c) 9%, transparent); }
+    .icon { border-radius: 12px; box-shadow: inset 0 -2px 0 rgba(0,0,0,.12); font-weight: 400; }
+    .text h2 { font-weight: 400; font-size: 1.2rem; }
+    .num { font-family: var(--font-body); }
+    .arrow { color: var(--c); opacity: .7; transition: transform .15s, opacity .15s; }
+    .card:hover .arrow { transform: translateX(3px); opacity: 1; }
+    .card.sentences { --c: var(--ok); }
+    .card[data-tip]::after { font-family: var(--font-body); font-style: italic; }
+    footer { font-style: italic; text-align: left; }
     .empty { text-align: center; padding: 26px 16px; border: 1.5px dashed var(--line); border-radius: 14px; color: var(--muted); background: var(--card); }
     .empty svg { width: 56px; height: 56px; fill: none; stroke: var(--muted); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
     .empty p { margin: 6px 0 0; }
@@ -154,6 +172,8 @@
     </div>
 
     <nav class="cards" aria-label="Grammar pages">
+      <section class="grp" data-grp="verbs" aria-labelledby="g-verbs">
+        <h3 class="gh" id="g-verbs" style="color:var(--verbs)">Verbs</h3>
       <a data-tip="Two parts: Verb Phrase Anatomy (roles, tense, aspect and voice) and Verb Types (lexical, helping, finite and non-finite), with quizzes. · Updated 19 Nov 2026" class="card verbs" href="verb_basics.html" data-cat="verbs" data-keywords="verb basics verb phrase anatomy roles role 1 2 3 4 finite non-finite helping lexical clause patterns tense aspect voice passive 12 tenses sentence lab verb types main auxiliary modal infinitive gerund participle transitive intransitive linking phrasal causative quiz">
         <time class="upd" datetime="2026-11-19">Updated 19 Nov 2026</time>
         <span class="icon" aria-hidden="true">VB</span>
@@ -208,6 +228,7 @@
         </span>
         <span class="arrow" aria-hidden="true">&rarr;</span>
       </a>
+      </section>
 
 
 
@@ -262,6 +283,8 @@
         </div>
       </section>
 
+      <section class="grp" data-grp="sentences" aria-labelledby="g-sentences">
+        <h3 class="gh" id="g-sentences" style="color:var(--ok)">Sentences</h3>
       <a data-tip="How questions flip the verb and subject, question phrases, question tags and a quiz. · Updated 14 Nov 2026" class="card sentences" href="questions_study_page.html" data-cat="sentences" data-keywords="questions question words tags wh who what where when why how subject auxiliary inversion helping verb do does did short answers indirect phrases quiz">
         <time class="upd" datetime="2026-11-14">Updated 14 Nov 2026</time>
         <span class="icon" aria-hidden="true">?</span>
@@ -283,7 +306,10 @@
         </span>
         <span class="arrow" aria-hidden="true">&rarr;</span>
       </a>
+      </section>
 
+      <section class="grp" data-grp="practice" aria-labelledby="g-practice">
+        <h3 class="gh" id="g-practice" style="color:var(--practice)">My Practice</h3>
       <a data-tip="Picture tricks, tap cards and mini quizzes for adjectives, determiners, helping verbs and questions. · Updated 15 Nov 2026" class="card practice" href="grammar_adventure.html" data-cat="practice" data-keywords="practice grammar adventure kid child fun pictures adjectives determiners helping verbs auxiliary questions quiz flip cards revision">
         <time class="upd" datetime="2026-11-15">Updated 15 Nov 2026</time>
         <span class="icon" aria-hidden="true">GA</span>
@@ -294,6 +320,7 @@
         </span>
         <span class="arrow" aria-hidden="true">&rarr;</span>
       </a>
+      </section>
     </nav>
 
     <div class="empty" id="empty" hidden>

@@ -99,6 +99,16 @@
     .card[data-tip]:hover, .card[data-tip]:focus-visible { z-index: 6; }
     .card[data-tip]::after { content: attr(data-tip); position: absolute; left: 20px; top: calc(100% + 6px); width: max-content; max-width: min(380px, calc(100% - 40px)); padding: 9px 13px; border-radius: 10px; background: var(--ink); color: var(--bg); font-size: .86rem; line-height: 1.45; box-shadow: 0 10px 24px rgba(27,42,52,.28); opacity: 0; transform: translateY(-4px); pointer-events: none; transition: opacity .15s, transform .15s; z-index: 7; }
     .card[data-tip]:hover::after, .card[data-tip]:focus-visible::after { opacity: 1; transform: none; }
+    .cards { gap: 0; }
+    .grp { gap: 0; }
+    .sub { gap: 0; }
+    .card { background: transparent; border: 0; border-bottom: 1px solid var(--line); border-radius: 0; box-shadow: none; padding: 10px 6px; }
+    .card::before { display: none; }
+    .card:hover { transform: none; box-shadow: none; background: color-mix(in srgb, var(--c) 8%, transparent); border-color: var(--line); }
+    .icon { width: 46px; height: 36px; font-size: .85rem; }
+    .card.nested { margin-left: 24px; padding-top: 10px; }
+    .gh { margin-top: 18px; }
+    .sub h4 { padding: 10px 0 4px; }
     .empty { text-align: center; padding: 26px 16px; border: 1.5px dashed var(--line); border-radius: 14px; color: var(--muted); background: var(--card); }
     .empty svg { width: 56px; height: 56px; fill: none; stroke: var(--muted); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
     .empty p { margin: 6px 0 0; }

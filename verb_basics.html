@@ -391,7 +391,7 @@ footer { margin-top: 48px; }
 </header>
 <nav class="pages" aria-label="Pages in this set"><a href="#go-p1" aria-current="page">1 &middot; Roles in a Verb Phrase</a><a href="#go-p2">2 &middot; Role-to-Role: Who Decides What Follows</a><a href="#go-p3">3 &middot; Tense, Aspect and Voice from the Roles</a></nav>
 <nav class="toc" id="toc-p1" aria-label="Sections">
-  <a href="#map">The map: roles 1 to 4 and what each can be</a><a href="#who">Role quiz: count the roles and label each verb</a>
+  <a href="#map">The map: roles 1 to 4 and what each can be</a><a href="#who">Quiz time</a>
 </nav>
 
 <section id="map">
@@ -468,12 +468,17 @@ footer { margin-top: 48px; }
 </section>
 
 <section id="who">
-  <div class="sh"><span class="no shine" style="--c: var(--blue)">2</span><h2>Role quiz: count the roles and label each verb</h2></div>
+  <div class="sh"><span class="no shine" style="--c: var(--blue)">2</span><h2>Quiz time</h2><p>Two short quizzes on the roles. Take them in any order.</p></div>
+  <h3>Quiz 1 &middot; Count the roles and label each verb</h3>
   <p class="sm">Tap a verb to label it: <b>?</b> &rarr; helping &middot; finite &rarr; helping &middot; non-finite &rarr; lexical &middot; finite &rarr; lexical &middot; non-finite. Then press Check.</p>
   <div class="scroll"><table class="qz">
     <thead><tr><th>Roles</th><th>Tap each verb</th><th>Answer</th></tr></thead>
     <tbody id="qbody"></tbody>
   </table></div>
+  <h3>Quiz 2 &middot; Quick questions</h3>
+  <p class="sm">Tap an answer. You see the reason straight away.</p>
+  <div class="mc" id="qq"><div class="mcq" data-a="0" data-why="The finite verb is always Role 1, so it is <em>has</em>."><p>1. In <em>She has been waiting</em>, which role is the finite verb?</p><div class="opts"><button type="button" class="btn" data-i="0">Role 1</button><button type="button" class="btn" data-i="1">Role 2</button><button type="button" class="btn" data-i="2">Role 3</button></div><div class="fb"></div></div><div class="mcq" data-a="2" data-why="<em>will</em> + <em>have</em> + <em>been</em> + <em>waiting</em> = 4 roles."><p>2. How many roles are in <em>She will have been waiting</em>?</p><div class="opts"><button type="button" class="btn" data-i="0">2</button><button type="button" class="btn" data-i="1">3</button><button type="button" class="btn" data-i="2">4</button></div><div class="fb"></div></div><div class="mcq" data-a="1" data-why="The lexical verb is always the last role: <em>eaten</em>."><p>3. In <em>The cake was eaten</em>, which verb is the lexical verb?</p><div class="opts"><button type="button" class="btn" data-i="0">was</button><button type="button" class="btn" data-i="1">eaten</button></div><div class="fb"></div></div><div class="mcq" data-a="0" data-why="<em>wants</em> carries the tense. <em>to learn</em> is non-finite."><p>4. In <em>He wants to learn</em>, which verb is the finite one?</p><div class="opts"><button type="button" class="btn" data-i="0">wants</button><button type="button" class="btn" data-i="1">to learn</button></div><div class="fb"></div></div><div class="mcq" data-a="0" data-why="One verb, so 1 role. It is the lexical verb, and it is finite."><p>5. How many roles are in <em>She plays</em>?</p><div class="opts"><button type="button" class="btn" data-i="0">1</button><button type="button" class="btn" data-i="1">2</button><button type="button" class="btn" data-i="2">3</button></div><div class="fb"></div></div><div class="mcq" data-a="1" data-why="<em>could</em> is finite (Role 1). <em>have</em> is Role 2, the first non-finite verb."><p>6. In <em>The room could have been cleaned</em>, which is the first non-finite verb?</p><div class="opts"><button type="button" class="btn" data-i="0">could</button><button type="button" class="btn" data-i="1">have</button><button type="button" class="btn" data-i="2">been</button></div><div class="fb"></div></div></div>
+  <div class="qbar"><button type="button" class="btn" id="qq-reset">Start again</button><span class="qscore" id="qq-score"></span></div>
 </section>
 
 <footer><span class="script shine">Well done</span><br><a class="nextlink" href="#go-p2">Next: Role-to-Role: Who Decides What Follows &rarr;</a></footer>
@@ -1287,6 +1292,31 @@ tabs.forEach(function(t){t.addEventListener("click",function(){showVB(t.dataset.
 var h=location.hash.slice(1);
 if(h==="types"||/^(lexical|helping|finite|nonfinite)$/.test(h))showVB("vt");
 else showVB("pn");
+})();
+</script>
+<script>
+(function () {
+  var host = document.getElementById('qq'); if (!host) return;
+  var score = document.getElementById('qq-score');
+  function tally() {
+    var qs = host.querySelectorAll('.mcq'), done = 0, right = 0;
+    qs.forEach(function (q) { if (q.dataset.done) { done++; if (q.dataset.right) right++; } });
+    score.textContent = done ? right + ' of ' + done + ' correct' + (done === qs.length ? '. Finished.' : '.') : '';
+  }
+  host.addEventListener('click', function (e) {
+    var b = e.target.closest('.btn'); if (!b) return;
+    var q = b.closest('.mcq'); if (q.dataset.done) return;
+    var ans = +q.dataset.a, pick = +b.dataset.i;
+    q.querySelectorAll('.btn').forEach(function (x) { if (+x.dataset.i === ans) x.classList.add('ok'); });
+    if (pick !== ans) b.classList.add('no'); else q.dataset.right = '1';
+    q.dataset.done = '1';
+    q.querySelector('.fb').innerHTML = (pick === ans ? 'Correct. ' : 'Not quite. ') + q.dataset.why;
+    tally();
+  });
+  document.getElementById('qq-reset').addEventListener('click', function () {
+    host.querySelectorAll('.mcq').forEach(function (q) { delete q.dataset.done; delete q.dataset.right; q.querySelector('.fb').textContent = ''; q.querySelectorAll('.btn').forEach(function (x) { x.classList.remove('ok', 'no'); }); });
+    tally();
+  });
 })();
 </script>
 </body>

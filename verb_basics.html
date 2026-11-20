@@ -293,8 +293,8 @@ footer { margin-top: 48px; }
 .vbtop .gh-home { margin: 0; justify-self: start; padding: 5px 15px; font-size: .86rem; }
 .vbtop .hero { grid-column: 2; padding: 0; text-align: center; white-space: nowrap; }
 .vbtop .hero .eyebrow, .vbtop .hero p { display: none; }
-.vbtop .hero h1 { display: inline; font-size: clamp(1.7rem, 4.6vw, 2.3rem); margin: 0; letter-spacing: .005em; }
-.vbtop .hero .script { display: inline; font-size: clamp(1.8rem, 5vw, 2.6rem); padding: 0 .08em; margin-left: .12em; vertical-align: -.06em; }
+.vbtop .hero h1 { display: block; font-size: clamp(1.9rem, 5vw, 2.5rem); margin: 0; letter-spacing: .005em; }
+.vbtop .hero .script { display: none; }
 .vbt { max-width: 780px; margin: 14px auto 0; gap: 10px; }
 .vbt button { border-width: 1.5px; border-radius: 14px; padding: 8px 16px 9px; }
 .vbt button b { font-size: 1.12rem; }
@@ -309,6 +309,30 @@ footer { margin-top: 48px; }
 .pages a { font-size: .86rem; border-radius: 999px; padding: 4px 14px; }
 .vbpane nav.toc, .vbpane nav.sub { justify-content: safe center; margin-top: 6px; }
 .vbpane nav.toc { padding-top: 8px; border-top: 1px solid var(--line); margin-top: 14px; }
+/* ---- Type hierarchy (one style per level) ----
+   L1 page title  : Yeseva One, large
+   L2 part tabs   : Yeseva One, medium, number in script
+   L3 pane title  : Yeseva One + one script flourish
+   L4 section     : Yeseva One, smaller, script number
+   L5 sub-heading : Yeseva One, small (h3)
+   Selected state = tint + border only, never italic. Italic is kept for examples. */
+.vbt button[aria-selected="true"] b, .tabs button[aria-selected="true"] b,
+.pages a[aria-current="page"], nav.toc a[aria-current="true"], nav.sub button[aria-current="true"] { font-style: normal; }
+.vbt button[aria-selected="true"], .tabs button[aria-selected="true"] { background: color-mix(in srgb, var(--teal) 12%, var(--card)); }
+.pages a[aria-current="page"], nav.toc a[aria-current="true"], nav.sub button[aria-current="true"] { font-weight: 600; background: color-mix(in srgb, var(--teal) 14%, var(--card)); }
+.vbt button b { font-size: 1.2rem; }
+.vbpane .hero { padding: 30px 0 0; }
+.vbpane .hero h2 { font-size: clamp(1.55rem, 4vw, 1.9rem); line-height: 1.2; margin: 0; }
+.vbpane .hero .script { font-size: clamp(2rem, 5.5vw, 2.5rem); line-height: 1.05; padding: .02em .1em .08em; margin-top: 2px; }
+.vbpane .hero p { font-size: .95rem; margin-top: 4px; }
+.vbpane .sh .no { font-size: 2.1rem; }
+.vbpane .sh h2 { font-size: 1.35rem; }
+.vbpane .sh p { font-size: .92rem; }
+.vbpane h3 { font-size: 1.08rem; }
+.pages { margin-top: 18px; }
+.pages a { font-size: .9rem; }
+.vbpane nav.toc { margin-top: 14px; }
+.vbpane nav.toc a, .vbpane nav.sub button { font-size: .82rem; padding: 3px 13px; }
 @media (max-width: 700px) {
   .vbtop { grid-template-columns: 1fr; row-gap: 8px; justify-items: center; padding-top: 14px; }
   .vbtop .hero { grid-column: 1; white-space: normal; }

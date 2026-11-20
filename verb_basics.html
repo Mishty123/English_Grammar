@@ -497,6 +497,7 @@ footer { margin-top: 48px; }
     <thead><tr><th>Roles</th><th>Tap each verb</th><th>Answer</th></tr></thead>
     <tbody id="qbody"></tbody>
   </table></div>
+  <div class="qbar"><button type="button" class="btn" id="q1-reset">Restart</button><span class="qpill" id="q1-score">Score 0 / 5</span></div>
   <h3>Quiz 2 &middot; Quick questions</h3>
   <p class="sm">Ten questions, one at a time. Tap an answer, read the reason, then go on.</p>
   <div class="qbox" id="qq">
@@ -1166,11 +1167,19 @@ document.addEventListener("click",function(e){var a=e.target.closest("nav.toc a"
     h += '</div></td><td><div class="qa"><button type="button" class="btn qc">Check</button><span class="qf"></span></div></td>';
     tr.innerHTML = h; body.appendChild(tr);
   });
+  var sc1 = document.getElementById("q1-score");
+  function q1score() { var rows = body.querySelectorAll("tr"), c = 0; rows.forEach(function (r) { if (r.dataset.done === "1") c++; }); sc1.textContent = "Score " + c + " / " + rows.length; }
+  q1score();
+  document.getElementById("q1-reset").addEventListener("click", function () {
+    body.querySelectorAll("tr").forEach(function (r) { delete r.dataset.done; r.querySelector(".qf").textContent = "";
+      r.querySelectorAll(".qv").forEach(function (b) { b.dataset.s = 0; b.querySelector("small").textContent = L[0]; b.classList.remove("ok", "no"); b.title = ""; }); });
+    q1score();
+  });
   body.addEventListener("click", function (e) {
     var v = e.target.closest(".qv");
     if (v) {
       var n = (+v.dataset.s + 1) % 5; v.dataset.s = n; v.querySelector("small").textContent = L[n];
-      v.classList.remove("ok", "no"); v.closest("tr").querySelector(".qf").textContent = ""; return;
+      v.classList.remove("ok", "no"); v.closest("tr").querySelector(".qf").textContent = ""; delete v.closest("tr").dataset.done; q1score(); return;
     }
     var c = e.target.closest(".qc"); if (!c) return;
     var tr = c.closest("tr"), vs = tr.querySelectorAll(".qv"), right = 0;
@@ -1179,6 +1188,7 @@ document.addEventListener("click",function(e){var a=e.target.closest("nav.toc a"
       b.classList.toggle("ok", ok); b.classList.toggle("no", !ok);
       if (!ok && +b.dataset.s !== 0) b.title = "Correct: " + L[+b.dataset.a];
     });
+    tr.dataset.done = right === vs.length ? '1' : '0'; q1score();
     var f = tr.querySelector(".qf");
     if (right === vs.length) f.textContent = "All correct.";
     else { var miss = []; vs.forEach(function (b) { if (+b.dataset.s !== +b.dataset.a) miss.push(b.firstChild.textContent + " = " + L[+b.dataset.a]); }); f.textContent = right + " of " + vs.length + ". Answer: " + miss.join(", ") + "."; }

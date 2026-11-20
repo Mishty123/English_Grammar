@@ -281,16 +281,21 @@ footer { margin-top: 48px; }
 
 /* ---- Verb Basics: top-level switcher ---- */
 .hero h2 { font-family: var(--h); font-weight: 400; font-size: clamp(1.7rem, 5vw, 2.6rem); line-height: 1.14; margin: 10px 0 0; }
-.vbt { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 22px; }
-.vbt button { font: inherit; text-align: left; background: var(--card); color: var(--ink); border: 2px solid var(--line); border-radius: 16px; padding: 12px 16px; cursor: pointer; display: flex; flex-direction: column; gap: 2px; }
+.vbt { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 10px; }
+.vbt button { font: inherit; text-align: left; background: var(--card); color: var(--ink); border: 2px solid var(--line); border-radius: 16px; padding: 8px 16px; cursor: pointer; display: flex; flex-direction: column; gap: 0; }
 .vbt button b { font-family: var(--h); font-weight: 400; font-size: 1.25rem; line-height: 1.2; }
 .vbt button b span { font-family: var(--script); font-size: 1.9rem; color: var(--teal); margin-right: 8px; line-height: 1; }
 .vbt button > small { color: var(--muted); font-size: .86rem; font-style: italic; }
 .vbt button:hover { border-color: var(--teal); }
 .vbt button[aria-selected="true"] { background: color-mix(in srgb, var(--teal) 14%, var(--card)); border-color: var(--teal); }
 .vbt button[aria-selected="true"] b { font-style: italic; }
-.vbtop { text-align: center; padding: 40px 0 0; }
-.vbpane .hero { padding-top: 30px; }
+.vbtop { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 6px 18px; padding: 18px 0 0; }
+.vbtop .gh-home { margin-top: 0; }
+.vbtop .hero { padding: 0; flex: 1 1 auto; text-align: center; }
+.vbtop .hero .eyebrow, .vbtop .hero p { display: none; }
+.vbtop .hero h1 { display: inline; font-size: clamp(1.8rem, 5vw, 2.5rem); margin: 0; }
+.vbtop .hero .script { display: inline; font-size: clamp(1.9rem, 5.5vw, 2.9rem); padding: 0 .1em; margin-left: .15em; vertical-align: -.08em; }
+.vbpane .hero { padding-top: 16px; }
 .vbpane .hero .eyebrow { display: none; }
 .vbpane .hero .script { font-size: clamp(2.2rem, 7vw, 3.6rem); }
 @media (max-width: 520px) { .vbt { grid-template-columns: 1fr; } }

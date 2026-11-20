@@ -1,0 +1,404 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Clauses · Sentences Grammar</title>
+<meta name="description" content="">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Yeseva+One&display=swap" rel="stylesheet">
+<style>
+/* Sentences Grammar — shared style
+   Headings: Yeseva One · Body: Lora · Examples: italic Lora · Script touches: Great Vibes
+   Palette: matte, light; blue / teal / olive / ochre (no purple, no red). */
+:root{
+  --bg:#faf6f1; --card:#ffffff; --fg:#1d3338; --muted:#5a6667; --line:#e0d6cb;
+  --teal:#2c4c53; --th:#e3ebec; --blue-soft:#e3edf3;
+  --olive:#5f6a22; --olive-soft:#eef0d6;
+  --ochre:#7d600d; --ochre-soft:#f7edc9;
+  --brown:#8a5a2b; --brown-soft:#f6eadc;
+  --c1:#2c6b78; --c2:#3a6a99; --c3:#667a2a; --c4:#8a6a12;
+  --serif:'Lora',Georgia,'Times New Roman',serif;
+  --display:'Yeseva One',Georgia,serif;
+  --script:'Great Vibes','Snell Roundhand',cursive;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;font-size:16px}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--serif);font-size:17px;line-height:1.65}
+h1,h2,h3,h4{font-family:var(--display);font-weight:400;color:var(--teal);line-height:1.22;margin:0;letter-spacing:.005em}
+h1{font-size:clamp(2rem,6vw,3rem)}
+h2{font-size:1.65rem;margin:44px 0 10px;scroll-margin-top:76px}
+h3{font-size:1.2rem;margin:26px 0 8px;scroll-margin-top:76px}
+h4{font-size:1.02rem;margin:18px 0 6px}
+p{margin:0 0 12px}
+a{color:var(--c2)}
+em,.ex{font-style:italic}
+b.ex,.ex b{font-weight:700}
+.script{font-family:var(--script);font-weight:400;letter-spacing:.01em}
+.muted{color:var(--muted)}
+
+/* ---- site header ---- */
+.site{position:sticky;top:0;z-index:30;background:rgba(255,255,255,.96);border-bottom:1px solid var(--line);backdrop-filter:blur(6px)}
+.site-in{max-width:1600px;margin:0 auto;padding:8px clamp(18px,4vw,56px);display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.brand{font-family:var(--display);color:var(--teal);text-decoration:none;font-size:1.1rem;white-space:nowrap}
+.brand .script{font-size:1.5rem;color:var(--c1)}
+.site nav{display:flex;gap:4px;overflow-x:auto;flex:1;min-width:0;padding:2px 0}
+.site nav a{white-space:nowrap;text-decoration:none;color:var(--muted);font-size:.86rem;padding:5px 11px;border-radius:999px;border:1px solid transparent}
+.site nav a:hover{background:var(--th);color:var(--teal)}
+.site nav a[aria-current="page"]{background:var(--th);color:var(--teal);border-color:#c9d9dc;font-weight:600}
+
+main{max-width:1600px;margin:0 auto;padding:30px clamp(18px,4vw,56px) 70px}
+.page-head{padding:14px 0 6px}
+.eyebrow{font-family:var(--script);font-size:1.7rem;color:var(--c1);line-height:1;margin:0 0 4px}
+.sub{font-size:1.04rem;color:var(--muted);font-style:italic;margin:10px 0 0;max-width:62ch}
+.rule-line{height:1px;background:linear-gradient(90deg,var(--teal),transparent);opacity:.35;margin:18px 0 6px}
+
+/* ---- on-this-page ---- */
+.toc{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 18px;margin:18px 0 8px}
+.toc strong{font-family:var(--display);font-weight:400;color:var(--teal);font-size:.95rem}
+.toc ol{list-style:none;margin:8px 0 2px;padding:0;display:flex;flex-wrap:wrap;gap:6px 8px}
+.toc a{display:inline-block;font-size:.84rem;text-decoration:none;color:var(--teal);background:var(--th);border-radius:999px;padding:3px 11px}
+.toc a:hover{background:#d4e3e6}
+
+/* ---- cards & layout ---- */
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 22px;margin:14px 0}
+.card>:last-child{margin-bottom:0}
+.card h3:first-child,.card h4:first-child{margin-top:0}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:14px;margin:14px 0}
+.grid2 .card{margin:0}
+.lead{font-size:1.06rem;max-width:68ch}
+ul,ol{margin:6px 0 12px;padding-left:1.35em}
+li{margin:3px 0}
+li>ul{margin:3px 0}
+
+.num{display:inline-grid;place-items:center;width:1.7rem;height:1.7rem;border-radius:50%;background:var(--teal);color:#fff;font-family:var(--display);font-size:.88rem;margin-right:9px;vertical-align:1px}
+.tag{display:inline-block;font-size:.72rem;letter-spacing:.07em;text-transform:uppercase;background:var(--th);color:var(--teal);border-radius:999px;padding:2px 10px;font-family:var(--serif);font-weight:600;font-style:normal}
+.tag.olive{background:var(--olive-soft);color:var(--olive)}
+.tag.ochre{background:var(--ochre-soft);color:var(--ochre)}
+
+/* ---- tables ---- */
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:12px;background:var(--card);margin:12px 0 16px}
+table{width:100%;border-collapse:collapse;min-width:480px}
+th,td{padding:10px 14px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line)}
+tr:last-child>td,tr:last-child>th{border-bottom:0}
+thead th{background:var(--th);color:var(--teal);box-shadow:inset 0 5px 0 var(--teal);padding-top:15px;font-family:var(--display);font-weight:400;font-size:.98rem;white-space:nowrap}
+tbody th{font-weight:700;background:#fbfaf7}
+td .ex,td em{display:inline}
+.tw.centre td,.tw.centre th{text-align:center}
+.n0{background:#f3f0ea;color:var(--muted)}
+
+/* ---- terms: shine + faint glow ---- */
+.t{--c:var(--c1);font-weight:700;
+  background:linear-gradient(180deg,color-mix(in srgb,var(--c) 78%,#fff) 0%,var(--c) 50%,color-mix(in srgb,var(--c) 84%,#000) 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;
+  filter:drop-shadow(0 0 1.5px color-mix(in srgb,var(--c) 12%,transparent))}
+.t1{--c:var(--c1)} .t2{--c:var(--c2)} .t3{--c:var(--c3)} .t4{--c:var(--c4)}
+table .t{background:none;-webkit-text-fill-color:currentColor;color:var(--c);filter:none;text-shadow:0 0 4px color-mix(in srgb,var(--c) 11%,transparent)}
+.t.i{font-style:italic}
+
+/* ---- slot chips (S V O C A) ---- */
+.chip{display:inline-block;font-family:var(--display);font-size:.85rem;border-radius:7px;padding:0 .5em;line-height:1.55;margin:0 1px;font-style:normal}
+.chip.s{background:#dcebee;color:#245b66}
+.chip.v{background:#dde9f4;color:#2f5b87}
+.chip.o{background:#e8edd2;color:#55641d}
+.chip.a{background:#f3e8c3;color:#765a0c}
+
+/* ---- notes, rules, mistakes ---- */
+.note{border-left:4px solid var(--c1);background:var(--blue-soft);border-radius:0 10px 10px 0;padding:12px 16px;margin:14px 0}
+.note>:last-child{margin-bottom:0}
+.rule{border-left:4px solid var(--ochre);background:var(--ochre-soft);border-radius:0 10px 10px 0;padding:11px 16px;margin:12px 0 0;font-size:.97rem}
+.rule b.lab{font-family:var(--display);font-weight:400;color:var(--ochre)}
+.remember{background:var(--olive-soft);border:1px solid #d9dcb2;border-radius:14px;padding:16px 22px;margin:26px 0}
+.remember h3{margin:0 0 6px;font-family:var(--script);font-size:2rem;color:var(--olive);line-height:1.1}
+.remember ul{margin-bottom:0}
+.mistake{display:grid;grid-template-columns:1.6rem 1fr;gap:2px 8px;margin:6px 0 14px;align-items:start}
+.mistake .g{font-weight:700;text-align:center}
+.mistake .bad{color:var(--brown)} .mistake .ok{color:var(--olive)}
+.mistake .why{color:var(--muted);font-size:.94rem}
+.formula{font-family:var(--serif);font-style:italic;font-weight:600;color:var(--teal);font-size:1.08rem;margin:6px 0}
+.big-formula{background:var(--card);border:2px solid var(--line);border-radius:14px;padding:14px 18px;text-align:center;font-size:1.1rem;margin:14px 0}
+
+/* ---- formula lines (minor structures) ---- */
+.formulas{list-style:none;padding:0;margin:8px 0 10px;display:grid;gap:6px}
+.formulas li{background:#f6f3ec;border:1px solid var(--line);border-radius:9px;padding:6px 12px;margin:0;font-style:italic}
+
+/* ---- index list ---- */
+.notes-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin:18px 0}
+.note-card{display:block;text-decoration:none;color:inherit;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 20px;transition:border-color .15s,transform .15s}
+.note-card:hover{border-color:var(--c1);transform:translateY(-2px)}
+.note-card .no{font-family:var(--script);font-size:1.6rem;color:var(--c1);line-height:1}
+.note-card h3{margin:2px 0 4px;font-size:1.15rem}
+.note-card p{margin:0;color:var(--muted);font-size:.93rem}
+.sect{border-top:3px solid var(--teal);background:var(--card);border-radius:0 0 14px 14px;border-left:1px solid var(--line);border-right:1px solid var(--line);border-bottom:1px solid var(--line);padding:6px 22px 16px;margin:22px 0}
+.sect h2{margin:12px 0 2px;font-size:1.35rem}
+.sect .intro{font-style:italic;color:var(--muted);margin-bottom:6px}
+.item{margin:12px 0 4px}
+.item h3{font-size:1.04rem;margin:0}
+.item h3 .num{width:1.6rem;height:1.6rem}
+.item h3 a{color:inherit;text-decoration:none;border-bottom:1px dotted var(--c1)}
+.item h3 a:hover{color:var(--c1)}
+.item ul{margin:4px 0 4px}
+
+/* ---- pager ---- */
+.pager{display:flex;justify-content:space-between;gap:12px;margin-top:54px;padding-top:18px;border-top:1px solid var(--line);flex-wrap:wrap}
+.pager a{text-decoration:none;color:var(--teal);background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 16px;font-size:.93rem}
+.pager a:hover{border-color:var(--c1)}
+.pager .script{font-size:1.25rem;color:var(--c1)}
+.foot{text-align:center;color:var(--muted);font-size:.85rem;margin-top:28px}
+
+/* ---- skeleton diagram ---- */
+.skel{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin:12px 0}
+.skel .slot{border-radius:12px;padding:10px 12px;text-align:center;font-family:var(--display);font-size:1.05rem}
+.skel .slot small{display:block;font-family:var(--serif);font-style:italic;font-size:.82rem;opacity:.85;margin-top:2px}
+.skel .s{background:#dcebee;color:#245b66}.skel .v{background:#dde9f4;color:#2f5b87}.skel .o{background:#e8edd2;color:#55641d}
+.skel-tools{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:10px}
+.skel-tools>div{display:flex;flex-direction:column;gap:6px}
+.skel-tools .tool{background:#f6f3ec;border:1px solid var(--line);border-radius:9px;padding:5px 10px;font-size:.88rem;font-style:italic}
+.skel-whole{margin-top:6px;border:1.5px dashed var(--muted);border-radius:12px;padding:10px 14px;font-size:.92rem}
+.skel-whole .tool{display:inline-block;background:#f6f3ec;border:1px solid var(--line);border-radius:9px;padding:3px 10px;margin:3px 4px 0 0;font-style:italic;font-size:.88rem}
+@media(max-width:620px){.skel,.skel-tools{grid-template-columns:1fr}}
+
+@media(max-width:620px){body{font-size:16px}main{padding:22px 14px 60px}.card{padding:15px 16px}h2{font-size:1.45rem}}
+@media print{.site,.toc,.pager{display:none}body{background:#fff}}
+.kicker{font-family:var(--script);font-size:1.45rem;color:var(--c1);line-height:1;margin:0 0 2px}
+.card .kicker+h3{margin-top:0}
+.exs{margin:10px 0 12px}
+.cols2{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:14px 0}
+.cols2>.col{padding:0 28px}
+.cols2>.col:first-child{padding-left:0;border-right:2px solid var(--teal)}
+.cols2>.col:last-child{padding-right:0}
+.cols2 .col>h3:first-child{margin-top:0}
+.cols2 .tw{display:inline-block;min-width:60%;max-width:100%}
+.cols2 .card{margin-top:0}
+.cols2 .tag{text-align:center;font-style:italic;color:var(--ochre);margin:0 0 4px}
+@media(max-width:900px){.cols2{grid-template-columns:1fr}.cols2>.col{padding:0}.cols2>.col:first-child{border-right:0;border-bottom:2px solid var(--teal);padding-bottom:14px;margin-bottom:14px}}
+.cols2 .col h3{margin:20px 0 4px;font-size:1.2rem}
+.cols2 .col h3+p{margin:0 0 8px;font-size:.98rem}
+.cols2 .col .tw{margin:6px 0 14px}
+.cols2 .col td,.cols2 .col th{padding:8px 14px;font-size:1.02rem;line-height:1.45}
+.cols2 .tag{margin:0 0 6px}
+.cols2 .tw{min-width:0;display:block}
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:0 16px;align-items:start}
+@media(max-width:620px){.pair{grid-template-columns:1fr}}
+/* easy-reading highlights */
+.kw{font-style:italic;font-weight:700;color:var(--fg)}
+.kw1{color:var(--c4);text-shadow:0 0 4px color-mix(in srgb,var(--c4) 18%,transparent)}
+mark.lab{background:#1f5560;color:#fff;font-weight:700;padding:1px 7px;border-radius:4px}
+.st{font-size:.92rem;font-weight:500;margin-left:8px}
+.st1{color:var(--c3)} .st2{color:var(--c4)}
+h2{border-bottom:1px solid var(--line);padding-bottom:6px}
+.lead{font-size:1.1rem;max-width:none}
+.grid2.split{gap:0}
+.grid2.split .card{border:0;border-radius:0;background:transparent;padding:6px 28px}
+.grid2.split .card:first-child{padding-left:0;border-right:4px solid var(--teal)}
+.grid2.split li::marker{content:"\25A0  ";font-size:.7em;color:var(--teal)}
+@media(max-width:620px){.grid2.split .card:first-child{border-right:0;border-bottom:3px solid var(--teal)}}
+.types thead th{color:var(--c2)}
+.types td.begins{color:var(--c3);font-weight:500}
+.types td:nth-child(2){color:#44585d}
+.cols2 td:first-child{font-weight:700}
+.cols2 .tw td:nth-child(2){color:var(--c3)}
+/* sub-tabs */
+.subtabs{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 6px;padding-top:4px}
+.subtabs a{font-family:var(--display);font-size:1rem;text-decoration:none;color:var(--teal);background:#fff;border:1px solid var(--line);border-radius:999px;padding:7px 18px;transition:background .15s,border-color .15s}
+.subtabs a:hover{border-color:var(--c1)}
+.subtabs a[aria-current="page"]{background:var(--th);border-color:var(--teal);font-weight:700;box-shadow:inset 0 -3px 0 var(--teal)}
+/* tools-vs-blocks map */
+.map{background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px 20px 12px;margin:14px 0}
+.map-top{background:var(--th);border-radius:10px;padding:10px 16px;text-align:center;color:var(--teal);box-shadow:inset 0 4px 0 var(--teal)}
+.map-top b{font-family:var(--display);font-size:1.15rem;margin-right:8px}
+.map-arrow{text-align:center;color:var(--teal);margin:6px 0 2px}
+.map-arrow .script{font-size:1.5rem} .map-arrow i{font-style:normal;font-size:1.6rem;vertical-align:-3px}
+.map-cols{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.mcol.a{background:#edf1f6;border-color:#bccbdc;--k:var(--c2)}
+.mc small{display:block;font-size:.78rem;color:#4a5558;line-height:1.3}
+@media(max-width:1000px){.map-cols{grid-template-columns:repeat(2,1fr)}}
+.mcol,.mwhole{border-radius:12px;padding:10px 12px 8px;border:1px solid var(--line)}
+.mcol.s{background:#e8f0f1;border-color:#b9cfd2;--k:var(--c1)} .mcol.v{background:#eef1e0;border-color:#cfd7ad;--k:var(--c3)} .mcol.o{background:#f6efd9;border-color:#e0d2a0;--k:var(--c4)}
+.mwhole{margin-top:14px;background:#f3f1ee;border-color:#d9d4cb;--k:#5b5b55}
+.mh{font-family:var(--display);color:var(--k);font-size:1.15rem;text-align:center;margin-bottom:8px;line-height:1.2}
+.mh small{display:block;font-family:var(--serif,inherit);font-size:.8rem;color:#555;font-style:italic}
+.mc{display:block;background:#fff;border:1px solid var(--k,#bbb);border-radius:8px;padding:5px 10px;margin:0 0 6px;font-size:.95rem;text-align:center;color:#26373b}
+.mc.multi{border-style:dashed;border-width:2px}
+.mrow{display:flex;flex-wrap:wrap;gap:6px;justify-content:center} .mrow .mc{display:inline-block;margin:0}
+.mkey{font-size:.85rem;color:#555;margin:10px 0 2px;text-align:center} .mkey .mc{display:inline-block;margin:0 4px 0 0;padding:1px 8px;font-size:.8rem}
+@media(max-width:760px){.map-cols{grid-template-columns:1fr}}
+.mc.cl{background:color-mix(in srgb,var(--k,#999) 16%,#fff);font-style:italic;border-radius:999px}
+.mc.cl small{display:block;font-size:.78rem;color:#4a5558;font-style:normal;line-height:1.3}
+.map-top .plus{margin:0 8px}
+.mwhole .mc.cl{max-width:560px}
+/* concise index */
+.jump{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:22px 0 6px}
+.jump .script{font-size:1.6rem;color:var(--c1);margin-right:6px}
+.jump a{text-decoration:none;color:var(--teal);background:#fff;border:1px solid var(--line);border-radius:999px;padding:4px 14px;font-size:.95rem}
+.jump a:hover{border-color:var(--c1);background:var(--th)}
+.sect.idx{padding:6px 0 4px;overflow:hidden}
+.sect.idx h2{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 12px;margin:0;padding:12px 22px;background:var(--th);border-bottom:1px solid var(--line);font-size:1.3rem}
+.sect.idx h2 .letter{display:inline-grid;place-items:center;width:1.9rem;height:1.9rem;border-radius:8px;background:var(--teal);color:#fff;font-size:1rem;margin-right:2px;align-self:center}
+.sect.idx h2 small{font-family:var(--serif,inherit);font-size:.9rem;font-weight:400;font-style:italic;color:var(--muted)}
+.irow{display:grid;grid-template-columns:minmax(210px,28%) 1fr;gap:6px 22px;padding:11px 22px;border-bottom:1px solid var(--line)}
+.irow:last-child{border-bottom:0}
+.ilab{font-family:var(--display);color:var(--teal);font-size:1.05rem;line-height:1.3}
+.ilab a{color:inherit;text-decoration:none;border-bottom:1px dotted var(--c1)}
+.ilab small{display:block;font-family:var(--serif,inherit);font-size:.85rem;color:var(--muted);font-style:italic;margin:2px 0 0 2.4rem}
+.ival p{margin:0 0 5px}
+.ival p:last-child{margin-bottom:0}
+.ival .aside{font-size:.88rem;color:var(--muted);font-style:italic}
+.tags{display:flex;flex-wrap:wrap;gap:6px}
+.tags span{background:#eef3f4;border:1px solid #d5e1e3;border-radius:999px;padding:2px 11px;font-size:.92rem;line-height:1.45}
+.sub3{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px;margin:8px 0}
+.sub3>div{background:#faf8f4;border:1px solid var(--line);border-radius:10px;padding:8px 12px}
+.sub3 h4{margin:0 0 4px;font-family:var(--display);color:var(--teal);font-size:1rem}
+.sub3 h4 small{font-family:var(--serif,inherit);font-weight:400;font-style:italic;color:var(--muted);font-size:.82rem}
+.sub3 ul{margin:0;padding-left:1.1rem;font-size:.92rem;line-height:1.45}
+@media(max-width:760px){.irow{grid-template-columns:1fr}}
+.verbcols .col>*:first-child{margin-top:0}
+.verbcols .col:last-child .tw{margin:0}
+.verbcols .col:last-child td,.verbcols .col:last-child th{padding:10px 14px;font-size:1.02rem}
+.verbcols .note{margin-top:12px}
+sub.lbl{font-family:var(--serif,inherit);font-style:normal;font-weight:700;font-size:.72rem;color:var(--c2);margin:0 5px 0 1px;vertical-align:-3px}
+table.vt{table-layout:fixed;width:100%}
+table.vt th:nth-child(1){width:14%}
+table.vt th:nth-child(2){width:18%}
+table.vt th:nth-child(3){width:38%}
+table.vt th:nth-child(4){width:30%}
+table.vt td:nth-child(4){font-style:italic}
+
+
+.imgcols{align-items:center}
+.imgcols .pfig{margin:0}
+.imgcols .pfig img{display:block;width:100%;height:auto;border-radius:10px}
+
+/* sentence-structure figure */
+.sfcols>.col:last-child{padding-left:28px}
+.sfig{margin:0}
+.sfsvg{display:block;width:100%;height:auto}
+.sfsvg text{font-family:var(--serif);fill:#1d3338}
+.sfsvg .sf-h{font-family:var(--display);font-size:18px;fill:#2c4c53}
+.sfsvg .bt{font-size:16px}
+.sfsvg .sfb{font-weight:700;font-size:16px}
+.sfsvg .sfs{font-size:13px;fill:#4a585a}
+.sfsvg .sf-cap{font-size:15px;font-style:italic;fill:#4a585a}
+.sfsvg .sf-s{fill:#d6ebe2;stroke:#2f7d6b;stroke-width:1.4}
+.sfsvg .sf-v{fill:#dce8f4;stroke:#2f7d6b;stroke-width:1.4}
+.sfsvg .sf-c{fill:#e6e4dd;stroke:#8d8b80;stroke-width:1.4}
+.sfsvg .sf-o{fill:#bfe0da;stroke:#2f7d6b;stroke-width:1.6}
+.sfsvg .sf-in{fill:#e3f2ef;stroke:none}
+.sfsvg .sf-d{fill:#ebe8e1;stroke:#9a9484;stroke-width:1.3}
+.sfsvg .sf-o2{fill:#bfe0da;stroke:#2f7d6b;stroke-width:1.6}
+.sfsvg .sf-p{fill:#f3ecd6;stroke:#9a8440;stroke-width:1.4}
+.imgcols{align-items:start}
+.sfcols>.col:first-child{border-right:0}
+.sfcols{margin-bottom:6px}
+.sfcols>.col:first-child{border-right:0}
+.sfcols>.col:last-child{padding-left:36px}
+.imgcols>.col:first-child{border-right:0}
+.sfsvg{max-width:520px}
+
+</style>
+</head>
+<body class="pg">
+<header class="site"><div class="site-in">
+<a class="brand" href="index.html"><span class="script">Sentences</span> Grammar</a>
+<nav aria-label="Notes"><a href="index.html">Index</a><a href="sentence-patterns.html">Sentence Pattern</a><a href="phrases.html">Phrases</a><a href="clauses.html" aria-current="page">Clauses</a><a href="fundamental-dimensions.html">Fundamental Dimensions</a><a href="sentence-skeleton.html">Sentence Skeleton</a><a href="exercises.html">Exercises</a></nav>
+</div></header>
+<main>
+
+<div class="page-head">
+<p class="eyebrow">The Building Blocks of Sentences</p>
+<h1>Clauses</h1>
+<p class="sub"></p>
+<div class="rule-line"></div>
+</div>
+<nav class="toc" id="toc" hidden><strong>On this page</strong><ol></ol></nav>
+<p class="lead">A <b class="kw kw1">clause</b> is a group of words that contains a <b class="kw">subject</b> and a <b class="kw">verb</b>. It can stand alone as a sentence, or be part of a larger one.</p>
+<p class="lead"><mark class="lab">Quick check</mark>: does it have a <b class="kw">subject</b>, and does it have a <b class="kw">verb</b>? If yes to both, it's a clause.</p>
+
+<h2 id="two-types">Two main types</h2>
+<div class="grid2 split">
+  <div class="card"><h3>Independent Clause <span class="st st1">stands alone</span></h3>
+    <p>A clause that can stand alone as a complete sentence. It has a subject and a verb and expresses a complete thought.</p>
+    <ul><li><em class="ex">She loves reading.</em></li><li><em class="ex">The sun is shining.</em></li><li><em class="ex">They went to the park.</em></li></ul></div>
+  <div class="card"><h3>Dependent Clause <span class="st st2">cannot stand alone &mdash; also called a subordinate clause</span></h3>
+    <p>A clause that cannot stand alone as a sentence. It begins with a subordinating conjunction and depends on an independent clause to complete its meaning.</p>
+    <ul><li><em class="ex">Because it was raining.</em></li><li><em class="ex">When I finish my homework.</em></li><li><em class="ex">Although she was tired.</em></li></ul></div>
+</div>
+
+<h2 id="types">Types of dependent clauses</h2>
+<p><em>eleven functional categories</em></p>
+<div class="tw types"><table>
+<thead><tr><th>Type</th><th>Function</th><th>Begins with</th><th>Examples</th></tr></thead>
+<tbody>
+<tr><td><b class="t t1">Noun Clause</b></td><td>Acts as a noun (subject, object, complement).</td><td class="begins">that, whether, if, who, whom, whose, what, which, whoever, whatever, etc.</td><td><em class="ex">I know that you are right.</em><br><em class="ex">What he said is true.</em><br><em class="ex">Whoever comes will enjoy the party.</em></td></tr>
+<tr><td><b class="t t1">Adjective Clause (Relative)</b></td><td>Modifies a noun or pronoun.</td><td class="begins">who, whom, whose, which, that, where, when, why</td><td><em class="ex">The girl who won the race is my sister.</em><br><em class="ex">This is the book that I read.</em></td></tr>
+<tr><td><b class="t t1">Adverb Clause</b></td><td>Modifies a verb, adjective, or another adverb.</td><td class="begins">subordinating conjunctions</td><td><em class="ex">I will call you when I arrive.</em><br><em class="ex">She studied hard because she wanted to pass.</em></td></tr>
+<tr><td><b class="t t1">Conditional Clause</b></td><td>Shows a condition or possible result.</td><td class="begins">if, unless, provided that, as long as</td><td><em class="ex">If it rains, we will stay home.</em><br><em class="ex">You can go out as long as you finish your homework.</em></td></tr>
+<tr><td><b class="t t1">Temporal Clause (Time)</b></td><td>Expresses time or duration.</td><td class="begins">when, while, after, before, until, since, as soon as</td><td><em class="ex">When the bell rings, class will start.</em><br><em class="ex">I will call you after I finish dinner.</em></td></tr>
+<tr><td><b class="t t1">Cause Clause</b></td><td>Shows reason or cause.</td><td class="begins">because, since, as, for, now that</td><td><em class="ex">I stayed home because I was sick.</em><br><em class="ex">Since you are late, you must hurry.</em></td></tr>
+<tr><td><b class="t t1">Concessive Clause</b></td><td>Shows contrast or an unexpected situation.</td><td class="begins">although, though, even though, while, whereas</td><td><em class="ex">Although it was late, she kept studying.</em><br><em class="ex">He is rich, while I am poor.</em></td></tr>
+<tr><td><b class="t t1">Place Clause</b></td><td>Indicates place or location.</td><td class="begins">where, wherever, everywhere</td><td><em class="ex">This is the place where I was born.</em><br><em class="ex">Go wherever you like.</em></td></tr>
+<tr><td><b class="t t1">Manner Clause</b></td><td>Describes the manner or way.</td><td class="begins">as, as if, as though</td><td><em class="ex">He sings as if he were a professional.</em><br><em class="ex">She looked at me as though she knew me.</em></td></tr>
+<tr><td><b class="t t1">Purpose Clause</b></td><td>Explains the goal or reason something is done.</td><td class="begins">so that, in order that</td><td><em class="ex">He works hard so that he can succeed.</em><br><em class="ex">She whispered so as not to wake the baby.</em></td></tr>
+<tr><td><b class="t t1">Result Clause</b></td><td>Shows the result or outcome of something.</td><td class="begins">so&hellip;that, such&hellip;that</td><td><em class="ex">She was so tired that she slept early.</em><br><em class="ex">It was such a loud noise that everyone turned around.</em></td></tr>
+</tbody></table></div>
+
+<div class="cols2" id="connecting-words">
+<div class="col">
+<p class="tag">&ndash;&ndash;&ndash; grouped by what relationship they signal &ndash;&ndash;&ndash;</p>
+<h3>Subordinating conjunctions</h3><p><em>introduce adverb clauses; &ldquo;that/if/whether&rdquo; are also reused for noun clauses</em></p>
+<div class="tw"><table><thead><tr><th>Category</th><th>Subordinating words</th></tr></thead><tbody>
+<tr><td><b class="t t2">Time</b></td><td>when, while, after, before, until, since, as soon as</td></tr>
+<tr><td><b class="t t2">Reason</b></td><td>because, since, as, now that</td></tr>
+<tr><td><b class="t t2">Contrast</b></td><td>although, though, even though, while, whereas</td></tr>
+<tr><td><b class="t t2">Condition</b></td><td>if, unless, as long as, provided that</td></tr>
+<tr><td><b class="t t2">Place</b></td><td>where, wherever, everywhere</td></tr>
+<tr><td><b class="t t2">Manner</b></td><td>as, as if, as though</td></tr>
+<tr><td><b class="t t2">Purpose</b></td><td>so that, in order that</td></tr></tbody></table></div>
+<div class="pair"><div><h3>Relative Pronouns</h3><p><em>introduce adjective clauses; also reused for noun clauses</em></p>
+<div class="tw"><table><thead><tr><th>Role in the clause</th><th>Words</th></tr></thead><tbody>
+<tr><td>Subject</td><td>who, which, that</td></tr><tr><td>Object</td><td>whom, which, that</td></tr><tr><td>Possessive</td><td>whose</td></tr></tbody></table></div></div><div><h3>Relative Adverbs</h3><p><em>introduce adjective clauses; also reused for noun clauses</em></p>
+<div class="tw"><table><thead><tr><th>Refers to</th><th>Word</th></tr></thead><tbody>
+<tr><td>Place</td><td>where</td></tr><tr><td>Time</td><td>when</td></tr><tr><td>Reason</td><td>why</td></tr></tbody></table></div></div></div>
+</div>
+<div class="col" id="combining">
+<h3>Combining clauses</h3>
+<p><em>These are the three main ways to connect two related sentences into one.</em></p>
+<h3>1. Using subordinating conjunctions</h3><p>Join a dependent clause to an independent clause.</p>
+<p><b>Dependent:</b> <em class="ex">Because it was raining</em><br><b>Independent:</b> <em class="ex">We stayed home.</em><br><b>Combined:</b> <em class="ex">Because it was raining, we stayed home.</em></p>
+<h3>2. Using relative pronouns</h3><p>Join an adjective clause to a noun.</p>
+<p><em class="ex">The boy broke the window. The boy apologized.</em><br><b>Combined:</b> <em class="ex">The boy who broke the window apologized.</em></p>
+<h3>3. Using semicolons or connectors</h3><p>For joining two independent clauses without a subordinating conjunction.</p>
+<p><em class="ex">I wanted to go out; it was raining.</em><br><em class="ex">I wanted to go out; however, it was raining.</em></p>
+<div class="note"><p><b>Note:</b> common connectors: <em>however, therefore, moreover, nevertheless, consequently, meanwhile</em></p></div>
+</div>
+</div>
+
+<h2 id="mistakes">Common mistakes</h2>
+<div class="mistake"><span class="g bad">&#10007;</span><span class="bad">Because that is not my pen. <span class="why">(Incomplete &mdash; a dependent clause left dangling on its own)</span></span>
+<span class="g ok">&#10003;</span><span class="ok">That is not my pen. <span class="why">(Complete &mdash; an independent clause)</span></span></div>
+<div class="mistake"><span class="g bad">&#10007;</span><span class="bad">Because he was tired. <span class="why">(Incomplete)</span></span>
+<span class="g ok">&#10003;</span><span class="ok">Because he was tired, he went to bed. <span class="why">(Complete)</span></span></div>
+<div class="mistake"><span class="g bad">&#10007;</span><span class="bad">She left early which I was surprised. <span class="why">(Incorrect &mdash; &ldquo;which&rdquo; needs a noun or clause to modify)</span></span>
+<span class="g ok">&#10003;</span><span class="ok">She left early, which surprised me. <span class="why">(Correct)</span></span></div>
+
+<div class="remember"><h3>Remember</h3><ul>
+<li>A clause must have a subject and a verb &mdash; that's what separates it from a phrase.</li>
+<li>Independent clauses can stand alone; dependent clauses need an independent clause to complete their meaning.</li>
+<li>Subordinating conjunctions signal the relationship between the two ideas &mdash; time, reason, contrast, condition, place, or manner.</li>
+<li>Practice combining clauses for stronger, more varied sentences.</li></ul></div>
+
+<div class="pager"><a href="phrases.html"><span class="script">previous</span><br>&larr; Phrases</a><a href="fundamental-dimensions.html" style="text-align:right"><span class="script">next</span><br>Fundamental Dimensions &rarr;</a></div>
+<p class="foot"><span class="script" style="font-size:1.2rem">English Grammar Reference</span> &middot; Sentences Grammar notes</p>
+</main>
+<script>
+(function(){
+  var hs=document.querySelectorAll('main h2[id]'), toc=document.getElementById('toc');
+  if(!toc||hs.length<3)return;
+  var ol=toc.querySelector('ol');
+  hs.forEach(function(h){var li=document.createElement('li'),a=document.createElement('a');a.href='#'+h.id;a.textContent=h.getAttribute('data-short')||h.textContent;li.appendChild(a);ol.appendChild(li);});
+  toc.hidden=false;
+})();
+</script>
+</body>
+</html>

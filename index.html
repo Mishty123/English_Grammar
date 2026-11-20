@@ -85,6 +85,12 @@
     .upd { position: absolute; top: 7px; right: 14px; font-size: .68rem; font-style: italic; color: var(--muted); letter-spacing: .02em; }
     .arrow { flex: none; font-size: 1.2rem; color: var(--muted); }
 
+    .grp { display: grid; gap: 10px; }
+    .gh { font-family: var(--font-display); font-weight: 600; font-size: .78rem; letter-spacing: .16em; text-transform: uppercase; color: var(--small); margin: 10px 0 0; padding-bottom: 4px; border-bottom: 1.5px solid var(--line); }
+    .sub { display: grid; gap: 8px; padding-left: 14px; border-left: 2px solid var(--line); }
+    .sub h4 { margin: 0; font-size: .82rem; font-weight: 700; letter-spacing: .06em; color: var(--muted); }
+    .card.nested { margin-left: 26px; padding-top: 20px; }
+    .card.nested::after { content: ""; position: absolute; left: -14px; top: 50%; width: 12px; border-top: 2px solid var(--line); }
     .empty { text-align: center; padding: 26px 16px; border: 1.5px dashed var(--line); border-radius: 14px; color: var(--muted); background: var(--card); }
     .empty svg { width: 56px; height: 56px; fill: none; stroke: var(--muted); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
     .empty p { margin: 6px 0 0; }
@@ -122,7 +128,6 @@
       <div class="chips" role="group" aria-label="Filter by topic">
         <button class="chip" type="button" data-cat="all" aria-pressed="true">All</button>
         <button class="chip" type="button" data-cat="verbs" aria-pressed="false">Verbs</button>
-        <button class="chip" type="button" data-cat="pronouns" aria-pressed="false">Pronouns</button>
         <button class="chip" type="button" data-cat="small" aria-pressed="false">Small topics</button>
         <button class="chip" type="button" data-cat="sentences" aria-pressed="false">Sentences</button>
         <button class="chip" type="button" data-cat="practice" aria-pressed="false">My Practice</button>
@@ -186,49 +191,59 @@
         <span class="arrow" aria-hidden="true">&rarr;</span>
       </a>
 
-      <a class="card pronouns" href="personal_pronouns_study_page.html" data-cat="pronouns" data-keywords="pronouns personal I me he him she her it we us they them you subject object possessive adjective reflexive myself intensive agreement antecedent errors practice">
-        <time class="upd" datetime="2026-11-14">Updated 14 Nov 2026</time>
-        <span class="icon" aria-hidden="true">I/me</span>
-        <span class="text">
-          <h2>Personal Pronouns</h2>
-          <p>Subject, object, possessive and reflexive pronouns in nine tabs, with agreement, common errors and practice.</p>
-          <span class="tag">Pronouns</span>
-        </span>
-        <span class="arrow" aria-hidden="true">&rarr;</span>
-      </a>
 
-      <a class="card pronouns" href="indefinite_pronouns_study_page.html" data-cat="pronouns" data-keywords="indefinite pronouns someone anyone no one everyone something anything nothing everything some any none all most many few each either neither both another other agreement singular plural determiner">
-        <time class="upd" datetime="2026-11-12">Updated 12 Nov 2026</time>
-        <span class="icon" aria-hidden="true">any</span>
-        <span class="text">
-          <h2>Indefinite Pronouns</h2>
-          <p>Someone, anything, many, all and more, with the verb each one takes, agreement, common errors and practice.</p>
-          <span class="tag">Pronouns</span>
-        </span>
-        <span class="arrow" aria-hidden="true">&rarr;</span>
-      </a>
 
-      <a class="card small" href="determiners_study_page.html" data-cat="small" data-keywords="determiners articles a an the demonstratives this that these those possessive my your quantifiers some any many much few little each every either neither both another other such what which whose numbers order agreement countable uncountable noun">
-        <time class="upd" datetime="2026-11-12">Updated 12 Nov 2026</time>
-        <span class="icon" aria-hidden="true">the</span>
-        <span class="text">
-          <h2>Determiners</h2>
-          <p>Articles, this and that, possessives, quantifiers, each and every, with the order, agreement, errors and practice.</p>
-          <span class="tag">Small topics</span>
-        </span>
-        <span class="arrow" aria-hidden="true">&rarr;</span>
-      </a>
 
-      <a class="card small" href="some_any_study_page.html" data-cat="small" data-keywords="some any a an articles quantifiers determiners countable uncountable questions negatives quiz">
-        <time class="upd" datetime="2026-11-12">Updated 12 Nov 2026</time>
-        <span class="icon" aria-hidden="true">s/a</span>
-        <span class="text">
-          <h2>Some and Any</h2>
-          <p>When to use some, any or a / an, with tap cards for the rule and its exceptions, plus a quiz.</p>
-          <span class="tag">Small topics</span>
-        </span>
-        <span class="arrow" aria-hidden="true">&rarr;</span>
-      </a>
+      <section class="grp" data-grp="small" aria-labelledby="g-small">
+        <h3 class="gh" id="g-small">Small topics</h3>
+        <div class="sub" data-sub><h4>Pronouns</h4>
+        <a class="card small" href="personal_pronouns_study_page.html" data-cat="small" data-keywords="pronouns personal I me he him she her it we us they them you subject object possessive adjective reflexive myself intensive agreement antecedent errors practice">
+          <time class="upd" datetime="2026-11-14">Updated 14 Nov 2026</time>
+          <span class="icon" aria-hidden="true">I/me</span>
+          <span class="text">
+            <h2>Personal Pronouns</h2>
+            <p>Subject, object, possessive and reflexive pronouns in nine tabs, with agreement, common errors and practice.</p>
+            <span class="tag">Pronouns</span>
+          </span>
+          <span class="arrow" aria-hidden="true">&rarr;</span>
+        </a>
+
+        <a class="card small" href="indefinite_pronouns_study_page.html" data-cat="small" data-keywords="indefinite pronouns someone anyone no one everyone something anything nothing everything some any none all most many few each either neither both another other agreement singular plural determiner">
+          <time class="upd" datetime="2026-11-12">Updated 12 Nov 2026</time>
+          <span class="icon" aria-hidden="true">any</span>
+          <span class="text">
+            <h2>Indefinite Pronouns</h2>
+            <p>Someone, anything, many, all and more, with the verb each one takes, agreement, common errors and practice.</p>
+            <span class="tag">Pronouns</span>
+          </span>
+          <span class="arrow" aria-hidden="true">&rarr;</span>
+        </a>
+        </div>
+        <div class="sub" data-sub><h4>Determiners</h4>
+        <a class="card small" href="determiners_study_page.html" data-cat="small" data-keywords="determiners articles a an the demonstratives this that these those possessive my your quantifiers some any many much few little each every either neither both another other such what which whose numbers order agreement countable uncountable noun">
+          <time class="upd" datetime="2026-11-12">Updated 12 Nov 2026</time>
+          <span class="icon" aria-hidden="true">the</span>
+          <span class="text">
+            <h2>Determiners</h2>
+            <p>Articles, this and that, possessives, quantifiers, each and every, with the order, agreement, errors and practice.</p>
+            <span class="tag">Determiners</span>
+          </span>
+          <span class="arrow" aria-hidden="true">&rarr;</span>
+        </a>
+
+        <a class="card small nested" href="some_any_study_page.html" data-cat="small" data-keywords="some any a an articles quantifiers determiners countable uncountable questions negatives quiz">
+          <time class="upd" datetime="2026-11-12">Updated 12 Nov 2026</time>
+          <span class="icon" aria-hidden="true">s/a</span>
+          <span class="text">
+            <h2>Some and Any</h2>
+            <p>When to use some, any or a / an, with tap cards for the rule and its exceptions, plus a quiz.</p>
+            <span class="tag">Determiners</span>
+          </span>
+          <span class="arrow" aria-hidden="true">&rarr;</span>
+        </a>
+        </div>
+      </section>
+
       <a class="card sentences" href="questions_study_page.html" data-cat="sentences" data-keywords="questions question words tags wh who what where when why how subject auxiliary inversion helping verb do does did short answers indirect phrases quiz">
         <time class="upd" datetime="2026-11-14">Updated 14 Nov 2026</time>
         <span class="icon" aria-hidden="true">?</span>
@@ -291,6 +306,7 @@
         c.hidden = !(okQ && okC);
         if (!c.hidden) shown++;
       });
+      Array.prototype.forEach.call(document.querySelectorAll('.sub,.grp'), function (g) { g.hidden = !g.querySelector('.card:not([hidden])'); });
       count.textContent = 'Showing ' + shown + ' of ' + cards.length + (cards.length === 1 ? ' page' : ' pages');
       empty.hidden = shown !== 0;
       clear.hidden = q.value === '';

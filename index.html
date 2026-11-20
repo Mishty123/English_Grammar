@@ -91,6 +91,14 @@
     .sub h4 { margin: 0; font-size: .82rem; font-weight: 700; letter-spacing: .06em; color: var(--muted); }
     .card.nested { margin-left: 26px; padding-top: 20px; }
     .card.nested::after { content: ""; position: absolute; left: -14px; top: 50%; width: 12px; border-top: 2px solid var(--line); }
+    .card { padding: 14px 16px 14px 20px; overflow: visible; }
+    .card::before { border-radius: 14px 0 0 14px; }
+    .card.nested::after { display: none; }
+    .card .text p, .card .tag, .card .upd { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+    .card .text h2 { font-size: 1.15rem; margin: 0; }
+    .card[data-tip]:hover, .card[data-tip]:focus-visible { z-index: 6; }
+    .card[data-tip]::after { content: attr(data-tip); position: absolute; left: 20px; top: calc(100% + 6px); width: max-content; max-width: min(380px, calc(100% - 40px)); padding: 9px 13px; border-radius: 10px; background: var(--ink); color: var(--bg); font-size: .86rem; line-height: 1.45; box-shadow: 0 10px 24px rgba(27,42,52,.28); opacity: 0; transform: translateY(-4px); pointer-events: none; transition: opacity .15s, transform .15s; z-index: 7; }
+    .card[data-tip]:hover::after, .card[data-tip]:focus-visible::after { opacity: 1; transform: none; }
     .empty { text-align: center; padding: 26px 16px; border: 1.5px dashed var(--line); border-radius: 14px; color: var(--muted); background: var(--card); }
     .empty svg { width: 56px; height: 56px; fill: none; stroke: var(--muted); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
     .empty p { margin: 6px 0 0; }
@@ -136,7 +144,7 @@
     </div>
 
     <nav class="cards" aria-label="Grammar pages">
-      <a class="card verbs" href="verb_basics.html" data-cat="verbs" data-keywords="verb basics verb phrase anatomy roles role 1 2 3 4 finite non-finite helping lexical clause patterns tense aspect voice passive 12 tenses sentence lab verb types main auxiliary modal infinitive gerund participle transitive intransitive linking phrasal causative quiz">
+      <a data-tip="Two parts: Verb Phrase Anatomy (roles, tense, aspect and voice) and Verb Types (lexical, helping, finite and non-finite), with quizzes. · Updated 19 Nov 2026" class="card verbs" href="verb_basics.html" data-cat="verbs" data-keywords="verb basics verb phrase anatomy roles role 1 2 3 4 finite non-finite helping lexical clause patterns tense aspect voice passive 12 tenses sentence lab verb types main auxiliary modal infinitive gerund participle transitive intransitive linking phrasal causative quiz">
         <time class="upd" datetime="2026-11-19">Updated 19 Nov 2026</time>
         <span class="icon" aria-hidden="true">VB</span>
         <span class="text">
@@ -147,7 +155,7 @@
         <span class="arrow" aria-hidden="true">&rarr;</span>
       </a>
 
-      <a class="card verbs" href="be_verb.html" data-cat="verbs" data-keywords="be verb am is are was were been being helping linking modal passive voice continuous structures practice quiz">
+      <a data-tip="Forms, meanings, the 12 tenses, helping-verb uses, passive voice and special structures of &ldquo;be&rdquo;. · Updated 19 Nov 2026" class="card verbs" href="be_verb.html" data-cat="verbs" data-keywords="be verb am is are was were been being helping linking modal passive voice continuous structures practice quiz">
         <time class="upd" datetime="2026-11-19">Updated 19 Nov 2026</time>
         <span class="icon" aria-hidden="true">be</span>
         <span class="text">
@@ -158,7 +166,7 @@
         <span class="arrow" aria-hidden="true">&rarr;</span>
       </a>
 
-      <a class="card verbs" href="tense_voice_overview.html" data-cat="verbs" data-keywords="tenses passive voice active present past future simple continuous perfect progressive twelve 12 timeline verbs study ways">
+      <a data-tip="All 12 tenses, with six ways to study them: tap grid, build it, cover-up sheet, full table, key words and passive voice. · Updated 18 Nov 2026" class="card verbs" href="tense_voice_overview.html" data-cat="verbs" data-keywords="tenses passive voice active present past future simple continuous perfect progressive twelve 12 timeline verbs study ways">
         <time class="upd" datetime="2026-11-18">Updated 18 Nov 2026</time>
         <span class="icon" aria-hidden="true">12</span>
         <span class="text">
@@ -169,7 +177,7 @@
         <span class="arrow" aria-hidden="true">&rarr;</span>
       </a>
 
-      <a class="card verbs" href="present_tenses_study_page.html" data-cat="verbs" data-keywords="present tenses simple continuous perfect perfect continuous progressive verbs have has been V1 V4 V3 uses key words drawings">
+      <a data-tip="Present simple, continuous, perfect and perfect continuous, with one tab and drawings for each. · Updated 12 Nov 2026" class="card verbs" href="present_tenses_study_page.html" data-cat="verbs" data-keywords="present tenses simple continuous perfect perfect continuous progressive verbs have has been V1 V4 V3 uses key words drawings">
         <time class="upd" datetime="2026-11-12">Updated 12 Nov 2026</time>
         <span class="icon" aria-hidden="true">Pr</span>
         <span class="text">
@@ -180,7 +188,7 @@
         <span class="arrow" aria-hidden="true">&rarr;</span>
       </a>
 
-      <a class="card verbs" href="verb_glossary.html" data-cat="verbs" data-keywords="glossary verb terms meanings search finite transitive intransitive modal auxiliary helping phrasal gerund infinitive participle tense aspect voice mood V1 V2 V3 V4 V5">
+      <a data-tip="59 grammar terms about verbs with meanings, examples and a search bar. · Updated 15 Nov 2026" class="card verbs" href="verb_glossary.html" data-cat="verbs" data-keywords="glossary verb terms meanings search finite transitive intransitive modal auxiliary helping phrasal gerund infinitive participle tense aspect voice mood V1 V2 V3 V4 V5">
         <time class="upd" datetime="2026-11-15">Updated 15 Nov 2026</time>
         <span class="icon" aria-hidden="true">Aa</span>
         <span class="text">
@@ -197,7 +205,7 @@
       <section class="grp" data-grp="small" aria-labelledby="g-small">
         <h3 class="gh" id="g-small">Small topics</h3>
         <div class="sub" data-sub><h4>Pronouns</h4>
-        <a class="card small" href="personal_pronouns_study_page.html" data-cat="small" data-keywords="pronouns personal I me he him she her it we us they them you subject object possessive adjective reflexive myself intensive agreement antecedent errors practice">
+        <a data-tip="Subject, object, possessive and reflexive pronouns in nine tabs, with agreement, common errors and practice. · Updated 14 Nov 2026" class="card small" href="personal_pronouns_study_page.html" data-cat="small" data-keywords="pronouns personal I me he him she her it we us they them you subject object possessive adjective reflexive myself intensive agreement antecedent errors practice">
           <time class="upd" datetime="2026-11-14">Updated 14 Nov 2026</time>
           <span class="icon" aria-hidden="true">I/me</span>
           <span class="text">
@@ -208,7 +216,7 @@
           <span class="arrow" aria-hidden="true">&rarr;</span>
         </a>
 
-        <a class="card small" href="indefinite_pronouns_study_page.html" data-cat="small" data-keywords="indefinite pronouns someone anyone no one everyone something anything nothing everything some any none all most many few each either neither both another other agreement singular plural determiner">
+        <a data-tip="Someone, anything, many, all and more, with the verb each one takes, agreement, common errors and practice. · Updated 12 Nov 2026" class="card small" href="indefinite_pronouns_study_page.html" data-cat="small" data-keywords="indefinite pronouns someone anyone no one everyone something anything nothing everything some any none all most many few each either neither both another other agreement singular plural determiner">
           <time class="upd" datetime="2026-11-12">Updated 12 Nov 2026</time>
           <span class="icon" aria-hidden="true">any</span>
           <span class="text">
@@ -220,7 +228,7 @@
         </a>
         </div>
         <div class="sub" data-sub><h4>Determiners</h4>
-        <a class="card small" href="determiners_study_page.html" data-cat="small" data-keywords="determiners articles a an the demonstratives this that these those possessive my your quantifiers some any many much few little each every either neither both another other such what which whose numbers order agreement countable uncountable noun">
+        <a data-tip="Articles, this and that, possessives, quantifiers, each and every, with the order, agreement, errors and practice. · Updated 12 Nov 2026" class="card small" href="determiners_study_page.html" data-cat="small" data-keywords="determiners articles a an the demonstratives this that these those possessive my your quantifiers some any many much few little each every either neither both another other such what which whose numbers order agreement countable uncountable noun">
           <time class="upd" datetime="2026-11-12">Updated 12 Nov 2026</time>
           <span class="icon" aria-hidden="true">the</span>
           <span class="text">
@@ -231,7 +239,7 @@
           <span class="arrow" aria-hidden="true">&rarr;</span>
         </a>
 
-        <a class="card small nested" href="some_any_study_page.html" data-cat="small" data-keywords="some any a an articles quantifiers determiners countable uncountable questions negatives quiz">
+        <a data-tip="When to use some, any or a / an, with tap cards for the rule and its exceptions, plus a quiz. · Updated 12 Nov 2026" class="card small nested" href="some_any_study_page.html" data-cat="small" data-keywords="some any a an articles quantifiers determiners countable uncountable questions negatives quiz">
           <time class="upd" datetime="2026-11-12">Updated 12 Nov 2026</time>
           <span class="icon" aria-hidden="true">s/a</span>
           <span class="text">
@@ -244,7 +252,7 @@
         </div>
       </section>
 
-      <a class="card sentences" href="questions_study_page.html" data-cat="sentences" data-keywords="questions question words tags wh who what where when why how subject auxiliary inversion helping verb do does did short answers indirect phrases quiz">
+      <a data-tip="How questions flip the verb and subject, question phrases, question tags and a quiz. · Updated 14 Nov 2026" class="card sentences" href="questions_study_page.html" data-cat="sentences" data-keywords="questions question words tags wh who what where when why how subject auxiliary inversion helping verb do does did short answers indirect phrases quiz">
         <time class="upd" datetime="2026-11-14">Updated 14 Nov 2026</time>
         <span class="icon" aria-hidden="true">?</span>
         <span class="text">
@@ -255,7 +263,7 @@
         <span class="arrow" aria-hidden="true">&rarr;</span>
       </a>
 
-      <a class="card sentences" href="sentences_grammar/index.html" data-cat="sentences" data-keywords="sentence grammar notes patterns types structure purpose phrases clauses fundamental dimensions skeleton minor fixed structures building blocks exercises simple compound complex svo">
+      <a data-tip="Sentence patterns and types, phrases, clauses, fundamental dimensions, the sentence skeleton and exercises. · Updated 20 Nov 2026" class="card sentences" href="sentences_grammar/index.html" data-cat="sentences" data-keywords="sentence grammar notes patterns types structure purpose phrases clauses fundamental dimensions skeleton minor fixed structures building blocks exercises simple compound complex svo">
         <time class="upd" datetime="2026-11-20">Updated 20 Nov 2026</time>
         <span class="icon" aria-hidden="true">SG</span>
         <span class="text">
@@ -266,7 +274,7 @@
         <span class="arrow" aria-hidden="true">&rarr;</span>
       </a>
 
-      <a class="card practice" href="grammar_adventure.html" data-cat="practice" data-keywords="practice grammar adventure kid child fun pictures adjectives determiners helping verbs auxiliary questions quiz flip cards revision">
+      <a data-tip="Picture tricks, tap cards and mini quizzes for adjectives, determiners, helping verbs and questions. · Updated 15 Nov 2026" class="card practice" href="grammar_adventure.html" data-cat="practice" data-keywords="practice grammar adventure kid child fun pictures adjectives determiners helping verbs auxiliary questions quiz flip cards revision">
         <time class="upd" datetime="2026-11-15">Updated 15 Nov 2026</time>
         <span class="icon" aria-hidden="true">GA</span>
         <span class="text">

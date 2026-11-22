@@ -289,18 +289,13 @@ details p b { color: var(--right); }
 .gc .gx:first-of-type { margin-top: 0; }
 .subtab { display: flex; flex-direction: column; gap: 44px; }
 .subtab[hidden] { display: none; }
-/* table clarity */
-.scroll { border-top: 1px solid var(--line); overflow: hidden; }
-.scroll table { border-collapse: separate; border-spacing: 0; }
-thead th { background: var(--band); color: var(--band-fg); font-size: 1rem; padding: 11px 14px; border-bottom: 0; vertical-align: middle; }
-thead th small { display: block; margin-top: 2px; font-family: var(--body); font-style: italic; font-weight: 400; font-size: .76rem; letter-spacing: .02em; color: color-mix(in srgb, var(--band-fg) 78%, transparent); }
-thead th + th { border-left: 1px solid rgba(255,255,255,.22); }
-tbody td + td, tbody th + td { border-left: 1px solid var(--line); }
-tbody tr:nth-child(even) td, tbody tr:nth-child(even) th { background: color-mix(in srgb, var(--soft) 55%, var(--surface)); }
-tbody td { padding: 10px 14px; }
-tbody td :is(.m, .k, .n, .v) { font-weight: 600; }
-tr.egrow td { background: color-mix(in srgb, var(--soft) 90%, var(--surface)) !important; color: var(--muted); font-style: italic; font-weight: 400; font-size: .92rem; border-bottom: 2px solid var(--line); }
-tr.egrow td i { font-weight: 400; }
+/* tables: no colour highlighting, bold only for key words */
+:is(td, th) :is(.m, .n, .v) { color: inherit !important; background: none !important; -webkit-text-fill-color: currentColor !important; -webkit-background-clip: border-box; background-clip: border-box; text-shadow: none !important; filter: none !important; font-weight: 400; font-style: italic; }
+:is(td, th) .k { color: inherit !important; background: none !important; -webkit-text-fill-color: currentColor !important; -webkit-background-clip: border-box; background-clip: border-box; text-shadow: none !important; filter: none !important; font-weight: 700; font-style: italic; }
+td.first { color: var(--fg); }
+tbody th { color: var(--fg); }
+td i { font-weight: 400; }
+td :is(b, strong), td :is(b, strong) i, td.first, td .k { font-weight: 700; }
 </style>
 </head>
 <body>
@@ -617,7 +612,7 @@ tr.egrow td i { font-weight: 400; }
     <table style="min-width: 0">
       <thead><tr><th>With uncountable nouns</th><th>With countable nouns</th></tr></thead>
       <tbody>
-        <tr class="egrow"><td><i>e.g. flour, pepper, earth, mud, tea, rice</i></td><td><i>e.g. eggs, chairs, snakes, houses, shoes</i></td></tr>
+        <tr><td><i>e.g. flour, pepper, earth, mud, tea, rice</i></td><td><i>e.g. eggs, chairs, snakes, houses, shoes</i></td></tr>
         <tr><td><span class="m">much</span></td><td><span class="m">many</span></td></tr>
         <tr><td><span class="m">a little / little / very little</span></td><td><span class="m">a few / few / very few / fewer</span></td></tr>
         <tr><td><span class="m">a bit of</span></td><td><span class="m">a number of</span></td></tr>

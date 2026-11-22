@@ -321,6 +321,12 @@ thead th { font-weight: 600; }
 .hero .lede { font-style: italic; font-weight: 500; max-width: none; margin: 4px 0 12px; font-size: 1.05rem; }
 .hero .jump { justify-content: center; }
 </style>
+<style>
+.hero h1 { font-family: var(--cal); font-weight: 400; font-size: clamp(3.6rem, 12vw, 5.6rem); line-height: 1; padding: .02em .12em .1em; margin: 2px 0 0;
+  background: linear-gradient(180deg, color-mix(in srgb, var(--hh) 62%, #fff) 0%, var(--hh) 52%, color-mix(in srgb, var(--hh) 82%, #000) 100%);
+  -webkit-background-clip: text; background-clip: text; color: transparent; -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 3px color-mix(in srgb, var(--hh) 28%, transparent)); }
+</style>
 </head>
 <body>
 <div class="page">
@@ -330,7 +336,6 @@ thead th { font-weight: 600; }
 <header class="hero">
   <a class="gh-home" href="index.html" aria-label="Back to the home page">&larr; Home</a>
   <h1>Determiners</h1>
-  <div class="label">A word class</div>
   <p class="lede">Sits before a noun to show which one, whose, or how many</p>
   <ul class="jump" role="tablist" aria-label="Determiner topics">
     <li><a href="#overview" role="tab" data-tab="overview">Determiners</a></li>

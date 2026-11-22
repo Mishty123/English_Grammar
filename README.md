@@ -11,6 +11,7 @@ All about English Grammar
 - [Determiners](https://mishty123.github.io/English_Grammar/determiners_study_page.html)
 - [Some and Any](https://mishty123.github.io/English_Grammar/some_any_study_page.html)
 - [Indefinite Pronouns](https://mishty123.github.io/English_Grammar/indefinite_pronouns_study_page.html)
+- [Nouns](https://mishty123.github.io/English_Grammar/nouns_study_page.html) (kinds, countable, number, gender, case, jobs, agreement, quizzes)
 - [Personal Pronouns](https://mishty123.github.io/English_Grammar/personal_pronouns_study_page.html)
 - [Sentences Grammar](https://mishty123.github.io/English_Grammar/sentences_grammar/index.html) (patterns, types, phrases, clauses, skeleton, exercises)
 - [Grammar Adventure (My Practice)](https://mishty123.github.io/English_Grammar/grammar_adventure.html)

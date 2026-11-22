@@ -309,6 +309,13 @@ thead th .hs small { font-size: .78rem; -webkit-text-stroke: 0; }
 .g-b { --hc: var(--k); color: var(--k); background: color-mix(in srgb, var(--k) 10%, var(--surface)); }
 thead th.g-u, thead th.g-c { background: color-mix(in srgb, var(--hc) 14%, var(--surface)); }
 td.g-u :is(.m, .n, .v, i), td.g-c :is(.m, .n, .v, i), td.g-b :is(.m, .n, .v, i) { color: inherit !important; }
+
+/* marks: double border = important, chain link = closely linked */
+a.imp { border-style: double !important; border-width: 3px !important; border-color: var(--hero-head) !important; padding-top: 0 !important; padding-bottom: 0 !important; }
+a.imp[aria-selected="true"] { box-shadow: inset 0 0 0 1px var(--hero); }
+a.lnk::after { content: ""; display: inline-block; width: 1.05em; height: 1.05em; margin-left: 6px; vertical-align: -0.2em; background: var(--hero-head);
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M10 14a3.5 3.5 0 0 0 5 0l4-4a3.5 3.5 0 0 0-5-5l-.5.5'/%3E%3Cpath d='M14 10a3.5 3.5 0 0 0-5 0l-4 4a3.5 3.5 0 0 0 5 5l.5-.5'/%3E%3C/svg%3E") center / contain no-repeat; mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M10 14a3.5 3.5 0 0 0 5 0l4-4a3.5 3.5 0 0 0-5-5l-.5.5'/%3E%3Cpath d='M14 10a3.5 3.5 0 0 0-5 0l-4 4a3.5 3.5 0 0 0 5 5l.5-.5'/%3E%3C/svg%3E") center / contain no-repeat; }
+a.lnk[aria-selected="true"]::after { background: var(--hero); }
 </style>
 </head>
 <body>
@@ -321,7 +328,7 @@ td.g-u :is(.m, .n, .v, i), td.g-c :is(.m, .n, .v, i), td.g-b :is(.m, .n, .v, i) 
   <ul class="jump" role="tablist" aria-label="Noun topics">
     <li><a href="#overview" role="tab" data-tab="overview"><span class="stn">1</span> Overview</a></li>
     <li><a href="#kinds" role="tab" data-tab="kinds"><span class="stn">2</span> Kinds</a></li>
-    <li><a href="#counting" role="tab" data-tab="counting"><span class="stn">3</span> Countable</a></li>
+    <li><a href="#counting" role="tab" data-tab="counting" class="imp lnk"><span class="stn">3</span> Countable</a></li>
     <li><a href="#numgen" role="tab" data-tab="numgen"><span class="stn">4</span> Number &amp; Gender</a></li>
     <li><a href="#casejob" role="tab" data-tab="casejob"><span class="stn">5</span> Case &amp; Job</a></li>
     <li><a href="#agreement" role="tab" data-tab="agreement"><span class="stn">6</span> Agreement</a></li>
@@ -592,7 +599,7 @@ td.g-u :is(.m, .n, .v, i), td.g-c :is(.m, .n, .v, i), td.g-b :is(.m, .n, .v, i) 
 <!-- ===================== COUNTABLE ===================== -->
 <div class="tabpanel" id="counting" role="tabpanel" hidden>
 
-<ul class="subjump" role="tablist" aria-label="Countable topics"><li><a href="#counting" role="tab" data-st="c-intro">Intro</a></li><li><a href="#counting" role="tab" data-st="c-umbrella">Umbrella group</a></li><li><a href="#counting" role="tab" data-st="c-always">Always uncountable</a></li><li><a href="#counting" role="tab" data-st="c-dual">Dual nature</a></li><li><a href="#counting" role="tab" data-st="c-tricky">Tricky</a></li><li><a href="#counting" role="tab" data-st="c-quiz">Quiz</a></li></ul>
+<ul class="subjump" role="tablist" aria-label="Countable topics"><li><a href="#counting" role="tab" data-st="c-intro" class="lnk">Intro</a></li><li><a href="#counting" role="tab" data-st="c-umbrella">Umbrella group</a></li><li><a href="#counting" role="tab" data-st="c-always">Always uncountable</a></li><li><a href="#counting" role="tab" data-st="c-dual">Dual nature</a></li><li><a href="#counting" role="tab" data-st="c-tricky">Tricky</a></li><li><a href="#counting" role="tab" data-st="c-quiz">Quiz</a></li></ul>
 
 <div class="subtab" id="c-intro" role="tabpanel" data-st="c-intro">
 

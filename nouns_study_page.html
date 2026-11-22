@@ -91,7 +91,13 @@ a:focus-visible, button:focus-visible, summary:focus-visible { outline: 3px soli
 .hero .label::before { content: ""; display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: var(--hero-bar); margin-right: 7px; vertical-align: middle; }
 .hero h1 { color: var(--hero-head); text-align: center; }
 .hero .label { text-align: center; }
-.hero h1::after { content: ""; display: block; width: 48px; height: 4px; border-radius: 4px; background: var(--hero-bar); margin: 8px auto 0; }
+.hero h1::after { content: none; }
+.hero .label { font-family: var(--body); font-style: italic; font-size: .98rem; letter-spacing: .06em; font-weight: 500; margin-top: -2px; }
+.hero .label::before { content: none; }
+.hero h1 { font-family: var(--cal); font-weight: 400; font-size: clamp(3.6rem, 12vw, 5.6rem); line-height: 1; padding: .02em .12em .1em; margin-top: 2px;
+  background: linear-gradient(180deg, color-mix(in srgb, var(--hero-head) 62%, #fff) 0%, var(--hero-head) 52%, color-mix(in srgb, var(--hero-head) 82%, #000) 100%);
+  -webkit-background-clip: text; background-clip: text; color: transparent; -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 3px color-mix(in srgb, var(--hero-head) 28%, transparent)); }
 .lede { font-size: 1.12rem; max-width: 64ch; margin-top: 12px; }
 .jump { display: flex; flex-wrap: wrap; gap: 6px; margin: 12px 0 0; padding: 0; list-style: none; }
 .jump a { display: inline-block; padding: 2px 11px; border: 1px solid var(--hero-chip-line); border-radius: 999px; background: var(--hero-chip); color: var(--hero-ink); text-decoration: none; font-size: .85rem; }
@@ -257,8 +263,8 @@ details p b { color: var(--right); }
 
 <header class="hero">
   <a class="gh-home" href="index.html" aria-label="Back to the home page">&larr; Home</a>
-  <div class="label">Parts of speech</div>
   <h1>Nouns</h1>
+  <div class="label">Parts of speech</div>
   <ul class="jump" role="tablist" aria-label="Noun topics">
     <li><a href="#overview" role="tab" data-tab="overview">Overview</a></li>
     <li><a href="#kinds" role="tab" data-tab="kinds">Kinds</a></li>

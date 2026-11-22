@@ -327,6 +327,38 @@ thead th { font-weight: 600; }
   -webkit-background-clip: text; background-clip: text; color: transparent; -webkit-text-fill-color: transparent;
   filter: drop-shadow(0 0 3px color-mix(in srgb, var(--hh) 28%, transparent)); }
 </style>
+<style>
+.subjump { display: flex; flex-wrap: wrap; gap: 8px; margin: 0; padding: 0; list-style: none; }
+.subjump a { display: inline-block; padding: 5px 16px; border: 1px solid var(--line); border-radius: 999px; background: var(--surface); color: var(--fg); text-decoration: none; font-size: .92rem; }
+.subjump a:hover { border-color: var(--h2c); }
+.subjump a[aria-selected="true"] { background: var(--h2c); border-color: var(--h2c); color: #fff; font-weight: 700; }
+.subpanel { display: flex; flex-direction: column; gap: 22px; }
+.subpanel[hidden] { display: none; }
+.qpick { display: flex; flex-wrap: wrap; gap: 8px; }
+.qpick button { font: inherit; cursor: pointer; padding: 5px 16px; border: 1.5px solid var(--line); border-radius: 12px; background: var(--surface); color: var(--fg); }
+.qpick button[aria-selected="true"] { border-color: var(--h2c); background: color-mix(in srgb, var(--h2c) 12%, var(--surface)); font-weight: 700; }
+.qz { border: 1px solid var(--line); border-radius: 16px; background: var(--surface); padding: 16px 20px; display: flex; flex-direction: column; gap: 12px; }
+.qz[hidden] { display: none; }
+.qz .qt { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+.qz .qn { font-family: var(--head); color: var(--h2c); }
+.qz .qs { font-size: .84rem; font-weight: 700; border: 1.5px solid var(--line); border-radius: 999px; padding: 2px 14px; }
+.qz .qb { height: 6px; border-radius: 99px; background: var(--soft); overflow: hidden; }
+.qz .qb i { display: block; height: 100%; width: 0; background: var(--h3c); transition: width .25s; }
+.qz .qq { font-size: 1.15rem; font-style: italic; font-weight: 600; }
+.qz .qo { display: flex; flex-wrap: wrap; gap: 8px; }
+.qz .qo button { font: inherit; cursor: pointer; text-align: left; padding: 8px 16px; border: 1.5px solid var(--line); border-radius: 12px; background: var(--surface); color: var(--fg); }
+.qz .qo button:hover:not(:disabled) { border-color: var(--h3c); }
+.qz .qo button.ok { border-color: var(--right); background: var(--right-bg); font-weight: 700; }
+.qz .qo button.no { border-color: var(--wrong); background: var(--wrong-bg); text-decoration: line-through; }
+.qz .qf { min-height: 2.8em; font-style: italic; color: var(--muted); font-size: .94rem; }
+.qz .qa { display: flex; flex-wrap: wrap; gap: 8px; padding-top: 12px; border-top: 1px solid var(--line); }
+.qz .qa button { font: inherit; cursor: pointer; padding: 5px 16px; border: 1.5px solid var(--line); border-radius: 999px; background: var(--surface); color: var(--fg); }
+.qz .qa button:disabled { opacity: .4; cursor: default; }
+.qz .qa .nx { margin-left: auto; background: var(--h2c); border-color: var(--h2c); color: #fff; font-weight: 700; }
+.qz .qa .nx:disabled { background: var(--surface); color: var(--fg); border-color: var(--line); }
+.qz .qr { text-align: center; padding: 10px 0; }
+.qz .qr b { display: block; font-family: var(--head); font-weight: 400; font-style: normal; font-size: 2.4rem; color: var(--h2c); }
+</style>
 </head>
 <body>
 <div class="page">
@@ -640,6 +672,13 @@ thead th { font-weight: 600; }
 
 <div class="tabpanel" id="quant-tab" role="tabpanel" hidden>
 
+<ul class="subjump" role="tablist" aria-label="Quantifiers">
+  <li><a href="#quant-tab" role="tab" data-sub="q-main">Quantifiers</a></li>
+  <li><a href="#quant-tab" role="tab" data-sub="q-quiz">Quiz time</a></li>
+</ul>
+
+<div class="subpanel" data-sub="q-main">
+
 <section id="quant" class="c-refl">
   <header>
     <h2>Quantifiers <span class="forms">some, any, no, much, many, few, little, enough, all, most&hellip;</span></h2>
@@ -709,6 +748,23 @@ thead th { font-weight: 600; }
     </div></div>
   </div>
 </section>
+
+</div>
+
+<div class="subpanel" data-sub="q-quiz" hidden>
+<section id="quant-quiz" class="c-refl">
+  <header>
+    <h2>Quiz time</h2>
+    <p>Two quizzes of 15 questions. Pick the quantifier, or sort it by the kind of noun it goes with.</p>
+  </header>
+  <div class="qpick" role="tablist" aria-label="Quiz type">
+    <button type="button" role="tab" data-qv="qA" aria-selected="true">Pick It</button>
+    <button type="button" role="tab" data-qv="qB" aria-selected="false">Sort It</button>
+  </div>
+  <div class="qz" id="qA"></div>
+  <div class="qz" id="qB" hidden></div>
+</section>
+</div>
 
 </div>
 
@@ -1145,6 +1201,46 @@ thead th { font-weight: 600; }
     btn.setAttribute('data-open', open ? '1' : '0');
     btn.textContent = open ? 'Hide all answers' : 'Show all answers';
   });
+})();
+</script>
+<script>
+(function () {
+  var QA = [["How ___ eggs are there?", ["many", "much"], 0, "Eggs can be counted, so use many."], ["There isn’t ___ flour left.", ["many", "much"], 1, "Flour is uncountable, so use much."], ["We have ___ chairs for everyone.", ["enough", "a great deal of", "much"], 0, "Enough goes with both kinds. A great deal of and much go with uncountable nouns."], ["She added ___ pepper.", ["a bit of", "a number of", "several"], 0, "A bit of goes with uncountable nouns."], ["___ students passed the test.", ["A great deal of", "Several", "Much"], 1, "Several goes with plural countable nouns."], ["I have ___ friends here, so I feel lonely.", ["few", "a few"], 0, "Few means almost none, a negative idea."], ["I have ___ time, so let’s have tea.", ["little", "a little"], 1, "A little means some, a positive idea."], ["There are ___ cars today than yesterday.", ["fewer", "less"], 0, "Cars can be counted, so use fewer."], ["A ___ of the voters supported the plan.", ["majority", "great deal", "bit"], 0, "A majority of goes with plural countable nouns."], ["She spent a large ___ of money.", ["number", "amount", "majority"], 1, "Money is uncountable: a large amount of."], ["He has a large ___ of books.", ["number", "amount", "deal"], 0, "Books are countable: a large number of."], ["Which quantifier works with both kinds of noun?", ["several", "plenty of", "much", "a few"], 1, "Plenty of: plenty of books, plenty of water."], ["Which phrase is correct?", ["many rice", "much rice", "a few rice"], 1, "Rice is uncountable, so much rice."], ["There are very ___ chairs.", ["few", "little"], 0, "Chairs are countable, so very few."], ["She has ___ ideas.", ["a great deal of", "a number of", "much"], 1, "Ideas are countable: a number of ideas."]], QB = [["Where does <i>much</i> go?", ["Countable", "Uncountable", "Both"], 1, "much goes with uncountable nouns: much water."], ["Where does <i>many</i> go?", ["Countable", "Uncountable", "Both"], 0, "many goes with countable nouns: many books."], ["Where does <i>a little</i> go?", ["Countable", "Uncountable", "Both"], 1, "a little goes with uncountable nouns: a little time."], ["Where does <i>a few</i> go?", ["Countable", "Uncountable", "Both"], 0, "a few goes with countable nouns: a few books."], ["Where does <i>a bit of</i> go?", ["Countable", "Uncountable", "Both"], 1, "a bit of goes with uncountable nouns: a bit of luck."], ["Where does <i>a number of</i> go?", ["Countable", "Uncountable", "Both"], 0, "a number of goes with countable nouns: a number of students."], ["Where does <i>a great deal of</i> go?", ["Countable", "Uncountable", "Both"], 1, "a great deal of goes with uncountable nouns: a great deal of money."], ["Where does <i>several</i> go?", ["Countable", "Uncountable", "Both"], 0, "several goes with countable nouns: several books."], ["Where does <i>a large amount of</i> go?", ["Countable", "Uncountable", "Both"], 1, "a large amount of goes with uncountable nouns: a large amount of water."], ["Where does <i>a large number of</i> go?", ["Countable", "Uncountable", "Both"], 0, "a large number of goes with countable nouns: a large number of cars."], ["Where does <i>a majority of</i> go?", ["Countable", "Uncountable", "Both"], 0, "a majority of goes with countable nouns: a majority of voters."], ["Where does <i>enough</i> go?", ["Countable", "Uncountable", "Both"], 2, "enough goes with both: enough chairs, enough space."], ["Where does <i>plenty of</i> go?", ["Countable", "Uncountable", "Both"], 2, "plenty of goes with both: plenty of books, plenty of water."], ["Where does <i>some</i> go?", ["Countable", "Uncountable", "Both"], 2, "some goes with both: some books, some water."], ["Where does <i>lots of</i> go?", ["Countable", "Uncountable", "Both"], 2, "lots of goes with both: lots of books, lots of water."]];
+  var st = [].slice.call(document.querySelectorAll('#quant-tab .subjump a')), sp = [].slice.call(document.querySelectorAll('#quant-tab .subpanel'));
+  function go(n) { st.forEach(function (a) { a.setAttribute('aria-selected', a.dataset.sub === n ? 'true' : 'false'); }); sp.forEach(function (p) { p.hidden = p.dataset.sub !== n; }); }
+  st.forEach(function (a) { a.addEventListener('click', function (e) { e.preventDefault(); go(a.dataset.sub); }); });
+  go('q-main');
+  var pk = [].slice.call(document.querySelectorAll('#quant-quiz .qpick button'));
+  pk.forEach(function (b) { b.addEventListener('click', function () { pk.forEach(function (x) { x.setAttribute('aria-selected', x === b ? 'true' : 'false'); document.getElementById(x.dataset.qv).hidden = x !== b; }); }); });
+  function quiz(id, Q) {
+    var box = document.getElementById(id), cur = 0, ans = Q.map(function () { return null; });
+    box.innerHTML = '<div class="qt"><span class="qn"></span><span class="qs"></span></div><div class="qb"><i></i></div><div class="qbody"></div><div class="qa"><button type="button" class="bk">\u2190 Back</button><button type="button" class="nx">Next \u2192</button><button type="button" class="rs">Restart</button></div>';
+    var qn = box.querySelector('.qn'), qs = box.querySelector('.qs'), bar = box.querySelector('.qb i'), body = box.querySelector('.qbody'), bk = box.querySelector('.bk'), nx = box.querySelector('.nx');
+    function right() { return ans.filter(function (a, i) { return a === Q[i][2]; }).length; }
+    function done() { return ans.filter(function (a) { return a !== null; }).length; }
+    function draw() {
+      qs.textContent = 'Score ' + right() + ' / ' + Q.length;
+      bar.style.width = (cur >= Q.length ? 100 : done() / Q.length * 100) + '%';
+      bk.disabled = cur === 0;
+      if (cur >= Q.length) {
+        var c = right(); qn.textContent = 'All done';
+        body.innerHTML = '<div class="qr"><b>' + c + ' / ' + Q.length + '</b><p>' + (c === Q.length ? 'Perfect.' : c >= 12 ? 'Very good.' : c >= 8 ? 'Good. Use Back to check the ones you missed.' : 'Keep going. Read the table again, then restart.') + '</p></div>';
+        nx.style.display = 'none'; return;
+      }
+      nx.style.display = ''; nx.textContent = cur === Q.length - 1 ? 'See score' : 'Next \u2192';
+      qn.textContent = 'Question ' + (cur + 1) + ' of ' + Q.length;
+      var q = Q[cur], h = '<p class="qq">' + q[0] + '</p><div class="qo">';
+      q[1].forEach(function (o, i) { var c = '', d = ''; if (ans[cur] !== null) { d = ' disabled'; if (i === q[2]) c = 'ok'; else if (i === ans[cur]) c = 'no'; } h += '<button type="button" data-i="' + i + '" class="' + c + '"' + d + '>' + o + '</button>'; });
+      body.innerHTML = h + '</div><p class="qf">' + (ans[cur] === null ? '' : (ans[cur] === q[2] ? 'Correct. ' : 'Not quite. ') + q[3]) + '</p>';
+      nx.disabled = ans[cur] === null;
+    }
+    body.addEventListener('click', function (e) { var b = e.target.closest('button[data-i]'); if (!b || ans[cur] !== null || cur >= Q.length) return; ans[cur] = +b.dataset.i; draw(); });
+    nx.addEventListener('click', function () { if (cur < Q.length) { cur++; draw(); } });
+    bk.addEventListener('click', function () { if (cur > 0) { cur--; draw(); } });
+    box.querySelector('.rs').addEventListener('click', function () { cur = 0; ans = Q.map(function () { return null; }); draw(); });
+    draw();
+  }
+  quiz('qA', QA); quiz('qB', QB);
 })();
 </script>
 </body>

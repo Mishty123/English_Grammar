@@ -1,7 +1,7 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Determiners</title>
 
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Nunito+Sans:ital,opsz,wght@0,6..12,400;0,6..12,600;0,6..12,700;1,6..12,400;1,6..12,700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Yeseva+One&display=swap">
 <style>
 /* Layout: one reading column. Slate banner on a cool base; section headings in rust, olive and mustard; job colors are deep teal, terracotta, olive, ochre and plum. Job colors (subject, object, possessive adjective, possessive pronoun, reflexive) mark words in examples. The main table colors rows by person instead. */
 :root {
@@ -22,8 +22,9 @@
   --p3: #2B6C93; --p3-a: #D6E6F0; --p3-b: #E6F0F6;
   --p4: #0E3550; --p4-a: #D3DEE7; --p4-b: #E3EBF1;
   --h2c: #13496B; --h3c: #0F6B73; --lblc: #1F5F7A;
-  --head: "Fraunces", Georgia, "Times New Roman", serif;
-  --body: "Nunito Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --head: "Yeseva One", Georgia, "Times New Roman", serif;
+  --cal: "Great Vibes", "Brush Script MT", cursive;
+  --body: "Lora", Georgia, "Times New Roman", serif;
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
@@ -305,18 +306,32 @@ thead th { font-weight: 600; }
 @media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; transition: none !important; } }
 </style>
 
+<style>
+/* Nouns-page hero style */
+.hero { padding: 16px 22px 14px; border-radius: 18px; background: var(--hb); box-shadow: 0 8px 24px rgba(15,50,75,.14); text-align: center; }
+.hero::after, .hero .orb { display: none; }
+.hero .gh-home { display: flex; width: max-content; margin-right: auto; padding: 3px 12px; font-size: .82rem; margin-bottom: 10px; border-width: 1px; }
+.hero h1 { font-family: var(--head); font-weight: 400; font-size: clamp(2.1rem, 6vw, 3rem); line-height: 1.15; color: var(--ht); margin: 2px 0 0; }
+.hero h1::after { content: none; }
+.hero .label { font-family: var(--cal); font-weight: 400; text-transform: none; letter-spacing: .01em; font-size: clamp(2.6rem, 8vw, 3.6rem); line-height: 1.05; padding: .02em .12em .12em; margin: 0;
+  background: linear-gradient(180deg, color-mix(in srgb, var(--hl) 70%, #fff) 0%, var(--hl) 50%, color-mix(in srgb, var(--hl) 80%, #000) 100%);
+  -webkit-background-clip: text; background-clip: text; color: transparent; -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 2px color-mix(in srgb, var(--hl) 20%, transparent)); }
+.hero .label::before { content: none; }
+.hero .lede { font-style: italic; font-weight: 500; max-width: none; margin: 4px 0 12px; font-size: 1.05rem; }
+.hero .jump { justify-content: center; }
+</style>
 </head>
 <body>
 <div class="page">
 
 <style>.gh-home{align-self:flex-start;display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:999px;background:var(--surface);color:var(--fg);border:2px solid var(--line);font:700 .9rem var(--body);text-decoration:none}.gh-home:hover{border-color:var(--obj)}.gh-home:focus-visible{outline:3px solid var(--obj);outline-offset:2px}</style>
-<a class="gh-home" href="index.html" aria-label="Back to the home page">&larr; Home</a>
 
 <header class="hero">
-  <span class="orb orb1"></span><span class="orb orb2"></span>
-  <div class="label">A word class</div>
+  <a class="gh-home" href="index.html" aria-label="Back to the home page">&larr; Home</a>
   <h1>Determiners</h1>
-  <p class="lede">A determiner comes before a noun and says which one, whose, how many or how much. Examples: a, the, this, my, some, two.</p>
+  <div class="label">A word class</div>
+  <p class="lede">Sits before a noun to show which one, whose, or how many</p>
   <ul class="jump" role="tablist" aria-label="Determiner topics">
     <li><a href="#overview" role="tab" data-tab="overview">Determiners</a></li>
     <li><a href="#articles-tab" role="tab" data-tab="articles-tab">Articles</a></li>

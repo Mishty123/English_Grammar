@@ -314,6 +314,8 @@ thead th { font-weight: 600; }
 .md-nav button[aria-selected="true"] { background: var(--surface); border-left-color: var(--h2c); font-weight: 700; font-style: italic; box-shadow: 0 1px 3px rgba(15,50,75,.12); }
 .uses.md .use { display: none; border-bottom: 0; padding: 18px 22px; }
 .uses.md .use.on { display: grid; }
+.uses.md .use > div { display: flex; flex-direction: column; }
+.uses.md .use > div > .tip { order: -1; margin: 0 0 10px; font-size: 1rem; }
 @media (max-width: 760px) {
   .uses.md { grid-template-columns: minmax(0,1fr); }
   .md-nav { flex-direction: row; flex-wrap: nowrap; overflow-x: auto; border-right: 0; border-bottom: 1px solid var(--line); }

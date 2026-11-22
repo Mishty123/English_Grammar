@@ -527,7 +527,7 @@ body.vt-on { transition: background-color .2s; }
 </header>
 <nav class="pages" aria-label="Pages in this set"><a href="#go-p1">1 &middot; Roles in a Verb Phrase</a><a href="#go-p2" aria-current="page">2 &middot; Role-to-Role: Who Decides What Follows</a><a href="#go-p3">3 &middot; Tense, Aspect and Voice from the Roles</a></nav>
 <nav class="toc" id="toc-p2" aria-label="Sections">
-  <a href="#helpers">A helper decides the form of the next verb</a><a href="#pattern">A lexical verb decides the clause pattern</a><a href="#p2-traps">Traps: where this goes wrong</a>
+  <a href="#helpers">A helper decides the form of the next verb</a><a href="#pattern">A lexical verb decides the clause pattern</a><a href="#p2-traps">Traps: where this goes wrong</a><a href="#p2-quiz">Quiz time</a>
 </nav>
 
 <section id="helpers">
@@ -602,6 +602,18 @@ body.vt-on { transition: background-color .2s; }
     <div class="card" style="--c: var(--slate)"><span class="lbl" style="--c: var(--slate)">Be alone</span><p><em>Be</em> can be the lexical verb on its own. It is then finite and gives the pattern C.</p><p class="eg">She <span class="l">is</span> tired. <small>(finite + lexical, pattern C)</small></p></div>
     <div class="card" style="--c: var(--sage)"><span class="lbl" style="--c: var(--sage)">Verbs inside O or C</span><p>A to-infinitive or -ing phrase inside O or C is non-finite. It never replaces the finite verb of the clause.</p><p class="eg">I <span class="f">want</span> <span class="n">to learn</span>. <small>(finite: want)</small></p></div>
     <div class="card" style="--c: var(--teal)"><span class="lbl" style="--c: var(--teal)">“Been” and “being”</span><p>Both are non-finite: <em>been</em> is V3 of be, <em>being</em> is V4. They can never be the first verb.</p><p class="eg">She <span class="f">has</span> <span class="n">been</span> <span class="l">waiting</span>.</p></div>
+  </div>
+</section>
+
+<!-- QUIZ -->
+<section id="p2-quiz">
+  <div class="sh"><span class="no shine" style="--c: var(--blue)">4</span><h2>Quiz time</h2><p>Who decides what follows? 25 questions, one at a time.</p></div>
+  <p class="sm">Tap an answer, read the reason, then go on. Use Back to review.</p>
+  <div class="qbox" id="qz">
+    <div class="qtop"><span class="qn" id="qz-n"></span><span class="qpill" id="qz-score"></span></div>
+    <div class="qprog"><i id="qz-bar"></i></div>
+    <div id="qz-body"></div>
+    <div class="qfoot"><button type="button" class="btn" id="qz-back">&larr; Back</button><button type="button" class="btn qnext" id="qz-next">Next &rarr;</button><button type="button" class="btn" id="qz-reset">Restart</button></div>
   </div>
 </section>
 
@@ -1376,6 +1388,48 @@ else showVB("pn");
   next.addEventListener('click', function () { if (cur < QS.length) { cur++; render(); } });
   back.addEventListener('click', function () { if (cur > 0) { cur--; render(); } });
   document.getElementById('qq-reset').addEventListener('click', function () { cur = 0; ans = ans.map(function () { return null; }); render(); });
+  render();
+})();
+</script>
+<script>
+(function () {
+  var QS = [{"q": "After a modal (can, will, must), the next verb is in which form?", "o": ["V3", "V4", "V1 (the bare verb)"], "a": 2, "w": "A modal forces V1. That is why the next verb never takes -s or -ed."}, {"q": "After perfect <em>have</em> (have, has, had), the next verb takes which form?", "o": ["V3", "V1", "V4"], "a": 0, "w": "Perfect <em>have</em> forces V3, as in <em>has finished</em>."}, {"q": "After continuous <em>be</em> (am, is, are, was, were), the next verb takes which form?", "o": ["V3", "V4 (-ing)", "V1"], "a": 1, "w": "Continuous <em>be</em> forces V4, as in <em>is eating</em>."}, {"q": "After passive <em>be</em>, the next verb takes which form?", "o": ["V4", "V1", "V3"], "a": 2, "w": "Passive <em>be</em> forces V3, as in <em>was eaten</em>."}, {"q": "Which sentence is correct?", "o": ["She cans swim.", "She can swim.", "She can swims."], "a": 1, "w": "A modal never takes -s, and the verb after it is plain V1."}, {"q": "He has ___ his homework.", "o": ["finish", "finishing", "finished"], "a": 2, "w": "Perfect <em>have</em> forces V3: <em>finished</em>."}, {"q": "She is ___ lunch.", "o": ["eaten", "eating", "eat"], "a": 1, "w": "Continuous <em>be</em> forces V4: <em>eating</em>."}, {"q": "The cake was ___ by the children.", "o": ["ate", "eaten", "eat"], "a": 1, "w": "Passive <em>be</em> forces V3: <em>eaten</em>."}, {"q": "She did not ___ yesterday.", "o": ["went", "gone", "go"], "a": 2, "w": "<em>did</em> is the do-support helper, so the next verb goes back to V1: <em>go</em>."}, {"q": "Which sentence is correct?", "o": ["Does she plays?", "Do she play?", "Does she play?"], "a": 2, "w": "<em>Does</em> carries the -s, so the lexical verb goes back to V1."}, {"q": "In <em>The room is being cleaned</em>, which form does <em>is</em> force on <em>being</em>?", "o": ["V4", "V3", "V1"], "a": 0, "w": "<em>is</em> is continuous <em>be</em>, so it forces V4. <em>being</em> is V4 of <em>be</em>."}, {"q": "In <em>The room is being cleaned</em>, which form does <em>being</em> force on <em>cleaned</em>?", "o": ["V4", "V1", "V3"], "a": 2, "w": "<em>being</em> is passive <em>be</em>, so it forces V3: <em>cleaned</em>."}, {"q": "When helpers stack, which one comes first?", "o": ["Continuous <em>be</em>", "Modal", "Perfect <em>have</em>"], "a": 1, "w": "The order is modal, perfect <em>have</em>, continuous <em>be</em>, passive <em>be</em>."}, {"q": "What is the most roles a verb phrase can hold?", "o": ["4", "3", "5"], "a": 2, "w": "Four helper slots plus the lexical verb make 5. In real use 4 is the limit."}, {"q": "Who decides what must follow the verb in a clause (the O, C or A)?", "o": ["The subject", "The lexical verb", "A helping verb"], "a": 1, "w": "Helpers decide the form of the next verb. The lexical verb decides the clause pattern."}, {"q": "<em>The baby slept.</em> Which pattern does <em>slept</em> need after it?", "o": ["O", "None", "C"], "a": 1, "w": "<em>slept</em> is intransitive. The clause is complete without anything after it."}, {"q": "<em>She kicked the ball.</em> Which pattern does <em>kicked</em> need?", "o": ["O (an object)", "C", "None"], "a": 0, "w": "<em>kicked</em> is transitive. Ask <em>kicked what?</em> and you find the object."}, {"q": "<em>The soup is hot.</em> What does <em>hot</em> do?", "o": ["It receives the action (O)", "It is an optional adverbial", "It describes the subject (C)"], "a": 2, "w": "After a linking verb, C describes or renames the subject."}, {"q": "<em>He gave her a book.</em> Which pattern is this?", "o": ["O + C", "O + O", "O + A"], "a": 1, "w": "<em>gave</em> takes two objects: the indirect object <em>her</em>, then the direct object <em>a book</em>."}, {"q": "<em>They made him captain.</em> Which pattern is this?", "o": ["O + C", "O + O", "C"], "a": 0, "w": "<em>captain</em> renames the object <em>him</em>, so the pattern is O + C."}, {"q": "<em>She lives.</em> feels unfinished. Why?", "o": ["<em>lives</em> needs an adverbial, like <em>in Boston</em>", "<em>lives</em> needs an object", "<em>lives</em> needs a helper"], "a": 0, "w": "<em>lives</em> needs an adverbial (A) to be complete: <em>She lives in Boston.</em>"}, {"q": "<em>She put the book on the table.</em> Which pattern is this?", "o": ["O + O", "O", "O + A"], "a": 2, "w": "<em>put</em> needs an object and an adverbial. <em>She put the book.</em> feels unfinished."}, {"q": "Which filler can be C but never O?", "o": ["A noun", "An adjective", "A finite clause"], "a": 1, "w": "An adjective can describe the subject (C), but it cannot be an object."}, {"q": "<em>She sang yesterday.</em> Is <em>yesterday</em> part of the pattern?", "o": ["No. It is an optional adverbial, so the pattern is None", "Yes. It is the object", "Yes. It is the complement"], "a": 0, "w": "Most adverbials are optional extras. Drop <em>yesterday</em> and the pattern stays None."}, {"q": "<em>The ball was kicked.</em> Which pattern does the clause show?", "o": ["O", "None", "C"], "a": 1, "w": "In a passive sentence the object becomes the subject, so nothing follows the verb."}];
+  var box = document.getElementById('qz'); if (!box) return;
+  var body = document.getElementById('qz-body'), nEl = document.getElementById('qz-n'), sc = document.getElementById('qz-score'),
+      bar = document.getElementById('qz-bar'), back = document.getElementById('qz-back'), next = document.getElementById('qz-next');
+  var cur = 0, ans = []; for (var z = 0; z < QS.length; z++) ans.push(null);
+  function correct() { var c = 0; ans.forEach(function (a, i) { if (a === QS[i].a) c++; }); return c; }
+  function answered() { return ans.filter(function (a) { return a !== null; }).length; }
+  function render() {
+    sc.textContent = 'Score ' + correct() + ' / ' + QS.length;
+    bar.style.width = (cur >= QS.length ? 100 : (answered() / QS.length * 100)) + '%';
+    back.disabled = cur === 0;
+    if (cur >= QS.length) {
+      var c = correct(), msg = c === QS.length ? 'Perfect. You know who decides what follows.' : c >= 19 ? 'Very good.' : c >= 15 ? 'Good. Check the ones you missed with Back.' : 'Keep going. Read the helper table and the pattern table again, then restart.';
+      nEl.textContent = 'All done';
+      body.innerHTML = '<div class="qres"><span class="big shine">' + c + ' / ' + QS.length + '</span><p>' + msg + '</p></div>';
+      next.style.display = 'none'; return;
+    }
+    next.style.display = '';
+    next.textContent = cur === QS.length - 1 ? 'See score' : 'Next →';
+    nEl.textContent = 'Question ' + (cur + 1) + ' of ' + QS.length;
+    var q = QS[cur], h = '<p class="qq-q">' + q.q + '</p><div class="qq-opts">';
+    q.o.forEach(function (o, i) {
+      var cls = '', dis = '';
+      if (ans[cur] !== null) { dis = ' disabled'; if (i === q.a) cls = 'ok'; else if (i === ans[cur]) cls = 'no'; }
+      h += '<button type="button" data-i="' + i + '" class="' + cls + '"' + dis + '>' + o + '</button>';
+    });
+    h += '</div><p class="qq-fb">' + (ans[cur] === null ? '' : (ans[cur] === q.a ? 'Correct. ' : 'Not quite. ') + q.w) + '</p>';
+    body.innerHTML = h;
+    next.disabled = ans[cur] === null;
+  }
+  body.addEventListener('click', function (e) {
+    var b = e.target.closest('button[data-i]'); if (!b || ans[cur] !== null || cur >= QS.length) return;
+    ans[cur] = +b.dataset.i; render();
+  });
+  next.addEventListener('click', function () { if (cur < QS.length) { cur++; render(); } });
+  back.addEventListener('click', function () { if (cur > 0) { cur--; render(); } });
+  document.getElementById('qz-reset').addEventListener('click', function () { cur = 0; ans = ans.map(function () { return null; }); render(); });
   render();
 })();
 </script>

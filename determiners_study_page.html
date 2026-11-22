@@ -304,6 +304,22 @@ thead th { font-weight: 600; }
 .use > div > .ex:first-child::before { color: var(--subj); }
 .tabpanel > section + section::before { display: none; }
 @media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; transition: none !important; } }
+
+/* master-detail: menu left, content right */
+.uses.md { display: grid; grid-template-columns: 250px minmax(0,1fr); background: var(--surface); }
+.md-nav { display: flex; flex-direction: column; gap: 2px; padding: 10px; border-right: 1px solid var(--line); background: var(--soft); }
+.md-nav button { all: unset; box-sizing: border-box; cursor: pointer; padding: 9px 12px; border-radius: 10px; font-family: var(--body); font-size: 0.98rem; line-height: 1.25; color: var(--fg); border-left: 4px solid transparent; }
+.md-nav button:hover { background: rgba(255,255,255,.7); }
+.md-nav button:focus-visible { outline: 2px solid var(--h2c); outline-offset: 1px; }
+.md-nav button[aria-selected="true"] { background: var(--surface); border-left-color: var(--h2c); font-weight: 700; font-style: italic; box-shadow: 0 1px 3px rgba(15,50,75,.12); }
+.uses.md .use { display: none; border-bottom: 0; padding: 18px 22px; }
+.uses.md .use.on { display: grid; }
+@media (max-width: 760px) {
+  .uses.md { grid-template-columns: minmax(0,1fr); }
+  .md-nav { flex-direction: row; flex-wrap: nowrap; overflow-x: auto; border-right: 0; border-bottom: 1px solid var(--line); }
+  .md-nav button { white-space: nowrap; border-left: 0; border-bottom: 3px solid transparent; }
+  .md-nav button[aria-selected="true"] { border-bottom-color: var(--h2c); }
+}
 </style>
 
 <style>
@@ -701,7 +717,7 @@ thead th { font-weight: 600; }
       </tbody>
     </table>
   </div>
-  <div class="uses">
+  <div class="uses md" id="quant-uses">
     <div class="use"><h3>some or any</h3><div>
       <p class="ex many">I have <span class="s">some</span> <span class="pa">ideas</span>.<br>I don&rsquo;t have <span class="s">any</span> <span class="pa">ideas</span>.<br>Do you have <span class="s">any</span> <span class="pa">ideas</span>?</p>
       <p class="tip">Positive: <i>some</i>. Negative or a plain question: <i>any</i>. An offer or request also takes <i>some</i>: &ldquo;Would you like <span class="s">some</span> tea?&rdquo; In a positive sentence, <i>any</i> means it does not matter which: &ldquo;Take <span class="s">any</span> <span class="pa">seat</span>.&rdquo;</p>
@@ -1241,6 +1257,29 @@ thead th { font-weight: 600; }
     draw();
   }
   quiz('qA', QA); quiz('qB', QB);
+})();
+</script>
+
+<script>
+(function () {
+  var box = document.getElementById('quant-uses'); if (!box) return;
+  var items = [].slice.call(box.querySelectorAll(':scope > .use'));
+  var nav = document.createElement('div'); nav.className = 'md-nav'; nav.setAttribute('role', 'tablist'); nav.setAttribute('aria-label', 'Quantifier rules');
+  var btns = items.map(function (u, i) {
+    var b = document.createElement('button'); b.type = 'button'; b.setAttribute('role', 'tab');
+    b.innerHTML = u.querySelector('h3').innerHTML;
+    b.addEventListener('click', function () { pick(i); });
+    nav.appendChild(b); return b;
+  });
+  var pane = document.createElement('div'); pane.className = 'md-pane';
+  function pick(n) {
+    items.forEach(function (u, i) { u.classList.toggle('on', i === n); btns[i].setAttribute('aria-selected', i === n ? 'true' : 'false'); });
+  }
+  box.insertBefore(nav, box.firstChild);
+  var wrap = document.createElement('div'); wrap.style.minWidth = '0';
+  items.forEach(function (u) { wrap.appendChild(u); });
+  box.appendChild(wrap);
+  pick(0);
 })();
 </script>
 </body>

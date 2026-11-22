@@ -14,3 +14,4 @@ All about English Grammar
 - [Personal Pronouns](https://mishty123.github.io/English_Grammar/personal_pronouns_study_page.html)
 - [Sentences Grammar](https://mishty123.github.io/English_Grammar/sentences_grammar/index.html) (patterns, types, phrases, clauses, skeleton, exercises)
 - [Grammar Adventure (My Practice)](https://mishty123.github.io/English_Grammar/grammar_adventure.html)
+- [When & While (My Practice)](https://mishty123.github.io/English_Grammar/when_and_while.html)

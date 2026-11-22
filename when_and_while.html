@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>When &amp; While</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Yeseva+One&family=Lora:ital,wght@0,400;0,600;1,400;1,600;1,700&family=Great+Vibes&display=swap">
+<style>
+/* Colour = the word: when is dusty blue, while is dusty rose. Matte, light background. */
+:root {
+  --bg: #F5F2EB;
+  --surface: #FBF9F4;
+  --ink: #2B2B2B;
+  --muted: #5E5A52;
+  --line: #DDD6C8;
+  --good: #4E6B3A; --good-soft: #E4EBD8;
+  --bad: #9A4A3F;  --bad-soft: #F3E0DB;
+  --when: #2F5D7C; --when-top: #4A7899; --when-bot: #264C66; --when-soft: #E0E9F0;
+  --while: #A3524A; --while-top: #BC6C63; --while-bot: #8A423B; --while-soft: #F2E1DE;
+  --head: 'Yeseva One', Georgia, serif;
+  --body: 'Lora', Georgia, serif;
+  --script: 'Great Vibes', cursive;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 17px; line-height: 1.6; padding: 22px 16px 60px; }
+.wrap { max-width: 920px; margin: 0 auto; display: flex; flex-direction: column; gap: 26px; }
+
+h1, h2, h3 { font-family: var(--head); font-weight: 400; margin: 0; line-height: 1.15; }
+h1 { font-size: clamp(2.2rem, 7vw, 3.4rem); }
+h2 { font-size: 1.6rem; }
+h3 { font-size: 1.15rem; }
+.script { font-family: var(--script); font-size: clamp(1.7rem, 5vw, 2.3rem); color: var(--muted); margin: 2px 0 0; line-height: 1.2; }
+.lead { margin: 8px 0 0; color: var(--muted); }
+.eg, .ex { font-style: italic; }
+b.k, strong.k { font-weight: 700; font-style: italic; }
+
+/* Shine + faint glow on key terms (same values as the Personal Pronouns page) */
+.tw, .tl { font-weight: 700; font-style: italic; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent; }
+.tw { background-image: linear-gradient(to bottom, var(--when-top), var(--when) 50%, var(--when-bot)); filter: drop-shadow(0 0 1.5px rgba(47,93,124,.12)); }
+.tl { background-image: linear-gradient(to bottom, var(--while-top), var(--while) 50%, var(--while-bot)); filter: drop-shadow(0 0 1.5px rgba(163,82,74,.12)); }
+td .tw, td .tl { filter: none; }
+td .tw { text-shadow: 0 0 4px rgba(47,93,124,.11); }
+td .tl { text-shadow: 0 0 4px rgba(163,82,74,.11); }
+
+.home { align-self: flex-start; display: inline-flex; padding: 7px 14px; border-radius: 999px; background: var(--surface); color: var(--ink); border: 2px solid var(--line); font: 600 .9rem var(--body); text-decoration: none; }
+.home:hover { border-color: var(--when); }
+
+.legend { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; }
+.chip { display: inline-block; padding: 3px 14px; border-radius: 10px; font-weight: 600; font-size: .95rem; color: #fff; }
+.chip.when { background: var(--when); } .chip.while { background: var(--while); }
+.label { font-size: .75rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+
+.quick { background: var(--surface); border: 2px solid var(--line); border-radius: 16px; padding: 14px 18px; display: flex; flex-wrap: wrap; gap: 8px 14px; align-items: baseline; }
+.quick .tag { background: var(--ink); color: var(--bg); padding: 2px 12px; border-radius: 8px; font-weight: 600; font-size: .9rem; }
+
+.sec { display: flex; flex-direction: column; gap: 12px; }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 400px), 1fr)); gap: 14px; }
+.card { background: var(--surface); border: 2px solid var(--line); border-left: 6px solid var(--t); border-radius: 14px; padding: 12px 16px; display: flex; flex-direction: column; gap: 4px; }
+.card.when { --t: var(--when); } .card.while { --t: var(--while); } .card.both { --t: #7A7568; }
+.card .no { font-family: var(--head); font-size: .95rem; color: var(--t); }
+.card p { margin: 0; }
+.card .rule { font-weight: 600; }
+
+table { width: 100%; border-collapse: collapse; background: var(--surface); border: 2px solid var(--line); border-radius: 14px; overflow: hidden; }
+th, td { text-align: left; padding: 9px 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { font-family: var(--head); font-weight: 400; background: #EAE4D6; }
+tr:last-child td { border-bottom: 0; }
+td.ph { font-weight: 600; font-style: italic; white-space: nowrap; }
+.tablewrap { overflow-x: auto; }
+
+
+.pic { width: 100%; max-width: 270px; height: auto; margin-top: 8px; }
+.mn { font-size: .95rem; margin-top: 6px !important; padding-top: 8px; border-top: 1px dashed var(--line); }
+.rtag { display: inline-block; background: var(--t); color: #fff; font-size: .72rem; font-weight: 600; letter-spacing: .05em; text-transform: uppercase; padding: 1px 9px; border-radius: 8px; margin-right: 6px; font-style: normal; }
+.key { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 22px; background: var(--surface); border: 2px solid var(--line); border-radius: 16px; padding: 10px 18px; }
+.key .it { display: flex; align-items: center; gap: 10px; }
+.key svg { width: 70px; height: 22px; }
+.mn .tw, .mn .tl { font-style: italic; }
+
+/* quiz */
+.game { background: var(--surface); border: 2px solid var(--line); border-radius: 18px; padding: 18px; display: flex; flex-direction: column; gap: 14px; }
+.gtop { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px; }
+.q { margin: 0; font-style: italic; font-size: clamp(1.25rem, 4vw, 1.7rem); line-height: 1.4; }
+.blank { display: inline-block; min-width: 3.4em; padding: 0 .4em; border-bottom: 3px solid var(--ink); text-align: center; font-style: normal; }
+.opts { display: flex; gap: 10px; flex-wrap: wrap; }
+.opt { font: 400 1.1rem var(--head); padding: 9px 26px; border-radius: 12px; border: 2px solid var(--t); background: var(--tsoft); color: var(--ink); cursor: pointer; }
+.opt.when { --t: var(--when); --tsoft: var(--when-soft); } .opt.while { --t: var(--while); --tsoft: var(--while-soft); }
+.opt.right { background: var(--good-soft); border-color: var(--good); }
+.opt.wrong { background: var(--bad-soft); border-color: var(--bad); }
+.opt.dim { opacity: .45; } .opt:disabled { cursor: default; }
+.msg { margin: 0; font-weight: 600; } .msg.ok { color: var(--good); } .msg.no2 { color: var(--bad); }
+.because { margin: 0; padding: 10px 12px; border-radius: 10px; background: var(--bg); font-size: .98rem; }
+.gb { font: 400 .95rem var(--head); padding: 9px 20px; border-radius: 12px; border: 2px solid var(--ink); background: var(--ink); color: var(--bg); cursor: pointer; align-self: flex-start; }
+button:focus-visible { outline: 3px solid var(--when); outline-offset: 2px; }
+.miss { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+.miss li { padding: 9px 12px; background: var(--bg); border-radius: 10px; }
+.miss .why { display: block; font-size: .92rem; color: var(--muted); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="home" href="index.html" aria-label="Back to the home page">&larr; Home</a>
+
+  <header>
+    <h1>When &amp; While</h1>
+    <p class="script">one-liners &amp; phrases</p>
+    <p class="lead">Both words join two actions in time. The difference is how long the action lasts.</p>
+  </header>
+
+  <div class="legend">
+    <span class="label">Colours</span>
+    <span class="chip when">when</span><span class="chip while">while</span>
+  </div>
+
+  <div class="quick">
+    <span class="tag">Quick check</span>
+    <span>A short, one-time event takes <span class="tw">when</span>. A long or ongoing action takes <span class="tl">while</span>.</span>
+  </div>
+
+  <div class="key">
+    <span class="label">Picture key</span>
+    <span class="it"><svg viewBox="0 0 70 22" aria-hidden="true"><line x1="2" y1="11" x2="68" y2="11" stroke="#8A8578" stroke-width="2" stroke-linecap="round"/><circle cx="35" cy="11" r="7" fill="var(--when)"/></svg><span><span class="tw">when</span> = a dot, a moment</span></span>
+    <span class="it"><svg viewBox="0 0 70 22" aria-hidden="true"><rect x="2" y="5" width="66" height="12" rx="6" fill="var(--while)"/></svg><span><span class="tl">while</span> = a bar, time stretching</span></span>
+  </div>
+
+  <section class="sec">
+    <h2>Grammar one-liners</h2>
+    <div class="grid">
+      <div class="card when"><span class="no">1</span><p class="rule"><span class="tw">When</span> = a point in time or a short event.</p><p class="eg"><b class="k">When</b> she called, I was asleep.</p><svg class="pic" viewBox="0 0 240 42" role="img" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" font-family="Lora, Georgia, serif"><line x1="8" y1="21" x2="232" y2="21" stroke="#8A8578" stroke-width="2" stroke-linecap="round"/><circle cx="120" cy="21" r="8" fill="var(--when)"/><text x="120" y="8" font-size="10" text-anchor="middle" fill="#8A8578" font-style="italic">click</text></svg><p class="mn"><span class="rtag">Remember</span> <b class="k tw">When</b> = a <b class="k">click</b> 📸. It happens once and it's done.</p></div>
+      <div class="card while"><span class="no">2</span><p class="rule"><span class="tl">While</span> = a stretch of time or a continuing action.</p><p class="eg"><b class="k">While</b> I was sleeping, she called.</p><svg class="pic" viewBox="0 0 240 42" role="img" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" font-family="Lora, Georgia, serif"><rect x="16" y="13" width="208" height="16" rx="8" fill="var(--while)"/><text x="120" y="25" font-size="11" text-anchor="middle" fill="#fff" font-style="italic">a long while</text></svg><p class="mn"><span class="rtag">Remember</span> <b class="k tl">While</b> sounds like <b class="k">“a while”</b>, which is a long time.</p></div>
+      <div class="card both"><span class="no">3</span><p class="rule">Interruption: the long action takes past continuous, the short one takes past simple.</p><p class="eg">I <b class="k">was cooking when</b> the phone <b class="k">rang</b>.</p><svg class="pic" viewBox="0 0 240 42" role="img" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" font-family="Lora, Georgia, serif"><rect x="8" y="13" width="224" height="16" rx="8" fill="var(--while)"/><text x="60" y="25" font-size="11" text-anchor="middle" fill="#fff" font-style="italic">was cooking</text><polygon points="156,2 146,23 155,23 149,40 167,17 156,17 163,2" fill="var(--when)"/><text x="194" y="25" font-size="11" fill="#fff" font-style="italic">rang</text></svg><p class="mn"><span class="rtag">Remember</span> The bar is the long action. The ⚡ is the interruption. <i>I was cooking (bar) when the phone rang (⚡).</i></p></div>
+      <div class="card while"><span class="no">4</span><p class="rule">Two actions at the same time: <span class="tl">while</span> with both continuous, or both simple.</p><p class="eg">She read <b class="k">while</b> he cooked.</p><svg class="pic" viewBox="0 0 240 42" role="img" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" font-family="Lora, Georgia, serif"><rect x="16" y="5" width="208" height="12" rx="6" fill="var(--while)"/><rect x="16" y="25" width="208" height="12" rx="6" fill="var(--while)"/><text x="30" y="14.5" font-size="9" fill="#fff" font-style="italic">she read</text><text x="30" y="34.5" font-size="9" fill="#fff" font-style="italic">he cooked</text></svg><p class="mn"><span class="rtag">Remember</span> <b class="k">Train tracks</b> 🚆. Two actions run side by side and never cross.</p></div>
+      <div class="card when"><span class="no">5</span><p class="rule"><span class="tw">When</span> also covers states and ages.</p><p class="eg"><b class="k">When</b> I was a child, I lived in Pune.</p><svg class="pic" viewBox="0 0 240 42" role="img" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" font-family="Lora, Georgia, serif"><line x1="8" y1="21" x2="232" y2="21" stroke="#8A8578" stroke-width="2" stroke-linecap="round"/><text x="8" y="12" font-size="10" fill="#8A8578" font-style="italic">born</text><text x="232" y="12" font-size="10" text-anchor="end" fill="#8A8578" font-style="italic">now</text><circle cx="110" cy="21" r="7" fill="var(--when)"/><text x="110" y="40" font-size="10" text-anchor="middle" fill="var(--when)" font-style="italic">age ten</text></svg><p class="mn"><span class="rtag">Remember</span> <b class="k tw">When</b> pins a moment or an age, like a <b class="k">pin on a map</b> 📍</p></div>
+      <div class="card both"><span class="no">6</span><p class="rule">For the future, use the present tense after both words, never <i>will</i>.</p><p class="eg"><b class="k">When</b> I arrive, I'll call you. &nbsp;(Not: <s>When I will arrive</s>.)</p><svg class="pic" viewBox="0 0 240 42" role="img" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" font-family="Lora, Georgia, serif"><text x="10" y="27" font-size="15" font-style="italic" font-weight="700" fill="var(--when)">when</text><text x="52" y="27" font-size="13" fill="#8A8578">/</text><text x="64" y="27" font-size="15" font-style="italic" font-weight="700" fill="var(--while)">while</text><text x="112" y="27" font-size="16" fill="var(--bad)">✋</text><text x="142" y="27" font-size="15" font-style="italic" fill="#8A8578">will</text><line x1="138" y1="22" x2="172" y2="22" stroke="var(--bad)" stroke-width="2"/></svg><p class="mn"><span class="rtag">Remember</span> <b class="k">Time words keep <i>will</i> out.</b> Say <i>when I arrive</i>, not <i>when I will arrive</i>.</p></div>
+      <div class="card while"><span class="no">7</span><p class="rule"><span class="tl">While</span> can mean <i>whereas</i> (contrast).</p><p class="eg">I like tea, <b class="k">while</b> he likes coffee.</p><svg class="pic" viewBox="0 0 240 42" role="img" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" font-family="Lora, Georgia, serif"><line x1="120" y1="10" x2="120" y2="38" stroke="#8A8578" stroke-width="2"/><line x1="56" y1="12" x2="184" y2="12" stroke="#8A8578" stroke-width="2.5" stroke-linecap="round"/><path d="M40 24 Q56 38 72 24 Z" fill="var(--while)"/><path d="M168 24 Q184 38 200 24 Z" fill="var(--while)"/><line x1="56" y1="12" x2="48" y2="24" stroke="#8A8578"/><line x1="56" y1="12" x2="64" y2="24" stroke="#8A8578"/><line x1="184" y1="12" x2="176" y2="24" stroke="#8A8578"/><line x1="184" y1="12" x2="192" y2="24" stroke="#8A8578"/><text x="56" y="9" font-size="10" text-anchor="middle" fill="#8A8578" font-style="italic">tea</text><text x="184" y="9" font-size="10" text-anchor="middle" fill="#8A8578" font-style="italic">coffee</text><line x1="100" y1="38" x2="140" y2="38" stroke="#8A8578" stroke-width="3" stroke-linecap="round"/></svg><p class="mn"><span class="rtag">Remember</span> <b class="k tl">While</b> = a <b class="k">scale</b> weighing two different things.</p></div>
+      <div class="card while"><span class="no">8</span><p class="rule"><span class="tl">While</span> can mean <i>although</i> (formal).</p><p class="eg"><b class="k">While</b> I agree, I have doubts.</p><svg class="pic" viewBox="0 0 240 42" role="img" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" font-family="Lora, Georgia, serif"><text x="8" y="27" font-size="15" font-style="italic" fill="#8A8578"><tspan font-weight="700" fill="var(--while)">While</tspan> I agree,</text><text x="128" y="27" font-size="15" fill="#8A8578">→</text><text x="150" y="27" font-size="15" font-weight="700" font-style="italic" fill="var(--while)">BUT…</text></svg><p class="mn"><span class="rtag">Remember</span> <b class="k tl">While</b> = although = <b class="k">a “but” is coming</b>. Listen for it after the comma.</p></div>
+      <div class="card both"><span class="no">9</span><p class="rule">Both can be shortened with <i>-ing</i>.</p><p class="eg"><b class="k">While walking</b>, I saw him. <b class="k">When leaving</b>, lock the door.</p><svg class="pic" viewBox="0 0 240 42" role="img" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" font-family="Lora, Georgia, serif"><text x="8" y="27" font-size="15" font-style="italic" fill="var(--while)" font-weight="700">while</text><text x="58" y="27" font-size="15" font-style="italic" fill="#8A8578">(I was)</text><line x1="56" y1="22" x2="108" y2="22" stroke="var(--bad)" stroke-width="2"/><text x="116" y="27" font-size="15" font-style="italic" font-weight="700" fill="var(--when)">walking</text></svg><p class="mn"><span class="rtag">Remember</span> <b class="k">Cut the “I was”</b> and keep the <i>-ing</i>. The short form is <i>while walking</i>.</p></div>
+      <div class="card when"><span class="no">10</span><p class="rule"><span class="tw">When</span> can start a question. <span class="tl">While</span> cannot.</p><p class="eg"><b class="k">When</b> does it start?</p><svg class="pic" viewBox="0 0 240 42" role="img" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" font-family="Lora, Georgia, serif"><rect x="3" y="9" width="44" height="24" rx="12" fill="none" stroke="#8A8578" stroke-width="1.5"/><text x="25" y="25" font-size="11" text-anchor="middle" font-style="italic" fill="#8A8578" font-weight="400">Who</text><rect x="49" y="9" width="44" height="24" rx="12" fill="none" stroke="#8A8578" stroke-width="1.5"/><text x="71" y="25" font-size="11" text-anchor="middle" font-style="italic" fill="#8A8578" font-weight="400">What</text><rect x="95" y="9" width="44" height="24" rx="12" fill="var(--when)" stroke="var(--when)" stroke-width="1.5"/><text x="117" y="25" font-size="11" text-anchor="middle" font-style="italic" fill="#fff" font-weight="700">When</text><rect x="141" y="9" width="44" height="24" rx="12" fill="none" stroke="#8A8578" stroke-width="1.5"/><text x="163" y="25" font-size="11" text-anchor="middle" font-style="italic" fill="#8A8578" font-weight="400">Where</text><rect x="187" y="9" width="44" height="24" rx="12" fill="none" stroke="#8A8578" stroke-width="1.5"/><text x="209" y="25" font-size="11" text-anchor="middle" font-style="italic" fill="#8A8578" font-weight="400">Why</text></svg><p class="mn"><span class="rtag">Remember</span> <b class="k tw">When</b> is in the <b class="k">WH gang</b> of question words. <i>While</i> only wears the same hat.</p></div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <h2>Phrases</h2>
+    <p class="script">words worth keeping</p>
+    <div class="tablewrap">
+    <table>
+      <thead><tr><th>Phrase</th><th>Meaning</th><th>Example</th></tr></thead>
+      <tbody>
+        <tr><td class="ph"><span class="tl">while</span> you're at it</td><td>since you're already doing that</td><td class="eg">While you're at it, buy milk.</td></tr>
+        <tr><td class="ph"><span class="tl">while</span> it lasts</td><td>enjoy it before it ends</td><td class="eg">Enjoy the sun while it lasts.</td></tr>
+        <tr><td class="ph">for a <span class="tl">while</span></td><td>for some time</td><td class="eg">We waited for a while.</td></tr>
+        <tr><td class="ph">in a <span class="tl">while</span></td><td>after some time</td><td class="eg">See you in a while.</td></tr>
+        <tr><td class="ph">once in a <span class="tl">while</span></td><td>occasionally</td><td class="eg">I eat out once in a while.</td></tr>
+        <tr><td class="ph">worth your <span class="tl">while</span></td><td>worth the effort</td><td class="eg">It's worth your while to learn it.</td></tr>
+        <tr><td class="ph"><span class="tl">while</span> away the time</td><td>pass time pleasantly</td><td class="eg">We played cards to while away the time.</td></tr>
+        <tr><td class="ph"><span class="tw">when</span> the time comes</td><td>at the right moment</td><td class="eg">We'll decide when the time comes.</td></tr>
+        <tr><td class="ph"><span class="tw">when</span> push comes to shove</td><td>when things get serious</td><td class="eg">When push comes to shove, he helps.</td></tr>
+        <tr><td class="ph">say <span class="tw">when</span></td><td>tell me to stop (pouring)</td><td class="eg">I'll pour. Say when.</td></tr>
+        <tr><td class="ph">since <span class="tw">when</span>…?</td><td>shows surprise or annoyance</td><td class="eg">Since when do you cook?</td></tr>
+        <tr><td class="ph"><span class="tw">when</span> all is said and done</td><td>in the end</td><td class="eg">When all is said and done, it was worth it.</td></tr>
+      </tbody>
+    </table>
+    </div>
+  </section>
+
+  <section class="sec">
+    <h2>Try it</h2>
+    <p class="script">pick when or while</p>
+    <div class="game" id="quiz"></div>
+  </section>
+</div>
+
+<script>
+(function () {
+  var Q = [
+    { t: 'I was walking home ___ it started to rain.', a: 'when', why: 'The rain is a short event that interrupts the longer walk.' },
+    { t: '___ I was walking home, it started to rain.', a: 'while', why: 'Walking is the long, ongoing action, so while.' },
+    { t: 'Call me ___ you reach.', a: 'when', why: 'Reaching is a point in time, and the future uses the present tense.' },
+    { t: 'He works in a bank, ___ his wife teaches.', a: 'while', why: 'Contrast between two things, so while (whereas).' },
+    { t: 'Enjoy the sun ___ it lasts.', a: 'while', why: 'The fixed phrase is "while it lasts".' },
+    { t: '___ did you start learning English?', a: 'when', why: 'Only when can start a question about time.' },
+    { t: 'She read a book ___ he cooked dinner.', a: 'while', why: 'Two actions happening together over time.' },
+    { t: '___ I was a child, I lived in Pune.', a: 'when', why: 'A state or age in the past takes when.' }
+  ];
+  var el = document.getElementById('quiz'), st;
+  function cap(s) { return s.charAt(0).toUpperCase() + s.slice(1); }
+  function sentence(q, f) {
+    var p = q.t.split('___');
+    var w = f ? (p[0] === '' ? cap(f) : f) : '&nbsp;';
+    return p[0] + '<span class="blank">' + w + '</span>' + p[1];
+  }
+  function shuffle(a) { for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)); var x = a[i]; a[i] = a[j]; a[j] = x; } return a; }
+  function start(mix) { st = { order: Q.map(function (_, i) { return i; }), pos: 0, score: 0, picked: null, missed: [] }; if (mix) shuffle(st.order); render(); }
+  function render() {
+    if (st.pos >= Q.length) return done();
+    var q = Q[st.order[st.pos]], d = st.picked !== null;
+    var opts = ['when', 'while'].map(function (o) {
+      var c = 'opt ' + o;
+      if (d) c += o === q.a ? ' right' : (o === st.picked ? ' wrong' : ' dim');
+      return '<button class="' + c + '" type="button" data-o="' + o + '"' + (d ? ' disabled' : '') + '>' + o + '</button>';
+    }).join('');
+    var fb = d ? '<p class="msg ' + (st.picked === q.a ? 'ok' : 'no2') + '">' + (st.picked === q.a ? 'Yes!' : 'Not quite. The answer is ' + q.a + '.') + '</p><p class="because">' + q.why + '</p><button class="gb" id="next" type="button">' + (st.pos === Q.length - 1 ? 'See my score' : 'Next question') + '</button>' : '';
+    el.innerHTML = '<div class="gtop"><span class="label">Question ' + (st.pos + 1) + ' of ' + Q.length + '</span><span class="label">Score ' + st.score + '</span></div>' +
+      '<p class="q">' + sentence(q, d ? q.a : null) + '</p><div class="opts">' + opts + '</div><div aria-live="polite">' + fb + '</div>';
+  }
+  function done() {
+    var n = Q.length, s = st.score;
+    var miss = st.missed.length ? '<span class="label">Review these</span><ul class="miss">' + st.missed.map(function (i) { return '<li><i>' + sentence(Q[i], Q[i].a) + '</i><span class="why">' + Q[i].why + '</span></li>'; }).join('') + '</ul>' : '';
+    el.innerHTML = '<span class="label">All done</span><h2>You got ' + s + ' of ' + n + '</h2><p class="msg">' + (s === n ? 'Perfect score!' : s >= n * .75 ? 'Very good.' : 'Keep going. Read the one-liners, then try again.') + '</p>' + miss + '<button class="gb" id="again" type="button">Play again, mixed up</button>';
+  }
+  el.addEventListener('click', function (e) {
+    var o = e.target.closest('[data-o]');
+    if (o && st.picked === null) { var qi = st.order[st.pos]; st.picked = o.dataset.o; if (st.picked === Q[qi].a) st.score++; else st.missed.push(qi); render(); }
+    else if (e.target.id === 'next') { st.pos++; st.picked = null; render(); }
+    else if (e.target.id === 'again') start(true);
+  });
+  start(false);
+})();
+</script>
+</body>
+</html>

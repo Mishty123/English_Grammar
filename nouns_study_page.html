@@ -296,6 +296,19 @@ td.first { color: var(--fg); }
 tbody th { color: var(--fg); }
 td i { font-weight: 400; }
 td :is(b, strong), td :is(b, strong) i, td.first, td .k { font-weight: 700; }
+/* table headers: bigger, bolder, shine */
+thead th { --hc: var(--h2c); font-size: 1.15rem; letter-spacing: .01em; }
+thead th .hs { display: inline-block; font-weight: 400; -webkit-text-stroke: .6px var(--hc);
+  background: linear-gradient(180deg, color-mix(in srgb, var(--hc) 60%, #fff) 0%, var(--hc) 52%, color-mix(in srgb, var(--hc) 80%, #000) 100%);
+  -webkit-background-clip: text; background-clip: text; color: transparent; -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 2px color-mix(in srgb, var(--hc) 26%, transparent)); }
+thead th .hs small { font-size: .78rem; -webkit-text-stroke: 0; }
+/* quantifier groups */
+.g-u { --hc: var(--v); color: var(--v); background: color-mix(in srgb, var(--v) 9%, var(--surface)); }
+.g-c { --hc: var(--n); color: var(--n); background: color-mix(in srgb, var(--n) 9%, var(--surface)); }
+.g-b { --hc: var(--k); color: var(--k); background: color-mix(in srgb, var(--k) 10%, var(--surface)); }
+thead th.g-u, thead th.g-c { background: color-mix(in srgb, var(--hc) 14%, var(--surface)); }
+td.g-u :is(.m, .n, .v, i), td.g-c :is(.m, .n, .v, i), td.g-b :is(.m, .n, .v, i) { color: inherit !important; }
 </style>
 </head>
 <body>
@@ -342,7 +355,7 @@ td :is(b, strong), td :is(b, strong) i, td.first, td .k { font-weight: 700; }
   </header>
   <div class="scroll">
     <table style="min-width: 560px">
-      <thead><tr><th>The noun is</th><th>It works like</th><th>Verb form</th><th>Example</th></tr></thead>
+      <thead><tr><th><span class="hs">The noun is</span></th><th><span class="hs">It works like</span></th><th><span class="hs">Verb form</span></th><th><span class="hs">Example</span></th></tr></thead>
       <tbody>
         <tr><td>Singular (one)</td><td>he / she / it</td><td>V5 (plays, has, is)</td><td>The <span class="n">boy</span> <span class="v">plays</span>.</td></tr>
         <tr><td>Plural (more than one)</td><td>they</td><td>V1 (play, have, are)</td><td>The <span class="n">boys</span> <span class="v">play</span>.</td></tr>
@@ -360,7 +373,7 @@ td :is(b, strong), td :is(b, strong) i, td.first, td .k { font-weight: 700; }
   </header>
   <div class="scroll">
     <table style="min-width: 640px">
-      <thead><tr><th>Kind</th><th>It names</th><th>Examples</th></tr></thead>
+      <thead><tr><th><span class="hs">Kind</span></th><th><span class="hs">It names</span></th><th><span class="hs">Examples</span></th></tr></thead>
       <tbody>
         <tr><td class="first">Common</td><td>Any one of a class of people, places or things</td><td>girl, city, river, book</td></tr>
         <tr><td class="first">Proper</td><td>A particular person, place or thing (capital letter)</td><td>Anna, Delhi, the Nile, Monday</td></tr>
@@ -402,7 +415,7 @@ td :is(b, strong), td :is(b, strong) i, td.first, td .k { font-weight: 700; }
   </div>
   <div class="scroll">
     <table style="min-width: 700px">
-      <thead><tr><th>Category</th><th>Common noun (general label)</th><th>Proper noun (unique name)</th></tr></thead>
+      <thead><tr><th><span class="hs">Category</span></th><th><span class="hs">Common noun (general label)</span></th><th><span class="hs">Proper noun (unique name)</span></th></tr></thead>
       <tbody>
         <tr><td class="first">People &amp; Titles</td><td><span class="n">girl</span>, <span class="n">boy</span>, <span class="n">teacher</span>, <span class="n">doctor</span>, <span class="n">president</span></td><td><span class="n">Heidi</span>, <span class="n">Mr Rao</span>, <span class="n">Dr Khan</span>, <span class="n">President Lincoln</span></td></tr>
         <tr><td class="first">Family roles</td><td><span class="n">my mother</span>, <span class="n">a dad</span>, <span class="n">his aunt</span></td><td><span class="n">Mom</span>, <span class="n">Dad</span>, <span class="n">Aunt Maya</span> <span class="muted">(when used as their name)</span></td></tr>
@@ -465,7 +478,7 @@ td :is(b, strong), td :is(b, strong) i, td.first, td .k { font-weight: 700; }
     <div class="use"><h3>Abstract nouns</h3><div>
       <div class="scroll" style="box-shadow:none;border-top-width:1px">
         <table style="min-width: 520px">
-          <thead><tr><th>It names a</th><th>Examples</th></tr></thead>
+          <thead><tr><th><span class="hs">It names a</span></th><th><span class="hs">Examples</span></th></tr></thead>
           <tbody>
             <tr><td class="first">Quality</td><td><span class="n">honesty</span>, <span class="n">beauty</span>, <span class="n">kindness</span>, <span class="n">courage</span>, <span class="n">wisdom</span></td></tr>
             <tr><td class="first">State</td><td><span class="n">childhood</span>, <span class="n">poverty</span>, <span class="n">sleep</span>, <span class="n">health</span>, <span class="n">freedom</span></td></tr>
@@ -500,7 +513,7 @@ td :is(b, strong), td :is(b, strong) i, td.first, td .k { font-weight: 700; }
     <div class="use"><h3>Groups of animals and things</h3><div>
       <div class="scroll" style="box-shadow:none;border-top-width:1px">
         <table style="min-width: 520px">
-          <thead><tr><th>Collective noun</th><th>of</th><th>Collective noun</th><th>of</th></tr></thead>
+          <thead><tr><th><span class="hs">Collective noun</span></th><th><span class="hs">of</span></th><th><span class="hs">Collective noun</span></th><th><span class="hs">of</span></th></tr></thead>
           <tbody>
             <tr><td class="first">a flock</td><td>sheep, birds, goats</td><td class="first">a bunch</td><td>flowers, keys, grapes, bananas</td></tr>
             <tr><td class="first">a herd</td><td>cattle, elephants, deer</td><td class="first">a pack</td><td>wolves, cards, lies</td></tr>
@@ -555,7 +568,7 @@ td :is(b, strong), td :is(b, strong) i, td.first, td .k { font-weight: 700; }
   </header>
   <div class="scroll">
     <table style="min-width: 640px">
-      <thead><tr><th>Written as</th><th>Examples</th><th>Made of</th></tr></thead>
+      <thead><tr><th><span class="hs">Written as</span></th><th><span class="hs">Examples</span></th><th><span class="hs">Made of</span></th></tr></thead>
       <tbody>
         <tr><td class="first">One word</td><td><span class="n">toothbrush</span>, <span class="n">notebook</span>, <span class="n">sunrise</span>, <span class="n">headache</span></td><td>noun + noun</td></tr>
         <tr><td class="first">With a hyphen</td><td><span class="n">mother-in-law</span>, <span class="n">well-wisher</span>, <span class="n">passer-by</span>, <span class="n">grown-up</span></td><td>several words joined</td></tr>
@@ -610,17 +623,17 @@ td :is(b, strong), td :is(b, strong) i, td.first, td .k { font-weight: 700; }
   </header>
   <div class="scroll">
     <table style="min-width: 0">
-      <thead><tr><th>With uncountable nouns</th><th>With countable nouns</th></tr></thead>
+      <thead><tr><th class="g-u"><span class="hs">With uncountable nouns</span></th><th class="g-c"><span class="hs">With countable nouns</span></th></tr></thead>
       <tbody>
-        <tr><td><i>e.g. flour, pepper, earth, mud, tea, rice</i></td><td><i>e.g. eggs, chairs, snakes, houses, shoes</i></td></tr>
-        <tr><td><span class="m">much</span></td><td><span class="m">many</span></td></tr>
-        <tr><td><span class="m">a little / little / very little</span></td><td><span class="m">a few / few / very few / fewer</span></td></tr>
-        <tr><td><span class="m">a bit of</span></td><td><span class="m">a number of</span></td></tr>
-        <tr><td><span class="m">a great deal of</span></td><td><span class="m">several</span></td></tr>
-        <tr><td><span class="m">a large amount of</span></td><td><span class="m">a large number of</span></td></tr>
-        <tr><td><span class="m">a large quantity of</span></td><td><span class="m">a great number of</span></td></tr>
-        <tr><td><span class="m">less</span></td><td><span class="m">a majority of</span></td></tr>
-        <tr><td colspan="2"><b>Both:</b> <span class="m">all</span>, <span class="m">enough</span>, <span class="m">more / most</span>, <span class="m">less / least</span>, <span class="m">no</span>, <span class="m">some</span>, <span class="m">any</span>, <span class="m">a lot of</span>, <span class="m">lots of</span>, <span class="m">plenty of</span></td></tr>
+        <tr><td class="g-u"><i>e.g. flour, pepper, earth, mud, tea, rice</i></td><td class="g-c"><i>e.g. eggs, chairs, snakes, houses, shoes</i></td></tr>
+        <tr><td class="g-u"><span class="m">much</span></td><td class="g-c"><span class="m">many</span></td></tr>
+        <tr><td class="g-u"><span class="m">a little / little / very little</span></td><td class="g-c"><span class="m">a few / few / very few / fewer</span></td></tr>
+        <tr><td class="g-u"><span class="m">a bit of</span></td><td class="g-c"><span class="m">a number of</span></td></tr>
+        <tr><td class="g-u"><span class="m">a great deal of</span></td><td class="g-c"><span class="m">several</span></td></tr>
+        <tr><td class="g-u"><span class="m">a large amount of</span></td><td class="g-c"><span class="m">a large number of</span></td></tr>
+        <tr><td class="g-u"><span class="m">a large quantity of</span></td><td class="g-c"><span class="m">a great number of</span></td></tr>
+        <tr><td class="g-u"><span class="m">less</span></td><td class="g-c"><span class="m">a majority of</span></td></tr>
+        <tr><td colspan="2" class="g-b"><b>Both:</b> <span class="m">all</span>, <span class="m">enough</span>, <span class="m">more / most</span>, <span class="m">less / least</span>, <span class="m">no</span>, <span class="m">some</span>, <span class="m">any</span>, <span class="m">a lot of</span>, <span class="m">lots of</span>, <span class="m">plenty of</span></td></tr>
       </tbody>
     </table>
   </div>
@@ -653,7 +666,7 @@ td :is(b, strong), td :is(b, strong) i, td.first, td .k { font-weight: 700; }
   </header>
   <div class="scroll">
     <table style="min-width: 0">
-      <thead><tr><th>Umbrella word<br><small>uncountable, no -s</small></th><th>Individual items inside<br><small>countable, take -s</small></th></tr></thead>
+      <thead><tr><th><span class="hs">Umbrella word<br><small>uncountable, no -s</small></span></th><th><span class="hs">Individual items inside<br><small>countable, take -s</small></span></th></tr></thead>
       <tbody>
           <tr><td><span class="k">furniture</span></td><td><span class="n">chairs, tables, sofas, beds</span></td></tr>
           <tr><td><span class="k">luggage / baggage</span></td><td><span class="n">suitcases, bags, backpacks</span></td></tr>
@@ -693,7 +706,7 @@ td :is(b, strong), td :is(b, strong) i, td.first, td .k { font-weight: 700; }
   </header>
   <div class="scroll">
     <table style="min-width: 640px">
-      <thead><tr><th>Group</th><th>Nouns</th></tr></thead>
+      <thead><tr><th><span class="hs">Group</span></th><th><span class="hs">Nouns</span></th></tr></thead>
       <tbody>
         <tr><td class="first">Ideas and information</td><td><span class="n">information</span>, <span class="n">advice</span>, <span class="n">knowledge</span>, <span class="n">news</span>, <span class="n">evidence</span>, <span class="n">research</span>, <span class="n">progress</span>, <span class="n">permission</span></td></tr>
         <tr><td class="first">Work and study</td><td><span class="n">homework</span>, <span class="n">housework</span>, <span class="n">work</span>, <span class="n">training</span>, <span class="n">equipment</span>, <span class="n">machinery</span></td></tr>
@@ -727,7 +740,7 @@ td :is(b, strong), td :is(b, strong) i, td.first, td .k { font-weight: 700; }
   </header>
   <div class="scroll">
     <table style="min-width: 720px">
-      <thead><tr><th>Noun</th><th>Uncountable meaning</th><th>Countable meaning</th></tr></thead>
+      <thead><tr><th><span class="hs">Noun</span></th><th><span class="hs">Uncountable meaning</span></th><th><span class="hs">Countable meaning</span></th></tr></thead>
       <tbody>
         <tr><td class="first">paper</td><td>I need some <span class="n">paper</span>. (the material)</td><td>He reads a <span class="n">paper</span>. (a newspaper) &nbsp;She wrote two <span class="n">papers</span>. (essays)</td></tr>
         <tr><td class="first">glass</td><td>The window is made of <span class="n">glass</span>.</td><td>a <span class="n">glass</span> of water &nbsp;&middot;&nbsp; wearing <span class="n">glasses</span></td></tr>
@@ -757,7 +770,7 @@ td :is(b, strong), td :is(b, strong) i, td.first, td .k { font-weight: 700; }
   </header>
   <div class="scroll">
     <table style="min-width: 0">
-      <thead><tr><th>Group</th><th>Nouns</th><th>Example</th></tr></thead>
+      <thead><tr><th><span class="hs">Group</span></th><th><span class="hs">Nouns</span></th><th><span class="hs">Example</span></th></tr></thead>
       <tbody>
         <tr><td class="first">Subjects and fields</td><td><span class="n">mathematics, physics, economics, linguistics, politics, statistics</span></td><td>Physics <span class="v">is</span> fascinating.</td></tr>
         <tr><td class="first">News and illnesses</td><td><span class="n">news, measles, diabetes</span></td><td>The news <span class="v">is</span> good.</td></tr>
@@ -774,7 +787,7 @@ td :is(b, strong), td :is(b, strong) i, td.first, td .k { font-weight: 700; }
   </header>
   <div class="scroll">
     <table style="min-width: 0">
-      <thead><tr><th>Unit word</th><th>Used with</th></tr></thead>
+      <thead><tr><th><span class="hs">Unit word</span></th><th><span class="hs">Used with</span></th></tr></thead>
       <tbody>
             <tr><td class="first">a piece of</td><td>advice, information, furniture, luggage, music, paper, work</td></tr>
             <tr><td class="first">an item of</td><td>clothing, news, luggage, furniture</td></tr>
@@ -831,7 +844,7 @@ td :is(b, strong), td :is(b, strong) i, td.first, td .k { font-weight: 700; }
   </header>
   <div class="scroll">
     <table style="min-width: 680px">
-      <thead><tr><th>Noun ends in</th><th>Rule</th><th>Examples</th></tr></thead>
+      <thead><tr><th><span class="hs">Noun ends in</span></th><th><span class="hs">Rule</span></th><th><span class="hs">Examples</span></th></tr></thead>
       <tbody>
         <tr><td class="first">most letters</td><td>add <b>-s</b></td><td>book&rarr;<span class="n">books</span>, dog&rarr;<span class="n">dogs</span>, tree&rarr;<span class="n">trees</span></td></tr>
         <tr><td class="first">-s, -ss, -x, -z, -ch, -sh</td><td>add <b>-es</b></td><td>bus&rarr;<span class="n">buses</span>, class&rarr;<span class="n">classes</span>, box&rarr;<span class="n">boxes</span>, church&rarr;<span class="n">churches</span>, dish&rarr;<span class="n">dishes</span></td></tr>
@@ -878,7 +891,7 @@ td :is(b, strong), td :is(b, strong) i, td.first, td .k { font-weight: 700; }
     <div class="use"><h3>Plurals that change the meaning</h3><div>
       <div class="scroll" style="box-shadow:none;border-top-width:1px">
         <table style="min-width: 560px">
-          <thead><tr><th>Singular</th><th>Plural 1</th><th>Plural 2</th></tr></thead>
+          <thead><tr><th><span class="hs">Singular</span></th><th><span class="hs">Plural 1</span></th><th><span class="hs">Plural 2</span></th></tr></thead>
           <tbody>
             <tr><td class="first">cloth</td><td>cloths (pieces of cloth)</td><td>clothes (things we wear)</td></tr>
             <tr><td class="first">penny</td><td>pennies (the coins)</td><td>pence (an amount of money)</td></tr>
@@ -900,7 +913,7 @@ td :is(b, strong), td :is(b, strong) i, td.first, td .k { font-weight: 700; }
   </header>
   <div class="scroll">
     <table style="min-width: 700px">
-      <thead><tr><th>Ending</th><th>Becomes</th><th>Examples</th></tr></thead>
+      <thead><tr><th><span class="hs">Ending</span></th><th><span class="hs">Becomes</span></th><th><span class="hs">Examples</span></th></tr></thead>
       <tbody>
         <tr><td class="first">-us</td><td>-i</td><td>cactus&rarr;<span class="n">cacti</span>, nucleus&rarr;<span class="n">nuclei</span>, radius&rarr;<span class="n">radii</span>, stimulus&rarr;<span class="n">stimuli</span>, alumnus&rarr;<span class="n">alumni</span>, fungus&rarr;<span class="n">fungi</span></td></tr>
         <tr><td class="first">-um</td><td>-a</td><td>datum&rarr;<span class="n">data</span>, bacterium&rarr;<span class="n">bacteria</span>, medium&rarr;<span class="n">media</span>, curriculum&rarr;<span class="n">curricula</span>, memorandum&rarr;<span class="n">memoranda</span>, stratum&rarr;<span class="n">strata</span></td></tr>
@@ -958,7 +971,7 @@ td :is(b, strong), td :is(b, strong) i, td.first, td .k { font-weight: 700; }
   </header>
   <div class="scroll">
     <table style="min-width: 680px">
-      <thead><tr><th>Compound noun</th><th>Plural goes on</th><th>Examples</th></tr></thead>
+      <thead><tr><th><span class="hs">Compound noun</span></th><th><span class="hs">Plural goes on</span></th><th><span class="hs">Examples</span></th></tr></thead>
       <tbody>
         <tr><td class="first">Noun + noun, written as one word or two</td><td>the last word</td><td>toothbrush&rarr;<span class="n">toothbrushes</span>, post office&rarr;<span class="n">post offices</span></td></tr>
         <tr><td class="first">Main noun + other words</td><td>the main noun</td><td>mother-in-law&rarr;<span class="n">mothers-in-law</span>, passer-by&rarr;<span class="n">passers-by</span>, runner-up&rarr;<span class="n">runners-up</span>, commander-in-chief&rarr;<span class="n">commanders-in-chief</span>, court-martial&rarr;<span class="n">courts-martial</span></td></tr>
@@ -997,7 +1010,7 @@ td :is(b, strong), td :is(b, strong) i, td.first, td .k { font-weight: 700; }
   <div class="glance" aria-label="The four genders at a glance"><div class="gc"><span class="gi" aria-hidden="true">👦</span><h3>Masculine</h3><p>Male person or animal</p><p class="gx">boy, king, lion — he</p></div><div class="gc"><span class="gi" aria-hidden="true">👧</span><h3>Feminine</h3><p>Female person or animal</p><p class="gx">girl, queen, lioness — she</p></div><div class="gc"><span class="gi" aria-hidden="true">🧑</span><h3>Common</h3><p>Either one, one word for both</p><p class="gx">teacher, child, doctor — he or she</p></div><div class="gc"><span class="gi" aria-hidden="true">📦</span><h3>Neuter</h3><p>No sex: things and ideas</p><p class="gx">table, book, honesty — it</p></div></div>
 <div class="scroll">
     <table style="min-width: 640px">
-      <thead><tr><th>Gender</th><th>Meaning</th><th>Examples</th><th>Pronoun</th></tr></thead>
+      <thead><tr><th><span class="hs">Gender</span></th><th><span class="hs">Meaning</span></th><th><span class="hs">Examples</span></th><th><span class="hs">Pronoun</span></th></tr></thead>
       <tbody>
         <tr><td class="first">Masculine</td><td>male person or animal</td><td><span class="n">boy, king, uncle, lion, actor, horse</span></td><td>he, him, his</td></tr>
         <tr><td class="first">Feminine</td><td>female person or animal</td><td><span class="n">girl, queen, aunt, lioness, actress, mare</span></td><td>she, her, hers</td></tr>
@@ -1022,7 +1035,7 @@ td :is(b, strong), td :is(b, strong) i, td.first, td .k { font-weight: 700; }
     <div class="use"><h3>1. A different word</h3><div>
       <div class="scroll" style="box-shadow:none;border-top-width:1px">
         <table style="min-width: 560px">
-          <thead><tr><th>Masculine</th><th>Feminine</th><th>Masculine</th><th>Feminine</th></tr></thead>
+          <thead><tr><th><span class="hs">Masculine</span></th><th><span class="hs">Feminine</span></th><th><span class="hs">Masculine</span></th><th><span class="hs">Feminine</span></th></tr></thead>
           <tbody>
             <tr><td>boy</td><td>girl</td><td>king</td><td>queen</td></tr>
             <tr><td>man</td><td>woman</td><td>sir</td><td>madam</td></tr>
@@ -1039,7 +1052,7 @@ td :is(b, strong), td :is(b, strong) i, td.first, td .k { font-weight: 700; }
     <div class="use"><h3>2. Add <i>-ess</i></h3><div>
       <div class="scroll" style="box-shadow:none;border-top-width:1px">
         <table style="min-width: 560px">
-          <thead><tr><th>Masculine</th><th>Feminine</th><th>Masculine</th><th>Feminine</th></tr></thead>
+          <thead><tr><th><span class="hs">Masculine</span></th><th><span class="hs">Feminine</span></th><th><span class="hs">Masculine</span></th><th><span class="hs">Feminine</span></th></tr></thead>
           <tbody>
             <tr><td>lion</td><td>lioness</td><td>host</td><td>hostess</td></tr>
             <tr><td>prince</td><td>princess</td><td>god</td><td>goddess</td></tr>
@@ -1072,7 +1085,7 @@ td :is(b, strong), td :is(b, strong) i, td.first, td .k { font-weight: 700; }
   </header>
   <div class="scroll">
     <table style="min-width: 560px">
-      <thead><tr><th>Older form</th><th>Neutral form</th></tr></thead>
+      <thead><tr><th><span class="hs">Older form</span></th><th><span class="hs">Neutral form</span></th></tr></thead>
       <tbody>
         <tr><td>chairman</td><td><span class="n">chairperson, chair</span></td></tr>
         <tr><td>policeman, policewoman</td><td><span class="n">police officer</span></td></tr>
@@ -1143,7 +1156,7 @@ td :is(b, strong), td :is(b, strong) i, td.first, td .k { font-weight: 700; }
   </header>
   <div class="scroll">
     <table style="min-width: 680px">
-      <thead><tr><th>Case</th><th>The noun is</th><th>Example</th><th>Form</th></tr></thead>
+      <thead><tr><th><span class="hs">Case</span></th><th><span class="hs">The noun is</span></th><th><span class="hs">Example</span></th><th><span class="hs">Form</span></th></tr></thead>
       <tbody>
         <tr><td class="first">Nominative</td><td>the subject, or the complement after a linking verb</td><td>The <span class="n">boy</span> <span class="v">sleeps</span>. Tom is a <span class="n">doctor</span>.</td><td>boy</td></tr>
         <tr><td class="first">Objective</td><td>the object of a verb or a preposition</td><td>She called the <span class="n">boy</span>. He sat by the <span class="n">boy</span>.</td><td>boy</td></tr>
@@ -1162,7 +1175,7 @@ td :is(b, strong), td :is(b, strong) i, td.first, td .k { font-weight: 700; }
   </header>
   <div class="scroll">
     <table style="min-width: 680px">
-      <thead><tr><th>The noun</th><th>Rule</th><th>Examples</th></tr></thead>
+      <thead><tr><th><span class="hs">The noun</span></th><th><span class="hs">Rule</span></th><th><span class="hs">Examples</span></th></tr></thead>
       <tbody>
         <tr><td class="first">Singular</td><td>add <b>&rsquo;s</b></td><td><span class="n">the boy&rsquo;s</span> bag, <span class="n">the cat&rsquo;s</span> tail, <span class="n">Anna&rsquo;s</span> pen</td></tr>
         <tr><td class="first">Regular plural ending in -s</td><td>add <b>&rsquo;</b> only</td><td><span class="n">the boys&rsquo;</span> school, <span class="n">the girls&rsquo;</span> room, <span class="n">the teachers&rsquo;</span> staff room</td></tr>
@@ -1201,7 +1214,7 @@ td :is(b, strong), td :is(b, strong) i, td.first, td .k { font-weight: 700; }
   </header>
   <div class="scroll">
     <table style="min-width: 640px">
-      <thead><tr><th>Use</th><th>For</th><th>Examples</th></tr></thead>
+      <thead><tr><th><span class="hs">Use</span></th><th><span class="hs">For</span></th><th><span class="hs">Examples</span></th></tr></thead>
       <tbody>
         <tr><td class="first">&rsquo;s</td><td>people</td><td>the <span class="n">teacher&rsquo;s</span> desk</td></tr>
         <tr><td class="first">&rsquo;s</td><td>animals</td><td>the <span class="n">dog&rsquo;s</span> bone</td></tr>
@@ -1330,7 +1343,7 @@ td :is(b, strong), td :is(b, strong) i, td.first, td .k { font-weight: 700; }
   <h3 class="sumh">Quick summary</h3>
   <div class="scroll">
     <table style="min-width: 560px">
-      <thead><tr><th>Job</th><th>Ask</th><th>Example</th></tr></thead>
+      <thead><tr><th><span class="hs">Job</span></th><th><span class="hs">Ask</span></th><th><span class="hs">Example</span></th></tr></thead>
       <tbody>
         <tr><td class="first">Subject</td><td>Who or what does it?</td><td>The <span class="n">dog</span> barked.</td></tr>
         <tr><td class="first">Direct object</td><td>Verb + what?</td><td>She fed the <span class="n">dog</span>.</td></tr>
@@ -1408,7 +1421,7 @@ td :is(b, strong), td :is(b, strong) i, td.first, td .k { font-weight: 700; }
   </header>
   <div class="scroll">
     <table style="min-width: 700px">
-      <thead><tr><th>Joined by</th><th>The verb matches</th><th>Examples</th></tr></thead>
+      <thead><tr><th><span class="hs">Joined by</span></th><th><span class="hs">The verb matches</span></th><th><span class="hs">Examples</span></th></tr></thead>
       <tbody>
         <tr><td class="first"><i>and</i></td><td>Both together: plural (V1)</td><td>The <span class="n">boy</span> and the <span class="n">girl</span> <span class="v">are</span> here. &nbsp;Tom and Mary <span class="v">have</span> left.</td></tr>
         <tr><td class="first"><i>and</i> for one thing or person</td><td>One unit: singular (V5)</td><td><span class="n">Bread and butter</span> <span class="v">is</span> my breakfast. &nbsp;The <span class="n">poet and statesman</span> <span class="v">is</span> dead. <span class="muted">(one man)</span></td></tr>
@@ -1482,7 +1495,7 @@ td :is(b, strong), td :is(b, strong) i, td.first, td .k { font-weight: 700; }
   </header>
   <div class="scroll">
     <table style="min-width: 640px">
-      <thead><tr><th>The noun</th><th>Verb</th><th>Examples</th></tr></thead>
+      <thead><tr><th><span class="hs">The noun</span></th><th><span class="hs">Verb</span></th><th><span class="hs">Examples</span></th></tr></thead>
       <tbody>
         <tr><td class="first">Uncountable</td><td>V5</td><td>The <span class="n">information</span> <span class="v">is</span> useful. &nbsp;The <span class="n">furniture</span> <span class="v">was</span> new.</td></tr>
         <tr><td class="first">Plural form, singular meaning (news, mathematics, measles)</td><td>V5</td><td><span class="n">Mathematics</span> <span class="v">is</span> hard. &nbsp;No <span class="n">news</span> <span class="v">is</span> good news.</td></tr>
@@ -1523,7 +1536,7 @@ td :is(b, strong), td :is(b, strong) i, td.first, td .k { font-weight: 700; }
   </header>
   <div class="scroll">
     <table style="min-width: 700px">
-      <thead><tr><th>Ending</th><th>Meaning</th><th>Examples</th></tr></thead>
+      <thead><tr><th><span class="hs">Ending</span></th><th><span class="hs">Meaning</span></th><th><span class="hs">Examples</span></th></tr></thead>
       <tbody>
         <tr><td class="first">-tion, -sion, -ation</td><td>action or result</td><td>decide&rarr;<span class="n">decision</span>, invent&rarr;<span class="n">invention</span>, educate&rarr;<span class="n">education</span>, explain&rarr;<span class="n">explanation</span></td></tr>
         <tr><td class="first">-ment</td><td>action or result</td><td>move&rarr;<span class="n">movement</span>, agree&rarr;<span class="n">agreement</span>, enjoy&rarr;<span class="n">enjoyment</span></td></tr>
@@ -1549,7 +1562,7 @@ td :is(b, strong), td :is(b, strong) i, td.first, td .k { font-weight: 700; }
   </header>
   <div class="scroll">
     <table style="min-width: 700px">
-      <thead><tr><th>Ending</th><th>Meaning</th><th>Examples</th></tr></thead>
+      <thead><tr><th><span class="hs">Ending</span></th><th><span class="hs">Meaning</span></th><th><span class="hs">Examples</span></th></tr></thead>
       <tbody>
         <tr><td class="first">-er, -or, -ar</td><td>a person who does it</td><td>teach&rarr;<span class="n">teacher</span>, act&rarr;<span class="n">actor</span>, beg&rarr;<span class="n">beggar</span>, sail&rarr;<span class="n">sailor</span></td></tr>
         <tr><td class="first">-ist, -ian</td><td>a person with a skill or job</td><td>art&rarr;<span class="n">artist</span>, science&rarr;<span class="n">scientist</span>, music&rarr;<span class="n">musician</span>, library&rarr;<span class="n">librarian</span></td></tr>
@@ -1570,7 +1583,7 @@ td :is(b, strong), td :is(b, strong) i, td.first, td .k { font-weight: 700; }
   </header>
   <div class="scroll">
     <table style="min-width: 700px">
-      <thead><tr><th>From an adjective</th><th>From a verb</th><th>From a noun</th></tr></thead>
+      <thead><tr><th><span class="hs">From an adjective</span></th><th><span class="hs">From a verb</span></th><th><span class="hs">From a noun</span></th></tr></thead>
       <tbody>
         <tr><td>brave&rarr;<span class="n">bravery</span></td><td>decide&rarr;<span class="n">decision</span></td><td>friend&rarr;<span class="n">friendship</span></td></tr>
         <tr><td>wise&rarr;<span class="n">wisdom</span></td><td>move&rarr;<span class="n">movement</span></td><td>child&rarr;<span class="n">childhood</span></td></tr>
@@ -1602,7 +1615,7 @@ td :is(b, strong), td :is(b, strong) i, td.first, td .k { font-weight: 700; }
     <div class="use"><h3>The spelling changes</h3><div>
       <div class="scroll" style="box-shadow:none;border-top-width:1px">
         <table style="min-width: 520px">
-          <thead><tr><th>Noun</th><th>Verb</th><th>Noun</th><th>Verb</th></tr></thead>
+          <thead><tr><th><span class="hs">Noun</span></th><th><span class="hs">Verb</span></th><th><span class="hs">Noun</span></th><th><span class="hs">Verb</span></th></tr></thead>
           <tbody>
             <tr><td><span class="n">advice</span></td><td>advise</td><td><span class="n">belief</span></td><td>believe</td></tr>
             <tr><td><span class="n">proof</span></td><td>prove</td><td><span class="n">life</span></td><td>live</td></tr>
@@ -1627,7 +1640,7 @@ td :is(b, strong), td :is(b, strong) i, td.first, td .k { font-weight: 700; }
   </header>
   <div class="scroll">
     <table style="min-width: 700px">
-      <thead><tr><th>Preposition</th><th>Nouns</th><th>Example</th></tr></thead>
+      <thead><tr><th><span class="hs">Preposition</span></th><th><span class="hs">Nouns</span></th><th><span class="hs">Example</span></th></tr></thead>
       <tbody>
         <tr><td class="first">of</td><td><span class="n">example, lack, fear, habit, cause, kind, number</span></td><td>There is a <span class="n">lack</span> <b>of</b> water.</td></tr>
         <tr><td class="first">for</td><td><span class="n">reason, need, demand, respect, love, cure, taste, desire</span></td><td>What is the <span class="n">reason</span> <b>for</b> the delay?</td></tr>
@@ -1668,7 +1681,7 @@ td :is(b, strong), td :is(b, strong) i, td.first, td .k { font-weight: 700; }
   </header>
   <div class="scroll">
     <table style="min-width: 760px">
-      <thead><tr><th class="wrong">Wrong</th><th class="right">Right</th><th>Why</th></tr></thead>
+      <thead><tr><th class="wrong"><span class="hs">Wrong</span></th><th class="right"><span class="hs">Right</span></th><th><span class="hs">Why</span></th></tr></thead>
       <tbody>
         <tr><td class="wrong">I need some informations.</td><td class="right">I need some information.</td><td>Uncountable: no plural.</td></tr>
         <tr><td class="wrong">She gave me an advice.</td><td class="right">She gave me a piece of advice.</td><td>Uncountable: no <i>a / an</i>. Count with a unit.</td></tr>

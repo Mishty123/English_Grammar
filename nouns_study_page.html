@@ -284,6 +284,9 @@ details p b { color: var(--right); }
 .tq button.ok { border-color: #3F7F57; background: color-mix(in srgb, #3F7F57 22%, var(--surface)); font-weight: 700; }
 .tq button.no { border-color: #B7791F; background: color-mix(in srgb, #B7791F 20%, var(--surface)); text-decoration: line-through; }
 .tq .fb { font-size: .9rem; color: var(--muted); font-style: italic; min-height: 1.2em; margin-top: 4px; }
+.golink { font-style: italic; font-weight: 700; color: var(--h3c); text-decoration: none; border-bottom: 1.5px solid color-mix(in srgb, var(--h3c) 40%, transparent); white-space: nowrap; }
+.golink:hover { border-bottom-color: var(--h3c); }
+.gc .gx:first-of-type { margin-top: 0; }
 </style>
 </head>
 <body>
@@ -576,7 +579,7 @@ details p b { color: var(--right); }
     <p>Nouns can be divided into two types based on countability: <span class="k">countable</span> and <span class="k">uncountable</span>.</p>
   </header>
   <ul class="points">
-    <li><b>Countable nouns</b> refer to things you can count individually. Because they have number, they have both singular and plural forms (<i>one apple, two apples</i>).</li>
+    <li><b>Countable nouns</b> refer to things you can count individually. Because they have number, they have both singular and plural forms (<i>one apple, two apples</i>). <a class="golink" href="#number">Plural rules: Number tab &rarr;</a></li>
     <li><b>Uncountable nouns</b> refer to things you cannot count individually, such as liquids, substances, or abstract ideas (<i>water, information</i>).</li>
   </ul>
 </section>
@@ -586,18 +589,7 @@ details p b { color: var(--right); }
     <h2>How Determiners Fit In</h2>
     <p>Depending on whether a noun is countable or uncountable, specific <span class="k">determiners</span> come before it to show which one or how many (for example, <i>a</i> or <i>many</i> for countable nouns vs. <i>much</i> for uncountable nouns).</p>
   </header>
-  <div class="scroll">
-    <table style="min-width: 0">
-      <thead><tr><th>Type of determiner</th><th>Examples</th></tr></thead>
-      <tbody>
-        <tr><th scope="row">Articles</th><td><span class="m">a, an, the</span></td></tr>
-        <tr><th scope="row">Demonstratives</th><td><span class="m">this, that, these, those</span></td></tr>
-        <tr><th scope="row">Possessives</th><td><span class="m">my, your, his, her, its, our, their</span></td></tr>
-        <tr><th scope="row">Numbers</th><td><span class="m">one, two, three, first</span></td></tr>
-        <tr><th scope="row">Quantifiers</th><td><span class="m">many, much, few, a few, little, a little, some, any, several, enough, no, all, most, more, less, fewer, a lot of</span></td></tr>
-      </tbody>
-    </table>
-  </div>
+  <div class="glance" aria-label="Types of determiner"><div class="gc"><span class="gi" aria-hidden="true">🔤</span><h3>Articles</h3><p class="gx">a, an, the</p></div><div class="gc"><span class="gi" aria-hidden="true">👉</span><h3>Demonstratives</h3><p class="gx">this, that, these, those</p></div><div class="gc"><span class="gi" aria-hidden="true">🎒</span><h3>Possessives</h3><p class="gx">my, your, his, her, its, our, their</p></div><div class="gc"><span class="gi" aria-hidden="true">🔢</span><h3>Numbers</h3><p class="gx">one, two, three, first</p></div><div class="gc" style="grid-column: 1 / -1"><span class="gi" aria-hidden="true">⚖️</span><h3>Quantifiers</h3><p class="gx">many, much, few, a few, little, a little, some, any, several, enough, no, all, most, more, less, fewer, a lot of</p></div></div>
   <p class="tip"><i>Rule:</i> the determiner must match the noun. <i>a</i> goes with a singular countable noun, <i>many</i> with a plural countable noun, <i>much</i> with an uncountable noun.</p>
 </section>
 

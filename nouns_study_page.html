@@ -287,6 +287,8 @@ details p b { color: var(--right); }
 .golink { font-style: italic; font-weight: 700; color: var(--h3c); text-decoration: none; border-bottom: 1.5px solid color-mix(in srgb, var(--h3c) 40%, transparent); white-space: nowrap; }
 .golink:hover { border-bottom-color: var(--h3c); }
 .gc .gx:first-of-type { margin-top: 0; }
+.subtab { display: flex; flex-direction: column; gap: 44px; }
+.subtab[hidden] { display: none; }
 </style>
 </head>
 <body>
@@ -300,15 +302,12 @@ details p b { color: var(--right); }
     <li><a href="#overview" role="tab" data-tab="overview"><span class="stn">1</span> Overview</a></li>
     <li><a href="#kinds" role="tab" data-tab="kinds"><span class="stn">2</span> Kinds</a></li>
     <li><a href="#counting" role="tab" data-tab="counting"><span class="stn">3</span> Countable</a></li>
-    <li><a href="#number" role="tab" data-tab="number"><span class="stn">4</span> Number</a></li>
-    <li><a href="#gender" role="tab" data-tab="gender"><span class="stn">5</span> Gender</a></li>
-    <li><a href="#case" role="tab" data-tab="case"><span class="stn">6</span> Case</a></li>
-    <li><a href="#jobs" role="tab" data-tab="jobs"><span class="stn">7</span> Jobs</a></li>
-    <li><a href="#agreement" role="tab" data-tab="agreement"><span class="stn">8</span> Agreement</a></li>
-    <li><a href="#building" role="tab" data-tab="building"><span class="stn">9</span> Word building</a></li>
-    <li><a href="#errors" role="tab" data-tab="errors"><span class="stn">10</span> Errors</a></li>
-    <li><a href="#practice" role="tab" data-tab="practice"><span class="stn">11</span> Practice</a></li>
-    <li><a href="#quiz" role="tab" data-tab="quiz"><span class="stn">12</span> Quiz</a></li>
+    <li><a href="#numgen" role="tab" data-tab="numgen"><span class="stn">4</span> Number &amp; Gender</a></li>
+    <li><a href="#casejob" role="tab" data-tab="casejob"><span class="stn">5</span> Case &amp; Job</a></li>
+    <li><a href="#agreement" role="tab" data-tab="agreement"><span class="stn">6</span> Agreement</a></li>
+    <li><a href="#building" role="tab" data-tab="building"><span class="stn">7</span> Word building</a></li>
+    <li><a href="#errors" role="tab" data-tab="errors"><span class="stn">8</span> Errors</a></li>
+    <li><a href="#quizzes" role="tab" data-tab="quizzes"><span class="stn">9</span> Quiz time</a></li>
   </ul>
 </header>
 
@@ -318,7 +317,7 @@ details p b { color: var(--right); }
 <section>
   <header>
     <h2>What a noun shows</h2>
-    <p>Five things can change or be checked about any noun. Each one has its own tab.</p>
+    <p>Five things can change or be checked about any noun. Each one is covered in the steps that follow.</p>
   </header>
   <div class="four">
     <div><h3>Kind</h3><p>Common, proper, abstract, collective, material or compound. The kind decides capital letters and the verb.</p></div>
@@ -579,7 +578,7 @@ details p b { color: var(--right); }
     <p>Nouns can be divided into two types based on countability: <span class="k">countable</span> and <span class="k">uncountable</span>.</p>
   </header>
   <ul class="points">
-    <li><b>Countable nouns</b> refer to things you can count individually. Because they have number, they have both singular and plural forms (<i>one apple, two apples</i>). <a class="golink" href="#number">Plural rules: Number tab &rarr;</a></li>
+    <li><b>Countable nouns</b> refer to things you can count individually. Because they have number, they have both singular and plural forms (<i>one apple, two apples</i>). <a class="golink" href="#numgen" data-sub="number">Plural rules: Number &amp; Gender tab &rarr;</a></li>
     <li><b>Uncountable nouns</b> refer to things you cannot count individually, such as liquids, substances, or abstract ideas (<i>water, information</i>).</li>
   </ul>
 </section>
@@ -727,8 +726,13 @@ details p b { color: var(--right); }
 
 </div>
 
+<!-- ===================== NUMBER AND GENDER ===================== -->
+<div class="tabpanel" id="numgen" role="tabpanel" hidden>
+
+<ul class="subjump" role="tablist" aria-label="Number and gender"><li><a href="#numgen" role="tab" data-st="number">Number</a></li><li><a href="#numgen" role="tab" data-st="gender">Gender</a></li></ul>
+
 <!-- ===================== NUMBER ===================== -->
-<div class="tabpanel" id="number" role="tabpanel" hidden>
+<div class="subtab" id="number" role="tabpanel" data-st="number">
 
 <section>
   <header>
@@ -891,8 +895,9 @@ details p b { color: var(--right); }
 
 </div>
 
+
 <!-- ===================== GENDER ===================== -->
-<div class="tabpanel" id="gender" role="tabpanel" hidden>
+<div class="subtab" id="gender" role="tabpanel" data-st="gender">
 
 <section>
   <header>
@@ -1030,8 +1035,16 @@ details p b { color: var(--right); }
 
 </div>
 
+
+</div>
+
+<!-- ===================== CASE AND JOB ===================== -->
+<div class="tabpanel" id="casejob" role="tabpanel" hidden>
+
+<ul class="subjump" role="tablist" aria-label="Case and job"><li><a href="#casejob" role="tab" data-st="case">Case</a></li><li><a href="#casejob" role="tab" data-st="jobs">Job</a></li></ul>
+
 <!-- ===================== CASE ===================== -->
-<div class="tabpanel" id="case" role="tabpanel" hidden>
+<div class="subtab" id="case" role="tabpanel" data-st="case">
 
 <section>
   <header>
@@ -1170,8 +1183,9 @@ details p b { color: var(--right); }
 
 </div>
 
+
 <!-- ===================== JOBS ===================== -->
-<div class="tabpanel" id="jobs" role="tabpanel" hidden>
+<div class="subtab" id="jobs" role="tabpanel" data-st="jobs">
 
 <section>
   <header>
@@ -1268,6 +1282,9 @@ details p b { color: var(--right); }
       <p class="ex many" data-label="Examples"><span class="n">Seven</span> is a lucky number.<br>&ldquo;<span class="n">And</span>&rdquo; is a conjunction.<br>There are no <span class="n">ifs</span> or <span class="n">buts</span>.</p></div></div>
   </div>
 </section>
+
+</div>
+
 
 </div>
 
@@ -1606,8 +1623,13 @@ details p b { color: var(--right); }
 
 </div>
 
+<!-- ===================== QUIZ TIME ===================== -->
+<div class="tabpanel" id="quizzes" role="tabpanel" hidden>
+
+<ul class="subjump" role="tablist" aria-label="Quiz time"><li><a href="#quizzes" role="tab" data-st="practice">Practice</a></li><li><a href="#quizzes" role="tab" data-st="quiz">Quiz</a></li></ul>
+
 <!-- ===================== PRACTICE ===================== -->
-<div class="tabpanel" id="practice" role="tabpanel" hidden>
+<div class="subtab" id="practice" role="tabpanel" data-st="practice">
 
 <section>
   <header>
@@ -1787,8 +1809,9 @@ details p b { color: var(--right); }
 
 </div>
 
+
 <!-- ===================== QUIZ ===================== -->
-<div class="tabpanel" id="quiz" role="tabpanel" hidden>
+<div class="subtab" id="quiz" role="tabpanel" data-st="quiz">
 
 <section>
   <header>
@@ -1804,6 +1827,9 @@ details p b { color: var(--right); }
 </section>
 
 </div>
+
+</div>
+
 
 </div>
 
@@ -2124,34 +2150,24 @@ details p b { color: var(--right); }
 </script>
 <script>
 (function () {
-  var NAMES = ["overview", "kinds", "counting", "number", "gender", "case", "jobs", "agreement", "building", "errors", "practice", "quiz"], LAB = {"overview": "Overview", "kinds": "Kinds", "counting": "Countable", "number": "Number", "gender": "Gender", "case": "Case", "jobs": "Jobs", "agreement": "Agreement", "building": "Word building", "errors": "Errors", "practice": "Practice", "quiz": "Quiz"}, NEED = {"overview": "Start here", "kinds": "Needs Step 1", "counting": "Needs Step 2: kinds", "number": "Needs Step 3: countable", "gender": "Needs Step 2: kinds", "case": "Needs Step 4: number", "jobs": "Needs Step 6: case", "agreement": "Needs Step 7: jobs", "building": "Needs Step 2: kinds", "errors": "Needs Steps 2 to 9", "practice": "Needs Steps 1 to 10", "quiz": "Needs Steps 1 to 10"}, TRY = {"overview": [["Which of the five things shows the noun\u2019s job in the sentence?", ["Kind", "Number", "Case", "Gender"], 2, "Case is the job of the noun."], ["<i>boy\u2019s</i> shows which case?", ["Subjective", "Possessive", "Objective"], 1, "The possessive case is the only one that changes the form."], ["Every noun is which person?", ["1st", "2nd", "3rd"], 2, "Every noun is 3rd person. A singular noun takes V5, a plural noun takes V1."], ["The dog ___ loudly.", ["bark", "barks"], 1, "Dog is singular, so the verb is V5: barks."]], "kinds": [["Which word needs a capital letter?", ["spring", "tuesday", "teacher", "city"], 1, "Days are proper nouns."], ["Which noun is abstract?", ["kindness", "chair", "Mumbai", "window"], 0, "Kindness is a quality. You cannot touch it."], ["In \u201ca herd of cattle\u201d, herd is a ___ noun.", ["collective", "material", "proper"], 0, "One word for a group."], ["Which is a material noun?", ["silver", "family", "anger", "Paris"], 0, "Silver is what things are made of."], ["Which is a compound noun?", ["beautiful", "bookshelf", "quickly", "running"], 1, "Two words joined to make one noun."]], "counting": [["I need ___ furniture.", ["a", "some", "many"], 1, "Furniture is uncountable. Use some."], ["How ___ chairs are there?", ["many", "much"], 0, "Chairs can be counted: many."], ["We have ___ time, so let\u2019s hurry.", ["little", "a little"], 0, "Little means almost none."], ["Which noun is countable?", ["rice", "advice", "egg", "water"], 2, "You can say one egg, two eggs."], ["In <i>many books</i>, the word <i>many</i> is a ___.", ["noun", "determiner", "adjective"], 1, "Many is a determiner (a quantifier). It stands before the noun and shows how many."]], "number": [["The plural of city is", ["citys", "cities", "cityes"], 1, "Consonant + y changes to -ies."], ["The plural of child is", ["childs", "children", "childrens"], 1, "Irregular plural: children."], ["The plural of knife is", ["knifes", "knives"], 1, "-fe changes to -ves."], ["The plural of sheep is", ["sheep", "sheeps", "sheepes"], 0, "Sheep is the same in singular and plural."]], "gender": [["The feminine of actor is", ["actress", "actoress", "actrice"], 0, "Add -ess: actress."], ["Which noun is common gender?", ["king", "teacher", "lioness", "table"], 1, "One word for a man or a woman."], ["The table lost ___ leg.", ["its", "his", "her"], 0, "A table is neuter, so it takes its."], ["The masculine of niece is", ["nephew", "niecer", "nepho"], 0, "A different word: nephew."]], "case": [["More than one girl\u2019s books: the ___ books.", ["girl\u2019s", "girls\u2019", "girls\u2019s"], 1, "Plural ending in -s: add only the apostrophe."], ["The ___ toys (more than one child)", ["children\u2019s", "childrens\u2019", "childrens"], 0, "Irregular plural: add \u2019s."], ["In \u201cShe gave Ravi a pen\u201d, Ravi is in the ___ case.", ["subjective", "possessive", "objective"], 2, "Ravi is the indirect object, so the objective case."], ["For a thing, which is better?", ["the table\u2019s leg", "the leg of the table"], 1, "Use of with things."]], "jobs": [["In \u201cRain fell.\u201d, rain is the", ["subject", "direct object", "complement"], 0, "Rain does the action."], ["In \u201cShe kicked the ball.\u201d, ball is the", ["subject", "direct object", "subject complement"], 1, "Kicked what? The ball."], ["In \u201cRavi, come here.\u201d, Ravi is", ["direct address", "apposition", "subject"], 0, "Ravi is the person spoken to."], ["In \u201cHe is a doctor.\u201d, doctor is the", ["direct object", "subject complement", "subject"], 1, "It renames the subject."]], "agreement": [["The box of apples ___ on the table.", ["is", "are"], 0, "The subject is box, which is singular."], ["Neither the teacher nor the students ___ late.", ["was", "were"], 1, "The verb agrees with the nearer noun: students."], ["Ten dollars ___ a lot.", ["is", "are"], 0, "An amount is one sum."], ["The team ___ ready. (one unit)", ["is", "are"], 0, "One unit is singular."]], "building": [["The noun from happy is", ["happiness", "happyness", "happily"], 0, "y changes to i, then -ness."], ["A person who teaches is a", ["teacher", "teachment", "teachness"], 0, "Add -er for the person."], ["The noun from decide is", ["decision", "deciding", "decided"], 0, "decide \u2192 decision."], ["Which ending makes a noun for a person?", ["-er", "-ness", "-tion"], 0, "-er: teacher, singer."]]};
+  var NAMES = ["overview", "kinds", "counting", "numgen", "casejob", "agreement", "building", "errors", "quizzes"], LAB = {"overview": "Overview", "kinds": "Kinds", "counting": "Countable", "numgen": "Number & Gender", "casejob": "Case & Job", "agreement": "Agreement", "building": "Word building", "errors": "Errors", "quizzes": "Quiz time"}, NEED = {"overview": "Start here", "kinds": "Needs Step 1", "counting": "Needs Step 2: kinds", "numgen": "Needs Step 3: countable", "casejob": "Needs Step 4: number", "agreement": "Needs Step 5: jobs", "building": "Needs Step 2: kinds", "errors": "Needs Steps 2 to 7", "quizzes": "Needs Steps 1 to 8"}, TRY = {"overview": [["Which of the five things shows the noun\u2019s job in the sentence?", ["Kind", "Number", "Case", "Gender"], 2, "Case is the job of the noun."], ["<i>boy\u2019s</i> shows which case?", ["Subjective", "Possessive", "Objective"], 1, "The possessive case is the only one that changes the form."], ["Every noun is which person?", ["1st", "2nd", "3rd"], 2, "Every noun is 3rd person. A singular noun takes V5, a plural noun takes V1."], ["The dog ___ loudly.", ["bark", "barks"], 1, "Dog is singular, so the verb is V5: barks."]], "kinds": [["Which word needs a capital letter?", ["spring", "tuesday", "teacher", "city"], 1, "Days are proper nouns."], ["Which noun is abstract?", ["kindness", "chair", "Mumbai", "window"], 0, "Kindness is a quality. You cannot touch it."], ["In \u201ca herd of cattle\u201d, herd is a ___ noun.", ["collective", "material", "proper"], 0, "One word for a group."], ["Which is a material noun?", ["silver", "family", "anger", "Paris"], 0, "Silver is what things are made of."], ["Which is a compound noun?", ["beautiful", "bookshelf", "quickly", "running"], 1, "Two words joined to make one noun."]], "counting": [["I need ___ furniture.", ["a", "some", "many"], 1, "Furniture is uncountable. Use some."], ["How ___ chairs are there?", ["many", "much"], 0, "Chairs can be counted: many."], ["We have ___ time, so let\u2019s hurry.", ["little", "a little"], 0, "Little means almost none."], ["Which noun is countable?", ["rice", "advice", "egg", "water"], 2, "You can say one egg, two eggs."], ["In <i>many books</i>, the word <i>many</i> is a ___.", ["noun", "determiner", "adjective"], 1, "Many is a determiner (a quantifier). It stands before the noun and shows how many."]], "number": [["The plural of city is", ["citys", "cities", "cityes"], 1, "Consonant + y changes to -ies."], ["The plural of child is", ["childs", "children", "childrens"], 1, "Irregular plural: children."], ["The plural of knife is", ["knifes", "knives"], 1, "-fe changes to -ves."], ["The plural of sheep is", ["sheep", "sheeps", "sheepes"], 0, "Sheep is the same in singular and plural."]], "gender": [["The feminine of actor is", ["actress", "actoress", "actrice"], 0, "Add -ess: actress."], ["Which noun is common gender?", ["king", "teacher", "lioness", "table"], 1, "One word for a man or a woman."], ["The table lost ___ leg.", ["its", "his", "her"], 0, "A table is neuter, so it takes its."], ["The masculine of niece is", ["nephew", "niecer", "nepho"], 0, "A different word: nephew."]], "case": [["More than one girl\u2019s books: the ___ books.", ["girl\u2019s", "girls\u2019", "girls\u2019s"], 1, "Plural ending in -s: add only the apostrophe."], ["The ___ toys (more than one child)", ["children\u2019s", "childrens\u2019", "childrens"], 0, "Irregular plural: add \u2019s."], ["In \u201cShe gave Ravi a pen\u201d, Ravi is in the ___ case.", ["subjective", "possessive", "objective"], 2, "Ravi is the indirect object, so the objective case."], ["For a thing, which is better?", ["the table\u2019s leg", "the leg of the table"], 1, "Use of with things."]], "jobs": [["In \u201cRain fell.\u201d, rain is the", ["subject", "direct object", "complement"], 0, "Rain does the action."], ["In \u201cShe kicked the ball.\u201d, ball is the", ["subject", "direct object", "subject complement"], 1, "Kicked what? The ball."], ["In \u201cRavi, come here.\u201d, Ravi is", ["direct address", "apposition", "subject"], 0, "Ravi is the person spoken to."], ["In \u201cHe is a doctor.\u201d, doctor is the", ["direct object", "subject complement", "subject"], 1, "It renames the subject."]], "agreement": [["The box of apples ___ on the table.", ["is", "are"], 0, "The subject is box, which is singular."], ["Neither the teacher nor the students ___ late.", ["was", "were"], 1, "The verb agrees with the nearer noun: students."], ["Ten dollars ___ a lot.", ["is", "are"], 0, "An amount is one sum."], ["The team ___ ready. (one unit)", ["is", "are"], 0, "One unit is singular."]], "building": [["The noun from happy is", ["happiness", "happyness", "happily"], 0, "y changes to i, then -ness."], ["A person who teaches is a", ["teacher", "teachment", "teachness"], 0, "Add -er for the person."], ["The noun from decide is", ["decision", "deciding", "decided"], 0, "decide \u2192 decision."], ["Which ending makes a noun for a person?", ["-er", "-ness", "-tion"], 0, "-er: teacher, singer."]]};
   function go(n) { var a = document.querySelector('.jump a[data-tab="' + n + '"]'); if (a) { a.click(); window.scrollTo(0, 0); } }
+  function showSub(panel, id) {
+    panel.querySelectorAll(':scope > .subtab').forEach(function (t) { t.hidden = t.dataset.st !== id; });
+    panel.querySelectorAll(':scope > .subjump a[data-st]').forEach(function (a) { a.setAttribute('aria-selected', a.dataset.st === id ? 'true' : 'false'); });
+  }
   NAMES.forEach(function (n, i) {
     var p = document.getElementById(n); if (!p) return;
     var seg = ''; for (var k = 0; k < NAMES.length; k++) seg += '<i' + (k <= i ? ' class="on"' : '') + '></i>';
     var bar = document.createElement('div'); bar.className = 'stepbar';
     bar.innerHTML = '<b>Step ' + (i + 1) + ' of ' + NAMES.length + '</b><span class="seg" aria-hidden="true">' + seg + '</span><span class="need">' + NEED[n] + '</span>';
     p.insertBefore(bar, p.firstChild);
-    var foot = document.createElement('div'); foot.className = 'stepfoot';
-    if (TRY[n]) {
-      var h = '<div class="tryit"><h3>Try it</h3>';
-      TRY[n].forEach(function (q, qi) {
-        h += '<div class="tq" data-a="' + q[2] + '"><p>' + (qi + 1) + '. ' + q[0] + '</p><div class="to">';
-        q[1].forEach(function (o, oi) { h += '<button type="button" data-i="' + oi + '">' + o + '</button>'; });
-        h += '</div><div class="fb">' + '</div></div>';
-      });
-      foot.innerHTML = h + '</div>';
-      foot.querySelectorAll('.tq').forEach(function (tq, qi) {
-        tq.addEventListener('click', function (e) {
-          var b = e.target.closest('button'); if (!b || tq.dataset.done) return;
-          var a = +tq.dataset.a, bs = tq.querySelectorAll('button');
-          bs.forEach(function (x) { x.disabled = true; if (+x.dataset.i === a) x.classList.add('ok'); });
-          if (+b.dataset.i !== a) b.classList.add('no');
-          tq.dataset.done = '1';
-          tq.querySelector('.fb').textContent = (+b.dataset.i === a ? 'Correct. ' : 'Not quite. ') + TRY[n][qi][3];
-        });
-      });
+    var sj = p.querySelector(':scope > .subjump');
+    if (sj && sj.querySelector('a[data-st]')) {
+      var first = sj.querySelector('a[data-st]').dataset.st; showSub(p, first);
+      sj.addEventListener('click', function (e) { var a = e.target.closest('a[data-st]'); if (!a) return; e.preventDefault(); showSub(p, a.dataset.st); });
     }
+    var foot = document.createElement('div'); foot.className = 'stepfoot';
     if (i < NAMES.length - 1) {
       var nx = document.createElement('button'); nx.type = 'button'; nx.className = 'nextstep';
       nx.textContent = 'Next step: ' + (i + 2) + ' \u00b7 ' + LAB[NAMES[i + 1]] + ' \u2192';
@@ -2159,6 +2175,32 @@ details p b { color: var(--right); }
       foot.appendChild(nx);
     }
     p.appendChild(foot);
+  });
+  Object.keys(TRY).forEach(function (id) {
+    var host = document.getElementById(id); if (!host) return;
+    var h = '<div class="tryit"><h3>Try it</h3>';
+    TRY[id].forEach(function (q, qi) {
+      h += '<div class="tq" data-a="' + q[2] + '"><p>' + (qi + 1) + '. ' + q[0] + '</p><div class="to">';
+      q[1].forEach(function (o, oi) { h += '<button type="button" data-i="' + oi + '">' + o + '</button>'; });
+      h += '</div><div class="fb"></div></div>';
+    });
+    var box = document.createElement('div'); box.className = 'stepfoot'; box.innerHTML = h + '</div>';
+    box.querySelectorAll('.tq').forEach(function (tq, qi) {
+      tq.addEventListener('click', function (e) {
+        var b = e.target.closest('button'); if (!b || tq.dataset.done) return;
+        var a = +tq.dataset.a, bs = tq.querySelectorAll('button');
+        bs.forEach(function (x) { x.disabled = true; if (+x.dataset.i === a) x.classList.add('ok'); });
+        if (+b.dataset.i !== a) b.classList.add('no');
+        tq.dataset.done = '1';
+        tq.querySelector('.fb').textContent = (+b.dataset.i === a ? 'Correct. ' : 'Not quite. ') + TRY[id][qi][3];
+      });
+    });
+    host.appendChild(box);
+  });
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest('a.golink[data-sub]'); if (!a) return;
+    var id = a.getAttribute('href').slice(1);
+    setTimeout(function () { var p = document.getElementById(id); if (p) showSub(p, a.dataset.sub); window.scrollTo(0, 0); }, 0);
   });
 })();
 </script>

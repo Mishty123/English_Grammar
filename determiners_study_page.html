@@ -397,6 +397,11 @@ a.lnk[aria-selected="true"]::after { background: var(--hsel-t); }
 .use .ok { color: var(--right); font-weight: 700; } .use .no { color: var(--wrong); font-weight: 700; }
 .use .tip + .ex { margin-top: 6px; }
 .scroll .ok { color: var(--right); font-weight: 700; } .scroll .no { color: var(--wrong); font-weight: 700; }
+.grp { margin-top: 10px; font-size: 1.3rem; } .grp span { font-family: var(--body); font-weight: 400; font-style: italic; font-size: .95rem; color: var(--muted); }
+.use .tip + .ex::before { content: "Example"; display: block; font-family: var(--body); font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--subj); margin-bottom: 1px; }
+.use .tip + .ex.many::before { content: "Examples"; }
+.use .tip { margin-top: 0; }
+.use .tip + .ex { margin-top: 6px; }
 </style>
 
 <header class="hero">
@@ -527,79 +532,83 @@ a.lnk[aria-selected="true"]::after { background: var(--hsel-t); }
     <table style="min-width: 600px">
       <thead><tr><th>Noun</th><th>Not known, or one of many</th><th>Known, or the only one</th><th>In general</th></tr></thead>
       <tbody>
-        <tr><td>Singular countable</td><td><span class="s">a</span> / <span class="s">an</span> <span class="pa">dog</span></td><td><span class="s">the</span> <span class="pa">dog</span></td><td><span class="s">a</span> dog is a pet, or <i>dogs are pets</i></td></tr>
+        <tr><td>Singular countable</td><td><span class="s">a</span> / <span class="s">an</span> <span class="pa">dog</span></td><td><span class="s">the</span> <span class="pa">dog</span></td><td><span class="s">a</span> dog is a pet <i>(or dogs are pets)</i></td></tr>
         <tr><td>Plural countable</td><td>(<i>some</i>) <span class="pa">dogs</span></td><td><span class="s">the</span> <span class="pa">dogs</span></td><td><span class="pa">dogs</span> (no article)</td></tr>
         <tr><td>Uncountable</td><td>(<i>some</i>) <span class="pa">water</span></td><td><span class="s">the</span> <span class="pa">water</span></td><td><span class="pa">water</span> (no article)</td></tr>
       </tbody>
     </table>
   </div>
-  <ul class="points">
-    <li><b>a / an</b> goes only with a singular countable noun. It means one.</li>
-    <li><b>the</b> goes with any noun. It means both of us know which one.</li>
-    <li>With a plural or uncountable noun in general, use no article.</li>
-  </ul>
+  <h3 class="grp">a / an &mdash; Indefinite <span>(singular countable only)</span></h3>
   <div class="uses">
-    <div class="use"><h3>a or an</h3><div>
+    <div class="use"><h3>Sound, not spelling</h3><div>
+      <p class="tip"><b>Rule:</b> Choose by first <b>sound</b>, not letter. A consonant sound takes <i>a</i> (<i>university</i> starts with a <i>y</i> sound). A vowel sound takes <i>an</i> (<i>hour</i> has a silent <i>h</i>).</p>
       <p class="ex many"><span class="s">a</span> book, <span class="s">a</span> chair, <span class="s">a</span> unit<br><span class="s">an</span> apple, <span class="s">an</span> egg, <span class="s">an</span> hour</p>
-      <p class="tip">Choose by the first <b>sound</b>, not the first letter. A consonant sound takes <i>a</i>. A vowel sound takes <i>an</i>. <i>a university</i> starts with a <i>y</i> sound. <i>an hour</i> starts with a vowel sound because the <i>h</i> is silent.</p>
     </div></div>
-    <div class="use"><h3>a / an: a new thing</h3><div>
+    <div class="use"><h3>A new thing</h3><div>
+      <p class="tip"><b>Rule:</b> First mention, when the listener does not know which one yet.</p>
       <p class="ex">I saw <span class="s">a</span> dog in the park.</p>
-      <p class="tip">The first time you mention something, the listener does not know which one yet.</p>
     </div></div>
-    <div class="use"><h3>a / an: what someone is</h3><div>
-      <p class="ex">She is <span class="s">a</span> doctor. He is <span class="s">an</span> engineer.</p>
-      <p class="tip">Use it for jobs, types and identities after <i>be</i>.</p>
+    <div class="use"><h3>What someone is, and minor illnesses</h3><div>
+      <p class="tip"><b>Rule:</b> Use for jobs, roles and identities after <i>be</i>, and for minor aches or colds. Serious illnesses such as <i>diabetes</i> or <i>flu</i> usually take no article.</p>
+      <p class="ex many">She is <span class="s">a</span> doctor. He is <span class="s">an</span> engineer.<br>I have <span class="s">a</span> headache. I have <span class="s">a</span> cold.</p>
     </div></div>
-    <div class="use"><h3>a / an: every, per</h3><div>
+    <div class="use"><h3>Every / per</h3><div>
+      <p class="tip"><b>Rule:</b> Means <i>each</i> or <i>per</i> with time, price and speed.</p>
       <p class="ex">twice <span class="s">a</span> week, five dollars <span class="s">a</span> kilo, sixty miles <span class="s">an</span> hour</p>
-      <p class="tip">It can mean <i>each</i> or <i>per</i> with time, price and speed.</p>
     </div></div>
-    <div class="use"><h3>a / an: all of a kind</h3><div>
-      <p class="ex">A dog is loyal. = Dogs are loyal.</p>
-      <p class="tip">A singular countable noun can speak for the whole group. The plural without an article means the same.</p>
-    </div></div>
-    <div class="use"><h3>the: both of you know which</h3><div>
+  </div>
+  <h3 class="grp">the &mdash; Definite <span>(any noun)</span></h3>
+  <div class="uses">
+    <div class="use"><h3>Both of you know which</h3><div>
+      <p class="tip"><b>Rule:</b> Use when the thing is clear from the situation or was mentioned before. Pronounced &ldquo;thuh&rdquo; before consonant sounds (<i>the dog</i>) and &ldquo;thee&rdquo; before vowel sounds (<i>the apple, the hour</i>).</p>
       <p class="ex many">Close <span class="s">the</span> door.<br>I saw a dog. <span class="s">The</span> dog was big.</p>
-      <p class="tip">Use it when the thing is clear from the room, or was mentioned before.</p>
     </div></div>
-    <div class="use"><h3>the: only one exists</h3><div>
-      <p class="ex phr"><span class="s">the</span> sun, <span class="s">the</span> moon, <span class="s">the</span> sky, <span class="s">the</span> world, <span class="s">the</span> internet</p>
+    <div class="use"><h3>Only one exists</h3><div>
+      <p class="tip"><b>Rule:</b> Use for unique things in our shared world.</p>
+      <p class="ex"><span class="s">the</span> sun, <span class="s">the</span> moon, <span class="s">the</span> sky, <span class="s">the</span> world, <span class="s">the</span> internet</p>
     </div></div>
-    <div class="use"><h3>the: made clear by what follows</h3><div>
-      <p class="ex many">The book <b>on the table</b> is mine.<br>The girl <b>who called</b> is my cousin.</p>
-      <p class="tip">A phrase or clause after the noun tells which one, so <i>the</i> is used.</p>
+    <div class="use"><h3>Made clear by what follows</h3><div>
+      <p class="tip"><b>Rule:</b> A phrase or clause after the noun identifies which one, so <i>the</i> is used.</p>
+      <p class="ex many"><span class="s">The</span> book <b>on the table</b> is mine.<br><span class="s">The</span> girl <b>who called</b> is my cousin.</p>
     </div></div>
-    <div class="use"><h3>the: best, first, same, only, next</h3><div>
-      <p class="ex phr"><span class="s">the</span> best idea, <span class="s">the</span> first day, <span class="s">the</span> same answer, <span class="s">the</span> only chance, <span class="s">the</span> next bus</p>
-      <p class="tip">Superlatives, ordinals and words such as <i>same, only, next, last</i> point to one thing, so they take <i>the</i>.</p>
+    <div class="use"><h3>Best, first, same, only, next</h3><div>
+      <p class="tip"><b>Rule:</b> Superlatives, ordinals and words such as <i>same, only, next, last</i> point to one specific thing. Before calendar time words, drop <i>the</i>: <i>next week, last Monday</i>.</p>
+      <p class="ex"><span class="s">the</span> best idea, <span class="s">the</span> first day, <span class="s">the</span> same answer, <span class="s">the</span> only chance, <span class="s">the</span> next bus</p>
     </div></div>
-    <div class="use"><h3>the: a whole group</h3><div>
+    <div class="use"><h3>A whole group or instrument</h3><div>
+      <p class="tip"><b>Rule:</b> Use before an adjective for a whole group of people, with nationalities, and with musical instruments.</p>
       <p class="ex many"><span class="s">the</span> rich, <span class="s">the</span> elderly, <span class="s">the</span> French<br>He plays <span class="s">the</span> piano.</p>
-      <p class="tip">Use it before an adjective for a group of people, with nationalities, and with musical instruments.</p>
     </div></div>
-    <div class="use"><h3>the: some place names</h3><div>
+    <div class="use"><h3>Special place names</h3><div>
+      <p class="tip"><b>Rule:</b> Rivers, oceans, mountain ranges, deserts, island groups, and countries with a plural or union name take <i>the</i>.</p>
       <p class="ex many"><span class="s">the</span> Nile, <span class="s">the</span> Pacific, <span class="s">the</span> Alps, <span class="s">the</span> Sahara<br><span class="s">the</span> Philippines, <span class="s">the</span> United States, <span class="s">the</span> UK</p>
-      <p class="tip">Rivers, oceans, mountain ranges, deserts, island groups and countries with a plural or union name take <i>the</i>.</p>
     </div></div>
-    <div class="use"><h3>No article: in general</h3><div>
-      <p class="ex many"><span class="pa">Dogs</span> bark. <span class="pa">Water</span> is wet. I like <span class="pa">music</span>.</p>
-      <p class="tip">A plural or uncountable noun used in a general sense needs no article.</p>
+  </div>
+  <h3 class="grp">No article &mdash; Zero article</h3>
+  <div class="uses">
+    <div class="use"><h3>Speaking in general</h3><div>
+      <p class="tip"><b>Rule:</b> A plural or uncountable noun used in a general sense needs no article. A singular noun can speak for the whole group too.</p>
+      <p class="ex many"><span class="pa">Dogs</span> bark. <span class="pa">Water</span> is wet. I like <span class="pa">music</span>.<br>(Also singular: A dog is loyal. = Dogs are loyal.)</p>
     </div></div>
-    <div class="use"><h3>No article: meals, languages, sports, subjects</h3><div>
+    <div class="use"><h3>Meals, languages, sports, subjects</h3><div>
+      <p class="tip"><b>Rule:</b> Everyday meals, languages, sports and school subjects take no article.</p>
       <p class="ex many">We have <b>breakfast</b> at eight. She speaks <b>English</b>.<br>They play <b>tennis</b>. He studies <b>maths</b>.</p>
     </div></div>
-    <div class="use"><h3>No article: names</h3><div>
+    <div class="use"><h3>Names and single landmarks</h3><div>
+      <p class="tip"><b>Rule:</b> Most names of people, cities, countries, lakes, single mountains and streets take no article.</p>
       <p class="ex many">I live in <b>Paris</b>. This is <b>Maria</b>.<br><b>Lake Victoria</b>, <b>Mount Everest</b>, <b>India</b>, <b>Oxford Street</b></p>
-      <p class="tip">Most names of people, cities, countries, lakes, single mountains and streets take no article.</p>
     </div></div>
-    <div class="use"><h3>No article: school, work, bed, home</h3><div>
-      <p class="ex many">She goes to <b>school</b> by <b>bus</b>. He is at <b>work</b>. I go to <b>bed</b> at ten.<br>I went to <span class="s">the</span> school to meet a teacher.</p>
-      <p class="tip">For the usual purpose of a place, use no article. For the building itself, use <i>the</i>. Transport after <i>by</i> takes no article: <i>by car, by train, on foot</i>.</p>
+    <div class="use"><h3>Routine places and transport</h3><div>
+      <p class="tip"><b>Rule:</b> Use no article for a place&rsquo;s usual purpose, or for transport after <i>by</i> (<i>by car, by train, on foot</i>).</p>
+      <p class="ex many">She goes to <b>school</b> by <b>bus</b>. He is at <b>work</b>. I go to <b>bed</b> at ten.<br>(The building itself: I went to <span class="s">the</span> school to meet a teacher.)</p>
     </div></div>
-    <div class="use"><h3>No article: times and seasons</h3><div>
-      <p class="ex many">at <b>night</b>, at <b>noon</b>, in <b>summer</b>, on <b>Monday</b><br>in <span class="s">the</span> morning, in <span class="s">the</span> evening, in <span class="s">the</span> 1990s</p>
+    <div class="use"><h3>Times and seasons</h3><div>
+      <p class="tip"><b>Rule:</b> Most clock times, days and seasons take no article.</p>
+      <p class="ex many">at <b>night</b>, at <b>noon</b>, in <b>summer</b>, on <b>Monday</b><br>(Exceptions: in <span class="s">the</span> morning, in <span class="s">the</span> evening, in <span class="s">the</span> 1990s)</p>
     </div></div>
+  </div>
+  <div class="rule">
+    <p><b>Quick check:</b> Singular countable, listener doesn&rsquo;t know which &rarr; <i>a / an</i>. Listener knows which one &rarr; <i>the</i>. General plural, uncountable, or proper name &rarr; no article.</p>
   </div>
 </section>
 

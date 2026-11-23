@@ -396,6 +396,7 @@ a.lnk[aria-selected="true"]::after { background: var(--hsel-t); }
 .note { margin: 0; padding: 10px 16px; border-left: 5px solid var(--h2c); border-radius: 4px 12px 12px 4px; background: var(--soft); }
 .use .ok { color: var(--right); font-weight: 700; } .use .no { color: var(--wrong); font-weight: 700; }
 .use .tip + .ex { margin-top: 6px; }
+.scroll .ok { color: var(--right); font-weight: 700; } .scroll .no { color: var(--wrong); font-weight: 700; }
 </style>
 
 <header class="hero">
@@ -477,12 +478,13 @@ a.lnk[aria-selected="true"]::after { background: var(--hsel-t); }
 
 <section id="adjtest" class="c-peach">
   <header>
-    <h2>Determiner, adjective or pronoun?</h2>
-    <p>Look at what comes right after the word, and at where the word can stand.</p>
+    <h2>Determiner vs Pronoun</h2>
+    <p>Look at what comes right after the word.</p>
   </header>
+  <p class="note">A word that stands alone with no noun after it is a pronoun, not a determiner. <i>Mine</i> is red. <i>Some</i> came.</p>
   <div class="scroll">
     <table style="min-width: 600px">
-      <thead><tr><th>Word</th><th>Determiner (a noun follows)</th><th>Pronoun (stands alone)</th></tr></thead>
+      <thead><tr><th>Word</th><th>Determiner (+ noun)</th><th>Pronoun (stands alone)</th></tr></thead>
       <tbody>
         <tr><td>this</td><td><b>This</b> book is mine.</td><td><b>This</b> is mine.</td></tr>
         <tr><td>my / mine</td><td><b>My</b> bag is red.</td><td><b>Mine</b> is red.</td></tr>
@@ -493,22 +495,22 @@ a.lnk[aria-selected="true"]::after { background: var(--hsel-t); }
       </tbody>
     </table>
   </div>
-  <ul class="points">
-    <li>A word that stands alone with no noun after it is a pronoun, not a determiner. <i>Mine</i> is red. <i>Some</i> came.</li>
-  </ul>
-  <div class="uses">
-    <div class="use"><h3>1. The <i>the</i> test</h3><div>
-      <p class="tip">Adjectives fit after <i>the</i>; determiners do not.</p>
-      <p class="ex many"><span class="ok">&#10003;</span> the <b>red</b> book (adjective)<br><span class="no">&#10007;</span> &ldquo;the <b>my</b> book&rdquo; (determiner)</p>
-    </div></div>
-    <div class="use"><h3>2. The stacking test</h3><div>
-      <p class="tip">Adjectives can stack; main determiners cannot.</p>
-      <p class="ex many"><span class="ok">&#10003;</span> a <b>big old red</b> car<br><span class="no">&#10007;</span> &ldquo;a the this car&rdquo;</p>
-    </div></div>
-    <div class="use"><h3>3. The <i>be</i> test</h3><div>
-      <p class="tip">Adjectives can stand after <i>be</i>; determiners cannot.</p>
-      <p class="ex many"><span class="ok">&#10003;</span> The car is <b>red</b>.<br><span class="no">&#10007;</span> &ldquo;The car is <i>my</i>.&rdquo; &rarr; The car is <span class="s">mine</span>. (pronoun)</p>
-    </div></div>
+</section>
+
+<section id="adjvs" class="c-peach">
+  <header>
+    <h2>Determiner vs Adjective</h2>
+    <p>Three quick tests tell them apart.</p>
+  </header>
+  <div class="scroll">
+    <table style="min-width: 640px">
+      <thead><tr><th>Test</th><th>Rule</th><th>Adjective <span class="ok">&#10003;</span></th><th>Determiner <span class="no">&#10007;</span></th></tr></thead>
+      <tbody>
+        <tr><td><b>1. The <i>the</i> test</b></td><td>Adjectives fit after <i>the</i>; determiners do not.</td><td>the <b>red</b> book</td><td>&ldquo;the <b>my</b> book&rdquo;</td></tr>
+        <tr><td><b>2. The stacking test</b></td><td>Adjectives can stack; main determiners cannot.</td><td>a <b>big old red</b> car</td><td>&ldquo;a the this car&rdquo;</td></tr>
+        <tr><td><b>3. The <i>be</i> test</b></td><td>Adjectives can stand after <i>be</i>; determiners cannot.</td><td>The car is <b>red</b>.</td><td>&ldquo;The car is <i>my</i>.&rdquo; &rarr; The car is <b>mine</b>. (pronoun)</td></tr>
+      </tbody>
+    </table>
   </div>
   <div class="rule">
     <p><b>Quick check:</b> Followed by a noun &rarr; determiner. Followed by <i>of</i> or nothing &rarr; pronoun. Fits after <i>the</i> or <i>is</i> &rarr; adjective.</p>

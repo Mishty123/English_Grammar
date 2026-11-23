@@ -388,7 +388,12 @@ a.lnk[aria-selected="true"]::after { background: var(--hsel-t); }
 <body>
 <div class="page">
 
-<style>.gh-home{align-self:flex-start;display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:999px;background:var(--surface);color:var(--fg);border:2px solid var(--line);font:700 .9rem var(--body);text-decoration:none}.gh-home:hover{border-color:var(--obj)}.gh-home:focus-visible{outline:3px solid var(--obj);outline-offset:2px}</style>
+<style>.gh-home{align-self:flex-start;display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:999px;background:var(--surface);color:var(--fg);border:2px solid var(--line);font:700 .9rem var(--body);text-decoration:none}.gh-home:hover{border-color:var(--obj)}.gh-home:focus-visible{outline:3px solid var(--obj);outline-offset:2px}
+.four .dl { margin: 4px 0 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 3px; font-size: .96rem; }
+.four .fx { margin-top: 6px; padding: 6px 10px; border-radius: 10px; background: var(--soft); border-left: 4px solid var(--h2c); }
+.four .ok { color: var(--right); font-weight: 700; } .four .no { color: var(--wrong); font-weight: 700; }
+.four > div p + p, .four > div p + ul, .four > div ul + p { margin-top: 6px; }
+</style>
 
 <header class="hero">
   <a class="gh-home" href="index.html" aria-label="Back to the home page">&larr; Home</a>
@@ -415,10 +420,32 @@ a.lnk[aria-selected="true"]::after { background: var(--hsel-t); }
     <h2>Four things to know about determiners</h2>
   </header>
   <div class="four">
-    <div><h3>What it does</h3><p>It limits a noun. It tells which one (<i>the, this</i>), whose (<i>my, Sara&rsquo;s</i>) or how many and how much (<i>some, two, much</i>).</p></div>
-    <div><h3>Where it goes</h3><p>First in the noun phrase, before any adjective. <i>the old house, my two sisters, some cold water</i>.</p></div>
-    <div><h3>How many</h3><p>A noun usually takes one main determiner. Say <i>my book</i> or <i>the book</i>. Do not say &ldquo;the my book.&rdquo;</p></div>
-    <div><h3>It must fit the noun</h3><p>Some determiners go only with singular nouns (<i>a, this, each</i>). Some go only with plural nouns (<i>these, many, few</i>). Some go only with uncountable nouns (<i>much, little</i>).</p></div>
+    <div><h3>1. What it does</h3>
+      <p>Signals a noun is coming and narrows it down.</p>
+      <ul class="dl">
+        <li><b>Which one?</b> <i>the, this</i></li>
+        <li><b>Whose?</b> <i>my, Sara&rsquo;s</i></li>
+        <li><b>How many / much?</b> <i>two, some, much</i></li>
+      </ul></div>
+    <div><h3>2. Where it goes</h3>
+      <p>Always first in a noun phrase, before any adjectives.</p>
+      <p class="fx"><b>Determiner + (Adjective) + Noun</b></p>
+      <p><i>the old house &middot; my two sisters &middot; some cold water</i></p></div>
+    <div><h3>3. How many</h3>
+      <p>One main determiner per noun.</p>
+      <ul class="dl">
+        <li><span class="ok">&#10003;</span> <i>my book / the book</i></li>
+        <li><span class="no">&#10007;</span> <i>&ldquo;the my book&rdquo;</i></li>
+      </ul>
+      <p class="muted">A number can follow: <i>my two books</i></p></div>
+    <div><h3>4. It must fit the noun</h3>
+      <p>Match the determiner to the noun type.</p>
+      <ul class="dl">
+        <li><b>Singular:</b> <i>a, this, each</i></li>
+        <li><b>Plural:</b> <i>these, many, few</i></li>
+        <li><b>Uncountable:</b> <i>much, little</i></li>
+        <li><b>Any noun:</b> <i>the, my, which</i></li>
+      </ul></div>
   </div>
   <div class="legend">
     <span><span class="s">the</span> = the determiner</span>

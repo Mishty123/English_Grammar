@@ -449,7 +449,7 @@ a.lnk[aria-selected="true"]::after { background: var(--hsel-t); }
 .qgl td.g-b b { font-family: var(--head); font-weight: 400; color: #8A5A00; font-size: 1.08rem; margin-right: 4px; text-shadow: 0 0 6px rgba(138,90,0,.12); }
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .qgl thead th.g-u { --gc: #8FC6E8; color: #8FC6E8; } :root:not([data-theme="light"]) .qgl thead th.g-c { --gc: #7FD0D0; color: #7FD0D0; } :root:not([data-theme="light"]) .qgl td.g-u { background: #1B3340; color: #D6EAF7; } :root:not([data-theme="light"]) .qgl td.g-c { background: #173A3C; color: #CFEFEF; } :root:not([data-theme="light"]) .qgl td.g-b { background: #43350F; color: #F0C96A; box-shadow: inset 0 0 0 1.5px #7A6420; } :root:not([data-theme="light"]) .qgl td.g-b b { color: #F0C96A; } }
 
-/* Demonstratives: tile (cube) cards */
+/* Demonstratives and Possessives: tile (cube) cards, rule first */
 #demo .uses { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 14px; border: 0; background: transparent; box-shadow: none; overflow: visible; }
 #demo .use { align-content: start; border: 1px solid var(--line); border-top: 5px solid var(--h3c); border-radius: 16px; background: var(--surface); padding: 14px 16px 16px; box-shadow: 0 1px 2px rgba(15,50,75,.06), 0 6px 18px rgba(15,50,75,.07); }
 #demo .use:nth-child(3n+2) { border-top-color: var(--h2c); } #demo .use:nth-child(3n) { border-top-color: var(--subj); }
@@ -459,6 +459,15 @@ a.lnk[aria-selected="true"]::after { background: var(--hsel-t); }
 @media (max-width: 560px) { #demo .uses { grid-template-columns: minmax(0,1fr); } }
 #demo .use > div { display: flex; flex-direction: column; }
 #demo .use > div > .tip { order: -1; margin: 0 0 8px; font-size: 1rem; }
+#poss .uses { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 14px; border: 0; background: transparent; box-shadow: none; overflow: visible; }
+#poss .use { align-content: start; border: 1px solid var(--line); border-top: 5px solid var(--h3c); border-radius: 16px; background: var(--surface); padding: 14px 16px 16px; box-shadow: 0 1px 2px rgba(15,50,75,.06), 0 6px 18px rgba(15,50,75,.07); }
+#poss .use:nth-child(3n+2) { border-top-color: var(--h2c); } #poss .use:nth-child(3n) { border-top-color: var(--subj); }
+#poss .use:last-child { border-bottom: 1px solid var(--line); }
+#poss .use h3 { margin-bottom: 4px; font-size: 1.02rem; }
+@media (max-width: 860px) { #poss .uses { grid-template-columns: repeat(2, minmax(0,1fr)); } }
+@media (max-width: 560px) { #poss .uses { grid-template-columns: minmax(0,1fr); } }
+#poss .use > div { display: flex; flex-direction: column; }
+#poss .use > div > .tip { order: -1; margin: 0 0 8px; font-size: 1rem; }
 </style>
 
 <header class="hero">

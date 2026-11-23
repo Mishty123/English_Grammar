@@ -394,6 +394,8 @@ a.lnk[aria-selected="true"]::after { background: var(--hsel-t); }
 .four .ok { color: var(--right); font-weight: 700; } .four .no { color: var(--wrong); font-weight: 700; }
 .four > div p + p, .four > div p + ul, .four > div ul + p { margin-top: 6px; }
 .note { margin: 0; padding: 10px 16px; border-left: 5px solid var(--h2c); border-radius: 4px 12px 12px 4px; background: var(--soft); }
+.use .ok { color: var(--right); font-weight: 700; } .use .no { color: var(--wrong); font-weight: 700; }
+.use .tip + .ex { margin-top: 6px; }
 </style>
 
 <header class="hero">
@@ -495,21 +497,21 @@ a.lnk[aria-selected="true"]::after { background: var(--hsel-t); }
     <li>A word that stands alone with no noun after it is a pronoun, not a determiner. <i>Mine</i> is red. <i>Some</i> came.</li>
   </ul>
   <div class="uses">
-    <div class="use"><h3>The <i>the</i> test</h3><div>
-      <p class="ex many">the <b>red</b> book (an adjective, so <i>the</i> fits before it)<br>&ldquo;the <b>my</b> book&rdquo; (does not work, so <i>my</i> is a determiner)</p>
-      <p class="tip">An adjective can follow <i>the</i> or <i>a</i>. A determiner cannot, because it already does the same job.</p>
+    <div class="use"><h3>1. The <i>the</i> test</h3><div>
+      <p class="tip">Adjectives fit after <i>the</i>; determiners do not.</p>
+      <p class="ex many"><span class="ok">&#10003;</span> the <b>red</b> book (adjective)<br><span class="no">&#10007;</span> &ldquo;the <b>my</b> book&rdquo; (determiner)</p>
     </div></div>
-    <div class="use"><h3>Adjectives can stack, determiners cannot</h3><div>
-      <p class="ex">a <b>big old red</b> car &nbsp;/&nbsp; &ldquo;a the this car&rdquo; is wrong</p>
-      <p class="tip">Use several adjectives if you like. Use one main determiner.</p>
+    <div class="use"><h3>2. The stacking test</h3><div>
+      <p class="tip">Adjectives can stack; main determiners cannot.</p>
+      <p class="ex many"><span class="ok">&#10003;</span> a <b>big old red</b> car<br><span class="no">&#10007;</span> &ldquo;a the this car&rdquo;</p>
     </div></div>
-    <div class="use"><h3>Adjectives can follow a verb</h3><div>
-      <p class="ex many">The car is <b>red</b>. (adjective after <i>is</i>)<br>&ldquo;The car is <i>my</i>.&rdquo; (wrong)  &rarr;  The car is <span class="s">mine</span>.</p>
-      <p class="tip">A determiner never stands after <i>be</i>. The matching pronoun does.</p>
+    <div class="use"><h3>3. The <i>be</i> test</h3><div>
+      <p class="tip">Adjectives can stand after <i>be</i>; determiners cannot.</p>
+      <p class="ex many"><span class="ok">&#10003;</span> The car is <b>red</b>.<br><span class="no">&#10007;</span> &ldquo;The car is <i>my</i>.&rdquo; &rarr; The car is <span class="s">mine</span>. (pronoun)</p>
     </div></div>
   </div>
   <div class="rule">
-    <p><b>Test.</b> Is there a noun right after the word? Yes: it is a determiner. No: it is a pronoun. A word followed by <i>of</i> is still a pronoun: &ldquo;Many of the students came.&rdquo;</p>
+    <p><b>Quick check:</b> Followed by a noun &rarr; determiner. Followed by <i>of</i> or nothing &rarr; pronoun. Fits after <i>the</i> or <i>is</i> &rarr; adjective.</p>
   </div>
 </section>
 

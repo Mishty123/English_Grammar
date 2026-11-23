@@ -572,6 +572,7 @@ a.lnk[aria-selected="true"]::after { background: var(--hsel-t); }
 <ul class="subjump" role="tablist" aria-label="Articles">
   <li><a href="#articles-tab" role="tab" data-sub="a-main">Articles</a></li>
   <li><a href="#articles-tab" role="tab" data-sub="a-cheat">Cheat sheet</a></li>
+  <li><a href="#articles-tab" role="tab" data-sub="a-quiz">Quiz time</a></li>
 </ul>
 
 <div class="subpanel" data-sub="a-main">
@@ -701,6 +702,21 @@ a.lnk[aria-selected="true"]::after { background: var(--hsel-t); }
 </section>
 </div>
 
+
+<div class="subpanel" data-sub="a-quiz" hidden>
+<section id="art-quiz" class="c-refl">
+  <header>
+    <h2>Quiz time</h2>
+    <p>Two quizzes of 15 questions. Pick the article, or spot the correct sentence.</p>
+  </header>
+  <div class="qpick" role="tablist" aria-label="Quiz type">
+    <button type="button" role="tab" data-qv="qC" aria-selected="true">Pick It</button>
+    <button type="button" role="tab" data-qv="qD" aria-selected="false">Spot It</button>
+  </div>
+  <div class="qz" id="qC"></div>
+  <div class="qz" id="qD" hidden></div>
+</section>
+</div>
 
 </div>
 
@@ -1421,6 +1437,43 @@ a.lnk[aria-selected="true"]::after { background: var(--hsel-t); }
   function go(n) { st.forEach(function (a) { a.setAttribute('aria-selected', a.dataset.sub === n ? 'true' : 'false'); }); sp.forEach(function (p) { p.hidden = p.dataset.sub !== n; }); }
   st.forEach(function (a) { a.addEventListener('click', function (e) { e.preventDefault(); go(a.dataset.sub); }); });
   go('a-main');
+})();
+</script>
+
+<script>
+(function () {
+  var QC = [["She has ___ umbrella.", ["a", "an", "the", "no article"], 1, "Umbrella starts with a vowel sound, so an."], ["He studies at ___ university.", ["a", "an", "the", "no article"], 0, "University starts with a y sound (a consonant sound), so a."], ["It takes ___ hour.", ["a", "an", "the", "no article"], 1, "Hour starts with a vowel sound (silent h), so an."], ["I saw a cat. ___ cat was black.", ["a", "an", "the", "no article"], 2, "The cat was mentioned before, so the."], ["My mother is ___ nurse.", ["a", "an", "the", "no article"], 0, "A job after be takes a / an."], ["___ sun rises in the east.", ["a", "an", "the", "no article"], 2, "Only one sun exists, so the."], ["She is ___ tallest girl in class.", ["a", "an", "the", "no article"], 2, "A superlative points to one thing, so the."], ["We play ___ tennis on Sundays.", ["a", "an", "the", "no article"], 3, "Sports take no article."], ["He plays ___ guitar well.", ["a", "an", "the", "no article"], 2, "Musical instruments take the."], ["___ dogs are loyal. (in general)", ["a", "an", "the", "no article"], 3, "A plural noun in a general sense takes no article."], ["They sailed across ___ Pacific.", ["a", "an", "the", "no article"], 2, "Oceans take the."], ["Children go to ___ school to learn.", ["a", "an", "the", "no article"], 3, "The usual purpose of a school takes no article."], ["He drives sixty miles ___ hour.", ["a", "an", "the", "no article"], 1, "Per hour: an hour, with a vowel sound."], ["I have ___ headache.", ["a", "an", "the", "no article"], 0, "A minor ache takes a."], ["We live in ___ United States.", ["a", "an", "the", "no article"], 2, "Countries with a union or plural name take the."]], QD = [["Which sentence is correct?", ["He is doctor.", "He is a doctor.", "He is an doctor."], 1, "A job after be needs a / an, and doctor starts with a consonant sound."], ["Which sentence is correct?", ["I need an information.", "I need some information.", "I need a informations."], 1, "Information is uncountable: some information."], ["Which sentence is correct?", ["She gave me an advice.", "She gave me a advice.", "She gave me a piece of advice."], 2, "Advice is uncountable: a piece of advice."], ["Which sentence is correct?", ["I go to the school by the bus.", "I go to school by bus.", "I go to a school by a bus."], 1, "Usual purpose of a place, and transport after by, take no article."], ["Which sentence is correct?", ["Life is beautiful.", "The life is beautiful.", "A life is beautiful."], 0, "In general, no article."], ["Which sentence is correct?", ["He lives in the India.", "He lives in India.", "He lives in an India."], 1, "Most country names take no article."], ["Which sentence is correct?", ["We visited the Alps.", "We visited Alps.", "We visited an Alps."], 0, "Mountain ranges take the."], ["Which sentence is correct?", ["It was an one-day trip.", "It was a one-day trip.", "It was a one-days trip."], 1, "One starts with a w sound, so a. The unit stays singular before a noun."], ["Which sentence is correct?", ["I have a cold.", "I have cold.", "I have an cold."], 0, "A minor illness takes a."], ["Which sentence is correct?", ["She speaks the English.", "She speaks English.", "She speaks an English."], 1, "Languages take no article."], ["Which sentence is correct?", ["He is the best player.", "He is a best player.", "He is best player."], 0, "A superlative takes the."], ["Which sentence is correct?", ["What a surprise!", "What surprise!", "What the surprise!"], 0, "What a / an goes with a singular countable noun."], ["Which sentence is correct?", ["I saw a dog. The dog was big.", "I saw a dog. Dog was big.", "I saw dog. The dog was big."], 0, "First mention takes a. The second time takes the."], ["Which sentence is correct?", ["We have breakfast at eight.", "We have breakfasts at the eight.", "We have an breakfast at eight."], 0, "Meals take no article."], ["Which sentence is correct?", ["The Sahara is a desert.", "Sahara is a desert.", "A Sahara is a desert."], 0, "The Sahara takes the. A desert is one of many."]];
+  var pk = [].slice.call(document.querySelectorAll('#art-quiz .qpick button'));
+  pk.forEach(function (b) { b.addEventListener('click', function () { pk.forEach(function (x) { x.setAttribute('aria-selected', x === b ? 'true' : 'false'); document.getElementById(x.dataset.qv).hidden = x !== b; }); }); });
+  function quiz(id, Q) {
+    var box = document.getElementById(id), cur = 0, ans = Q.map(function () { return null; });
+    box.innerHTML = '<div class="qt"><span class="qn"></span><span class="qs"></span></div><div class="qb"><i></i></div><div class="qbody"></div><div class="qa"><button type="button" class="bk">\u2190 Back</button><button type="button" class="nx">Next \u2192</button><button type="button" class="rs">Restart</button></div>';
+    var qn = box.querySelector('.qn'), qs = box.querySelector('.qs'), bar = box.querySelector('.qb i'), body = box.querySelector('.qbody'), bk = box.querySelector('.bk'), nx = box.querySelector('.nx');
+    function right() { return ans.filter(function (a, i) { return a === Q[i][2]; }).length; }
+    function done() { return ans.filter(function (a) { return a !== null; }).length; }
+    function draw() {
+      qs.textContent = 'Score ' + right() + ' / ' + Q.length;
+      bar.style.width = (cur >= Q.length ? 100 : done() / Q.length * 100) + '%';
+      bk.disabled = cur === 0;
+      if (cur >= Q.length) {
+        var c = right(); qn.textContent = 'All done';
+        body.innerHTML = '<div class="qr"><b>' + c + ' / ' + Q.length + '</b><p>' + (c === Q.length ? 'Perfect.' : c >= 12 ? 'Very good.' : c >= 8 ? 'Good. Use Back to check the ones you missed.' : 'Keep going. Read the rules again, then restart.') + '</p></div>';
+        nx.style.display = 'none'; return;
+      }
+      nx.style.display = ''; nx.textContent = cur === Q.length - 1 ? 'See score' : 'Next \u2192';
+      qn.textContent = 'Question ' + (cur + 1) + ' of ' + Q.length;
+      var q = Q[cur], h = '<p class="qq">' + q[0] + '</p><div class="qo">';
+      q[1].forEach(function (o, i) { var c = '', d = ''; if (ans[cur] !== null) { d = ' disabled'; if (i === q[2]) c = 'ok'; else if (i === ans[cur]) c = 'no'; } h += '<button type="button" data-i="' + i + '" class="' + c + '"' + d + '>' + o + '</button>'; });
+      body.innerHTML = h + '</div><p class="qf">' + (ans[cur] === null ? '' : (ans[cur] === q[2] ? 'Correct. ' : 'Not quite. ') + q[3]) + '</p>';
+      nx.disabled = ans[cur] === null;
+    }
+    body.addEventListener('click', function (e) { var b = e.target.closest('button[data-i]'); if (!b || ans[cur] !== null || cur >= Q.length) return; ans[cur] = +b.dataset.i; draw(); });
+    nx.addEventListener('click', function () { if (cur < Q.length) { cur++; draw(); } });
+    bk.addEventListener('click', function () { if (cur > 0) { cur--; draw(); } });
+    box.querySelector('.rs').addEventListener('click', function () { cur = 0; ans = Q.map(function () { return null; }); draw(); });
+    draw();
+  }
+  quiz('qC', QC); quiz('qD', QD);
 })();
 </script>
 </body>

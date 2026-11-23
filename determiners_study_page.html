@@ -433,6 +433,19 @@ a.lnk[aria-selected="true"]::after { background: var(--hsel-t); }
 .cs-glance { margin-bottom: 0; } .pn .gl { font-size: .9rem; } .pn .gl th { color: var(--c); font-weight: 700; } .pn .gl thead th { background: var(--cl); }
 .pn .gl tbody th { color: var(--fg); font-weight: 400; }
 .cs .rule { margin-top: 2px; }
+
+/* quantifier glance table: 3 coloured groups */
+.qgl { border-collapse: separate; border-spacing: 0; }
+.qgl thead th { font-size: 1.2rem; font-weight: 700; padding: 14px 16px; color: #fff; letter-spacing: .01em; }
+.qgl thead th.g-u { background: linear-gradient(180deg, #2B6C93, #13496B); }
+.qgl thead th.g-c { background: linear-gradient(180deg, #1B8A93, #0F6B73); }
+.qgl thead th .hs { text-shadow: 0 0 10px rgba(255,255,255,.75), 0 1px 0 rgba(255,255,255,.35); }
+.qgl td.g-u { background: #E6F0F7; border-left: 5px solid #13496B; color: #0E3550; }
+.qgl td.g-c { background: #E2F2F2; border-left: 5px solid #0F6B73; color: #0A4C52; }
+.qgl td.g-b { background: #F8EBCB; border-left: 5px solid #8A5A00; color: #5E3C00; }
+.qgl td.g-u b, .qgl td.g-c b, .qgl td.g-b b { font-weight: 700; }
+.qgl tbody tr:first-child td i { opacity: .85; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .qgl td.g-u { background: #1B3340; color: #D6EAF7; border-left-color: #8FC6E8; } :root:not([data-theme="light"]) .qgl td.g-c { background: #173A3C; color: #CFEFEF; border-left-color: #7FD0D0; } :root:not([data-theme="light"]) .qgl td.g-b { background: #43350F; color: #F0C96A; border-left-color: #F0C96A; } }
 </style>
 
 <header class="hero">
@@ -818,18 +831,18 @@ a.lnk[aria-selected="true"]::after { background: var(--hsel-t); }
   </header>
   <h3>At a glance: all the quantifiers</h3>
   <div class="scroll">
-    <table style="min-width: 0">
-      <thead><tr><th>With uncountable nouns</th><th>With countable nouns</th></tr></thead>
+    <table class="qgl" style="min-width: 0">
+      <thead><tr><th class="g-u"><span class="hs">With uncountable nouns</span></th><th class="g-c"><span class="hs">With countable nouns</span></th></tr></thead>
       <tbody>
-        <tr><td><i>e.g. flour, pepper, earth, mud, tea, rice</i></td><td><i>e.g. eggs, chairs, snakes, houses, shoes</i></td></tr>
-        <tr><td><b>much</b></td><td><b>many</b></td></tr>
-        <tr><td><b>a little / little / very little</b></td><td><b>a few / few / very few / fewer</b></td></tr>
-        <tr><td><b>a bit of</b></td><td><b>a number of</b></td></tr>
-        <tr><td><b>a great deal of</b></td><td><b>several</b></td></tr>
-        <tr><td><b>a large amount of</b></td><td><b>a large number of</b></td></tr>
-        <tr><td><b>a large quantity of</b></td><td><b>a great number of</b></td></tr>
-        <tr><td><b>less</b></td><td><b>a majority of</b></td></tr>
-        <tr><td colspan="2"><b>Both:</b> all, enough, more / most, less / least, no, some, any, a lot of, lots of, plenty of</td></tr>
+        <tr><td class="g-u"><i>e.g. flour, pepper, earth, mud, tea, rice</i></td><td class="g-c"><i>e.g. eggs, chairs, snakes, houses, shoes</i></td></tr>
+        <tr><td class="g-u"><b>much</b></td><td class="g-c"><b>many</b></td></tr>
+        <tr><td class="g-u"><b>a little / little / very little</b></td><td class="g-c"><b>a few / few / very few / fewer</b></td></tr>
+        <tr><td class="g-u"><b>a bit of</b></td><td class="g-c"><b>a number of</b></td></tr>
+        <tr><td class="g-u"><b>a great deal of</b></td><td class="g-c"><b>several</b></td></tr>
+        <tr><td class="g-u"><b>a large amount of</b></td><td class="g-c"><b>a large number of</b></td></tr>
+        <tr><td class="g-u"><b>a large quantity of</b></td><td class="g-c"><b>a great number of</b></td></tr>
+        <tr><td class="g-u"><b>less</b></td><td class="g-c"><b>a majority of</b></td></tr>
+        <tr><td colspan="2" class="g-b"><b>Both:</b> all, enough, more / most, less / least, no, some, any, a lot of, lots of, plenty of</td></tr>
       </tbody>
     </table>
   </div>

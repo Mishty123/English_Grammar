@@ -870,7 +870,7 @@ button:focus-visible, select:focus-visible { outline: 3px solid var(--t, var(--i
 
   /* ---------- F: passive voice ---------- */
   var F = document.getElementById('v-f');
-  var ASP = ['asp-ind','asp-ind','asp-ind','asp-ind','asp-con','asp-con','asp-con','asp-per','asp-per','asp-per','asp-per'];
+  var ASP = ['asp-ind','asp-ind','asp-ind','asp-ind','asp-con','asp-con','asp-per','asp-per','asp-per','asp-per'];
   var PF = [
     ['present', '1. Present Indefinite', 'Sub + V¹ + obj', 'Obj + is/am/are + V³ + by + sub'],
     ['past', '2. Past Indefinite', 'Sub + V² + obj', 'Obj + was/were + V³ + by + sub'],
@@ -878,11 +878,10 @@ button:focus-visible, select:focus-visible { outline: 3px solid var(--t, var(--i
     ['modal', '4. Modal (Indefinite)', 'Sub + modal + V¹ + obj', 'Obj + modal + be + V³ + by + sub'],
     ['present', '5. Present Continuous', 'Sub + is/am/are + V⁴ + obj', 'Obj + is/am/are + being + V³ + by + sub'],
     ['past', '6. Past Continuous', 'Sub + was/were + V⁴ + obj', 'Obj + was/were + being + V³ + by + sub'],
-    ['future', '7. Future Continuous', 'Sub + shall/will + be + V⁴ + obj', 'Obj + shall/will + be + being + V³ + by + sub'],
-    ['present', '8. Present Perfect', 'Sub + has/have + V³ + obj', 'Obj + has/have + been + V³ + by + sub'],
-    ['past', '9. Past Perfect', 'Sub + had + V³ + obj', 'Obj + had + been + V³ + by + sub'],
-    ['future', '10. Future Perfect', 'Sub + shall/will + have + V³ + obj', 'Obj + shall/will + have + been + V³ + by + sub'],
-    ['modal', '11. Modal Perfect', 'Sub + modal + have + V³ + obj', 'Obj + modal + have + been + V³ + by + sub']
+    ['present', '7. Present Perfect', 'Sub + has/have + V³ + obj', 'Obj + has/have + been + V³ + by + sub'],
+    ['past', '8. Past Perfect', 'Sub + had + V³ + obj', 'Obj + had + been + V³ + by + sub'],
+    ['future', '9. Future Perfect', 'Sub + shall/will + have + V³ + obj', 'Obj + shall/will + have + been + V³ + by + sub'],
+    ['modal', '10. Modal Perfect', 'Sub + modal + have + V³ + obj', 'Obj + modal + have + been + V³ + by + sub']
   ];
   var HELPER_NF = /^(be|been|being|have)$/;
   function pfx(x) {
@@ -909,10 +908,10 @@ button:focus-visible, select:focus-visible { outline: 3px solid var(--t, var(--i
     '<div class="vlegend"><span><i class="sw-hf"></i>Finite verb</span><span><i class="sw-hn"></i>Non-finite verb</span><span><i class="sw-ln"></i>Lexical verb, non-finite (ochre rim)</span><span><i class="sw-lf"></i>Lexical verb, finite (ochre outside, teal inside)</span></div>' +
     '<div class="tbl-wrap"><table class="tt pvt"><thead><tr><th>Tense</th><th>Active Voice</th><th>Passive Voice</th></tr></thead><tbody>';
   PF.forEach(function (r, i) {
-    fh += '<tr class="' + ASP[i] + (i === 0 ? ' first' : (i === 4 || i === 7 ? ' grp' : '')) + '"><th scope="row" class="tn"><span>' + r[1] + '</span></th><td class="pf fm">' + pfx(r[2]) + '</td><td class="pf fm">' + pfx(r[3]) + '</td></tr>';
+    fh += '<tr class="' + ASP[i] + (i === 0 ? ' first' : (i === 4 || i === 6 ? ' grp' : '')) + '"><th scope="row" class="tn"><span>' + r[1] + '</span></th><td class="pf fm">' + pfx(r[2]) + '</td><td class="pf fm">' + pfx(r[3]) + '</td></tr>';
   });
   fh += '</tbody></table></div><h2 class="pv-h">Passive voice: uses, examples and key words</h2>' +
-    '<p class="cap">Use the passive when the doer is unknown, not important or obvious, or when the receiver of the action is the star of the sentence. Passive forms of the perfect continuous tenses are very rare, so they are left out.</p>';
+    '<p class="cap">Use the passive when the doer is unknown, not important or obvious, or when the receiver of the action is the star of the sentence. The future continuous and the perfect continuous tenses have no everyday passive form, so they are left out.</p>';
 
   var PKEYS_MODAL = ['can', 'could', 'may', 'might', 'must', 'should', 'would', 'shall', 'ought to', 'has to', 'have to'];
   var PKEYS_MODALP = ['must have', 'might have', 'could have', 'should have', 'would have', 'may have', 'perhaps', 'maybe', 'probably', 'if only'];
@@ -938,8 +937,6 @@ button:focus-visible, select:focus-visible { outline: 3px solid var(--t, var(--i
     ['future', 'Future Indefinite', 'Will happen later', ['s:Object', 'h:shall / will', 'h:be', 'v:V3', 'h:by', 's:Subject'], KEYS[8], [
       ['Promises and plans', 'dot:112', ['The work ~will be~ ^done^ tomorrow.', 'You ~will be~ ^called^ tonight.']],
       ['Predictions', 'dot:136', ['The results ~will be~ ^announced^ next week.', 'The match ~will be~ ^won^ by our team, I think.']]]],
-    ['future', 'Future Continuous', 'Will be in progress at a future moment', ['s:Object', 'h:shall / will', 'h:be', 'h:being', 'v:V3', 'h:by', 's:Subject'], KEYS[9], [
-      ['In progress at a future moment', 'bar:106-146', ['This time tomorrow, the house ~will be being~ ^painted^.', 'At eight tonight, dinner ~will be being~ ^served^.']]]],
     ['future', 'Future Perfect', 'Will be finished by a future moment', ['s:Object', 'h:shall / will', 'h:have', 'h:been', 'v:V3', 'h:by', 's:Subject'], KEYS[10], [
       ['Finished before a future moment', 'arcx:102:138', ['The homework ~will have been~ ^finished^ by five.', 'The room ~will have been~ ^cleaned^ by then.']],
       ['A deadline', 'arcx:112:142', ['By Friday, the invitations ~will have been~ ^sent^.', 'The shop ~will have been~ ^closed^ by nine.']]]],
@@ -1062,11 +1059,10 @@ button:focus-visible, select:focus-visible { outline: 3px solid var(--t, var(--i
     [3, 'We ~must~ ^finish^ the work.', 'The work ~must be~ ^finished^ by us.', ['The work must finished by us.', 'The work must been finished by us.']],
     [4, 'The workers ~are~ ^building^ a bridge.', 'A bridge ~is being~ ^built^ by the workers.', ['A bridge is built by the workers.', 'A bridge is being build by the workers.']],
     [5, 'The kids ~were~ ^eating^ the cake.', 'The cake ~was being~ ^eaten^ by the kids.', ['The cake was eaten by the kids.', 'The cake were being eaten by the kids.']],
-    [6, 'They ~will be~ ^serving^ dinner at eight.', 'Dinner ~will be being~ ^served^ at eight.', ['Dinner will be served at eight.', 'Dinner will being served at eight.']],
-    [7, 'Someone ~has~ ^stolen^ my bike.', 'My bike ~has been~ ^stolen^.', ['My bike has stolen.', 'My bike is been stolen.']],
-    [8, 'The teacher ~had~ ^checked^ the tests.', 'The tests ~had been~ ^checked^ by the teacher.', ['The tests had checked by the teacher.', 'The tests have been checked by the teacher.']],
-    [9, 'She ~will have~ ^finished^ the report.', 'The report ~will have been~ ^finished^ by her.', ['The report will be finished by her.', 'The report will have finished by her.']],
-    [10, 'He ~must have~ ^broken^ the vase.', 'The vase ~must have been~ ^broken^ by him.', ['The vase must have broken by him.', 'The vase must be broken by him.']]
+    [6, 'Someone ~has~ ^stolen^ my bike.', 'My bike ~has been~ ^stolen^.', ['My bike has stolen.', 'My bike is been stolen.']],
+    [7, 'The teacher ~had~ ^checked^ the tests.', 'The tests ~had been~ ^checked^ by the teacher.', ['The tests had checked by the teacher.', 'The tests have been checked by the teacher.']],
+    [8, 'She ~will have~ ^finished^ the report.', 'The report ~will have been~ ^finished^ by her.', ['The report will be finished by her.', 'The report will have finished by her.']],
+    [9, 'He ~must have~ ^broken^ the vase.', 'The vase ~must have been~ ^broken^ by him.', ['The vase must have broken by him.', 'The vase must be broken by him.']]
   ];
   function strip(x) { return x.replace(/[~^]/g, ''); }
   var pq = { i: 0, order: [], pick: -1, done: {}, right: 0, fin: false };

@@ -117,6 +117,7 @@ button:focus-visible, select:focus-visible { outline: 3px solid var(--t, var(--i
 .opt { text-align: left; font: 500 1.05rem var(--font-body); padding: 12px 16px; border-radius: 12px; border: 2px solid var(--line-strong); background: var(--surface); color: var(--ink); cursor: pointer; }
 .opt:hover:not(:disabled) { border-color: var(--ink); }
 .opt:disabled { cursor: default; }
+.gb:disabled { opacity: .4; cursor: default; }
 .opt.right { border-color: var(--good); background: var(--good-soft); }
 .opt.wrong { border-color: var(--bad); background: var(--bad-soft); }
 .qsent { margin: 0; font-size: 1.15rem; }
@@ -708,7 +709,7 @@ button:focus-visible, select:focus-visible { outline: 3px solid var(--t, var(--i
       '<div class="slots" aria-label="Your pattern">' + slots + '</div>' +
       '<div class="chips pool" aria-label="Chips to choose from">' + pool + '</div>' +
       '<div aria-live="polite">' + msg + '</div>' +
-      '<div class="gbtns"><button class="gb" type="button" id="c-clear">Clear</button><button class="gb" type="button" id="c-ans">Show the answer</button><button class="gb main" type="button" id="c-next">Next tense</button></div>' +
+      '<div class="gbtns"><button class="gb" type="button" id="c-clear">Clear</button><button class="gb" type="button" id="c-ans">Show the answer</button><button class="gb main" type="button" id="c-next">Next tense</button><button class="gb" type="button" id="c-reset">Reset</button></div>' +
       '</div>';
   }
 
@@ -733,6 +734,7 @@ button:focus-visible, select:focus-visible { outline: 3px solid var(--t, var(--i
       game.placed = ans.map(function (txt) { for (var k = 0; k < game.pool.length; k++) { if (game.pool[k] === txt && used.indexOf(k) === -1) { used.push(k); return k; } } });
       game.state = 'ok'; renderC();
     } else if (e.target.id === 'c-next') { game.i = (game.i + 1) % T.length; deal(); renderC(); }
+    else if (e.target.id === 'c-reset') { game.i = 0; game.solved = {}; deal(); renderC(); }
   });
   C.addEventListener('change', function (e) {
     if (e.target.id === 'c-sel') { game.i = +e.target.value; deal(); renderC(); }
@@ -1025,7 +1027,7 @@ button:focus-visible, select:focus-visible { outline: 3px solid var(--t, var(--i
       '<div class="slots" aria-label="Your pattern">' + slots + '</div>' +
       '<div class="chips pool" aria-label="Chips to choose from">' + pool + '</div>' +
       '<div aria-live="polite">' + msg + '</div>' +
-      '<div class="gbtns"><button class="gb" type="button" id="p-clear">Clear</button><button class="gb" type="button" id="p-ans">Show the answer</button><button class="gb main" type="button" id="p-next">Next tense</button></div></div>';
+      '<div class="gbtns"><button class="gb" type="button" id="p-clear">Clear</button><button class="gb" type="button" id="p-ans">Show the answer</button><button class="gb main" type="button" id="p-next">Next tense</button><button class="gb" type="button" id="p-reset">Reset</button></div></div>';
   }
   PB.addEventListener('click', function (e) {
     var pick = e.target.closest('[data-pick]'), un = e.target.closest('[data-un]'), ans = pans();
@@ -1046,6 +1048,7 @@ button:focus-visible, select:focus-visible { outline: 3px solid var(--t, var(--i
       pg.placed = ans.map(function (t) { for (var q = 0; q < pg.pool.length; q++) { if (pg.pool[q] === t && used.indexOf(q) === -1) { used.push(q); return q; } } });
       pg.state = 'ok'; pg.solved[pg.i] = true; renderPB();
     } else if (e.target.id === 'p-next') { pg.i = (pg.i + 1) % PF.length; pdeal(); renderPB(); }
+    else if (e.target.id === 'p-reset') { pg.i = 0; pg.solved = {}; pdeal(); renderPB(); }
   });
   PB.addEventListener('change', function (e) { if (e.target.id === 'p-sel') { pg.i = +e.target.value; pdeal(); renderPB(); } });
   pdeal(); renderPB();
@@ -1066,12 +1069,19 @@ button:focus-visible, select:focus-visible { outline: 3px solid var(--t, var(--i
     [10, 'He ~must have~ ^broken^ the vase.', 'The vase ~must have been~ ^broken^ by him.', ['The vase must have broken by him.', 'The vase must be broken by him.']]
   ];
   function strip(x) { return x.replace(/[~^]/g, ''); }
-  var pq = { i: 0, order: [], pick: -1, done: {}, right: 0 };
+  var pq = { i: 0, order: [], pick: -1, done: {}, right: 0, fin: false };
   function qdeal() {
     var q = PQ[pq.i];
     pq.order = shuffle([strip(q[2])].concat(q[3])); pq.pick = -1;
   }
   function renderPC() {
+    if (pq.fin) {
+      var pc = Math.round(pq.right / PQ.length * 100);
+      var note = pc === 100 ? 'Perfect! Every passive was right.' : (pc >= 70 ? 'Well done! Just a few to look at again.' : 'Good try. Look at the Passive Voice tab and try again.');
+      PC.innerHTML = '<div class="game tense-present"><p class="label">Quiz finished</p><h2 class="gname">Score: ' + pq.right + ' out of ' + PQ.length + '</h2><p class="guse">' + note + '</p>' +
+        '<div class="gbtns"><button class="gb main" type="button" id="q-reset">Try again</button></div></div>';
+      return;
+    }
     var q = PQ[pq.i], r = PF[q[0]], ans = strip(q[2]), answered = pq.pick >= 0;
     var opts = pq.order.map(function (t, k) {
       var cls = 'opt' + (answered ? (t === ans ? ' right' : (k === pq.pick ? ' wrong' : '')) : '');
@@ -1079,10 +1089,10 @@ button:focus-visible, select:focus-visible { outline: 3px solid var(--t, var(--i
     }).join('');
     var fb = answered ? '<p class="qfb">' + (pq.order[pq.pick] === ans ? '<b>Yes!</b> ' : '<b>Not quite.</b> The passive is: ') + sentence(q[2]) + '<br><span class="fmx">Pattern: ' + pfx(r[3]) + '</span></p>' : '';
     PC.innerHTML = '<div class="game tense-' + r[0] + '">' +
-      '<div class="gtop"><span class="label">Question ' + (pq.i + 1) + ' of ' + PQ.length + ' &middot; ' + r[1].replace(/^\d+\.\s*/, '') + '</span><span class="score">Right ' + pq.right + ' of ' + Object.keys(pq.done).length + '</span></div>' +
+      '<div class="gtop"><span class="label">Question ' + (pq.i + 1) + ' of ' + PQ.length + ' &middot; ' + r[1].replace(/^\d+\.\s*/, '') + '</span><span class="score">Score: ' + pq.right + ' / ' + Object.keys(pq.done).length + '</span></div>' +
       '<div><p class="label">Change to passive</p><p class="qsent">' + sentence(q[1]) + '</p></div>' +
       '<div class="opts">' + opts + '</div>' + fb +
-      '<div class="gbtns"><button class="gb main" type="button" id="q-next">' + (pq.i === PQ.length - 1 ? 'Start again' : 'Next question') + '</button></div></div>';
+      '<div class="gbtns"><button class="gb main" type="button" id="q-next"' + (answered ? '' : ' disabled') + '>' + (pq.i === PQ.length - 1 ? 'See my score' : 'Next question') + '</button><button class="gb" type="button" id="q-reset">Reset</button></div></div>';
   }
   PC.addEventListener('click', function (e) {
     var o = e.target.closest('[data-o]');
@@ -1090,9 +1100,11 @@ button:focus-visible, select:focus-visible { outline: 3px solid var(--t, var(--i
       pq.pick = +o.dataset.o;
       if (!pq.done[pq.i]) { pq.done[pq.i] = true; if (pq.order[pq.pick] === strip(PQ[pq.i][2])) pq.right++; }
       renderPC();
-    } else if (e.target.id === 'q-next') {
-      if (pq.i === PQ.length - 1) { pq.i = 0; pq.done = {}; pq.right = 0; } else pq.i++;
-      qdeal(); renderPC();
+    } else if (e.target.id === 'q-next' && pq.pick >= 0) {
+      if (pq.i === PQ.length - 1) pq.fin = true; else { pq.i++; qdeal(); }
+      renderPC();
+    } else if (e.target.id === 'q-reset') {
+      pq = { i: 0, order: [], pick: -1, done: {}, right: 0, fin: false }; qdeal(); renderPC();
     }
   });
   qdeal(); renderPC();

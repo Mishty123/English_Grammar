@@ -113,6 +113,18 @@ button:focus-visible, select:focus-visible { outline: 3px solid var(--t, var(--i
 .vlegend .sw-ln { background: var(--vb-nf); border: 3px solid var(--vb-lex); }
 .vlegend .sw-lf { background: var(--vb-fin-soft); border: 3px solid var(--vb-lex); box-shadow: inset 0 0 0 1.5px var(--surface), inset 0 0 0 3px var(--vb-fin); }
 
+.opts { display: flex; flex-direction: column; gap: 10px; }
+.opt { text-align: left; font: 500 1.05rem var(--font-body); padding: 12px 16px; border-radius: 12px; border: 2px solid var(--line-strong); background: var(--surface); color: var(--ink); cursor: pointer; }
+.opt:hover:not(:disabled) { border-color: var(--ink); }
+.opt:disabled { cursor: default; }
+.opt.right { border-color: var(--good); background: var(--good-soft); }
+.opt.wrong { border-color: var(--bad); background: var(--bad-soft); }
+.qsent { margin: 0; font-size: 1.15rem; }
+.qfb { margin: 0; padding: 10px 12px; border-radius: 10px; background: var(--bg); }
+.qfb .fmx { margin-top: 6px; display: inline-block; }
+.guse .chips, .qfb .chips { display: inline-flex; vertical-align: middle; }
+.guse .pw, .qfb .pw { font-family: var(--font-formula); }
+.guse .plus, .qfb .plus { color: var(--muted); }
 /* ---------- A: tense map ---------- */
 .maphead { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 16px; margin: 0 0 6px; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
 .maphead .vlegend, .maphead .toolbar { margin: 0; }
@@ -388,7 +400,7 @@ button:focus-visible, select:focus-visible { outline: 3px solid var(--t, var(--i
   <a class="gh-home" href="index.html" aria-label="Back to the home page">&larr; Home</a>
   <header>
     <h1>Tense &amp; Voice Overview</h1>
-    <p class="lead">The 12 tenses on a map and a cheat sheet, then quizzes, active and passive voice, and key words.</p>
+    <p class="lead">The 12 tenses on a map and a cheat sheet, then a quiz, passive voice with its own quiz, and key words.</p>
   </header>
 
   <div class="switch" role="tablist" aria-label="Choose a style" id="switch"></div>
@@ -406,6 +418,12 @@ button:focus-visible, select:focus-visible { outline: 3px solid var(--t, var(--i
     <section class="view" id="v-b" role="tabpanel" hidden></section>
   </section>
   <section class="view" id="v-f" role="tabpanel" hidden></section>
+  <section class="view" id="v-p" role="tabpanel" hidden>
+    <div class="subsw" id="psubsw" role="tablist" aria-label="Passive quiz type"></div>
+    <div class="vlegend"><span><i class="sw-hf"></i>Finite verb</span><span><i class="sw-hn"></i>Non-finite verb</span><span><i class="sw-ln"></i>Lexical verb, non-finite (ochre rim)</span><span><i class="sw-lf"></i>Lexical verb, finite (ochre outside, teal inside)</span></div>
+    <section class="view" id="v-pb" role="tabpanel"></section>
+    <section class="view" id="v-pc" role="tabpanel" hidden></section>
+  </section>
   <section class="view" id="v-e" role="tabpanel" hidden></section>
 </div>
 
@@ -456,7 +474,8 @@ button:focus-visible, select:focus-visible { outline: 3px solid var(--t, var(--i
     { id: 'v-a', name: 'Tense Map' },
     { id: 'v-d', name: 'Cheat Sheet' },
     { id: 'v-q', name: 'Quiz Time' },
-    { id: 'v-f', name: 'Active &amp; Passive' },
+    { id: 'v-f', name: 'Passive Voice' },
+    { id: 'v-p', name: 'Passive Quiz' },
     { id: 'v-e', name: 'Key Words' }
   ];
   var QSUB = [ { id: 'v-c', name: 'Build It' }, { id: 'v-b', name: 'Cover-up Sheet' } ];
@@ -948,6 +967,135 @@ button:focus-visible, select:focus-visible { outline: 3px solid var(--t, var(--i
     fh += '</tbody>';
   });
   F.innerHTML = fh + '</table></div>';
+
+
+  /* ---------- P: passive quiz ---------- */
+  var PS = [ { id: 'v-pb', name: 'Build It' }, { id: 'v-pc', name: 'Change It' } ];
+  var psub = document.getElementById('psubsw');
+  function showPSub(id) {
+    PS.forEach(function (w) { document.getElementById(w.id).hidden = (w.id !== id); });
+    Array.prototype.forEach.call(psub.children, function (c) { c.setAttribute('aria-selected', c.dataset.view === id ? 'true' : 'false'); });
+  }
+  PS.forEach(function (v, i) {
+    var b = document.createElement('button');
+    b.type = 'button'; b.className = 'spick'; b.setAttribute('role', 'tab');
+    b.setAttribute('aria-selected', i === 0 ? 'true' : 'false'); b.dataset.view = v.id; b.textContent = v.name;
+    b.addEventListener('click', function () { showPSub(v.id); });
+    psub.appendChild(b);
+  });
+  function pcls(t) {
+    if (/^(sub|obj)$/i.test(t)) return 'c-s';
+    if (t === 'by') return 'c-x';
+    if (/^V/.test(t)) return t === 'V²' ? 'vc vc-lf' : 'vc vc-ln';
+    return /^(is\/am\/are|was\/were|shall\/will|modal|has\/have|had)$/.test(t) ? 'vc vc-hf' : 'vc vc-hn';
+  }
+  function plabel(t) {
+    if (/^(sub|obj)$/.test(t)) return cap(t);
+    return t.replace(/V([¹²³⁴⁵])/, function (m, d) { return 'V<sub>' + ('¹²³⁴⁵'.indexOf(d) + 1) + '</sub>'; });
+  }
+  var PDIS = ['V¹', 'V²', 'V⁴', 'be', 'being', 'been', 'has/have', 'had', 'is/am/are', 'shall/will'];
+
+  /* P1: build the passive pattern */
+  var PB = document.getElementById('v-pb');
+  var pg = { i: 0, placed: [], pool: [], state: '', solved: {} };
+  function pans() { return PF[pg.i][3].split(' + '); }
+  function pdeal() {
+    var ans = pans();
+    var extra = shuffle(PDIS.filter(function (d) { return ans.indexOf(d) === -1; })).slice(0, 2);
+    pg.pool = shuffle(ans.concat(extra)); pg.placed = []; pg.state = '';
+  }
+  function renderPB() {
+    var r = PF[pg.i], n = pans().length;
+    var opts = PF.map(function (x, k) { return '<option value="' + k + '"' + (k === pg.i ? ' selected' : '') + '>' + x[1] + (pg.solved[k] ? ' (done)' : '') + '</option>'; }).join('');
+    var slots = '';
+    for (var k = 0; k < n; k++) {
+      var p = pg.placed[k];
+      slots += '<div class="slot' + (pg.state === 'ok' ? ' right' : (pg.state === 'no' && p != null ? ' wrong' : '')) + '">' +
+        (p != null ? '<button class="chip ' + pcls(pg.pool[p]) + '" type="button" data-un="' + k + '">' + plabel(pg.pool[p]) + '</button>' : '') + '</div>';
+    }
+    var pool = pg.pool.map(function (t, k) {
+      return '<button class="chip ' + pcls(t) + '" type="button" data-pick="' + k + '"' + (pg.placed.indexOf(k) !== -1 || pg.state === 'ok' ? ' disabled' : '') + '>' + plabel(t) + '</button>';
+    }).join('');
+    var msg = pg.state === 'ok' ? '<p class="msg ok">Yes! That is the passive pattern.</p>'
+      : pg.state === 'no' ? '<p class="msg no">Not quite. Tap a chip in the boxes to take it out, then try again.</p>'
+      : '<p class="msg">Tap the chips in the right order. ' + n + ' boxes, and some chips are extras.</p>';
+    PB.innerHTML = '<div class="game tense-' + r[0] + '">' +
+      '<div class="gtop"><select class="sel" id="p-sel" aria-label="Pick a tense">' + opts + '</select><span class="score">Built ' + Object.keys(pg.solved).length + ' of ' + PF.length + '</span></div>' +
+      '<div><p class="label">Build the passive pattern for</p><h2 class="gname">' + r[1].replace(/^\d+\.\s*/, '') + '</h2><p class="guse">Active: ' + pfx(r[2]) + '</p></div>' +
+      '<div class="slots" aria-label="Your pattern">' + slots + '</div>' +
+      '<div class="chips pool" aria-label="Chips to choose from">' + pool + '</div>' +
+      '<div aria-live="polite">' + msg + '</div>' +
+      '<div class="gbtns"><button class="gb" type="button" id="p-clear">Clear</button><button class="gb" type="button" id="p-ans">Show the answer</button><button class="gb main" type="button" id="p-next">Next tense</button></div></div>';
+  }
+  PB.addEventListener('click', function (e) {
+    var pick = e.target.closest('[data-pick]'), un = e.target.closest('[data-un]'), ans = pans();
+    if (pick && pg.state !== 'ok') {
+      var k = +pick.dataset.pick;
+      if (pg.placed.indexOf(k) === -1 && pg.placed.length < ans.length) {
+        pg.placed.push(k);
+        if (pg.placed.length === ans.length) {
+          var ok = pg.placed.every(function (q, s) { return pg.pool[q] === ans[s]; });
+          pg.state = ok ? 'ok' : 'no'; if (ok) pg.solved[pg.i] = true;
+        }
+        renderPB();
+      }
+    } else if (un && pg.state !== 'ok') { pg.placed.splice(+un.dataset.un, 1); pg.state = ''; renderPB(); }
+    else if (e.target.id === 'p-clear') { pg.placed = []; pg.state = ''; renderPB(); }
+    else if (e.target.id === 'p-ans') {
+      var used = [];
+      pg.placed = ans.map(function (t) { for (var q = 0; q < pg.pool.length; q++) { if (pg.pool[q] === t && used.indexOf(q) === -1) { used.push(q); return q; } } });
+      pg.state = 'ok'; pg.solved[pg.i] = true; renderPB();
+    } else if (e.target.id === 'p-next') { pg.i = (pg.i + 1) % PF.length; pdeal(); renderPB(); }
+  });
+  PB.addEventListener('change', function (e) { if (e.target.id === 'p-sel') { pg.i = +e.target.value; pdeal(); renderPB(); } });
+  pdeal(); renderPB();
+
+  /* P2: change an active sentence to passive */
+  var PC = document.getElementById('v-pc');
+  var PQ = [
+    [0, 'Maria ^writes^ the letters.', 'The letters ~are~ ^written^ by Maria.', ['The letters is written by Maria.', 'The letters are wrote by Maria.']],
+    [1, 'Tom ^broke^ the window.', 'The window ~was~ ^broken^ by Tom.', ['The window was broke by Tom.', 'The window were broken by Tom.']],
+    [2, 'She ~will~ ^paint^ the wall.', 'The wall ~will be~ ^painted^ by her.', ['The wall will painted by her.', 'The wall is painted by her.']],
+    [3, 'We ~must~ ^finish^ the work.', 'The work ~must be~ ^finished^ by us.', ['The work must finished by us.', 'The work must been finished by us.']],
+    [4, 'The workers ~are~ ^building^ a bridge.', 'A bridge ~is being~ ^built^ by the workers.', ['A bridge is built by the workers.', 'A bridge is being build by the workers.']],
+    [5, 'The kids ~were~ ^eating^ the cake.', 'The cake ~was being~ ^eaten^ by the kids.', ['The cake was eaten by the kids.', 'The cake were being eaten by the kids.']],
+    [6, 'They ~will be~ ^serving^ dinner at eight.', 'Dinner ~will be being~ ^served^ at eight.', ['Dinner will be served at eight.', 'Dinner will being served at eight.']],
+    [7, 'Someone ~has~ ^stolen^ my bike.', 'My bike ~has been~ ^stolen^.', ['My bike has stolen.', 'My bike is been stolen.']],
+    [8, 'The teacher ~had~ ^checked^ the tests.', 'The tests ~had been~ ^checked^ by the teacher.', ['The tests had checked by the teacher.', 'The tests have been checked by the teacher.']],
+    [9, 'She ~will have~ ^finished^ the report.', 'The report ~will have been~ ^finished^ by her.', ['The report will be finished by her.', 'The report will have finished by her.']],
+    [10, 'He ~must have~ ^broken^ the vase.', 'The vase ~must have been~ ^broken^ by him.', ['The vase must have broken by him.', 'The vase must be broken by him.']]
+  ];
+  function strip(x) { return x.replace(/[~^]/g, ''); }
+  var pq = { i: 0, order: [], pick: -1, done: {}, right: 0 };
+  function qdeal() {
+    var q = PQ[pq.i];
+    pq.order = shuffle([strip(q[2])].concat(q[3])); pq.pick = -1;
+  }
+  function renderPC() {
+    var q = PQ[pq.i], r = PF[q[0]], ans = strip(q[2]), answered = pq.pick >= 0;
+    var opts = pq.order.map(function (t, k) {
+      var cls = 'opt' + (answered ? (t === ans ? ' right' : (k === pq.pick ? ' wrong' : '')) : '');
+      return '<button class="' + cls + '" type="button" data-o="' + k + '"' + (answered ? ' disabled' : '') + '>' + t + '</button>';
+    }).join('');
+    var fb = answered ? '<p class="qfb">' + (pq.order[pq.pick] === ans ? '<b>Yes!</b> ' : '<b>Not quite.</b> The passive is: ') + sentence(q[2]) + '<br><span class="fmx">Pattern: ' + pfx(r[3]) + '</span></p>' : '';
+    PC.innerHTML = '<div class="game tense-' + r[0] + '">' +
+      '<div class="gtop"><span class="label">Question ' + (pq.i + 1) + ' of ' + PQ.length + ' &middot; ' + r[1].replace(/^\d+\.\s*/, '') + '</span><span class="score">Right ' + pq.right + ' of ' + Object.keys(pq.done).length + '</span></div>' +
+      '<div><p class="label">Change to passive</p><p class="qsent">' + sentence(q[1]) + '</p></div>' +
+      '<div class="opts">' + opts + '</div>' + fb +
+      '<div class="gbtns"><button class="gb main" type="button" id="q-next">' + (pq.i === PQ.length - 1 ? 'Start again' : 'Next question') + '</button></div></div>';
+  }
+  PC.addEventListener('click', function (e) {
+    var o = e.target.closest('[data-o]');
+    if (o && pq.pick < 0) {
+      pq.pick = +o.dataset.o;
+      if (!pq.done[pq.i]) { pq.done[pq.i] = true; if (pq.order[pq.pick] === strip(PQ[pq.i][2])) pq.right++; }
+      renderPC();
+    } else if (e.target.id === 'q-next') {
+      if (pq.i === PQ.length - 1) { pq.i = 0; pq.done = {}; pq.right = 0; } else pq.i++;
+      qdeal(); renderPC();
+    }
+  });
+  qdeal(); renderPC();
 
   /* ---------- A: tap grid ---------- */
   function aForms(i) { return subjForms(i); }

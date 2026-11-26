@@ -327,6 +327,14 @@ button:focus-visible, select:focus-visible { outline: 3px solid var(--t, var(--i
 .tl .bar.soft { fill-opacity: .35; }
 @media (max-width: 1000px) { .swipe { display: block; } }
 
+.kwnote { background: var(--surface); border: 2px solid var(--line); border-radius: 14px; padding: 12px 16px; margin: 14px 0; }
+.kwnote ul, .kwnote ol { margin: 6px 0 0; padding-left: 1.2em; display: flex; flex-direction: column; gap: 6px; }
+.kwgrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 360px), 1fr)); gap: 14px; margin-top: 10px; }
+.kwcard { background: var(--surface); border: 2px solid var(--line); border-left: 6px solid var(--t); border-radius: 14px; padding: 12px 16px; display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+.kwcard h3 { margin: 0; font-family: var(--font-display); font-weight: 600; font-size: 1.2rem; color: var(--t); }
+.kwg { display: flex; flex-direction: column; gap: 6px; }
+.kwpair { margin: 4px 0 0; font-size: .95rem; color: var(--muted); }
+#v-e .chip.c-x { font-size: .9rem; background: color-mix(in srgb, var(--t-soft) 50%, var(--surface)); }
 /* ---------- E: key words ---------- */
 .ebar { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 10px 12px; margin-bottom: 8px; }
 .ebar .field { min-width: min(100%, 260px); }
@@ -1190,169 +1198,72 @@ button:focus-visible, select:focus-visible { outline: 3px solid var(--t, var(--i
   document.getElementById('a-hide').onclick = function () { Array.prototype.forEach.call(A.querySelectorAll('.tform'), function (b) { formSet(b, false); }); drawAll(); };
 
 
-  /* ---------- E: key words, grouped by meaning ---------- */
-  var TYPES = {};
-  function tp(label, list) { list.forEach(function (w) { TYPES[w] = label; }); }
-  tp('adverb', ['always', 'usually', 'normally', 'often', 'sometimes', 'rarely', 'seldom', 'hardly ever', 'never', 'ever', 'now', 'right now', 'today', 'currently', 'nowadays', 'still', 'already', 'just', 'yet', 'so far', 'recently', 'lately', 'then', 'ago', 'earlier', 'yesterday', 'tonight', 'tomorrow', 'soon', 'later', 'someday', 'probably', 'perhaps', 'maybe', 'once', 'twice']);
-  tp('noun phrase', ['every day', 'every morning', 'every week', 'every year', 'these days', 'this week', 'this year', 'all day', 'all morning', 'all week', 'last night', 'last week', 'last month', 'last year', 'a week ago', 'one day', 'the other day', 'this time yesterday', 'all day yesterday', 'the whole evening', 'the day before', 'the week before', 'the day after tomorrow', 'next week', 'next month', 'next year', 'this time tomorrow', 'this time next year', 'all day tomorrow', 'all evening tomorrow', 'three times', 'several times', 'once a week', 'twice a week', 'twice a day', 'once a month', 'twice a month', 'once a year', 'twice a year']);
-  tp('prepositional phrase', ['for hours', 'for years', 'for two years', 'for ten years', 'for a long time', 'since morning', 'ever since', 'up to now', 'at the moment', 'at present', 'at that time', 'at 5 o’clock yesterday', 'at this time last year', 'at 8 o’clock tonight', 'at this time next week', 'tomorrow at noon', 'on Mondays', 'on weekends', 'on Monday', 'in May', 'in 2020', 'in 2030', 'in a week', 'in two days', 'in two hours', 'in the future', 'until then', 'until that day', 'by then', 'by tomorrow', 'by five o’clock', 'by Friday', 'by next week', 'by the end of the week', 'by the end of the month', 'by next year', 'by 2030', 'by next June', 'by the end of the year', 'by this time next year']);
-  tp('preposition', ['for', 'since']);
-  tp('conjunction', ['when', 'while', 'as', 'just as', 'before', 'after', 'until', 'as soon as', 'by the time']);
-  tp('clause', ['when I was young', 'when you arrive', 'when you come']);
-  tp('question words', ['how long', 'how many times']);
-  tp('command', ['Look!', 'Listen!', 'Be quiet!']);
-  tp('short clause', ['I think', 'I hope', 'I promise']);
-
-  var GROUPS = [
-    { time: 'present', name: 'How often', hint: 'Habits and routines. Things we do again and again.', t: [0],
-      w: ['every day / morning / week / year', 'always', 'usually', 'normally', 'often', 'sometimes', 'rarely', 'seldom', 'hardly ever', 'never', 'on Mondays / weekends'] },
-    { time: 'present', name: 'Right now', hint: 'It is happening at this moment.', t: [1],
-      w: ['now / right now', 'at the moment / at present', 'today', 'currently', 'nowadays', 'these days', 'this week / year', 'still', 'Look! / Listen! / Be quiet!'] },
-    { time: 'present', name: 'Up to now', hint: 'It is done, and it matters now.', t: [2], o: { before: 'adverb' },
-      w: ['already', 'just', 'ever', 'never', 'yet', 'so far', 'up to now', 'recently / lately', 'before', 'how many times'] },
-    { time: 'present', name: 'How long', hint: 'It started before and it is still going on.', t: [3],
-      w: ['for / since', 'how long', 'for hours / years', 'since morning', 'ever since', 'all day / morning / week'] },
-    { time: 'past', name: 'A finished time in the past', hint: 'It started and finished at a known time.', t: [4],
-      w: ['yesterday', 'last night / week / month / year', 'a week ago', 'ago', 'in 2020 / in May / on Monday', 'then', 'one day / the other day', 'when I was young'] },
-    { time: 'past', name: 'A moment when it was in progress', hint: 'It was going on at that moment in the past.', t: [5],
-      w: ['at that time', 'at 5 o’clock yesterday', 'this time yesterday', 'at this time last year', 'all day yesterday', 'the whole evening'] },
-    { time: 'past', name: 'Before another past event', hint: 'One past event happened before another one.', t: [6, 7],
-      w: ['already', 'just', 'never', 'by then', 'until then / until that day', 'earlier', 'the day / week before'] },
-    { time: 'future', name: 'Later', hint: 'It will happen at a time after now.', t: [8],
-      w: ['tomorrow', 'tonight', 'the day after tomorrow', 'next week / month / year', 'soon', 'later', 'in a week / two days', 'someday', 'in 2030 / in the future'] },
-    { time: 'future', name: 'A guess, hope or promise', hint: 'We say what we think, hope or promise about the future.', t: [8],
-      w: ['probably / perhaps / maybe', 'I think / I hope / I promise'] },
-    { time: 'future', name: 'A future moment, in progress', hint: 'It will be going on at that moment.', t: [9],
-      w: ['this time tomorrow / next year', 'at 8 o’clock tonight', 'tomorrow at noon', 'all day / evening tomorrow', 'at this time next week', 'in two hours'] },
-    { time: 'future', name: 'A deadline', hint: 'It will be finished by then.', t: [10],
-      w: ['by tomorrow / Friday / next week', 'by five o’clock', 'by the end of the week / month / year', 'by next year / 2030', 'by then'] },
-    { time: 'future', name: 'How long, by then', hint: 'It will have been going on for a while by that time.', t: [11],
-      w: ['by next June', 'by this time next year', 'for two / ten years', 'for a long time'] },
-    { time: 'multi', name: 'Joining words', hint: 'They start a time clause, like “when the phone rang”.', t: [5, 6, 9, 10],
-      w: ['when / while / as / just as', 'before / after / until / as soon as', 'by the time', 'when I was young / when you arrive / when you come'] },
-    { time: 'multi', name: 'Counting words', hint: 'They say how many times. Put a counting word in front of a day, a week, a month or a year: twice a week, three times a month. They go with any tense: I go twice a week. I went twice last year.', any: true, t: [], o: { '+ a day / a week / a month / a year': 'noun phrase' },
-      w: ['once / twice', 'three times / several times', '+ a day / a week / a month / a year'] }
+  /* ---------- E: key words (signal words) ---------- */
+  var KW = [
+    ['present', 'Present Simple', [
+      ['General frequency', 'always, usually, normally, often, frequently, generally, occasionally, sometimes, rarely, seldom, hardly ever, never, from time to time, as a rule'],
+      ['Recurring schedules', 'every day / morning / week / year, on Mondays / weekends'],
+      ['Every time', 'whenever'],
+      ['Frequency counts (they work with any tense)', 'once a day, twice a week, three times a month']]],
+    ['present', 'Present Continuous', [
+      ['Happening right now', 'now, right now, at the moment, at present, currently, still'],
+      ['Temporary periods', 'today, nowadays, these days, this week / year, for the time being'],
+      ['Attention cues', 'Look! / Listen! / Be quiet!']]],
+    ['present', 'Present Perfect', [
+      ['Recent and completed results', 'already, just, yet, recently, lately'],
+      ['Life experience and counts', 'ever, never, before, how many times, This is the first / second time...'],
+      ['Unfinished time up to now', 'so far, up to now, until now / till now, in the last few days, over the past few years']]],
+    ['present', 'Present Perfect Continuous', [
+      ['Ongoing duration from the past to now', 'for, since, how long, for hours / years, since morning, ever since, all day / morning / week']]],
+    ['past', 'Past Simple', [
+      ['Specific finished times', 'yesterday, the day before yesterday, last night / week / month / year, in 2020 / in May / on Monday'],
+      ['Elapsed time and the immediate past', 'ago, a week ago, just now'],
+      ['Past periods and storytelling', 'then, one day / the other day, once (upon a time), when I was young']]],
+    ['past', 'Past Continuous', [
+      ['Exact moment in progress', 'at that time, at that moment, at 5 o’clock yesterday, this time yesterday, at this time last year'],
+      ['Extended past duration and parallel action', 'all day yesterday, the whole evening, meanwhile']]],
+    ['past', 'Past Perfect', [
+      ['Completed before another past event', 'already, just, never, earlier, previously, prior to that'],
+      ['Past deadline and earlier reference', 'by then, until then / until that day, the day / week before']]],
+    ['past', 'Past Perfect Continuous', [
+      ['Ongoing duration before another past event', 'for hours / years + before / when, since + past point, all day + before']]],
+    ['future', 'Future Simple', [
+      ['Neutral future times', 'tomorrow, tonight, the day after tomorrow, next week / month / year, soon, later, in two hours, in a week / two days, someday, in 2030 / in the future'],
+      ['Guesses, hopes, certainty and promises', 'probably, perhaps, maybe, definitely, certainly, I think, I hope, I promise, I’m sure, I expect, I bet']]],
+    ['future', 'Future Continuous', [
+      ['A future moment in progress', 'this time tomorrow / next year, at 8 o’clock tonight, tomorrow at noon, at this time next week, two hours from now'],
+      ['Extended future span', 'all day / evening tomorrow']]],
+    ['future', 'Future Perfect', [
+      ['Deadlines and completion markers', 'by tomorrow / Friday / next week, by five o’clock, by the end of the week / month / year, by next year / 2030, by then, before + future time']]],
+    ['future', 'Future Perfect Continuous', [
+      ['Deadline + ongoing duration', 'by next June + for two years, by this time next year + for ten years, by then + for a long time']]]
   ];
-  function typeFor(chip, g) {
-    if (g.o && g.o[chip]) return g.o[chip];
-    if (TYPES[chip]) return TYPES[chip];
-    var first = chip.split(' / ')[0];
-    if (g.o && g.o[first]) return g.o[first];
-    if (TYPES[first]) return TYPES[first];
-    if (/^(by|in|on|for|at|until|since|up|ever)\b/.test(first)) return 'prepositional phrase';
-    if (/^(when|while|as|before|after)\b/.test(first)) return 'conjunction';
-    if (/^(every|last|next|this|these|all|the|a|once|twice|three|several|one)\b/.test(first)) return 'noun phrase';
-    return '';
-  }
-  var SECTIONS = [['present', 'Present'], ['past', 'Past'], ['future', 'Future'], ['multi', 'Words that work with more than one tense']];
-  var es = { f: -1, practice: false, types: false, open: {} };
-  var E = document.getElementById('v-e');
-  E.innerHTML =
-    '<div class="ebar"><div class="field"><label class="label" for="e-f">Show words for</label><select class="sel" id="e-f"><option value="-1">All 12 tenses</option>' +
-      TIMES.map(function (time) { return '<optgroup label="' + CAP[time] + '">' + T.map(function (t, i) { return t.time === time ? '<option value="' + i + '">' + t.name + '</option>' : ''; }).join('') + '</optgroup>'; }).join('') +
-    '</select></div><button class="tool" id="e-t" type="button" aria-pressed="false">Show grammar type</button>' +
-    '<button class="tool" id="e-p" type="button" aria-pressed="false">Practice: hide the tenses</button></div>' +
-    '<div class="seg vseg" role="group" aria-label="How to show the key words"><button class="segb" type="button" data-ev="groups" aria-pressed="true">Groups</button><button class="segb" type="button" data-ev="scales" aria-pressed="false">On a scale</button><button class="segb" type="button" data-ev="freq" aria-pressed="false">Frequency words</button></div>' +
-    '<p class="cap" id="e-cap"></p><div id="e-body"></div><div id="e-scales" class="scales" hidden></div><div id="e-freq" class="scales tense-present" hidden></div>';
-  var FREQ = [['never', 0], ['hardly ever', 10], ['rarely / seldom', 22], ['sometimes', 45], ['often', 65], ['usually / normally', 85], ['always', 100]];
-  var RAILS = [
-    { time: 'past', name: 'Far past', tag: 'Past tenses', from: 'long ago', to: 'last month',
-      w: ['when I was young', 'long ago', 'years ago / in 2020', 'two years ago', 'last year', 'last month'] },
-    { time: 'past', name: 'Near past', tag: 'Past tenses', from: 'two weeks ago', to: 'just now',
-      w: ['two weeks ago', 'last week', 'a week ago', 'a few days ago', 'the other day', 'yesterday', 'last night', 'this morning', 'a moment ago / just now'] },
-    { time: 'present', name: 'Present', tag: 'Present tenses', from: 'this moment', to: 'a longer time',
-      w: ['now / right now', 'at the moment / at present', 'today', 'this week / this year', 'these days / nowadays'] },
-    { time: 'future', name: 'Near future', tag: 'Future tenses', from: 'in a moment', to: 'next week',
-      w: ['in a moment', 'later today', 'tonight', 'tomorrow', 'tomorrow morning', 'the day after tomorrow', 'in a few days', 'this weekend', 'next week'] },
-    { time: 'future', name: 'Far future', tag: 'Future tenses', from: 'in two weeks', to: 'someday',
-      w: ['in two weeks', 'next month', 'in a few months', 'next year', 'in two years', 'in 2030', 'in ten years', 'in the future', 'someday'] }
+  var JOIN = [
+    ['Interrupted or simultaneous actions', 'when, while, as, just as', 'Past Continuous + Past Simple, or Future Continuous + Present Simple'],
+    ['Sequence of events', 'before, after, until / till, as soon as, once', 'Past Perfect + Past Simple, or Future Simple + Present Simple'],
+    ['Deadline clauses', 'by the time', 'Past Perfect + Past Simple (past), or Future Perfect + Present Simple (future)']
   ];
-  function renderScales() {
-    var h = '<section class="sc tense-present"><div><h2>How often</h2><p>Habits and routines. Each word is a rough share of the time.</p></div><span class="tg tense-present">Simple Present</span><div class="fq">' +
-      FREQ.map(function (f) { return '<div class="fr"><span class="fw">' + f[0] + '</span><div class="trk"><div class="fill" style="width:' + (f[1] === 0 ? 0 : f[1]) + '%"></div></div><span class="pc">' + f[1] + '%</span></div>'; }).join('') +
-      '</div><div class="fends"><span>none of the time</span><span>all of the time</span></div>' +
-      '<div class="fixed"><span class="lab">Or give the exact time</span><span class="chip c-x">every day / week / year</span><span class="chip c-x">on Mondays</span><span class="chip c-x">on weekends</span></div></section>';
-    RAILS.forEach(function (rl) {
-      h += '<section class="sc tense-' + rl.time + '"><div><h2>' + rl.name + ' time words</h2><p>From ' + rl.from + ' to ' + rl.to + '.</p></div><span class="tg tense-' + rl.time + '">' + rl.tag + '</span>' +
-        '<div class="rail-scroll" tabindex="0" role="region" aria-label="' + rl.name + ' time words in order"><ol class="rail-line">' + rl.w.map(function (w) { return '<li>' + w + '</li>'; }).join('') + '</ol>' +
-        '<div class="rends"><span>' + rl.from + '</span><span>' + rl.to + '</span></div></div></section>';
+  function kwChips(str) { return '<div class="chips keys">' + str.split(', ').map(function (w) { return '<span class="chip c-x">' + w + '</span>'; }).join('') + '</div>'; }
+  var KWH = '<div class="kwnote"><p class="label">Core rule: meaning first, keywords second</p><ul>' +
+    '<li>Match the <b>time meaning</b> first, then check the <b>signal word</b>.</li>' +
+    '<li><b>Stative verbs</b> (know, want, own) do not take the continuous. Step back to the <b>simple</b> or <b>perfect</b>.</li>' +
+    '<li><b>Passive voice:</b> the signal words stay the same. Only the verb formula changes. Future Continuous and the Perfect Continuous tenses have no everyday passive form.</li>' +
+    '<li>A word can point to more than one tense (never, already, just, before), so always check the meaning.</li></ul></div>';
+  [['present', 'Present'], ['past', 'Past'], ['future', 'Future']].forEach(function (sec) {
+    KWH += '<section class="esec tense-' + sec[0] + '"><h2 class="eband">' + sec[1] + ' tenses</h2><div class="kwgrid">';
+    KW.forEach(function (k) {
+      if (k[0] !== sec[0]) return;
+      KWH += '<div class="kwcard tense-' + k[0] + '"><h3>' + k[1] + '</h3>' + k[2].map(function (g) { return '<div class="kwg"><p class="label">' + g[0] + '</p>' + kwChips(g[1]) + '</div>'; }).join('') + '</div>';
     });
-    document.getElementById('e-scales').innerHTML = h;
-  }
-  function chipsOf(list, cls) { return list.map(function (w) { return '<span class="chip ' + cls + '">' + w + '</span>'; }).join(''); }
-  function renderFreq() {
-    var h =
-      '<section class="sc"><div><h2>Does Present Simple always need a frequency word?</h2><p>No. Present Simple expresses habits, routines and general facts. It is often used with frequency words or time markers (always, every day, on Mondays), but it does not need them.</p></div>' +
-      '<div class="fqx"><div><span class="lab">General fact</span><p class="exs">Water <b>boils</b> at 100&deg;C.</p></div>' +
-      '<div><span class="lab">Routine, with no marker</span><p class="exs">She <b>works</b> in a bank.</p></div>' +
-      '<div><span class="lab">Schedule</span><p class="exs">The train <b>leaves</b> at 6.</p></div></div></section>' +
-      '<section class="sc"><div><h2>Are all frequency words adverbs?</h2><p>No. Frequency expressions come in three kinds.</p></div>' +
-      '<div class="kinds">' +
-      '<div class="kind"><h3>Frequency adverbs</h3><p>Single words</p><div class="fixed">' + chipsOf(['always', 'usually', 'often', 'sometimes', 'rarely', 'seldom', 'never', 'frequently', 'occasionally', 'once', 'twice', 'daily', 'weekly'], 'c-v') + '</div></div>' +
-      '<div class="kind"><h3>Adverbial phrases</h3><p>Several words that work like an adverb</p><div class="fixed">' + chipsOf(['every day', 'once a week', 'twice a month', 'on Mondays', 'in the morning', 'from time to time', 'now and then', 'hardly ever', 'most of the time'], 'c-v') + '</div></div>' +
-      '<div class="kind"><h3>Adjectives</h3><p>When they come before a noun</p><div class="fixed">' + chipsOf(['a daily routine', 'a weekly meeting', 'a monthly bill'], 'c-v') + '</div></div>' +
-      '</div></section>' +
-      '<section class="sc"><h2>Good to know</h2><ul class="notes">' +
-      '<li><b>Every day</b> is not a single adverb. It is a phrase (every + day) that does the job of an adverb. <b>On Mondays</b> is a prepositional phrase.</li>' +
-      '<li><b>Daily, weekly, monthly, yearly</b> can be either. She exercises <b>daily</b> (adverb). A <b>daily</b> routine (adjective).</li>' +
-      '<li><b>Never, always</b> and similar single words are adverbs. They usually come before the main verb (She <b>never</b> eats meat) but after <b>be</b> (She is <b>always</b> late).</li>' +
-      '<li>The best name for the whole group is <b>frequency expressions</b> (or time markers). The single-word ones are frequency adverbs.</li></ul></section>';
-    document.getElementById('e-freq').innerHTML = h;
-  }
-  function setView(v) {
-    Array.prototype.forEach.call(E.querySelectorAll('[data-ev]'), function (b) { b.setAttribute('aria-pressed', b.dataset.ev === v ? 'true' : 'false'); });
-    document.getElementById('e-scales').hidden = v !== 'scales';
-    document.getElementById('e-freq').hidden = v !== 'freq';
-    document.getElementById('e-body').hidden = v !== 'groups';
-    document.getElementById('e-cap').hidden = v !== 'groups';
-    E.querySelector('.ebar').classList.toggle('hide-ctl', v !== 'groups');
-  }
-  E.addEventListener('click', function (e) { var b = e.target.closest('[data-ev]'); if (b) setView(b.dataset.ev); });
-
-  function renderE() {
-    var html = '', nG = 0, nW = 0;
-    SECTIONS.forEach(function (sec) {
-      var any = false, part = '';
-      GROUPS.forEach(function (g, gi) {
-        if (g.time !== sec[0]) return;
-        if (es.f >= 0 && !g.any && g.t.indexOf(es.f) === -1) return;
-        any = true; nG++; nW += g.w.length;
-        var open = !es.practice || es.open[gi];
-        var tags = g.any ? '<span class="tg tg-any">Any tense</span>' : g.t.map(function (i) { return '<span class="tg tense-' + T[i].time + '">' + T[i].name + '</span>'; }).join('');
-        part += '<div class="grp" data-g="' + gi + '" data-open="' + (open ? '1' : '0') + '"><div class="gh"><div><h3>' + g.name + '</h3><p>' + g.hint + '</p></div>' +
-          '<div class="pts"><span class="lab">Points to</span>' + tags + '</div><button class="reveal2" type="button">Tap to see the tense</button></div><div class="egrid">' +
-          g.w.map(function (w) {
-            return '<div class="wk" data-w="' + w + '"><span class="wd">' + w + '</span><span class="gt">' + typeFor(w, g) + '</span></div>';
-          }).join('') + '</div></div>';
-      });
-      if (any) html += '<section class="esec tense-' + (sec[0] === 'multi' ? 'present' : sec[0]) + (sec[0] === 'multi' ? ' multi' : '') + '"><h2 class="eband">' + sec[1] + '</h2>' + part + '</section>';
-    });
-    document.getElementById('e-body').innerHTML = html;
-    document.getElementById('e-cap').textContent = nG + ' groups, ' + nW + ' key words' + (es.f >= 0 ? ' for ' + T[es.f].name : '') + '. A word can appear in more than one group.';
-    E.className = 'view' + (es.practice ? ' practice' : '') + (es.types ? ' types' : '');
-  }
-  document.getElementById('e-f').addEventListener('change', function (e) { es.f = +e.target.value; renderE(); });
-  document.getElementById('e-t').addEventListener('click', function (e) {
-    es.types = !es.types;
-    e.currentTarget.setAttribute('aria-pressed', es.types ? 'true' : 'false');
-    e.currentTarget.textContent = es.types ? 'Grammar type: shown' : 'Show grammar type';
-    E.className = 'view' + (es.practice ? ' practice' : '') + (es.types ? ' types' : '');
+    KWH += '</div></section>';
   });
-  document.getElementById('e-p').addEventListener('click', function (e) {
-    es.practice = !es.practice; es.open = {};
-    e.currentTarget.setAttribute('aria-pressed', es.practice ? 'true' : 'false');
-    e.currentTarget.textContent = es.practice ? 'Practice: on (tap Points to)' : 'Practice: hide the tenses';
-    renderE();
-  });
-  E.addEventListener('click', function (e) {
-    if (!es.practice) return;
-    var hit = e.target.closest('.reveal2') || e.target.closest('.pts');
-    if (!hit) return;
-    var grp = hit.closest('.grp'), gi = +grp.dataset.g;
-    es.open[gi] = !es.open[gi];
-    grp.dataset.open = es.open[gi] ? '1' : '0';
-  });
-  renderE(); renderScales(); renderFreq();
+  KWH += '<section class="esec tense-present multi"><h2 class="eband">Joining words and tricky contrasts</h2><div class="kwgrid">' +
+    JOIN.map(function (j) { return '<div class="kwcard tense-present"><h3>' + j[0] + '</h3><div class="kwg">' + kwChips(j[1]) + '<p class="kwpair">' + j[2] + '</p></div></div>'; }).join('') + '</div>' +
+    '<div class="kwnote"><p class="label">Three rules to prevent common traps</p><ol>' +
+    '<li><b>Time clauses:</b> after <i>when, while, before, after, until, as soon as, once</i> and <i>by the time</i>, use the <b>Present Simple</b> (never <i>will</i>) for the future: <i>when you arrive</i>, not <i>when you will arrive</i>. Exception: <i>when</i> that starts a question is not a time clause (<i>I don’t know when he will arrive</i>).</li>' +
+    '<li><b>just</b> and <b>just now</b>: <i>just</i> goes with the Present Perfect (<i>She has just left</i>); <i>just now</i> goes with the Past Simple (<i>She left just now</i>).</li>' +
+    '<li><b>for</b> + a period: use the <b>Present Perfect</b> (or its continuous) if the period reaches now (<i>I have lived here for two years</i>). Use the <b>Past Simple</b> if the period is over (<i>I lived there for two years before moving</i>).</li></ol></div></section>';
+  document.getElementById('v-e').innerHTML = KWH;
 
   deal(); renderC(); tint('present');
 })();

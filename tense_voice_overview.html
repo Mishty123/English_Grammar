@@ -234,13 +234,13 @@ button:focus-visible, select:focus-visible { outline: 3px solid var(--t, var(--i
 /* ---------- D: all 12 tenses table ---------- */
 .swipe { display: none; margin: 0 0 8px; font-size: .85rem; color: var(--muted); }
 .tbl-wrap { overflow-x: auto; background: var(--surface); border: 2px solid var(--line); border-radius: 16px; }
-.tt { border-collapse: collapse; width: 100%; min-width: 1040px; }
+.tt { border-collapse: collapse; width: 100%; min-width: 940px; }
 .tt thead th { text-align: left; font-size: .75rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); padding: 10px 12px; background: var(--bg); }
 .tt td, .tt th.tn { padding: 8px 12px; vertical-align: middle; border-top: 1px solid var(--line); }
 .tt tr.first td, .tt tr.first th.tn { border-top: 2px solid var(--line-strong); }
 .tt .band-row th { text-align: left; padding: 8px 12px; background: var(--t); color: var(--t-on); font-family: var(--font-display); font-weight: 600; font-size: 1.15rem; letter-spacing: 0; text-transform: none; }
 .tt .band-row + tr td, .tt .band-row + tr th.tn { border-top: 0; }
-.tt th.tn { text-align: left; background: var(--t-soft); width: 240px; border-right: 1px solid var(--line); }
+.tt th.tn { text-align: left; background: var(--t-soft); width: 200px; border-right: 1px solid var(--line); }
 .tt th.tn > span { display: block; font-family: var(--font-display); font-weight: 600; font-size: 1.1rem; line-height: 1.15; color: var(--ink); }
 .tt th.tn .tpat { margin: 10px 0 0; font-size: 1rem; }
 .tt th.tn .pt, .tt th.tn .sfr { font-weight: 400; color: var(--ink); }
@@ -257,15 +257,15 @@ button:focus-visible, select:focus-visible { outline: 3px solid var(--t, var(--i
 .pt-x { color: var(--muted); }
 .pt-plus { color: var(--muted); }
 .tt th.tn small { display: block; margin-top: 4px; font-size: .78rem; font-weight: 400; line-height: 1.35; color: var(--muted); }
-.tt .tu { width: 150px; font-size: .92rem; }
+.tt .tu { width: 140px; font-size: .92rem; }
 .tt .ts { width: 130px; }
 .tt .ts .tl { width: 120px; margin: 0; }
 .tt .tl text { font-size: 10px; }
-.tt .tx { width: 270px; font-size: .95rem; }
+.tt .tx { width: 250px; font-size: .95rem; }
 .tt .tx p { margin: 0; }
 .tt .tx p + p { margin-top: 4px; }
 .tt .tp { width: 260px; border-left: 1px solid var(--line); }
-.tt .tk { width: 250px; border-left: 1px solid var(--line); }
+.tt .tk { width: 230px; border-left: 1px solid var(--line); }
 .asp-ind { --g: #4F6B85; --gbg: #3F6B3A; }
 .asp-con { --g: #864F64; --gbg: #2D5F8F; }
 .asp-per { --g: #5E8157; --gbg: #5E8157; }
@@ -312,7 +312,7 @@ button:focus-visible, select:focus-visible { outline: 3px solid var(--t, var(--i
 .sf-l::after { content: ':'; }
 .tl .xm { fill: none; stroke: var(--t); stroke-width: 2.4; stroke-linecap: round; }
 .tl .bar.soft { fill-opacity: .35; }
-@media (max-width: 1060px) { .swipe { display: block; } }
+@media (max-width: 1000px) { .swipe { display: block; } }
 
 /* ---------- E: key words ---------- */
 .ebar { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 10px 12px; margin-bottom: 8px; }
@@ -793,7 +793,7 @@ button:focus-visible, select:focus-visible { outline: 3px solid var(--t, var(--i
   function formula(codes) {
     return codes.map(function (c) {
       var p = split(c), w = p[1];
-      if (p[0] === 's') return '<i class="f-s">' + w + '</i>';
+      if (p[0] === 's') return '<i class="f-s">' + (w === 'Subject' ? 'Sub' : (w === 'Object' ? 'Obj' : w)) + '</i>';
       if (p[0] === 'h') return '<span class="f-h">' + w + '</span>';
       return '<span class="f-v">' + w.replace(/V(\d)/g, 'V<sub>$1</sub>') + '</span>';
     }).join('<span class="f-plus">+</span>');

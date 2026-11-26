@@ -119,12 +119,12 @@ button:focus-visible, select:focus-visible { outline: 3px solid var(--t, var(--i
 .tgrp { padding: 14px 0 18px; }
 .tgrp + .tgrp { margin-top: 10px; border-top: 1px dashed var(--line-strong); padding-top: 26px; }
 .trows { gap: 12px; }
-.tnode { box-shadow: 0 0 0 7px var(--t-soft); }
+.tnode { box-shadow: 0 0 0 7px color-mix(in srgb, var(--t-soft) 60%, var(--surface)); }
 .tlab .tn { color: var(--t); font-size: 1.05rem; }
 .tform { min-height: 60px; display: flex; align-items: center; flex-wrap: wrap; box-shadow: 0 1px 0 var(--t-soft); }
 .tform > .chips { width: 100%; }
 .tfm .more { margin: 10px 6px 2px; }
-.tnote { min-height: 108px; justify-content: space-between; }
+.tnote { background: color-mix(in srgb, var(--t-soft) 45%, var(--surface)); min-height: 108px; justify-content: space-between; }
 .tnote .hint { font-size: 1rem; }
 .tl { margin-top: 6px; }
 
@@ -150,7 +150,7 @@ button:focus-visible, select:focus-visible { outline: 3px solid var(--t, var(--i
 .tfm .ex { font-size: 1.02rem; }
 .tfm .sfs { display: flex; flex-direction: column; gap: 3px; padding-top: 6px; border-top: 1px dashed var(--line-strong); }
 .tfm .sfr { font-size: .93rem; line-height: 1.4; }
-.tnote { background: var(--t-soft); border: 2px solid var(--t); border-radius: 16px; padding: 10px 14px 8px; display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.tnote { background: color-mix(in srgb, var(--t-soft) 45%, var(--surface)); border: 2px solid var(--t); border-radius: 16px; padding: 10px 14px 8px; display: flex; flex-direction: column; gap: 2px; min-width: 0; }
 .tnote .hint { font-size: 1.02rem; font-weight: 600; color: var(--ink); line-height: 1.3; }
 @media (max-width: 880px) {
   .tgrp { display: block; padding: 0 0 6px; }
@@ -277,14 +277,14 @@ button:focus-visible, select:focus-visible { outline: 3px solid var(--t, var(--i
 :root[data-theme="dark"] .asp-ind { --g: #8FC48A; }
 :root[data-theme="dark"] .asp-con { --g: #8DBDEB; }
 :root[data-theme="dark"] .asp-per { --g: #E0B46A; }
-.tt.pvt tr[class*="tense-"] th.tn { background: var(--t-soft); border-left: 6px solid var(--t); }
-.tt.pvt tr.tense-modal th.tn { background: var(--surface); }
-.tt.pvt th.tn > span { color: var(--t); }
+.tt.pvt tr[class*="asp-"] { --t: var(--g); }
+.tt.pvt tr[class*="asp-"] th.tn { background: color-mix(in srgb, var(--g) 8%, var(--surface)); border-left: 6px solid var(--g); }
+.tt.pvt th.tn > span { color: var(--g); }
 .tt.pvt tr.grp td, .tt.pvt tr.grp th.tn { border-top: 2px solid var(--line-strong); }
 .tt.pvt .fm .f-v { border-bottom: 0; }
 .vp { display: inline-block; padding: 1px 9px; margin: 2px 0; border: 1.5px solid var(--t); border-radius: 9px; background: var(--t-soft); }
 .aspkey { display: flex; flex-wrap: wrap; gap: 8px 14px; align-items: center; margin: 0 0 12px; font-size: .88rem; color: var(--muted); }
-.aspkey b { padding: 3px 12px; border-radius: 8px; border-left: 6px solid var(--t); background: var(--t-soft); color: var(--ink); font-weight: 600; }
+.aspkey b { padding: 3px 12px; border-radius: 8px; border-left: 6px solid var(--g); background: color-mix(in srgb, var(--g) 8%, var(--surface)); color: var(--ink); font-weight: 600; }
 .pvt .chips { align-items: center; gap: 6px; }
 .pvt .chips .plus { margin: 0 -1px; }
 .pvt .chip { font-size: .92rem; padding: 3px 9px; }
@@ -876,11 +876,11 @@ button:focus-visible, select:focus-visible { outline: 3px solid var(--t, var(--i
     return tag(m[1]) + ' + <span class="vp">' + inner(m[2]) + '</span> + ' + m[3].replace(/\b(sub)\b/, '<i class="f-s">$1</i>').replace(/^obj$/, '<i class="f-s">obj</i>');
   }
   var fh = '<p class="swipe">Swipe sideways to see every column.</p><p class="cap">Active: the doer comes first. Passive: the receiver of the action comes first, and the doer moves to the end with <i>by</i> (or is dropped when it is unknown or not important). The verb always ends in V³.</p>' +
-    '<p class="aspkey"><span class="tense-present"><b>Present</b></span><span class="tense-past"><b>Past</b></span><span class="tense-future"><b>Future</b></span><span class="tense-modal"><b>Modal</b></span></p>' +
+    '<p class="aspkey"><span class="asp-ind"><b>Indefinite</b></span><span class="asp-con"><b>Continuous</b></span><span class="asp-per"><b>Perfect</b></span></p>' +
     '<div class="vlegend"><span><i class="sw-hf"></i>Finite verb</span><span><i class="sw-hn"></i>Non-finite verb</span><span><i class="sw-ln"></i>Lexical verb, non-finite (ochre rim)</span><span><i class="sw-lf"></i>Lexical verb, finite (ochre outside, teal inside)</span></div>' +
     '<div class="tbl-wrap"><table class="tt pvt"><thead><tr><th>Tense</th><th>Active Voice</th><th>Passive Voice</th></tr></thead><tbody>';
   PF.forEach(function (r, i) {
-    fh += '<tr class="tense-' + r[0] + (i === 0 ? ' first' : (i === 4 || i === 7 ? ' grp' : '')) + '"><th scope="row" class="tn"><span>' + r[1] + '</span></th><td class="pf fm">' + pfx(r[2]) + '</td><td class="pf fm">' + pfx(r[3]) + '</td></tr>';
+    fh += '<tr class="' + ASP[i] + (i === 0 ? ' first' : (i === 4 || i === 7 ? ' grp' : '')) + '"><th scope="row" class="tn"><span>' + r[1] + '</span></th><td class="pf fm">' + pfx(r[2]) + '</td><td class="pf fm">' + pfx(r[3]) + '</td></tr>';
   });
   fh += '</tbody></table></div><h2 class="pv-h">Passive voice: uses, examples and key words</h2>' +
     '<p class="cap">Use the passive when the doer is unknown, not important or obvious, or when the receiver of the action is the star of the sentence. Passive forms of the perfect continuous tenses are very rare, so they are left out.</p>';

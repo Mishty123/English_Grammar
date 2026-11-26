@@ -266,25 +266,25 @@ button:focus-visible, select:focus-visible { outline: 3px solid var(--t, var(--i
 .tt .tx p + p { margin-top: 4px; }
 .tt .tp { width: 260px; border-left: 1px solid var(--line); }
 .tt .tk { width: 250px; border-left: 1px solid var(--line); }
-.asp-ind { --g: #3F6B3A; }
-.asp-con { --g: #2D5F8F; }
-.asp-per { --g: #8A5A00; }
+.asp-ind { --g: #4E6E66; --gbg: #3F6B3A; }
+.asp-con { --g: #6B5B7B; --gbg: #2D5F8F; }
+.asp-per { --g: #9A6B5A; --gbg: #8A5A00; }
 @media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) .asp-ind { --g: #8FC48A; }
-  :root:not([data-theme="light"]) .asp-con { --g: #8DBDEB; }
-  :root:not([data-theme="light"]) .asp-per { --g: #E0B46A; }
+  :root:not([data-theme="light"]) .asp-ind { --g: #9DBDB4; --gbg: #8FC48A; }
+  :root:not([data-theme="light"]) .asp-con { --g: #BBA9CC; --gbg: #8DBDEB; }
+  :root:not([data-theme="light"]) .asp-per { --g: #E0A894; --gbg: #E0B46A; }
 }
-:root[data-theme="dark"] .asp-ind { --g: #8FC48A; }
-:root[data-theme="dark"] .asp-con { --g: #8DBDEB; }
-:root[data-theme="dark"] .asp-per { --g: #E0B46A; }
+:root[data-theme="dark"] .asp-ind { --g: #9DBDB4; --gbg: #8FC48A; }
+:root[data-theme="dark"] .asp-con { --g: #BBA9CC; --gbg: #8DBDEB; }
+:root[data-theme="dark"] .asp-per { --g: #E0A894; --gbg: #E0B46A; }
 .tt.pvt tr[class*="asp-"] { --t: var(--g); }
-.tt.pvt tr[class*="asp-"] th.tn { background: color-mix(in srgb, var(--g) 8%, var(--surface)); border-left: 6px solid var(--g); }
+.tt.pvt tr[class*="asp-"] th.tn { background: color-mix(in srgb, var(--gbg) 8%, var(--surface)); border-left: 6px solid var(--g); }
 .tt.pvt th.tn > span { color: var(--g); }
 .tt.pvt tr.grp td, .tt.pvt tr.grp th.tn { border-top: 2px solid var(--line-strong); }
 .tt.pvt .fm .f-v { border-bottom: 0; }
 .vp { display: inline-block; padding: 1px 9px; margin: 2px 0; border: 1.5px solid var(--t); border-radius: 9px; background: var(--t-soft); }
 .aspkey { display: flex; flex-wrap: wrap; gap: 8px 14px; align-items: center; margin: 0 0 12px; font-size: .88rem; color: var(--muted); }
-.aspkey b { padding: 3px 12px; border-radius: 8px; border-left: 6px solid var(--g); background: color-mix(in srgb, var(--g) 8%, var(--surface)); color: var(--ink); font-weight: 600; }
+.aspkey b { padding: 3px 12px; border-radius: 8px; border-left: 6px solid var(--g); background: color-mix(in srgb, var(--gbg) 8%, var(--surface)); color: var(--ink); font-weight: 600; }
 .pvt .chips { align-items: center; gap: 6px; }
 .pvt .chips .plus { margin: 0 -1px; }
 .pvt .chip { font-size: .92rem; padding: 3px 9px; }

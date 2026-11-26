@@ -18,7 +18,7 @@
   --bad: #9C2A2A;  --bad-soft: #F7DEDE;
   --present: #4F6B85; --present-soft: #E3EBEC; --present-on: #FFFFFF;
   --past: #864F64;    --past-soft: #F6E3DC;    --past-on: #FFFFFF;
-  --future: #8F8040;  --future-soft: #F3EAD0;  --future-on: #FFFFFF;
+  --future: #5E8157;  --future-soft: #E6EFDF;  --future-on: #FFFFFF;
   --font-display: 'Fraunces', Georgia, 'Times New Roman', serif;
   --font-body: 'Nunito Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
   --font-formula: 'STIX Two Text', 'Cambria Math', Cambria, Georgia, serif;
@@ -33,7 +33,7 @@
     --bad: #FF9E9E;  --bad-soft: #4A2222;
     --present: #9DB6CC; --present-soft: #1E3F44; --present-on: #0D2226;
     --past: #D49BB0;    --past-soft: #4A2A22;    --past-on: #3A180F;
-    --future: #CFC083;  --future-soft: #43371A;  --future-on: #2F2300;
+    --future: #A8C99C;  --future-soft: #263A22;  --future-on: #2F2300;
     color-scheme: dark;
   }
 }
@@ -45,7 +45,7 @@
   --bad: #FF9E9E;  --bad-soft: #4A2222;
   --present: #9DB6CC; --present-soft: #1E3F44; --present-on: #0D2226;
   --past: #D49BB0;    --past-soft: #4A2A22;    --past-on: #3A180F;
-  --future: #CFC083;  --future-soft: #43371A;  --future-on: #2F2300;
+  --future: #A8C99C;  --future-soft: #263A22;  --future-on: #2F2300;
   color-scheme: dark;
 }
 
@@ -268,15 +268,15 @@ button:focus-visible, select:focus-visible { outline: 3px solid var(--t, var(--i
 .tt .tk { width: 250px; border-left: 1px solid var(--line); }
 .asp-ind { --g: #4F6B85; --gbg: #3F6B3A; }
 .asp-con { --g: #864F64; --gbg: #2D5F8F; }
-.asp-per { --g: #8F8040; --gbg: #8A5A00; }
+.asp-per { --g: #5E8157; --gbg: #5E8157; }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) .asp-ind { --g: #9DB6CC; --gbg: #8FC48A; }
   :root:not([data-theme="light"]) .asp-con { --g: #D49BB0; --gbg: #8DBDEB; }
-  :root:not([data-theme="light"]) .asp-per { --g: #CFC083; --gbg: #E0B46A; }
+  :root:not([data-theme="light"]) .asp-per { --g: #A8C99C; --gbg: #8FC48A; }
 }
 :root[data-theme="dark"] .asp-ind { --g: #9DB6CC; --gbg: #8FC48A; }
 :root[data-theme="dark"] .asp-con { --g: #D49BB0; --gbg: #8DBDEB; }
-:root[data-theme="dark"] .asp-per { --g: #CFC083; --gbg: #E0B46A; }
+:root[data-theme="dark"] .asp-per { --g: #A8C99C; --gbg: #8FC48A; }
 .tt.pvt tr[class*="asp-"] { --t: var(--g); }
 .tt.pvt tr[class*="asp-"] th.tn { background: color-mix(in srgb, var(--gbg) 8%, var(--surface)); border-left: 6px solid var(--g); }
 .tt.pvt th.tn > span { color: var(--g); }

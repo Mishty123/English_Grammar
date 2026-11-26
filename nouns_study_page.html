@@ -2304,5 +2304,29 @@ a.imp { padding-top: 3px !important; padding-bottom: 3px !important; }
   });
 })();
 </script>
+<script>
+/* Remember the open tab when the page is refreshed (this browser tab only). */
+(function () {
+  try {
+    var K = 'tabs:' + location.pathname, S = {};
+    try { S = JSON.parse(sessionStorage.getItem(K) || '{}'); } catch (e) {}
+    var lists = Array.prototype.slice.call(document.querySelectorAll('[role="tablist"]'));
+    var keep = !location.hash;
+    lists.forEach(function (l, li) {
+      l.addEventListener('click', function (e) {
+        var t = e.target.closest('[role="tab"]'); if (!t) return;
+        var tabs = Array.prototype.slice.call(l.querySelectorAll('[role="tab"]'));
+        S[li] = tabs.indexOf(t);
+        try { sessionStorage.setItem(K, JSON.stringify(S)); } catch (e2) {}
+      });
+    });
+    if (keep) lists.forEach(function (l, li) {
+      if (S[li] == null) return;
+      var t = l.querySelectorAll('[role="tab"]')[S[li]];
+      if (t && t.getAttribute('aria-selected') !== 'true') t.click();
+    });
+  } catch (e) {}
+})();
+</script>
 </body>
 </html>

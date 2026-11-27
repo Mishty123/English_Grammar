@@ -289,6 +289,15 @@ details p b { color: var(--right); }
 .gc .gx:first-of-type { margin-top: 0; }
 .subtab { display: flex; flex-direction: column; gap: 44px; }
 .subtab[hidden] { display: none; }
+/* Second-level tabs inside Case and Job: underline style */
+.subsub { display: flex; flex-wrap: wrap; gap: 2px 26px; margin: 0 0 -20px; padding: 0 4px; list-style: none; border-bottom: 2px solid var(--line); }
+.subsub a { display: inline-block; padding: 8px 2px 8px; margin-bottom: -2px; border-bottom: 3px solid transparent; color: var(--muted); text-decoration: none; font-size: 1rem; font-style: italic; }
+.subsub a i { font-weight: inherit; }
+.subsub a:hover { color: var(--h2c); border-bottom-color: var(--line); }
+.subsub a[aria-selected="true"] { color: var(--k); border-bottom-color: var(--k); font-weight: 700; font-style: normal; }
+.ssp { display: flex; flex-direction: column; gap: 44px; }
+.ssp[hidden] { display: none; }
+
 /* tables: no colour highlighting, bold only for key words */
 :is(td, th) :is(.m, .n, .v) { color: inherit !important; background: none !important; -webkit-text-fill-color: currentColor !important; -webkit-background-clip: border-box; background-clip: border-box; text-shadow: none !important; filter: none !important; font-weight: 400; font-style: italic; }
 :is(td, th) .k { color: inherit !important; background: none !important; -webkit-text-fill-color: currentColor !important; -webkit-background-clip: border-box; background-clip: border-box; text-shadow: none !important; filter: none !important; font-weight: 700; font-style: italic; }
@@ -1142,6 +1151,10 @@ a.imp { padding-top: 3px !important; padding-bottom: 3px !important; }
 <!-- ===================== CASE ===================== -->
 <div class="subtab" id="case" role="tabpanel" data-st="case">
 
+<ul class="subsub" role="tablist" aria-label="Case topics"><li><a href="#casejob" role="tab" data-ss="cs-cases">Cases</a></li><li><a href="#casejob" role="tab" data-ss="cs-pron">Noun &amp; pronoun</a></li><li><a href="#casejob" role="tab" data-ss="cs-poss">Possessive forms</a></li><li><a href="#casejob" role="tab" data-ss="cs-of">&rsquo;s or <i>of</i></a></li><li><a href="#casejob" role="tab" data-ss="cs-obj">Objective case</a></li><li><a href="#casejob" role="tab" data-ss="cs-practice">Practice</a></li></ul>
+
+<div class="ssp" data-ss="cs-cases">
+
 <section>
   <header>
     <h2>The cases of a noun</h2>
@@ -1160,6 +1173,9 @@ a.imp { padding-top: 3px !important; padding-bottom: 3px !important; }
   </div>
   <p class="sumnote">Newer books say English nouns have only two cases: the <i>common case</i> (no change) and the <i>genitive case</i> (the possessive). The nominative and objective look the same, so the job is found from the sentence.</p>
 </section>
+</div>
+
+<div class="ssp" data-ss="cs-pron" hidden>
 
 <section>
   <header>
@@ -1186,6 +1202,9 @@ a.imp { padding-top: 3px !important; padding-bottom: 3px !important; }
   </div>
   <p class="ex many" data-label="Examples">Peter likes <span class="n">Maria</span>. &rarr; He likes <b>her</b>. &nbsp;&middot;&nbsp; The <span class="n">boys&rsquo;</span> ball is red. &rarr; <b>Their</b> ball is red.</p>
 </section>
+</div>
+
+<div class="ssp" data-ss="cs-poss" hidden>
 
 <section>
   <header>
@@ -1225,6 +1244,9 @@ a.imp { padding-top: 3px !important; padding-bottom: 3px !important; }
       <p class="tip">Never put an apostrophe in an ordinary plural.</p></div></div>
   </div>
 </section>
+</div>
+
+<div class="ssp" data-ss="cs-of" hidden>
 
 <section>
   <header>
@@ -1260,6 +1282,9 @@ a.imp { padding-top: 3px !important; padding-bottom: 3px !important; }
       <p class="ex many" data-label="Examples">I do not like <span class="n">Tom&rsquo;s</span> coming late. (formal)<br>I do not like <span class="n">Tom</span> coming late. (everyday)</p></div></div>
   </div>
 </section>
+</div>
+
+<div class="ssp" data-ss="cs-obj" hidden>
 
 <section>
   <header>
@@ -1287,6 +1312,9 @@ a.imp { padding-top: 3px !important; padding-bottom: 3px !important; }
       <p class="ex many" data-label="Cognate object (the noun repeats the verb&rsquo;s idea)">She sang a <span class="n">song</span>. &nbsp;&middot;&nbsp; He lived a happy <span class="n">life</span>. &nbsp;&middot;&nbsp; They fought a good <span class="n">fight</span>.</p></div></div>
   </div>
 </section>
+</div>
+
+<div class="ssp" id="cs-practice" data-ss="cs-practice" hidden>
 
 <section>
   <header>
@@ -1302,12 +1330,17 @@ a.imp { padding-top: 3px !important; padding-bottom: 3px !important; }
       <p class="ex many" data-label="Task: fix the sentences">The girls bags are heavy. &rarr; The <span class="n">girls&rsquo;</span> bags are heavy.<br>Childrens toys are on sale. &rarr; <span class="n">Children&rsquo;s</span> toys are on sale.</p></div></div>
   </div>
 </section>
+</div>
 
 </div>
 
 
 <!-- ===================== JOBS ===================== -->
 <div class="subtab" id="jobs" role="tabpanel" data-st="jobs">
+
+<ul class="subsub" role="tablist" aria-label="Job topics"><li><a href="#casejob" role="tab" data-ss="jb-core">Subject &amp; objects</a></li><li><a href="#casejob" role="tab" data-ss="jb-compl">Complements</a></li><li><a href="#casejob" role="tab" data-ss="jb-other">Other jobs</a></li><li><a href="#casejob" role="tab" data-ss="jb-sum">Summary</a></li><li><a href="#casejob" role="tab" data-ss="jb-equiv">Noun equivalents</a></li><li><a href="#casejob" role="tab" data-ss="jb-practice">Practice</a></li></ul>
+
+<div class="ssp" data-ss="jb-core">
 
 <section>
   <header>
@@ -1332,6 +1365,19 @@ a.imp { padding-top: 3px !important; padding-bottom: 3px !important; }
         <p class="what">The noun that follows a preposition.</p>
         <p class="ex many" data-label="Examples">He sat on the <span class="n">chair</span>.<br>She is afraid of <span class="n">spiders</span>.</p></div></div>
     </div>
+  </div>
+</section>
+
+</div>
+
+<div class="ssp" data-ss="jb-compl" hidden>
+
+<section>
+  <header>
+    <h2>Complements and apposition</h2>
+    <p>A noun can also describe or rename another word in the sentence.</p>
+  </header>
+  <div class="uses">
     <div class="use"><h3>Subject complement</h3><div>
       <p class="what">A noun after a linking verb (be, become, seem, remain) that names or describes the subject. It means the same person or thing as the subject.</p>
       <p class="ex many" data-label="Examples">My brother is a <span class="n">doctor</span>.<br>She became <span class="n">captain</span> of the team.<br>Tom remained my best <span class="n">friend</span>.</p>
@@ -1343,6 +1389,19 @@ a.imp { padding-top: 3px !important; padding-bottom: 3px !important; }
       <p class="what">A noun placed beside another noun to explain it. Both name the same person or thing. Commas usually separate an apposition that adds extra information.</p>
       <p class="ex many" data-label="Examples">My friend <span class="n">Tom</span>, a <span class="n">doctor</span>, lives here.<br>Delhi, the <span class="n">capital</span> of India, is very large.<br>We visited the poet <span class="n">Tagore</span>&rsquo;s house.</p>
       <p class="tip">Test: take one noun out. The sentence should still work.</p></div></div>
+  </div>
+</section>
+
+</div>
+
+<div class="ssp" data-ss="jb-other" hidden>
+
+<section>
+  <header>
+    <h2>Other jobs</h2>
+    <p>Less common jobs of a noun.</p>
+  </header>
+  <div class="uses">
     <div class="use"><h3>Direct address (vocative)</h3><div>
       <p class="what">The name or title of the person you speak to. It is cut off by commas.</p>
       <p class="ex many" data-label="Examples"><span class="n">Anna</span>, come here.<br>Thank you, <span class="n">sir</span>.<br>Yes, <span class="n">doctor</span>, I will.</p></div></div>
@@ -1359,7 +1418,17 @@ a.imp { padding-top: 3px !important; padding-bottom: 3px !important; }
     <div class="use"><h3>Exclamation</h3><div>
       <p class="ex many" data-label="Examples">What a <span class="n">day</span>! &nbsp;&middot;&nbsp; <span class="n">Fire</span>! &nbsp;&middot;&nbsp; Such <span class="n">kindness</span>!</p></div></div>
   </div>
-  <h3 class="sumh">Quick summary</h3>
+</section>
+
+</div>
+
+<div class="ssp" data-ss="jb-sum" hidden>
+
+<section>
+  <header>
+    <h2>Quick summary</h2>
+    <p>Ask the question in the middle column to find the job.</p>
+  </header>
   <div class="scroll">
     <table style="min-width: 560px">
       <thead><tr><th><span class="hs">Job</span></th><th><span class="hs">Ask</span></th><th><span class="hs">Example</span></th></tr></thead>
@@ -1377,6 +1446,10 @@ a.imp { padding-top: 3px !important; padding-bottom: 3px !important; }
     </table>
   </div>
 </section>
+
+</div>
+
+<div class="ssp" data-ss="jb-equiv" hidden>
 
 <section>
   <header>
@@ -1407,8 +1480,20 @@ a.imp { padding-top: 3px !important; padding-bottom: 3px !important; }
 
 </div>
 
+<div class="ssp" id="jb-practice" data-ss="jb-practice" hidden>
+
+<section>
+  <header>
+    <h2>Practise the jobs</h2>
+    <p>Answer the questions to check the job of each noun.</p>
+  </header>
+</section>
 
 </div>
+
+</div>
+</div>
+
 
 <!-- ===================== AGREEMENT ===================== -->
 <div class="tabpanel" id="agreement" role="tabpanel" hidden>
@@ -2272,7 +2357,7 @@ a.imp { padding-top: 3px !important; padding-bottom: 3px !important; }
 </script>
 <script>
 (function () {
-  var NAMES = ["overview", "kinds", "counting", "numgen", "casejob", "agreement", "building", "errors", "quizzes"], LAB = {"overview": "Overview", "kinds": "Kinds", "counting": "Countable", "numgen": "Number & Gender", "casejob": "Case & Job", "agreement": "Agreement", "building": "Word building", "errors": "Errors", "quizzes": "Quiz time"}, NEED = {"overview": "Start here", "kinds": "Needs Step 1", "counting": "Needs Step 2: kinds", "numgen": "Needs Step 3: countable", "casejob": "Needs Step 4: number", "agreement": "Needs Step 5: jobs", "building": "Needs Step 2: kinds", "errors": "Needs Steps 2 to 7", "quizzes": "Needs Steps 1 to 8"}, TRY = {"overview": [["Which of the five things shows the noun’s job in the sentence?", ["Kind", "Number", "Case", "Gender"], 2, "Case is the job of the noun."], ["<i>boy’s</i> shows which case?", ["Subjective", "Possessive", "Objective"], 1, "The possessive case is the only one that changes the form."], ["Every noun is which person?", ["1st", "2nd", "3rd"], 2, "Every noun is 3rd person. A singular noun takes V5, a plural noun takes V1."], ["The dog ___ loudly.", ["bark", "barks"], 1, "Dog is singular, so the verb is V5: barks."]], "kinds": [["Which word needs a capital letter?", ["spring", "tuesday", "teacher", "city"], 1, "Days are proper nouns."], ["Which noun is abstract?", ["kindness", "chair", "Mumbai", "window"], 0, "Kindness is a quality. You cannot touch it."], ["In “a herd of cattle”, herd is a ___ noun.", ["collective", "material", "proper"], 0, "One word for a group."], ["Which is a material noun?", ["silver", "family", "anger", "Paris"], 0, "Silver is what things are made of."], ["Which is a compound noun?", ["beautiful", "bookshelf", "quickly", "running"], 1, "Two words joined to make one noun."]], "number": [["The plural of city is", ["citys", "cities", "cityes"], 1, "Consonant + y changes to -ies."], ["The plural of child is", ["childs", "children", "childrens"], 1, "Irregular plural: children."], ["The plural of knife is", ["knifes", "knives"], 1, "-fe changes to -ves."], ["The plural of sheep is", ["sheep", "sheeps", "sheepes"], 0, "Sheep is the same in singular and plural."]], "gender": [["The feminine of actor is", ["actress", "actoress", "actrice"], 0, "Add -ess: actress."], ["Which noun is common gender?", ["king", "teacher", "lioness", "table"], 1, "One word for a man or a woman."], ["The table lost ___ leg.", ["its", "his", "her"], 0, "A table is neuter, so it takes its."], ["The masculine of niece is", ["nephew", "niecer", "nepho"], 0, "A different word: nephew."]], "case": [["More than one girl’s books: the ___ books.", ["girl’s", "girls’", "girls’s"], 1, "Plural ending in -s: add only the apostrophe."], ["The ___ toys (more than one child)", ["children’s", "childrens’", "childrens"], 0, "Irregular plural: add ’s."], ["In “She gave Ravi a pen”, Ravi is in the ___ case.", ["subjective", "possessive", "objective"], 2, "Ravi is the indirect object, so the objective case."], ["For a thing, which is better?", ["the table’s leg", "the leg of the table"], 1, "Use of with things."]], "jobs": [["In “Rain fell.”, rain is the", ["subject", "direct object", "complement"], 0, "Rain does the action."], ["In “She kicked the ball.”, ball is the", ["subject", "direct object", "subject complement"], 1, "Kicked what? The ball."], ["In “Ravi, come here.”, Ravi is", ["direct address", "apposition", "subject"], 0, "Ravi is the person spoken to."], ["In “He is a doctor.”, doctor is the", ["direct object", "subject complement", "subject"], 1, "It renames the subject."]], "agreement": [["The box of apples ___ on the table.", ["is", "are"], 0, "The subject is box, which is singular."], ["Neither the teacher nor the students ___ late.", ["was", "were"], 1, "The verb agrees with the nearer noun: students."], ["Ten dollars ___ a lot.", ["is", "are"], 0, "An amount is one sum."], ["The team ___ ready. (one unit)", ["is", "are"], 0, "One unit is singular."]], "building": [["The noun from happy is", ["happiness", "happyness", "happily"], 0, "y changes to i, then -ness."], ["A person who teaches is a", ["teacher", "teachment", "teachness"], 0, "Add -er for the person."], ["The noun from decide is", ["decision", "deciding", "decided"], 0, "decide → decision."], ["Which ending makes a noun for a person?", ["-er", "-ness", "-tion"], 0, "-er: teacher, singer."]], "c-quiz": [["I need ___ furniture.", ["a", "some", "many"], 1, "Furniture is uncountable. Use some."], ["How ___ chairs are there?", ["many", "much"], 0, "Chairs can be counted: many."], ["We have ___ time, so let’s hurry.", ["little", "a little"], 0, "Little means almost none."], ["Which noun is countable?", ["rice", "advice", "egg", "water"], 2, "You can say one egg, two eggs."], ["In <i>many books</i>, the word <i>many</i> is a ___.", ["noun", "determiner", "adjective"], 1, "Many is a determiner (a quantifier). It stands before the noun and shows how many."], ["Which is correct?", ["a furniture", "furniture", "furnitures"], 1, "Furniture is an umbrella word. It is uncountable: no a / an, no -s."], ["Which word is the umbrella word?", ["chairs", "tables", "furniture", "sofas"], 2, "Furniture is the uncountable word for the whole group."], ["Physics ___ my favourite subject.", ["is", "are"], 0, "Physics ends in -s but is uncountable, so the verb is V5: is."], ["She gave me two ___ of advice.", ["pieces", "piece", "advices"], 0, "Advice is uncountable. Count it with a unit word: two pieces of advice."], ["The traffic ___ heavy this morning.", ["was", "were"], 0, "Traffic is an umbrella word. It takes a singular verb."]]};
+  var NAMES = ["overview", "kinds", "counting", "numgen", "casejob", "agreement", "building", "errors", "quizzes"], LAB = {"overview": "Overview", "kinds": "Kinds", "counting": "Countable", "numgen": "Number & Gender", "casejob": "Case & Job", "agreement": "Agreement", "building": "Word building", "errors": "Errors", "quizzes": "Quiz time"}, NEED = {"overview": "Start here", "kinds": "Needs Step 1", "counting": "Needs Step 2: kinds", "numgen": "Needs Step 3: countable", "casejob": "Needs Step 4: number", "agreement": "Needs Step 5: jobs", "building": "Needs Step 2: kinds", "errors": "Needs Steps 2 to 7", "quizzes": "Needs Steps 1 to 8"}, TRY = {"overview": [["Which of the five things shows the noun’s job in the sentence?", ["Kind", "Number", "Case", "Gender"], 2, "Case is the job of the noun."], ["<i>boy’s</i> shows which case?", ["Subjective", "Possessive", "Objective"], 1, "The possessive case is the only one that changes the form."], ["Every noun is which person?", ["1st", "2nd", "3rd"], 2, "Every noun is 3rd person. A singular noun takes V5, a plural noun takes V1."], ["The dog ___ loudly.", ["bark", "barks"], 1, "Dog is singular, so the verb is V5: barks."]], "kinds": [["Which word needs a capital letter?", ["spring", "tuesday", "teacher", "city"], 1, "Days are proper nouns."], ["Which noun is abstract?", ["kindness", "chair", "Mumbai", "window"], 0, "Kindness is a quality. You cannot touch it."], ["In “a herd of cattle”, herd is a ___ noun.", ["collective", "material", "proper"], 0, "One word for a group."], ["Which is a material noun?", ["silver", "family", "anger", "Paris"], 0, "Silver is what things are made of."], ["Which is a compound noun?", ["beautiful", "bookshelf", "quickly", "running"], 1, "Two words joined to make one noun."]], "number": [["The plural of city is", ["citys", "cities", "cityes"], 1, "Consonant + y changes to -ies."], ["The plural of child is", ["childs", "children", "childrens"], 1, "Irregular plural: children."], ["The plural of knife is", ["knifes", "knives"], 1, "-fe changes to -ves."], ["The plural of sheep is", ["sheep", "sheeps", "sheepes"], 0, "Sheep is the same in singular and plural."]], "gender": [["The feminine of actor is", ["actress", "actoress", "actrice"], 0, "Add -ess: actress."], ["Which noun is common gender?", ["king", "teacher", "lioness", "table"], 1, "One word for a man or a woman."], ["The table lost ___ leg.", ["its", "his", "her"], 0, "A table is neuter, so it takes its."], ["The masculine of niece is", ["nephew", "niecer", "nepho"], 0, "A different word: nephew."]], "cs-practice": [["More than one girl’s books: the ___ books.", ["girl’s", "girls’", "girls’s"], 1, "Plural ending in -s: add only the apostrophe."], ["The ___ toys (more than one child)", ["children’s", "childrens’", "childrens"], 0, "Irregular plural: add ’s."], ["In “She gave Ravi a pen”, Ravi is in the ___ case.", ["subjective", "possessive", "objective"], 2, "Ravi is the indirect object, so the objective case."], ["For a thing, which is better?", ["the table’s leg", "the leg of the table"], 1, "Use of with things."]], "jb-practice": [["In “Rain fell.”, rain is the", ["subject", "direct object", "complement"], 0, "Rain does the action."], ["In “She kicked the ball.”, ball is the", ["subject", "direct object", "subject complement"], 1, "Kicked what? The ball."], ["In “Ravi, come here.”, Ravi is", ["direct address", "apposition", "subject"], 0, "Ravi is the person spoken to."], ["In “He is a doctor.”, doctor is the", ["direct object", "subject complement", "subject"], 1, "It renames the subject."]], "agreement": [["The box of apples ___ on the table.", ["is", "are"], 0, "The subject is box, which is singular."], ["Neither the teacher nor the students ___ late.", ["was", "were"], 1, "The verb agrees with the nearer noun: students."], ["Ten dollars ___ a lot.", ["is", "are"], 0, "An amount is one sum."], ["The team ___ ready. (one unit)", ["is", "are"], 0, "One unit is singular."]], "building": [["The noun from happy is", ["happiness", "happyness", "happily"], 0, "y changes to i, then -ness."], ["A person who teaches is a", ["teacher", "teachment", "teachness"], 0, "Add -er for the person."], ["The noun from decide is", ["decision", "deciding", "decided"], 0, "decide → decision."], ["Which ending makes a noun for a person?", ["-er", "-ness", "-tion"], 0, "-er: teacher, singer."]], "c-quiz": [["I need ___ furniture.", ["a", "some", "many"], 1, "Furniture is uncountable. Use some."], ["How ___ chairs are there?", ["many", "much"], 0, "Chairs can be counted: many."], ["We have ___ time, so let’s hurry.", ["little", "a little"], 0, "Little means almost none."], ["Which noun is countable?", ["rice", "advice", "egg", "water"], 2, "You can say one egg, two eggs."], ["In <i>many books</i>, the word <i>many</i> is a ___.", ["noun", "determiner", "adjective"], 1, "Many is a determiner (a quantifier). It stands before the noun and shows how many."], ["Which is correct?", ["a furniture", "furniture", "furnitures"], 1, "Furniture is an umbrella word. It is uncountable: no a / an, no -s."], ["Which word is the umbrella word?", ["chairs", "tables", "furniture", "sofas"], 2, "Furniture is the uncountable word for the whole group."], ["Physics ___ my favourite subject.", ["is", "are"], 0, "Physics ends in -s but is uncountable, so the verb is V5: is."], ["She gave me two ___ of advice.", ["pieces", "piece", "advices"], 0, "Advice is uncountable. Count it with a unit word: two pieces of advice."], ["The traffic ___ heavy this morning.", ["was", "were"], 0, "Traffic is an umbrella word. It takes a singular verb."]]};
   function go(n) { var a = document.querySelector('.jump a[data-tab="' + n + '"]'); if (a) { a.click(); window.scrollTo(0, 0); } }
   function showSub(panel, id) {
     panel.querySelectorAll(':scope > .subtab').forEach(function (t) { t.hidden = t.dataset.st !== id; });
@@ -2323,6 +2408,19 @@ a.imp { padding-top: 3px !important; padding-bottom: 3px !important; }
     var a = e.target.closest('a.golink[data-sub]'); if (!a) return;
     var id = a.getAttribute('href').slice(1);
     setTimeout(function () { var p = document.getElementById(id); if (p) showSub(p, a.dataset.sub); window.scrollTo(0, 0); }, 0);
+  });
+})();
+</script>
+<script>
+(function () {
+  document.querySelectorAll('.subtab > .subsub').forEach(function (bar) {
+    var host = bar.parentNode;
+    function show(id) {
+      host.querySelectorAll(':scope > .ssp').forEach(function (t) { t.hidden = t.dataset.ss !== id; });
+      bar.querySelectorAll('a[data-ss]').forEach(function (a) { a.setAttribute('aria-selected', a.dataset.ss === id ? 'true' : 'false'); });
+    }
+    show(bar.querySelector('a[data-ss]').dataset.ss);
+    bar.addEventListener('click', function (e) { var a = e.target.closest('a[data-ss]'); if (!a) return; e.preventDefault(); show(a.dataset.ss); });
   });
 })();
 </script>
